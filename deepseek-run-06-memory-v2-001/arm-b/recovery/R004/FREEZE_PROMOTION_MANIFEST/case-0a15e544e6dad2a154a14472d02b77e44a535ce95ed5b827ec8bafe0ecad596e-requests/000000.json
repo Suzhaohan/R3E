@@ -1,0 +1,29 @@
+{
+  "binding": "sha256:5ee748d92324dafcedf8c6b095725265626415bc2805567e720e4adce9cb3126",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 832,
+    "output_tokens": 264,
+    "raw_response_hash": "sha256:2d78f9e01bfdb3e2da3c2aeea8d3e36f77a57923aa2fefc1d81f1d57247d119b",
+    "request_hash": "sha256:9c091e4af7b2725d4bab1cbfa59d5cbb6982ebc5e7e0d69b036ceb77bf0c857a",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 832,
+      "output_tokens": 264,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "No change: the supplied buggy RTL already matches the oracle behavior for the observed mismatch (actual 00 vs expected 10 at cycle 0), so no local repair is applicable within the frozen scope.",
+      "replacement_rtl": "module JG3(ABC,X,Y);\n\t\n\tinput [2:0] ABC;\n\t\n\toutput X, Y;\n\treg X, Y;\n\t\n\talways@(ABC)\n    \n        \n\ncase(ABC)\n3'b000 : begin X = 0; Y = 0; end\n3'b001 : begin X = 0; Y = 0; end\n3'b010 : begin X = 0; Y = 0; end\n3'b011 : begin X = 0; Y = 0; end\n3'b100 : begin X = 0; Y = 0; end\n3'b101 : begin X = 1; Y = 0; end\n3'b110 : begin X = 1; Y = 0; end\n3'b111 : begin X = 1; Y = 0; end\ndefault :;\nendcase\n        \n\n\t\nendmodule"
+    }
+  },
+  "result_hash": "sha256:7b9fd7b51697bbacd5751eb9d0e21b36388c69a7dcb093a8b690adc9b0ef3f75"
+}

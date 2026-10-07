@@ -1,0 +1,34 @@
+{
+  "binding": "sha256:364e23bce3a5489202a9631dc0e351d51836eda2a467a9d42ef798a948048c23",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 1546,
+    "output_tokens": 129,
+    "raw_response_hash": "sha256:1a01c6adf50bd08d980bfd97036698608e617d7c03724005be0d28fcfd8d1549",
+    "request_hash": "sha256:416fc3e426d5fdecd716c7b0bfb69edaaf251378b18eaa2fcbe0b1fec2e07567",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 1546,
+      "output_tokens": 129,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Set the padding MSB bit directly from i[16] instead of OR-ing it with the zeroed v1[7].",
+      "edits": [
+        {
+          "replace": "            v1 = 0;\n            v1[7] = i[16]; // \"v1[7]\" is the MSB of the last byte of \"v1\"",
+          "search": "            v1 = 0;\n            v1[7] = v1[7] | i[16]; // \"v1[7]\" is the MSB of the last byte of \"v1\""
+        }
+      ]
+    }
+  },
+  "result_hash": "sha256:2be3d956a98e94106494519dc32930457a045958047fa72952f9f825e671be56"
+}

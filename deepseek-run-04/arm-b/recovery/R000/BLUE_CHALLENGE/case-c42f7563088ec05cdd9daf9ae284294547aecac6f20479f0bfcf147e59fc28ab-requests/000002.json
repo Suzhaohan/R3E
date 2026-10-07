@@ -1,0 +1,23 @@
+{
+  "binding": "sha256:fac57aa6cc4ea0edad39e9af915fa76d2cbef90ad6c2309c36dae5f38f212918",
+  "response": {
+    "input_tokens": 782,
+    "output_tokens": 253,
+    "raw_response_hash": "sha256:dedadb1fcf689c91bf4a944c6f815f456daddfff5c028ec4c6f224101a0a480c",
+    "request_hash": "sha256:495dc06f96a19502b759ae4943e48dc203b8bbb90b4017bdda10fdeaee4ff9f7",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 782,
+      "output_tokens": 253,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Removed the stray empty statement/whitespace between always@(ABC) and case(ABC) so the case statement is the sole body of the always block; no functional case-item changes.",
+      "replacement_rtl": "module JG3(ABC,X,Y);\n\t\n\tinput [2:0] ABC;\n\t\n\toutput X, Y;\n\treg X, Y;\n\t\n\talways@(ABC)\n\ncase(ABC)\n3'b000 : begin X = 1; Y = 1; end\n3'b001 : begin X = 0; Y = 0; end\n3'b010 : begin X = 0; Y = 0; end\n3'b011 : begin X = 0; Y = 0; end\n3'b100 : begin X = 0; Y = 0; end\n3'b101 : begin X = 1; Y = 0; end\n3'b110 : begin X = 1; Y = 0; end\n3'b111 : begin X = 1; Y = 0; end\ndefault :;\nendcase\n\n\t\nendmodule"
+    }
+  },
+  "result_hash": "sha256:444466940a2d03973cd691927c333f0bce6cea41f5d81eaf79412b87e79658ac"
+}

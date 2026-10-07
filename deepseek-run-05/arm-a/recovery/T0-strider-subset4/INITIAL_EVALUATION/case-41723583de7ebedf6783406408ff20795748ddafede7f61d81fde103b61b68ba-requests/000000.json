@@ -1,0 +1,34 @@
+{
+  "binding": "sha256:5118ecab27626a4c3f4856cb6f47f43ca683726a4c475cd1a258c22f2f7165b8",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 826,
+    "output_tokens": 130,
+    "raw_response_hash": "sha256:11b021965b97d4eea04decadd22649d4499d6cb43d84b8c3a6c94f964bcdbd17",
+    "request_hash": "sha256:6f83c66b4a6c37cc1afb24882ad4c98897b83e38b122ad42c60a7b842599c767",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 826,
+      "output_tokens": 130,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Shift left by iterating from high to low index and shifting in zero at op[0].",
+      "edits": [
+        {
+          "replace": "            for (i = 7; i > 0; i = i - 1) begin\n              op[i] = op[i-1];\n            end\n            op[0] = 1'b0;",
+          "search": "            for (i = 0; i < 8; i = i + 1) begin\n              op[i+1] = op[i];\n            end\n            op[0] = op[7];"
+        }
+      ]
+    }
+  },
+  "result_hash": "sha256:8010b5b9df869de55ef68825fbf9774fd60d83e3b59bc18718022613d5c19ec7"
+}

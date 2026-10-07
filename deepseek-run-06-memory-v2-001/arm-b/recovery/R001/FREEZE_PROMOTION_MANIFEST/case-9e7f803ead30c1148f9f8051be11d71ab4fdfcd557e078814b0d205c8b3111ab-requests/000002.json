@@ -1,0 +1,29 @@
+{
+  "binding": "sha256:0184dd1d0de4117f1ea44e81dc84d14d8bff2d27739bc38a623205921d0c8775",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 877,
+    "output_tokens": 299,
+    "raw_response_hash": "sha256:ca3de8e736af1398c313df2256d822e0a4ce9234cb7731c858cbc65ef50c74db",
+    "request_hash": "sha256:eea4e42b797d84391620217d703b9ad96eeca2a951212fb4d78b080653ec3799",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 877,
+      "output_tokens": 299,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Fix truncated one-hot literals in the case statement: 3'b100 -> 8'b0001_0000 and 3'b111 -> 8'b1000_0000, so outputs for a=3'b100 and a=3'b111 are correct.",
+      "replacement_rtl": "\n\nmodule decoder3e_test(a,ena,y);\n  input [2:0] a;\n  input ena;\n  output [7:0] y; \n  reg[7:0] Y;\n  \n\n\nalways @(ena or a)\nbegin\nif(ena==0)\nY=8'b0000_0000;\nelse\ncase (a)\n3'b000: Y=8'b0000_0001;\n3'b001: Y=8'b0000_0010;\n3'b010: Y=8'b0000_0100;\n3'b011: Y=8'b0000_1000;\n3'b100: Y=8'b0001_0000;\n3'b101: Y=8'b0010_0000;\n3'b110: Y=8'b0100_0000;\n3'b111: Y=8'b1000_0000;\nendcase\nend\nassign y=Y;\n\n\n\n\n\nendmodule\n"
+    }
+  },
+  "result_hash": "sha256:8be04ec9da7683779df3180bb2122dbc3afa4b5162eb95a1cafa367ca9f821a1"
+}

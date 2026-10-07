@@ -1,0 +1,29 @@
+{
+  "binding": "sha256:4f1a1f078d43fd49f9a063e3abab962b98c1a70f339edb5d83025d5545af0c28",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 3875,
+    "output_tokens": 146,
+    "raw_response_hash": "sha256:8f38ab3b8a210cf86be8c1f9a56a6fbda20fbb4da5f19c9a9063ecb4dff3304b",
+    "request_hash": "sha256:f37dc8bb39665c3801f8da9545a7178ee63a29d4a0bf66a4ee5e8c1d28d01ea9",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 3875,
+      "output_tokens": 146,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Change the level-sensitive always block to an edge-triggered one: replace 'always@ (clk)' with 'always @(posedge clk)' and use nonblocking assignment 'q <= d;' so q updates only on the rising clock edge instead of continuously following d.",
+      "replacement_rtl": "module latch24_test( d, clk, q );\n    input [23:0] d;\n    input clk;\n    output [23:0] q;\n    reg [23:0] q;\n    always @(posedge clk)\n        q <= d;\nendmodule\n"
+    }
+  },
+  "result_hash": "sha256:19a7a34dc0f3cfa8ae1f94a0883f499d1ce2c0677e65b350dd7f433728a4ef74"
+}

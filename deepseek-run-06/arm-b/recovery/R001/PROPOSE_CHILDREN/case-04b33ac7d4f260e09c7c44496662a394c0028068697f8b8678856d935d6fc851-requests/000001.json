@@ -1,0 +1,29 @@
+{
+  "binding": "sha256:6daedc304672f09d434257f8cc53d6946ed610a41f0bc4c5170ba42f3ab9ab19",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 1102,
+    "output_tokens": 154,
+    "raw_response_hash": "sha256:b94b5989d11671a8e101891e58ea83dee0ea5b61a9e0ff05af390d2d4f8bcf73",
+    "request_hash": "sha256:774ca0888e510a02f512cd4208e296cd771b4099ce1ed13315c0cddca6ef2a2e",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 1102,
+      "output_tokens": 154,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Replaced the incorrect sum assignment `assign s=(a|b|ci);` with the correct full-adder XOR sum `assign s=(a^b^ci);`. The carry logic was left unchanged. This fixes the observed value mismatch where the buggy sum produced 11 instead of the expected 10.",
+      "replacement_rtl": "module fa_behavioral(a,b,ci,s,co);\n       input a,b;\n       input ci;\n       output  s;\n       output co;\n\n\n\n       assign s=(a^b^ci);\n       assign co=((a&b)|(a&ci)|(b&ci));\n\n\n\nendmodule\n"
+    }
+  },
+  "result_hash": "sha256:f51967775174cd1edca95558a04c03e2d0b307c16ce0476040406a6de5ac215a"
+}

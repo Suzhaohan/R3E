@@ -1,0 +1,29 @@
+{
+  "binding": "sha256:d8ec15c9429dd668fc193628d8f0e4fdf5b93df92e13924f67271ce4afc6978f",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 1169,
+    "output_tokens": 104,
+    "raw_response_hash": "sha256:ea4aa9290d7d6d43ef2b6726b26567790c41cd614cc2fd82365d0dee7747fb7d",
+    "request_hash": "sha256:ffdff1e32763a5d4f275ab0249b87a4d68285c9de2f5584c7a2692adabd75991",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 1169,
+      "output_tokens": 104,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Swap the mux branch assignments so that s!=0 selects b and s==0 selects a, correcting the inverted select polarity that caused the cycle2-4 output mismatches.",
+      "replacement_rtl": "module mux21(a,b,s,y);\n\tinput a,b,s;\n\toutput y;\n\treg y;\n\talways @(a,b,s)\n\t\tif(s!=0) y=b;\n\t\telse y=a;\nendmodule"
+    }
+  },
+  "result_hash": "sha256:7c4e538eb9bc860feff317ed716f7264c1b9f51201e5d563bb0887897d2571ad"
+}

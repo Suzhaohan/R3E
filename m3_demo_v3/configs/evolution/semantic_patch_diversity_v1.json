@@ -1,0 +1,74 @@
+{
+  "schema_version": "r3e-semantic-patch-diversity-milestone-v1",
+  "milestone_id": "semantic-patch-diversity-v1",
+  "status": "frozen",
+  "parent_milestone": {
+    "milestone_id": "descriptor-routed-portfolio-v1",
+    "milestone_hash": "sha256:df870a30fd352455f39d63b4ec6413a2a8f32d3e6b6ada06e89c50a405474161"
+  },
+  "completed_scope": [
+    "runner-owned-structured-semantic-patch-signature-v1",
+    "policy-scope-bound-normalized-ast-patch-hash",
+    "semantic-duplicate-near-duplicate-orthogonal-relation-receipts",
+    "measurement-only-three-candidate-full-verification",
+    "lens-collapse-semantic-diversity-unique-and-co-solve-statistics",
+    "per-run-and-cross-seed-portfolio-cost-statistics",
+    "semantic-signature-diversity-execution-trace-and-offline-audit",
+    "semantic-provider-bound-formal-arena-toolchain-checkpoint-event-and-audit",
+    "enable-diversity-measurement-policy-v3-child-operator",
+    "deterministic-collapse-negative-and-conformance-tests"
+  ],
+  "frozen_interfaces": [
+    "r3e-semantic-patch-signature-v1",
+    "r3e-candidate-semantic-signature-v1",
+    "r3e-semantic-patch-relation-v1",
+    "r3e-portfolio-diversity-v1",
+    "r3e-portfolio-challenge-statistics-v1",
+    "r3e-blue-evaluation-v2",
+    "r3e-memory-execution-trace-v2",
+    "candidate_portfolio_v1"
+  ],
+  "frozen_assets": {
+    "README.md": "sha256:c876095fe4630afa58dee7a336da995a16a7b5100ba1fe09bf801f98abcca312",
+    "configs/blue/semantic_diversity_portfolio_v1.json": "sha256:adf99ae679c9c911a84c877a7804960a0d6c8be5da196158f19eb4e1cedd2a94",
+    "configs/blue/descriptor_router_v1.json": "sha256:bac10968691e62797c469bbc69611c56faa588b4f6e7c3037caec9d28ffbd2ba",
+    "configs/blue/portfolio_operator_space_v1.json": "sha256:2c6f7d8397713f333b7256756f0d3a13039c414bad0b63d7a8e4fd9ee1037265",
+    "configs/evolution/round_acp3_semantic_diversity_v1.json": "sha256:0fcac577b270c7be23f8727d711f1726169f1fc18471c54c28b2d6658896af61",
+    "r3e/policy/search.py": "sha256:4ddbcec0bbd98420bdff2809ba22e32c170a77e9cd6c7c284eab4a97e1e919c3",
+    "r3e/arena/portfolio.py": "sha256:223a3c93097c2a0ba80ed88f0484bbe4a43f5b3329d860905bbc8e40fd1fe3db",
+    "r3e/arena/runner.py": "sha256:e4f932dd223eaafebd551d65f4d2efc87966ac1ac8d9a06ddf429c08515ac2fd",
+    "r3e/arena/audit.py": "sha256:808111df5bc77d6223fa3dbb4ca6ac9a0803c0550401d997cb02fd6a82c3ce7c",
+    "r3e/memory/execution_trace.py": "sha256:c28c88f450c4d5f12eab7f0ff31453e9e985cf9a4ef98a6c2ad51824176e7a6d",
+    "r3e/blue/portfolio/__init__.py": "sha256:35ebe034817e7e656fa4894347f8510fd9782c587e82f1cfc76af1fe25275668",
+    "r3e/blue/portfolio/candidate_executor.py": "sha256:69bca1e9c5e480b9f02af29c46ba654d10ffa972f17d14faf0ebb8a750eac117",
+    "r3e/blue/portfolio/candidate_receipts.py": "sha256:9a5035db12ac1d2dd0ba28f3db71059187f749cbbc3d4b88702a0a7ca155b9ac",
+    "r3e/blue/portfolio/audit.py": "sha256:30b9b49ed8d4157e25db60dd8abbd69b78ef4ad6e24152556a1697a1f209b57c",
+    "r3e/blue/portfolio/semantic_signature.py": "sha256:9fb66280229d6048b54ae2799a8be60f463c0b89f8396c45a8c68a0e5b0e2059",
+    "r3e/blue/portfolio/statistics.py": "sha256:04ded5f27e7d7f5d7b385563bcea81b1eda7e6dfa72969f7318cb12f7cc302c9",
+    "r3e/blue/portfolio/fake.py": "sha256:c85cba5ec27039a5d3b33109c5dfc63dc5e697611dab9c94fefdaa3ba36a5a74",
+    "r3e/blue/portfolio/fake_system.py": "sha256:ba839c9de03911e5ba48ef7e8811c73e9b3640046ca31a8c2c99c8d2573f3e71",
+    "tests/test_adaptive_candidate_protocol.py": "sha256:a1d708bf51303a63875c6faad4330de5d78835ba9cc84309a3fdf4287b5c3fe7",
+    "tests/test_adaptive_candidate_fixed_mixed.py": "sha256:e50ecd8d4787bf52b41659bd3d467d0dad14b88796a1d953dbfc7aedb56d97a3",
+    "tests/test_adaptive_candidate_descriptor_routed.py": "sha256:8ded0c3cd6af88815dd865d62973b2e16c48ce14e565ad79d1aa0cdafe9bb69b",
+    "tests/test_adaptive_candidate_semantic_diversity.py": "sha256:8cd573afd0ab36a2d7013ec822bbbe4e931dcc0d018d1d93c469f9e7f7366707",
+    "tests/test_grounded_planner_raam_closure.py": "sha256:9578ea0f2c1f445b6cec188707d31b74b6232682b10500446caa3714f404a306"
+  },
+  "required_validation": [
+    "pytest -q -p no:cacheprovider tests/test_adaptive_candidate_protocol.py tests/test_adaptive_candidate_fixed_mixed.py tests/test_adaptive_candidate_descriptor_routed.py tests/test_adaptive_candidate_semantic_diversity.py",
+    "python -m r3e.blue.portfolio.fake_system --project-root . --portfolio configs/blue/semantic_diversity_portfolio_v1.json --router configs/blue/descriptor_router_v1.json --out /tmp/r3e-acp3-blue-evaluation.json",
+    "pytest -q -p no:cacheprovider",
+    "python scripts/check_release.py",
+    "python scripts/verify_datasets.py"
+  ],
+  "deferred_scope": [
+    "diversity-retry-and-fourth-provider-call",
+    "real-model-lens-collapse-and-unique-solve-measurement",
+    "offline-adaptive-allocation",
+    "raam-portfolio-control",
+    "portfolio-aware-red-challenge",
+    "real-model-candidate-provider",
+    "acp7-real-model-multi-round-experiment"
+  ],
+  "claim_boundary": "Frozen deterministic ACP-3 semantic signature and measurement-only diversity authority only; duplicates still receive full verification and retry_calls is zero. No real-model lens-collapse, unique-solve, repair-gain, adaptive-allocation, or multi-round ACP result is claimed.",
+  "milestone_hash": "sha256:c7c5b0e709919b2cac3253bec5a4d8bd02d03d8758f8bfa424e760623a8dde5e"
+}

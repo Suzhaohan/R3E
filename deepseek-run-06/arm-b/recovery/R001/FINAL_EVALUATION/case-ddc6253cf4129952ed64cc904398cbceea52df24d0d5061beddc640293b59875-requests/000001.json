@@ -1,0 +1,29 @@
+{
+  "binding": "sha256:03a737f49b8caa8332c8d126abbe91ba1311899250474ffd6488126e4b0d3d3b",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 1037,
+    "output_tokens": 142,
+    "raw_response_hash": "sha256:1130443f43919a242e2be43eba03c9a920266b074d8b3d95d549dc1acb45e357",
+    "request_hash": "sha256:aa39062bdbe6445fba26eee342097347094ff3984483de0907bf48b46fe6ef37",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 1037,
+      "output_tokens": 142,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Change the level-sensitive always@(clk) block with blocking assignment q = d to a posedge-triggered always@(posedge clk) block with nonblocking assignment q <= d, so q captures d on the clock edge instead of being transparently driven by d.",
+      "replacement_rtl": "module latch24_test( d, clk,q );\n\t\n    input [23:0] d;\n    input clk;\n    output[23:0] q;\n    reg [23:0] q;\n    always@ (posedge clk)\n        q <= d;\n\nendmodule\n"
+    }
+  },
+  "result_hash": "sha256:4e2c44c716edd99ce561ecdfc374d30afd8b8c7c00e5dc28fc8093fd3f764a30"
+}

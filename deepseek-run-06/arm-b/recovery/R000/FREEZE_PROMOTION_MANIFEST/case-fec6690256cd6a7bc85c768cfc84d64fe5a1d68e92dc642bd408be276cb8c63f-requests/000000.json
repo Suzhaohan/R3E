@@ -1,0 +1,29 @@
+{
+  "binding": "sha256:de3e012be2f32ad2b69bd1b633b2f6bf1fd21614d2cc90e19328939d8da912a7",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 835,
+    "output_tokens": 269,
+    "raw_response_hash": "sha256:deaf18e815769c7bd18fa7bfee5142a259704c642d2daa945b9584c4dff4aa9b",
+    "request_hash": "sha256:bcba628588fa8020608bb8d60ad90bb646263147e1807aa0ace8b7afbb0cd90a",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 835,
+      "output_tokens": 269,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "In the case statement, change the 3'b100 branch from X=0 to X=1 so that X is asserted for ABC values 100 through 111, matching the oracle output (expected 10 at cycle 0).",
+      "replacement_rtl": "module JG3(ABC,X,Y);\n\t\n\tinput [2:0] ABC;\n\t\n\toutput X, Y;\n\treg X, Y;\n\t\n\talways@(ABC)\n    \n        \n\ncase(ABC)\n3'b000 : begin X = 0; Y = 0; end\n3'b001 : begin X = 0; Y = 0; end\n3'b010 : begin X = 0; Y = 0; end\n3'b011 : begin X = 0; Y = 0; end\n3'b100 : begin X = 1; Y = 0; end\n3'b101 : begin X = 1; Y = 0; end\n3'b110 : begin X = 1; Y = 0; end\n3'b111 : begin X = 1; Y = 0; end\ndefault :;\nendcase\n        \n\n\t\nendmodule"
+    }
+  },
+  "result_hash": "sha256:e869996995424136eea7b8ac11713eaad3b9cc55898b4c826c18ee2cb17c4402"
+}

@@ -1,0 +1,34 @@
+{
+  "binding": "sha256:6410a317c24f20fe20af73fd7776a55ed461c9e8fd52cdd77a433a00648aa6e0",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 1556,
+    "output_tokens": 125,
+    "raw_response_hash": "sha256:8c3ea6e8c9dde97c158089e00b979c67168deb1f66f9eda65636a6b9d75ae6dc",
+    "request_hash": "sha256:632c6f144be147a6cd76ef2eee537b8c6bac610bc7b4f8685b3af9c065890938",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 1556,
+      "output_tokens": 125,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Make out_ready follow i[22] every cycle instead of latching high, so it deasserts when the output is no longer valid.",
+      "edits": [
+        {
+          "replace": "    always @ (posedge clk)\n      if (reset)\n        out_ready <= 0;\n      else\n        out_ready <= i[22];",
+          "search": "    always @ (posedge clk)\n      if (reset)\n        out_ready <= 0;\n      else if (i[22])\n        out_ready <= 1;"
+        }
+      ]
+    }
+  },
+  "result_hash": "sha256:d89a49f4ea44668854162d9c0252071c6c775e081e44459276f44c400311757f"
+}

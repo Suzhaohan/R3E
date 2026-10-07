@@ -1,0 +1,1167 @@
+{
+  "admission_decision": {
+    "admitted": true,
+    "authority_mode": "runner_owned_grounded_execution",
+    "challenged_effective_policy_hash": "sha256:92762bdd3ab173f90e56a7acfbcc8becbed71bb517884e262e43196b140dc449",
+    "challenged_policy_instance_hash": "sha256:a689ee15a7ff1f71ac42587294fdcc95af05a2172af824942727ca861a483a38",
+    "checks": {
+      "G10_non_triviality": true,
+      "G11_minimization": true,
+      "G1_source_integrity": true,
+      "G2_parser_elaboration": true,
+      "G3_clean_baseline": true,
+      "G4_poison_executability": true,
+      "G5_functional_failure": true,
+      "G6_determinism": true,
+      "G7_revert_proof": true,
+      "G8_semantic_family_proof": true,
+      "G9_runtime_effect_proof": true
+    },
+    "decision_hash": "sha256:7cef35f1bb92cf45213a27f4f96e674c15f26d252f546c357223142143a118b7",
+    "evidence_hash": "sha256:3c02731b7aab3b96bb415ffa31541cd9270600d2d98d896b87801b7bea45dc64",
+    "minimized_poison_hash": "sha256:cd5a9be34cf47d803207f244040cccdbe875ccbee35763893f791d416f1652a4",
+    "plan_hash": "sha256:f04f9d8087962b72559d66f2b32b2cc54a881ee61f70a32ccba3cb4e894867be",
+    "poison_payload_hash": "sha256:4f34e1785316b4aae7f484478b4ff3e9646c45f94f43f7f663bf8e31e90ea0d8",
+    "rejection_reasons": [],
+    "runtime_effect_receipt_hash": "sha256:f52120914cbcf55ee6757c6d649b6c91d0400b94bf1363975aa4687caf86ce98",
+    "schema_version": "r3e-red-admission-decision-v2",
+    "semantic_diff_receipt_hash": "sha256:adf3674675a457966cd2a67342131c90a5c9eb4bf0045b87f49f3c28726191cd"
+  },
+  "bundle_hash": "sha256:6e4967d25108fc3bd9a36b745accad1328ca3ff3b993e2fb55154ad5976b259c",
+  "evidence": {
+    "clean_run": {
+      "artifact_hashes": {
+        "compile_receipt": "sha256:dee01d3422f8a80a66e6df8f0db21de37a732955628a7232ae82c209d53f660c",
+        "elaborate_receipt": "sha256:c60b66863ad76dbf9c701293ba8a33e61fb33912de7744444c4d615911cd292b",
+        "oracle_provider_receipt": "sha256:524e9e8ae0a5be6ced2c89a10c1b645b2b0160ffc7748eb5d8e27b4554517d65",
+        "parse_receipt": "sha256:ce78a30ea4efdb883fd616f06de54d699f51c76c7aae7f3c30406aa6e59019b0",
+        "rtl": "sha256:45cbbb56ab7f372aa0df1248191587936d44c20a855c6350ba036c599c22f977",
+        "simulation_receipt": "sha256:3679e0bb091d0582bb63ad61e7b3d28fbdf8fa65ab7325b4b840ea5d6192855f",
+        "testbench": "sha256:d53773194ce6e8bb7d5102214237af27d336c4134e98f0136ed428b9741e0b34"
+      },
+      "command_argv": [
+        "r3e-icarus-grounded-provider-v1",
+        "clean_baseline"
+      ],
+      "crashed": false,
+      "exit_code": 0,
+      "issuer": "r3e-grounded-command-runner-v1",
+      "observed": {
+        "compile_ok": true,
+        "elaboration_ok": true,
+        "oracle_pass": true,
+        "oracle_provider_receipt": {
+          "input_artifact_hashes": {
+            "simulation_stdout": "sha256:7073161dae65719db538755b9281f164026cb305c9b80be425a3def5d87597bb",
+            "testbench": "sha256:d53773194ce6e8bb7d5102214237af27d336c4134e98f0136ed428b9741e0b34"
+          },
+          "provider_hash": "sha256:fbc74a55fa610c6697c683612c58f15c5a59b29e324b81a7a0c9db6db13fdd70",
+          "provider_id": "r3e-stdout-oracle",
+          "provider_implementation_hash": "sha256:e67d32c8e756b2cf87af72bbf99b23075b6f4b2daf787aa229614adbc47ff2f7",
+          "provider_kind": "oracle_parser",
+          "provider_version": "1",
+          "receipt_hash": "sha256:524e9e8ae0a5be6ced2c89a10c1b645b2b0160ffc7748eb5d8e27b4554517d65",
+          "result": {
+            "assignment_type": "",
+            "cone_depth": null,
+            "cycle_offset": null,
+            "effect_signature": "none",
+            "first_divergence_cycle": null,
+            "first_divergence_hash": "sha256:b58c8ae2c263603a3ba2a9fe6353e08f239c4347a97a4cf451ed570c0c776ee1",
+            "first_divergence_signal": "",
+            "functional_mismatch": false,
+            "mismatch_pattern": "",
+            "mismatch_topology_hash": "sha256:a2ae90e0e2cfdb2c3a1345003cc902613ee571b79c697b1edcea6a3f7932b069",
+            "oracle_pass": true,
+            "raw_record_hash": "sha256:488a63dcfed0070b1989fad4b7dd381fb7aacfdde2884bc92f1660e29746094b",
+            "temporal_relation": "",
+            "waveform_observation_complete": true,
+            "waveform_observation_hash": "sha256:0c176509644e73b68be36d637e57bf19d7953e160c093f14c440a4d53910ff1b"
+          },
+          "schema_version": "r3e-grounded-provider-receipt-v1"
+        },
+        "parse_ok": true,
+        "provider_receipts": [
+          {
+            "artifact_hashes": {
+              "executable": "sha256:1ba67856249142771239573b5d51c7f6e4d67a1e7931a0d0fab56e0d473d2167",
+              "rtl": "sha256:45cbbb56ab7f372aa0df1248191587936d44c20a855c6350ba036c599c22f977",
+              "stderr": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "stdout": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "testbench": "sha256:d53773194ce6e8bb7d5102214237af27d336c4134e98f0136ed428b9741e0b34"
+            },
+            "command_argv": [
+              "/usr/bin/iverilog",
+              "-g2012",
+              "-tnull",
+              "/data2/huangyc/R3E-aic-ic-2026-latest/deepseek-run-01/arm-b/rounds/R003/grounded_authority/0477d25e0e72fd12b99a24c6e756a0df5c032a9930f04e0e9f4a8fb1d0d93f6a/attempt-0001/inputs/clean.v",
+              "/data2/huangyc/R3E-aic-ic-2026-latest/deepseek-run-01/arm-b/rounds/R003/grounded_authority/0477d25e0e72fd12b99a24c6e756a0df5c032a9930f04e0e9f4a8fb1d0d93f6a/attempt-0001/inputs/testbench.v"
+            ],
+            "crashed": false,
+            "exit_code": 0,
+            "issuer": "r3e-grounded-command-runner-v1",
+            "observed": {
+              "parse_ok": true
+            },
+            "phase": "parse",
+            "receipt_hash": "sha256:ce78a30ea4efdb883fd616f06de54d699f51c76c7aae7f3c30406aa6e59019b0",
+            "receipt_id": "R003-940f32057dca:assignment4v:fa_behavioral_1:grd:clean:parse",
+            "result_kind": "completed",
+            "run_context_hash": "sha256:27a316053902c8d6fd1ebd48fbf02d80ed57da1ed1003daa5ef4513fa9f83d30",
+            "schema_version": "r3e-grounded-command-receipt-v1",
+            "subject_hash": "sha256:45cbbb56ab7f372aa0df1248191587936d44c20a855c6350ba036c599c22f977",
+            "timed_out": false,
+            "toolchain_fingerprint_hash": "sha256:c78be24bde0a1289435712e992649340c4f29bc0aa77cf6a52c078689a20cd2a",
+            "wall_time_ms": 40,
+            "working_directory_hash": "sha256:22cbeda33fb47ef3b61d4816ee610a52c0792596121296a8995469e147aa5856"
+          },
+          {
+            "artifact_hashes": {
+              "executable": "sha256:1ba67856249142771239573b5d51c7f6e4d67a1e7931a0d0fab56e0d473d2167",
+              "rtl": "sha256:45cbbb56ab7f372aa0df1248191587936d44c20a855c6350ba036c599c22f977",
+              "stderr": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "stdout": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "testbench": "sha256:d53773194ce6e8bb7d5102214237af27d336c4134e98f0136ed428b9741e0b34"
+            },
+            "command_argv": [
+              "/usr/bin/iverilog",
+              "-g2012",
+              "-s",
+              "tb",
+              "-tnull",
+              "/data2/huangyc/R3E-aic-ic-2026-latest/deepseek-run-01/arm-b/rounds/R003/grounded_authority/0477d25e0e72fd12b99a24c6e756a0df5c032a9930f04e0e9f4a8fb1d0d93f6a/attempt-0001/inputs/clean.v",
+              "/data2/huangyc/R3E-aic-ic-2026-latest/deepseek-run-01/arm-b/rounds/R003/grounded_authority/0477d25e0e72fd12b99a24c6e756a0df5c032a9930f04e0e9f4a8fb1d0d93f6a/attempt-0001/inputs/testbench.v"
+            ],
+            "crashed": false,
+            "exit_code": 0,
+            "issuer": "r3e-grounded-command-runner-v1",
+            "observed": {
+              "elaboration_ok": true,
+              "top_module": "tb"
+            },
+            "phase": "elaborate",
+            "receipt_hash": "sha256:c60b66863ad76dbf9c701293ba8a33e61fb33912de7744444c4d615911cd292b",
+            "receipt_id": "R003-940f32057dca:assignment4v:fa_behavioral_1:grd:clean:elaborate",
+            "result_kind": "completed",
+            "run_context_hash": "sha256:27a316053902c8d6fd1ebd48fbf02d80ed57da1ed1003daa5ef4513fa9f83d30",
+            "schema_version": "r3e-grounded-command-receipt-v1",
+            "subject_hash": "sha256:45cbbb56ab7f372aa0df1248191587936d44c20a855c6350ba036c599c22f977",
+            "timed_out": false,
+            "toolchain_fingerprint_hash": "sha256:c78be24bde0a1289435712e992649340c4f29bc0aa77cf6a52c078689a20cd2a",
+            "wall_time_ms": 29,
+            "working_directory_hash": "sha256:22cbeda33fb47ef3b61d4816ee610a52c0792596121296a8995469e147aa5856"
+          },
+          {
+            "artifact_hashes": {
+              "executable": "sha256:1ba67856249142771239573b5d51c7f6e4d67a1e7931a0d0fab56e0d473d2167",
+              "rtl": "sha256:45cbbb56ab7f372aa0df1248191587936d44c20a855c6350ba036c599c22f977",
+              "simulation_binary": "sha256:a14c70ac4391aac50b52e20a9496715f527e5bd69731845c516c3dbdc14be8f6",
+              "stderr": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "stdout": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "testbench": "sha256:d53773194ce6e8bb7d5102214237af27d336c4134e98f0136ed428b9741e0b34"
+            },
+            "command_argv": [
+              "/usr/bin/iverilog",
+              "-g2012",
+              "-s",
+              "tb",
+              "-o",
+              "/data2/huangyc/R3E-aic-ic-2026-latest/deepseek-run-01/arm-b/rounds/R003/grounded_authority/0477d25e0e72fd12b99a24c6e756a0df5c032a9930f04e0e9f4a8fb1d0d93f6a/attempt-0001/runs/R003-940f32057dca:assignment4v:fa_behavioral_1:grd:clean/simulation.out",
+              "/data2/huangyc/R3E-aic-ic-2026-latest/deepseek-run-01/arm-b/rounds/R003/grounded_authority/0477d25e0e72fd12b99a24c6e756a0df5c032a9930f04e0e9f4a8fb1d0d93f6a/attempt-0001/inputs/clean.v",
+              "/data2/huangyc/R3E-aic-ic-2026-latest/deepseek-run-01/arm-b/rounds/R003/grounded_authority/0477d25e0e72fd12b99a24c6e756a0df5c032a9930f04e0e9f4a8fb1d0d93f6a/attempt-0001/inputs/testbench.v"
+            ],
+            "crashed": false,
+            "exit_code": 0,
+            "issuer": "r3e-grounded-command-runner-v1",
+            "observed": {
+              "compile_ok": true
+            },
+            "phase": "compile",
+            "receipt_hash": "sha256:dee01d3422f8a80a66e6df8f0db21de37a732955628a7232ae82c209d53f660c",
+            "receipt_id": "R003-940f32057dca:assignment4v:fa_behavioral_1:grd:clean:compile",
+            "result_kind": "completed",
+            "run_context_hash": "sha256:27a316053902c8d6fd1ebd48fbf02d80ed57da1ed1003daa5ef4513fa9f83d30",
+            "schema_version": "r3e-grounded-command-receipt-v1",
+            "subject_hash": "sha256:45cbbb56ab7f372aa0df1248191587936d44c20a855c6350ba036c599c22f977",
+            "timed_out": false,
+            "toolchain_fingerprint_hash": "sha256:c78be24bde0a1289435712e992649340c4f29bc0aa77cf6a52c078689a20cd2a",
+            "wall_time_ms": 35,
+            "working_directory_hash": "sha256:22cbeda33fb47ef3b61d4816ee610a52c0792596121296a8995469e147aa5856"
+          },
+          {
+            "artifact_hashes": {
+              "executable": "sha256:075b114070eed3bc72e0e4559decf40520f3b693b1da9c94bba1defe8896966d",
+              "simulation_binary_input": "sha256:a14c70ac4391aac50b52e20a9496715f527e5bd69731845c516c3dbdc14be8f6",
+              "stderr": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "stdout": "sha256:7073161dae65719db538755b9281f164026cb305c9b80be425a3def5d87597bb",
+              "testbench": "sha256:d53773194ce6e8bb7d5102214237af27d336c4134e98f0136ed428b9741e0b34"
+            },
+            "command_argv": [
+              "/usr/bin/vvp",
+              "/data2/huangyc/R3E-aic-ic-2026-latest/deepseek-run-01/arm-b/rounds/R003/grounded_authority/0477d25e0e72fd12b99a24c6e756a0df5c032a9930f04e0e9f4a8fb1d0d93f6a/attempt-0001/runs/R003-940f32057dca:assignment4v:fa_behavioral_1:grd:clean/simulation.out"
+            ],
+            "crashed": false,
+            "exit_code": 0,
+            "issuer": "r3e-grounded-command-runner-v1",
+            "observed": {
+              "simulation_complete": true
+            },
+            "phase": "simulation",
+            "receipt_hash": "sha256:3679e0bb091d0582bb63ad61e7b3d28fbdf8fa65ab7325b4b840ea5d6192855f",
+            "receipt_id": "R003-940f32057dca:assignment4v:fa_behavioral_1:grd:clean:simulation",
+            "result_kind": "completed",
+            "run_context_hash": "sha256:27a316053902c8d6fd1ebd48fbf02d80ed57da1ed1003daa5ef4513fa9f83d30",
+            "schema_version": "r3e-grounded-command-receipt-v1",
+            "subject_hash": "sha256:45cbbb56ab7f372aa0df1248191587936d44c20a855c6350ba036c599c22f977",
+            "timed_out": false,
+            "toolchain_fingerprint_hash": "sha256:c78be24bde0a1289435712e992649340c4f29bc0aa77cf6a52c078689a20cd2a",
+            "wall_time_ms": 30,
+            "working_directory_hash": "sha256:22cbeda33fb47ef3b61d4816ee610a52c0792596121296a8995469e147aa5856"
+          }
+        ],
+        "semantic_hash": "sha256:4b92828c5d002d51c88b1e501737662811b212712dbb9800e799fe34b26bf3d7",
+        "simulation_complete": true,
+        "toolchain_fingerprint": {
+          "iverilog_engine_hash": "sha256:1ba67856249142771239573b5d51c7f6e4d67a1e7931a0d0fab56e0d473d2167",
+          "iverilog_hash": "sha256:1ba67856249142771239573b5d51c7f6e4d67a1e7931a0d0fab56e0d473d2167",
+          "oracle_provider": "r3e-stdout-oracle-v1",
+          "oracle_provider_implementation_hash": "sha256:e67d32c8e756b2cf87af72bbf99b23075b6f4b2daf787aa229614adbc47ff2f7",
+          "provider_id": "icarus-verilog",
+          "runner_implementation_hash": "sha256:9cc3cb5a0a46eaef0e2a696e6b5393a0cca8c102fa93841afdc0a2c622c8a1ab",
+          "schema_version": "r3e-icarus-grounded-provider-v1",
+          "toolchain_fingerprint_hash": "sha256:c78be24bde0a1289435712e992649340c4f29bc0aa77cf6a52c078689a20cd2a",
+          "vvp_engine_hash": "sha256:075b114070eed3bc72e0e4559decf40520f3b693b1da9c94bba1defe8896966d",
+          "vvp_hash": "sha256:075b114070eed3bc72e0e4559decf40520f3b693b1da9c94bba1defe8896966d"
+        }
+      },
+      "phase": "clean_baseline",
+      "receipt_hash": "sha256:cd08a9dddfe21acc38f132d01d24174486da816d3615f5bc5a2b1b8c35f1c01b",
+      "receipt_id": "R003-940f32057dca:assignment4v:fa_behavioral_1:grd:clean:aggregate",
+      "result_kind": "completed",
+      "run_context_hash": "sha256:27a316053902c8d6fd1ebd48fbf02d80ed57da1ed1003daa5ef4513fa9f83d30",
+      "schema_version": "r3e-grounded-command-receipt-v1",
+      "subject_hash": "sha256:45cbbb56ab7f372aa0df1248191587936d44c20a855c6350ba036c599c22f977",
+      "timed_out": false,
+      "toolchain_fingerprint_hash": "sha256:c78be24bde0a1289435712e992649340c4f29bc0aa77cf6a52c078689a20cd2a",
+      "wall_time_ms": 134,
+      "working_directory_hash": "sha256:c76f94c5e1a399ca1ba2cacf138c3a8caff445f1ec484f66ca295dfc2ca5b521"
+    },
+    "evidence_hash": "sha256:3c02731b7aab3b96bb415ffa31541cd9270600d2d98d896b87801b7bea45dc64",
+    "materialization_receipt": {
+      "ast_edit_count": 1,
+      "clean_ast_hash": "sha256:4b92828c5d002d51c88b1e501737662811b212712dbb9800e799fe34b26bf3d7",
+      "clean_ast_node_hash": "sha256:8c12cdaf5e1abb0cf92603f4a54e16a0e975e2253d81e22fdad54d07c33369e0",
+      "clean_rtl_hash": "sha256:45cbbb56ab7f372aa0df1248191587936d44c20a855c6350ba036c599c22f977",
+      "edit": {
+        "clean_end": 128,
+        "clean_start": 127,
+        "new_text": "&",
+        "old_text": "^",
+        "poison_end": 128,
+        "poison_start": 127
+      },
+      "family_id": "combinational.expression_operator",
+      "materialization_hash": "sha256:fcab87747a8fb63625d44b4886b17c3c57fbc3eb8343d475060241c6df8aff8a",
+      "operator_id": "replace_bitwise_operator",
+      "plan_hash": "sha256:f04f9d8087962b72559d66f2b32b2cc54a881ee61f70a32ccba3cb4e894867be",
+      "poison_ast_hash": "sha256:b1ca8fbcf76fc03035fb286c0cc5652603471bba208d0545981eefaa5b78541c",
+      "poison_ast_node_hash": "sha256:f1e45c327446f4c5b21255b98b1403882b4ac98ac1bcc03581e044a43db54ebd",
+      "poison_rtl_hash": "sha256:cd5a9be34cf47d803207f244040cccdbe875ccbee35763893f791d416f1652a4",
+      "schema_version": "r3e-red-ast-materialization-v2",
+      "target_module": "fa_behavioral"
+    },
+    "minimization": {
+      "attempted": true,
+      "minimized_poison_hash": "sha256:cd5a9be34cf47d803207f244040cccdbe875ccbee35763893f791d416f1652a4",
+      "preserved_failure_signature": true,
+      "remaining_ast_edits": 1,
+      "succeeded": true
+    },
+    "nontriviality": {
+      "comment_only": false,
+      "constant_output": false,
+      "deleted_major_block": false,
+      "excess_collateral": false,
+      "global_x": false,
+      "unbounded_execution": false,
+      "unreachable_only": false,
+      "unrelated_signal_only": false
+    },
+    "plan_hash": "sha256:f04f9d8087962b72559d66f2b32b2cc54a881ee61f70a32ccba3cb4e894867be",
+    "poison_payload_hash": "sha256:4f34e1785316b4aae7f484478b4ff3e9646c45f94f43f7f663bf8e31e90ea0d8",
+    "poison_runs": [
+      {
+        "artifact_hashes": {
+          "compile_receipt": "sha256:04c508a45eccd954d5468a8f7149a213b75e9a3e210559093fa0a6605322e90f",
+          "elaborate_receipt": "sha256:1032f8568d8ffd9dc99d3cb7854d694e92cd7b677dedd8522350894ffe2f4a7e",
+          "oracle_provider_receipt": "sha256:a7cdd61ec80462dd0b98f1a995bc084245c85ed3bf0a4ce377f0da6e8bbbb1b8",
+          "parse_receipt": "sha256:1237cd181b312b7644787f168667b6c4e5014039f504c307d5c4399bcdbbd8cd",
+          "rtl": "sha256:cd5a9be34cf47d803207f244040cccdbe875ccbee35763893f791d416f1652a4",
+          "semantic_provider_receipt": "sha256:3ff29d7ddc5a356ab61a73cf29cccfadbe1cc998369d8ea07f551cc57a287f66",
+          "simulation_receipt": "sha256:40abc41b58078f3a50bed82ae8fdcb4f4bcf3e5f65d904498e6ab13bc5bdced9",
+          "testbench": "sha256:d53773194ce6e8bb7d5102214237af27d336c4134e98f0136ed428b9741e0b34"
+        },
+        "command_argv": [
+          "r3e-icarus-grounded-provider-v1",
+          "poison_execution"
+        ],
+        "crashed": false,
+        "exit_code": 0,
+        "issuer": "r3e-grounded-command-runner-v1",
+        "observed": {
+          "assignment_type": "continuous",
+          "compile_ok": true,
+          "cone_depth": 1,
+          "cycle_offset": 0,
+          "effect_signature": "output_mismatch",
+          "elaboration_ok": true,
+          "first_divergence_cycle": 2,
+          "first_divergence_hash": "sha256:4e7cea08a7dd50beb0c56096fd66bda1623236e1e65d927a3b5e45a70794aa33",
+          "first_divergence_signal": "actual",
+          "functional_mismatch": true,
+          "mismatch_pattern": "output_mismatch",
+          "mismatch_topology_hash": "sha256:ac091a98cc97833997e235756af1be5406cac085dc82987c52774ece6b9e45d7",
+          "operator_preconditions_hold": true,
+          "oracle_pass": false,
+          "oracle_provider_receipt": {
+            "input_artifact_hashes": {
+              "simulation_stdout": "sha256:54f835b4a229991f9bd0d791413bd6140a9857608a7f2363baeaa2b03d8011be",
+              "testbench": "sha256:d53773194ce6e8bb7d5102214237af27d336c4134e98f0136ed428b9741e0b34"
+            },
+            "provider_hash": "sha256:fbc74a55fa610c6697c683612c58f15c5a59b29e324b81a7a0c9db6db13fdd70",
+            "provider_id": "r3e-stdout-oracle",
+            "provider_implementation_hash": "sha256:e67d32c8e756b2cf87af72bbf99b23075b6f4b2daf787aa229614adbc47ff2f7",
+            "provider_kind": "oracle_parser",
+            "provider_version": "1",
+            "receipt_hash": "sha256:a7cdd61ec80462dd0b98f1a995bc084245c85ed3bf0a4ce377f0da6e8bbbb1b8",
+            "result": {
+              "assignment_type": "continuous",
+              "cone_depth": 1,
+              "cycle_offset": 0,
+              "effect_signature": "output_mismatch",
+              "first_divergence_cycle": 2,
+              "first_divergence_hash": "sha256:4e7cea08a7dd50beb0c56096fd66bda1623236e1e65d927a3b5e45a70794aa33",
+              "first_divergence_signal": "actual",
+              "functional_mismatch": true,
+              "mismatch_pattern": "output_mismatch",
+              "mismatch_topology_hash": "sha256:ac091a98cc97833997e235756af1be5406cac085dc82987c52774ece6b9e45d7",
+              "oracle_pass": false,
+              "raw_record_hash": "sha256:6a928447594e658e9e7672138b46fde0dee36b3d36fefe39f8ad9b564916860b",
+              "temporal_relation": "same_cycle",
+              "waveform_observation_complete": true,
+              "waveform_observation_hash": "sha256:85b31c3cf449c59eea826d96323b0fbb0700c060f35ee2287be8ed1fcb60bdb9"
+            },
+            "schema_version": "r3e-grounded-provider-receipt-v1"
+          },
+          "parse_ok": true,
+          "provider_receipts": [
+            {
+              "artifact_hashes": {
+                "executable": "sha256:1ba67856249142771239573b5d51c7f6e4d67a1e7931a0d0fab56e0d473d2167",
+                "rtl": "sha256:cd5a9be34cf47d803207f244040cccdbe875ccbee35763893f791d416f1652a4",
+                "stderr": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                "stdout": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                "testbench": "sha256:d53773194ce6e8bb7d5102214237af27d336c4134e98f0136ed428b9741e0b34"
+              },
+              "command_argv": [
+                "/usr/bin/iverilog",
+                "-g2012",
+                "-tnull",
+                "/data2/huangyc/R3E-aic-ic-2026-latest/deepseek-run-01/arm-b/rounds/R003/grounded_authority/0477d25e0e72fd12b99a24c6e756a0df5c032a9930f04e0e9f4a8fb1d0d93f6a/attempt-0001/materialized/poison.v",
+                "/data2/huangyc/R3E-aic-ic-2026-latest/deepseek-run-01/arm-b/rounds/R003/grounded_authority/0477d25e0e72fd12b99a24c6e756a0df5c032a9930f04e0e9f4a8fb1d0d93f6a/attempt-0001/inputs/testbench.v"
+              ],
+              "crashed": false,
+              "exit_code": 0,
+              "issuer": "r3e-grounded-command-runner-v1",
+              "observed": {
+                "parse_ok": true
+              },
+              "phase": "parse",
+              "receipt_hash": "sha256:1237cd181b312b7644787f168667b6c4e5014039f504c307d5c4399bcdbbd8cd",
+              "receipt_id": "R003-940f32057dca:assignment4v:fa_behavioral_1:grd:poison:1:parse",
+              "result_kind": "completed",
+              "run_context_hash": "sha256:27a316053902c8d6fd1ebd48fbf02d80ed57da1ed1003daa5ef4513fa9f83d30",
+              "schema_version": "r3e-grounded-command-receipt-v1",
+              "subject_hash": "sha256:cd5a9be34cf47d803207f244040cccdbe875ccbee35763893f791d416f1652a4",
+              "timed_out": false,
+              "toolchain_fingerprint_hash": "sha256:c78be24bde0a1289435712e992649340c4f29bc0aa77cf6a52c078689a20cd2a",
+              "wall_time_ms": 31,
+              "working_directory_hash": "sha256:e752d0ca8098b57aa92506a6f74cdba91f9cf5364c3231a7d9993aca77bd9751"
+            },
+            {
+              "artifact_hashes": {
+                "executable": "sha256:1ba67856249142771239573b5d51c7f6e4d67a1e7931a0d0fab56e0d473d2167",
+                "rtl": "sha256:cd5a9be34cf47d803207f244040cccdbe875ccbee35763893f791d416f1652a4",
+                "stderr": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                "stdout": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                "testbench": "sha256:d53773194ce6e8bb7d5102214237af27d336c4134e98f0136ed428b9741e0b34"
+              },
+              "command_argv": [
+                "/usr/bin/iverilog",
+                "-g2012",
+                "-s",
+                "tb",
+                "-tnull",
+                "/data2/huangyc/R3E-aic-ic-2026-latest/deepseek-run-01/arm-b/rounds/R003/grounded_authority/0477d25e0e72fd12b99a24c6e756a0df5c032a9930f04e0e9f4a8fb1d0d93f6a/attempt-0001/materialized/poison.v",
+                "/data2/huangyc/R3E-aic-ic-2026-latest/deepseek-run-01/arm-b/rounds/R003/grounded_authority/0477d25e0e72fd12b99a24c6e756a0df5c032a9930f04e0e9f4a8fb1d0d93f6a/attempt-0001/inputs/testbench.v"
+              ],
+              "crashed": false,
+              "exit_code": 0,
+              "issuer": "r3e-grounded-command-runner-v1",
+              "observed": {
+                "elaboration_ok": true,
+                "top_module": "tb"
+              },
+              "phase": "elaborate",
+              "receipt_hash": "sha256:1032f8568d8ffd9dc99d3cb7854d694e92cd7b677dedd8522350894ffe2f4a7e",
+              "receipt_id": "R003-940f32057dca:assignment4v:fa_behavioral_1:grd:poison:1:elaborate",
+              "result_kind": "completed",
+              "run_context_hash": "sha256:27a316053902c8d6fd1ebd48fbf02d80ed57da1ed1003daa5ef4513fa9f83d30",
+              "schema_version": "r3e-grounded-command-receipt-v1",
+              "subject_hash": "sha256:cd5a9be34cf47d803207f244040cccdbe875ccbee35763893f791d416f1652a4",
+              "timed_out": false,
+              "toolchain_fingerprint_hash": "sha256:c78be24bde0a1289435712e992649340c4f29bc0aa77cf6a52c078689a20cd2a",
+              "wall_time_ms": 34,
+              "working_directory_hash": "sha256:e752d0ca8098b57aa92506a6f74cdba91f9cf5364c3231a7d9993aca77bd9751"
+            },
+            {
+              "artifact_hashes": {
+                "executable": "sha256:1ba67856249142771239573b5d51c7f6e4d67a1e7931a0d0fab56e0d473d2167",
+                "rtl": "sha256:cd5a9be34cf47d803207f244040cccdbe875ccbee35763893f791d416f1652a4",
+                "simulation_binary": "sha256:117101b16b38e4038c435a4a8b3041aa2a5a165746b80b6f7d33a642c8af8620",
+                "stderr": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                "stdout": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                "testbench": "sha256:d53773194ce6e8bb7d5102214237af27d336c4134e98f0136ed428b9741e0b34"
+              },
+              "command_argv": [
+                "/usr/bin/iverilog",
+                "-g2012",
+                "-s",
+                "tb",
+                "-o",
+                "/data2/huangyc/R3E-aic-ic-2026-latest/deepseek-run-01/arm-b/rounds/R003/grounded_authority/0477d25e0e72fd12b99a24c6e756a0df5c032a9930f04e0e9f4a8fb1d0d93f6a/attempt-0001/runs/R003-940f32057dca:assignment4v:fa_behavioral_1:grd:poison:1/simulation.out",
+                "/data2/huangyc/R3E-aic-ic-2026-latest/deepseek-run-01/arm-b/rounds/R003/grounded_authority/0477d25e0e72fd12b99a24c6e756a0df5c032a9930f04e0e9f4a8fb1d0d93f6a/attempt-0001/materialized/poison.v",
+                "/data2/huangyc/R3E-aic-ic-2026-latest/deepseek-run-01/arm-b/rounds/R003/grounded_authority/0477d25e0e72fd12b99a24c6e756a0df5c032a9930f04e0e9f4a8fb1d0d93f6a/attempt-0001/inputs/testbench.v"
+              ],
+              "crashed": false,
+              "exit_code": 0,
+              "issuer": "r3e-grounded-command-runner-v1",
+              "observed": {
+                "compile_ok": true
+              },
+              "phase": "compile",
+              "receipt_hash": "sha256:04c508a45eccd954d5468a8f7149a213b75e9a3e210559093fa0a6605322e90f",
+              "receipt_id": "R003-940f32057dca:assignment4v:fa_behavioral_1:grd:poison:1:compile",
+              "result_kind": "completed",
+              "run_context_hash": "sha256:27a316053902c8d6fd1ebd48fbf02d80ed57da1ed1003daa5ef4513fa9f83d30",
+              "schema_version": "r3e-grounded-command-receipt-v1",
+              "subject_hash": "sha256:cd5a9be34cf47d803207f244040cccdbe875ccbee35763893f791d416f1652a4",
+              "timed_out": false,
+              "toolchain_fingerprint_hash": "sha256:c78be24bde0a1289435712e992649340c4f29bc0aa77cf6a52c078689a20cd2a",
+              "wall_time_ms": 53,
+              "working_directory_hash": "sha256:e752d0ca8098b57aa92506a6f74cdba91f9cf5364c3231a7d9993aca77bd9751"
+            },
+            {
+              "artifact_hashes": {
+                "executable": "sha256:075b114070eed3bc72e0e4559decf40520f3b693b1da9c94bba1defe8896966d",
+                "simulation_binary_input": "sha256:117101b16b38e4038c435a4a8b3041aa2a5a165746b80b6f7d33a642c8af8620",
+                "stderr": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                "stdout": "sha256:54f835b4a229991f9bd0d791413bd6140a9857608a7f2363baeaa2b03d8011be",
+                "testbench": "sha256:d53773194ce6e8bb7d5102214237af27d336c4134e98f0136ed428b9741e0b34"
+              },
+              "command_argv": [
+                "/usr/bin/vvp",
+                "/data2/huangyc/R3E-aic-ic-2026-latest/deepseek-run-01/arm-b/rounds/R003/grounded_authority/0477d25e0e72fd12b99a24c6e756a0df5c032a9930f04e0e9f4a8fb1d0d93f6a/attempt-0001/runs/R003-940f32057dca:assignment4v:fa_behavioral_1:grd:poison:1/simulation.out"
+              ],
+              "crashed": false,
+              "exit_code": 0,
+              "issuer": "r3e-grounded-command-runner-v1",
+              "observed": {
+                "simulation_complete": true
+              },
+              "phase": "simulation",
+              "receipt_hash": "sha256:40abc41b58078f3a50bed82ae8fdcb4f4bcf3e5f65d904498e6ab13bc5bdced9",
+              "receipt_id": "R003-940f32057dca:assignment4v:fa_behavioral_1:grd:poison:1:simulation",
+              "result_kind": "completed",
+              "run_context_hash": "sha256:27a316053902c8d6fd1ebd48fbf02d80ed57da1ed1003daa5ef4513fa9f83d30",
+              "schema_version": "r3e-grounded-command-receipt-v1",
+              "subject_hash": "sha256:cd5a9be34cf47d803207f244040cccdbe875ccbee35763893f791d416f1652a4",
+              "timed_out": false,
+              "toolchain_fingerprint_hash": "sha256:c78be24bde0a1289435712e992649340c4f29bc0aa77cf6a52c078689a20cd2a",
+              "wall_time_ms": 39,
+              "working_directory_hash": "sha256:e752d0ca8098b57aa92506a6f74cdba91f9cf5364c3231a7d9993aca77bd9751"
+            }
+          ],
+          "semantic_hash": "sha256:b1ca8fbcf76fc03035fb286c0cc5652603471bba208d0545981eefaa5b78541c",
+          "semantic_provider_receipt": {
+            "input_artifact_hashes": {
+              "clean_rtl": "sha256:45cbbb56ab7f372aa0df1248191587936d44c20a855c6350ba036c599c22f977",
+              "poison_rtl": "sha256:cd5a9be34cf47d803207f244040cccdbe875ccbee35763893f791d416f1652a4"
+            },
+            "provider_hash": "sha256:369ea683b5357ac1cff99c7251b7fb2a730a0821c67986f8aa075a177233bdf6",
+            "provider_id": "r3e-verilog-operator-ast",
+            "provider_implementation_hash": "sha256:a41b3fd08c36b92d30ef4ed1e9a661a27c8e4dc4ac0492893155e24144f0433d",
+            "provider_kind": "semantic_parser",
+            "provider_version": "2",
+            "receipt_hash": "sha256:3ff29d7ddc5a356ab61a73cf29cccfadbe1cc998369d8ea07f551cc57a287f66",
+            "result": {
+              "materialization_hash": "sha256:fcab87747a8fb63625d44b4886b17c3c57fbc3eb8343d475060241c6df8aff8a",
+              "semantic_diff_receipt_hash": "sha256:adf3674675a457966cd2a67342131c90a5c9eb4bf0045b87f49f3c28726191cd"
+            },
+            "schema_version": "r3e-grounded-provider-receipt-v1"
+          },
+          "simulation_complete": true,
+          "target_ast_node_exists": true,
+          "temporal_relation": "same_cycle",
+          "toolchain_fingerprint": {
+            "iverilog_engine_hash": "sha256:1ba67856249142771239573b5d51c7f6e4d67a1e7931a0d0fab56e0d473d2167",
+            "iverilog_hash": "sha256:1ba67856249142771239573b5d51c7f6e4d67a1e7931a0d0fab56e0d473d2167",
+            "oracle_provider": "r3e-stdout-oracle-v1",
+            "oracle_provider_implementation_hash": "sha256:e67d32c8e756b2cf87af72bbf99b23075b6f4b2daf787aa229614adbc47ff2f7",
+            "provider_id": "icarus-verilog",
+            "runner_implementation_hash": "sha256:9cc3cb5a0a46eaef0e2a696e6b5393a0cca8c102fa93841afdc0a2c622c8a1ab",
+            "schema_version": "r3e-icarus-grounded-provider-v1",
+            "toolchain_fingerprint_hash": "sha256:c78be24bde0a1289435712e992649340c4f29bc0aa77cf6a52c078689a20cd2a",
+            "vvp_engine_hash": "sha256:075b114070eed3bc72e0e4559decf40520f3b693b1da9c94bba1defe8896966d",
+            "vvp_hash": "sha256:075b114070eed3bc72e0e4559decf40520f3b693b1da9c94bba1defe8896966d"
+          },
+          "waveform_observation_complete": true,
+          "waveform_observation_hash": "sha256:85b31c3cf449c59eea826d96323b0fbb0700c060f35ee2287be8ed1fcb60bdb9"
+        },
+        "phase": "poison_execution",
+        "receipt_hash": "sha256:16cec9e4c6f09bafa45f062e39f7db76a902e8b54b718e9d76152b90b1792986",
+        "receipt_id": "R003-940f32057dca:assignment4v:fa_behavioral_1:grd:poison:1:aggregate",
+        "result_kind": "completed",
+        "run_context_hash": "sha256:27a316053902c8d6fd1ebd48fbf02d80ed57da1ed1003daa5ef4513fa9f83d30",
+        "schema_version": "r3e-grounded-command-receipt-v1",
+        "subject_hash": "sha256:cd5a9be34cf47d803207f244040cccdbe875ccbee35763893f791d416f1652a4",
+        "timed_out": false,
+        "toolchain_fingerprint_hash": "sha256:c78be24bde0a1289435712e992649340c4f29bc0aa77cf6a52c078689a20cd2a",
+        "wall_time_ms": 157,
+        "working_directory_hash": "sha256:79fa6fc37f05e30ea107c3cd60bb5434abbd314fb68d56666ee1bd888a907a59"
+      },
+      {
+        "artifact_hashes": {
+          "compile_receipt": "sha256:1ec29c0d4e074de039d0c51279f8769d8644fc6c5347dc853a087dbe1cf7f4a8",
+          "elaborate_receipt": "sha256:44eda6e22575ef166333467a270a5b565ff297baa01170e271f530c5e99d4937",
+          "oracle_provider_receipt": "sha256:a7cdd61ec80462dd0b98f1a995bc084245c85ed3bf0a4ce377f0da6e8bbbb1b8",
+          "parse_receipt": "sha256:c471ce76ccbb612f614c07bd7303a6788adbf8d060464e1f8654ad7811ede828",
+          "rtl": "sha256:cd5a9be34cf47d803207f244040cccdbe875ccbee35763893f791d416f1652a4",
+          "semantic_provider_receipt": "sha256:3ff29d7ddc5a356ab61a73cf29cccfadbe1cc998369d8ea07f551cc57a287f66",
+          "simulation_receipt": "sha256:438ad055a16a02eb20799cdea97b91817f7221115728c43d91b96ccb4ddcf093",
+          "testbench": "sha256:d53773194ce6e8bb7d5102214237af27d336c4134e98f0136ed428b9741e0b34"
+        },
+        "command_argv": [
+          "r3e-icarus-grounded-provider-v1",
+          "poison_execution"
+        ],
+        "crashed": false,
+        "exit_code": 0,
+        "issuer": "r3e-grounded-command-runner-v1",
+        "observed": {
+          "assignment_type": "continuous",
+          "compile_ok": true,
+          "cone_depth": 1,
+          "cycle_offset": 0,
+          "effect_signature": "output_mismatch",
+          "elaboration_ok": true,
+          "first_divergence_cycle": 2,
+          "first_divergence_hash": "sha256:4e7cea08a7dd50beb0c56096fd66bda1623236e1e65d927a3b5e45a70794aa33",
+          "first_divergence_signal": "actual",
+          "functional_mismatch": true,
+          "mismatch_pattern": "output_mismatch",
+          "mismatch_topology_hash": "sha256:ac091a98cc97833997e235756af1be5406cac085dc82987c52774ece6b9e45d7",
+          "operator_preconditions_hold": true,
+          "oracle_pass": false,
+          "oracle_provider_receipt": {
+            "input_artifact_hashes": {
+              "simulation_stdout": "sha256:54f835b4a229991f9bd0d791413bd6140a9857608a7f2363baeaa2b03d8011be",
+              "testbench": "sha256:d53773194ce6e8bb7d5102214237af27d336c4134e98f0136ed428b9741e0b34"
+            },
+            "provider_hash": "sha256:fbc74a55fa610c6697c683612c58f15c5a59b29e324b81a7a0c9db6db13fdd70",
+            "provider_id": "r3e-stdout-oracle",
+            "provider_implementation_hash": "sha256:e67d32c8e756b2cf87af72bbf99b23075b6f4b2daf787aa229614adbc47ff2f7",
+            "provider_kind": "oracle_parser",
+            "provider_version": "1",
+            "receipt_hash": "sha256:a7cdd61ec80462dd0b98f1a995bc084245c85ed3bf0a4ce377f0da6e8bbbb1b8",
+            "result": {
+              "assignment_type": "continuous",
+              "cone_depth": 1,
+              "cycle_offset": 0,
+              "effect_signature": "output_mismatch",
+              "first_divergence_cycle": 2,
+              "first_divergence_hash": "sha256:4e7cea08a7dd50beb0c56096fd66bda1623236e1e65d927a3b5e45a70794aa33",
+              "first_divergence_signal": "actual",
+              "functional_mismatch": true,
+              "mismatch_pattern": "output_mismatch",
+              "mismatch_topology_hash": "sha256:ac091a98cc97833997e235756af1be5406cac085dc82987c52774ece6b9e45d7",
+              "oracle_pass": false,
+              "raw_record_hash": "sha256:6a928447594e658e9e7672138b46fde0dee36b3d36fefe39f8ad9b564916860b",
+              "temporal_relation": "same_cycle",
+              "waveform_observation_complete": true,
+              "waveform_observation_hash": "sha256:85b31c3cf449c59eea826d96323b0fbb0700c060f35ee2287be8ed1fcb60bdb9"
+            },
+            "schema_version": "r3e-grounded-provider-receipt-v1"
+          },
+          "parse_ok": true,
+          "provider_receipts": [
+            {
+              "artifact_hashes": {
+                "executable": "sha256:1ba67856249142771239573b5d51c7f6e4d67a1e7931a0d0fab56e0d473d2167",
+                "rtl": "sha256:cd5a9be34cf47d803207f244040cccdbe875ccbee35763893f791d416f1652a4",
+                "stderr": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                "stdout": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                "testbench": "sha256:d53773194ce6e8bb7d5102214237af27d336c4134e98f0136ed428b9741e0b34"
+              },
+              "command_argv": [
+                "/usr/bin/iverilog",
+                "-g2012",
+                "-tnull",
+                "/data2/huangyc/R3E-aic-ic-2026-latest/deepseek-run-01/arm-b/rounds/R003/grounded_authority/0477d25e0e72fd12b99a24c6e756a0df5c032a9930f04e0e9f4a8fb1d0d93f6a/attempt-0001/materialized/poison.v",
+                "/data2/huangyc/R3E-aic-ic-2026-latest/deepseek-run-01/arm-b/rounds/R003/grounded_authority/0477d25e0e72fd12b99a24c6e756a0df5c032a9930f04e0e9f4a8fb1d0d93f6a/attempt-0001/inputs/testbench.v"
+              ],
+              "crashed": false,
+              "exit_code": 0,
+              "issuer": "r3e-grounded-command-runner-v1",
+              "observed": {
+                "parse_ok": true
+              },
+              "phase": "parse",
+              "receipt_hash": "sha256:c471ce76ccbb612f614c07bd7303a6788adbf8d060464e1f8654ad7811ede828",
+              "receipt_id": "R003-940f32057dca:assignment4v:fa_behavioral_1:grd:poison:2:parse",
+              "result_kind": "completed",
+              "run_context_hash": "sha256:27a316053902c8d6fd1ebd48fbf02d80ed57da1ed1003daa5ef4513fa9f83d30",
+              "schema_version": "r3e-grounded-command-receipt-v1",
+              "subject_hash": "sha256:cd5a9be34cf47d803207f244040cccdbe875ccbee35763893f791d416f1652a4",
+              "timed_out": false,
+              "toolchain_fingerprint_hash": "sha256:c78be24bde0a1289435712e992649340c4f29bc0aa77cf6a52c078689a20cd2a",
+              "wall_time_ms": 41,
+              "working_directory_hash": "sha256:bea3fa001767e48f853d279ca49e28c845058ad5bf9e116202e56f9a5a548237"
+            },
+            {
+              "artifact_hashes": {
+                "executable": "sha256:1ba67856249142771239573b5d51c7f6e4d67a1e7931a0d0fab56e0d473d2167",
+                "rtl": "sha256:cd5a9be34cf47d803207f244040cccdbe875ccbee35763893f791d416f1652a4",
+                "stderr": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                "stdout": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                "testbench": "sha256:d53773194ce6e8bb7d5102214237af27d336c4134e98f0136ed428b9741e0b34"
+              },
+              "command_argv": [
+                "/usr/bin/iverilog",
+                "-g2012",
+                "-s",
+                "tb",
+                "-tnull",
+                "/data2/huangyc/R3E-aic-ic-2026-latest/deepseek-run-01/arm-b/rounds/R003/grounded_authority/0477d25e0e72fd12b99a24c6e756a0df5c032a9930f04e0e9f4a8fb1d0d93f6a/attempt-0001/materialized/poison.v",
+                "/data2/huangyc/R3E-aic-ic-2026-latest/deepseek-run-01/arm-b/rounds/R003/grounded_authority/0477d25e0e72fd12b99a24c6e756a0df5c032a9930f04e0e9f4a8fb1d0d93f6a/attempt-0001/inputs/testbench.v"
+              ],
+              "crashed": false,
+              "exit_code": 0,
+              "issuer": "r3e-grounded-command-runner-v1",
+              "observed": {
+                "elaboration_ok": true,
+                "top_module": "tb"
+              },
+              "phase": "elaborate",
+              "receipt_hash": "sha256:44eda6e22575ef166333467a270a5b565ff297baa01170e271f530c5e99d4937",
+              "receipt_id": "R003-940f32057dca:assignment4v:fa_behavioral_1:grd:poison:2:elaborate",
+              "result_kind": "completed",
+              "run_context_hash": "sha256:27a316053902c8d6fd1ebd48fbf02d80ed57da1ed1003daa5ef4513fa9f83d30",
+              "schema_version": "r3e-grounded-command-receipt-v1",
+              "subject_hash": "sha256:cd5a9be34cf47d803207f244040cccdbe875ccbee35763893f791d416f1652a4",
+              "timed_out": false,
+              "toolchain_fingerprint_hash": "sha256:c78be24bde0a1289435712e992649340c4f29bc0aa77cf6a52c078689a20cd2a",
+              "wall_time_ms": 34,
+              "working_directory_hash": "sha256:bea3fa001767e48f853d279ca49e28c845058ad5bf9e116202e56f9a5a548237"
+            },
+            {
+              "artifact_hashes": {
+                "executable": "sha256:1ba67856249142771239573b5d51c7f6e4d67a1e7931a0d0fab56e0d473d2167",
+                "rtl": "sha256:cd5a9be34cf47d803207f244040cccdbe875ccbee35763893f791d416f1652a4",
+                "simulation_binary": "sha256:782642de4fe63234eac7a6af0151b8fb1c23d482244a00ba4dbc4a166fc15c83",
+                "stderr": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                "stdout": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                "testbench": "sha256:d53773194ce6e8bb7d5102214237af27d336c4134e98f0136ed428b9741e0b34"
+              },
+              "command_argv": [
+                "/usr/bin/iverilog",
+                "-g2012",
+                "-s",
+                "tb",
+                "-o",
+                "/data2/huangyc/R3E-aic-ic-2026-latest/deepseek-run-01/arm-b/rounds/R003/grounded_authority/0477d25e0e72fd12b99a24c6e756a0df5c032a9930f04e0e9f4a8fb1d0d93f6a/attempt-0001/runs/R003-940f32057dca:assignment4v:fa_behavioral_1:grd:poison:2/simulation.out",
+                "/data2/huangyc/R3E-aic-ic-2026-latest/deepseek-run-01/arm-b/rounds/R003/grounded_authority/0477d25e0e72fd12b99a24c6e756a0df5c032a9930f04e0e9f4a8fb1d0d93f6a/attempt-0001/materialized/poison.v",
+                "/data2/huangyc/R3E-aic-ic-2026-latest/deepseek-run-01/arm-b/rounds/R003/grounded_authority/0477d25e0e72fd12b99a24c6e756a0df5c032a9930f04e0e9f4a8fb1d0d93f6a/attempt-0001/inputs/testbench.v"
+              ],
+              "crashed": false,
+              "exit_code": 0,
+              "issuer": "r3e-grounded-command-runner-v1",
+              "observed": {
+                "compile_ok": true
+              },
+              "phase": "compile",
+              "receipt_hash": "sha256:1ec29c0d4e074de039d0c51279f8769d8644fc6c5347dc853a087dbe1cf7f4a8",
+              "receipt_id": "R003-940f32057dca:assignment4v:fa_behavioral_1:grd:poison:2:compile",
+              "result_kind": "completed",
+              "run_context_hash": "sha256:27a316053902c8d6fd1ebd48fbf02d80ed57da1ed1003daa5ef4513fa9f83d30",
+              "schema_version": "r3e-grounded-command-receipt-v1",
+              "subject_hash": "sha256:cd5a9be34cf47d803207f244040cccdbe875ccbee35763893f791d416f1652a4",
+              "timed_out": false,
+              "toolchain_fingerprint_hash": "sha256:c78be24bde0a1289435712e992649340c4f29bc0aa77cf6a52c078689a20cd2a",
+              "wall_time_ms": 42,
+              "working_directory_hash": "sha256:bea3fa001767e48f853d279ca49e28c845058ad5bf9e116202e56f9a5a548237"
+            },
+            {
+              "artifact_hashes": {
+                "executable": "sha256:075b114070eed3bc72e0e4559decf40520f3b693b1da9c94bba1defe8896966d",
+                "simulation_binary_input": "sha256:782642de4fe63234eac7a6af0151b8fb1c23d482244a00ba4dbc4a166fc15c83",
+                "stderr": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                "stdout": "sha256:54f835b4a229991f9bd0d791413bd6140a9857608a7f2363baeaa2b03d8011be",
+                "testbench": "sha256:d53773194ce6e8bb7d5102214237af27d336c4134e98f0136ed428b9741e0b34"
+              },
+              "command_argv": [
+                "/usr/bin/vvp",
+                "/data2/huangyc/R3E-aic-ic-2026-latest/deepseek-run-01/arm-b/rounds/R003/grounded_authority/0477d25e0e72fd12b99a24c6e756a0df5c032a9930f04e0e9f4a8fb1d0d93f6a/attempt-0001/runs/R003-940f32057dca:assignment4v:fa_behavioral_1:grd:poison:2/simulation.out"
+              ],
+              "crashed": false,
+              "exit_code": 0,
+              "issuer": "r3e-grounded-command-runner-v1",
+              "observed": {
+                "simulation_complete": true
+              },
+              "phase": "simulation",
+              "receipt_hash": "sha256:438ad055a16a02eb20799cdea97b91817f7221115728c43d91b96ccb4ddcf093",
+              "receipt_id": "R003-940f32057dca:assignment4v:fa_behavioral_1:grd:poison:2:simulation",
+              "result_kind": "completed",
+              "run_context_hash": "sha256:27a316053902c8d6fd1ebd48fbf02d80ed57da1ed1003daa5ef4513fa9f83d30",
+              "schema_version": "r3e-grounded-command-receipt-v1",
+              "subject_hash": "sha256:cd5a9be34cf47d803207f244040cccdbe875ccbee35763893f791d416f1652a4",
+              "timed_out": false,
+              "toolchain_fingerprint_hash": "sha256:c78be24bde0a1289435712e992649340c4f29bc0aa77cf6a52c078689a20cd2a",
+              "wall_time_ms": 24,
+              "working_directory_hash": "sha256:bea3fa001767e48f853d279ca49e28c845058ad5bf9e116202e56f9a5a548237"
+            }
+          ],
+          "semantic_hash": "sha256:b1ca8fbcf76fc03035fb286c0cc5652603471bba208d0545981eefaa5b78541c",
+          "semantic_provider_receipt": {
+            "input_artifact_hashes": {
+              "clean_rtl": "sha256:45cbbb56ab7f372aa0df1248191587936d44c20a855c6350ba036c599c22f977",
+              "poison_rtl": "sha256:cd5a9be34cf47d803207f244040cccdbe875ccbee35763893f791d416f1652a4"
+            },
+            "provider_hash": "sha256:369ea683b5357ac1cff99c7251b7fb2a730a0821c67986f8aa075a177233bdf6",
+            "provider_id": "r3e-verilog-operator-ast",
+            "provider_implementation_hash": "sha256:a41b3fd08c36b92d30ef4ed1e9a661a27c8e4dc4ac0492893155e24144f0433d",
+            "provider_kind": "semantic_parser",
+            "provider_version": "2",
+            "receipt_hash": "sha256:3ff29d7ddc5a356ab61a73cf29cccfadbe1cc998369d8ea07f551cc57a287f66",
+            "result": {
+              "materialization_hash": "sha256:fcab87747a8fb63625d44b4886b17c3c57fbc3eb8343d475060241c6df8aff8a",
+              "semantic_diff_receipt_hash": "sha256:adf3674675a457966cd2a67342131c90a5c9eb4bf0045b87f49f3c28726191cd"
+            },
+            "schema_version": "r3e-grounded-provider-receipt-v1"
+          },
+          "simulation_complete": true,
+          "target_ast_node_exists": true,
+          "temporal_relation": "same_cycle",
+          "toolchain_fingerprint": {
+            "iverilog_engine_hash": "sha256:1ba67856249142771239573b5d51c7f6e4d67a1e7931a0d0fab56e0d473d2167",
+            "iverilog_hash": "sha256:1ba67856249142771239573b5d51c7f6e4d67a1e7931a0d0fab56e0d473d2167",
+            "oracle_provider": "r3e-stdout-oracle-v1",
+            "oracle_provider_implementation_hash": "sha256:e67d32c8e756b2cf87af72bbf99b23075b6f4b2daf787aa229614adbc47ff2f7",
+            "provider_id": "icarus-verilog",
+            "runner_implementation_hash": "sha256:9cc3cb5a0a46eaef0e2a696e6b5393a0cca8c102fa93841afdc0a2c622c8a1ab",
+            "schema_version": "r3e-icarus-grounded-provider-v1",
+            "toolchain_fingerprint_hash": "sha256:c78be24bde0a1289435712e992649340c4f29bc0aa77cf6a52c078689a20cd2a",
+            "vvp_engine_hash": "sha256:075b114070eed3bc72e0e4559decf40520f3b693b1da9c94bba1defe8896966d",
+            "vvp_hash": "sha256:075b114070eed3bc72e0e4559decf40520f3b693b1da9c94bba1defe8896966d"
+          },
+          "waveform_observation_complete": true,
+          "waveform_observation_hash": "sha256:85b31c3cf449c59eea826d96323b0fbb0700c060f35ee2287be8ed1fcb60bdb9"
+        },
+        "phase": "poison_execution",
+        "receipt_hash": "sha256:cfc07252a18a2c9927dbd567a3a3c808a3267a851dffbd1ddfbc342d606a5da9",
+        "receipt_id": "R003-940f32057dca:assignment4v:fa_behavioral_1:grd:poison:2:aggregate",
+        "result_kind": "completed",
+        "run_context_hash": "sha256:27a316053902c8d6fd1ebd48fbf02d80ed57da1ed1003daa5ef4513fa9f83d30",
+        "schema_version": "r3e-grounded-command-receipt-v1",
+        "subject_hash": "sha256:cd5a9be34cf47d803207f244040cccdbe875ccbee35763893f791d416f1652a4",
+        "timed_out": false,
+        "toolchain_fingerprint_hash": "sha256:c78be24bde0a1289435712e992649340c4f29bc0aa77cf6a52c078689a20cd2a",
+        "wall_time_ms": 141,
+        "working_directory_hash": "sha256:ff3fa271e2cbe6fba5df0ec2e17fb3df50cbc59a8957b9e02d26d92a43084c26"
+      }
+    ],
+    "revert_run": {
+      "artifact_hashes": {
+        "compile_receipt": "sha256:f3ffa3c678c93eb5dcc0ed79de9a26ff457cd8beaa9e3a5c9af6baba75a048d6",
+        "elaborate_receipt": "sha256:f3b7de9d9f3bf012509056e33238693e673998113b1ad18f83d9709538d78a12",
+        "oracle_provider_receipt": "sha256:524e9e8ae0a5be6ced2c89a10c1b645b2b0160ffc7748eb5d8e27b4554517d65",
+        "parse_receipt": "sha256:d993a099006c73596db84f31ebede9055a6add5bff9c0769dc30ddf8445bb240",
+        "rtl": "sha256:45cbbb56ab7f372aa0df1248191587936d44c20a855c6350ba036c599c22f977",
+        "simulation_receipt": "sha256:6a18c0ec4ff420b178676f06f44e5480115c27871a4ceba278f3d262a6436082",
+        "testbench": "sha256:d53773194ce6e8bb7d5102214237af27d336c4134e98f0136ed428b9741e0b34"
+      },
+      "command_argv": [
+        "r3e-icarus-grounded-provider-v1",
+        "revert_execution"
+      ],
+      "crashed": false,
+      "exit_code": 0,
+      "issuer": "r3e-grounded-command-runner-v1",
+      "observed": {
+        "compile_ok": true,
+        "elaboration_ok": true,
+        "oracle_pass": true,
+        "oracle_provider_receipt": {
+          "input_artifact_hashes": {
+            "simulation_stdout": "sha256:7073161dae65719db538755b9281f164026cb305c9b80be425a3def5d87597bb",
+            "testbench": "sha256:d53773194ce6e8bb7d5102214237af27d336c4134e98f0136ed428b9741e0b34"
+          },
+          "provider_hash": "sha256:fbc74a55fa610c6697c683612c58f15c5a59b29e324b81a7a0c9db6db13fdd70",
+          "provider_id": "r3e-stdout-oracle",
+          "provider_implementation_hash": "sha256:e67d32c8e756b2cf87af72bbf99b23075b6f4b2daf787aa229614adbc47ff2f7",
+          "provider_kind": "oracle_parser",
+          "provider_version": "1",
+          "receipt_hash": "sha256:524e9e8ae0a5be6ced2c89a10c1b645b2b0160ffc7748eb5d8e27b4554517d65",
+          "result": {
+            "assignment_type": "",
+            "cone_depth": null,
+            "cycle_offset": null,
+            "effect_signature": "none",
+            "first_divergence_cycle": null,
+            "first_divergence_hash": "sha256:b58c8ae2c263603a3ba2a9fe6353e08f239c4347a97a4cf451ed570c0c776ee1",
+            "first_divergence_signal": "",
+            "functional_mismatch": false,
+            "mismatch_pattern": "",
+            "mismatch_topology_hash": "sha256:a2ae90e0e2cfdb2c3a1345003cc902613ee571b79c697b1edcea6a3f7932b069",
+            "oracle_pass": true,
+            "raw_record_hash": "sha256:488a63dcfed0070b1989fad4b7dd381fb7aacfdde2884bc92f1660e29746094b",
+            "temporal_relation": "",
+            "waveform_observation_complete": true,
+            "waveform_observation_hash": "sha256:0c176509644e73b68be36d637e57bf19d7953e160c093f14c440a4d53910ff1b"
+          },
+          "schema_version": "r3e-grounded-provider-receipt-v1"
+        },
+        "parse_ok": true,
+        "provider_receipts": [
+          {
+            "artifact_hashes": {
+              "executable": "sha256:1ba67856249142771239573b5d51c7f6e4d67a1e7931a0d0fab56e0d473d2167",
+              "rtl": "sha256:45cbbb56ab7f372aa0df1248191587936d44c20a855c6350ba036c599c22f977",
+              "stderr": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "stdout": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "testbench": "sha256:d53773194ce6e8bb7d5102214237af27d336c4134e98f0136ed428b9741e0b34"
+            },
+            "command_argv": [
+              "/usr/bin/iverilog",
+              "-g2012",
+              "-tnull",
+              "/data2/huangyc/R3E-aic-ic-2026-latest/deepseek-run-01/arm-b/rounds/R003/grounded_authority/0477d25e0e72fd12b99a24c6e756a0df5c032a9930f04e0e9f4a8fb1d0d93f6a/attempt-0001/materialized/reverted.v",
+              "/data2/huangyc/R3E-aic-ic-2026-latest/deepseek-run-01/arm-b/rounds/R003/grounded_authority/0477d25e0e72fd12b99a24c6e756a0df5c032a9930f04e0e9f4a8fb1d0d93f6a/attempt-0001/inputs/testbench.v"
+            ],
+            "crashed": false,
+            "exit_code": 0,
+            "issuer": "r3e-grounded-command-runner-v1",
+            "observed": {
+              "parse_ok": true
+            },
+            "phase": "parse",
+            "receipt_hash": "sha256:d993a099006c73596db84f31ebede9055a6add5bff9c0769dc30ddf8445bb240",
+            "receipt_id": "R003-940f32057dca:assignment4v:fa_behavioral_1:grd:revert:parse",
+            "result_kind": "completed",
+            "run_context_hash": "sha256:27a316053902c8d6fd1ebd48fbf02d80ed57da1ed1003daa5ef4513fa9f83d30",
+            "schema_version": "r3e-grounded-command-receipt-v1",
+            "subject_hash": "sha256:45cbbb56ab7f372aa0df1248191587936d44c20a855c6350ba036c599c22f977",
+            "timed_out": false,
+            "toolchain_fingerprint_hash": "sha256:c78be24bde0a1289435712e992649340c4f29bc0aa77cf6a52c078689a20cd2a",
+            "wall_time_ms": 31,
+            "working_directory_hash": "sha256:6b760cb6230d923909ade2339e6c80854c1e083c54050e2726ad8c2e810f7e59"
+          },
+          {
+            "artifact_hashes": {
+              "executable": "sha256:1ba67856249142771239573b5d51c7f6e4d67a1e7931a0d0fab56e0d473d2167",
+              "rtl": "sha256:45cbbb56ab7f372aa0df1248191587936d44c20a855c6350ba036c599c22f977",
+              "stderr": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "stdout": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "testbench": "sha256:d53773194ce6e8bb7d5102214237af27d336c4134e98f0136ed428b9741e0b34"
+            },
+            "command_argv": [
+              "/usr/bin/iverilog",
+              "-g2012",
+              "-s",
+              "tb",
+              "-tnull",
+              "/data2/huangyc/R3E-aic-ic-2026-latest/deepseek-run-01/arm-b/rounds/R003/grounded_authority/0477d25e0e72fd12b99a24c6e756a0df5c032a9930f04e0e9f4a8fb1d0d93f6a/attempt-0001/materialized/reverted.v",
+              "/data2/huangyc/R3E-aic-ic-2026-latest/deepseek-run-01/arm-b/rounds/R003/grounded_authority/0477d25e0e72fd12b99a24c6e756a0df5c032a9930f04e0e9f4a8fb1d0d93f6a/attempt-0001/inputs/testbench.v"
+            ],
+            "crashed": false,
+            "exit_code": 0,
+            "issuer": "r3e-grounded-command-runner-v1",
+            "observed": {
+              "elaboration_ok": true,
+              "top_module": "tb"
+            },
+            "phase": "elaborate",
+            "receipt_hash": "sha256:f3b7de9d9f3bf012509056e33238693e673998113b1ad18f83d9709538d78a12",
+            "receipt_id": "R003-940f32057dca:assignment4v:fa_behavioral_1:grd:revert:elaborate",
+            "result_kind": "completed",
+            "run_context_hash": "sha256:27a316053902c8d6fd1ebd48fbf02d80ed57da1ed1003daa5ef4513fa9f83d30",
+            "schema_version": "r3e-grounded-command-receipt-v1",
+            "subject_hash": "sha256:45cbbb56ab7f372aa0df1248191587936d44c20a855c6350ba036c599c22f977",
+            "timed_out": false,
+            "toolchain_fingerprint_hash": "sha256:c78be24bde0a1289435712e992649340c4f29bc0aa77cf6a52c078689a20cd2a",
+            "wall_time_ms": 34,
+            "working_directory_hash": "sha256:6b760cb6230d923909ade2339e6c80854c1e083c54050e2726ad8c2e810f7e59"
+          },
+          {
+            "artifact_hashes": {
+              "executable": "sha256:1ba67856249142771239573b5d51c7f6e4d67a1e7931a0d0fab56e0d473d2167",
+              "rtl": "sha256:45cbbb56ab7f372aa0df1248191587936d44c20a855c6350ba036c599c22f977",
+              "simulation_binary": "sha256:6996934e963c85f3f74c883706f9c5da59086059e7c9fb9446c8a439cc545dac",
+              "stderr": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "stdout": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "testbench": "sha256:d53773194ce6e8bb7d5102214237af27d336c4134e98f0136ed428b9741e0b34"
+            },
+            "command_argv": [
+              "/usr/bin/iverilog",
+              "-g2012",
+              "-s",
+              "tb",
+              "-o",
+              "/data2/huangyc/R3E-aic-ic-2026-latest/deepseek-run-01/arm-b/rounds/R003/grounded_authority/0477d25e0e72fd12b99a24c6e756a0df5c032a9930f04e0e9f4a8fb1d0d93f6a/attempt-0001/runs/R003-940f32057dca:assignment4v:fa_behavioral_1:grd:revert/simulation.out",
+              "/data2/huangyc/R3E-aic-ic-2026-latest/deepseek-run-01/arm-b/rounds/R003/grounded_authority/0477d25e0e72fd12b99a24c6e756a0df5c032a9930f04e0e9f4a8fb1d0d93f6a/attempt-0001/materialized/reverted.v",
+              "/data2/huangyc/R3E-aic-ic-2026-latest/deepseek-run-01/arm-b/rounds/R003/grounded_authority/0477d25e0e72fd12b99a24c6e756a0df5c032a9930f04e0e9f4a8fb1d0d93f6a/attempt-0001/inputs/testbench.v"
+            ],
+            "crashed": false,
+            "exit_code": 0,
+            "issuer": "r3e-grounded-command-runner-v1",
+            "observed": {
+              "compile_ok": true
+            },
+            "phase": "compile",
+            "receipt_hash": "sha256:f3ffa3c678c93eb5dcc0ed79de9a26ff457cd8beaa9e3a5c9af6baba75a048d6",
+            "receipt_id": "R003-940f32057dca:assignment4v:fa_behavioral_1:grd:revert:compile",
+            "result_kind": "completed",
+            "run_context_hash": "sha256:27a316053902c8d6fd1ebd48fbf02d80ed57da1ed1003daa5ef4513fa9f83d30",
+            "schema_version": "r3e-grounded-command-receipt-v1",
+            "subject_hash": "sha256:45cbbb56ab7f372aa0df1248191587936d44c20a855c6350ba036c599c22f977",
+            "timed_out": false,
+            "toolchain_fingerprint_hash": "sha256:c78be24bde0a1289435712e992649340c4f29bc0aa77cf6a52c078689a20cd2a",
+            "wall_time_ms": 45,
+            "working_directory_hash": "sha256:6b760cb6230d923909ade2339e6c80854c1e083c54050e2726ad8c2e810f7e59"
+          },
+          {
+            "artifact_hashes": {
+              "executable": "sha256:075b114070eed3bc72e0e4559decf40520f3b693b1da9c94bba1defe8896966d",
+              "simulation_binary_input": "sha256:6996934e963c85f3f74c883706f9c5da59086059e7c9fb9446c8a439cc545dac",
+              "stderr": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "stdout": "sha256:7073161dae65719db538755b9281f164026cb305c9b80be425a3def5d87597bb",
+              "testbench": "sha256:d53773194ce6e8bb7d5102214237af27d336c4134e98f0136ed428b9741e0b34"
+            },
+            "command_argv": [
+              "/usr/bin/vvp",
+              "/data2/huangyc/R3E-aic-ic-2026-latest/deepseek-run-01/arm-b/rounds/R003/grounded_authority/0477d25e0e72fd12b99a24c6e756a0df5c032a9930f04e0e9f4a8fb1d0d93f6a/attempt-0001/runs/R003-940f32057dca:assignment4v:fa_behavioral_1:grd:revert/simulation.out"
+            ],
+            "crashed": false,
+            "exit_code": 0,
+            "issuer": "r3e-grounded-command-runner-v1",
+            "observed": {
+              "simulation_complete": true
+            },
+            "phase": "simulation",
+            "receipt_hash": "sha256:6a18c0ec4ff420b178676f06f44e5480115c27871a4ceba278f3d262a6436082",
+            "receipt_id": "R003-940f32057dca:assignment4v:fa_behavioral_1:grd:revert:simulation",
+            "result_kind": "completed",
+            "run_context_hash": "sha256:27a316053902c8d6fd1ebd48fbf02d80ed57da1ed1003daa5ef4513fa9f83d30",
+            "schema_version": "r3e-grounded-command-receipt-v1",
+            "subject_hash": "sha256:45cbbb56ab7f372aa0df1248191587936d44c20a855c6350ba036c599c22f977",
+            "timed_out": false,
+            "toolchain_fingerprint_hash": "sha256:c78be24bde0a1289435712e992649340c4f29bc0aa77cf6a52c078689a20cd2a",
+            "wall_time_ms": 38,
+            "working_directory_hash": "sha256:6b760cb6230d923909ade2339e6c80854c1e083c54050e2726ad8c2e810f7e59"
+          }
+        ],
+        "restored_semantic_hash": "sha256:4b92828c5d002d51c88b1e501737662811b212712dbb9800e799fe34b26bf3d7",
+        "semantic_hash": "sha256:4b92828c5d002d51c88b1e501737662811b212712dbb9800e799fe34b26bf3d7",
+        "simulation_complete": true,
+        "toolchain_fingerprint": {
+          "iverilog_engine_hash": "sha256:1ba67856249142771239573b5d51c7f6e4d67a1e7931a0d0fab56e0d473d2167",
+          "iverilog_hash": "sha256:1ba67856249142771239573b5d51c7f6e4d67a1e7931a0d0fab56e0d473d2167",
+          "oracle_provider": "r3e-stdout-oracle-v1",
+          "oracle_provider_implementation_hash": "sha256:e67d32c8e756b2cf87af72bbf99b23075b6f4b2daf787aa229614adbc47ff2f7",
+          "provider_id": "icarus-verilog",
+          "runner_implementation_hash": "sha256:9cc3cb5a0a46eaef0e2a696e6b5393a0cca8c102fa93841afdc0a2c622c8a1ab",
+          "schema_version": "r3e-icarus-grounded-provider-v1",
+          "toolchain_fingerprint_hash": "sha256:c78be24bde0a1289435712e992649340c4f29bc0aa77cf6a52c078689a20cd2a",
+          "vvp_engine_hash": "sha256:075b114070eed3bc72e0e4559decf40520f3b693b1da9c94bba1defe8896966d",
+          "vvp_hash": "sha256:075b114070eed3bc72e0e4559decf40520f3b693b1da9c94bba1defe8896966d"
+        }
+      },
+      "phase": "revert_execution",
+      "receipt_hash": "sha256:476a4b1a467eeb5bb005d6411832e9a0d82e68d695955c9fe8c664b4e081df28",
+      "receipt_id": "R003-940f32057dca:assignment4v:fa_behavioral_1:grd:revert:aggregate",
+      "result_kind": "completed",
+      "run_context_hash": "sha256:27a316053902c8d6fd1ebd48fbf02d80ed57da1ed1003daa5ef4513fa9f83d30",
+      "schema_version": "r3e-grounded-command-receipt-v1",
+      "subject_hash": "sha256:45cbbb56ab7f372aa0df1248191587936d44c20a855c6350ba036c599c22f977",
+      "timed_out": false,
+      "toolchain_fingerprint_hash": "sha256:c78be24bde0a1289435712e992649340c4f29bc0aa77cf6a52c078689a20cd2a",
+      "wall_time_ms": 148,
+      "working_directory_hash": "sha256:a2ddc18ed2e79c020401a8e3e98fe727ed668039b45d624e49369c30fc4b5119"
+    },
+    "runtime_effect": {
+      "effect_id": "wrong_combinational_value",
+      "failure_signature": "output_mismatch",
+      "first_divergence_hash": "sha256:4e7cea08a7dd50beb0c56096fd66bda1623236e1e65d927a3b5e45a70794aa33",
+      "mismatch_topology_hash": "sha256:ac091a98cc97833997e235756af1be5406cac085dc82987c52774ece6b9e45d7",
+      "observable_features": {
+        "assignment_type": "continuous",
+        "cone_depth": 1,
+        "cycle_offset": 0,
+        "first_divergence_cycle": 2,
+        "first_divergence_hash": "sha256:4e7cea08a7dd50beb0c56096fd66bda1623236e1e65d927a3b5e45a70794aa33",
+        "first_divergence_signal": "actual",
+        "mismatch_pattern": "output_mismatch",
+        "oracle_provider_receipt_hash": "sha256:a7cdd61ec80462dd0b98f1a995bc084245c85ed3bf0a4ce377f0da6e8bbbb1b8",
+        "temporal_relation": "same_cycle",
+        "waveform_observation_hash": "sha256:85b31c3cf449c59eea826d96323b0fbb0700c060f35ee2287be8ed1fcb60bdb9"
+      },
+      "plan_hash": "sha256:f04f9d8087962b72559d66f2b32b2cc54a881ee61f70a32ccba3cb4e894867be",
+      "receipt_hash": "sha256:f52120914cbcf55ee6757c6d649b6c91d0400b94bf1363975aa4687caf86ce98",
+      "schema_version": "r3e-red-effect-receipt-v1",
+      "temporal_depth": 0
+    },
+    "schema_version": "r3e-red-admission-evidence-v2",
+    "semantic_diff": {
+      "ast_edit_count": 1,
+      "changed_block_count": 1,
+      "changed_module_count": 1,
+      "clean_ast_hash": "sha256:4b92828c5d002d51c88b1e501737662811b212712dbb9800e799fe34b26bf3d7",
+      "collateral_edit_count": 0,
+      "dependency_depth": 0,
+      "family_id": "combinational.expression_operator",
+      "normalized_ast_diff_hash": "sha256:0ddcdf0401739ee7d2ea66199e69b2b2a5c75da2a1a3cb42957af5dfe9259ea0",
+      "operator_id": "replace_bitwise_operator",
+      "plan_hash": "sha256:f04f9d8087962b72559d66f2b32b2cc54a881ee61f70a32ccba3cb4e894867be",
+      "poison_ast_hash": "sha256:b1ca8fbcf76fc03035fb286c0cc5652603471bba208d0545981eefaa5b78541c",
+      "preconditions_satisfied": true,
+      "reachable": true,
+      "receipt_hash": "sha256:adf3674675a457966cd2a67342131c90a5c9eb4bf0045b87f49f3c28726191cd",
+      "schema_version": "r3e-red-semantic-diff-receipt-v1",
+      "target_ast_node_hash": "sha256:8c12cdaf5e1abb0cf92603f4a54e16a0e975e2253d81e22fdad54d07c33369e0"
+    },
+    "semantic_provider_receipt": {
+      "input_artifact_hashes": {
+        "clean_rtl": "sha256:45cbbb56ab7f372aa0df1248191587936d44c20a855c6350ba036c599c22f977",
+        "poison_rtl": "sha256:cd5a9be34cf47d803207f244040cccdbe875ccbee35763893f791d416f1652a4"
+      },
+      "provider_hash": "sha256:369ea683b5357ac1cff99c7251b7fb2a730a0821c67986f8aa075a177233bdf6",
+      "provider_id": "r3e-verilog-operator-ast",
+      "provider_implementation_hash": "sha256:a41b3fd08c36b92d30ef4ed1e9a661a27c8e4dc4ac0492893155e24144f0433d",
+      "provider_kind": "semantic_parser",
+      "provider_version": "2",
+      "receipt_hash": "sha256:3ff29d7ddc5a356ab61a73cf29cccfadbe1cc998369d8ea07f551cc57a287f66",
+      "result": {
+        "materialization_hash": "sha256:fcab87747a8fb63625d44b4886b17c3c57fbc3eb8343d475060241c6df8aff8a",
+        "semantic_diff_receipt_hash": "sha256:adf3674675a457966cd2a67342131c90a5c9eb4bf0045b87f49f3c28726191cd"
+      },
+      "schema_version": "r3e-grounded-provider-receipt-v1"
+    },
+    "source_integrity": {
+      "allowed_file_manifest_hash": "sha256:e0b0023cbadc29116a95449cbd237924eb37f7f5e4b119280c8d4ca69e28b56c",
+      "build_configuration_hash": "sha256:6f440254bc7e971e99051972d63b54bdcd060e30b6b2f87ffe2cb0bee3d3492b",
+      "changed_file_hashes": {
+        "materialized/poison.v": "sha256:cd5a9be34cf47d803207f244040cccdbe875ccbee35763893f791d416f1652a4"
+      },
+      "clean_rtl_hash": "sha256:45cbbb56ab7f372aa0df1248191587936d44c20a855c6350ba036c599c22f977",
+      "forbidden_changes": [],
+      "oracle_hash": "sha256:11005f84f0888c75cd6a696259b695cca0c49e7686a778d12f5772699d213fa5",
+      "poison_rtl_hash": "sha256:cd5a9be34cf47d803207f244040cccdbe875ccbee35763893f791d416f1652a4",
+      "testbench_hash": "sha256:d53773194ce6e8bb7d5102214237af27d336c4134e98f0136ed428b9741e0b34"
+    }
+  },
+  "materialization_receipt": {
+    "ast_edit_count": 1,
+    "clean_ast_hash": "sha256:4b92828c5d002d51c88b1e501737662811b212712dbb9800e799fe34b26bf3d7",
+    "clean_ast_node_hash": "sha256:8c12cdaf5e1abb0cf92603f4a54e16a0e975e2253d81e22fdad54d07c33369e0",
+    "clean_rtl_hash": "sha256:45cbbb56ab7f372aa0df1248191587936d44c20a855c6350ba036c599c22f977",
+    "edit": {
+      "clean_end": 128,
+      "clean_start": 127,
+      "new_text": "&",
+      "old_text": "^",
+      "poison_end": 128,
+      "poison_start": 127
+    },
+    "family_id": "combinational.expression_operator",
+    "materialization_hash": "sha256:fcab87747a8fb63625d44b4886b17c3c57fbc3eb8343d475060241c6df8aff8a",
+    "operator_id": "replace_bitwise_operator",
+    "plan_hash": "sha256:f04f9d8087962b72559d66f2b32b2cc54a881ee61f70a32ccba3cb4e894867be",
+    "poison_ast_hash": "sha256:b1ca8fbcf76fc03035fb286c0cc5652603471bba208d0545981eefaa5b78541c",
+    "poison_ast_node_hash": "sha256:f1e45c327446f4c5b21255b98b1403882b4ac98ac1bcc03581e044a43db54ebd",
+    "poison_rtl_hash": "sha256:cd5a9be34cf47d803207f244040cccdbe875ccbee35763893f791d416f1652a4",
+    "schema_version": "r3e-red-ast-materialization-v2",
+    "target_module": "fa_behavioral"
+  },
+  "plan": {
+    "challenged_effective_policy_hash": "sha256:92762bdd3ab173f90e56a7acfbcc8becbed71bb517884e262e43196b140dc449",
+    "challenged_policy_instance_hash": "sha256:a689ee15a7ff1f71ac42587294fdcc95af05a2172af824942727ca861a483a38",
+    "difficulty_target": {
+      "dependency_depth_delta": 0,
+      "difficulty_band": "D0",
+      "temporal_depth_delta": 0
+    },
+    "expected_runtime_effect_id": "wrong_combinational_value",
+    "family_id": "combinational.expression_operator",
+    "lineage": {
+      "evolution_operator": "fresh",
+      "parent_poison_ids": []
+    },
+    "operator_id": "replace_bitwise_operator",
+    "plan_hash": "sha256:f04f9d8087962b72559d66f2b32b2cc54a881ee61f70a32ccba3cb4e894867be",
+    "plan_id": "R003-940f32057dca:assignment4v:fa_behavioral_1:grd",
+    "preconditions": {
+      "binary_bitwise_expression": true
+    },
+    "registry_bundle_hash": "sha256:a2afc78412f7013211bc7aa077b5fbe0abe7ddaaab900a1ac64f28b00087cc81",
+    "schema_version": "r3e-grounded-mutation-plan-v1",
+    "scope_limits": {
+      "maximum_ast_edits": 1,
+      "maximum_changed_blocks": 1,
+      "maximum_changed_modules": 1
+    },
+    "target_ast_node_hash": "sha256:8c12cdaf5e1abb0cf92603f4a54e16a0e975e2253d81e22fdad54d07c33369e0",
+    "target_design": "assignment4v:fa_behavioral",
+    "target_module": "fa_behavioral"
+  },
+  "schema_version": "r3e-grounded-red-execution-bundle-v1",
+  "semantic_provider_receipt": {
+    "input_artifact_hashes": {
+      "clean_rtl": "sha256:45cbbb56ab7f372aa0df1248191587936d44c20a855c6350ba036c599c22f977",
+      "poison_rtl": "sha256:cd5a9be34cf47d803207f244040cccdbe875ccbee35763893f791d416f1652a4"
+    },
+    "provider_hash": "sha256:369ea683b5357ac1cff99c7251b7fb2a730a0821c67986f8aa075a177233bdf6",
+    "provider_id": "r3e-verilog-operator-ast",
+    "provider_implementation_hash": "sha256:a41b3fd08c36b92d30ef4ed1e9a661a27c8e4dc4ac0492893155e24144f0433d",
+    "provider_kind": "semantic_parser",
+    "provider_version": "2",
+    "receipt_hash": "sha256:3ff29d7ddc5a356ab61a73cf29cccfadbe1cc998369d8ea07f551cc57a287f66",
+    "result": {
+      "materialization_hash": "sha256:fcab87747a8fb63625d44b4886b17c3c57fbc3eb8343d475060241c6df8aff8a",
+      "semantic_diff_receipt_hash": "sha256:adf3674675a457966cd2a67342131c90a5c9eb4bf0045b87f49f3c28726191cd"
+    },
+    "schema_version": "r3e-grounded-provider-receipt-v1"
+  },
+  "toolchain_fingerprint": {
+    "iverilog_engine_hash": "sha256:1ba67856249142771239573b5d51c7f6e4d67a1e7931a0d0fab56e0d473d2167",
+    "iverilog_hash": "sha256:1ba67856249142771239573b5d51c7f6e4d67a1e7931a0d0fab56e0d473d2167",
+    "oracle_provider": "r3e-stdout-oracle-v1",
+    "oracle_provider_implementation_hash": "sha256:e67d32c8e756b2cf87af72bbf99b23075b6f4b2daf787aa229614adbc47ff2f7",
+    "provider_id": "icarus-verilog",
+    "runner_implementation_hash": "sha256:9cc3cb5a0a46eaef0e2a696e6b5393a0cca8c102fa93841afdc0a2c622c8a1ab",
+    "schema_version": "r3e-icarus-grounded-provider-v1",
+    "toolchain_fingerprint_hash": "sha256:c78be24bde0a1289435712e992649340c4f29bc0aa77cf6a52c078689a20cd2a",
+    "vvp_engine_hash": "sha256:075b114070eed3bc72e0e4559decf40520f3b693b1da9c94bba1defe8896966d",
+    "vvp_hash": "sha256:075b114070eed3bc72e0e4559decf40520f3b693b1da9c94bba1defe8896966d"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "binding": "sha256:0905af36f7afa8d8b3c93eaefa776451ec9c8ef33c5c32a34a9949faeb4568e4",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 971,
+    "output_tokens": 125,
+    "raw_response_hash": "sha256:4487fd60c7b872cd3bab4ce29074cf053c8d05c0e7f0d0aaaa75e671c164932b",
+    "request_hash": "sha256:f0ce86fae3478c79ef41030b946244ede3c60f1d7998a8da7a59637b87bcc637",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 971,
+      "output_tokens": 125,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Correct the active-low output patterns for the first and last enabled address cases.",
+      "edits": [
+        {
+          "replace": "( {en,A,B,C} == 4'b1000) ? 8'b1111111 :",
+          "search": "( {en,A,B,C} == 4'b1000) ? 8'b1111110 :"
+        },
+        {
+          "replace": "( {en,A,B,C} == 4'b1111) ? 8'b0111111 :",
+          "search": "( {en,A,B,C} == 4'b1111) ? 8'b1111111 :"
+        }
+      ]
+    }
+  },
+  "result_hash": "sha256:bce455ab28a41daa59cfdb09ee63b3472da7fcd431983daaaab9fee9164c8c6e"
+}

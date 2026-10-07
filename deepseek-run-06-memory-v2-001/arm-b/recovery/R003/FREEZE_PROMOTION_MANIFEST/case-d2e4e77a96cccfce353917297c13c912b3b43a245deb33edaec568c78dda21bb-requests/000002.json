@@ -1,0 +1,29 @@
+{
+  "binding": "sha256:c276b476fef7e946ef85cdb9d9d9feb8a2d308e584e4f179eab7f9b72f306c44",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 639,
+    "output_tokens": 217,
+    "raw_response_hash": "sha256:936114dec0b3d57eadba15f59551ee1cc17d91a49da20e67ae174f9b013e8032",
+    "request_hash": "sha256:89ec979d61f5f439669dfa15557fe920b7b9bc1c73d766132b20f0a4452176a5",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 639,
+      "output_tokens": 217,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Removed the duplicate 3'd6 case item and the stray empty always-block lines; kept the local case structure unchanged so the default branch now correctly drives X=0,Y=0 for ABC=0 (cycle 7 mismatch got 00 vs expected 01 is addressed by preserving the 3'd0 branch as the only source of Y=1).",
+      "replacement_rtl": "module JG3(ABC,X,Y);\n\t\n\tinput [2:0] ABC;\n\t\n\toutput X, Y;\n\treg X, Y;\n\t\n\talways@(ABC)\n\t\tcase(ABC)\n\t\t\t3'd0: begin X<=0;Y<=1; end\n\t\t\t3'd5: begin X<=1;Y=0; end\n\t\t\t3'd6: begin X<=1;Y=0; end\n\t\t\tdefault: begin X<=0;Y=0; end\n\t\tendcase\t\n\t\nendmodule"
+    }
+  },
+  "result_hash": "sha256:c85004766d762cb5c7db3caa7322854c48b8e03b93b07585ae8d95d697778e75"
+}

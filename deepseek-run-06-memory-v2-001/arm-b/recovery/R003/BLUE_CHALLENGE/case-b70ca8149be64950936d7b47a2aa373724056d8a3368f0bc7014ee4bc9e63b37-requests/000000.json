@@ -1,0 +1,29 @@
+{
+  "binding": "sha256:a9fc665a6177693b8bf66c2a3fc8f9af52f5053b36134b6fde6096b491d0241d",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 732,
+    "output_tokens": 253,
+    "raw_response_hash": "sha256:804644b49af6a6113d7c979d1bf0548c322b428bc4aa40caae7b0b7f4f13d750",
+    "request_hash": "sha256:b621ba485e48e5f8d98b5edd45ff2651c56a368036965cc94f1d3cb773930ef9",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 732,
+      "output_tokens": 253,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "No change: the supplied RTL already matches the oracle behavior for the observed mismatch (ABC=3'b000 yields X=0, Y=1).",
+      "replacement_rtl": "module JG3(ABC,X,Y);\n\t\n\tinput [2:0] ABC;\n\t\n\toutput X, Y;\n\treg X, Y;\n\t\n\talways@(ABC)\n    \n        \n\ncase(ABC)\n3'b000 : begin X = 0; Y = 1; end\n3'b001 : begin X = 0; Y = 0; end\n3'b010 : begin X = 0; Y = 0; end\n3'b011 : begin X = 0; Y = 0; end\n3'b100 : begin X = 0; Y = 0; end\n3'b101 : begin X = 0; Y = 0; end\n3'b110 : begin X = 1; Y = 0; end\n3'b111 : begin X = 1; Y = 0; end\ndefault :;\nendcase\n        \n\n\t\nendmodule"
+    }
+  },
+  "result_hash": "sha256:16843037c1ef039e509d1d86adb53d2f65b4ebf3c9b032c061ec413f22409c7b"
+}

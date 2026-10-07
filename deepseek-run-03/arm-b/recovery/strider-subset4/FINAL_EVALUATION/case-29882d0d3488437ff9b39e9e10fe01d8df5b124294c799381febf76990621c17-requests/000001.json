@@ -1,0 +1,23 @@
+{
+  "binding": "sha256:1f50fa130239b8bf107576c15565333bda808a6a6cf643e3657069293f702235",
+  "response": {
+    "input_tokens": 1923,
+    "output_tokens": 1250,
+    "raw_response_hash": "sha256:b6c5c31dafddcf35fa23ee0d7b016bfdece41a6ebfdaf582ec7810c45ee64926",
+    "request_hash": "sha256:94951fd395eaee1c2d538bbf63b24103d460ecde437e1026159f3479f4344906",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 1923,
+      "output_tokens": 1250,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Replace all blocking assignments (=) with nonblocking assignments (<=) in the sequential always block (OUTPUT_LOGIC) to fix the one-cycle early output divergence.",
+      "replacement_rtl": "// This change is category 1. It represents the errors a student might make\n// during design. Here, I have them accidentally use blocking assignment\n// (instead of nonblocking <= assignment) within the always_ff blocks. This is\n// definitely a mistake a novice who doesn't completely understand design\n// might make.\n\nmodule fsm_full(\nclock , // Clock\nreset , // Active high reset\nreq_0 , // Active high request from agent 0\nreq_1 , // Active high request from agent 1\nreq_2 , // Active high request from agent 2\nreq_3 , // Active high request from agent 3\ngnt_0 , // Active high grant to agent 0\ngnt_1 , // Active high grant to agent 1\ngnt_2 , // Active high grant to agent 2\ngnt_3   // Active high grant to agent 3\n);\n// Port declaration here\ninput clock ; // Clock\ninput reset ; // Active high reset\ninput req_0 ; // Active high request from agent 0\ninput req_1 ; // Active high request from agent 1\ninput req_2 ; // Active high request from agent 2\ninput req_3 ; // Active high request from agent 3\noutput gnt_0 ; // Active high grant to agent 0\noutput gnt_1 ; // Active high grant to agent 1\noutput gnt_2 ; // Active high grant to agent 2\noutput gnt_3 ; // Active high grant to agent \n\n// Internal Variables\nreg    gnt_0 ; // Active high grant to agent 0\nreg    gnt_1 ; // Active high grant to agent 1\nreg    gnt_2 ; // Active high grant to agent 2\nreg    gnt_3 ; // Active high grant to agent \n\nparameter  [2:0]  IDLE  = 3'b000;\nparameter  [2:0]  GNT0  = 3'b001;\nparameter  [2:0]  GNT1  = 3'b010;\nparameter  [2:0]  GNT2  = 3'b011;\nparameter  [2:0]  GNT3  = 3'b100;\n\nreg [2:0] state, next_state;\n\nalways @ (state or req_0 or req_1 or req_2 or req_3)\nbegin  \n  next_state = 0;\n  case(state)\n    IDLE : if (req_0 == 1'b1) begin\n  \t     next_state = GNT0;\n           end else if (req_1 == 1'b1) begin\n  \t     next_state= GNT1;\n           end else if (req_2 == 1'b1) begin\n  \t     next_state= GNT2;\n           end else if (req_3 == 1'b1) begin\n  \t     next_state= GNT3;\n\t   end else begin\n  \t     next_state = IDLE;\n           end\t\t\t\n    GNT0 : if (req_0 == 1'b0) begin\n  \t     next_state = IDLE;\n           end else begin\n\t     next_state = GNT0;\n\t  end\n    GNT1 : if (req_1 == 1'b0) begin\n  \t     next_state = IDLE;\n           end else begin\n\t     next_state = GNT1;\n\t  end\n    GNT2 : if (req_2 == 1'b0) begin\n  \t     next_state = IDLE;\n           end else begin\n\t     next_state = GNT2;\n\t  end\n    GNT3 : if (req_3 == 1'b0) begin\n  \t     next_state = IDLE;\n           end else begin\n\t     next_state = GNT3;\n\t  end\n   default : next_state = IDLE;\n  endcase\nend\n\nalways @ (posedge clock)\nbegin : OUTPUT_LOGIC\n  if (reset) begin\n    gnt_0 <= #1 1'b0;\n    gnt_1 <= #1 1'b0;\n    gnt_2 <= #1 1'b0;\n    gnt_3 <= #1 1'b0;\n    state <= #1 IDLE;\n  end else begin\n    state <= #1 next_state;\n    case(state)\n\tIDLE : begin\n                gnt_0 <= #1 1'b0;\n                gnt_1 <= #1 1'b0;\n                gnt_2 <= #1 1'b0;\n                gnt_3 <= #1 1'b0;\n\t       end\n  \tGNT0 : begin\n  \t         gnt_0 <= #1 1'b1;\n  \t       end\n        GNT1 : begin\n                 gnt_1 <= #1 1'b1;\n               end\n        GNT2 : begin\n                 gnt_2 <= #1 1'b1;\n               end\n        GNT3 : begin\n                 gnt_3 <= #1 1'b1;\n               end\n     default : begin\n                 state <= #1 IDLE;\n               end\n    endcase\n  end\nend\n\nendmodule\n"
+    }
+  },
+  "result_hash": "sha256:6fe81064d03b8f2049f8d18af40e6e6fc21b905612b5d8df8a1202ed81c819e8"
+}

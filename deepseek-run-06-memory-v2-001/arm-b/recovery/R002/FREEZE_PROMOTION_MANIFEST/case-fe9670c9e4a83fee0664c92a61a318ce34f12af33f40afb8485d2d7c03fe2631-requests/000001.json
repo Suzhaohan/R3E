@@ -1,0 +1,29 @@
+{
+  "binding": "sha256:0710bdd882353abe3f479cd76fcf543738341eec1d4b3e5bc19728e071e01952",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 799,
+    "output_tokens": 230,
+    "raw_response_hash": "sha256:d1770858c4c093c07a562cc66741d74ca41cf16e9fb2fe1b13b1aa7400cdbe79",
+    "request_hash": "sha256:fafa9f24cb1f7c6c84ae1831b5ab7fd77e8e03dcb0206be0b8fbd3755fbddf5e",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 799,
+      "output_tokens": 230,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Replace the duplicated 3'd6 case with 3'd7: begin X<=0;Y<=1; end, and remove the duplicate 3'd6 branch. This restores the missing input code 7 mapping so the output at the first divergent cycle matches the oracle (01) instead of defaulting to 00.",
+      "replacement_rtl": "module JG3(ABC,X,Y);\n\t\n\tinput [2:0] ABC;\n\t\n\toutput X, Y;\n\treg X, Y;\n\t\n\talways@(ABC)\n\t\tcase(ABC)\n\t\t\t3'd0: begin X<=0;Y<=1; end\n\t\t\t3'd5: begin X<=1;Y=0; end\n\t\t\t3'd6: begin X<=1;Y=0; end\n\t\t\t3'd7: begin X<=0;Y<=1; end\n\t\t\tdefault: begin X<=0;Y=0; end\n\t\tendcase\t\n\t\nendmodule"
+    }
+  },
+  "result_hash": "sha256:33679e86d054c5fb2ec998eaa6b852eb250b890ac1bc12607d35261afc4c4760"
+}

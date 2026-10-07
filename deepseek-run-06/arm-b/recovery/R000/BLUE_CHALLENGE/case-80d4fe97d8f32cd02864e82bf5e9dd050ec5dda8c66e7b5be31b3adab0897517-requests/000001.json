@@ -1,0 +1,29 @@
+{
+  "binding": "sha256:fd0c5ed8c53eec08ec3da7c862381b4caef6d72fc4e8ddb5c696f4e198fb7ef6",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 789,
+    "output_tokens": 300,
+    "raw_response_hash": "sha256:05aac716b9b4433264ae35e7a7202757571d06c0ad15647b6c11ec53ed7b2c44",
+    "request_hash": "sha256:168f5f7e838f3cc775c1a5ee0ee2b7634e624017c91d9750792a6e6646c4c8e8",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 789,
+      "output_tokens": 300,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "No change: the case table already matches the oracle (ABC=000 -> X=1,Y=1 giving 11; all other listed codes give 10), so the observed cycle0 mismatch (got 11 vs expected 10) is not explained by any local assignment in this block. A local_block edit cannot be justified from the provided evidence without altering behavior outside the frozen scope.",
+      "replacement_rtl": "module JG3(ABC,X,Y);\n\t\n\tinput [2:0] ABC;\n\t\n\toutput X, Y;\n\treg X, Y;\n\t\n\talways@(ABC)\n    \n        \n\ncase(ABC)\n3'b000 : begin X = 1; Y = 1; end\n3'b001 : begin X = 0; Y = 0; end\n3'b010 : begin X = 0; Y = 0; end\n3'b011 : begin X = 0; Y = 0; end\n3'b100 : begin X = 0; Y = 0; end\n3'b101 : begin X = 1; Y = 0; end\n3'b110 : begin X = 1; Y = 0; end\n3'b111 : begin X = 1; Y = 0; end\ndefault :;\nendcase\n        \n\n\t\nendmodule"
+    }
+  },
+  "result_hash": "sha256:8cab0b1d8c9f0098c5acc9ed2a47dab0980a86ba1b43af9fbeac5894eebf965b"
+}

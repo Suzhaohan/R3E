@@ -1,0 +1,10 @@
+module mux21(a,b,s,y);
+	input a,b,s;
+	output y;
+	reg y;
+	always @(a,b,s)
+	begin
+		if(s==1'B0) begin y=b; end
+		else begin y=a; end
+	end
+endmodule

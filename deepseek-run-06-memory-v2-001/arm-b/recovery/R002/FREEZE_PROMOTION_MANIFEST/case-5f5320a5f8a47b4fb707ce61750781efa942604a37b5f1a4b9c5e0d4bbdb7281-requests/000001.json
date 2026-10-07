@@ -1,0 +1,29 @@
+{
+  "binding": "sha256:cdb79bb31cd4d6ec11e047e71993cccbd4e68abde9b18e2eb08f404921a70744",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 791,
+    "output_tokens": 282,
+    "raw_response_hash": "sha256:9e7912b6bda55d5b5187d74c02a0e28ff5b7c3aae9898c8a7ab3471d96bbe20b",
+    "request_hash": "sha256:3b0b10ae1c061100ec6f9702c0af14fd7569fc452d4035662e4261508bb09c2a",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 791,
+      "output_tokens": 282,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "No change: the case table already matches the oracle (X=1 for ABC 101/110/111, else 0; Y=0), so the observed cycle0 mismatch (got 00, expected 10) is not explained by this RTL and no local edit is justified.",
+      "replacement_rtl": "module JG3(ABC,X,Y);\n\t\n\tinput [2:0] ABC;\n\t\n\toutput X, Y;\n\treg X, Y;\n\t\n\talways@(ABC)\n    \n        \n\ncase(ABC)\n3'b000 : begin X = 0; Y = 0; end\n3'b001 : begin X = 0; Y = 0; end\n3'b010 : begin X = 0; Y = 0; end\n3'b011 : begin X = 0; Y = 0; end\n3'b100 : begin X = 0; Y = 0; end\n3'b101 : begin X = 1; Y = 0; end\n3'b110 : begin X = 1; Y = 0; end\n3'b111 : begin X = 1; Y = 0; end\ndefault :;\nendcase\n        \n\n\t\nendmodule"
+    }
+  },
+  "result_hash": "sha256:47553a4b305e1defb06b151fbda42db165b1d90a99fdc545ca7037c21d514544"
+}

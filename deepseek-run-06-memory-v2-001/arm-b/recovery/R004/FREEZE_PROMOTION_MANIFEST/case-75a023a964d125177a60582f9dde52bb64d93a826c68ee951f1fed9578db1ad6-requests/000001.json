@@ -1,0 +1,29 @@
+{
+  "binding": "sha256:fafc9dcad0c7534c4fdab5e210a04078a4e60e46c4cd37d17f3b7258ed620f33",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 850,
+    "output_tokens": 299,
+    "raw_response_hash": "sha256:9bf5e85804e960f6cc698ad70c3adb2c8593ac42ac25b04627400cfdce1dcae3",
+    "request_hash": "sha256:7e8f90e2b7ccd2ee7e7b4c63e16d5d38e8f53d12da54fdaa86a344b54c4af311",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 850,
+      "output_tokens": 299,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Inverted the enable condition: changed `if(ena)` to `if(!ena)` so that y is forced to 0 when ena is deasserted and the one-hot decode is applied when ena is asserted, matching the oracle behavior at cycles 0-2.",
+      "replacement_rtl": "\n\nmodule decoder3e_test(a,ena,y);\n  input [2:0] a;\n  input ena;\n  output reg [7:0] y; \n\n  \n\n\nalways @(*)begin\n  if(!ena) y = 0;\n  else begin\n    case(a)\n        3'b000: y = 8'b0000_0001;\n        3'b001: y = 8'b0000_0010;\n        3'b010: y = 8'b0000_0100;\n        3'b011: y = 8'b0000_1000;\n        3'b100: y = 8'b0001_0000;\n        3'b101: y = 8'b0010_0000;\n        3'b110: y = 8'b0100_0000;\n        3'b111: y = 8'b1000_0000;\n    \n    endcase\n  end\nend\n\n\n\n\n\nendmodule\n"
+    }
+  },
+  "result_hash": "sha256:aaea820bb5e7bfd0b164cdba0aa587ac94a8813feaace46ef26983df41c49677"
+}

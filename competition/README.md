@@ -15,17 +15,9 @@ RTL → Runtime Evidence → Failure Descriptor → Blue Portfolio → Scope Gat
 - Shift：发现 blocking assignment 导致的 bit-level dataflow 错误；
 - Experience / Evolution 页面只展示有冻结证据支持的回放，不把 deterministic fixture 当作模型效果。
 
-## 一键运行
+## 最新运行入口
 
-在仓库根目录执行：
-
-```bash
-./competition/scripts/setup.sh
-./competition/scripts/run_demo.sh
-./competition/scripts/verify_benchmark_inputs.sh
-```
-
-`run_demo.sh` 默认使用从 buggy RTL 生成的 frozen minimal patch 进行 guided replay，因此不需要模型 API；每个候选仍经过 R³E Blue Portfolio、Scope Gate、Icarus、differential oracle、Yosys Structural Check 和 Repeatability Check。该模式是可复现演示，不是模型增益实验。显式使用 `--mode live` 才会调用真实 provider，provider 不可用时直接报错，不伪造结果。
+当前实验统一使用 run06，请按[最新运行指南](../deepseek-run-06/source/运行指南.md)操作。本页其余内容保留为工程说明。
 
 ## 目录
 

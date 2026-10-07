@@ -1,0 +1,29 @@
+{
+  "binding": "sha256:791b6bf1f072f0ea3eabf6073d93646f20b37934f908fb732fa03588faf629dd",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 789,
+    "output_tokens": 137,
+    "raw_response_hash": "sha256:55a0654ccfd1ec9dbe8bc018747d950379ba38bca63ccc67e2cca7d3bce4d579",
+    "request_hash": "sha256:8240719d541d201874b3bc6403610ff8393bb5996f0fa7d11812dab5c5db540d",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 789,
+      "output_tokens": 137,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Change the sensitivity list of the combinational always block from 'always@ (clk)' to 'always@ (clk or d)' so q updates whenever d changes, matching the combinational oracle behavior (q follows d) instead of only sampling on clk edges.",
+      "replacement_rtl": "module latch24_test( d, clk,q );\n\t\n    input [23:0] d;\n    input clk;\n    output[23:0] q;\n    reg [23:0] q;\n    always@ (clk or d)\n        q = d;\n\nendmodule\n"
+    }
+  },
+  "result_hash": "sha256:6c103b49019712a3abe037d544b02b2c5c8473b27b4e2e2cbb3f9357e7e517c4"
+}

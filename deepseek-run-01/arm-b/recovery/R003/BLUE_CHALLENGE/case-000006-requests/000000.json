@@ -1,0 +1,23 @@
+{
+  "binding": "sha256:e1d3f8ae9f3767b3a93b6986ee10f59ebeb94b8b46670b9d60efb5a76518b540",
+  "response": {
+    "input_tokens": 738,
+    "output_tokens": 283,
+    "raw_response_hash": "sha256:60f81ca94b18807b50b948f2ebabe5b62a09e7c61b391111468884c3e60b715e",
+    "request_hash": "sha256:6feb1ac284fd9ce5a1e6f956073ca6d13b152402371b8f89829562cf97c6d16b",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 738,
+      "output_tokens": 283,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Replace the empty default case body with an explicit assignment (X = 0; Y = 0) so the outputs are always driven for any ABC value, eliminating the latch/inferred-hold behavior that caused the cycle-0 observable output mismatch.",
+      "replacement_rtl": "module JG3(ABC,X,Y);\n\t\n\tinput [2:0] ABC;\n\t\n\toutput X, Y;\n\treg X, Y;\n\t\n\talways@(ABC)\n    \n        \n\ncase(ABC)\n3'b000 : begin X = 1; Y = 1; end\n3'b001 : begin X = 0; Y = 0; end\n3'b010 : begin X = 0; Y = 0; end\n3'b011 : begin X = 0; Y = 0; end\n3'b100 : begin X = 0; Y = 0; end\n3'b101 : begin X = 1; Y = 0; end\n3'b110 : begin X = 1; Y = 0; end\n3'b111 : begin X = 1; Y = 0; end\ndefault : begin X = 0; Y = 0; end\nendcase\n        \n\n\t\nendmodule"
+    }
+  },
+  "result_hash": "sha256:a7788000c08ba07d4536eb7fdeef952b48703fc1f8ef0389a2890b26ae22e1fc"
+}

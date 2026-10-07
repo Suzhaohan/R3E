@@ -1,0 +1,34 @@
+{
+  "binding": "sha256:0bd8df63baea75701ed244d903e020cecc39bb3156181d7c0def76174190a3b0",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 656,
+    "output_tokens": 49,
+    "raw_response_hash": "sha256:cb7b758c8a5723fd5ec53138a11512011e54cbcc94f4ebfa6ba659c80d0eeb23",
+    "request_hash": "sha256:5024c1004b48cb2d088bfc271482d15325a23bf7bc71528dd2048fce8db05b6b",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 656,
+      "output_tokens": 49,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Fix the sum output to use XOR of a, b, and ci.",
+      "edits": [
+        {
+          "replace": "assign s=(a^b^ci);",
+          "search": "assign s=(~(a&b)&ci);"
+        }
+      ]
+    }
+  },
+  "result_hash": "sha256:85fa4f524d59efed628290d6ea391932f20852c84daf9d1e12ba74862dd1294b"
+}

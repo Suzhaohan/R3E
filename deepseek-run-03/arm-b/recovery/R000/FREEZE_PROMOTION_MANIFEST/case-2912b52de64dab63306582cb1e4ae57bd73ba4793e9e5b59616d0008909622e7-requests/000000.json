@@ -1,0 +1,23 @@
+{
+  "binding": "sha256:3da4dbe43aecb803930ef46faeba18de025fdf20eb3cbd102bde6b01b406248c",
+  "response": {
+    "input_tokens": 755,
+    "output_tokens": 309,
+    "raw_response_hash": "sha256:ef8390f14445067ca85fc380340a1a25975a9cb8db4981baa3534635a9e8f12e",
+    "request_hash": "sha256:5da476a552dfea18e7902e21b52869f695c28b465f01cc0c8755675a2cef375a",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 755,
+      "output_tokens": 309,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Fix the two malformed case literals: 3'b100 should be 8'b0001_0000 (was 8'b0001_000, missing a zero) and 3'b111 should be 8'b1000_0000 (was 8'b100_0000, missing a zero).",
+      "replacement_rtl": "\n\nmodule decoder3e_test(a,ena,y);\n  input [2:0] a;\n  input ena;\n  output [7:0] y; \n  reg[7:0] Y;\n  \n\n\nalways @(ena or a)\nbegin\nif(ena==0)\nY=8'b0000_0000;\nelse\ncase (a)\n3'b000: Y=8'b0000_0001;\n3'b001: Y=8'b0000_0010;\n3'b010: Y=8'b0000_0100;\n3'b011: Y=8'b0000_1000;\n3'b100: Y=8'b0001_0000;\n3'b101: Y=8'b0010_0000;\n3'b110: Y=8'b0100_0000;\n3'b111: Y=8'b1000_0000;\nendcase\nend\nassign y=Y;\n\n\n\n\n\nendmodule\n"
+    }
+  },
+  "result_hash": "sha256:f5532ada263c375195d0a6b510bdfc67aa32f40c642e5641c02ba5da4ec75088"
+}

@@ -1,0 +1,31 @@
+{
+  "binding": "sha256:3705faf5ec71e1680543077b4c1e50bb61fe63de10caa67520262d5c41502d4b",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 706,
+    "output_tokens": 187,
+    "raw_response_hash": "sha256:f8e58b8396099aeab6fdc7e7f6ffc7eff48e396a951ec07ccce3bf73b2f294f1",
+    "request_hash": "sha256:016d68cdad2ec2060507a335a661f74a4194831afe9c4a9c82b816841f3f9352",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 706,
+      "output_tokens": 187,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "candidate_id": "C_c588b951bac46c9e_2",
+      "candidate_seed": 847545993,
+      "edit": "Replace the sum assignment `assign s=(~(a&b)&ci);` with the correct full-adder XOR sum `assign s=(a^b)^ci;`. The original expression only produced ci when a&b was false and ignored a/b, causing the cycle-2 mismatch (got 00, expected 01). Carry logic is unchanged.",
+      "replacement_rtl": "module fa_behavioral(a,b,ci,s,co);\n       input a,b;\n       input ci;\n       output  s;\n       output co;\n\n\n\n       assign s=(a^b)^ci;\n       assign co=((a&b)|(a&ci)|(b&ci));\n\n\n\nendmodule\n"
+    }
+  },
+  "result_hash": "sha256:a588190beb61e684d12ac1f23d24c6d901ad1c3899495f3db38bd9bb0debc7cb"
+}

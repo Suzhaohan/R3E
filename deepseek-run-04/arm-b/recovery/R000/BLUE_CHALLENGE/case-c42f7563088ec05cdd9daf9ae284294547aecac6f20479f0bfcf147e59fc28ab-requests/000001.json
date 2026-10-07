@@ -1,0 +1,23 @@
+{
+  "binding": "sha256:fd0c5ed8c53eec08ec3da7c862381b4caef6d72fc4e8ddb5c696f4e198fb7ef6",
+  "response": {
+    "input_tokens": 789,
+    "output_tokens": 291,
+    "raw_response_hash": "sha256:cb9c7bc31c8d5f336872c528e41482239c55f91ccb8ec2d1d412d6eb5cda0e1d",
+    "request_hash": "sha256:168f5f7e838f3cc775c1a5ee0ee2b7634e624017c91d9750792a6e6646c4c8e8",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 789,
+      "output_tokens": 291,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "No change: the case table already matches the oracle (ABC=000 -> X=1,Y=1; ABC=101/110/111 -> X=1,Y=0; others 0,0), so the observed cycle0 mismatch (actual 11 vs expected 10) is not explained by any local assignment in this block.",
+      "replacement_rtl": "module JG3(ABC,X,Y);\n\t\n\tinput [2:0] ABC;\n\t\n\toutput X, Y;\n\treg X, Y;\n\t\n\talways@(ABC)\n    \n        \n\ncase(ABC)\n3'b000 : begin X = 1; Y = 1; end\n3'b001 : begin X = 0; Y = 0; end\n3'b010 : begin X = 0; Y = 0; end\n3'b011 : begin X = 0; Y = 0; end\n3'b100 : begin X = 0; Y = 0; end\n3'b101 : begin X = 1; Y = 0; end\n3'b110 : begin X = 1; Y = 0; end\n3'b111 : begin X = 1; Y = 0; end\ndefault :;\nendcase\n        \n\n\t\nendmodule"
+    }
+  },
+  "result_hash": "sha256:958b40f792b749cb51607c13881eefaf0959edd8c478ca249a8309d6a96faf77"
+}

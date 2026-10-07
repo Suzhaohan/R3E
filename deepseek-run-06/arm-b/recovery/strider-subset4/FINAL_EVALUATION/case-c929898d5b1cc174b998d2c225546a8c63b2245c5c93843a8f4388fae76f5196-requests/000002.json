@@ -1,0 +1,29 @@
+{
+  "binding": "sha256:75d900ccaa3e2f768626911089a0e4db4066b1236f8d1db5077246b4230a33e4",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 1133,
+    "output_tokens": 310,
+    "raw_response_hash": "sha256:f1a77f00c547d42540fb04c878dbe8a20794f366cca12c6a4b6ff9a050875fdc",
+    "request_hash": "sha256:4c1289bcb0e445db577af281dc0a4ddad1dcd1866984a5469bf15ff8256e9f04",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 1133,
+      "output_tokens": 310,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Widen the output port declaration from 1-bit 'output reg out' to 4-bit 'output reg [3:0] out' so the full 4-bit selected input is driven onto out, matching the 4-bit a/b/c/d inputs and the expected out[1] value at cycle 10.",
+      "replacement_rtl": "module mux_4to1_case ( input [3:0] a,                 // 4-bit input called a\n                       input [3:0] b,                 // 4-bit input called b\n                       input [3:0] c,                 // 4-bit input called c\n                       input [3:0] d,                 // 4-bit input called d\n                       input [1:0] sel,               // input sel used to select between a,b,c,d\n                       output reg [3:0] out);         // 4-bit output based on input sel\n\n   // This always block gets executed whenever a/b/c/d/sel changes value\n   // When that happens, based on value in sel, output is assigned to either a/b/c/d\n   always @ (a or b or c or d or sel) begin\n      case (sel)\n         2'b00 : out <= a;\n         2'b01 : out <= b;\n         2'b10 : out <= c;\n         2'b11 : out <= d;\n      endcase\n   end\nendmodule"
+    }
+  },
+  "result_hash": "sha256:374e93e1240b1fe0c21f6839ceabbb9f556f381fb6081d7946e003e8c67c3ad2"
+}

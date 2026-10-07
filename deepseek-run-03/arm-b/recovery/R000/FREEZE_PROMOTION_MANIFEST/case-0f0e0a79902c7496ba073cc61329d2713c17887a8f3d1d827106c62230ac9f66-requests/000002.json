@@ -1,0 +1,23 @@
+{
+  "binding": "sha256:844f5a47d7013ae13beacc718a1617a5792e112059f2b4318440f96360e31875",
+  "response": {
+    "input_tokens": 791,
+    "output_tokens": 198,
+    "raw_response_hash": "sha256:ff52f11bcd42f843f99eb7b369652b4578be5ccd8b6e6820b0c523868b87c8e2",
+    "request_hash": "sha256:b4c6beea506d1e3668cee7f2fce57e9b8de0920564d8c05aa3e23cbff70bc322",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 791,
+      "output_tokens": 198,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Removed the duplicate 3'd6 case item (identical to the preceding 3'd6 branch) so the case statement has unique selectors; behavior for ABC=6 is unchanged (X=1,Y=0), and all other branches remain as before.",
+      "replacement_rtl": "module JG3(ABC,X,Y);\n\t\n\tinput [2:0] ABC;\n\t\n\toutput X, Y;\n\treg X, Y;\n\t\n\talways@(ABC)\n\t\tcase(ABC)\n\t\t\t3'd0: begin X<=0;Y<=1; end\n\t\t\t3'd5: begin X<=1;Y=0; end\n\t\t\t3'd6: begin X<=1;Y=0; end\n\t\t\tdefault: begin X<=0;Y=0; end\n\t\tendcase\t\n\t\nendmodule"
+    }
+  },
+  "result_hash": "sha256:9382c794315cef7875be490bd7773c4dcd38988f1baf8d06c754079f3df0caf6"
+}

@@ -1,0 +1,29 @@
+{
+  "binding": "sha256:d4821603669d91277972184749238cc6be7cf516634cc2c5998c6e912c8063c9",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 630,
+    "output_tokens": 98,
+    "raw_response_hash": "sha256:73929819982e356d39a7b4250c5f95e4d21b3d5ec633f4d924cea479c7fbfad0",
+    "request_hash": "sha256:c1ed65f4bfc1d43244696b35e8d0a01b9607d0916c2e1aa2f9d6ca31528b9ac7",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 630,
+      "output_tokens": 98,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Swap the mux data inputs in the always block: when s!=0 assign y=b, else assign y=a, correcting the inverted select behavior.",
+      "replacement_rtl": "module mux21(a,b,s,y);\n\tinput a,b,s;\n\toutput y;\n\treg y;\n\talways @(a,b,s)\n\t\tif(s!=0) y=b;\n\t\telse y=a;\nendmodule"
+    }
+  },
+  "result_hash": "sha256:05abf541156b667f7b3aba1562ea6903190581b1b83679ca6bac50155bfb58ee"
+}

@@ -1,0 +1,34 @@
+{
+  "binding": "sha256:c4519ae4299f569bc23f35ed0a51b40a10ed2e15a610c1d8425718ee6f835db4",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 1506,
+    "output_tokens": 63,
+    "raw_response_hash": "sha256:dc064d0a59f42e7afc589fcddafb12b3a8908e2c3c930ec8286e2b3b3f3e9734",
+    "request_hash": "sha256:0467f86c7cfd420f8c9ebbbe255e34c77928ae8ec3530efd822dc268fb864276",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 1506,
+      "output_tokens": 63,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Correct the shift concatenation to shift out by 32 bits, preserving the 576-bit width.",
+      "edits": [
+        {
+          "replace": "        out <= {out[543:0], v1};",
+          "search": "        out <= {out[575-32:0], v1};"
+        }
+      ]
+    }
+  },
+  "result_hash": "sha256:32adf5f062a526a3204daf8494dd6301e3675ecf8b10604a2d23011f1d71868c"
+}

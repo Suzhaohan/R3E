@@ -1,0 +1,29 @@
+{
+  "binding": "sha256:93ae0812a0c7bf8e02622b0caaa9463bfcc63648dc86f9f06d2ad57f97da2b30",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 732,
+    "output_tokens": 257,
+    "raw_response_hash": "sha256:07b7679cfef603d4b11a38123ec427117916b14d845bdd7618ec3da715cd2b3f",
+    "request_hash": "sha256:459538743b285e6b7504bf57ff2f446e025ecb1b12306f9febee9c6b22f31dfe",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 732,
+      "output_tokens": 257,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "In the case item for ABC=3'b001, change Y from 0 to 1 so the output matches the oracle (expected 01 at the mismatching cycle).",
+      "replacement_rtl": "module JG3(ABC,X,Y);\n\t\n\tinput [2:0] ABC;\n\t\n\toutput X, Y;\n\treg X, Y;\n\t\n\talways@(ABC)\n    \n        \n\ncase(ABC)\n3'b000 : begin X = 0; Y = 1; end\n3'b001 : begin X = 0; Y = 1; end\n3'b010 : begin X = 0; Y = 0; end\n3'b011 : begin X = 0; Y = 0; end\n3'b100 : begin X = 0; Y = 0; end\n3'b101 : begin X = 0; Y = 0; end\n3'b110 : begin X = 1; Y = 0; end\n3'b111 : begin X = 1; Y = 0; end\ndefault :;\nendcase\n        \n\n\t\nendmodule"
+    }
+  },
+  "result_hash": "sha256:e87006c7beb35d92019315ac4c9a3f2a8710a0d10dbe4f2b28fab5ffd4fce9b1"
+}

@@ -1,0 +1,23 @@
+{
+  "binding": "sha256:94357971cced57c9a3ca44823a73a716cd45b4ce1c32b6354c2e07f2c8e849e1",
+  "response": {
+    "input_tokens": 1029,
+    "output_tokens": 267,
+    "raw_response_hash": "sha256:fab6425cf0a33b25a68d027a96ff4394502f6f5ea93e1f561f555811e5259b00",
+    "request_hash": "sha256:e9b837142a779193f6d838ddc2e3b8b3b811e686790427aeb5eb47f1ef9cef93",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 1029,
+      "output_tokens": 267,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Replace the empty default case body with explicit assignments X = 0; Y = 0; so the default branch drives both outputs instead of leaving them undriven.",
+      "replacement_rtl": "module JG3(ABC,X,Y);\n\t\n\tinput [2:0] ABC;\n\t\n\toutput X, Y;\n\treg X, Y;\n\t\n\talways@(ABC)\n    \n        \n\ncase(ABC)\n3'b000 : begin X = 1; Y = 1; end\n3'b001 : begin X = 0; Y = 0; end\n3'b010 : begin X = 0; Y = 0; end\n3'b011 : begin X = 0; Y = 0; end\n3'b100 : begin X = 0; Y = 0; end\n3'b101 : begin X = 1; Y = 0; end\n3'b110 : begin X = 1; Y = 0; end\n3'b111 : begin X = 1; Y = 0; end\ndefault : begin X = 0; Y = 0; end\nendcase\n        \n\n\t\nendmodule"
+    }
+  },
+  "result_hash": "sha256:1fb9a6273af854aae2d267c236ba841f2f6015a3f40661e744baf3242a61e432"
+}

@@ -1,0 +1,29 @@
+{
+  "binding": "sha256:f682f1f5a852b924d852e8a96f4836f5cee31c2f327b240fc554a9af3410934b",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 716,
+    "output_tokens": 138,
+    "raw_response_hash": "sha256:b06b81b4c2839f527ff257cb02a405729377396f29d2c6af757d5ad1e0dd399a",
+    "request_hash": "sha256:c7d1d8659e3db5cf177714b76986a6e0f9e44377f0776624fae1695539054d20",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 716,
+      "output_tokens": 138,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Replace the incorrect sum assignment `assign s=(~(a&b)&ci);` with the full-adder XOR sum `assign s=((a^b)^ci);` so s matches the oracle at the first divergent cycle.",
+      "replacement_rtl": "module fa_behavioral(a,b,ci,s,co);\n       input a,b;\n       input ci;\n       output  s;\n       output co;\n\n\n\n       assign s=((a^b)^ci);\n       assign co=((a&b)|(a&ci)|(b&ci));\n\n\n\nendmodule\n"
+    }
+  },
+  "result_hash": "sha256:e915eca68879db84f55dd965d4452726080e6b80065dd297fcb63880eb89fd56"
+}

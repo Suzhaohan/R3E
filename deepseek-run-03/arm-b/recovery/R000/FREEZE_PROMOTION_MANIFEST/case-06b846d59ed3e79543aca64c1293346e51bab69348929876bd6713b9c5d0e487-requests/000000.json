@@ -1,0 +1,23 @@
+{
+  "binding": "sha256:70bb72ac8de2316366f8217fe2ff9ee6dd62564c0b14507da2440817718326a1",
+  "response": {
+    "input_tokens": 689,
+    "output_tokens": 199,
+    "raw_response_hash": "sha256:178cb6df8144f963ac7b87138cd035d89aa271028eb27a1431b29fad70b32a1e",
+    "request_hash": "sha256:6d4703eb4f73aa45b4b951dd6cca02d35ba89d7b85b2761cb36c3cb29915085a",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 689,
+      "output_tokens": 199,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Removed the duplicate 3'd6 case item and the stray blank lines; kept the case behavior unchanged so that ABC=0 yields X=0,Y=1 and other listed values yield X=1,Y=0, with default X=0,Y=0.",
+      "replacement_rtl": "module JG3(ABC,X,Y);\n\t\n\tinput [2:0] ABC;\n\t\n\toutput X, Y;\n\treg X, Y;\n\t\n\talways@(ABC)\n\t\tcase(ABC)\n\t\t\t3'd0: begin X<=0;Y<=1; end\n\t\t\t3'd5: begin X<=1;Y=0; end\n\t\t\t3'd6: begin X<=1;Y=0; end\n\t\t\tdefault: begin X<=0;Y<=0; end\n\t\tendcase\t\n\t\nendmodule"
+    }
+  },
+  "result_hash": "sha256:aebd415b208c5f83bde3d8c2c0432ce25b3aa9a2052350da547085242f6c7c21"
+}

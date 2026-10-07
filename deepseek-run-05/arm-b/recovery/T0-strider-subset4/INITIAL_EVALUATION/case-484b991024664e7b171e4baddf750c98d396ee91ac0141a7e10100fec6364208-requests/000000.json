@@ -1,0 +1,34 @@
+{
+  "binding": "sha256:bc5ca8dc6ce6fa6a70d4686818595b02319514c13ad4d49ee0d5680bc6356815",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 827,
+    "output_tokens": 126,
+    "raw_response_hash": "sha256:776e7af0c8dc9d409a6b3e23821712a3faa5aebbc36f68a1fb4ae8949f832a9d",
+    "request_hash": "sha256:d6c764c80c218228d901f78e1de45273ebb5aab6b17bdbb198a7454badddb55f",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 827,
+      "output_tokens": 126,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Reverse the shift loop direction and shift in zero instead of wrapping the MSB.",
+      "edits": [
+        {
+          "replace": "            for (i = 7; i > 0; i = i - 1) begin\n              op[i] = op[i-1];\n            end\n            op[0] = 1'b0;",
+          "search": "            for (i = 0; i < 8; i = i + 1) begin\n              op[i+1] = op[i];\n            end\n            op[0] = op[7];"
+        }
+      ]
+    }
+  },
+  "result_hash": "sha256:9dc9218dc70c671ad59539367df1c090d273eac84ddf4ac4ce6662c88030a00c"
+}

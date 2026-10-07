@@ -1,0 +1,25 @@
+{
+  "binding": "sha256:64641841c63a460ca540aadd04ea046e829f1244c85edb27a3eb731820dd1ee1",
+  "response": {
+    "input_tokens": 840,
+    "output_tokens": 253,
+    "raw_response_hash": "sha256:d9d8431654665a35d6eba9e2e041e754b26b7b91a98be168e6b6dbe3eaef957e",
+    "request_hash": "sha256:7bd59ff468d9f2ae26250ce9c3bbb623ede10752fa7c3361c8bcbc1affe29bce",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 840,
+      "output_tokens": 253,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "candidate_id": "C_0f76e0369429eb93_0",
+      "candidate_seed": 1420274162,
+      "edit": "Replaced the duplicated case item 3'd6 with 3'd7 so that input ABC=7 produces X=1,Y=0 instead of falling through to default X=0,Y=0, matching the oracle at cycle7.",
+      "replacement_rtl": "module JG3(ABC,X,Y);\n\t\n\tinput [2:0] ABC;\n\t\n\toutput X, Y;\n\treg X, Y;\n\t\n\talways@(ABC)\n    \n        \n\n\t\tcase(ABC)\n\t\t\t3'd0: begin X<=0;Y<=1; end\n\t\t\t3'd5: begin X<=1;Y=0; end\n\t\t\t3'd6: begin X<=1;Y=0; end\n\t\t\t3'd7: begin X<=1;Y=0; end\n\t\t\tdefault: begin X<=0;Y=0; end\n\t\tendcase\t\n\t\t\n        \n\n\t\nendmodule"
+    }
+  },
+  "result_hash": "sha256:63436cdaa6de2147963fd912dc63951de68245df0fe7b29b39ecb2f2f18bdc80"
+}

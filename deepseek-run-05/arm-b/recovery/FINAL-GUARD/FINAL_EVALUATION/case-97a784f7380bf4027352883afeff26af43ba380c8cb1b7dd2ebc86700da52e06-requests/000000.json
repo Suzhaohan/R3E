@@ -1,0 +1,34 @@
+{
+  "binding": "sha256:17e1e2ed78d16cfbf00ffa9f6c46e23b0e6b7498f6149b3a50d5974c44a20880",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 4769,
+    "output_tokens": 138,
+    "raw_response_hash": "sha256:7440c5355c2d7f63a5f5bfc6fbd35d6b4b6e4af97b5d8f59977930c11a0d7c6c",
+    "request_hash": "sha256:064f422d36f640d58ad05c4df6de7384d45d9403f5b83bf147fc1884fd95eeb0",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 4769,
+      "output_tokens": 138,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Remove the const_timing==0 guard in Step8 so L_ready is asserted when the lamda polynomial completes.",
+      "edits": [
+        {
+          "replace": "\t\t\tStep8: begin\n\t\t\t\tL_ready<=1;\n\t\t\t\tStep<=Step1;\n\t\t\tend",
+          "search": "\t\t\tStep8: begin\n\t\t\t\tif(const_timing == 0)\n\t\t\t\t\tbegin\n\t\t\t\t\t\tL_ready<=1;\n\t\t\t\t\t\tStep<=Step1;\n\t\t\t\t\tend\n\t\t\tend"
+        }
+      ]
+    }
+  },
+  "result_hash": "sha256:c8237164ad779eba98ea0ec50ed4e6439f56d423043dd4002c0827730fcdafa4"
+}

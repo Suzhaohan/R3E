@@ -1,0 +1,29 @@
+{
+  "binding": "sha256:60690b7fa410a93b9ef4a1bf1df1d3de2053e6f716d0d7702406517f41ea0032",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 691,
+    "output_tokens": 291,
+    "raw_response_hash": "sha256:ec16c26c5e42d3c88436364440ee2fa0d2f74d78348a65b9e91a25dbbf689725",
+    "request_hash": "sha256:c4bca6cadbdbf291bf6a58115003d795bb4a20c055eaad0ab48aa3cdef91cdc9",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 691,
+      "output_tokens": 291,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "No change: the RTL already matches the oracle behavior for the observed mismatch (actual 00 vs expected 10 at cycle 0). The case item 3'b101 assigns X=1, Y=0, producing 10, so the reported divergence is not reproducible from this source; no local block edit is justified by the evidence.",
+      "replacement_rtl": "module JG3(ABC,X,Y);\n\t\n\tinput [2:0] ABC;\n\t\n\toutput X, Y;\n\treg X, Y;\n\t\n\talways@(ABC)\n    \n        \n\ncase(ABC)\n3'b000 : begin X = 0; Y = 0; end\n3'b001 : begin X = 0; Y = 0; end\n3'b010 : begin X = 0; Y = 0; end\n3'b011 : begin X = 0; Y = 0; end\n3'b100 : begin X = 0; Y = 0; end\n3'b101 : begin X = 1; Y = 0; end\n3'b110 : begin X = 1; Y = 0; end\n3'b111 : begin X = 1; Y = 0; end\ndefault :;\nendcase\n        \n\n\t\nendmodule"
+    }
+  },
+  "result_hash": "sha256:713211c27ad0022a0e198c24bb65d45c7679a38807f6266eeec7412373a33e19"
+}

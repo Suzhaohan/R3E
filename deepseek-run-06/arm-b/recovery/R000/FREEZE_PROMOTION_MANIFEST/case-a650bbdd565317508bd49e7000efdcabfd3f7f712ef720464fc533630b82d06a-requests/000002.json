@@ -1,0 +1,29 @@
+{
+  "binding": "sha256:cef3c5ff576e54f7e2d1e7370d0e7090899876062657b39808d5518257a7dde9",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 684,
+    "output_tokens": 256,
+    "raw_response_hash": "sha256:fd7e955ca8051c7574bbd1f6575f02720f3f104ca7a69f6a2e4eb50dcdea2a67",
+    "request_hash": "sha256:ef8c2ad71c9f5d6db842fe9517213c8b4c0f8893cc4b5fa93940fa1100c3d2de",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 684,
+      "output_tokens": 256,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "No change: the RTL already matches the observed behavior (ABC=101 gives X=1,Y=0), so no local repair is identified from the provided evidence.",
+      "replacement_rtl": "module JG3(ABC,X,Y);\n\t\n\tinput [2:0] ABC;\n\t\n\toutput X, Y;\n\treg X, Y;\n\t\n\talways@(ABC)\n    \n        \n\ncase(ABC)\n3'b000 : begin X = 0; Y = 0; end\n3'b001 : begin X = 0; Y = 0; end\n3'b010 : begin X = 0; Y = 0; end\n3'b011 : begin X = 0; Y = 0; end\n3'b100 : begin X = 0; Y = 0; end\n3'b101 : begin X = 1; Y = 0; end\n3'b110 : begin X = 1; Y = 0; end\n3'b111 : begin X = 1; Y = 0; end\ndefault :;\nendcase\n        \n\n\t\nendmodule"
+    }
+  },
+  "result_hash": "sha256:e7adb5f8f69984218745191273a86c5007abe885f1d70d52c8b86ef5455893aa"
+}

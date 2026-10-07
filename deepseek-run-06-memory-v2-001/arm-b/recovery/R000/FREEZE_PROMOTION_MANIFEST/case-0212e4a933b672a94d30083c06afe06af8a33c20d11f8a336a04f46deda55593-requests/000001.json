@@ -1,0 +1,29 @@
+{
+  "binding": "sha256:d781ac116fb2e92018e891f0195b1df55038b2027096da93f8c88c03c0093fe5",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 848,
+    "output_tokens": 279,
+    "raw_response_hash": "sha256:ad9be6f7206ed512d7e6ea37f86616bd971f64f6fed5d73adf976519933fb419",
+    "request_hash": "sha256:854226a0a3e06149f10694909858a665be8faf3c24366ecff16755ab20004857",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 848,
+      "output_tokens": 279,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Invert the enable condition: change `if(ena)` to `if(!ena)` so the decoder outputs 0 when disabled and decodes when enabled, matching the oracle behavior.",
+      "replacement_rtl": "\n\nmodule decoder3e_test(a,ena,y);\n  input [2:0] a;\n  input ena;\n  output reg [7:0] y; \n\n  \n\n\nalways @(*)begin\n  if(!ena) y = 0;\n  else begin\n    case(a)\n        3'b000: y = 8'b0000_0001;\n        3'b001: y = 8'b0000_0010;\n        3'b010: y = 8'b0000_0100;\n        3'b011: y = 8'b0000_1000;\n        3'b100: y = 8'b0001_0000;\n        3'b101: y = 8'b0010_0000;\n        3'b110: y = 8'b0100_0000;\n        3'b111: y = 8'b1000_0000;\n    \n    endcase\n  end\nend\n\n\n\n\n\nendmodule\n"
+    }
+  },
+  "result_hash": "sha256:a2c911aa5ac0ffc98e4ed0236a5863927fab8633b172d76dc2bec7147aea032e"
+}

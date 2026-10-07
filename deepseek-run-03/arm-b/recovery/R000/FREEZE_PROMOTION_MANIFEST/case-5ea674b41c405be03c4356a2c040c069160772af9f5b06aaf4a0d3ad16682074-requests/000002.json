@@ -1,0 +1,23 @@
+{
+  "binding": "sha256:a9a902f768c901cabaf9b33a9a08f00fc1e6c57db41f2e3882d5dc8179737ce3",
+  "response": {
+    "input_tokens": 792,
+    "output_tokens": 195,
+    "raw_response_hash": "sha256:08c9cea6336b6ead5785f3f38f1b807ac03e166603cc144f6e9911e522fa4bf6",
+    "request_hash": "sha256:95bb60f476ac8756a8f75879c32d40e51ec599a84a249862529507400a77bd0c",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 792,
+      "output_tokens": 195,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Removed the duplicate 3'd6 case arm and added the missing begin/end around the case statement so the always block is syntactically complete; behavior for ABC=0,5,6 and default is unchanged.",
+      "replacement_rtl": "module JG3(ABC,X,Y);\n\t\n\tinput [2:0] ABC;\n\t\n\toutput X, Y;\n\treg X, Y;\n\t\n\talways@(ABC)\n\tbegin\n\t\tcase(ABC)\n\t\t\t3'd0: begin X<=0;Y<=1; end\n\t\t\t3'd5: begin X<=1;Y=0; end\n\t\t\t3'd6: begin X<=1;Y=0; end\n\t\t\tdefault: begin X<=0;Y<=0; end\n\t\tendcase\n\tend\n\t\nendmodule"
+    }
+  },
+  "result_hash": "sha256:52bc73402cb8a92f84e14a30f4be39f03dc6a43ceb6262b6c180727396b9ff55"
+}

@@ -1,0 +1,29 @@
+{
+  "binding": "sha256:519c3fd55e50a681ef94a188c718853487f871c8b06308c4bcab44743b35b412",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 689,
+    "output_tokens": 301,
+    "raw_response_hash": "sha256:05707e440dfcc688d6e7ffb99f89c878b468291c1ff9a6380625bb61ed4e5ba3",
+    "request_hash": "sha256:5954e311b8652894044b933e3db63f0edd8a4d076412e4e4893f734f0ac6b207",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 689,
+      "output_tokens": 301,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "No change: the RTL already matches the oracle behavior for the observed mismatch (ABC=3'b000 yields X=1,Y=1, i.e. 11, while expected 10 corresponds to a different input). The buggy output 11 at cycle 0 is consistent with the current case item 3'b000, so no local assignment edit is justified by the provided evidence.",
+      "replacement_rtl": "module JG3(ABC,X,Y);\n\t\n\tinput [2:0] ABC;\n\t\n\toutput X, Y;\n\treg X, Y;\n\t\n\talways@(ABC)\n    \n        \n\ncase(ABC)\n3'b000 : begin X = 1; Y = 1; end\n3'b001 : begin X = 0; Y = 0; end\n3'b010 : begin X = 0; Y = 0; end\n3'b011 : begin X = 0; Y = 0; end\n3'b100 : begin X = 0; Y = 0; end\n3'b101 : begin X = 1; Y = 0; end\n3'b110 : begin X = 1; Y = 0; end\n3'b111 : begin X = 1; Y = 0; end\ndefault :;\nendcase\n        \n\n\t\nendmodule"
+    }
+  },
+  "result_hash": "sha256:327665d5dcb81e3130c26753409f581b938e42fa4840bdf9850ac8b68809d105"
+}

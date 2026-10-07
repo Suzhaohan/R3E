@@ -1,0 +1,29 @@
+{
+  "binding": "sha256:a3a8f95c89596241bfe1cf87991a50696cfadc8fb10185cd466b1d2e02f93ccb",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 736,
+    "output_tokens": 162,
+    "raw_response_hash": "sha256:03aa0b3f62b7ef83bc027028debb3bbbaef0f5a39363cc3cc5579b2c8f3c5ab5",
+    "request_hash": "sha256:0cd0596eefbd03df2ab518cd8e70a6fc0e576f2437a0a183e53f0a5b1acddcf2",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 736,
+      "output_tokens": 162,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Replace the sum assignment `assign s=(a|b|ci);` with the correct XOR-based full-adder sum `assign s=(a^b^ci);`. The carry logic is already correct; only the sum expression was wrong (OR instead of XOR), causing the observed mismatch where s=1 instead of 0 when multiple inputs are high.",
+      "replacement_rtl": "module fa_behavioral(a,b,ci,s,co);\n       input a,b;\n       input ci;\n       output  s;\n       output co;\n\n\n\n       assign s=(a^b^ci);\n       assign co=((a&b)|(a&ci)|(b&ci));\n\n\n\nendmodule\n"
+    }
+  },
+  "result_hash": "sha256:8b13c7c047794b3024440538066ef8dac26df11ceb624f463e48202b3f6c6c14"
+}

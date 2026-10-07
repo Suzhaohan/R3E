@@ -1,0 +1,23 @@
+{
+  "binding": "sha256:f1da7244bd598c501f3f378f5d70fc89958d30914a20fec9b503e16f816301e1",
+  "response": {
+    "input_tokens": 732,
+    "output_tokens": 148,
+    "raw_response_hash": "sha256:f886666983dc54631ea9ade738b2f5c4683924f617ab933d7f9ada17b3ab259e",
+    "request_hash": "sha256:17c3f43cf2ab714a811b4d0fcca464dff765e6ebf37767ffd5f7144f623d8b18",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 732,
+      "output_tokens": 148,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Fix sum output: replace `assign s=(a&b^ci);` with `assign s=(a^b^ci);` so the sum is the correct 3-input XOR (a XOR b XOR ci) instead of the buggy (a AND b) XOR ci.",
+      "replacement_rtl": "module fa_behavioral(a,b,ci,s,co);\n       input a,b;\n       input ci;\n       output  s;\n       output co;\n\n\n\n       assign s=(a^b^ci);\n       assign co=((a&b)|(a&ci)|(b&ci));\n\n\n\nendmodule\n"
+    }
+  },
+  "result_hash": "sha256:88ee7ef967c54d1730c9cabe20e6a3371296628763592bb30a7464983970796a"
+}

@@ -1,0 +1,29 @@
+{
+  "binding": "sha256:603c8f81746eb6c9806b1a5355ece323ca181a9a884fa947bea2c3bfa58c436f",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 846,
+    "output_tokens": 323,
+    "raw_response_hash": "sha256:19dc064ccee31528ff99f97523bb210212a574f7d5a804fd87aeb00171b86bc5",
+    "request_hash": "sha256:cfd1446504a617ceb1ecb575130e97f2ad4547a76c849fd72aab617a4adfbed9",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 846,
+      "output_tokens": 323,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "In the combinational always block, invert the enable condition from `if(ena)` to `if(!ena)` so that y is forced to 0 when ena is low and the one-hot decode is applied when ena is high, matching the oracle behavior at cycle0 (ena low -> 00000000) and cycle1 (ena high, a=000 -> 00000001).",
+      "replacement_rtl": "\n\nmodule decoder3e_test(a,ena,y);\n  input [2:0] a;\n  input ena;\n  output reg [7:0] y; \n\n  \n\n\nalways @(*)begin\n  if(!ena) y = 0;\n  else begin\n    case(a)\n        3'b000: y = 8'b0000_0001;\n        3'b001: y = 8'b0000_0010;\n        3'b010: y = 8'b0000_0100;\n        3'b011: y = 8'b0000_1000;\n        3'b100: y = 8'b0001_0000;\n        3'b101: y = 8'b0010_0000;\n        3'b110: y = 8'b0100_0000;\n        3'b111: y = 8'b1000_0000;\n    \n    endcase\n  end\nend\n\n\n\n\n\nendmodule\n"
+    }
+  },
+  "result_hash": "sha256:4b3004fd1cb9d3b77a3117a9cef1f766f7785a4d9018f9b6bf53dda7926eb89c"
+}

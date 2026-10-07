@@ -1,0 +1,29 @@
+{
+  "binding": "sha256:e52e4dd57ee16b6003321e138d07b47404c6ac3f693fdac0f6c331698610baca",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 1168,
+    "output_tokens": 264,
+    "raw_response_hash": "sha256:a8141dca9c6598ffe490ddcdbda0fb2865d26c669e65c8e69689f2608cd2ffcb",
+    "request_hash": "sha256:48b8c5628f56437c41e0de78e6f1f9f0608ce9db67b74fc0accf189a0bfd8ca3",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 1168,
+      "output_tokens": 264,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Replace the duplicated case item 3'b110 with 3'b111 so the case covers the missing input code 7, which the oracle expects to produce X=1,Y=0 at the divergence cycle.",
+      "replacement_rtl": "module JG3(ABC,X,Y);\n\t\n\tinput [2:0] ABC;\n\t\n\toutput X, Y;\n\treg X, Y;\n\t\n\talways@(ABC)\n    \n        \n\ncase(ABC)\n3'b000 : begin X = 1; Y = 1; end\n3'b001 : begin X = 0; Y = 0; end\n3'b010 : begin X = 0; Y = 0; end\n3'b011 : begin X = 0; Y = 0; end\n3'b100 : begin X = 0; Y = 0; end\n3'b101 : begin X = 1; Y = 0; end\n3'b110 : begin X = 1; Y = 0; end\n3'b111 : begin X = 1; Y = 0; end\ndefault :;\nendcase\n        \n\n\t\nendmodule"
+    }
+  },
+  "result_hash": "sha256:ce729f3441579275e46f9675426f687b8c30ad099d8d47e082d05af65281d36c"
+}

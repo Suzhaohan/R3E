@@ -1,0 +1,29 @@
+{
+  "binding": "sha256:b65269a5e51c0b6a623d0aad6662913bf4e1e60421d9fe863793c939912ea3ca",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 972,
+    "output_tokens": 117,
+    "raw_response_hash": "sha256:34e24a7ab77ff91345f21a86ccf4c11293fcec93fa5c828bdddbf24ae1d789da",
+    "request_hash": "sha256:fef9a3e6ac640fc45690447282699e5641dea0c1a0fc59c43cbd6b13d865e6b5",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 972,
+      "output_tokens": 117,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Add the missing else branch so that when s is not 0, y is assigned b, completing the 2:1 mux and correcting the inverted/undefined select behavior.",
+      "replacement_rtl": "module mux21(a,b,s,y);\n\tinput a,b,s;\n\toutput y;\n\treg y;\n\talways @(a,b,s)\n\tbegin\n\t\tif(s==1'B0)begin y=a;end\n\t\telse begin y=b;end\n\tend\nendmodule"
+    }
+  },
+  "result_hash": "sha256:7dfd795c08b8addbf36d551819b2ef7cfe84df8499a9e265df1caa5b15f08238"
+}

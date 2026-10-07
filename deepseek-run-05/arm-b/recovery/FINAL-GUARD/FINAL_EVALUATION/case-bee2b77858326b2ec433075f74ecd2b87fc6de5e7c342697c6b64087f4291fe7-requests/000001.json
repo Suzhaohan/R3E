@@ -1,0 +1,34 @@
+{
+  "binding": "sha256:7b66edf404d1c4e739cba98c33740fbd87d4687b9cdc2cdc3d61780351c64318",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 4728,
+    "output_tokens": 156,
+    "raw_response_hash": "sha256:e15e7ac997f3c6fd73b108d79202db7a2953a9aa4d4ba281911abc25ced778d4",
+    "request_hash": "sha256:92d13bb234402997b66a87d0cadf76c330dd21836ff0f9a7514e46db4437b35b",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 4728,
+      "output_tokens": 156,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Clear L_ready when not in the final timing step to avoid a stuck-high ready flag.",
+      "edits": [
+        {
+          "replace": "\t\t\t\tif(const_timing == 0)\n\t\t\t\t\tbegin\n\t\t\t\t\t\tL_ready<=1;\n\t\t\t\t\t\tStep<=Step1;\n\t\t\t\t\tend\n\t\t\t\telse\n\t\t\t\t\tL_ready<=0;",
+          "search": "\t\t\t\tif(const_timing == 0)\n\t\t\t\t\tbegin\n\t\t\t\t\t\tL_ready<=1;\n\t\t\t\t\t\tStep<=Step1;\n\t\t\t\t\tend"
+        }
+      ]
+    }
+  },
+  "result_hash": "sha256:8c93bc1dfee826a0636f669d20bd1c257da5a91f0f7a87d434761deaf534cfbf"
+}

@@ -84,10 +84,13 @@ def grouped_split(
     *,
     adaptation_fraction: float = 0.5,
     seed: int = 0,
+    min_target_designs: int = 1,
 ) -> tuple[dict[str, Any], dict[str, Any]]:
     verify_manifest(residual_manifest)
     if not 0.0 < adaptation_fraction < 1.0:
         raise ManifestViolation("adaptation_fraction must be between zero and one")
+    if type(min_target_designs) is not int or min_target_designs < 1:
+        raise ManifestViolation("min_target_designs must be a positive integer")
     groups: dict[str, list[dict[str, Any]]] = {}
     for row in residual_manifest["rows"]:
         design = str(row.get("design") or row.get("design_id") or "")
@@ -96,9 +99,14 @@ def grouped_split(
         groups.setdefault(design, []).append(row)
     if len(groups) < 2:
         raise ManifestViolation("design-disjoint split requires at least two designs")
+    if len(groups) < min_target_designs + 1:
+        raise ManifestViolation("not enough designs for adaptation and promotion target")
     designs = sorted(groups)
     random.Random(seed).shuffle(designs)
-    cut = min(len(designs) - 1, max(1, round(len(designs) * adaptation_fraction)))
+    cut = min(
+        len(designs) - min_target_designs,
+        max(1, round(len(designs) * adaptation_fraction)),
+    )
     adaptation_designs = set(designs[:cut])
     adaptation_rows = [
         row for design in designs if design in adaptation_designs for row in groups[design]
@@ -126,3 +134,67 @@ def grouped_split(
     if left & right:
         raise ManifestViolation("grouped split leaked designs")
     return adaptation, target
+
+
+def split_for_promotion(
+    residual_manifest: dict[str, Any],
+    *,
+    min_target_designs: int,
+    adaptation_fraction: float = 0.5,
+    seed: int = 0,
+) -> tuple[dict[str, Any], dict[str, Any]]:
+    """Reserve the gate's required target designs before assigning practice rows.
+
+    Insufficient residuals remain available for later rounds, without starting
+    a search that cannot pass the distinct-design promotion gate.
+    """
+    verify_manifest(residual_manifest)
+    if type(min_target_designs) is not int or min_target_designs < 1:
+        raise ManifestViolation("min_target_designs must be a positive integer")
+    if not 0.0 < adaptation_fraction < 1.0:
+        raise ManifestViolation("adaptation_fraction must be between zero and one")
+    designs = {
+        str(row.get("design") or row.get("design_id") or "")
+        for row in residual_manifest["rows"]
+    }
+    if "" in designs:
+        raise ManifestViolation("residual row missing design")
+    eligible = len(designs) >= min_target_designs + 1
+    if eligible:
+        adaptation, target = grouped_split(
+            residual_manifest,
+            adaptation_fraction=adaptation_fraction,
+            seed=seed,
+            min_target_designs=min_target_designs,
+        )
+        adaptation_rows, target_rows = adaptation["rows"], target["rows"]
+    else:
+        adaptation_rows, target_rows = residual_manifest["rows"], []
+    allocation = {
+        "residual_design_count": len(designs),
+        "adaptation_design_count": len({
+            str(row.get("design") or row.get("design_id")) for row in adaptation_rows
+        }),
+        "target_design_count": len({
+            str(row.get("design") or row.get("design_id")) for row in target_rows
+        }),
+        "required_target_designs": min_target_designs,
+        "required_residual_designs": min_target_designs + 1,
+        "missing_design_count": max(0, min_target_designs + 1 - len(designs)),
+    }
+    metadata = {
+        "group_key": "design",
+        "seed": seed,
+        "split_protocol": "promotion_design_reserve_v1",
+        "promotion_eligible": eligible,
+        "defer_reason": "" if eligible else "insufficient_residual_designs",
+        "design_allocation": allocation,
+    }
+    return tuple(
+        make_manifest(
+            rows, split=split,
+            source_manifest_hash=residual_manifest["manifest_hash"],
+            metadata=metadata,
+        )
+        for split, rows in (("adaptation", adaptation_rows), ("target", target_rows))
+    )

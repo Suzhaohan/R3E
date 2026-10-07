@@ -1,0 +1,29 @@
+{
+  "binding": "sha256:50fc39eeb3cbc8be27aaaf1cb101fe5602c888c26fce510e61333cab500cb20e",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 1226,
+    "output_tokens": 111,
+    "raw_response_hash": "sha256:c843e1145db29f2538631932252be7bdd4e328d138446d43cef2e8d8fcb6a6fc",
+    "request_hash": "sha256:11c492dabeba58aa144d9d09c93dd30b85e64bef1c4323f77d74e643073c5ffc",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 1226,
+      "output_tokens": 111,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Swap the mux branch assignments so that s!=0 selects b and s==0 selects a, correcting the inverted select polarity; also add begin/end to complete the always block.",
+      "replacement_rtl": "module mux21(a,b,s,y);\n\tinput a,b,s;\n\toutput y;\n\treg y;\n\talways @(a,b,s)\n\tbegin\n\t\tif(s!=0) y=b;\n\t\telse y=a;\n\tend\nendmodule"
+    }
+  },
+  "result_hash": "sha256:71a5e963f9557f44b960bd9b7fbe2f504175289a80eab7c3462317fce2c1f310"
+}

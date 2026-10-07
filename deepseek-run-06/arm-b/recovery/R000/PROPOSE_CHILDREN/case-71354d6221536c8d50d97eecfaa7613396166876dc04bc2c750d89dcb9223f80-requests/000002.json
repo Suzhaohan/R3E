@@ -1,0 +1,29 @@
+{
+  "binding": "sha256:f6f64759baefb36cbfe70813bb604c2d039f14ad6814c3d4dbac3488cc343d02",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 740,
+    "output_tokens": 163,
+    "raw_response_hash": "sha256:f98e9709407f6d1e899c689645c2e91d3f55e5bfffe0ba4ebcdb176c9de4bae5",
+    "request_hash": "sha256:6706f9735c94b8cdd3413c190c0d4c8e9d52950c5c415c764c9b3afea724f2f3",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 740,
+      "output_tokens": 163,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Replace the sum assignment `assign s=(a|b|ci);` with the correct XOR-based full-adder sum `assign s=(a^b^ci);`. The OR expression incorrectly produced 1 whenever any input was high (e.g., 11 instead of 10), matching the observed first divergence at cycle 3. Carry logic is unchanged.",
+      "replacement_rtl": "module fa_behavioral(a,b,ci,s,co);\n       input a,b;\n       input ci;\n       output  s;\n       output co;\n\n\n\n       assign s=(a^b^ci);\n       assign co=((a&b)|(a&ci)|(b&ci));\n\n\n\nendmodule\n"
+    }
+  },
+  "result_hash": "sha256:835ac4cf036faed68f512df536d0e5035d0f97692b0d21d31684e592946571e6"
+}

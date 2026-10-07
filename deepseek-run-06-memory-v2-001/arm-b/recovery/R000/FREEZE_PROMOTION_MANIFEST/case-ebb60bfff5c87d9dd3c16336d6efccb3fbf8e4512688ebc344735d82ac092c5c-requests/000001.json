@@ -1,0 +1,29 @@
+{
+  "binding": "sha256:c5d27a62e59a2f98846e8ae77f06107c6b49a7c0d3d90fd278cd676d30b33e5b",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 731,
+    "output_tokens": 324,
+    "raw_response_hash": "sha256:faa442d8b05d9ea7b4262e22a42e58314a2e0d5210416ad76b0da67817346660",
+    "request_hash": "sha256:1620d2b8b7a8a4e7192859a3e0137d0ce0f7c554140275fb026829cf827e45ed",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 731,
+      "output_tokens": 324,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Fix truncated binary literals in the case statement: 3'b100 was 8'b0001_000 (7 bits) changed to 8'b0001_0000, and 3'b111 was 8'b100_0000 (7 bits) changed to 8'b1000_0000, restoring the correct one-hot decoder outputs for a=100 and a=111.",
+      "replacement_rtl": "\n\nmodule decoder3e_test(a,ena,y);\n  input [2:0] a;\n  input ena;\n  output [7:0] y; \n  reg[7:0] Y;\n  \n\n\nalways @(ena or a)\nbegin\nif(ena==0)\nY=8'b0000_0000;\nelse\ncase (a)\n3'b000: Y=8'b0000_0001;\n3'b001: Y=8'b0000_0010;\n3'b010: Y=8'b0000_0100;\n3'b011: Y=8'b0000_1000;\n3'b100: Y=8'b0001_0000;\n3'b101: Y=8'b0010_0000;\n3'b110: Y=8'b0100_0000;\n3'b111: Y=8'b1000_0000;\nendcase\nend\nassign y=Y;\n\n\n\n\n\nendmodule\n"
+    }
+  },
+  "result_hash": "sha256:a2fca1a1d2494f3bfe7a7751b9a4d893adafc8d5ed5f855b89b191193031c226"
+}

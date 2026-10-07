@@ -1,0 +1,29 @@
+{
+  "binding": "sha256:db390e63cd2d81291e36b76366fbb803280b5ebbaa4ee5c52a7157a858caa6d8",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 841,
+    "output_tokens": 186,
+    "raw_response_hash": "sha256:a8ba761753a10506c5bba3ca4a933f2f32b558c364188e1eb18c4f1d6b00c3e6",
+    "request_hash": "sha256:3a6755a43983f01f9b8d6eb033662ff8f24c66f3630a6e51bfc5e74b91e72cbb",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 841,
+      "output_tokens": 186,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Remove the duplicated 3'd6 case item (identical duplicate branch) and the stray blank/whitespace lines in the always block; keep the single 3'd6 branch and default branch unchanged.",
+      "replacement_rtl": "module JG3(ABC,X,Y);\n\t\n\tinput [2:0] ABC;\n\t\n\toutput X, Y;\n\treg X, Y;\n\t\n\talways@(ABC)\n\t\tcase(ABC)\n\t\t\t3'd0: begin X<=0;Y<=1; end\n\t\t\t3'd5: begin X<=1;Y=0; end\n\t\t\t3'd6: begin X<=1;Y=0; end\n\t\t\tdefault: begin X<=0;Y<=0; end\n\t\tendcase\t\n\t\nendmodule"
+    }
+  },
+  "result_hash": "sha256:6ce94fc3095c5233fbe4164cf49dc6d958d1d7abd12b5d2fbf4332f9e41d4bd5"
+}

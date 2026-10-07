@@ -1,0 +1,23 @@
+{
+  "binding": "sha256:320202722f0b2d1d2d79c9204e3e6adf6051e5ede494c544f19d2abd7b39d5f1",
+  "response": {
+    "input_tokens": 739,
+    "output_tokens": 157,
+    "raw_response_hash": "sha256:255287144796f4cf18e1ea49520fe9aca09a1259bdf76314936472513eab3819",
+    "request_hash": "sha256:d782bc0a762db7217617979bf6b8fea80389f2ebc9b6c227e574dca26776ecd6",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 739,
+      "output_tokens": 157,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Replace the sum assignment `assign s=(a|b|ci);` with the correct XOR-based full-adder sum `assign s=(a^b^ci);`. The carry logic is unchanged. This fixes the first divergence at cycle 3 where the buggy OR-based sum produced 11 instead of the expected 10.",
+      "replacement_rtl": "module fa_behavioral(a,b,ci,s,co);\n       input a,b;\n       input ci;\n       output  s;\n       output co;\n\n\n\n       assign s=(a^b^ci);\n       assign co=((a&b)|(a&ci)|(b&ci));\n\n\n\nendmodule\n"
+    }
+  },
+  "result_hash": "sha256:487110bf10d31c05c35051b6ebcebddf42a200a3ecd90b711ea90bb9510e2b55"
+}

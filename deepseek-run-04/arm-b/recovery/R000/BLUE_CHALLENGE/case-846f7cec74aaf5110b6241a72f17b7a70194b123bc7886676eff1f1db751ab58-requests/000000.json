@@ -1,0 +1,23 @@
+{
+  "binding": "sha256:f167747b26e107a03e57ea40feb8759affe2fbfa10bc31a3fa0c877bc215da71",
+  "response": {
+    "input_tokens": 728,
+    "output_tokens": 259,
+    "raw_response_hash": "sha256:1738af3817e7be1950783fb2c45ee0faa2ba8655a6b7300c3d2096baad19c90b",
+    "request_hash": "sha256:b147f7e7f30cb4d3076a4de35f59248d0b37b2f034fab6568d02e144081a539d",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 728,
+      "output_tokens": 259,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "No change: the supplied RTL already matches the oracle evidence (ABC=3'b000 yields X=1,Y=1, i.e. actual 11 vs expected 10).",
+      "replacement_rtl": "module JG3(ABC,X,Y);\n\t\n\tinput [2:0] ABC;\n\t\n\toutput X, Y;\n\treg X, Y;\n\t\n\talways@(ABC)\n    \n        \n\ncase(ABC)\n3'b000 : begin X = 1; Y = 1; end\n3'b001 : begin X = 0; Y = 0; end\n3'b010 : begin X = 0; Y = 0; end\n3'b011 : begin X = 0; Y = 0; end\n3'b100 : begin X = 0; Y = 0; end\n3'b101 : begin X = 1; Y = 0; end\n3'b110 : begin X = 1; Y = 0; end\n3'b111 : begin X = 1; Y = 0; end\ndefault :;\nendcase\n        \n\n\t\nendmodule"
+    }
+  },
+  "result_hash": "sha256:57e6f8ed724088798b4bcb62acce7bfef2414b36f76162f32cd766e8d602bf6b"
+}

@@ -1,0 +1,31 @@
+{
+  "binding": "sha256:f6de342028479b355ded43ee89c5aec28326361bb4f7d0f964f1a5978ce44314",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 758,
+    "output_tokens": 137,
+    "raw_response_hash": "sha256:f878960b67ea256c1802d37058cdbe8af862dfe91f3f39e986c4a5c731dd54c4",
+    "request_hash": "sha256:cac18e5c320a5e605a88bcfe5c31330e8bcb74890886b8a14be2a4a57c085cab",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 758,
+      "output_tokens": 137,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "candidate_id": "C_31ed37f3dd4a8b21_2",
+      "candidate_seed": 108590335,
+      "edit": "Swap the mux data assignments so the select polarity matches the oracle: when s!=0 drive y=b, otherwise drive y=a (previously y=a for s!=0 and y=b otherwise).",
+      "replacement_rtl": "module mux21(a,b,s,y);\n\tinput a,b,s;\n\toutput y;\n\treg y;\n\talways @(a,b,s)\n\t\tif(s!=0) y=b;\n\t\telse y=a;\nendmodule"
+    }
+  },
+  "result_hash": "sha256:afae6153ca34a437356458a6b5e81c14361fd8dacf7dee3c6d3adf499a822198"
+}

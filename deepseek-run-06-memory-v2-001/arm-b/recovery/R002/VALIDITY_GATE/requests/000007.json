@@ -1,0 +1,29 @@
+{
+  "binding": "sha256:efbca65f7b184fccccba2a4e31aff651c9bf53f51fee8b17febb89a5cef53e04",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 713,
+    "output_tokens": 285,
+    "raw_response_hash": "sha256:b238081d906b5cd70d2067f59d84d80b5874f479d68476bb9b9d7574ecedf443",
+    "request_hash": "sha256:a8022f3e5e901a42a372a2ddda7a81d754235e8cfe4d3194a616ffd07c343173",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 713,
+      "output_tokens": 285,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "In the disabled branch (if(!ena)), change y = 1 to y = 0 so the output is all zeros when ena is low, matching the expected cycle-0 value 00000000.",
+      "replacement_rtl": "\n\nmodule decoder3e_test(a,ena,y);\n  input [2:0] a;\n  input ena;\n  output reg [7:0] y; \n\n  \n\n\nalways @(*)begin\n  if(!ena) y = 0;\n  else begin\n    case(a)\n        3'b000: y = 8'b0000_0001;\n        3'b001: y = 8'b0000_0010;\n        3'b010: y = 8'b0000_0100;\n        3'b011: y = 8'b0000_1000;\n        3'b100: y = 8'b0001_0000;\n        3'b101: y = 8'b0010_0000;\n        3'b110: y = 8'b0100_0000;\n        3'b111: y = 8'b1000_0000;\n    \n    endcase\n  end\nend\n\n\n\n\n\nendmodule\n"
+    }
+  },
+  "result_hash": "sha256:8ad7ae02e56e9c02372b43f66548c23432b1d600cb684f097581fd4642b6d47c"
+}

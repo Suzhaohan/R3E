@@ -1,0 +1,29 @@
+{
+  "binding": "sha256:337d1af6c9a322fbe3d0eb559fc64c890bcc1325304e76be58ae5eee58593a0c",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 562,
+    "output_tokens": 153,
+    "raw_response_hash": "sha256:6358534eb61b78577cd291d30c1ef82d8d1e46f104b64a40d597e86f74fb742a",
+    "request_hash": "sha256:ec15f77be6f422e4395a20dad33c1321af3ad8c105e4ce83362d2e838a347252",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 562,
+      "output_tokens": 153,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "In the co assignment, replace the OR term (a|b) with the AND term (a&b) so the carry-out is the standard majority function (a&b)|(a&ci)|(b&ci), fixing the cycle-2 mismatch where co was 1 instead of 0.",
+      "replacement_rtl": "module fa_behavioral(a,b,ci,s,co);\n       input a,b;\n       input ci;\n       output  s;\n       output co;\n\n\n\n       assign s=(a^b^ci);\n       assign co=((a&b)|(a&ci)|(b&ci));\n\n\n\nendmodule\n"
+    }
+  },
+  "result_hash": "sha256:3eca564784670589f26fd101e634a2be7aa01d5ea4ddb4646a1a3eb0c8e6d22a"
+}

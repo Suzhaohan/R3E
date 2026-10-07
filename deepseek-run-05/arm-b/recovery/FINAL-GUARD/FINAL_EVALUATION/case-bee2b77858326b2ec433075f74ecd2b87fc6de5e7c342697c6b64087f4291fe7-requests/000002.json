@@ -1,0 +1,34 @@
+{
+  "binding": "sha256:2e688be97d1a054111e8f35699a2a844a6df3625d8cd3046198e0fa5b19f3702",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 4720,
+    "output_tokens": 159,
+    "raw_response_hash": "sha256:cf777480cbd7c130f7a32f34928002fcacdc5e0b6c4a8a52430ab1b40f9360a6",
+    "request_hash": "sha256:c91599fe8cc223cce07b18cfa2a5fcd392bffd087e4792c2b2940ada9eacbede",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 4720,
+      "output_tokens": 159,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Clear L_ready in Step8 when const_timing is nonzero so the ready pulse is not held high.",
+      "edits": [
+        {
+          "replace": "\t\t\t\tif(const_timing == 0)\n\t\t\t\t\tbegin\n\t\t\t\t\t\tL_ready<=1;\n\t\t\t\t\t\tStep<=Step1;\n\t\t\t\t\tend\n\t\t\t\telse\n\t\t\t\t\tL_ready<=0;",
+          "search": "\t\t\t\tif(const_timing == 0)\n\t\t\t\t\tbegin\n\t\t\t\t\t\tL_ready<=1;\n\t\t\t\t\t\tStep<=Step1;\n\t\t\t\t\tend"
+        }
+      ]
+    }
+  },
+  "result_hash": "sha256:20f93d051f92c9ed590986a61bd99ef98ec81ccc05c5cfe8309e24155b7f6368"
+}

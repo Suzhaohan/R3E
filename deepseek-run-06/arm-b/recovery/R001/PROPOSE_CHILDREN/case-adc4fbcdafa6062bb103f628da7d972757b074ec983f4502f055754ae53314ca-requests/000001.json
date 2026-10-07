@@ -1,0 +1,29 @@
+{
+  "binding": "sha256:ad7ddb45a26b9558ebdb135eaf7c7e4af4aea2d9cf4ec9a544da2c262f82c4e7",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 1298,
+    "output_tokens": 158,
+    "raw_response_hash": "sha256:4e852e492e41a4b51e226c929b46cf30eb48cca107c7436055bce7e42ee6d89a",
+    "request_hash": "sha256:5386d43d421f4f3bb6723420d3cde5e6803ef83ac065a64bf23d5d58aa8a9ca8",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 1298,
+      "output_tokens": 158,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Replaced the incorrect sum assignment `assign s=(~(a&b)&ci);` with the correct full-adder XOR sum `assign s=(a^b^ci);`. Carry logic left unchanged. This corrects the first divergent output at cycle 2 where the buggy sum produced 0 instead of the expected 1.",
+      "replacement_rtl": "module fa_behavioral(a,b,ci,s,co);\n       input a,b;\n       input ci;\n       output  s;\n       output co;\n\n\n\n       assign s=(a^b^ci);\n       assign co=((a&b)|(a&ci)|(b&ci));\n\n\n\nendmodule\n"
+    }
+  },
+  "result_hash": "sha256:15aa34bf43fd1ab852eff860b9c79ff6b36283039e166300101dc578a5cb7c7d"
+}

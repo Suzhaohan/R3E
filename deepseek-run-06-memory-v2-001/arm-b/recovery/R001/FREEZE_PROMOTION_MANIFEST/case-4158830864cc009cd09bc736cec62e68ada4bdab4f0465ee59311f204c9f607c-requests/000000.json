@@ -1,0 +1,29 @@
+{
+  "binding": "sha256:b396648f7e933f061f0c7127e01be9564cd63d2d608dbb67b61717b312d8ebb6",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 891,
+    "output_tokens": 285,
+    "raw_response_hash": "sha256:e95eaefcecb4f4c791c6d646fd70aa5d1a01164f8f1502d801e29ca881e7ff85",
+    "request_hash": "sha256:14e46030db52737b8a7d6384c964eb94cae384e94213db7b386156743f92c962",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 891,
+      "output_tokens": 285,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Invert the enable condition: change `if(ena)` to `if(!ena)` so the decoder outputs zero when ena is low and decodes a when ena is high, matching the oracle behavior.",
+      "replacement_rtl": "\n\nmodule decoder3e_test(a,ena,y);\n  input [2:0] a;\n  input ena;\n  output reg [7:0] y; \n\n  \n\n\nalways @(*)begin\n  if(!ena) y = 0;\n  else begin\n    case(a)\n        3'b000: y = 8'b0000_0001;\n        3'b001: y = 8'b0000_0010;\n        3'b010: y = 8'b0000_0100;\n        3'b011: y = 8'b0000_1000;\n        3'b100: y = 8'b0001_0000;\n        3'b101: y = 8'b0010_0000;\n        3'b110: y = 8'b0100_0000;\n        3'b111: y = 8'b1000_0000;\n    \n    endcase\n  end\nend\n\n\n\n\n\nendmodule\n"
+    }
+  },
+  "result_hash": "sha256:3fd8ab64789151d4eb6205f1443cf233974da1a87a6225f8f078ed6be40f78f9"
+}

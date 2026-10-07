@@ -1,0 +1,29 @@
+{
+  "binding": "sha256:cfb3a3cddc4164c5a5d5a020e0bffb4bee8c1c9269ffb48ce226d0a8f52ff55b",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 686,
+    "output_tokens": 269,
+    "raw_response_hash": "sha256:58bdd7e0b57f8e18f922cccde45b4b26c83177d8c38f8f0c525cfcfa3c1e3dc5",
+    "request_hash": "sha256:7b4c536f6eaea00b2b47cba7fb603862f1b03f93e7e2fcf18cbda79681f88b66",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 686,
+      "output_tokens": 269,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "In the case(ABC) block, change the 3'b001 arm from X=0;Y=0 to X=0;Y=1 so the Y output matches the expected value at the first-divergence cycle.",
+      "replacement_rtl": "module JG3(ABC,X,Y);\n\t\n\tinput [2:0] ABC;\n\t\n\toutput X, Y;\n\treg X, Y;\n\t\n\talways@(ABC)\n    \n        \n\ncase(ABC)\n3'b000 : begin X = 0; Y = 1; end\n3'b001 : begin X = 0; Y = 1; end\n3'b010 : begin X = 0; Y = 0; end\n3'b011 : begin X = 0; Y = 0; end\n3'b100 : begin X = 0; Y = 0; end\n3'b101 : begin X = 0; Y = 0; end\n3'b110 : begin X = 1; Y = 0; end\n3'b111 : begin X = 1; Y = 0; end\ndefault :;\nendcase\n        \n\n\t\nendmodule"
+    }
+  },
+  "result_hash": "sha256:195783e44baaceb66a0e07ec7639836c44bfab6275d6df58954a9b2f45b427c1"
+}

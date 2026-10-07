@@ -1,0 +1,29 @@
+{
+  "binding": "sha256:3bada0b83e95034e8ec5a84a3aa21e4b5409f7337db7db7aa3a8945384075db9",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 566,
+    "output_tokens": 131,
+    "raw_response_hash": "sha256:913f4393a5b5addb1e97c2e4702a7ebb00e66dc40ee063b01d8ff381caba5601",
+    "request_hash": "sha256:4df3d25c60357087f79bbc3139dab313633f527254399daecadb0f88249f8e1c",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 566,
+      "output_tokens": 131,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "In the posedge clk always block, replace the constant reset assignment q_reg<=0 with q_reg<=d so the register captures the input data each clock edge instead of clearing to zero.",
+      "replacement_rtl": "module latch24_test( d, clk,q );\n\t\n\t\n\ninput wire [23:0] d;\ninput wire clk;\noutput wire [23:0] q;\nreg [23:0] q_reg;\nalways@(posedge clk)\nbegin\nq_reg<=d;\nend\nassign q=q_reg;\nendmodule"
+    }
+  },
+  "result_hash": "sha256:1ec4c2260c0aca4fad9d511772ac04955faccc4c55cd44f9b689cad9b27d0bb0"
+}

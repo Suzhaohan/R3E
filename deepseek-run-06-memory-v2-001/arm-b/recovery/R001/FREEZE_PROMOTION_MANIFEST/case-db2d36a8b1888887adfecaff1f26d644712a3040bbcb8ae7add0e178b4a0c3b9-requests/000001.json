@@ -1,0 +1,29 @@
+{
+  "binding": "sha256:90ffd782a04ac5c6f728dccc71c297a151b29e46b5654acf42039267e8a5af17",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 717,
+    "output_tokens": 265,
+    "raw_response_hash": "sha256:a5867d0651c6b45856b4f14ff861730b88927956310da697946dff7e0364f713",
+    "request_hash": "sha256:94dc2c7037b77a05d8e0ae7e5b6c6b0024b814997529364b01a5d2b95c1eee9f",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 717,
+      "output_tokens": 265,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "No change: the RTL already matches the oracle behavior for the observed mismatch (ena asserted yields y=0).",
+      "replacement_rtl": "\n\nmodule decoder3e_test(a,ena,y);\n  input [2:0] a;\n  input ena;\n  output reg [7:0] y; \n\n  \n\n\nalways @(*)begin\n  if(ena) y = 0;\n  else begin\n    case(a)\n        3'b000: y = 8'b0000_0001;\n        3'b001: y = 8'b0000_0010;\n        3'b010: y = 8'b0000_0100;\n        3'b011: y = 8'b0000_1000;\n        3'b100: y = 8'b0001_0000;\n        3'b101: y = 8'b0010_0000;\n        3'b110: y = 8'b0100_0000;\n        3'b111: y = 8'b1000_0000;\n    \n    endcase\n  end\nend\n\n\n\n\n\nendmodule\n"
+    }
+  },
+  "result_hash": "sha256:54dcda624621845d09aa46106d3654e086ea3223edb855502f9ee5c1751ba5ec"
+}

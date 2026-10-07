@@ -1,0 +1,31 @@
+{
+  "binding": "sha256:388c2036b03abb25218f2121a538652478d59c595a87dd54e652a98241c2f339",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 777,
+    "output_tokens": 153,
+    "raw_response_hash": "sha256:89c0881051bff02061ff6b55a8f6ec746a7da7ccfbece6c977bcfcbaf412e363",
+    "request_hash": "sha256:1f58764781edc017ebb809b7d470539eb294dcd69284c589470cf18937018ddf",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 777,
+      "output_tokens": 153,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "candidate_id": "C_2118a69ce7fea35d_0",
+      "candidate_seed": 1659613695,
+      "edit": "Completed the incomplete if statement in the combinational always block by adding the missing else branch (y=b) so the 2:1 mux selects b when s is not 0, fixing the output mismatch.",
+      "replacement_rtl": "module mux21(a,b,s,y);\n\tinput a,b,s;\n\toutput y;\n\treg y;\n\talways @(a,b,s)\n\tbegin\n\t\tif(s==1'B0)begin y=a;end\n\t\telse begin y=b;end\n\tend\nendmodule"
+    }
+  },
+  "result_hash": "sha256:3c1a5935d38ddcc442a8269a30297113ebb3f051bb8bf27ee27d5f2aa0320214"
+}

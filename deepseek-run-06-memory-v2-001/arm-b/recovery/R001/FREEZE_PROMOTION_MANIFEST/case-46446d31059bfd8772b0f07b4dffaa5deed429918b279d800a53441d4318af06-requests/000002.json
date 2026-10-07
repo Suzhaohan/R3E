@@ -1,0 +1,29 @@
+{
+  "binding": "sha256:59ae30ccab86c5406d9f6c7e566029ef1d9b7281e4058bcc2a8ddfd50ca859f8",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 785,
+    "output_tokens": 273,
+    "raw_response_hash": "sha256:fa574150caccddb9c625b7c969cce4311e10593ba72f3c0d6004bd30557b0345",
+    "request_hash": "sha256:edc863572e7d9d5c217d27f7eae322fe9476148f31ec7aa9fcac719cd3ad011b",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 785,
+      "output_tokens": 273,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "In the case statement, change the 3'b100 branch from X=0,Y=0 to X=1,Y=0 so that X is asserted for ABC values 4 through 7, matching the expected output 10 at cycle 0.",
+      "replacement_rtl": "module JG3(ABC,X,Y);\n\t\n\tinput [2:0] ABC;\n\t\n\toutput X, Y;\n\treg X, Y;\n\t\n\talways@(ABC)\n    \n        \n\ncase(ABC)\n3'b000 : begin X = 0; Y = 0; end\n3'b001 : begin X = 0; Y = 0; end\n3'b010 : begin X = 0; Y = 0; end\n3'b011 : begin X = 0; Y = 0; end\n3'b100 : begin X = 1; Y = 0; end\n3'b101 : begin X = 1; Y = 0; end\n3'b110 : begin X = 1; Y = 0; end\n3'b111 : begin X = 1; Y = 0; end\ndefault :;\nendcase\n        \n\n\t\nendmodule"
+    }
+  },
+  "result_hash": "sha256:0521b7668e141eb8c91e442f2760be57cada36d0ace8d5c3e47fc8b77d3a4bca"
+}

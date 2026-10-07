@@ -1,0 +1,29 @@
+{
+  "binding": "sha256:fb7cc49c2f36ac2c1720a3628e7b20cf29d2c687ba4d5cd27047696c32a693a4",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 1149,
+    "output_tokens": 112,
+    "raw_response_hash": "sha256:fcd220e696ca4e015650725feee6e3a5ab27eb897ff077b29f319553e7b2a81c",
+    "request_hash": "sha256:4bccc891dc32158f14e82ef05f3e46458db91e86d4b2ecf2d5d83d9b5d11f8f7",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 1149,
+      "output_tokens": 112,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Add the missing else branch so that when s==1 the output selects b, fixing the inverted mux polarity that left y unassigned for s==1.",
+      "replacement_rtl": "module mux21(a,b,s,y);\n\tinput a,b,s;\n\toutput y;\n\treg y;\n\talways @(a,b,s)\n    begin\n        if(s==1'B0)begin y=a;end\n        else begin y=b;end\n    end\nendmodule"
+    }
+  },
+  "result_hash": "sha256:94d23d148eaeaf02b0bd4576b5cfed179e409897c332f7acc893e32cbe173d64"
+}

@@ -1,0 +1,25 @@
+{
+  "binding": "sha256:3586b89e0d7b2d7b56249dc4e5ea945b513333292e9e8f03078562ea6a79b023",
+  "response": {
+    "input_tokens": 903,
+    "output_tokens": 538,
+    "raw_response_hash": "sha256:63c32b0047c0c722e79386021e9881049e2c4ec837352f6584d4d857707a9944",
+    "request_hash": "sha256:c83105ca361de6fdefe42838016e1faa83dd069df105683872eaed9de76cd1cc",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 903,
+      "output_tokens": 538,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "candidate_id": "C_9b0a9e15a18342b5_2",
+      "candidate_seed": 170382735,
+      "edit": "Corrected the third ternary condition from 4'b1000 to 4'b1010 so that input combination en=1, A=0, B=1, C=0 selects Y5 (8'b1111_1011) instead of incorrectly reusing the Y7 case.",
+      "replacement_rtl": "/******************************************************************\n * Date: Aug. 28, 1999\n * File: Decoder 3 to 8.v   (440 Examples)\n *\n * Module of a 3 to 8 Decoder with an active high enable input and\n * and active low outputs. This model uses a trinary continuous \n * assignment statement for the combinational logic\n *******************************************************************/\n//*****************************************************************\n  module decoder_3to8(Y7, Y6, Y5, Y4, Y3, Y2, Y1, Y0, A, B, C, en);\n//*****************************************************************\n     output Y7, Y6, Y5, Y4, Y3, Y2, Y1, Y0;\n     input  A, B, C;\n     input  en;\n     assign {Y7,Y6,Y5,Y4,Y3,Y2,Y1,Y0} = ( {en,A,B,C} == 4'b1000) ? 8'b1111_1110 :\n                                        ( {en,A,B,C} == 4'b1001) ? 8'b1111_1101 :\n                                        ( {en,A,B,C} == 4'b1010) ? 8'b1111_1011 :\n                                        ( {en,A,B,C} == 4'b1011) ? 8'b1111_0111 :\n                                        ( {en,A,B,C} == 4'b1100) ? 8'b1110_1111 :\n                                        ( {en,A,B,C} == 4'b1101) ? 8'b1101_1111 :\n                                        ( {en,A,B,C} == 4'b1110) ? 8'b1011_1111 :\n                                        ( {en,A,B,C} == 4'b1111) ? 8'b0111_1111 :\n                                                                   8'b0111_1111;\n  endmodule\n"
+    }
+  },
+  "result_hash": "sha256:536dfdbf2c090bd750f6111ce470dba0190ab920fc8cad7561a6828f4dbbe44f"
+}

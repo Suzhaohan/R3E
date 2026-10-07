@@ -1,0 +1,23 @@
+{
+  "binding": "sha256:b636bbe4b3c63c2d0c6609be04a3fba809208a84e43a5dd9b8000b69ec0a838f",
+  "response": {
+    "input_tokens": 729,
+    "output_tokens": 133,
+    "raw_response_hash": "sha256:76e389762dcd2ab9b06dcdaba5f2addc42de3fb0a84ab4ccd55036f3d2b2a89c",
+    "request_hash": "sha256:46b992397b5734029fb468b752f48d6c640b5d8d543f0bc09423caca52415b1a",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 729,
+      "output_tokens": 133,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Fix the sum expression: replace the malformed `(a&b^ci)` with the correct full-adder XOR `(a^b^ci)` so s matches the oracle at the first divergence cycle.",
+      "replacement_rtl": "module fa_behavioral(a,b,ci,s,co);\n       input a,b;\n       input ci;\n       output  s;\n       output co;\n\n\n\n       assign s=(a^b^ci);\n       assign co=((a&b)|(a&ci)|(b&ci));\n\n\n\nendmodule\n"
+    }
+  },
+  "result_hash": "sha256:f0c0636fdf241f77d93055b67abdefab18b2b9c3643fe8bcd4be42ba07d1cf61"
+}

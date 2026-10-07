@@ -1,0 +1,29 @@
+{
+  "binding": "sha256:4049bd962416a70b3977bfc853498ec9dd3a5988219d8b05849c18c66cb619de",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 630,
+    "output_tokens": 136,
+    "raw_response_hash": "sha256:84524d989ff636a89cb95f1fd9b64336c74aa59b0e32a8ae2c982f7fb84fa93c",
+    "request_hash": "sha256:5ff294740c2101ac7ed253625359f2b5f78b4d40a5dcc4df637aabd390243580",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 630,
+      "output_tokens": 136,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "In the posedge clk always block, replace the constant clear assignment q_reg<=0 with q_reg<=d so the register captures the input d instead of always driving zeros, matching the expected all-ones output.",
+      "replacement_rtl": "module latch24_test( d, clk,q );\n\t\n\t\n\ninput wire [23:0] d;\ninput wire clk;\noutput wire [23:0] q;\nreg [23:0] q_reg;\nalways@(posedge clk)\nbegin\nq_reg<=d;\nend\nassign q=q_reg;\nendmodule"
+    }
+  },
+  "result_hash": "sha256:32c985130fc930d7a8d57516023f118f7bf021bf504dccf890ed3850bff25664"
+}

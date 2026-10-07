@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>红蓝实验 · 实时结果</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f3f5f8;color:#1c293c;font:16px/1.6 system-ui,sans-serif}main{max-width:1100px;margin:auto;padding:28px 20px}h1{font-size:28px;margin:0}h2{font-size:20px;margin:0 0 12px}p{margin:8px 0}.sub{color:#59697b}.card{background:white;border:1px solid #dce3eb;border-radius:12px;padding:20px;margin:18px 0}.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.grid .card{margin:0}.badge{display:inline-block;padding:3px 12px;border-radius:15px;background:#e9efff;color:#2c4ca3}.bad{background:#ffeadf;color:#954017}.good{background:#e0f5e9;color:#246040}table{border-collapse:collapse;width:100%;font-size:15px}td,th{text-align:left;border-bottom:1px solid #e6ebf2;padding:10px 8px}th{color:#59697b}strong.num{font-size:27px}.empty{color:#6e7b8c}#error{color:#9f3429}button{border:1px solid #c8d5e8;background:#fff;border-radius:6px;padding:7px 14px;cursor:pointer}details summary{cursor:pointer} @media(max-width:650px){.grid{grid-template-columns:1fr}main{padding:18px 10px}td,th{padding:8px 3px;font-size:13px}}
+pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f3f5f8;padding:12px;border-radius:6px;font-size:13px}details details{margin:8px 0 12px 16px}
+</style>
+<main>
+<h1>红蓝实验 · 实时结果</h1><p class="sub">先做小检查，选出的版本最后检查全部 16 题。每 3 秒自动更新。</p>
+<section class="card"><span id="state" class="badge">正在读取</span><p id="message"></p><p id="error"></p><small id="updated" class="sub"></small></section>
+<div class="grid"><section class="card"><h2>当前进度</h2><div id="progress"></div></section><section class="card"><h2>经验和改进</h2><div id="memory"></div></section></div>
+<section class="card"><h2>这次的两道演示题</h2><p class="sub">开发预览用于尽快看出区别；最终版本的结果会另行显示。这里的题不计入最终留出成绩。</p><div id="demos"></div></section>
+<section class="card"><h2>探索与最终确认</h2><div id="rounds"></div><div id="guard"></div></section>
+<section class="card"><h2>最终留出评测</h2><p class="sub">固定的 6 道题，每题做 3 次。成功、失败和退步都会显示。</p><div id="metrics"></div></section>
+<section class="card"><details open><summary><b>已经核实的历史开发结果</b> · run04</summary><p class="sub">这是上一版的真实筛选结果，比较普通版本与加入历史经验后的表现，不是本轮成绩，也不是独立泛化证明。</p><div id="history"></div></details></section>
+<p class="sub">没有通过完整检查的候选不会显示为最终升级。所有旧经验和失败记录保留。</p>
+</main>
+<script>
+const el=id=>document.getElementById(id);
+function text(parent,tag,value,cls){const n=document.createElement(tag);n.textContent=value;if(cls)n.className=cls;parent.append(n);return n;}
+function table(parent,headers,rows){const t=document.createElement('table');let tr=document.createElement('tr');headers.forEach(x=>text(tr,'th',x));t.append(tr);rows.forEach(row=>{tr=document.createElement('tr');row.forEach(x=>text(tr,'td',String(x)));t.append(tr)});parent.append(t);}
+function clear(id){const n=el(id);n.replaceChildren();return n;}
+function score(rows,caseId){const r=(rows||[]).filter(x=>x.case_id===caseId);return r.length?`${r.filter(x=>x.oracle_ok).length}/${r.length}`:'等待中';}
+function render(d){
+ if(!d.available)throw new Error(d.message||'结果暂不可用');
+ const p=d.pipeline,labels={ready:'准备就绪',waiting:'等待运行条件',running:'正在运行',blocked:'已暂停，进度保留',complete:'全部完成'};
+ el('state').textContent=labels[p.status]||p.status;el('state').className='badge '+(p.status==='complete'?'good':['blocked','waiting'].includes(p.status)?'bad':'');el('message').textContent=p.message||'';
+ el('updated').textContent='读取时间：'+new Date().toLocaleTimeString();el('error').textContent='';
+ const progress=clear('progress');for(const [arm,label] of [['a','普通版本 A'],['b','红蓝版本 B']]){const a=d.arms[arm]||{},v=a.progress||{};text(progress,'b',label);text(progress,'p',v.case_id?`${v.case_id} · 第 ${v.seed}/3 次 · ${v.policy_id}`:'尚未开始');if(v.last_completed)text(progress,'p',`最近完成：${v.last_completed.case_id}，${v.last_completed.oracle_ok?'修复成功':'修复失败'}`,'sub');if(a.budget)text(progress,'p',`模型调用 ${a.budget.calls} / ${a.budget.max_calls} 次`,'sub');}
+ const m=clear('memory');text(m,'p',`已保存 ${d.memory.stored} 条经验；可用于修题 ${d.memory.eligible} 条。`);text(m,'p',`保留 ${d.memory.local_improvements} 条局部改善证据。`);text(m,'p','失败经验也保留；新记录不自动混入当前修题记忆。','sub');
+ const demos=clear('demos'),ids=['assignment4v:JG3_10','assignment4v:decl7s_2'];table(demos,['题目','预览 A','预览 B','最终 A','最终 B'],ids.map(id=>[id,score(d.demos.a_preview,id),score(d.demos.b_preview,id),score(d.demos.a_final,id),score(d.demos.b_final,id)]));
+ const r=clear('rounds');if(!d.rounds.length)text(r,'p','完整轮次尚未结束；上方会先显示已完成的单题结果。','empty');else table(r,['轮次','探索结果','说明'],d.rounds.map(x=>[x.round_id,x.promoted?'选出较好候选':'保留当前候选',x.status]));
+ for(const round of d.rounds){const detail=document.createElement('details');r.append(detail);text(detail,'summary',round.round_id+'：查看红队出题、蓝队修复');for(const c of round.cases||[]){text(detail,'p',`${c.case_id}：红队造错${c.valid?'通过验证':'未通过验证'}；蓝队成功 ${(c.seeds||[]).filter(s=>s.oracle_ok).length}/${(c.seeds||[]).length} 次`);if(c.mutation?.old_text!==undefined)text(detail,'pre',`红队修改：\n${c.mutation.old_text}\n→\n${c.mutation.new_text}`);for(const seed of c.seeds||[]){for(const candidate of seed.candidates||[]){const repair=document.createElement('details');detail.append(repair);text(repair,'summary',`蓝队第 ${seed.seed} 次 · ${candidate.candidate_id} · ${candidate.oracle_ok?'修复成功':'修复失败'}`);text(repair,'pre',candidate.diff||'本次没有产生代码修改。');}}}}
+ const g=clear('guard');text(g,'p',d.guard?d.guard.message:'全部 16 题的最终确认：尚未完成。',d.guard?.accepted?'good':'sub');if(d.guard)text(g,'p',`已检查 ${d.guard.completed_pairs}/48 对；观察到 ${d.guard.losses} 次退步。`);
+ const metrics=clear('metrics');if(!Object.keys(d.metrics).length)text(metrics,'p','最终比较尚未生成。','empty');else table(metrics,['题组','普通版本 A','红蓝版本 B','改善 / 退步'],Object.entries(d.metrics).map(([k,v])=>[k,`${v.static_repaired}/${v.denominator}`,`${v.adversarial_repaired}/${v.denominator}`,`${v.gained_pairs} / ${v.lost_pairs}`]));
+ table(clear('history'),['题目','普通版本','加入历史经验'],d.historical.map(x=>[x.case_id,`${x.static_successes}/${x.repetitions}`,`${x.memory_successes}/${x.repetitions}`]));
+}
+async function refresh(){try{const r=await fetch('/api/status',{cache:'no-store'});render(await r.json())}catch(e){el('error').textContent='暂时无法更新：'+e.message+'。页面会自动重试。'}finally{setTimeout(refresh,3000)}}refresh();
+</script></html>

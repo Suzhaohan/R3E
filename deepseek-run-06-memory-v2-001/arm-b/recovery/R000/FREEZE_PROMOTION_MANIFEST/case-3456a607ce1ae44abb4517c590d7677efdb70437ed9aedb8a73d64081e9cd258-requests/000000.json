@@ -1,0 +1,29 @@
+{
+  "binding": "sha256:74b1ba245dde296ca8340d7d801355e5fe347eea35280674c11d616ee30bab1a",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 734,
+    "output_tokens": 256,
+    "raw_response_hash": "sha256:528ddb11bd0c703392fcab00c01ac6726c165b2573a86d0cbc49a397e840dbe8",
+    "request_hash": "sha256:7951ade525d1ad39ab0d518c5417b0cf29035563ea15a6b28a222eff99ba665a",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 734,
+      "output_tokens": 256,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "No change: the supplied RTL already matches the oracle evidence (ABC=3'b101 yields X=1, Y=0, i.e. actual 10).",
+      "replacement_rtl": "module JG3(ABC,X,Y);\n\t\n\tinput [2:0] ABC;\n\t\n\toutput X, Y;\n\treg X, Y;\n\t\n\talways@(ABC)\n    \n        \n\ncase(ABC)\n3'b000 : begin X = 0; Y = 0; end\n3'b001 : begin X = 0; Y = 0; end\n3'b010 : begin X = 0; Y = 0; end\n3'b011 : begin X = 0; Y = 0; end\n3'b100 : begin X = 0; Y = 0; end\n3'b101 : begin X = 1; Y = 0; end\n3'b110 : begin X = 1; Y = 0; end\n3'b111 : begin X = 1; Y = 0; end\ndefault :;\nendcase\n        \n\n\t\nendmodule"
+    }
+  },
+  "result_hash": "sha256:c5d72da6b3cf7c5c2141496c7945e6e9a5dd07d694643b432fdfeaf764428752"
+}

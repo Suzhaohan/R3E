@@ -1,0 +1,34 @@
+{
+  "binding": "sha256:a1906de50a10a2c51aa24ec0b5a9ad03956d13a86d43c5baa6acd90314e94058",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 1608,
+    "output_tokens": 134,
+    "raw_response_hash": "sha256:5f014ab2ef1f3f036694a57a8c98b914bf1f0687f35e9f58b2bb89107451417c",
+    "request_hash": "sha256:d10e311bbc850faafc2115c48d67988eafadb70edfc63cbf669c3bd88c57ea7c",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 1608,
+      "output_tokens": 134,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Clear out_ready when the delayed f_ack pulse is not present so it does not stay asserted.",
+      "edits": [
+        {
+          "replace": "    always @ (posedge clk)\n      if (reset)\n        out_ready <= 0;\n      else if (i[22])\n        out_ready <= 1;\n      else\n        out_ready <= 0;",
+          "search": "    always @ (posedge clk)\n      if (reset)\n        out_ready <= 0;\n      else if (i[22])\n        out_ready <= 1;"
+        }
+      ]
+    }
+  },
+  "result_hash": "sha256:54527caf8578ef5e91d73cddf8dae604134dcf142468eb60c7a97530da49a244"
+}

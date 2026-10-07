@@ -1,0 +1,29 @@
+{
+  "binding": "sha256:22c9955bea42f1dcbc28cb7bf172546d1eeb6c40a5375c96ba7844b499e4becf",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 792,
+    "output_tokens": 221,
+    "raw_response_hash": "sha256:0db66d20f0e0e9200e9b4fb675219254e3097f5b46fb702d684822192de30153",
+    "request_hash": "sha256:5a223ace0b4a2f8b075a08c0b39200cabd1fdfadf78c74c327f4e69eebb5c67f",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 792,
+      "output_tokens": 221,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Removed the duplicated 3'd6 case item (which caused a case-item collision) and cleaned up the always block; the case now uniquely decodes 3'd0->X=0,Y=1, 3'd5->X=1,Y=0, 3'd6->X=1,Y=0, default->X=0,Y=0.",
+      "replacement_rtl": "module JG3(ABC,X,Y);\n\t\n\tinput [2:0] ABC;\n\t\n\toutput X, Y;\n\treg X, Y;\n\t\n\talways@(ABC)\n\t\tcase(ABC)\n\t\t\t3'd0: begin X<=0;Y<=1; end\n\t\t\t3'd5: begin X<=1;Y=0; end\n\t\t\t3'd6: begin X<=1;Y=0; end\n\t\t\tdefault: begin X<=0;Y=0; end\n\t\tendcase\t\n\t\nendmodule"
+    }
+  },
+  "result_hash": "sha256:aaecf4500fe4c3656d3d8d923637ed5b218a8798caafc9b5983d676a4aa674f5"
+}

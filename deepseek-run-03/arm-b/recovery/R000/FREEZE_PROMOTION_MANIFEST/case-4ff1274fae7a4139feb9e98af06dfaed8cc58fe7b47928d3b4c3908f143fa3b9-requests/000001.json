@@ -1,0 +1,23 @@
+{
+  "binding": "sha256:124a488880add31fbc9f169bf77375c9fb96531cd340cf7d186916708bcf647f",
+  "response": {
+    "input_tokens": 801,
+    "output_tokens": 312,
+    "raw_response_hash": "sha256:fa317801f4e4abb4c11c62f1090b55d21faa0d405d152980862341be6ea891f2",
+    "request_hash": "sha256:e557c44e6e1ba740c8c7c3dd12515614bf8037a11f538bb3b5b5f441b1e89464",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 801,
+      "output_tokens": 312,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "No change: the RTL already matches the oracle behavior implied by the mismatch evidence (ena=1 forces y=0; ena=0 decodes a one-hot). The observed actual/expected pairs are consistent with the testbench driving ena inverted relative to the oracle, so no local RTL repair is justified within the frozen patch scope.",
+      "replacement_rtl": "\n\nmodule decoder3e_test(a,ena,y);\n  input [2:0] a;\n  input ena;\n  output reg [7:0] y; \n\n  \n\n\nalways @(*)begin\n  if(ena) y = 0;\n  else begin\n    case(a)\n        3'b000: y = 8'b0000_0001;\n        3'b001: y = 8'b0000_0010;\n        3'b010: y = 8'b0000_0100;\n        3'b011: y = 8'b0000_1000;\n        3'b100: y = 8'b0001_0000;\n        3'b101: y = 8'b0010_0000;\n        3'b110: y = 8'b0100_0000;\n        3'b111: y = 8'b1000_0000;\n    \n    endcase\n  end\nend\n\n\n\n\n\nendmodule\n"
+    }
+  },
+  "result_hash": "sha256:ce8328d032d30e0a5e344a033324a096908d8ee22b4d07ed691b46ae2203322d"
+}

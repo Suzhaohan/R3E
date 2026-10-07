@@ -1,0 +1,29 @@
+{
+  "binding": "sha256:a4aa69bf05d6d25aea14acdfd679e30bee62c005323647c6650bb3c4fb13941d",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 750,
+    "output_tokens": 131,
+    "raw_response_hash": "sha256:206999901cca8fab41d1f4028c60b06048c0c4c94e42d1f38425c266a9f13a2e",
+    "request_hash": "sha256:bc6267574cec0fc39951de9174e5ee31e86cbc46fac8b58c7e4fd8bf35f2cb80",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 750,
+      "output_tokens": 131,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "In the always@(posedge clk) block, replace the constant assignment q_reg<=0 with q_reg<=d so the register captures the input d instead of always clearing to zero.",
+      "replacement_rtl": "module latch24_test( d, clk,q );\n\t\n\t\n\ninput wire [23:0] d;\ninput wire clk;\noutput wire [23:0] q;\nreg [23:0] q_reg;\nalways@(posedge clk)\nbegin\nq_reg<=d;\nend\nassign q=q_reg;\nendmodule"
+    }
+  },
+  "result_hash": "sha256:854ce0df579453a568a34cdd476a09ba1fb5f0ed15d42934f594fd6972e9a618"
+}

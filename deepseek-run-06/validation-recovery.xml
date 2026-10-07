@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="3" skipped="0" tests="40" time="10.347" timestamp="2026-09-29T08:58:21.421498-07:00" hostname="memlab-gpu"><testcase classname="" name="test_direct_route_is_scoped_to_api_host_and_preserves_other_proxies" time="0.001" /><testcase classname="" name="test_stdlib_open_connection_ssl_eof_is_retryable_but_read_eof_is_not" time="0.000" /><testcase classname="" name="test_connect_failure_recovers_and_identical_invocations_stay_distinct" time="0.014" /><testcase classname="" name="test_retry_limit_and_budget_count_every_attempt" time="0.011" /><testcase classname="" name="test_retry_cannot_bypass_total_budget" time="0.004" /><testcase classname="" name="test_invalid_response_recovers_same_request_and_replays_paid_work[```json\n{&quot;ok&quot;:true}\n```-stop]" time="0.012" /><testcase classname="" name="test_invalid_response_recovers_same_request_and_replays_paid_work[{&quot;replacement_rtl&quot;:&quot;private-invalid-\\q&quot;}-stop]" time="0.012" /><testcase classname="" name="test_invalid_response_recovers_same_request_and_replays_paid_work[-stop]" time="0.012" /><testcase classname="" name="test_invalid_response_recovers_same_request_and_replays_paid_work[None-stop]" time="0.012" /><testcase classname="" name="test_persistent_invalid_json_stops_with_diagnostics_and_counts_failed_calls" time="0.009" /><testcase classname="" name="test_truncation_grows_only_current_request_and_accounts_effective_budget[False]" time="0.015" /><testcase classname="" name="test_truncation_grows_only_current_request_and_accounts_effective_budget[True]" time="0.014" /><testcase classname="" name="test_persistent_truncation_stops_at_cap_and_restart_makes_no_paid_call" time="0.009" /><testcase classname="" name="test_length_escalation_survives_disconnect_and_process_restart" time="0.008" /><testcase classname="" name="test_length_escalation_cannot_bypass_token_budget" time="0.003" /><testcase classname="" name="test_json_retry_cannot_bypass_budget" time="0.004" /><testcase classname="" name="test_json_recovery_does_not_retry_schemas_or_refusals[[]-stop-None]" time="0.003" /><testcase classname="" name="test_json_recovery_does_not_retry_schemas_or_refusals[broken-content_filter-None]" time="0.004" /><testcase classname="" name="test_json_recovery_does_not_retry_schemas_or_refusals[broken-stop-refused]" time="0.003" /><testcase classname="" name="test_json_recovery_does_not_retry_schemas_or_refusals[-stop-refused]" time="0.004" /><testcase classname="" name="test_ambiguous_or_content_errors_are_not_retried[error0]" time="0.001" /><testcase classname="" name="test_ambiguous_or_content_errors_are_not_retried[error1]" time="0.001" /><testcase classname="" name="test_ambiguous_or_content_errors_are_not_retried[error2]" time="0.001" /><testcase classname="" name="test_modified_request_or_cached_response_fails_closed" time="0.005" /><testcase classname="" name="test_real_eda_mid_case_disconnect_preserves_completed_work[connection-T0]" time="1.430" /><testcase classname="" name="test_real_eda_mid_case_disconnect_preserves_completed_work[connection-T1]" time="1.359" /><testcase classname="" name="test_real_eda_mid_case_disconnect_preserves_completed_work[connection-round]" time="1.352" /><testcase classname="" name="test_real_eda_mid_case_disconnect_preserves_completed_work[json-T0]" time="1.370"><failure message="assert 2 == 0">tmp_path = PosixPath('/tmp/pytest-of-huangyc/pytest-93/test_real_eda_mid_case_disconn3/arm-b')
+phase = 'T0', failure_mode = 'json'
+
+    @pytest.mark.parametrize("phase", ["T0", "T1", "round"])
+    @pytest.mark.parametrize("failure_mode", ["connection", "json"])
+    def test_real_eda_mid_case_disconnect_preserves_completed_work(tmp_path, phase, failure_mode):
+        final = phase != "round"
+        tmp_path = tmp_path / "arm-b"
+        calls = []
+        raw = fixture_client([])
+        original_transport = raw._transport
+        def transport(**request):
+            calls.append(request)
+            if len(calls) == 6:  # First pair done; second pair has two paid responses.
+                if failure_mode == "json":
+                    return {"content": "invalid JSON", "finish_reason": "stop",
+                            "input_tokens": 10, "output_tokens": 2, "provider_request_id": "bad"}
+                disconnected()
+            return original_transport(**request)
+        raw._transport = transport
+        operation = "T0-red-heldout" if phase == "T0" else "red-heldout" if final else "R002"
+        client = budgeted(tmp_path, raw, operation)
+        provider = PolicyCandidateProvider(client, verifier_id=PublicManifestOracleVerifier.verifier_id,
+            verifier_version=PublicManifestOracleVerifier.verifier_version, adapter_version="m3-policy-v1")
+        output = (tmp_path.parent / "baseline-evaluations/adversarial/red-heldout" if phase == "T0"
+                  else tmp_path / "eval/red-heldout" if final else tmp_path / "replays")
+        service = ArenaEvaluationService(ROOT, output, provider=provider)
+        manifest = read(ROOT / "competition/manifests/demo18_heldout.json")
+        row = manifest["rows"][-1]
+        manifest = make_manifest([row], split="evaluation", metadata=manifest["metadata"])
+        policy = service.repair._policy()
+        recovery = Recovery(tmp_path, raw.config)
+        if final:
+            perform = lambda: service.evaluate_policy(policy, manifest, [1, 2])
+        else:
+            checkpoint = tmp_path / "rounds/R002/round_state.json"
+            checkpoint.parent.mkdir(parents=True)
+            checkpoint.write_text(json.dumps({"checkpoints": [{"stage": "FREEZE_PROMOTION_MANIFEST", "completed_at": datetime.now(timezone.utc).isoformat()}]}))
+            # Current Core reuses the same policy/case/seed per round.
+            # Different repetitions retain separate response slots.
+            perform = lambda: [service.evaluate_case_with_policy(policy, row, seed) for seed in (1, 2)]
+        result = recovery.run(perform, sleep=lambda n: None)
+        assert len(calls) == 7  # Six successes + one failed connection, no duplicate generation.
+&gt;       assert recovery.stats["reused_responses"] == (2 if failure_mode == 'connection' else 0)
+E       assert 2 == 0
+
+../recovery/test_resilience.py:366: AssertionError</failure></testcase><testcase classname="" name="test_real_eda_mid_case_disconnect_preserves_completed_work[json-T1]" time="1.348"><failure message="assert 2 == 0">tmp_path = PosixPath('/tmp/pytest-of-huangyc/pytest-93/test_real_eda_mid_case_disconn4/arm-b')
+phase = 'T1', failure_mode = 'json'
+
+    @pytest.mark.parametrize("phase", ["T0", "T1", "round"])
+    @pytest.mark.parametrize("failure_mode", ["connection", "json"])
+    def test_real_eda_mid_case_disconnect_preserves_completed_work(tmp_path, phase, failure_mode):
+        final = phase != "round"
+        tmp_path = tmp_path / "arm-b"
+        calls = []
+        raw = fixture_client([])
+        original_transport = raw._transport
+        def transport(**request):
+            calls.append(request)
+            if len(calls) == 6:  # First pair done; second pair has two paid responses.
+                if failure_mode == "json":
+                    return {"content": "invalid JSON", "finish_reason": "stop",
+                            "input_tokens": 10, "output_tokens": 2, "provider_request_id": "bad"}
+                disconnected()
+            return original_transport(**request)
+        raw._transport = transport
+        operation = "T0-red-heldout" if phase == "T0" else "red-heldout" if final else "R002"
+        client = budgeted(tmp_path, raw, operation)
+        provider = PolicyCandidateProvider(client, verifier_id=PublicManifestOracleVerifier.verifier_id,
+            verifier_version=PublicManifestOracleVerifier.verifier_version, adapter_version="m3-policy-v1")
+        output = (tmp_path.parent / "baseline-evaluations/adversarial/red-heldout" if phase == "T0"
+                  else tmp_path / "eval/red-heldout" if final else tmp_path / "replays")
+        service = ArenaEvaluationService(ROOT, output, provider=provider)
+        manifest = read(ROOT / "competition/manifests/demo18_heldout.json")
+        row = manifest["rows"][-1]
+        manifest = make_manifest([row], split="evaluation", metadata=manifest["metadata"])
+        policy = service.repair._policy()
+        recovery = Recovery(tmp_path, raw.config)
+        if final:
+            perform = lambda: service.evaluate_policy(policy, manifest, [1, 2])
+        else:
+            checkpoint = tmp_path / "rounds/R002/round_state.json"
+            checkpoint.parent.mkdir(parents=True)
+            checkpoint.write_text(json.dumps({"checkpoints": [{"stage": "FREEZE_PROMOTION_MANIFEST", "completed_at": datetime.now(timezone.utc).isoformat()}]}))
+            # Current Core reuses the same policy/case/seed per round.
+            # Different repetitions retain separate response slots.
+            perform = lambda: [service.evaluate_case_with_policy(policy, row, seed) for seed in (1, 2)]
+        result = recovery.run(perform, sleep=lambda n: None)
+        assert len(calls) == 7  # Six successes + one failed connection, no duplicate generation.
+&gt;       assert recovery.stats["reused_responses"] == (2 if failure_mode == 'connection' else 0)
+E       assert 2 == 0
+
+../recovery/test_resilience.py:366: AssertionError</failure></testcase><testcase classname="" name="test_real_eda_mid_case_disconnect_preserves_completed_work[json-round]" time="1.433"><failure message="assert 2 == 0">tmp_path = PosixPath('/tmp/pytest-of-huangyc/pytest-93/test_real_eda_mid_case_disconn5/arm-b')
+phase = 'round', failure_mode = 'json'
+
+    @pytest.mark.parametrize("phase", ["T0", "T1", "round"])
+    @pytest.mark.parametrize("failure_mode", ["connection", "json"])
+    def test_real_eda_mid_case_disconnect_preserves_completed_work(tmp_path, phase, failure_mode):
+        final = phase != "round"
+        tmp_path = tmp_path / "arm-b"
+        calls = []
+        raw = fixture_client([])
+        original_transport = raw._transport
+        def transport(**request):
+            calls.append(request)
+            if len(calls) == 6:  # First pair done; second pair has two paid responses.
+                if failure_mode == "json":
+                    return {"content": "invalid JSON", "finish_reason": "stop",
+                            "input_tokens": 10, "output_tokens": 2, "provider_request_id": "bad"}
+                disconnected()
+            return original_transport(**request)
+        raw._transport = transport
+        operation = "T0-red-heldout" if phase == "T0" else "red-heldout" if final else "R002"
+        client = budgeted(tmp_path, raw, operation)
+        provider = PolicyCandidateProvider(client, verifier_id=PublicManifestOracleVerifier.verifier_id,
+            verifier_version=PublicManifestOracleVerifier.verifier_version, adapter_version="m3-policy-v1")
+        output = (tmp_path.parent / "baseline-evaluations/adversarial/red-heldout" if phase == "T0"
+                  else tmp_path / "eval/red-heldout" if final else tmp_path / "replays")
+        service = ArenaEvaluationService(ROOT, output, provider=provider)
+        manifest = read(ROOT / "competition/manifests/demo18_heldout.json")
+        row = manifest["rows"][-1]
+        manifest = make_manifest([row], split="evaluation", metadata=manifest["metadata"])
+        policy = service.repair._policy()
+        recovery = Recovery(tmp_path, raw.config)
+        if final:
+            perform = lambda: service.evaluate_policy(policy, manifest, [1, 2])
+        else:
+            checkpoint = tmp_path / "rounds/R002/round_state.json"
+            checkpoint.parent.mkdir(parents=True)
+            checkpoint.write_text(json.dumps({"checkpoints": [{"stage": "FREEZE_PROMOTION_MANIFEST", "completed_at": datetime.now(timezone.utc).isoformat()}]}))
+            # Current Core reuses the same policy/case/seed per round.
+            # Different repetitions retain separate response slots.
+            perform = lambda: [service.evaluate_case_with_policy(policy, row, seed) for seed in (1, 2)]
+        result = recovery.run(perform, sleep=lambda n: None)
+        assert len(calls) == 7  # Six successes + one failed connection, no duplicate generation.
+&gt;       assert recovery.stats["reused_responses"] == (2 if failure_mode == 'connection' else 0)
+E       assert 2 == 0
+
+../recovery/test_resilience.py:366: AssertionError</failure></testcase><testcase classname="" name="test_current_launcher_T0_records_overlay_without_changing_baseline" time="0.188" /><testcase classname="" name="test_completed_core_replays_do_not_shift_remaining_response_slots" time="1.209" /><testcase classname="" name="test_red_restart_preserves_original_receipt_and_request_slots[False]" time="0.009" /><testcase classname="" name="test_red_restart_preserves_original_receipt_and_request_slots[True]" time="0.009" /><testcase classname="" name="test_red_recovery_rejects_changes_without_new_calls[artifact]" time="0.006" /><testcase classname="" name="test_red_recovery_rejects_changes_without_new_calls[row]" time="0.010" /><testcase classname="" name="test_red_recovery_rejects_changes_without_new_calls[response]" time="0.008" /><testcase classname="" name="test_red_recovery_rejects_changes_without_new_calls[missing_response]" time="0.007" /><testcase classname="" name="test_red_recovery_rejects_changes_without_new_calls[binding]" time="0.010" /><testcase classname="" name="test_overlay_revision_preserves_old_manifest_and_experiment_binding" time="0.003" /></testsuite></testsuites>

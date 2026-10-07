@@ -1,0 +1,61 @@
+{
+  "schema_version": "r3e-raam-protocol-skeleton-milestone-v1",
+  "milestone_id": "raam-protocol-skeleton-v1",
+  "status": "frozen",
+  "parent_milestone": {
+    "milestone_id": "system-upgrade-complete-v1",
+    "milestone_hash": "sha256:bf10e53e19b18e8c8fb76de67e9b26d35a8e9783c83531964bf8ee27c9ed5161"
+  },
+  "phase_scope": [
+    "phase-1-immutable-experience-archive",
+    "phase-2-control-memory-model",
+    "phase-3-runtime-failure-descriptor",
+    "phase-4-shadow-retrieval-reactivation",
+    "phase-5-memory-aware-execution-plan",
+    "phase-6-shadow-paired-qualification",
+    "phase-7-active-bank-whole-policy-promotion",
+    "phase-8-cross-round-compatibility",
+    "phase-9-red-memory-challenges"
+  ],
+  "frozen_interfaces": [
+    "MemoryStore.append_episode/add_candidate/update_lifecycle/get_version",
+    "MemoryRetriever.retrieve(descriptor, active_bank, top_k=3)",
+    "ActivationGuard.reactivate(matches, active_policy, active_bank, runtime_context)",
+    "MemoryAwarePlanCompiler.compile(base_policy, reactivation)",
+    "run_shadow_replay(case, policy, memory, seed, budget, evaluator)",
+    "MemoryEvolutionRunner.run()",
+    "r3e-policy-promotion-bundle-v1",
+    "r3e-memory-promotion-authority-v1",
+    "r3e-poison-payload-v1",
+    "r3e-memory-evidence-set-v1",
+    "r3e-memory-execution-trace-v1",
+    "r3e-memory-adapter-output-v1",
+    "r3e-memory-red-capability-v1",
+    "r3e-memory-red-plan-v1"
+  ],
+  "frozen_assets": {
+    "configs/memory/control_whitelist_v1.json": "sha256:edb948598f7b4716f67f8624d44006cb362deabe469137326ca0fe27c52a71d4"
+  },
+  "required_validation": [
+    "pytest -q -p no:cacheprovider",
+    "pytest -q -p no:cacheprovider tests/test_raam_memory.py tests/test_raam_memory_runner.py",
+    "python -m r3e.arena.fake_system --workspace /tmp/r3e-raam-system-v1 --rounds 3",
+    "python scripts/check_release.py",
+    "python scripts/verify_datasets.py"
+  ],
+  "deferred_experiment_bindings": [
+    "real_model_adapter",
+    "model_name",
+    "experiment_seeds",
+    "qualification_thresholds",
+    "promotion_thresholds",
+    "experiment_manifests",
+    "experiment_budget",
+    "real_model_cross_round_results",
+    "runner_owned_oracle_receipts",
+    "artifact_derived_failure_descriptors",
+    "parser_backed_rtl_semantic_diff"
+  ],
+  "claim_boundary": "Deterministic protocol skeleton and partial authority closure only; no grounded-runtime completion, real-model memory effectiveness, or continual-learning result.",
+  "milestone_hash": "sha256:e94b89a15dade83b67ede8463be7008e61cec490ac59fc1977f8e1a1d6c27d3a"
+}

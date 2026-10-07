@@ -1,0 +1,34 @@
+{
+  "binding": "sha256:a489b9b267ea387d0ecd203761317c0a3fdbb7238a21bbfcb09989ac4247b7dc",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 961,
+    "output_tokens": 109,
+    "raw_response_hash": "sha256:aa83c7782a1eb4da6645ab7510a9e47a0eb0ed4316f6534454cf78aa28221a34",
+    "request_hash": "sha256:cd027857310c7aa06c6e9609891cac92636942777e54a2d65fdc6c6a14c07f23",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 961,
+      "output_tokens": 109,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Restore the synchronous reset assignment to counter_out so it clears to zero on reset.",
+      "edits": [
+        {
+          "replace": "    if(reset==1'b1) begin\n        counter_out <= #1 4'b0000;\n        overflow_out <= #1 1'b0;\n    end",
+          "search": "    if(reset==1'b1) begin\n        // counter_out <= #1 4'b0000;\n        overflow_out <= #1 1'b0;\n    end"
+        }
+      ]
+    }
+  },
+  "result_hash": "sha256:a08ae5ff16f357fff0e79f97d690cc58d0a2687a64cc5f6cc0b8e8a343c4b61e"
+}

@@ -1,0 +1,23 @@
+{
+  "binding": "sha256:1fa7c943c4c7d331daa04a4aa00962473b7ffc33323b733e9480e4823978e635",
+  "response": {
+    "input_tokens": 687,
+    "output_tokens": 197,
+    "raw_response_hash": "sha256:94f675f607fb773ba9feb1a5fefbd6f71f7d6f3d5328b66c49b8115d37a913f9",
+    "request_hash": "sha256:ec25848783bdc3df7e61d416869fd88726218fe89fbf6a4963e9ecff02537bc1",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 687,
+      "output_tokens": 197,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Removed the duplicate 3'd6 case item (which caused a case-item collision) and removed the stray empty statements in the always block; the default branch now handles all other inputs, so ABC=0 produces X=0,Y=1 as expected.",
+      "replacement_rtl": "module JG3(ABC,X,Y);\n\t\n\tinput [2:0] ABC;\n\t\n\toutput X, Y;\n\treg X, Y;\n\t\n\talways@(ABC)\n\t\tcase(ABC)\n\t\t\t3'd0: begin X<=0;Y<=1; end\n\t\t\t3'd5: begin X<=1;Y=0; end\n\t\t\t3'd6: begin X<=1;Y=0; end\n\t\t\tdefault: begin X<=0;Y<=0; end\n\t\tendcase\t\n\t\nendmodule"
+    }
+  },
+  "result_hash": "sha256:aedbc9d07f6b2b52426be9d2cdce514a2db398448eb19e39e863e4aa1967f8e3"
+}

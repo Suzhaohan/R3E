@@ -1,0 +1,23 @@
+{
+  "binding": "sha256:6f7edf1f4b6f18a2d3f3a9596f51fa1e2ccdb9799a98a6dc745efd9a634ecf5d",
+  "response": {
+    "input_tokens": 593,
+    "output_tokens": 159,
+    "raw_response_hash": "sha256:c50f006bd776ffc7ad5cc504e385140d0ab838c748d94e3a978b831b8750cf88",
+    "request_hash": "sha256:4caf581a9bb9e4887fc33b011ed413e951f08bb6e3cf14b67fc3d39cb32d2764",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 593,
+      "output_tokens": 159,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Replaced the sum assignment `assign s=(a|b|ci);` with the correct XOR-based full-adder sum `assign s=(a^b^ci);`. The carry logic is unchanged. This fixes the observable output mismatch where the buggy OR-based sum produced incorrect values (e.g., 11 instead of 10).",
+      "replacement_rtl": "module fa_behavioral(a,b,ci,s,co);\n       input a,b;\n       input ci;\n       output  s;\n       output co;\n\n\n\n       assign s=(a^b^ci);\n       assign co=((a&b)|(a&ci)|(b&ci));\n\n\n\nendmodule\n"
+    }
+  },
+  "result_hash": "sha256:81fd0778fb1afe64b601e47c16a2461c7dcbe104e61df56707330e2e20c13f43"
+}

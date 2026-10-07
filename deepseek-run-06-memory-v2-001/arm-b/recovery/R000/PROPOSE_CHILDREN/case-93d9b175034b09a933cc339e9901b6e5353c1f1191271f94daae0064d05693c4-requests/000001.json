@@ -1,0 +1,29 @@
+{
+  "binding": "sha256:e1c52bc96997da32983ba81667190ec8ca8147e66cd6ee60e29b433e57e82086",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 565,
+    "output_tokens": 132,
+    "raw_response_hash": "sha256:d56a24c79f784f4c9091073c72bd5e5479acc13084314b9a952b1785c2175eba",
+    "request_hash": "sha256:88a0dbd1fa0c9b87c5319c879d19985b34478e3ab72c7a0ebfe833d1613ca807",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 565,
+      "output_tokens": 132,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Replaced the incorrect sum assignment `assign s=(~(a&b)&ci);` with the correct full-adder sum `assign s=(a^b^ci);`. The carry logic is unchanged.",
+      "replacement_rtl": "module fa_behavioral(a,b,ci,s,co);\n       input a,b;\n       input ci;\n       output  s;\n       output co;\n\n\n\n       assign s=(a^b^ci);\n       assign co=((a&b)|(a&ci)|(b&ci));\n\n\n\nendmodule\n"
+    }
+  },
+  "result_hash": "sha256:21bbf171cdaead9e5195473bc056552ac9fd92fe48751167c86437c7a398de63"
+}

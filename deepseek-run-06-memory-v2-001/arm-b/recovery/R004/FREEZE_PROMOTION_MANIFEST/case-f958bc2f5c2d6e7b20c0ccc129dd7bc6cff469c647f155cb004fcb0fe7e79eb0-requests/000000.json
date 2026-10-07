@@ -1,0 +1,29 @@
+{
+  "binding": "sha256:b8997591bde283e8bc678c362cf504c0083291d574570d01d417835d6e2e96e2",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 758,
+    "output_tokens": 294,
+    "raw_response_hash": "sha256:5a6d6f587bd236c9fb35ef7b6f79296de5fe7bf9b0effafe3b786132597d3b05",
+    "request_hash": "sha256:d5fd15843ae599333f735b3c95f16ca2b2f404df3b68a33d411760fcbdbc266c",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 758,
+      "output_tokens": 294,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "In the combinational always block, invert the enable condition from `if(ena)` to `if(!ena)` so that y is forced to 0 when ena is low, matching the oracle behavior at cycle 0 (expected 00000000).",
+      "replacement_rtl": "\n\nmodule decoder3e_test(a,ena,y);\n  input [2:0] a;\n  input ena;\n  output reg [7:0] y; \n\n  \n\n\nalways @(*)begin\n  if(!ena) y = 0;\n  else begin\n    case(a)\n        3'b000: y = 8'b0000_0001;\n        3'b001: y = 8'b0000_0010;\n        3'b010: y = 8'b0000_0100;\n        3'b011: y = 8'b0000_1000;\n        3'b100: y = 8'b0001_0000;\n        3'b101: y = 8'b0010_0000;\n        3'b110: y = 8'b0100_0000;\n        3'b111: y = 8'b1000_0000;\n    \n    endcase\n  end\nend\n\n\n\n\n\nendmodule\n"
+    }
+  },
+  "result_hash": "sha256:722f053afcf832c81d7bf3ab2c0d2d8a104c7702191e2a700ee0f7695524d564"
+}

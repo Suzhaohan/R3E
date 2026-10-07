@@ -4,17 +4,9 @@ R³E 面向芯片前端设计中“RTL 能通过编译但功能仍错误”的�
 
 > 模型提出候选，EDA 决定候选。
 
-## 一键演示
+## 最新运行入口
 
-Python 3.11+、Icarus Verilog/VVP 和 Yosys 是比赛版基线依赖：
-
-```bash
-./competition/scripts/setup.sh
-./competition/scripts/run_demo.sh
-./competition/scripts/verify_benchmark_inputs.sh
-```
-
-`run_demo.sh` 默认是 guided replay：它从 buggy RTL 生成 checked-in 的最小修复候选，不调用模型，也不宣称模型效果；每个候选仍经过 Parse、Scope、Compile、Simulation、R³E differential Oracle、Yosys Structural Check 和 Repeatability Check。显式运行 `./competition/scripts/run_demo.sh --mode live` 才会调用真实 provider，provider 不可用时 fail closed。
+当前实验统一使用 run06，请按[最新运行指南](deepseek-run-06/source/运行指南.md)操作。本页其余内容保留为工程说明。
 
 ## 比赛 Demo
 

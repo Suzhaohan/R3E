@@ -1,0 +1,29 @@
+{
+  "binding": "sha256:e214e57b193684fe55c20d5f3dfcfe6fbf1d25471b9251f5cc97ecbee95d61e2",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 1014,
+    "output_tokens": 110,
+    "raw_response_hash": "sha256:5e0219d2741f1c63217cbbd0f3db9c8c5532245cf70facf5a641bea45d032b2f",
+    "request_hash": "sha256:93b4b5bff1ad57868e86d6632eb94f9c11028ccde36e456f4c8c0a999ced276b",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 1014,
+      "output_tokens": 110,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Swap the mux data inputs so s==1 selects b and s==0 selects a, correcting the inverted select polarity; also wrap the if/else in begin/end.",
+      "replacement_rtl": "module mux21(a,b,s,y);\n\tinput a,b,s;\n\toutput y;\n\treg y;\n\talways @(a,b,s)\n\tbegin\n\t\tif(s==1) y=b;\n\t\telse y=a;\n\tend\nendmodule"
+    }
+  },
+  "result_hash": "sha256:93d9bed6e7a78cf1e338b22c64c67a37ed51dcc594145cb7a2b91ecd78e7ba18"
+}

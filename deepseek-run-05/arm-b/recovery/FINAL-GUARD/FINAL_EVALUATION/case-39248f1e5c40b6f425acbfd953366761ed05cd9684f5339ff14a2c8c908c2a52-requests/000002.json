@@ -1,0 +1,34 @@
+{
+  "binding": "sha256:c44180177a12617e4cdd7b0b6c3a1a19bf49c4920cb237f29a33fde49b7a4074",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 1708,
+    "output_tokens": 61,
+    "raw_response_hash": "sha256:324b793fa5b611f88e4de1830080569e5a28d3b8d0d3554a3308b2b1677b5735",
+    "request_hash": "sha256:04fc008a75db3e394a8c2280e4425a80e4d0e17990d004a05f4bc2d4b11441e2",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 1708,
+      "output_tokens": 61,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Use nonblocking assignment for state and select outputs from next_state to fix the grant timing.",
+      "edits": [
+        {
+          "replace": "    state <= #1 next_state;\n    case(next_state)",
+          "search": "    state = #1 next_state;\n    case(state)"
+        }
+      ]
+    }
+  },
+  "result_hash": "sha256:e0895d04e6ac3859db18f22c72a184d5647dd2b69cdddacb86f7c818615a8865"
+}

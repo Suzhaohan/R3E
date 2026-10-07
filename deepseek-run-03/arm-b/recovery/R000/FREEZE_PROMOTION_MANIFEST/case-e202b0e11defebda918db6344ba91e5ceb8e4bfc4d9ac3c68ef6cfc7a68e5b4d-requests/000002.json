@@ -1,0 +1,23 @@
+{
+  "binding": "sha256:a0cb1c31b5aa3445a8a6377505a4f0dec2fa3f0c44b43667e6163f7cc4fd20c9",
+  "response": {
+    "input_tokens": 792,
+    "output_tokens": 202,
+    "raw_response_hash": "sha256:e402c91356b323cf3635f162ee9e879cfb5ae7cceeddb3cf4a4b2b6fd496159e",
+    "request_hash": "sha256:6f4a5d5722349b63f82610aef58b87402f9892aab83d0784407f764750e49e63",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 792,
+      "output_tokens": 202,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Removed the duplicate 3'd6 case item and added the missing begin/end around the case statement in the always block; the duplicate case label was the only functional deviation, so the case now has unique items 0,5,6 with default.",
+      "replacement_rtl": "module JG3(ABC,X,Y);\n\t\n\tinput [2:0] ABC;\n\t\n\toutput X, Y;\n\treg X, Y;\n\t\n\talways@(ABC)\n\tbegin\n\t\tcase(ABC)\n\t\t\t3'd0: begin X<=0;Y<=1; end\n\t\t\t3'd5: begin X<=1;Y=0; end\n\t\t\t3'd6: begin X<=1;Y=0; end\n\t\t\tdefault: begin X<=0;Y<=0; end\n\t\tendcase\n\tend\n\t\nendmodule"
+    }
+  },
+  "result_hash": "sha256:71634be301ebbcdbb641712d7e5d1348d920da9be4dacbb00e3201dee36f3523"
+}

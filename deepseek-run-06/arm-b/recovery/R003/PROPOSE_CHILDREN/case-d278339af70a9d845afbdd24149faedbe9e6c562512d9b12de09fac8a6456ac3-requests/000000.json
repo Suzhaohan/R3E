@@ -1,0 +1,29 @@
+{
+  "binding": "sha256:d3f11001a9ebadcc54bd48b30f539864e4454e5528406a52e218227b6ef5c6b9",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 1186,
+    "output_tokens": 131,
+    "raw_response_hash": "sha256:94a28e157ce0fddb22747a3bc97a8f2d9e44e9e9aa38df17fdb9aeeca16e3ae2",
+    "request_hash": "sha256:2f5e7aa02ce3d1a25b7efe0f0b1b65396e68beb892d240f7cdb8f07a89110e35",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 1186,
+      "output_tokens": 131,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Replaced the incorrect sum assignment `assign s=(~(a&b)&ci);` with the correct full-adder XOR sum `assign s=(a^b^ci);`. Carry logic unchanged.",
+      "replacement_rtl": "module fa_behavioral(a,b,ci,s,co);\n       input a,b;\n       input ci;\n       output  s;\n       output co;\n\n\n\n       assign s=(a^b^ci);\n       assign co=((a&b)|(a&ci)|(b&ci));\n\n\n\nendmodule\n"
+    }
+  },
+  "result_hash": "sha256:3915bc4d258f5dd1333552d854864acf6566a0c8c8f6c4a25b9df2749f4c3d92"
+}

@@ -1,0 +1,29 @@
+{
+  "binding": "sha256:86383406495cce2ab7fee4ce26d59ce1a25f29edfff90840262d058be57c14c6",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 791,
+    "output_tokens": 265,
+    "raw_response_hash": "sha256:dcb6d5a411874261f84474cc9f273737e288469c42cf86e7e7ccd07ea9eebf72",
+    "request_hash": "sha256:3539754fc452653a6371c26aee91530f5f79fe8f67f61aa7ab1360138ae22add",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 791,
+      "output_tokens": 265,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "No change: the RTL already matches the oracle behavior (X=1 for ABC=101/110/111, else 0; Y=0), so the reported mismatch is not reproducible from this source.",
+      "replacement_rtl": "module JG3(ABC,X,Y);\n\t\n\tinput [2:0] ABC;\n\t\n\toutput X, Y;\n\treg X, Y;\n\t\n\talways@(ABC)\n    \n        \n\ncase(ABC)\n3'b000 : begin X = 0; Y = 0; end\n3'b001 : begin X = 0; Y = 0; end\n3'b010 : begin X = 0; Y = 0; end\n3'b011 : begin X = 0; Y = 0; end\n3'b100 : begin X = 0; Y = 0; end\n3'b101 : begin X = 1; Y = 0; end\n3'b110 : begin X = 1; Y = 0; end\n3'b111 : begin X = 1; Y = 0; end\ndefault :;\nendcase\n        \n\n\t\nendmodule"
+    }
+  },
+  "result_hash": "sha256:2458a4d767586149d706e9a9dc1634e00caa4cb9eecf0a2f2acfeb2e5fed1619"
+}

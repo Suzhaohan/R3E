@@ -1,0 +1,29 @@
+{
+  "binding": "sha256:a51572ce426bf2c107df87f63974f8e42a23f7eb09e2b7b2fb39d491fa3a4ae0",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 3873,
+    "output_tokens": 136,
+    "raw_response_hash": "sha256:fe7fa10409f9d3942694feb8fd7f0e9dbe08d011c69d2b04946e9978d0235be0",
+    "request_hash": "sha256:fca28347d91e10559c9e0d25a18169678c7efe474996f02c8a7d3204b0b76db8",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 3873,
+      "output_tokens": 136,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Change the always block sensitivity from level-sensitive always@(clk) to edge-sensitive always@(posedge clk) so q updates only on the rising clock edge, matching the expected registered behavior and eliminating the cycle-0 mismatch.",
+      "replacement_rtl": "module latch24_test( d, clk,q );\n\t\n    input [23:0] d;\n    input clk;\n    output[23:0] q;\n    reg [23:0] q;\n    always@ (posedge clk)\n        q = d;\n\nendmodule\n"
+    }
+  },
+  "result_hash": "sha256:f7d2f78312a1ba2afb56e71f1e38bfe4374296f85eeff67686eae86be30fe7f2"
+}

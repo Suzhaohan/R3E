@@ -1,0 +1,29 @@
+{
+  "binding": "sha256:33541674c2a79af7f1004e863e075a9aa3644d0fc80ca0fd2721b8826bdfa7ea",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 721,
+    "output_tokens": 185,
+    "raw_response_hash": "sha256:ee5595eac48df6c90e36f03f21df5c43bb9dd252d453475c9e473e3a88020111",
+    "request_hash": "sha256:d13ffe46a0e50fbae10641e752a8507b08d75111556162ba168d7d590b75145a",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 721,
+      "output_tokens": 185,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Replaced the sum assignment `assign s=(a|b|ci);` with the correct XOR-based full-adder sum `assign s=(a^b^ci);`. The OR expression produced 1 whenever any input was high (e.g., 11 at cycle3 for inputs a=1,b=1,ci=0), whereas the expected sum is 0 for that case; XOR yields the correct parity. Carry logic was already correct and is unchanged.",
+      "replacement_rtl": "module fa_behavioral(a,b,ci,s,co);\n       input a,b;\n       input ci;\n       output  s;\n       output co;\n\n\n\n       assign s=(a^b^ci);\n       assign co=((a&b)|(a&ci)|(b&ci));\n\n\n\nendmodule\n"
+    }
+  },
+  "result_hash": "sha256:d4de6f1e3eae7fabec7cd149b2991df1b5dd8d293788712622b1d2e8f79ae562"
+}

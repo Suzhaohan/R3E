@@ -1,0 +1,34 @@
+{
+  "binding": "sha256:4572e61abd52f5ef75246e8f0d02ad3699f8e1ac8e9cc97a49bad50d86cea5bc",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 1507,
+    "output_tokens": 124,
+    "raw_response_hash": "sha256:fcb386ef0fa034f02f1c9af92c6f758ac5a1090385e678a582a8e5ce754991e2",
+    "request_hash": "sha256:6a8aabd0255a79f4c2b01fc36aacab07ecfb2a8661a557de1537f189c4a070c8",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 1507,
+      "output_tokens": 124,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Set v1[7] directly from i[16] instead of OR-ing with the zeroed bit.",
+      "edits": [
+        {
+          "replace": "            v1 = 0;\n            v1[7] = i[16]; // \"v1[7]\" is the MSB of the last byte of \"v1\"",
+          "search": "            v1 = 0;\n            v1[7] = v1[7] | i[16]; // \"v1[7]\" is the MSB of the last byte of \"v1\""
+        }
+      ]
+    }
+  },
+  "result_hash": "sha256:8034cbe355ed6a5cf7a912be5c8177a342fe289ac994c4307e9d8c1a6cd08204"
+}

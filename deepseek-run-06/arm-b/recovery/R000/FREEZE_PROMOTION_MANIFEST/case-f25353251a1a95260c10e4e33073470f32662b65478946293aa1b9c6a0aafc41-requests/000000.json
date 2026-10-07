@@ -1,0 +1,29 @@
+{
+  "binding": "sha256:3b78fa54ce1b5b0c656285cd7d3a6a3703970154ecae04571c501ee3e9037c22",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 689,
+    "output_tokens": 188,
+    "raw_response_hash": "sha256:8a31d954cd6525063e5d8e798833dc04cbfadbfb50206ddd5d78706ee97c4692",
+    "request_hash": "sha256:6280a2a9c0fa340d837c7680530d619b2b5ed7d8586527560cd84a21450855b9",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 689,
+      "output_tokens": 188,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Removed the duplicate 3'd6 case item and the stray empty lines in the always block; the duplicate case label caused the case statement to be malformed, producing the wrong Y value at cycle 7.",
+      "replacement_rtl": "module JG3(ABC,X,Y);\n\t\n\tinput [2:0] ABC;\n\t\n\toutput X, Y;\n\treg X, Y;\n\t\n\talways@(ABC)\n\t\tcase(ABC)\n\t\t\t3'd0: begin X<=0;Y<=1; end\n\t\t\t3'd5: begin X<=1;Y=0; end\n\t\t\t3'd6: begin X<=1;Y=0; end\n\t\t\tdefault: begin X<=0;Y=0; end\n\t\tendcase\t\n\t\nendmodule"
+    }
+  },
+  "result_hash": "sha256:6af196340748b4b0584da7a2d142a76e3baf9ac0e4fade108e6f1445679ec7f8"
+}

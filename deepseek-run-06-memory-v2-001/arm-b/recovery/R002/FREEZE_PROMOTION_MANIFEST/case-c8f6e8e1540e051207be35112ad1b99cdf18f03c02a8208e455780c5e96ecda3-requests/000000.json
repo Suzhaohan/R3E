@@ -1,0 +1,31 @@
+{
+  "binding": "sha256:a74c1591e260a7e9d3dc003cbf52b81f55ec794bbcdb7990d5dc91206f28546f",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 703,
+    "output_tokens": 173,
+    "raw_response_hash": "sha256:b5f77a403c90e155885de74c872aea237257aa8f45201b0aac566e0ebc905385",
+    "request_hash": "sha256:00cbc7587f7212ab940ed3d9186cd4b76377cf585a1fcb3813c3204b160aafe2",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 703,
+      "output_tokens": 173,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "candidate_id": "C_e797e47ec37426c0_0",
+      "candidate_seed": 646972671,
+      "edit": "Changed the sensitivity list of the always block from `always@ (clk)` to `always@ (clk or d)` so the combinational assignment `q = d` re-evaluates when `d` changes, matching the oracle's combinational behavior instead of latching only on `clk` edges.",
+      "replacement_rtl": "module latch24_test( d, clk,q );\n\t\n    input [23:0] d;\n    input clk;\n    output[23:0] q;\n    reg [23:0] q;\n    always@ (clk or d)\n        q = d;\n\nendmodule\n"
+    }
+  },
+  "result_hash": "sha256:fecc23a27be1f6ac722a4346948c7b8feb7dca5376f6809d77e46497d14b330a"
+}

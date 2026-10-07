@@ -1,0 +1,34 @@
+{
+  "binding": "sha256:d6874c8e141cb4ba4fef487eb096c3f3a3e28d4bc94fb1993452c71666013bf6",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 4014,
+    "output_tokens": 80,
+    "raw_response_hash": "sha256:ae14e6f6b1c6c34113ac3913459a9408ad5837edb792ef4df3a3fba44dc0b728",
+    "request_hash": "sha256:332b2e861d250d7c3710dc844a64d1fea9c30c08de39a13325662595eed49af3",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 4014,
+      "output_tokens": 80,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Initialize rd_data_r to zero instead of sampling the inout data bus during reset.",
+      "edits": [
+        {
+          "replace": "    rd_data_r <= 16'b0;\n    busy <= 1'b0;",
+          "search": "    rd_data_r <= data;\n    // rd_data_r <= 16'b0; \n    busy <= 1'b0;"
+        }
+      ]
+    }
+  },
+  "result_hash": "sha256:84d3588f29c248d531240d4ccb9f365da98104635c44ec5f2ccdb8749441bedc"
+}

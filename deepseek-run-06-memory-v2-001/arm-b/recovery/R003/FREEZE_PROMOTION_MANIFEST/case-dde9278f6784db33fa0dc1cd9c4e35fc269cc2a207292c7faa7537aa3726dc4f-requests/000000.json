@@ -1,0 +1,29 @@
+{
+  "binding": "sha256:de3e012be2f32ad2b69bd1b633b2f6bf1fd21614d2cc90e19328939d8da912a7",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 835,
+    "output_tokens": 313,
+    "raw_response_hash": "sha256:17d94a94979fe897027c28047aa65b67feea934126a065ae525ee7f7cedb75a6",
+    "request_hash": "sha256:bcba628588fa8020608bb8d60ad90bb646263147e1807aa0ace8b7afbb0cd90a",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 835,
+      "output_tokens": 313,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "No change: the supplied RTL already matches the oracle behavior for the observed mismatch (cycle0 expected 10, i.e. X=1,Y=0, which occurs for ABC=101/110/111). The buggy output 00 at cycle0 implies the testbench drove ABC in {000..100}, which the current case correctly maps to X=0,Y=0; no local RTL edit is warranted from the given evidence.",
+      "replacement_rtl": "module JG3(ABC,X,Y);\n\t\n\tinput [2:0] ABC;\n\t\n\toutput X, Y;\n\treg X, Y;\n\t\n\talways@(ABC)\n    \n        \n\ncase(ABC)\n3'b000 : begin X = 0; Y = 0; end\n3'b001 : begin X = 0; Y = 0; end\n3'b010 : begin X = 0; Y = 0; end\n3'b011 : begin X = 0; Y = 0; end\n3'b100 : begin X = 0; Y = 0; end\n3'b101 : begin X = 1; Y = 0; end\n3'b110 : begin X = 1; Y = 0; end\n3'b111 : begin X = 1; Y = 0; end\ndefault :;\nendcase\n        \n\n\t\nendmodule"
+    }
+  },
+  "result_hash": "sha256:4b5a6fb8d6e200a9518e33e5a0fbfaf8255e240b237ada4e730ae6e6fba7af4c"
+}

@@ -1,0 +1,23 @@
+{
+  "binding": "sha256:ff830fc281d815a7dd86c58d8803c4b72e69df6e2a5177ceec2d0ee72e8f0bcc",
+  "response": {
+    "input_tokens": 922,
+    "output_tokens": 514,
+    "raw_response_hash": "sha256:fd90a6a867edf418dbbf1fdc1494095c4861683135e34131a65afffcba573423",
+    "request_hash": "sha256:98d65c9051de122b27ff4971f85a78de05a9eaf8d56f69f4c36808787008c945",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 922,
+      "output_tokens": 514,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Corrected the active-low output patterns in the 3-to-8 decoder continuous assignment: each enabled case now drives exactly one low bit (e.g., 8'b11111110 for 4'b1000, 8'b11111101 for 4'b1001, ..., 8'b01111111 for 4'b1111), and the disabled default is 8'b11111111. This fixes Y7 being stuck low at cycle 0.",
+      "replacement_rtl": "/******************************************************************\n * Date: Aug. 28, 1999\n * File: Decoder 3 to 8.v   (440 Examples)\n *\n * Module of a 3 to 8 Decoder with an active high enable input and\n * and active low outputs. This model uses a trinary continuous \n * assignment statement for the combinational logic\n *******************************************************************/\n//*****************************************************************\n  module decoder_3to8(Y7, Y6, Y5, Y4, Y3, Y2, Y1, Y0, A, B, C, en);\n//*****************************************************************\n     output Y7, Y6, Y5, Y4, Y3, Y2, Y1, Y0;\n     input  A, B, C;\n     input  en;\n     assign {Y7,Y6,Y5,Y4,Y3,Y2,Y1,Y0} = ( {en,A,B,C} == 4'b1000) ? 8'b11111110 :\n                                        ( {en,A,B,C} == 4'b1001) ? 8'b11111101 :\n                                        ( {en,A,B,C} == 4'b1010) ? 8'b11111011 :\n                                        ( {en,A,B,C} == 4'b1011) ? 8'b11110111 :\n                                        ( {en,A,B,C} == 4'b1100) ? 8'b11101111 :\n                                        ( {en,A,B,C} == 4'b1101) ? 8'b11011111 :\n                                        ( {en,A,B,C} == 4'b1110) ? 8'b10111111 :\n                                        ( {en,A,B,C} == 4'b1111) ? 8'b01111111 :\n                                                                   8'b11111111;\n  endmodule\n"
+    }
+  },
+  "result_hash": "sha256:831b98e9bf0e16f6ff8424fe252d684fb73dbbf6e9c2ff33b3a6e02306e6d714"
+}

@@ -1,0 +1,29 @@
+{
+  "binding": "sha256:82d8b23434b1fa641a3f3ce27630d29712a20df5aaa284b17e39c288fead1e74",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 799,
+    "output_tokens": 178,
+    "raw_response_hash": "sha256:e47989c51effeb02dc965f93c0694d22a67d6c3e67234e62ec3bd61dfd2eb7d4",
+    "request_hash": "sha256:a754e43f592e0f321d85a16d320e7906666640a1e8ec9a2cc1ba54b9968d89b9",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 799,
+      "output_tokens": 178,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Removed the duplicated 3'd6 case arm (identical duplicate of the preceding 3'd6 arm) in the combinational case statement; no other changes.",
+      "replacement_rtl": "module JG3(ABC,X,Y);\n\t\n\tinput [2:0] ABC;\n\t\n\toutput X, Y;\n\treg X, Y;\n\t\n\talways@(ABC)\n\t\tcase(ABC)\n\t\t\t3'd0: begin X<=0;Y<=1; end\n\t\t\t3'd5: begin X<=1;Y=0; end\n\t\t\t3'd6: begin X<=1;Y=0; end\n\t\t\tdefault: begin X<=0;Y<=0; end\n\t\tendcase\t\n\t\nendmodule"
+    }
+  },
+  "result_hash": "sha256:036bdb43acfac48afb39e7deed4170c24a67c891de10ef846607ca5eb1f01ccc"
+}

@@ -1716,3 +1716,51 @@ def test_legacy_migration_freezes_skills_without_promoting_history(tmp_path):
         row["disposition"] for row in report["manual_skills"]
     } == {"frozen_base_asset_no_promotion_authority"}
     assert report["legacy_registry_artifacts"][0]["disposition"].startswith("excluded")
+
+
+@pytest.mark.parametrize("required,expected_exam", [(2, 2), (3, 3)])
+def test_promotion_waits_for_enough_designs_then_reserves_exam(tmp_path, required, expected_exam):
+    config, _ = _project(tmp_path)
+    config["promotion_thresholds"] = {"min_covered_designs": required}
+
+    class GrowingDesignPool(DeterministicEvolutionAdapter):
+        def generate_red(self, parent, round_config, red_search_context):
+            rows = list(super().generate_red(parent, round_config, red_search_context))
+            return rows[:2] if red_search_context["residual_count"] == 0 else rows[:required + 1]
+
+    adapter = GrowingDesignPool(tmp_path / "runtime/fake")
+    first = EvolutionRoundRunner(
+        config, round_id="R001", adapter=adapter, project_root=tmp_path,
+    ).run()
+    assert not first["promotion_eligible"]
+    assert first["defer_reason"] == "insufficient_residual_designs"
+    first_dir = tmp_path / "runtime/rounds/R001"
+    assert (first_dir / "child_policies.jsonl").read_text().strip() == ""
+    assert (first_dir / "paired_validation.jsonl").read_text().strip() == ""
+    assert first["design_allocation"]["missing_design_count"] == required - 1
+    assert verify_frozen_round(first_dir)["design_allocation"] == first["design_allocation"]
+    second = EvolutionRoundRunner(
+        config, round_id="R002", adapter=adapter, project_root=tmp_path,
+    ).run()
+    assert second["promotion_eligible"]
+    assert second["promoted"]
+    assert second["design_allocation"]["adaptation_design_count"] == 1
+    assert second["design_allocation"]["target_design_count"] == expected_exam
+    second_dir = tmp_path / "runtime/rounds/R002"
+    assert verify_frozen_round(second_dir)["design_allocation"] == second["design_allocation"]
+    assert EvolutionRoundRunner(
+        config, round_id="R002", adapter=adapter, project_root=tmp_path,
+    ).run() == second
+
+    # Even re-hashed display metadata must be checked against actual membership.
+    from r3e.arena.audit import reconstruct_round
+    target_path = second_dir / "target_manifest.json"
+    target = json.loads(target_path.read_text())
+    target["metadata"]["design_allocation"]["target_design_count"] = 999
+    atomic_write_json(target_path, make_manifest(
+        target["rows"], split="target",
+        source_manifest_hash=target["source_residual_manifest_hash"],
+        metadata=target["metadata"],
+    ))
+    with pytest.raises(RoundAuditViolation, match="promotion design allocation"):
+        reconstruct_round(second_dir)

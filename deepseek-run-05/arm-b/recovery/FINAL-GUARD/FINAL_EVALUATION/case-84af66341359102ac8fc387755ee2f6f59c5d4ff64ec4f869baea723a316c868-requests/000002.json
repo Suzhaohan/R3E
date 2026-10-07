@@ -1,0 +1,34 @@
+{
+  "binding": "sha256:f0c3e12da51f0e765877cb46c7cb4ed16564960534ed65da2a2e955f3b389caf",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 919,
+    "output_tokens": 86,
+    "raw_response_hash": "sha256:e9a879c2bcffaf7501fa364d35b0d63ced67cde1a2b2f6000ec042afa758f184",
+    "request_hash": "sha256:479228364ff2409d48f965ea9d77d0b2ffb526f22b60054f69b223b6ca544e00",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 919,
+      "output_tokens": 86,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Fix the active-low output for the first enabled decode case so Y7 is high when en=1 and A=B=C=0.",
+      "edits": [
+        {
+          "replace": "( {en,A,B,C} == 4'b1000) ? 8'b1111111 :",
+          "search": "( {en,A,B,C} == 4'b1000) ? 8'b1111110 :"
+        }
+      ]
+    }
+  },
+  "result_hash": "sha256:da212398648fa3c894688a65a39e77778babfe11b39e9340aca073a832c343ee"
+}

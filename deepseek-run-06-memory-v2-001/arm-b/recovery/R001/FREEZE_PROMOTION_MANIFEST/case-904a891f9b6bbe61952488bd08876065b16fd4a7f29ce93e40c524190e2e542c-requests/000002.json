@@ -1,0 +1,29 @@
+{
+  "binding": "sha256:f332455dbcbcc0823b13e296cf4297aa32cb427e111d2b494fb66754f322543c",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 843,
+    "output_tokens": 303,
+    "raw_response_hash": "sha256:f20ffc189843052db3a0b1dcadfc72bd4bfd838d60882311fe9453cc32462383",
+    "request_hash": "sha256:3bde31afebad6d69626abca55302fdb54f9c177a09401d64af8d3b28da154e16",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 843,
+      "output_tokens": 303,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Invert the enable polarity: change `if(ena) y = 0;` to `if(!ena) y = 0;` so the decoder outputs the one-hot value when ena is asserted and zero when ena is deasserted, matching the oracle at cycle 0.",
+      "replacement_rtl": "\n\nmodule decoder3e_test(a,ena,y);\n  input [2:0] a;\n  input ena;\n  output reg [7:0] y; \n\n  \n\n\nalways @(*)begin\n  if(!ena) y = 0;\n  else begin\n    case(a)\n        3'b000: y = 8'b0000_0001;\n        3'b001: y = 8'b0000_0010;\n        3'b010: y = 8'b0000_0100;\n        3'b011: y = 8'b0000_1000;\n        3'b100: y = 8'b0001_0000;\n        3'b101: y = 8'b0010_0000;\n        3'b110: y = 8'b0100_0000;\n        3'b111: y = 8'b1000_0000;\n    \n    endcase\n  end\nend\n\n\n\n\n\nendmodule\n"
+    }
+  },
+  "result_hash": "sha256:29735be9a48dfa214d9bc909d5a4f75fd5df4d59298c66592d30245284c4dd31"
+}

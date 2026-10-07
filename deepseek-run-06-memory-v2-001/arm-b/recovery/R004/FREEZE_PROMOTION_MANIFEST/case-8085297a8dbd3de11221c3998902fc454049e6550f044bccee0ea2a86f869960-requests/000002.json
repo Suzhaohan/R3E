@@ -1,0 +1,29 @@
+{
+  "binding": "sha256:ae681fc01b9edf64870bbdcb6038ba615ef0927355cd61752cc00bf75989c3d5",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 791,
+    "output_tokens": 194,
+    "raw_response_hash": "sha256:9226c2942fcf8831e28ac5a381f3f4346664d42290ea820f8db32ac988f3e5de",
+    "request_hash": "sha256:52932db011d0c23611e4a3e50a0a938415e9db48821cbf9c0d9331a1bb8c4345",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 791,
+      "output_tokens": 194,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Removed the duplicate 3'd6 case item (identical to the preceding 3'd6 branch) in the combinational always block; the case now has unique items 0,5,6 plus default, preserving the intended decode behavior.",
+      "replacement_rtl": "module JG3(ABC,X,Y);\n\t\n\tinput [2:0] ABC;\n\t\n\toutput X, Y;\n\treg X, Y;\n\t\n\talways@(ABC)\n\t\tcase(ABC)\n\t\t\t3'd0: begin X<=0;Y<=1; end\n\t\t\t3'd5: begin X<=1;Y=0; end\n\t\t\t3'd6: begin X<=1;Y=0; end\n\t\t\tdefault: begin X<=0;Y<=0; end\n\t\tendcase\t\n\t\nendmodule"
+    }
+  },
+  "result_hash": "sha256:f583404b11c592dcf017644b20f17238a819fa12bfbc419313d89c230d64765b"
+}

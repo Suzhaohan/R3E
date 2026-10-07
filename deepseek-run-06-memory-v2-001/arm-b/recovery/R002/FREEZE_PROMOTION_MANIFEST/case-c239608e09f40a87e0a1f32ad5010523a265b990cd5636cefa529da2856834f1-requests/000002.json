@@ -1,0 +1,29 @@
+{
+  "binding": "sha256:6b28459c5da683e89c49c42698a7e1daf2d66303942c62072e67752d0fc8fc5b",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 963,
+    "output_tokens": 407,
+    "raw_response_hash": "sha256:9e7caf76da93e0d4f0606b85d17471d5048cb84df7d06dac008c8820521edcc7",
+    "request_hash": "sha256:06d2a99d7554df4982c29bef87a4ba49647be7ee77016ef72ba4cda7180017ad",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 963,
+      "output_tokens": 407,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Fix 7-segment case mapping: swap the codes for 4'b1101 and 4'b1110 so that 4'b1101 outputs 7'b1111001 and 4'b1110 outputs 7'b1011110, matching the oracle at cycle14.",
+      "replacement_rtl": "module decl7s_test(a,led7s);\n      input [3:0] a;\n      output [6:0] led7s;\n      reg [6:0] led7s;\nalways @(a)\nbegin\ncase(a)\n  4'b0000: led7s=7'b0111111;\n  4'b0001: led7s=7'b0000110;\n  4'b0010: led7s=7'b1011011;\n  4'b0011: led7s=7'b1001111;\n  4'b0100: led7s=7'b1100110;\n  4'b0101: led7s=7'b1101101;\n  4'b0110: led7s=7'b1111101;\n  4'b0111: led7s=7'b0000111;\n  4'b1000: led7s=7'b1111111;\n  4'b1001: led7s=7'b1101111;\n  4'b1010: led7s=7'b1110111;\n  4'b1011: led7s=7'b1111100;\n  4'b1100: led7s=7'b0111001;\n  4'b1101: led7s=7'b1111001;\n  4'b1110: led7s=7'b1011110;\n  4'b1111: led7s=7'b1110001;\nendcase\nend\nendmodule"
+    }
+  },
+  "result_hash": "sha256:cb57d8e5d4769876711535ff61a2f97ce292224eb31140d74ea2602f45d107be"
+}

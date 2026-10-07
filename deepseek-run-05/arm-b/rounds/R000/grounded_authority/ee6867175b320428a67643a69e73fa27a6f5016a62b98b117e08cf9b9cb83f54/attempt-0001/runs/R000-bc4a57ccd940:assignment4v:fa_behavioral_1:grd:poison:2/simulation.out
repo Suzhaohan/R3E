@@ -1,0 +1,137 @@
+#! /usr/bin/vvp
+:ivl_version "11.0 (stable)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/system.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/vhdl_sys.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/vhdl_textio.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/v2005_math.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/va_math.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/v2009.vpi";
+S_0x62c1fb8a9ba0 .scope package, "$unit" "$unit" 2 1;
+ .timescale 0 0;
+S_0x62c1fb8a7930 .scope module, "tb" "tb" 3 1;
+ .timescale 0 0;
+v0x62c1fb8da580_0 .var "a", 0 0;
+v0x62c1fb8da640_0 .net "actual", 1 0, L_0x62c1fb8db300;  1 drivers
+v0x62c1fb8da720_0 .var "b", 0 0;
+v0x62c1fb8da810_0 .var/i "bad", 31 0;
+v0x62c1fb8da8d0_0 .var "ci", 0 0;
+v0x62c1fb8daa10_0 .net "expected", 1 0, L_0x62c1fb8dba80;  1 drivers
+v0x62c1fb8daaf0_0 .var/i "fd", 31 0;
+v0x62c1fb8dabd0_0 .var/i "first", 31 0;
+v0x62c1fb8dacb0_0 .var/i "i", 31 0;
+L_0x62c1fb8db300 .concat8 [ 1 1 0 0], L_0x62c1fb8acde0, L_0x62c1fb8db240;
+L_0x62c1fb8dba80 .concat8 [ 1 1 0 0], L_0x62c1fb8db4b0, L_0x62c1fb8db970;
+S_0x62c1fb8aeb80 .scope module, "dut" "fa_behavioral" 3 6, 4 1 0, S_0x62c1fb8a7930;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "a";
+    .port_info 1 /INPUT 1 "b";
+    .port_info 2 /INPUT 1 "ci";
+    .port_info 3 /OUTPUT 1 "s";
+    .port_info 4 /OUTPUT 1 "co";
+L_0x62c1fb8acd70 .functor AND 1, v0x62c1fb8da580_0, v0x62c1fb8da720_0, C4<1>, C4<1>;
+L_0x62c1fb8acde0 .functor XOR 1, L_0x62c1fb8acd70, v0x62c1fb8da8d0_0, C4<0>, C4<0>;
+L_0x62c1fb8dae60 .functor AND 1, v0x62c1fb8da580_0, v0x62c1fb8da720_0, C4<1>, C4<1>;
+L_0x62c1fb8daff0 .functor AND 1, v0x62c1fb8da580_0, v0x62c1fb8da8d0_0, C4<1>, C4<1>;
+L_0x62c1fb8db120 .functor OR 1, L_0x62c1fb8dae60, L_0x62c1fb8daff0, C4<0>, C4<0>;
+L_0x62c1fb8db190 .functor AND 1, v0x62c1fb8da720_0, v0x62c1fb8da8d0_0, C4<1>, C4<1>;
+L_0x62c1fb8db240 .functor OR 1, L_0x62c1fb8db120, L_0x62c1fb8db190, C4<0>, C4<0>;
+v0x62c1fb8ba5a0_0 .net *"_ivl_0", 0 0, L_0x62c1fb8acd70;  1 drivers
+v0x62c1fb8a7410_0 .net *"_ivl_10", 0 0, L_0x62c1fb8db190;  1 drivers
+v0x62c1fb8a9d30_0 .net *"_ivl_4", 0 0, L_0x62c1fb8dae60;  1 drivers
+v0x62c1fb8a9a60_0 .net *"_ivl_6", 0 0, L_0x62c1fb8daff0;  1 drivers
+v0x62c1fb8ae0a0_0 .net *"_ivl_8", 0 0, L_0x62c1fb8db120;  1 drivers
+v0x62c1fb8d9710_0 .net "a", 0 0, v0x62c1fb8da580_0;  1 drivers
+v0x62c1fb8d97d0_0 .net "b", 0 0, v0x62c1fb8da720_0;  1 drivers
+v0x62c1fb8d9890_0 .net "ci", 0 0, v0x62c1fb8da8d0_0;  1 drivers
+v0x62c1fb8d9950_0 .net "co", 0 0, L_0x62c1fb8db240;  1 drivers
+v0x62c1fb8d9a10_0 .net "s", 0 0, L_0x62c1fb8acde0;  1 drivers
+S_0x62c1fb8d9b70 .scope module, "oracle" "r3e_reference" 3 7, 3 26 0, S_0x62c1fb8a7930;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "a";
+    .port_info 1 /INPUT 1 "b";
+    .port_info 2 /INPUT 1 "ci";
+    .port_info 3 /OUTPUT 1 "s";
+    .port_info 4 /OUTPUT 1 "co";
+L_0x62c1fb8db440 .functor XOR 1, v0x62c1fb8da580_0, v0x62c1fb8da720_0, C4<0>, C4<0>;
+L_0x62c1fb8db4b0 .functor XOR 1, L_0x62c1fb8db440, v0x62c1fb8da8d0_0, C4<0>, C4<0>;
+L_0x62c1fb8db590 .functor AND 1, v0x62c1fb8da580_0, v0x62c1fb8da720_0, C4<1>, C4<1>;
+L_0x62c1fb8db600 .functor AND 1, v0x62c1fb8da580_0, v0x62c1fb8da8d0_0, C4<1>, C4<1>;
+L_0x62c1fb8db6a0 .functor OR 1, L_0x62c1fb8db590, L_0x62c1fb8db600, C4<0>, C4<0>;
+L_0x62c1fb8db7b0 .functor AND 1, v0x62c1fb8da720_0, v0x62c1fb8da8d0_0, C4<1>, C4<1>;
+L_0x62c1fb8db970 .functor OR 1, L_0x62c1fb8db6a0, L_0x62c1fb8db7b0, C4<0>, C4<0>;
+v0x62c1fb8d9d20_0 .net *"_ivl_0", 0 0, L_0x62c1fb8db440;  1 drivers
+v0x62c1fb8d9e00_0 .net *"_ivl_10", 0 0, L_0x62c1fb8db7b0;  1 drivers
+v0x62c1fb8d9ee0_0 .net *"_ivl_4", 0 0, L_0x62c1fb8db590;  1 drivers
+v0x62c1fb8d9fa0_0 .net *"_ivl_6", 0 0, L_0x62c1fb8db600;  1 drivers
+v0x62c1fb8da080_0 .net *"_ivl_8", 0 0, L_0x62c1fb8db6a0;  1 drivers
+v0x62c1fb8da1b0_0 .net "a", 0 0, v0x62c1fb8da580_0;  alias, 1 drivers
+v0x62c1fb8da250_0 .net "b", 0 0, v0x62c1fb8da720_0;  alias, 1 drivers
+v0x62c1fb8da2f0_0 .net "ci", 0 0, v0x62c1fb8da8d0_0;  alias, 1 drivers
+v0x62c1fb8da390_0 .net "co", 0 0, L_0x62c1fb8db970;  1 drivers
+v0x62c1fb8da430_0 .net "s", 0 0, L_0x62c1fb8db4b0;  1 drivers
+    .scope S_0x62c1fb8a7930;
+T_0 ;
+    %vpi_func 3 10 "$fopen" 32, "output.csv", "w" {0 0 0};
+    %store/vec4 v0x62c1fb8daaf0_0, 0, 32;
+    %vpi_call/w 3 10 "$fdisplay", v0x62c1fb8daaf0_0, "time,actual" {0 0 0};
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v0x62c1fb8da810_0, 0, 32;
+    %pushi/vec4 4294967295, 0, 32;
+    %store/vec4 v0x62c1fb8dabd0_0, 0, 32;
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v0x62c1fb8dacb0_0, 0, 32;
+T_0.0 ;
+    %load/vec4 v0x62c1fb8dacb0_0;
+    %cmpi/s 8, 0, 32;
+    %jmp/0xz T_0.1, 5;
+    %load/vec4 v0x62c1fb8dacb0_0;
+    %pad/s 3;
+    %split/vec4 1;
+    %store/vec4 v0x62c1fb8da8d0_0, 0, 1;
+    %split/vec4 1;
+    %store/vec4 v0x62c1fb8da720_0, 0, 1;
+    %store/vec4 v0x62c1fb8da580_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call/w 3 12 "$fdisplay", v0x62c1fb8daaf0_0, "%0d,%b", v0x62c1fb8dacb0_0, v0x62c1fb8da640_0 {0 0 0};
+    %load/vec4 v0x62c1fb8da640_0;
+    %load/vec4 v0x62c1fb8daa10_0;
+    %cmp/ne;
+    %jmp/0xz  T_0.2, 6;
+    %load/vec4 v0x62c1fb8da810_0;
+    %addi 1, 0, 32;
+    %store/vec4 v0x62c1fb8da810_0, 0, 32;
+    %load/vec4 v0x62c1fb8dabd0_0;
+    %cmpi/s 0, 0, 32;
+    %jmp/0xz  T_0.4, 5;
+    %load/vec4 v0x62c1fb8dacb0_0;
+    %store/vec4 v0x62c1fb8dabd0_0, 0, 32;
+T_0.4 ;
+T_0.2 ;
+    %load/vec4 v0x62c1fb8dacb0_0;
+    %addi 1, 0, 32;
+    %store/vec4 v0x62c1fb8dacb0_0, 0, 32;
+    %jmp T_0.0;
+T_0.1 ;
+    %vpi_call/w 3 15 "$fclose", v0x62c1fb8daaf0_0 {0 0 0};
+    %load/vec4 v0x62c1fb8da810_0;
+    %cmpi/e 0, 0, 32;
+    %jmp/0xz  T_0.6, 4;
+    %vpi_call/w 3 17 "$display", "R3E_ORACLE pass=1 signature=none first=none topology=none" {0 0 0};
+    %vpi_call/w 3 18 "$display", "R3E_WAVEFORM signal=none first_cycle=none cycle_offset=none relation=none assignment=none cone_depth=none pattern=none" {0 0 0};
+    %jmp T_0.7;
+T_0.6 ;
+    %vpi_call/w 3 20 "$display", "R3E_ORACLE pass=0 signature=output_mismatch first=vector%0d topology=actual", v0x62c1fb8dabd0_0 {0 0 0};
+    %vpi_call/w 3 21 "$display", "R3E_WAVEFORM signal=actual first_cycle=%0d cycle_offset=0 relation=same_cycle assignment=continuous cone_depth=1 pattern=output_mismatch", v0x62c1fb8dabd0_0 {0 0 0};
+T_0.7 ;
+    %vpi_call/w 3 23 "$finish" {0 0 0};
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 5;
+    "N/A";
+    "<interactive>";
+    "-";
+    "/data2/huangyc/R3E-aic-ic-2026-latest/deepseek-run-05/arm-b/rounds/R000/grounded_authority/ee6867175b320428a67643a69e73fa27a6f5016a62b98b117e08cf9b9cb83f54/attempt-0001/inputs/testbench.v";
+    "/data2/huangyc/R3E-aic-ic-2026-latest/deepseek-run-05/arm-b/rounds/R000/grounded_authority/ee6867175b320428a67643a69e73fa27a6f5016a62b98b117e08cf9b9cb83f54/attempt-0001/materialized/poison.v";

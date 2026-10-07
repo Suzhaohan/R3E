@@ -1,0 +1,63 @@
+{
+  "schema_version": "r3e-red-operator-registry-v1",
+  "registry_version": 1,
+  "frozen": true,
+  "operators": [
+    {
+      "operator_id": "replace_comparator",
+      "supported_family_ids": [
+        "combinational.comparator_boundary"
+      ],
+      "preconditions": [
+        "comparison_expression"
+      ],
+      "maximum_changed_modules": 1,
+      "maximum_changed_blocks": 1,
+      "maximum_ast_edits": 1,
+      "inverse_operator": "restore_comparator",
+      "executor": "ast_template"
+    },
+    {
+      "operator_id": "shift_boundary_constant",
+      "supported_family_ids": [
+        "combinational.comparator_boundary"
+      ],
+      "preconditions": [
+        "constant_boundary"
+      ],
+      "maximum_changed_modules": 1,
+      "maximum_changed_blocks": 1,
+      "maximum_ast_edits": 1,
+      "inverse_operator": "restore_boundary_constant",
+      "executor": "ast_template"
+    },
+    {
+      "operator_id": "replace_bitwise_operator",
+      "supported_family_ids": [
+        "combinational.expression_operator"
+      ],
+      "preconditions": [
+        "binary_bitwise_expression"
+      ],
+      "maximum_changed_modules": 1,
+      "maximum_changed_blocks": 1,
+      "maximum_ast_edits": 1,
+      "inverse_operator": "restore_replace_bitwise_operator",
+      "executor": "ast_template"
+    },
+    {
+      "operator_id": "flip_assignment_constant",
+      "supported_family_ids": [
+        "combinational.expression_operator"
+      ],
+      "preconditions": [
+        "assignment_literal"
+      ],
+      "maximum_changed_modules": 1,
+      "maximum_changed_blocks": 1,
+      "maximum_ast_edits": 1,
+      "inverse_operator": "restore_flip_assignment_constant",
+      "executor": "ast_template"
+    }
+  ]
+}

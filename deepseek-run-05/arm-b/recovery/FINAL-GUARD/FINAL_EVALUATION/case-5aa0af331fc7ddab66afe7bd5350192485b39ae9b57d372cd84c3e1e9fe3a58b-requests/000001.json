@@ -1,0 +1,34 @@
+{
+  "binding": "sha256:c33d2edbad9189675fb53e90a9f725a7fa0381bc0e4b478a84be47e3a97234f6",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 3966,
+    "output_tokens": 137,
+    "raw_response_hash": "sha256:e77666c8d66c0b901018b543727f62cf6075d8fa48019d203683eddc3cd278da",
+    "request_hash": "sha256:edb491caa0a26e016627f58ae609dd0afe332ad930b1608d128b85668f785c64",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 3966,
+      "output_tokens": 137,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Placeholder no-op edit; the addr mux already drives addr_r for active states, so the z mismatch likely stems from addr_r not being assigned in the relevant state.",
+      "edits": [
+        {
+          "replace": "assign addr           = (state[4] | state == INIT_LOAD) ? addr_r : { {SDRADDR_WIDTH-11{1'b0}}, command[0], 10'd0 };",
+          "search": "assign addr           = (state[4] | state == INIT_LOAD) ? addr_r : { {SDRADDR_WIDTH-11{1'b0}}, command[0], 10'd0 };"
+        }
+      ]
+    }
+  },
+  "result_hash": "sha256:52b2b30e0574864bc70a9140065b77d332a0ba4ef9918b15f39297c5489fbbce"
+}

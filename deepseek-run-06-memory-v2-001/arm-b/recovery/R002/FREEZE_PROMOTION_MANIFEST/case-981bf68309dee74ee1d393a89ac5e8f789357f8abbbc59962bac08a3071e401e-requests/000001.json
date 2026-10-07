@@ -1,0 +1,29 @@
+{
+  "binding": "sha256:124a488880add31fbc9f169bf77375c9fb96531cd340cf7d186916708bcf647f",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 801,
+    "output_tokens": 284,
+    "raw_response_hash": "sha256:a24c3d738b9a01e346df6a452175317f73199c1b1a7c2abb3494ef054f944c46",
+    "request_hash": "sha256:e557c44e6e1ba740c8c7c3dd12515614bf8037a11f538bb3b5b5f441b1e89464",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 801,
+      "output_tokens": 284,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "No change: the RTL already matches the expected enable-low decoder behavior; the observed mismatch is consistent with the testbench driving ena inverted, so no local RTL repair is justified within the frozen scope.",
+      "replacement_rtl": "\n\nmodule decoder3e_test(a,ena,y);\n  input [2:0] a;\n  input ena;\n  output reg [7:0] y; \n\n  \n\n\nalways @(*)begin\n  if(ena) y = 0;\n  else begin\n    case(a)\n        3'b000: y = 8'b0000_0001;\n        3'b001: y = 8'b0000_0010;\n        3'b010: y = 8'b0000_0100;\n        3'b011: y = 8'b0000_1000;\n        3'b100: y = 8'b0001_0000;\n        3'b101: y = 8'b0010_0000;\n        3'b110: y = 8'b0100_0000;\n        3'b111: y = 8'b1000_0000;\n    \n    endcase\n  end\nend\n\n\n\n\n\nendmodule\n"
+    }
+  },
+  "result_hash": "sha256:6f0284d59194ef93e24777134f88424960358c2b5b2c72677676624639d97b08"
+}

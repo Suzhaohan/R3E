@@ -1,0 +1,29 @@
+{
+  "binding": "sha256:106e22d1ab6698b7000cd4462cce42030c0bb22bbad9d2f1b21aa716ac962c7e",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 980,
+    "output_tokens": 112,
+    "raw_response_hash": "sha256:a0a2cfed790abf6e2ae8d0070b1b894adbf11374e0e99c82587eda718591bfa7",
+    "request_hash": "sha256:3d901783e7423db44b8bae4adc7b36a71937ed675cd902b5d52337714a3ea1c2",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 980,
+      "output_tokens": 112,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Correct inverted mux select polarity: when s==0 assign y=b, otherwise assign y=a, so the output matches the oracle for the observed cycles.",
+      "replacement_rtl": "module mux21(a,b,s,y);\n\tinput a,b,s;\n\toutput y;\n\treg y;\n\talways @(a,b,s)\n\tbegin\n\t\tif(s==1'B0) begin y=b; end\n\t\telse begin y=a; end\n\tend\nendmodule"
+    }
+  },
+  "result_hash": "sha256:442ac9cacde5d3f46c87d822e15934748534d7c1094d36af58b154707fb447a6"
+}

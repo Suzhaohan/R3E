@@ -1,0 +1,29 @@
+{
+  "binding": "sha256:b9457e64b3616e137c131a60b53d69c766551f6e925701edf83fd22e816db3f7",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 1142,
+    "output_tokens": 108,
+    "raw_response_hash": "sha256:ba0d69da02eae07bd749c09b5f3664ad51ed6809c4cebb8e235f4a630430535b",
+    "request_hash": "sha256:c42dc3444a0966d88b3d88b83cd4e6276f1bd327c4087607f8416cd30365c659",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 1142,
+      "output_tokens": 108,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Add the missing else branch so that when s is not 0, y is assigned b, completing the 2:1 mux behavior.",
+      "replacement_rtl": "module mux21(a,b,s,y);\n\tinput a,b,s;\n\toutput y;\n\treg y;\n\talways @(a,b,s)\n    begin\n        if(s==1'B0)begin y=a;end\n        else begin y=b;end\n    end\nendmodule"
+    }
+  },
+  "result_hash": "sha256:c5125bb3cbad9ca706f11e8e007f237da9ddb1b92eb2e160663a233b9c6ec869"
+}

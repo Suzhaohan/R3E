@@ -1,0 +1,29 @@
+{
+  "binding": "sha256:76738f2a1cf75ea5c06e80757ca56ef7cbe1e50359d42c22bbb9d5c2fb53acfc",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 3938,
+    "output_tokens": 139,
+    "raw_response_hash": "sha256:593630e26815652a2730bd358e8d396616c1435c409b8c332aae7cecf328d5c7",
+    "request_hash": "sha256:633577ab9f3bf2d1b2023d7196384b494659eb9e0e835d0403aa2bfceb4fde1c",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 3938,
+      "output_tokens": 139,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Change the always block sensitivity from level-sensitive 'always@ (clk)' to edge-sensitive 'always@ (posedge clk)' so q updates only on the rising clock edge instead of continuously while clk is high, matching the expected registered behavior.",
+      "replacement_rtl": "module latch24_test( d, clk,q );\n\t\n    input [23:0] d;\n    input clk;\n    output[23:0] q;\n    reg [23:0] q;\n    always@ (posedge clk)\n        q = d;\n\nendmodule\n"
+    }
+  },
+  "result_hash": "sha256:7e1c54cda0ae3023c897e372742e4738b8d0ac629e9fa41877b395f592b0d028"
+}

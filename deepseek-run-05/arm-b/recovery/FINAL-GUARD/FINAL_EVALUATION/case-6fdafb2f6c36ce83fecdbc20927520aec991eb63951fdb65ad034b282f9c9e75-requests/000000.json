@@ -1,0 +1,34 @@
+{
+  "binding": "sha256:2e328ded71c7a56255b677297edefa18d44a17a17b8f87d81a72a67de694ecc4",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 4008,
+    "output_tokens": 117,
+    "raw_response_hash": "sha256:bbfa3a874b50cc42f1a7ff33d0ff9d7e7fbba3da0ebc73fa79ba74c3a4a186a7",
+    "request_hash": "sha256:754543e874957ad3bdb230b038b12f7f6220cf80e8f7d0611e74d20e79ff5dcb",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 4008,
+      "output_tokens": 117,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "No change needed; addr is already driven from addr_r during active states.",
+      "edits": [
+        {
+          "replace": "assign addr           = (state[4] | state == INIT_LOAD) ? addr_r : { {SDRADDR_WIDTH-11{1'b0}}, command[0], 10'd0 };",
+          "search": "assign addr           = (state[4] | state == INIT_LOAD) ? addr_r : { {SDRADDR_WIDTH-11{1'b0}}, command[0], 10'd0 };"
+        }
+      ]
+    }
+  },
+  "result_hash": "sha256:c68a1d30804f42bc1555835296f5e5c75e626a7c921f439e7712cb99b52b02cb"
+}

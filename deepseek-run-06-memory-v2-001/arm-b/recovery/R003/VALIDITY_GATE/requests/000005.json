@@ -1,0 +1,29 @@
+{
+  "binding": "sha256:e64c3156b70bed042445785c4e21a43372826d5b062e141142e26d0943d56de0",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 686,
+    "output_tokens": 265,
+    "raw_response_hash": "sha256:613efb4cf7079ed7868074df9b6044464fd0f94248a8683f17aa339279ab27aa",
+    "request_hash": "sha256:2bf33cbd73b061859f19b62a68c8d1226970b98cdb53b91ac7e8ad3359923731",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 686,
+      "output_tokens": 265,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "In the case statement, change the 3'b001 branch from X=0; Y=0; to X=0; Y=1; so that Y matches the expected value at the first divergence cycle.",
+      "replacement_rtl": "module JG3(ABC,X,Y);\n\t\n\tinput [2:0] ABC;\n\t\n\toutput X, Y;\n\treg X, Y;\n\t\n\talways@(ABC)\n    \n        \n\ncase(ABC)\n3'b000 : begin X = 0; Y = 1; end\n3'b001 : begin X = 0; Y = 1; end\n3'b010 : begin X = 0; Y = 0; end\n3'b011 : begin X = 0; Y = 0; end\n3'b100 : begin X = 0; Y = 0; end\n3'b101 : begin X = 0; Y = 0; end\n3'b110 : begin X = 1; Y = 0; end\n3'b111 : begin X = 1; Y = 0; end\ndefault :;\nendcase\n        \n\n\t\nendmodule"
+    }
+  },
+  "result_hash": "sha256:19a8a74b27a2b31bd34de720a1030c899b9eb25e73b39d2bb05fff08404f0105"
+}

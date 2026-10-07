@@ -1,0 +1,29 @@
+{
+  "binding": "sha256:fe9b73ac9ae67a769d3423e242e287cc4e9aa0264f59ef70891a3d2b8e9ad46e",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 928,
+    "output_tokens": 409,
+    "raw_response_hash": "sha256:2d8de68f1ccbd91ebca20ff8cf50e4a5b0d2517cc6c1ba28d6820064abb8364d",
+    "request_hash": "sha256:0ba00363c4c90d7903fd126a1ec0851ed303862e8dd7fd7d0c41279fa6e989e4",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 928,
+      "output_tokens": 409,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Corrected the third ternary condition from 4'b1000 to 4'b1010 so that input combination en=1, A=0, B=1, C=0 selects Y5 (8'b1111_1011) instead of incorrectly reusing the Y0 case.",
+      "replacement_rtl": "module decoder_3to8(Y7, Y6, Y5, Y4, Y3, Y2, Y1, Y0, A, B, C, en);\n   output Y7, Y6, Y5, Y4, Y3, Y2, Y1, Y0;\n   input  A, B, C;\n   input  en;\n   assign {Y7,Y6,Y5,Y4,Y3,Y2,Y1,Y0} = ( {en,A,B,C} == 4'b1000) ? 8'b1111_1110 :\n                                      ( {en,A,B,C} == 4'b1001) ? 8'b1111_1101 :\n                                      ( {en,A,B,C} == 4'b1010) ? 8'b1111_1011 :\n                                      ( {en,A,B,C} == 4'b1011) ? 8'b1111_0111 :\n                                      ( {en,A,B,C} == 4'b1100) ? 8'b1110_1111 :\n                                      ( {en,A,B,C} == 4'b1101) ? 8'b1101_1111 :\n                                      ( {en,A,B,C} == 4'b1110) ? 8'b1011_1111 :\n                                      ( {en,A,B,C} == 4'b1111) ? 8'b0111_1111 :\n                                                                 8'b0111_1111;\nendmodule\n"
+    }
+  },
+  "result_hash": "sha256:879ec520a474f216590423c3c4205bcff664984c04f235353bd66fb45ed3f2e8"
+}

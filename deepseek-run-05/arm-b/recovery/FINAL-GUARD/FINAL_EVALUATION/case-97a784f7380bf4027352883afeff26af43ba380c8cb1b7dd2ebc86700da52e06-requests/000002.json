@@ -1,0 +1,34 @@
+{
+  "binding": "sha256:3d6ea08f72692c6e095320b5b6f9109906a8ee112b04415a4982bbd50848f4d4",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 4722,
+    "output_tokens": 133,
+    "raw_response_hash": "sha256:5b48b3df8d004e56a3a934db3e4c574f6d63eb772538fd3552a5e5e4c1f7fae9",
+    "request_hash": "sha256:f17b3dc97c9af3a67a5fd57afe5a6cfabe73db4fa0fdff99304f4522a0d45920",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 4722,
+      "output_tokens": 133,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Remove the const_timing==0 guard so L_ready asserts when Step8 is reached.",
+      "edits": [
+        {
+          "replace": "\t\t\tStep8: begin\n\t\t\t\tL_ready<=1;\n\t\t\t\tStep<=Step1;\n\t\t\tend",
+          "search": "\t\t\tStep8: begin\n\t\t\t\tif(const_timing == 0)\n\t\t\t\t\tbegin\n\t\t\t\t\t\tL_ready<=1;\n\t\t\t\t\t\tStep<=Step1;\n\t\t\t\t\tend\n\t\t\tend"
+        }
+      ]
+    }
+  },
+  "result_hash": "sha256:e013942fbc1ba768c5cf9c2bfebac7ef4f13edcd04cf22c8a28bbf976af87467"
+}

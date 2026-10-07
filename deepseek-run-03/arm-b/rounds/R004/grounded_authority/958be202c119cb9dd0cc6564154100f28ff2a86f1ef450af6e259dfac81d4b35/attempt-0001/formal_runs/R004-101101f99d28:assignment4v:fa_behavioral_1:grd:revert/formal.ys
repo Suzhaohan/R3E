@@ -1,0 +1,4 @@
+read_verilog -formal -sv "/data2/huangyc/R3E-aic-ic-2026-latest/deepseek-run-03/arm-b/rounds/R004/grounded_authority/958be202c119cb9dd0cc6564154100f28ff2a86f1ef450af6e259dfac81d4b35/attempt-0001/materialized/reverted.v" "/data2/huangyc/R3E-aic-ic-2026-latest/deepseek-run-03/arm-b/rounds/R004/grounded_authority/958be202c119cb9dd0cc6564154100f28ff2a86f1ef450af6e259dfac81d4b35/attempt-0001/inputs/formal_property.v"
+prep -top formal_top -flatten
+memory_map; opt_clean
+sat -prove-asserts -seq 2 -show-ports -dump_json "/data2/huangyc/R3E-aic-ic-2026-latest/deepseek-run-03/arm-b/rounds/R004/grounded_authority/958be202c119cb9dd0cc6564154100f28ff2a86f1ef450af6e259dfac81d4b35/attempt-0001/formal_runs/R004-101101f99d28:assignment4v:fa_behavioral_1:grd:revert/counterexample.json"

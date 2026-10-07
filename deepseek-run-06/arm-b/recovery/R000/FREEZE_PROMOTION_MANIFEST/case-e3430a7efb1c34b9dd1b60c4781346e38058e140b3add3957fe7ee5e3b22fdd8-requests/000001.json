@@ -1,0 +1,29 @@
+{
+  "binding": "sha256:71b3a98c875e1cf83627b8ff3c184bed79621c1595daf593fb3629860dff264b",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 902,
+    "output_tokens": 284,
+    "raw_response_hash": "sha256:613989ed84e1cb9cb6cbf80572252b8383fbcaef43dc60207d0532ed5a8f1016",
+    "request_hash": "sha256:877a1a7f0777f64af78d9cff4e0e3809e8917d6a8c12fb2b2e56b9be7597389c",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 902,
+      "output_tokens": 284,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "No change: the RTL already matches the oracle behavior implied by the mismatch evidence (ena=1 yields 0, ena=0 decodes a one-hot output), so no local repair is warranted.",
+      "replacement_rtl": "\n\nmodule decoder3e_test(a,ena,y);\n  input [2:0] a;\n  input ena;\n  output reg [7:0] y; \n\n  \n\n\nalways @(*)begin\n  if(ena) y = 0;\n  else begin\n    case(a)\n        3'b000: y = 8'b0000_0001;\n        3'b001: y = 8'b0000_0010;\n        3'b010: y = 8'b0000_0100;\n        3'b011: y = 8'b0000_1000;\n        3'b100: y = 8'b0001_0000;\n        3'b101: y = 8'b0010_0000;\n        3'b110: y = 8'b0100_0000;\n        3'b111: y = 8'b1000_0000;\n    \n    endcase\n  end\nend\n\n\n\n\n\nendmodule\n"
+    }
+  },
+  "result_hash": "sha256:fe0533da6dba76bb8237cad940193007fb92c0c2a5e047f1da0032f836844170"
+}

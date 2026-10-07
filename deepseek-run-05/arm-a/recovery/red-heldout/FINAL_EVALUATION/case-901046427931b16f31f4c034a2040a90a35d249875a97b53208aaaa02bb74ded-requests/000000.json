@@ -1,0 +1,34 @@
+{
+  "binding": "sha256:db59a6042400913986b4c499ba251d9d02b17c0135ac79a09f05f70c70301343",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 940,
+    "output_tokens": 107,
+    "raw_response_hash": "sha256:e3d12848a772cbbd4a298dca9a56684086cd33f6b9aeaaec155fe618d3cf118b",
+    "request_hash": "sha256:bfb44cba68eeff6f972183d08b4c437cf0417b52d37c7aa6065edef8f3a9d026",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 940,
+      "output_tokens": 107,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Add an else-if branch so Q holds its value when ENA is low instead of being left unassigned.",
+      "edits": [
+        {
+          "replace": "    always @(posedge CLR or posedge F_IN)\n    begin\n        if(CLR)Q <= 0;\n        else if(!ENA)Q <= Q;",
+          "search": "    always @(posedge CLR or posedge F_IN)\n    begin\n        if(CLR)Q <= 0;"
+        }
+      ]
+    }
+  },
+  "result_hash": "sha256:1fe1c44536d2c7984ecce78959b42e195070205651754ad9f513b3827156d68a"
+}

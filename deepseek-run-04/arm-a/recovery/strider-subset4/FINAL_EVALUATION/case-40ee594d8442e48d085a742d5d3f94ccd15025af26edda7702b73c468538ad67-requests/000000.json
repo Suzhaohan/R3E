@@ -1,0 +1,23 @@
+{
+  "binding": "sha256:8fa1a62505a05153e43b8ca84fb61c51d32b45face3d91df1bd304888233644b",
+  "response": {
+    "input_tokens": 613,
+    "output_tokens": 143,
+    "raw_response_hash": "sha256:565ddccc98eadcd6613efa2f4a8b2ab81656dc2972ce5dbcd72564185466da6c",
+    "request_hash": "sha256:90880e620f71302de3d6bcd64f828f3d17d75d42bcabe8986ae22a41314aa20f",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 613,
+      "output_tokens": 143,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Fix active-low reset polarity (if (!rstn) q <= 0) and correct T-flip-flop toggle logic (q <= ~q when t is high, hold otherwise).",
+      "replacement_rtl": "module tff (   input clk,\n               input \t  rstn,\n               input \t  t,\n               output reg q);\n   \n   always @ (posedge clk) begin\n    if (!rstn) \n      q <= 0;\n    else\n      if (t)\n        q <= ~q;\n      else\n        q <= q;\n   end\nendmodule\n"
+    }
+  },
+  "result_hash": "sha256:e2dc0f715c1d315f76554721245f3b77cab71d6af4e49b1e07f18c4839e92923"
+}

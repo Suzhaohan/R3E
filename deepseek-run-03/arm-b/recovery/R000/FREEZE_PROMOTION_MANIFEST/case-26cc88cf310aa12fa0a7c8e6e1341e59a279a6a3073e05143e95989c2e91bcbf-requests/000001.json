@@ -1,0 +1,23 @@
+{
+  "binding": "sha256:9dadcef6dbf48876d6c5a7193d87c3e055a0ee4f17bd0c1e7ae0c3d79b4a2e1f",
+  "response": {
+    "input_tokens": 817,
+    "output_tokens": 287,
+    "raw_response_hash": "sha256:3962441078c076a778a174443184b436a07545abd6cc6d752548b807d1656f84",
+    "request_hash": "sha256:89c2f7436458b26041d6bb76e857cf5e8b25ea154309a8246f25e67c7340dd83",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 817,
+      "output_tokens": 287,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "No change: the RTL already matches the oracle behavior for the observed mismatch (ena=1 forces y=0, so cycle0 expected 00000000 is produced); the reported divergence is not reproducible from this source.",
+      "replacement_rtl": "\n\nmodule decoder3e_test(a,ena,y);\n  input [2:0] a;\n  input ena;\n  output reg [7:0] y; \n\n  \n\n\nalways @(*)begin\n  if(ena) y = 0;\n  else begin\n    case(a)\n        3'b000: y = 8'b0000_0001;\n        3'b001: y = 8'b0000_0010;\n        3'b010: y = 8'b0000_0100;\n        3'b011: y = 8'b0000_1000;\n        3'b100: y = 8'b0001_0000;\n        3'b101: y = 8'b0010_0000;\n        3'b110: y = 8'b0100_0000;\n        3'b111: y = 8'b1000_0000;\n    \n    endcase\n  end\nend\n\n\n\n\n\nendmodule\n"
+    }
+  },
+  "result_hash": "sha256:ae4ba2956fcf90db2085480e79409525d8f8135e9c4fadca60945b4e00aa46f2"
+}

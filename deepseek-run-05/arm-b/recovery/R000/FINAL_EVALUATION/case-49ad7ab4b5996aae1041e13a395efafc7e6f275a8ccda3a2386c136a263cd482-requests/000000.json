@@ -1,0 +1,34 @@
+{
+  "binding": "sha256:c8e90400ba797c360f08ffe0f2954453e8cf0e8432f9b1dd1eda537ae30f0dd0",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 1420,
+    "output_tokens": 115,
+    "raw_response_hash": "sha256:22e0dfd4417d180c4dc85ce7ed71ab995005515d67b19e3c71b9ce696ea89f48",
+    "request_hash": "sha256:0e6497f65814a37e71a2f63568e545b1dbde980d4971617a8cd934703ceea7d3",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 1420,
+      "output_tokens": 115,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Add an else branch to clear overflow_out when counter_out is not 4'b1111.",
+      "edits": [
+        {
+          "replace": "    if(counter_out == 4'b1111)\n    begin\n        overflow_out <= #1 1'b1;\n    end\n    else\n    begin\n        overflow_out <= #1 1'b0;\n    end",
+          "search": "    if(counter_out == 4'b1111)\n    begin\n        overflow_out <= #1 1'b1;\n    end"
+        }
+      ]
+    }
+  },
+  "result_hash": "sha256:b87e288b1b8ad256ad0748000b8c7b50c2a2446dd6ec6f1638ac752c8ebcf025"
+}

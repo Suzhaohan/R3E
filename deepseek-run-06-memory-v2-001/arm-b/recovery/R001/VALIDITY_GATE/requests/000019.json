@@ -1,0 +1,29 @@
+{
+  "binding": "sha256:d6c1e6c8b82084ec3d2787a58d6f4d42e23056b6e1ac2c49baf52a9212d77ecd",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 557,
+    "output_tokens": 171,
+    "raw_response_hash": "sha256:00cd092c3954d06bdeadd46f02338f9bea3ea94c47cb6c457ebcdf59abc2a494",
+    "request_hash": "sha256:57e86c052748b5eb290b1ad86f22987b996fa70195980f5141d3813bb867eae1",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 557,
+      "output_tokens": 171,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Replaced the sum assignment `assign s=(a&b^ci);` with the correct full-adder XOR expression `assign s=(a^b^ci);`. The original used a bitwise AND between a and b before XORing with ci, which produced an incorrect sum value (e.g., 00 instead of 01 at cycle 2). The carry-out assignment was left unchanged.",
+      "replacement_rtl": "module fa_behavioral(a,b,ci,s,co);\n       input a,b;\n       input ci;\n       output  s;\n       output co;\n\n\n\n       assign s=(a^b^ci);\n       assign co=((a&b)|(a&ci)|(b&ci));\n\n\n\nendmodule\n"
+    }
+  },
+  "result_hash": "sha256:38bb45df9c5df9a7c6c5aaaa6970260026c1b4d85d14e706e0bef7f1c91df7db"
+}

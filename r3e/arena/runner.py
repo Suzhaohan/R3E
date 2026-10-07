@@ -13,6 +13,7 @@ from pathlib import Path
 from typing import Any
 
 from r3e.policy.promotion import (
+    DEFAULT_THRESHOLDS,
     build_policy_promotion_bundle,
     decide_policy_promotion,
     select_single_promotable_child,
@@ -115,7 +116,7 @@ from .conformance import (
     adapter_output_metadata,
     strip_adapter_metadata,
 )
-from .manifests import freeze_manifest, grouped_split, make_manifest, verify_manifest
+from .manifests import freeze_manifest, split_for_promotion, make_manifest, verify_manifest
 from .paired_replay import paired_replay
 from .portfolio import (
     BLUE_EVALUATION_AUTHORITIES,
@@ -1905,37 +1906,13 @@ class EvolutionRoundRunner:
 
         residual_manifest = verify_manifest(read_json(self.round_dir / "residual_manifest.json"))
         if self.state.next_stage() == "SPLIT_ADAPT_TARGET":
-            residual_designs = {
-                str(row.get("design") or row.get("design_id") or "")
-                for row in residual_manifest["rows"]
-            }
-            if len(residual_designs) < 2:
-                source_hash = residual_manifest["manifest_hash"]
-                defer_metadata = {
-                    "group_key": "design",
-                    "promotion_eligible": False,
-                    "defer_reason": "insufficient_residual_designs",
-                }
-                adaptation = make_manifest(
-                    residual_manifest["rows"],
-                    split="adaptation",
-                    source_manifest_hash=source_hash,
-                    metadata=defer_metadata,
-                )
-                target = make_manifest(
-                    [],
-                    split="target",
-                    source_manifest_hash=source_hash,
-                    metadata=defer_metadata,
-                )
-            else:
-                adaptation, target = grouped_split(
-                    residual_manifest,
-                    adaptation_fraction=float(
-                        self.config.get("adaptation_fraction", 0.5)
-                    ),
-                    seed=int(self.config.get("split_seed", 0)),
-                )
+            gates = {**DEFAULT_THRESHOLDS, **(self.config.get("promotion_thresholds") or {})}
+            adaptation, target = split_for_promotion(
+                residual_manifest,
+                min_target_designs=max(1, int(gates["min_covered_designs"])),
+                adaptation_fraction=float(self.config.get("adaptation_fraction", 0.5)),
+                seed=int(self.config.get("split_seed", 0)),
+            )
             freeze_manifest(self.round_dir / "adaptation_manifest.json", adaptation)
             freeze_manifest(self.round_dir / "target_manifest.json", target)
             self._checkpoint("SPLIT_ADAPT_TARGET", residual_manifest, {
@@ -2209,6 +2186,9 @@ class EvolutionRoundRunner:
                     )
                 ),
             }
+            allocation = target.get("metadata", {}).get("design_allocation")
+            if allocation is not None:
+                summary["design_allocation"] = allocation
             atomic_write_json(self.round_dir / "round_summary.json", summary)
             append_round_ledger(self.round_ledger_path, audit)
             self._checkpoint("COMPLETE", active.policy_hash, summary)

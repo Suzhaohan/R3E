@@ -1,0 +1,29 @@
+{
+  "binding": "sha256:283172dca777d6307774187badae96ebc3a683ddd80e2e4f7cd9cf579f588ed9",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 1156,
+    "output_tokens": 118,
+    "raw_response_hash": "sha256:833cbb0417ac1e8ee897e5c3abb2ca3509052d0c7776aebce9ec6cae5685e7c0",
+    "request_hash": "sha256:e409581c54ea1c699c5cfedbb46f57b4bb1f295d752ff6ced862926d17690ad6",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 1156,
+      "output_tokens": 118,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Completed the incomplete always block by adding begin/end and the missing else branch so that y=b when s is not 0, fixing the 2:1 mux select behavior.",
+      "replacement_rtl": "module mux21(a,b,s,y);\n\tinput a,b,s;\n\toutput y;\n\treg y;\n\talways @(a,b,s)\n\tbegin\n\t\tif(s==1'B0)begin y=a;end\n\t\telse begin y=b;end\n\tend\nendmodule"
+    }
+  },
+  "result_hash": "sha256:7c04454b2f70c455a6672c62b40d85aec0b5f028a1be3c29f3a06b61381b27e2"
+}

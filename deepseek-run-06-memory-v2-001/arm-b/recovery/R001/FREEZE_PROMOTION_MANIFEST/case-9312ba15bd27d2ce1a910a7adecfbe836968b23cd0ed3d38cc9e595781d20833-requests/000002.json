@@ -1,0 +1,29 @@
+{
+  "binding": "sha256:84897917297167757656086651f31fd87c0e1591e4f56c9db4fa68b7a170e6f5",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 637,
+    "output_tokens": 222,
+    "raw_response_hash": "sha256:fa1fd79580dfe4ba4acdceab49e1cf881ee7de3b5919bf4989d8ac7b7c09e52b",
+    "request_hash": "sha256:74e67cc76b2424d96b898872c08626a0edb0379ae40da29ea50e38b097f1c391",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 637,
+      "output_tokens": 222,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Removed the duplicate 3'd6 case item in the combinational case statement, leaving a single 3'd6 branch; this eliminates the redundant overlapping case that could cause the cycle-7 mismatch (got 00, expected 01) while preserving the intended 3'd0, 3'd5, 3'd6, and default behavior.",
+      "replacement_rtl": "module JG3(ABC,X,Y);\n\t\n\tinput [2:0] ABC;\n\t\n\toutput X, Y;\n\treg X, Y;\n\t\n\talways@(ABC)\n\n\t\tcase(ABC)\n\t\t\t3'd0: begin X<=0;Y<=1; end\n\t\t\t3'd5: begin X<=1;Y=0; end\n\t\t\t3'd6: begin X<=1;Y=0; end\n\t\t\tdefault: begin X<=0;Y=0; end\n\t\tendcase\t\n\t\t\n\n\t\nendmodule"
+    }
+  },
+  "result_hash": "sha256:d8d9a738505e0de7163c3a2a548760176400edb41653b21e774f03a7834ad849"
+}

@@ -1,0 +1,29 @@
+{
+  "binding": "sha256:ad214eb40c2a176ecd82d76ea486007424f1f7dcf1dc51e14c2e2b82d6e4698f",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 791,
+    "output_tokens": 275,
+    "raw_response_hash": "sha256:4769bdc1f73abe0c72e0e5a27501916faf3961aeb91a26ed5232e3c0ac94248a",
+    "request_hash": "sha256:93e9d95bb5046746f749068874a14e9189cb05134f3e73eb3c1cad53a2d83371",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 791,
+      "output_tokens": 275,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "In the case statement, change the 3'b100 branch from X=0,Y=0 to X=1,Y=0 so that ABC=100 produces X=1, matching the oracle expectation (actual 00 vs expected 10 at cycle 0).",
+      "replacement_rtl": "module JG3(ABC,X,Y);\n\t\n\tinput [2:0] ABC;\n\t\n\toutput X, Y;\n\treg X, Y;\n\t\n\talways@(ABC)\n    \n        \n\ncase(ABC)\n3'b000 : begin X = 0; Y = 0; end\n3'b001 : begin X = 0; Y = 0; end\n3'b010 : begin X = 0; Y = 0; end\n3'b011 : begin X = 0; Y = 0; end\n3'b100 : begin X = 1; Y = 0; end\n3'b101 : begin X = 1; Y = 0; end\n3'b110 : begin X = 1; Y = 0; end\n3'b111 : begin X = 1; Y = 0; end\ndefault :;\nendcase\n        \n\n\t\nendmodule"
+    }
+  },
+  "result_hash": "sha256:00bd02c12c0ca5678c6e4d6fbd3671d841787446634c8f38a772792856bde34d"
+}

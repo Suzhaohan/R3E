@@ -495,7 +495,11 @@ def test_arena_uses_runner_owned_grounded_authority(tmp_path):
         adapter=adapter,
         project_root=tmp_path,
     ).run()
-    assert summary["promotion_eligible"]
+    # Both designs pass the EDA gate, but one practice design plus two
+    # independent exam designs are required before strategy search can start.
+    assert not summary["promotion_eligible"]
+    assert summary["design_allocation"]["residual_design_count"] == 2
+    assert summary["design_allocation"]["missing_design_count"] == 1
     assert not adapter.prepare_validity_called
     attempt_dirs = sorted(
         (

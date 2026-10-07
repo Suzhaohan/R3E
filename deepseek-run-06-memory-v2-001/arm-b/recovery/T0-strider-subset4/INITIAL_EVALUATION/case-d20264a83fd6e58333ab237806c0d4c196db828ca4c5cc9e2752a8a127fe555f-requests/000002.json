@@ -1,0 +1,29 @@
+{
+  "binding": "sha256:f779f31557faeb37aaa6cbb0f9d9684cfd21484e31b7276acc79c82d05847f24",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 716,
+    "output_tokens": 291,
+    "raw_response_hash": "sha256:d5500db19c6096741964a87edcad6ec59711ece03805cd4383948fe3ea266458",
+    "request_hash": "sha256:695aa8b490bc3582b3323a31895c17574568094ae2ac7ef16a1793e165d4c391",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 716,
+      "output_tokens": 291,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Fix the case statement selector labels: replace the four duplicate 2'b00 labels with 2'b00, 2'b01, 2'b10, and 2'b11 so each sel value selects the intended input.",
+      "replacement_rtl": "module mux_4to1_case ( input [3:0] a,                 // 4-bit input called a\n                       input [3:0] b,                 // 4-bit input called b\n                       input [3:0] c,                 // 4-bit input called c\n                       input [3:0] d,                 // 4-bit input called d\n                       input [1:0] sel,               // input sel used to select between a,b,c,d\n                       output reg [3:0] out);         // 4-bit output based on input sel\n\n   // This always block gets executed whenever a/b/c/d/sel changes value\n   // When that happens, based on value in sel, output is assigned to either a/b/c/d\n   always @ (a or b or c or d or sel) begin\n      case (sel)\n         2'b00 : out <= a;\n         2'b01 : out <= b;\n         2'b10 : out <= c;\n         2'b11 : out <= d;\n      endcase\n   end\nendmodule"
+    }
+  },
+  "result_hash": "sha256:ec3c21bbee54aa3928ed88057544c80e422e679b4ad02ce62bcf45b3fa091393"
+}

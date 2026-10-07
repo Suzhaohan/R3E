@@ -1,0 +1,34 @@
+{
+  "binding": "sha256:28c56300777ec383dd7be8740096c450ee2c4bbbd0175a32a5eb6c3b422dd0f0",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 637,
+    "output_tokens": 118,
+    "raw_response_hash": "sha256:062dda876999bfa292cbb51c28e16c167a32cc538439c342e09cbf1ae0e3d242",
+    "request_hash": "sha256:ef7b7876f7d5a2c2dfdc0a1fcbd43e4b96945a35079668ed8586efacc1bd0177",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 637,
+      "output_tokens": 118,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Fix reset polarity and swap the T-flip-flop toggle/hold branches so q toggles when t is high.",
+      "edits": [
+        {
+          "replace": "    if (!rstn) \n      q <= 0;\n    else\n      if (t)\n        q <= ~q;\n      else\n        q <= q;",
+          "search": "    if (rstn) \n      q <= 0;\n    else\n      if (t)\n        q <= q;\n      else\n        q <= ~q;"
+        }
+      ]
+    }
+  },
+  "result_hash": "sha256:3e934de1ae11ec09edd4872c0f4d604d289dc65851eb31ab8a6578c8de092264"
+}

@@ -1,0 +1,34 @@
+{
+  "binding": "sha256:3e745657589e0a51c593da981e623f5b49941257963d2d2d7412c5c1880aba74",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 1566,
+    "output_tokens": 131,
+    "raw_response_hash": "sha256:656b8ce61a193efe891b371707f615bd527ef50c9e2f2c4599dc2ecb9a7dd015",
+    "request_hash": "sha256:dbef2259efa8e790e9b7d5c23e04f578e99b74d5cb31a1eba02ce6eb9f13820e",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 1566,
+      "output_tokens": 131,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Add an else branch to clear out_ready when i[22] is not set.",
+      "edits": [
+        {
+          "replace": "    always @ (posedge clk)\n      if (reset)\n        out_ready <= 0;\n      else if (i[22])\n        out_ready <= 1;\n      else\n        out_ready <= 0;",
+          "search": "    always @ (posedge clk)\n      if (reset)\n        out_ready <= 0;\n      else if (i[22])\n        out_ready <= 1;"
+        }
+      ]
+    }
+  },
+  "result_hash": "sha256:c0bc3a432fa05b8e26f034b503a813a2e2f856d4456821991bb3cac0cea06ac5"
+}

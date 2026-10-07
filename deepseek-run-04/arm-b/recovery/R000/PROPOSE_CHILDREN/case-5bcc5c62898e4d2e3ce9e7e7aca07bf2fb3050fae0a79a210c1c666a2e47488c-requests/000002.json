@@ -1,0 +1,23 @@
+{
+  "binding": "sha256:1bf0651d2a65f449992a6a69856e8c26c224daca35f7184a87e1f7d753d5940d",
+  "response": {
+    "input_tokens": 556,
+    "output_tokens": 137,
+    "raw_response_hash": "sha256:6f37344b9c1e18ce4e6c2f13bfea88d2c945013684e1fd71c30e7335c4d9b766",
+    "request_hash": "sha256:d0197c32c1dffb1c48094036f468a0f78070a9fd192af3d8aa15ca7e3c0f52e9",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 556,
+      "output_tokens": 137,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Replace the sum assignment `assign s=(a|b|ci);` with `assign s=(a^b^ci);` so the full adder sum is the XOR of a, b, and ci instead of their OR.",
+      "replacement_rtl": "module fa_behavioral(a,b,ci,s,co);\n       input a,b;\n       input ci;\n       output  s;\n       output co;\n\n\n\n       assign s=(a^b^ci);\n       assign co=((a&b)|(a&ci)|(b&ci));\n\n\n\nendmodule\n"
+    }
+  },
+  "result_hash": "sha256:03af0d2f893f0fb728ed25bb8be154391066a465ed05e4b0571e9d6a9433e117"
+}

@@ -1,0 +1,29 @@
+{
+  "binding": "sha256:210a3eb5316eda2e5b860bb1ab1937a2ac6ea4f6bedc8249d52ae4530466ee63",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 690,
+    "output_tokens": 269,
+    "raw_response_hash": "sha256:6b3e67613ae08d854081d1bbd5b4a59d8c85a1fe012ae082a748c84ba3cdcb41",
+    "request_hash": "sha256:d79bf5f61854c4388e6e6493feac8920d14749138191a14cdf61b6cc281a32f8",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 690,
+      "output_tokens": 269,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "No change: the RTL already matches the observed behavior; the mismatch (actual 00 vs expected 10 at cycle 0) cannot be repaired within the local case block because the buggy output is consistent with the current assignments.",
+      "replacement_rtl": "module JG3(ABC,X,Y);\n\t\n\tinput [2:0] ABC;\n\t\n\toutput X, Y;\n\treg X, Y;\n\t\n\talways@(ABC)\n    \n        \n\ncase(ABC)\n3'b000 : begin X = 0; Y = 0; end\n3'b001 : begin X = 0; Y = 0; end\n3'b010 : begin X = 0; Y = 0; end\n3'b011 : begin X = 0; Y = 0; end\n3'b100 : begin X = 0; Y = 0; end\n3'b101 : begin X = 1; Y = 0; end\n3'b110 : begin X = 1; Y = 0; end\n3'b111 : begin X = 1; Y = 0; end\ndefault :;\nendcase\n        \n\n\t\nendmodule"
+    }
+  },
+  "result_hash": "sha256:e42eb66de21f14fc8e7605ffdf2cda128b441bb34c0410cd10a7b037b137dc99"
+}

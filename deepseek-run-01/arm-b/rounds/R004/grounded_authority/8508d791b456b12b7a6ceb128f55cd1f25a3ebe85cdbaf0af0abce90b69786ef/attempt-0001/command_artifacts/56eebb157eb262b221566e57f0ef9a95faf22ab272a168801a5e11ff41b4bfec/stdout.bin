@@ -1,0 +1,283 @@
+
+-- Executing script file `/data2/huangyc/R3E-aic-ic-2026-latest/deepseek-run-01/arm-b/rounds/R004/grounded_authority/8508d791b456b12b7a6ceb128f55cd1f25a3ebe85cdbaf0af0abce90b69786ef/attempt-0001/formal_runs/R004-2ecab8b0aac9:assignment4v:decl7s_1:grd:revert/formal.ys' --
+
+1. Executing Verilog-2005 frontend: /data2/huangyc/R3E-aic-ic-2026-latest/deepseek-run-01/arm-b/rounds/R004/grounded_authority/8508d791b456b12b7a6ceb128f55cd1f25a3ebe85cdbaf0af0abce90b69786ef/attempt-0001/materialized/reverted.v
+Parsing formal SystemVerilog input from `/data2/huangyc/R3E-aic-ic-2026-latest/deepseek-run-01/arm-b/rounds/R004/grounded_authority/8508d791b456b12b7a6ceb128f55cd1f25a3ebe85cdbaf0af0abce90b69786ef/attempt-0001/materialized/reverted.v' to AST representation.
+Generating RTLIL representation for module `\decl7s_test'.
+Note: Assuming pure combinatorial block at /data2/huangyc/R3E-aic-ic-2026-latest/deepseek-run-01/arm-b/rounds/R004/grounded_authority/8508d791b456b12b7a6ceb128f55cd1f25a3ebe85cdbaf0af0abce90b69786ef/attempt-0001/materialized/reverted.v:5 in
+compliance with IEC 62142(E):2005 / IEEE Std. 1364.1(E):2002. Recommending
+use of @* instead of @(...) for better match of synthesis and simulation.
+Successfully finished Verilog frontend.
+
+2. Executing Verilog-2005 frontend: /data2/huangyc/R3E-aic-ic-2026-latest/deepseek-run-01/arm-b/rounds/R004/grounded_authority/8508d791b456b12b7a6ceb128f55cd1f25a3ebe85cdbaf0af0abce90b69786ef/attempt-0001/inputs/formal_property.v
+Parsing formal SystemVerilog input from `/data2/huangyc/R3E-aic-ic-2026-latest/deepseek-run-01/arm-b/rounds/R004/grounded_authority/8508d791b456b12b7a6ceb128f55cd1f25a3ebe85cdbaf0af0abce90b69786ef/attempt-0001/inputs/formal_property.v' to AST representation.
+Generating RTLIL representation for module `\formal_top'.
+Generating RTLIL representation for module `\r3e_reference'.
+Note: Assuming pure combinatorial block at /data2/huangyc/R3E-aic-ic-2026-latest/deepseek-run-01/arm-b/rounds/R004/grounded_authority/8508d791b456b12b7a6ceb128f55cd1f25a3ebe85cdbaf0af0abce90b69786ef/attempt-0001/inputs/formal_property.v:12 in
+compliance with IEC 62142(E):2005 / IEEE Std. 1364.1(E):2002. Recommending
+use of @* instead of @(...) for better match of synthesis and simulation.
+Successfully finished Verilog frontend.
+
+3. Executing PREP pass.
+
+3.1. Executing HIERARCHY pass (managing design hierarchy).
+
+3.1.1. Analyzing design hierarchy..
+Top module:  \formal_top
+Used module:     \r3e_reference
+Used module:     \decl7s_test
+
+3.1.2. Analyzing design hierarchy..
+Top module:  \formal_top
+Used module:     \r3e_reference
+Used module:     \decl7s_test
+Removed 0 unused modules.
+Module formal_top directly or indirectly contains formal properties -> setting "keep" attribute.
+
+3.2. Executing PROC pass (convert processes to netlists).
+
+3.2.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+3.2.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Removed 1 dead cases from process $proc$/data2/huangyc/R3E-aic-ic-2026-latest/deepseek-run-01/arm-b/rounds/R004/grounded_authority/8508d791b456b12b7a6ceb128f55cd1f25a3ebe85cdbaf0af0abce90b69786ef/attempt-0001/inputs/formal_property.v:12$9 in module r3e_reference.
+Marked 1 switch rules as full_case in process $proc$/data2/huangyc/R3E-aic-ic-2026-latest/deepseek-run-01/arm-b/rounds/R004/grounded_authority/8508d791b456b12b7a6ceb128f55cd1f25a3ebe85cdbaf0af0abce90b69786ef/attempt-0001/inputs/formal_property.v:12$9 in module r3e_reference.
+Removed 1 dead cases from process $proc$/data2/huangyc/R3E-aic-ic-2026-latest/deepseek-run-01/arm-b/rounds/R004/grounded_authority/8508d791b456b12b7a6ceb128f55cd1f25a3ebe85cdbaf0af0abce90b69786ef/attempt-0001/materialized/reverted.v:5$1 in module decl7s_test.
+Marked 1 switch rules as full_case in process $proc$/data2/huangyc/R3E-aic-ic-2026-latest/deepseek-run-01/arm-b/rounds/R004/grounded_authority/8508d791b456b12b7a6ceb128f55cd1f25a3ebe85cdbaf0af0abce90b69786ef/attempt-0001/materialized/reverted.v:5$1 in module decl7s_test.
+Removed a total of 2 dead cases.
+
+3.2.3. Executing PROC_INIT pass (extract init attributes).
+
+3.2.4. Executing PROC_ARST pass (detect async resets in processes).
+
+3.2.5. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\r3e_reference.$proc$/data2/huangyc/R3E-aic-ic-2026-latest/deepseek-run-01/arm-b/rounds/R004/grounded_authority/8508d791b456b12b7a6ceb128f55cd1f25a3ebe85cdbaf0af0abce90b69786ef/attempt-0001/inputs/formal_property.v:12$9'.
+     1/2: $1\led7s[6:0]
+     2/2: $0\led7s[6:0]
+Creating decoders for process `\formal_top.$proc$/data2/huangyc/R3E-aic-ic-2026-latest/deepseek-run-01/arm-b/rounds/R004/grounded_authority/8508d791b456b12b7a6ceb128f55cd1f25a3ebe85cdbaf0af0abce90b69786ef/attempt-0001/inputs/formal_property.v:6$4'.
+     1/2: $0$formal$/data2/huangyc/R3E-aic-ic-2026-latest/deepseek-run-01/arm-b/rounds/R004/grounded_authority/8508d791b456b12b7a6ceb128f55cd1f25a3ebe85cdbaf0af0abce90b69786ef/attempt-0001/inputs/formal_property.v:6$2_EN[0:0]$6
+     2/2: $0$formal$/data2/huangyc/R3E-aic-ic-2026-latest/deepseek-run-01/arm-b/rounds/R004/grounded_authority/8508d791b456b12b7a6ceb128f55cd1f25a3ebe85cdbaf0af0abce90b69786ef/attempt-0001/inputs/formal_property.v:6$2_CHECK[0:0]$5
+Creating decoders for process `\decl7s_test.$proc$/data2/huangyc/R3E-aic-ic-2026-latest/deepseek-run-01/arm-b/rounds/R004/grounded_authority/8508d791b456b12b7a6ceb128f55cd1f25a3ebe85cdbaf0af0abce90b69786ef/attempt-0001/materialized/reverted.v:5$1'.
+     1/2: $1\led7s[6:0]
+     2/2: $0\led7s[6:0]
+
+3.2.6. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `\r3e_reference.\led7s' from process `\r3e_reference.$proc$/data2/huangyc/R3E-aic-ic-2026-latest/deepseek-run-01/arm-b/rounds/R004/grounded_authority/8508d791b456b12b7a6ceb128f55cd1f25a3ebe85cdbaf0af0abce90b69786ef/attempt-0001/inputs/formal_property.v:12$9'.
+No latch inferred for signal `\formal_top.$formal$/data2/huangyc/R3E-aic-ic-2026-latest/deepseek-run-01/arm-b/rounds/R004/grounded_authority/8508d791b456b12b7a6ceb128f55cd1f25a3ebe85cdbaf0af0abce90b69786ef/attempt-0001/inputs/formal_property.v:6$2_CHECK' from process `\formal_top.$proc$/data2/huangyc/R3E-aic-ic-2026-latest/deepseek-run-01/arm-b/rounds/R004/grounded_authority/8508d791b456b12b7a6ceb128f55cd1f25a3ebe85cdbaf0af0abce90b69786ef/attempt-0001/inputs/formal_property.v:6$4'.
+No latch inferred for signal `\formal_top.$formal$/data2/huangyc/R3E-aic-ic-2026-latest/deepseek-run-01/arm-b/rounds/R004/grounded_authority/8508d791b456b12b7a6ceb128f55cd1f25a3ebe85cdbaf0af0abce90b69786ef/attempt-0001/inputs/formal_property.v:6$2_EN' from process `\formal_top.$proc$/data2/huangyc/R3E-aic-ic-2026-latest/deepseek-run-01/arm-b/rounds/R004/grounded_authority/8508d791b456b12b7a6ceb128f55cd1f25a3ebe85cdbaf0af0abce90b69786ef/attempt-0001/inputs/formal_property.v:6$4'.
+No latch inferred for signal `\decl7s_test.\led7s' from process `\decl7s_test.$proc$/data2/huangyc/R3E-aic-ic-2026-latest/deepseek-run-01/arm-b/rounds/R004/grounded_authority/8508d791b456b12b7a6ceb128f55cd1f25a3ebe85cdbaf0af0abce90b69786ef/attempt-0001/materialized/reverted.v:5$1'.
+
+3.2.7. Executing PROC_DFF pass (convert process syncs to FFs).
+
+3.2.8. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 1 empty switch in `\r3e_reference.$proc$/data2/huangyc/R3E-aic-ic-2026-latest/deepseek-run-01/arm-b/rounds/R004/grounded_authority/8508d791b456b12b7a6ceb128f55cd1f25a3ebe85cdbaf0af0abce90b69786ef/attempt-0001/inputs/formal_property.v:12$9'.
+Removing empty process `r3e_reference.$proc$/data2/huangyc/R3E-aic-ic-2026-latest/deepseek-run-01/arm-b/rounds/R004/grounded_authority/8508d791b456b12b7a6ceb128f55cd1f25a3ebe85cdbaf0af0abce90b69786ef/attempt-0001/inputs/formal_property.v:12$9'.
+Removing empty process `formal_top.$proc$/data2/huangyc/R3E-aic-ic-2026-latest/deepseek-run-01/arm-b/rounds/R004/grounded_authority/8508d791b456b12b7a6ceb128f55cd1f25a3ebe85cdbaf0af0abce90b69786ef/attempt-0001/inputs/formal_property.v:6$4'.
+Found and cleaned up 1 empty switch in `\decl7s_test.$proc$/data2/huangyc/R3E-aic-ic-2026-latest/deepseek-run-01/arm-b/rounds/R004/grounded_authority/8508d791b456b12b7a6ceb128f55cd1f25a3ebe85cdbaf0af0abce90b69786ef/attempt-0001/materialized/reverted.v:5$1'.
+Removing empty process `decl7s_test.$proc$/data2/huangyc/R3E-aic-ic-2026-latest/deepseek-run-01/arm-b/rounds/R004/grounded_authority/8508d791b456b12b7a6ceb128f55cd1f25a3ebe85cdbaf0af0abce90b69786ef/attempt-0001/materialized/reverted.v:5$1'.
+Cleaned up 2 empty switches.
+
+3.3. Executing FLATTEN pass (flatten design).
+Using template decl7s_test for cells of type decl7s_test.
+Using template r3e_reference for cells of type r3e_reference.
+<suppressed ~2 debug messages>
+No more expansions possible.
+Deleting now unused module r3e_reference.
+Deleting now unused module decl7s_test.
+
+3.4. Executing OPT_EXPR pass (perform const folding).
+Optimizing module formal_top.
+<suppressed ~2 debug messages>
+
+3.5. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \formal_top..
+Removed 0 unused cells and 11 unused wires.
+<suppressed ~1 debug messages>
+
+3.6. Executing CHECK pass (checking for obvious problems).
+checking module formal_top..
+found and reported 0 problems.
+
+3.7. Executing OPT pass (performing simple optimizations).
+
+3.7.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module formal_top.
+
+3.7.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\formal_top'.
+<suppressed ~48 debug messages>
+Removed a total of 16 cells.
+
+3.7.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \formal_top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~2 debug messages>
+
+3.7.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \formal_top.
+Performed a total of 0 changes.
+
+3.7.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\formal_top'.
+<suppressed ~3 debug messages>
+Removed a total of 1 cells.
+
+3.7.6. Executing OPT_RMDFF pass (remove dff with constant values).
+
+3.7.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \formal_top..
+Removed 0 unused cells and 16 unused wires.
+<suppressed ~1 debug messages>
+
+3.7.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module formal_top.
+<suppressed ~1 debug messages>
+
+3.7.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+3.7.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \formal_top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+    dead port 1/17 on $pmux $techmap\oracle.$procmux$10.
+    dead port 2/17 on $pmux $techmap\oracle.$procmux$10.
+    dead port 3/17 on $pmux $techmap\oracle.$procmux$10.
+    dead port 4/17 on $pmux $techmap\oracle.$procmux$10.
+    dead port 5/17 on $pmux $techmap\oracle.$procmux$10.
+    dead port 6/17 on $pmux $techmap\oracle.$procmux$10.
+    dead port 7/17 on $pmux $techmap\oracle.$procmux$10.
+    dead port 8/17 on $pmux $techmap\oracle.$procmux$10.
+    dead port 9/17 on $pmux $techmap\oracle.$procmux$10.
+    dead port 10/17 on $pmux $techmap\oracle.$procmux$10.
+    dead port 11/17 on $pmux $techmap\oracle.$procmux$10.
+    dead port 12/17 on $pmux $techmap\oracle.$procmux$10.
+    dead port 13/17 on $pmux $techmap\oracle.$procmux$10.
+    dead port 14/17 on $pmux $techmap\oracle.$procmux$10.
+    dead port 15/17 on $pmux $techmap\oracle.$procmux$10.
+    dead port 16/17 on $pmux $techmap\oracle.$procmux$10.
+    dead port 17/17 on $pmux $techmap\oracle.$procmux$10.
+Removed 17 multiplexer ports.
+
+3.7.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \formal_top.
+Performed a total of 0 changes.
+
+3.7.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\formal_top'.
+Removed a total of 0 cells.
+
+3.7.13. Executing OPT_RMDFF pass (remove dff with constant values).
+
+3.7.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \formal_top..
+Removed 17 unused cells and 24 unused wires.
+<suppressed ~25 debug messages>
+
+3.7.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module formal_top.
+
+3.7.16. Rerunning OPT passes. (Maybe there is more to do..)
+
+3.7.17. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \formal_top..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+3.7.18. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \formal_top.
+Performed a total of 0 changes.
+
+3.7.19. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\formal_top'.
+Removed a total of 0 cells.
+
+3.7.20. Executing OPT_RMDFF pass (remove dff with constant values).
+
+3.7.21. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \formal_top..
+
+3.7.22. Executing OPT_EXPR pass (perform const folding).
+Optimizing module formal_top.
+
+3.7.23. Finished OPT passes. (There is nothing left to do.)
+
+3.8. Executing WREDUCE pass (reducing word size of cells).
+
+3.9. Executing MEMORY_DFF pass (merging $dff cells to $memrd and $memwr).
+
+3.10. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \formal_top..
+
+3.11. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+3.12. Executing OPT pass (performing simple optimizations).
+
+3.12.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module formal_top.
+
+3.12.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\formal_top'.
+Removed a total of 0 cells.
+
+3.12.3. Executing OPT_RMDFF pass (remove dff with constant values).
+
+3.12.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \formal_top..
+
+3.12.5. Finished fast OPT passes.
+
+3.13. Printing statistics.
+
+=== formal_top ===
+
+   Number of wires:                  0
+   Number of wire bits:              0
+   Number of public wires:           0
+   Number of public wire bits:       0
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                  1
+     $assert                         1
+
+3.14. Executing CHECK pass (checking for obvious problems).
+checking module formal_top..
+found and reported 0 problems.
+
+4. Executing MEMORY_MAP pass (converting $mem cells to logic and flip-flops).
+
+5. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \formal_top..
+
+6. Executing SAT pass (solving SAT problems in the circuit).
+
+Setting up time step 1:
+Final constraint equation: { } = { }
+Imported 1 cells to SAT database.
+No constraints for initial state found.
+
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 2:
+Final constraint equation: { } = { }
+Imported 1 cells to SAT database.
+Import proof for assert: 1'1 when 1'1.
+
+Solving problem with 2 variables and 5 clauses..
+SAT proof finished - no model found: SUCCESS!
+
+                  /$$$$$$      /$$$$$$$$     /$$$$$$$    
+                 /$$__  $$    | $$_____/    | $$__  $$   
+                | $$  \ $$    | $$          | $$  \ $$   
+                | $$  | $$    | $$$$$       | $$  | $$   
+                | $$  | $$    | $$__/       | $$  | $$   
+                | $$/$$ $$    | $$          | $$  | $$   
+                |  $$$$$$/ /$$| $$$$$$$$ /$$| $$$$$$$//$$
+                 \____ $$$|__/|________/|__/|_______/|__/
+                       \__/                              
+

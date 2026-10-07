@@ -1,0 +1,23 @@
+{
+  "binding": "sha256:d98e6e84483e952313ce8e91aca9f1866afded027cfa0a6b2f7ef023260874dc",
+  "response": {
+    "input_tokens": 667,
+    "output_tokens": 251,
+    "raw_response_hash": "sha256:dd2e2d1d87f822308924809093e091a1f6160181516bf1a3f6b48558a668856b",
+    "request_hash": "sha256:a45e48b93fb5af5b06c2c7c1446222a8f01473db772d74b14a75cd9f752ce9b4",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 667,
+      "output_tokens": 251,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Replace nonblocking assignments (<=) in the case branches with blocking assignments (=) to match the combinational always block and the blocking assignment used in the ~ena branch, eliminating the cycle-0 divergence.",
+      "replacement_rtl": "\n\nmodule decoder3e_test(a,ena,y);\n  input [2:0] a;\n  input ena;\n  output [7:0] y; \n\n  \n\n\nreg [7:0]y;\nalways@(a or ena)begin\n  if(~ena) y=8'd1;\n  else \n    case(a)\n      3'b000: y=8'd1;\n      3'b001: y=8'd2;\n      3'b010: y=8'd4;\n      3'b011: y=8'd8;\n      3'b100: y=8'd16;\n      3'b101: y=8'd32;\n      3'b110: y=8'd64;\n      3'b111: y=8'd128;\n  endcase\nend\n\n\n\n\n\nendmodule\n"
+    }
+  },
+  "result_hash": "sha256:7b6ba0e442b153c40940e43eb7f2e00f69a72f9e3b81398b8a49e7f1073e6eb7"
+}

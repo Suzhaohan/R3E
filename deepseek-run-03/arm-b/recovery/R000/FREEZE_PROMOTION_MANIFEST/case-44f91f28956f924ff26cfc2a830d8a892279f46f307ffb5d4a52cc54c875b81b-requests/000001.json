@@ -1,0 +1,23 @@
+{
+  "binding": "sha256:e7853dad38ac4fa5a6145e6e944c68fe47900f738d36398a6fe964dc5fd16f9c",
+  "response": {
+    "input_tokens": 798,
+    "output_tokens": 218,
+    "raw_response_hash": "sha256:b3d41cbbd55b4a0a86cef0d54d118b779d1381d44a229d8bc79d7afdec92cd7a",
+    "request_hash": "sha256:c9b2ae33efad37632dd5f9f9ecd8ffbf864f9ea31f8fa1094449e1a681cc6a54",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 798,
+      "output_tokens": 218,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Removed the duplicated 3'd6 case item (identical duplicate branch) from the case statement in the always@(ABC) block; the first divergent output at cycle7 expected Y=1 for ABC=0, which the 3'd0 branch already provides, so the duplicate 3'd6 entry was the only anomalous local construct in the case block.",
+      "replacement_rtl": "module JG3(ABC,X,Y);\n\t\n\tinput [2:0] ABC;\n\t\n\toutput X, Y;\n\treg X, Y;\n\t\n\talways@(ABC)\n\t\tcase(ABC)\n\t\t\t3'd0: begin X<=0;Y<=1; end\n\t\t\t3'd5: begin X<=1;Y=0; end\n\t\t\t3'd6: begin X<=1;Y=0; end\n\t\t\tdefault: begin X<=0;Y<=0; end\n\t\tendcase\t\n\t\nendmodule"
+    }
+  },
+  "result_hash": "sha256:4be22f2d470ee6924c7e6196e6b6205247708ac72e91570fb6180c4e61f9180a"
+}

@@ -1,0 +1,34 @@
+{
+  "binding": "sha256:9c5748e5c64753b10cfd66a804f8e6c4c76d18028ced8221d22ed8918d5485cc",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 928,
+    "output_tokens": 103,
+    "raw_response_hash": "sha256:e3de30a95033bbad4ae7d8826c7c2058f2a4dd19a8ab2e80542b42943d76dc44",
+    "request_hash": "sha256:314be2a6c75235f8427b022e225517fc080c79005964877f70693a7830ac8c9c",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 928,
+      "output_tokens": 103,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Change the units digit rollover threshold from 10 to 9 to match the other decimal digits.",
+      "edits": [
+        {
+          "replace": "if(Q[3:0] != 9)begin\n            Q[3:0] <= Q[3:0] + 1;\n       end",
+          "search": "if(Q[3:0] != 10)begin\n            Q[3:0] <= Q[3:0] + 1;\n       end"
+        }
+      ]
+    }
+  },
+  "result_hash": "sha256:3765c04f3048bbc01ab63e22225a85b70a71d61260e1f05e99925029db37edf2"
+}

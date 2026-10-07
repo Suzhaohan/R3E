@@ -1,0 +1,23 @@
+{
+  "binding": "sha256:bbb0e02080944fa86b47909711ece3149799b6534581f5ebfb9511b9ba87623d",
+  "response": {
+    "input_tokens": 732,
+    "output_tokens": 132,
+    "raw_response_hash": "sha256:b5c59ccaa3f6f43f01789c3f14fc0d07622fe87f7e6ce9f722b893246f243c89",
+    "request_hash": "sha256:f9d079c5f44a3552efdb7c070dad8236d8d4565bd749f2103d3b6ff3b0739824",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 732,
+      "output_tokens": 132,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Replace the incorrect sum assignment `assign s=(~(a&b)&ci);` with the correct full-adder XOR sum `assign s=(a^b^ci);`. The carry logic is unchanged.",
+      "replacement_rtl": "module fa_behavioral(a,b,ci,s,co);\n       input a,b;\n       input ci;\n       output  s;\n       output co;\n\n\n\n       assign s=(a^b^ci);\n       assign co=((a&b)|(a&ci)|(b&ci));\n\n\n\nendmodule\n"
+    }
+  },
+  "result_hash": "sha256:cef4fda51385482b52bb30e57ce91079ae0b31c7cbfc1a21a1fc93218fafc0ca"
+}

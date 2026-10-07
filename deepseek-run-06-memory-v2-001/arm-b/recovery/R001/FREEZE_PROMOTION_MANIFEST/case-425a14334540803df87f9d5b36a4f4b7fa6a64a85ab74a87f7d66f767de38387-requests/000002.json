@@ -1,0 +1,29 @@
+{
+  "binding": "sha256:8e0757122181658dda4f032902e4f086aa4e9b325bd53a5cd9d14b6850f34dcf",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 707,
+    "output_tokens": 309,
+    "raw_response_hash": "sha256:dc360e211d4d1541ffa439541ae36a0fa8053d2ab4f795e2ac19d3d59f1bba08",
+    "request_hash": "sha256:823ac7f324998dc062a72d771136edfc962acf0caf1a598a66cbaaef2bd37fd0",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 707,
+      "output_tokens": 309,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Fix malformed binary literals in the 3'b100 and 3'b111 case arms: 3'b100 should decode to 8'b0001_0000 (bit 4) and 3'b111 to 8'b1000_0000 (bit 7), correcting the one-hot output widths.",
+      "replacement_rtl": "\n\nmodule decoder3e_test(a,ena,y);\n  input [2:0] a;\n  input ena;\n  output [7:0] y; \n  reg[7:0] Y;\n  \n\n\nalways @(ena or a)\nbegin\nif(ena==0)\nY=8'b0000_0000;\nelse\ncase (a)\n3'b000: Y=8'b0000_0001;\n3'b001: Y=8'b0000_0010;\n3'b010: Y=8'b0000_0100;\n3'b011: Y=8'b0000_1000;\n3'b100: Y=8'b0001_0000;\n3'b101: Y=8'b0010_0000;\n3'b110: Y=8'b0100_0000;\n3'b111: Y=8'b1000_0000;\nendcase\nend\nassign y=Y;\n\n\n\n\n\nendmodule\n"
+    }
+  },
+  "result_hash": "sha256:fe08e16eb7ed58849a7966f788ecb5bf203e04e31e64775636472b25b14f4da7"
+}

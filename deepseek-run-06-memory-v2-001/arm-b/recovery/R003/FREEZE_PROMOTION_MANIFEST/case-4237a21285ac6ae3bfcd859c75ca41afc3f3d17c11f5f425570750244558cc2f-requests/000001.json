@@ -1,0 +1,29 @@
+{
+  "binding": "sha256:7c11e9f9b8ff94351d30ca50eadfe3bd80cf87a5834c7589a0a3258153497b31",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 1115,
+    "output_tokens": 513,
+    "raw_response_hash": "sha256:5c7bda8c65ece2f00d18f04522d6eeb184a3fae7c2c847a2b41e5e246e594260",
+    "request_hash": "sha256:31f38bd98e3f3875cfdba4824c40b78f42161f9fc62b69f433ca940a96aaa22c",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 1115,
+      "output_tokens": 513,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Fix the third ternary condition from 4'b1000 to 4'b1010 so that input combination en=1,A=0,B=1,C=0 selects output 8'b1111_1011 (Y2 low) instead of incorrectly re-matching the 4'b1000 case and producing 8'b1111_1110 (Y0 low).",
+      "replacement_rtl": "/******************************************************************\n * Date: Aug. 28, 1999\n * File: Decoder 3 to 8.v   (440 Examples)\n *\n * Module of a 3 to 8 Decoder with an active high enable input and\n * and active low outputs. This model uses a trinary continuous \n * assignment statement for the combinational logic\n *******************************************************************/\n//*****************************************************************\n  module decoder_3to8(Y7, Y6, Y5, Y4, Y3, Y2, Y1, Y0, A, B, C, en);\n//*****************************************************************\n     output Y7, Y6, Y5, Y4, Y3, Y2, Y1, Y0;\n     input  A, B, C;\n     input  en;\n     assign {Y7,Y6,Y5,Y4,Y3,Y2,Y1,Y0} = ( {en,A,B,C} == 4'b1000) ? 8'b1111_1110 :\n                                        ( {en,A,B,C} == 4'b1001) ? 8'b1111_1101 :\n                                        ( {en,A,B,C} == 4'b1010) ? 8'b1111_1011 :\n                                        ( {en,A,B,C} == 4'b1011) ? 8'b1111_0111 :\n                                        ( {en,A,B,C} == 4'b1100) ? 8'b1110_1111 :\n                                        ( {en,A,B,C} == 4'b1101) ? 8'b1101_1111 :\n                                        ( {en,A,B,C} == 4'b1110) ? 8'b1011_1111 :\n                                        ( {en,A,B,C} == 4'b1111) ? 8'b0111_1111 :\n                                                                   8'b0111_1111;\n  endmodule\n"
+    }
+  },
+  "result_hash": "sha256:7682cde4963ec6d831c65527b58ddc67b80758427ada94e5a2e870308aa4aa23"
+}

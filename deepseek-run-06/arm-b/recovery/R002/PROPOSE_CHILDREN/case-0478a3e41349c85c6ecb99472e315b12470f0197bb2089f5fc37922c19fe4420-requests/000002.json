@@ -1,0 +1,29 @@
+{
+  "binding": "sha256:bb8ff429ff5d4567666df9d26eb51e4a886258706a67392ebdb9fc96c365f5a0",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 972,
+    "output_tokens": 117,
+    "raw_response_hash": "sha256:466f76898d74e0d8ae05295e5f9ac87452f7f90e38207b4260a899ec78f40d4b",
+    "request_hash": "sha256:55e9507c672cc9e44865d2a72d0be6cebcc2cd2adb0b86b062f17de3c9462bf7",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 972,
+      "output_tokens": 117,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Complete the truncated always block: add begin/end and an else branch so s==0 selects a and s==1 selects b, fixing the inverted/incomplete mux polarity.",
+      "replacement_rtl": "module mux21(a,b,s,y);\n\tinput a,b,s;\n\toutput y;\n\treg y;\n\talways @(a,b,s)\n\tbegin\n\t\tif(s==1'B0)begin y=a;end\n\t\telse begin y=b;end\n\tend\nendmodule"
+    }
+  },
+  "result_hash": "sha256:95c09c069ad6d4d903f256a3fe7147a131fa0ab71793a95f18d2392b24ee18f2"
+}

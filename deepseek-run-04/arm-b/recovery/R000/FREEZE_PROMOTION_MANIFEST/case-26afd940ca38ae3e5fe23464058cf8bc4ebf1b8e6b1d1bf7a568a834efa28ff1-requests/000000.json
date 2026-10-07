@@ -1,0 +1,23 @@
+{
+  "binding": "sha256:1fa7c943c4c7d331daa04a4aa00962473b7ffc33323b733e9480e4823978e635",
+  "response": {
+    "input_tokens": 687,
+    "output_tokens": 228,
+    "raw_response_hash": "sha256:9b41017892d6d859dc9d8399040f9196e851157d61e96c8868dc289e82669c89",
+    "request_hash": "sha256:ec25848783bdc3df7e61d416869fd88726218fe89fbf6a4963e9ecff02537bc1",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 687,
+      "output_tokens": 228,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Replaced the duplicated case item 3'd6 with 3'd7 so the case covers the missing input code 7, which the oracle expects to produce X=1,Y=0 (actual@cycle7 got 00, expected 01).",
+      "replacement_rtl": "module JG3(ABC,X,Y);\n\t\n\tinput [2:0] ABC;\n\t\n\toutput X, Y;\n\treg X, Y;\n\t\n\talways@(ABC)\n    \n        \n\n\t\tcase(ABC)\n\t\t\t3'd0: begin X<=0;Y<=1; end\n\t\t\t3'd5: begin X<=1;Y=0; end\n\t\t\t3'd6: begin X<=1;Y=0; end\n\t\t\t3'd7: begin X<=1;Y=0; end\n\t\t\tdefault: begin X<=0;Y<=0; end\n\t\tendcase\t\n\t\t\n        \n\n\t\nendmodule"
+    }
+  },
+  "result_hash": "sha256:2ea6549d4dab6c1e817d9c669b362231ff9a9fec0e36cc1c7ae8540e13ff2eae"
+}

@@ -1,0 +1,25 @@
+{
+  "binding": "sha256:3705faf5ec71e1680543077b4c1e50bb61fe63de10caa67520262d5c41502d4b",
+  "response": {
+    "input_tokens": 706,
+    "output_tokens": 187,
+    "raw_response_hash": "sha256:aa235dab18c481f10a44f70340b38176a09188ce9f1ccd395f998046b72abdf4",
+    "request_hash": "sha256:016d68cdad2ec2060507a335a661f74a4194831afe9c4a9c82b816841f3f9352",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 706,
+      "output_tokens": 187,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "candidate_id": "C_c588b951bac46c9e_2",
+      "candidate_seed": 847545993,
+      "edit": "Replace the sum assignment `assign s=(~(a&b)&ci);` with the correct full-adder XOR sum `assign s=(a^b)^ci;`. The original expression only produced ci when a&b was false and ignored a/b, causing the cycle-2 mismatch (got 00, expected 01). Carry logic is unchanged.",
+      "replacement_rtl": "module fa_behavioral(a,b,ci,s,co);\n       input a,b;\n       input ci;\n       output  s;\n       output co;\n\n\n\n       assign s=(a^b)^ci;\n       assign co=((a&b)|(a&ci)|(b&ci));\n\n\n\nendmodule\n"
+    }
+  },
+  "result_hash": "sha256:a3a1daa3c4c8c3c7b51754045ab15bea6a7ad942be1d121fa831c7b485b6f8f9"
+}

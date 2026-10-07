@@ -1,0 +1,29 @@
+{
+  "binding": "sha256:5152f22f8afa52e7662f44c6fbe69bd2b30e2e86930001cf1693695bb6551394",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 647,
+    "output_tokens": 203,
+    "raw_response_hash": "sha256:a69ceee9383261ab050a0cff2ffb0624be12b069603ab30c09a0a52c73a2ee57",
+    "request_hash": "sha256:8467e15bc776b15bc9090ccf08a230cf83ab420814de931b50c055045c8251bc",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 647,
+      "output_tokens": 203,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Removed the duplicate 3'd6 case item in the combinational always block; the duplicate was unreachable and the first divergent output at cycle 7 (got 00, expected 01) is consistent with the case decode for ABC=3'd0, which is preserved unchanged.",
+      "replacement_rtl": "module JG3(ABC,X,Y);\n\t\n\tinput [2:0] ABC;\n\t\n\toutput X, Y;\n\treg X, Y;\n\t\n\talways@(ABC)\n\t\tcase(ABC)\n\t\t\t3'd0: begin X<=0;Y<=1; end\n\t\t\t3'd5: begin X<=1;Y=0; end\n\t\t\t3'd6: begin X<=1;Y=0; end\n\t\t\tdefault: begin X<=0;Y=0; end\n\t\tendcase\t\n\t\nendmodule"
+    }
+  },
+  "result_hash": "sha256:07ba28d2c5312faf630a248fce41c6dce48f5e195950cf0df39e0ff578955010"
+}

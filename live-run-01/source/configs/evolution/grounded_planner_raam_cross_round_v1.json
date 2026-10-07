@@ -1,0 +1,60 @@
+{
+  "schema_version": "r3e-grounded-planner-raam-cross-round-milestone-v1",
+  "milestone_id": "grounded-planner-raam-cross-round-v1",
+  "status": "frozen",
+  "parent_milestone": {
+    "milestone_id": "grounded-waveform-rejection-v1",
+    "milestone_hash": "sha256:fcce140b085b8dfeff5cc0769fba51822759722d26ed73e491d8a96c090a263c"
+  },
+  "completed_scope": [
+    "policy-bound-coverage-planner-and-difficulty-curriculum",
+    "coverage-checkpoint-event-and-offline-audit-reconstruction",
+    "parser-backed-memory-bypass-deepening-conflict-transfer",
+    "two-parent-controlled-composition-with-intermediate-admission",
+    "exact-inverse-sequential-ast-materialization",
+    "deterministic-four-round-memory-reuse-and-revalidation",
+    "complete-episode-to-active-policy-authority-dag",
+    "formal-rejected-inconclusive-episode-without-memory-or-promotion-rights"
+  ],
+  "frozen_interfaces": [
+    "r3e-grounded-coverage-plan-v1",
+    "r3e-red-coverage-state-v1",
+    "r3e-red-difficulty-profile-v1",
+    "r3e-parser-memory-operator-plan-v1",
+    "r3e-parser-intermediate-admission-v1",
+    "r3e-controlled-composition-plan-v1",
+    "r3e-parser-sequential-materialization-v1",
+    "r3e-raam-authority-dag-v1",
+    "r3e-verified-episode-v1:inconclusive"
+  ],
+  "frozen_assets": {
+    "configs/evolution/round_grounded_runtime_v3.json": "sha256:dd5f75b1f9e6b475cb65533e0bf9366945c851829b5f65e6c584951bd68b9d29",
+    "r3e/arena/runner.py": "sha256:e4f932dd223eaafebd551d65f4d2efc87966ac1ac8d9a06ddf429c08515ac2fd",
+    "r3e/arena/audit.py": "sha256:808111df5bc77d6223fa3dbb4ca6ac9a0803c0550401d997cb02fd6a82c3ce7c",
+    "r3e/red/grounded/coverage.py": "sha256:83d1ef559d84ce63893b2d08046159714d53253653459425f52cf468cd5567f9",
+    "r3e/red/grounded/difficulty.py": "sha256:9e39bca0409940bfb65c0e75b5b49a8f2b97da4613139e29d23d266382a546ea",
+    "r3e/red/grounded/memory_materializers.py": "sha256:f71aa5990e4c0a53c42be4770d35fd31f305c65a318a0960f69342a418b5a0c4",
+    "r3e/memory/episode_builder.py": "sha256:e90dff849c9755fdbc11fb38b23e5e029a014e8dc5e08e276de8f4c3700678d2",
+    "r3e/memory/authority_dag.py": "sha256:6ff4487e1eb920076429fbc88897a0d242f566e1d838b51abb8ef2436d2f47cd",
+    "r3e/memory/audit.py": "sha256:22f1ba6e087c0d0874fadc19e660bc3c072468275a9a1cdf4dd241239ce05f3a",
+    "tests/test_grounded_planner_raam_closure.py": "sha256:9578ea0f2c1f445b6cec188707d31b74b6232682b10500446caa3714f404a306",
+    "tests/test_raam_memory.py": "sha256:d93bc01691ae10297888ef7194fe1bf42d75533515980352c964af065c600d8b"
+  },
+  "required_validation": [
+    "pytest -q -p no:cacheprovider",
+    "pytest -q -p no:cacheprovider tests/test_grounded_planner_raam_closure.py tests/test_grounded_authority_integration.py tests/test_raam_memory.py",
+    "python -m r3e.arena.fake_system --workspace /tmp/r3e-planner-raam-closure/arena --rounds 4",
+    "python -m r3e.red.grounded.fake_system --workspace /tmp/r3e-planner-raam-closure/red --rounds 4",
+    "python scripts/check_release.py",
+    "python scripts/verify_datasets.py"
+  ],
+  "deferred_scope": [
+    "real-model-adapter",
+    "grd8-real-model-multi-round-pilot",
+    "full-systemverilog-parser-coverage",
+    "multi-clock-long-horizon-waveform-semantics",
+    "empirical-memory-gain-and-bug-yield-claims"
+  ],
+  "claim_boundary": "Frozen deterministic Grounded planner, parser-backed RAAM challenge/composition, cross-round revalidation, rejected-trajectory representation, and complete authority-DAG infrastructure only; no real-model discovery, GRD-8 pilot, empirical bug yield, or memory-gain result.",
+  "milestone_hash": "sha256:c81ba2db03ab889f6fc2065aed4f756952bc53208616c60a1f19f9210895663b"
+}

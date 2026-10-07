@@ -1,0 +1,23 @@
+{
+  "binding": "sha256:87bb8f435f9c77daaa5d555ee1b92ecb033f9a6f831f6a5363c7d7ab88ac371f",
+  "response": {
+    "input_tokens": 690,
+    "output_tokens": 220,
+    "raw_response_hash": "sha256:45541a8231a2aa28e93a43dd65d6946ee47a5e857002f319d72601fa2dc93f58",
+    "request_hash": "sha256:601b8bfb7354da5ed8096724b9ebe059ff74b1b293b6f23f4211015011cb6ba4",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 690,
+      "output_tokens": 220,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "No change: the supplied buggy RTL already matches the requested replacement; the mismatch at cycle 7 (actual 00 vs expected 01) is not addressed by any local edit within the frozen patch scope.",
+      "replacement_rtl": "module JG3(ABC,X,Y);\n\t\n\tinput [2:0] ABC;\n\t\n\toutput X, Y;\n\treg X, Y;\n\t\n\talways@(ABC)\n    \n        \n\n\t\tcase(ABC)\n\t\t\t3'd0: begin X<=0;Y<=1; end\n\t\t\t3'd5: begin X<=1;Y=0; end\n\t\t\t3'd6: begin X<=1;Y=0; end\n\t\t\t3'd6: begin X<=1;Y=0; end\n\t\t\tdefault: begin X<=0;Y<=0; end\n\t\tendcase\t\n\t\t\n        \n\n\t\nendmodule"
+    }
+  },
+  "result_hash": "sha256:63f68711c9ce4d72567b93e2e337e1bccfcf5554dc8591e082d60792bc3d9d41"
+}

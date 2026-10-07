@@ -8,7 +8,7 @@ from copy import deepcopy
 from pathlib import Path
 from typing import Any
 
-from r3e.arena.manifests import verify_manifest
+from r3e.arena.manifests import split_for_promotion, verify_manifest
 from r3e.arena.conformance import validate_toolchain_fingerprint
 from r3e.arena.portfolio import (
     CANDIDATE_PORTFOLIO_AUTHORITY,
@@ -35,6 +35,7 @@ from r3e.memory.episode_builder import (
 )
 from r3e.memory.episode_store import EpisodeStore
 from r3e.policy.promotion import (
+    DEFAULT_THRESHOLDS,
     decide_policy_promotion,
     select_single_promotable_child,
 )
@@ -981,6 +982,18 @@ def reconstruct_round(round_dir: str | Path) -> dict[str, Any]:
     }
     if adaptation_designs & target_designs:
         raise RoundAuditViolation("adaptation/target design leakage")
+    # Historical frozen rounds retain their original split protocol and hashes.
+    if target.get("metadata", {}).get("split_protocol") == "promotion_design_reserve_v1":
+        gates = {**DEFAULT_THRESHOLDS, **(config.get("promotion_thresholds") or {})}
+        expected_adaptation, expected_target = split_for_promotion(
+            residual,
+            min_target_designs=max(1, int(gates["min_covered_designs"])),
+            adaptation_fraction=float(config.get("adaptation_fraction", 0.5)),
+            seed=int(config.get("split_seed", 0)),
+        )
+        if (adaptation["manifest_hash"] != expected_adaptation["manifest_hash"]
+                or target["manifest_hash"] != expected_target["manifest_hash"]):
+            raise RoundAuditViolation("promotion design allocation differs from gate requirements")
     for row in adaptation["rows"]:
         leaked = FORBIDDEN_INPUT_KEYS & row.keys()
         if leaked:
@@ -1159,6 +1172,8 @@ def reconstruct_round(round_dir: str | Path) -> dict[str, Any]:
     record.update(portfolio_red_audit)
     record.update(grounded_proposal_audit)
     record.update(grounded_population_audit)
+    if target.get("metadata", {}).get("split_protocol") == "promotion_design_reserve_v1":
+        record["design_allocation"] = target["metadata"]["design_allocation"]
     record["audit_record_hash"] = hash_payload(record)
     return record
 

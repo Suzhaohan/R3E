@@ -1,0 +1,29 @@
+{
+  "binding": "sha256:da2f72c3d40c1c0c8c5873fe98e95a59879e56543812869714d28e760fe5971b",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 636,
+    "output_tokens": 187,
+    "raw_response_hash": "sha256:430efb4d6da944efdc1f1d5e79da32dbde95e1576dd089bacf3a75ce12c84d0b",
+    "request_hash": "sha256:7cde1ccc704b3c4822621588ad5e73824763ee597e850e5641ace24765dba785",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 636,
+      "output_tokens": 187,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Removed the duplicate 3'd6 case item (identical to the preceding one) and the stray blank lines in the always block; behavior for all ABC values is unchanged, keeping the local case block minimal.",
+      "replacement_rtl": "module JG3(ABC,X,Y);\n\t\n\tinput [2:0] ABC;\n\t\n\toutput X, Y;\n\treg X, Y;\n\t\n\talways@(ABC)\n\t\tcase(ABC)\n\t\t\t3'd0: begin X<=0;Y<=1; end\n\t\t\t3'd5: begin X<=1;Y=0; end\n\t\t\t3'd6: begin X<=1;Y=0; end\n\t\t\tdefault: begin X<=0;Y<=0; end\n\t\tendcase\t\n\t\nendmodule"
+    }
+  },
+  "result_hash": "sha256:b7ee15927ebcfbc7843dc59c6d8582fa5c279078d3533cced34f51580d94360f"
+}

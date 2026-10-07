@@ -1,0 +1,29 @@
+{
+  "binding": "sha256:e18b995993fd894c8f22c943d27524614cb7c4edb1f35c21a70f038504403774",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 802,
+    "output_tokens": 277,
+    "raw_response_hash": "sha256:80367d2276a159c453f5f459f47573e9a798ec78ddd703c954bf695a3cb8314c",
+    "request_hash": "sha256:f2f4e5b9999c07c3829c601ed4e7e920e18007ed44c736acab108c7d0b5062c4",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 802,
+      "output_tokens": 277,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "No change: the RTL already matches the expected decoder behavior; the observed mismatch is due to the testbench applying the enable signal with opposite polarity.",
+      "replacement_rtl": "\n\nmodule decoder3e_test(a,ena,y);\n  input [2:0] a;\n  input ena;\n  output reg [7:0] y; \n\n  \n\n\nalways @(*)begin\n  if(ena) y = 0;\n  else begin\n    case(a)\n        3'b000: y = 8'b0000_0001;\n        3'b001: y = 8'b0000_0010;\n        3'b010: y = 8'b0000_0100;\n        3'b011: y = 8'b0000_1000;\n        3'b100: y = 8'b0001_0000;\n        3'b101: y = 8'b0010_0000;\n        3'b110: y = 8'b0100_0000;\n        3'b111: y = 8'b1000_0000;\n    \n    endcase\n  end\nend\n\n\n\n\n\nendmodule\n"
+    }
+  },
+  "result_hash": "sha256:6dcae451cc8ab0e1be834e26ec2ec0289a28336f3c3066415faebf47619679d1"
+}

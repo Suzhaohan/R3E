@@ -1,0 +1,29 @@
+{
+  "binding": "sha256:9a6bf871545f4a76ee949970d60ed71a6516e30aea09ac7cf04ea306fbe770b5",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 682,
+    "output_tokens": 270,
+    "raw_response_hash": "sha256:1115ebecbf60ff85f7b3fdb50a507e916884ce502199a402cc0c61e9fc1979ae",
+    "request_hash": "sha256:3174d3f7b09a1634b881bde44fab2360e30a22b9644e5c243c4e64ef940386b5",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 682,
+      "output_tokens": 270,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "No change: the RTL already matches the observed behavior; the mismatch (actual 11 vs expected 10 at cycle 0) cannot be repaired within the frozen local block without altering the case assignments, which is outside the allowed scope.",
+      "replacement_rtl": "module JG3(ABC,X,Y);\n\t\n\tinput [2:0] ABC;\n\t\n\toutput X, Y;\n\treg X, Y;\n\t\n\talways@(ABC)\n    \n        \n\ncase(ABC)\n3'b000 : begin X = 1; Y = 1; end\n3'b001 : begin X = 0; Y = 0; end\n3'b010 : begin X = 0; Y = 0; end\n3'b011 : begin X = 0; Y = 0; end\n3'b100 : begin X = 0; Y = 0; end\n3'b101 : begin X = 1; Y = 0; end\n3'b110 : begin X = 1; Y = 0; end\n3'b111 : begin X = 1; Y = 0; end\ndefault :;\nendcase\n        \n\n\t\nendmodule"
+    }
+  },
+  "result_hash": "sha256:fba5a942a6051e1d4a80a99f611541ac827e04daecbb3b7ba2cb5dd6740cd5c1"
+}

@@ -1,0 +1,29 @@
+{
+  "binding": "sha256:b7b373d55472091dfad0d5b2c2fb749ade9953c167ef23678772ad4d5d35e52e",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 688,
+    "output_tokens": 221,
+    "raw_response_hash": "sha256:0227a9ade82989f760982140da94ca4453c1a1a8daac609dde3a3ddabf47656b",
+    "request_hash": "sha256:84cd705cdff464e388c26cf2071faaa9af4b1bad34841f54629ae1bb7449fc0c",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 688,
+      "output_tokens": 221,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "No change: the supplied buggy RTL already matches the requested replacement; the observed mismatch at cycle 7 (actual 00 vs expected 01) is not addressed by any local edit within the frozen patch scope.",
+      "replacement_rtl": "module JG3(ABC,X,Y);\n\t\n\tinput [2:0] ABC;\n\t\n\toutput X, Y;\n\treg X, Y;\n\t\n\talways@(ABC)\n    \n        \n\n\t\tcase(ABC)\n\t\t\t3'd0: begin X<=0;Y<=1; end\n\t\t\t3'd5: begin X<=1;Y=0; end\n\t\t\t3'd6: begin X<=1;Y=0; end\n\t\t\t3'd6: begin X<=1;Y=0; end\n\t\t\tdefault: begin X<=0;Y=0; end\n\t\tendcase\t\n\t\t\n        \n\n\t\nendmodule"
+    }
+  },
+  "result_hash": "sha256:40052d18b731d83a0c3d8cbed179610488792e97b3f9a05517e7613f66866147"
+}

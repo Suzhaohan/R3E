@@ -1,0 +1,23 @@
+{
+  "binding": "sha256:5e7cd13c3383239529dc3c6f98ff38e513058fd1e52d32141facadf7d659a844",
+  "response": {
+    "input_tokens": 732,
+    "output_tokens": 250,
+    "raw_response_hash": "sha256:3a4b9f6098fac27d73bac9bc865a2ac26f17974b0830cae7e90ba6563201d586",
+    "request_hash": "sha256:a0fc1c2598c33f6686e571eb747527d6f10a7a31ffd31528e6417f736bd61445",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 732,
+      "output_tokens": 250,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "No change: the RTL already matches the oracle for the observed mismatch (ABC=3'b000 yields X=1,Y=1).",
+      "replacement_rtl": "module JG3(ABC,X,Y);\n\t\n\tinput [2:0] ABC;\n\t\n\toutput X, Y;\n\treg X, Y;\n\t\n\talways@(ABC)\n    \n        \n\ncase(ABC)\n3'b000 : begin X = 1; Y = 1; end\n3'b001 : begin X = 0; Y = 0; end\n3'b010 : begin X = 0; Y = 0; end\n3'b011 : begin X = 0; Y = 0; end\n3'b100 : begin X = 0; Y = 0; end\n3'b101 : begin X = 1; Y = 0; end\n3'b110 : begin X = 1; Y = 0; end\n3'b111 : begin X = 1; Y = 0; end\ndefault :;\nendcase\n        \n\n\t\nendmodule"
+    }
+  },
+  "result_hash": "sha256:8cdf387708ecc5e486d38ac793de4c6dc5ef8d50b1fb259afd2b907a530aee18"
+}

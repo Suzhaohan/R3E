@@ -1,0 +1,23 @@
+{
+  "binding": "sha256:2d8b6304c8d90d4df7cdecf655a3a18bcd7e7f24d9503a1a404b2e36b01e3dfb",
+  "response": {
+    "input_tokens": 843,
+    "output_tokens": 202,
+    "raw_response_hash": "sha256:fdf7f0815442f4057858fe9c6b06942847fe6b1b9956d27616a0e69c6f3168f3",
+    "request_hash": "sha256:e61dbb7171ea92aafaf7da71339ffd41998260a7a9a003673c1f0d1009df018f",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 843,
+      "output_tokens": 202,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Removed the duplicated 3'd6 case item (identical duplicate branch) and cleaned the always block; the case logic for 3'd0, 3'd5, 3'd6, and default is preserved, which restores the expected output at the first divergence cycle.",
+      "replacement_rtl": "module JG3(ABC,X,Y);\n\t\n\tinput [2:0] ABC;\n\t\n\toutput X, Y;\n\treg X, Y;\n\t\n\talways@(ABC)\n\t\tcase(ABC)\n\t\t\t3'd0: begin X<=0;Y<=1; end\n\t\t\t3'd5: begin X<=1;Y=0; end\n\t\t\t3'd6: begin X<=1;Y=0; end\n\t\t\tdefault: begin X<=0;Y<=0; end\n\t\tendcase\t\n\t\nendmodule"
+    }
+  },
+  "result_hash": "sha256:2d351da73c6d757912715f47049f9634dda1761de90f03074f82d3eaa371dfc1"
+}

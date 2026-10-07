@@ -1,0 +1,29 @@
+{
+  "binding": "sha256:c8c19d096a1ff8270a035927beeee2089e4728d253ac84f7d2ed0cc1d161bcc3",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 1662,
+    "output_tokens": 1173,
+    "raw_response_hash": "sha256:17fabc9814100a5a9673b2c771c8764a44760a94fab5a03e569c67dd39b94d4c",
+    "request_hash": "sha256:aa74e727bb70b2eacd1946fc6655075dff67efee41657c7634afae4829bf3ee2",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 1662,
+      "output_tokens": 1173,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Uncommented the GNT3 case in the output logic so gnt_3 is asserted when state is GNT3.",
+      "replacement_rtl": "module fsm_full(\nclock , // Clock\nreset , // Active high reset\nreq_0 , // Active high request from agent 0\nreq_1 , // Active high request from agent 1\nreq_2 , // Active high request from agent 2\nreq_3 , // Active high request from agent 3\ngnt_0 , // Active high grant to agent 0\ngnt_1 , // Active high grant to agent 1\ngnt_2 , // Active high grant to agent 2\ngnt_3   // Active high grant to agent 3\n);\n// Port declaration here\ninput clock ; // Clock\ninput reset ; // Active high reset\ninput req_0 ; // Active high request from agent 0\ninput req_1 ; // Active high request from agent 1\ninput req_2 ; // Active high request from agent 2\ninput req_3 ; // Active high request from agent 3\noutput gnt_0 ; // Active high grant to agent 0\noutput gnt_1 ; // Active high grant to agent 1\noutput gnt_2 ; // Active high grant to agent 2\noutput gnt_3 ; // Active high grant to agent \n\n// Internal Variables\nreg    gnt_0 ; // Active high grant to agent 0\nreg    gnt_1 ; // Active high grant to agent 1\nreg    gnt_2 ; // Active high grant to agent 2\nreg    gnt_3 ; // Active high grant to agent \n\nparameter  [2:0]  IDLE  = 3'b000;\nparameter  [2:0]  GNT0  = 3'b001;\nparameter  [2:0]  GNT1  = 3'b010;\nparameter  [2:0]  GNT2  = 3'b011;\nparameter  [2:0]  GNT3  = 3'b100;\n\nreg [2:0] state, next_state;\n\nalways @ (state or req_0 or req_1 or req_2 or req_3)\nbegin  \n  next_state = 0;\n  case(state)\n    IDLE : if (req_0 == 1'b1) begin\n  \t     next_state = GNT0;\n           end else if (req_1 == 1'b1) begin\n  \t     next_state= GNT1;\n           end else if (req_2 == 1'b1) begin\n  \t     next_state= GNT2;\n           end else if (req_3 == 1'b1) begin\n  \t     next_state= GNT3;\n\t   end else begin\n  \t     next_state = IDLE;\n           end\t\t\t\n    GNT0 : if (req_0 == 1'b0) begin\n  \t     next_state = IDLE;\n           end else begin\n\t     next_state = GNT0;\n\t  end\n    GNT1 : if (req_1 == 1'b0) begin\n  \t     next_state = IDLE;\n           end else begin\n\t     next_state = GNT1;\n\t  end\n    GNT2 : if (req_2 == 1'b0) begin\n  \t     next_state = IDLE;\n           end else begin\n\t     next_state = GNT2;\n\t  end\n    GNT3 : if (req_3 == 1'b0) begin\n  \t     next_state = IDLE;\n           end else begin\n\t     next_state = GNT3;\n\t  end\n   default : next_state = IDLE;\n  endcase\nend\n\nalways @ (posedge clock)\nbegin : OUTPUT_LOGIC\n  if (reset) begin\n    gnt_0 <= #1 1'b0;\n    gnt_1 <= #1 1'b0;\n    gnt_2 <= #1 1'b0;\n    gnt_3 <= #1 1'b0;\n    state <= #1 IDLE;\n  end else begin\n    state <= #1 next_state;\n    case(state)\n\tIDLE : begin\n                gnt_0 <= #1 1'b0;\n                gnt_1 <= #1 1'b0;\n                gnt_2 <= #1 1'b0;\n                gnt_3 <= #1 1'b0;\n\t       end\n  \tGNT0 : begin\n  \t         gnt_0 <= #1 1'b1;\n  \t       end\n        GNT1 : begin\n                 gnt_1 <= #1 1'b1;\n               end\n        GNT2 : begin\n                 gnt_2 <= #1 1'b1;\n               end\n        GNT3 : begin\n                 gnt_3 <= #1 1'b1;\n               end\n     default : begin\n                 state <= #1 IDLE;\n               end\n    endcase\n  end\nend\n\nendmodule\n"
+    }
+  },
+  "result_hash": "sha256:efe9b46e45829ee0cb6aaff4b2f295985d81a76ede260ae375af11d4a64d3612"
+}

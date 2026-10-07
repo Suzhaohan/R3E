@@ -1,0 +1,31 @@
+{
+  "binding": "sha256:90cb56be69739fe40bf67df597b6a9e4158fd7305f11329688bfd2c0d52acec9",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 942,
+    "output_tokens": 323,
+    "raw_response_hash": "sha256:1d3bb2314d75ee367ae7bf22b4d1acf52a33cb2acce11073bedafd3c23efd9d9",
+    "request_hash": "sha256:77d0ac35cc0f88ec17201b1d098e1b1487cc565211c74e4139de7561f6bb4b6d",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 942,
+      "output_tokens": 323,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "candidate_id": "C_706e0dfe95edbef9_0",
+      "candidate_seed": 1818265213,
+      "edit": "Inverted the enable condition in the always block: changed `if(ena)` to `if(!ena)` so that y is forced to 0 when ena is low and the one-hot decode is applied when ena is high, matching the oracle behavior.",
+      "replacement_rtl": "\n\nmodule decoder3e_test(a,ena,y);\n  input [2:0] a;\n  input ena;\n  output reg [7:0] y; \n\n  \n\n\nalways @(*)begin\n  if(!ena) y = 0;\n  else begin\n    case(a)\n        3'b000: y = 8'b0000_0001;\n        3'b001: y = 8'b0000_0010;\n        3'b010: y = 8'b0000_0100;\n        3'b011: y = 8'b0000_1000;\n        3'b100: y = 8'b0001_0000;\n        3'b101: y = 8'b0010_0000;\n        3'b110: y = 8'b0100_0000;\n        3'b111: y = 8'b1000_0000;\n    \n    endcase\n  end\nend\n\n\n\n\n\nendmodule\n"
+    }
+  },
+  "result_hash": "sha256:db48005bfdf17939ea19bece97cec1248818e0674700dcc9e1ffbbd0c7801366"
+}

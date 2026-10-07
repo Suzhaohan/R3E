@@ -1,0 +1,29 @@
+{
+  "binding": "sha256:bcc8ac85db198e93553d91a6bf86e00f7d52944a5b025a179fe20997da77a508",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 637,
+    "output_tokens": 184,
+    "raw_response_hash": "sha256:4c2fde9026f331a575c93885d1b9e9d543e16f94581fd3626d2c7354e149337a",
+    "request_hash": "sha256:07c7734e43dd61f8fdad8f895f7e756f193c6b1a95c59799ffc6d440197270e5",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 637,
+      "output_tokens": 184,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Removed the duplicate 3'd6 case item and the stray blank/whitespace lines in the always block; case behavior for ABC=0,5,6 and default is unchanged.",
+      "replacement_rtl": "module JG3(ABC,X,Y);\n\t\n\tinput [2:0] ABC;\n\t\n\toutput X, Y;\n\treg X, Y;\n\t\n\talways@(ABC)\n\t\tcase(ABC)\n\t\t\t3'd0: begin X<=0;Y<=1; end\n\t\t\t3'd5: begin X<=1;Y=0; end\n\t\t\t3'd6: begin X<=1;Y=0; end\n\t\t\tdefault: begin X<=0;Y=0; end\n\t\tendcase\t\n\t\nendmodule"
+    }
+  },
+  "result_hash": "sha256:219581d648da96731bcbf48c1a1427376f538ed92ad1ebeef5c8f67a233fd759"
+}

@@ -1,0 +1,23 @@
+{
+  "binding": "sha256:a613a524b6df08f217e5d7beda85471de9d195451ff81190ca9577108405a151",
+  "response": {
+    "input_tokens": 793,
+    "output_tokens": 183,
+    "raw_response_hash": "sha256:07b8e245825c3852a7b4f98e5b4fc089a0ebf4d4ed85366b831a975ce9d8868c",
+    "request_hash": "sha256:19d4c6ebdccff6e0effb9be7aee047dbf608e1649ccd1fa8b51ec6a04a5755d0",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 793,
+      "output_tokens": 183,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Remove the duplicated 3'd6 case item (identical duplicate branch) and clean up the empty always-block whitespace; the duplicate case label is the only functional anomaly in the local block.",
+      "replacement_rtl": "module JG3(ABC,X,Y);\n\t\n\tinput [2:0] ABC;\n\t\n\toutput X, Y;\n\treg X, Y;\n\t\n\talways@(ABC)\n\t\tcase(ABC)\n\t\t\t3'd0: begin X<=0;Y<=1; end\n\t\t\t3'd5: begin X<=1;Y=0; end\n\t\t\t3'd6: begin X<=1;Y=0; end\n\t\t\tdefault: begin X<=0;Y=0; end\n\t\tendcase\t\n\t\nendmodule"
+    }
+  },
+  "result_hash": "sha256:37ef50cc2df59fc815cab09667e2203fa43bb2500aa7b13f1d0eb002ce26ecdf"
+}

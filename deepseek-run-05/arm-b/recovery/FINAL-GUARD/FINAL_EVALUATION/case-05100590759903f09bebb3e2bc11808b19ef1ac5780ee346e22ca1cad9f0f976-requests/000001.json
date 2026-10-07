@@ -1,0 +1,34 @@
+{
+  "binding": "sha256:93636088335449ad7eae88b631f02d4e1502d1868a9a69ba227c4d7c6a6df249",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 1716,
+    "output_tokens": 200,
+    "raw_response_hash": "sha256:92ae1cd8ac1a46a0cf6f9446141f70b335e6869b084bf9ebd6344d3a37731a60",
+    "request_hash": "sha256:5d80749677af512279511ab57167001c634088392434884f75bfbca726973fdc",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 1716,
+      "output_tokens": 200,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Replace blocking assignments with nonblocking assignments in the sequential output logic block.",
+      "edits": [
+        {
+          "replace": "  if (reset) begin\n    gnt_0 <= #1 1'b0;\n    gnt_1 <= #1 1'b0;\n    gnt_2 <= #1 1'b0;\n    gnt_3 <= #1 1'b0;\n    state <= #1 IDLE;\n  end else begin\n    state <= #1 next_state;",
+          "search": "  if (reset) begin\n    gnt_0 = #1 1'b0;\n    gnt_1 = #1 1'b0;\n    gnt_2 = #1 1'b0;\n    gnt_3 = #1 1'b0;\n    state = #1 IDLE;\n  end else begin\n    state = #1 next_state;"
+        }
+      ]
+    }
+  },
+  "result_hash": "sha256:42d1f59c6824d35184f70e0a9395f8255fc11240f4893346dfff010f638810ff"
+}

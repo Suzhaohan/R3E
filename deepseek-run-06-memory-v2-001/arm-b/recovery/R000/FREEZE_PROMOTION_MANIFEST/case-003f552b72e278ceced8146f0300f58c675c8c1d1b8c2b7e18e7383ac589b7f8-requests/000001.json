@@ -1,0 +1,29 @@
+{
+  "binding": "sha256:f428591bfd54fba5357b360b2cce47758b6f0806c9c762fc9081bc69fb129a22",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 750,
+    "output_tokens": 295,
+    "raw_response_hash": "sha256:6a483a05396a9fe13fe0148db5730829a07a58f4e6b6d100aded3af895f92aeb",
+    "request_hash": "sha256:bba257f0fcee125b56df78b16ce70fbeffcd6d7e47f9f1b30acb8f330f11514b",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 750,
+      "output_tokens": 295,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "In the combinational always block, invert the enable condition from `if(ena)` to `if(!ena)` so that y is forced to 0 when ena is low and the case decode is applied when ena is high, matching the oracle observations.",
+      "replacement_rtl": "\n\nmodule decoder3e_test(a,ena,y);\n  input [2:0] a;\n  input ena;\n  output reg [7:0] y; \n\n  \n\n\nalways @(*)begin\n  if(!ena) y = 0;\n  else begin\n    case(a)\n        3'b000: y = 8'b0000_0001;\n        3'b001: y = 8'b0000_0010;\n        3'b010: y = 8'b0000_0100;\n        3'b011: y = 8'b0000_1000;\n        3'b100: y = 8'b0001_0000;\n        3'b101: y = 8'b0010_0000;\n        3'b110: y = 8'b0100_0000;\n        3'b111: y = 8'b1000_0000;\n    \n    endcase\n  end\nend\n\n\n\n\n\nendmodule\n"
+    }
+  },
+  "result_hash": "sha256:a4c4905ee29cbbcdb6e099259a16e48680069f42932f1b6b3a7903af4930bdd0"
+}

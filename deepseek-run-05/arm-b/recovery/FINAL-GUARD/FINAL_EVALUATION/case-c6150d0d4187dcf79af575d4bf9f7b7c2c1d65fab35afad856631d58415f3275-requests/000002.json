@@ -1,0 +1,34 @@
+{
+  "binding": "sha256:544915d801d0b4eede0978db07bc992b5e16a601c3aec8b72a5ee96cf2fd3126",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 1708,
+    "output_tokens": 61,
+    "raw_response_hash": "sha256:ed852c6714818b6de45365419070f5443f51664f58e2776f7f53f9daf6eb8468",
+    "request_hash": "sha256:4aa23df53048ca9b371108abe2d985d68ba25860e541a2672334b417675b7bfd",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 1708,
+      "output_tokens": 61,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Use nonblocking assignment for state and select outputs from next_state to avoid stale-state grant.",
+      "edits": [
+        {
+          "replace": "    state <= #1 next_state;\n    case(next_state)",
+          "search": "    state = #1 next_state;\n    case(state)"
+        }
+      ]
+    }
+  },
+  "result_hash": "sha256:3612c1fb0a7738c252454d30f04f2c524dec6cc3e235d364aefc6ab7402bf775"
+}

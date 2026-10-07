@@ -1,0 +1,23 @@
+{
+  "binding": "sha256:cfe792e957c8f138116739c080c8a6f2ad14eb8b66224cc74ab797fb3b7c6575",
+  "response": {
+    "input_tokens": 1086,
+    "output_tokens": 138,
+    "raw_response_hash": "sha256:c9c34df5c95f57edd73235458217b21269d2ef23b2e8ba23f2395d0441012daf",
+    "request_hash": "sha256:fcb6f3916b3a5157ad8106fcff2361c6d213c9ae6f0b290eb58dcc38b0324801",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 1086,
+      "output_tokens": 138,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Change the level-sensitive latch always@(clk) with blocking assignment q = d to an edge-triggered always@(posedge clk) with nonblocking assignment q <= d, so q captures d on the clock edge instead of following d combinationally.",
+      "replacement_rtl": "module latch24_test( d, clk,q );\n\t\n    input [23:0] d;\n    input clk;\n    output[23:0] q;\n    reg [23:0] q;\n    always@ (posedge clk)\n        q <= d;\n\nendmodule\n"
+    }
+  },
+  "result_hash": "sha256:71cc88a51f86c52e0524089d1578d5ffd1828489f23a7aa3bbefadc67beb5c24"
+}

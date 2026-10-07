@@ -1,0 +1,29 @@
+{
+  "binding": "sha256:2099c9b4f260f86b5fceaf1e4a96bb4fbdfe9a5e732cbc99c4c2478fc288437a",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 801,
+    "output_tokens": 176,
+    "raw_response_hash": "sha256:82609c7027d9566389684681f9ef1e687b42b16b9a73964fbc834807ff56017b",
+    "request_hash": "sha256:e8caf6771a6e393164ee13472be20f6fc73cad429679b5b8795139788a4bad88",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 801,
+      "output_tokens": 176,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Removed the duplicated 3'd6 case item (identical duplicate branch) from the case statement; the duplicate was redundant and the remaining branches are unchanged.",
+      "replacement_rtl": "module JG3(ABC,X,Y);\n\t\n\tinput [2:0] ABC;\n\t\n\toutput X, Y;\n\treg X, Y;\n\t\n\talways@(ABC)\n\t\tcase(ABC)\n\t\t\t3'd0: begin X<=0;Y<=1; end\n\t\t\t3'd5: begin X<=1;Y=0; end\n\t\t\t3'd6: begin X<=1;Y=0; end\n\t\t\tdefault: begin X<=0;Y=0; end\n\t\tendcase\t\n\t\nendmodule"
+    }
+  },
+  "result_hash": "sha256:f6b58d7694ccd0364ac5bd84b603e204e021b3cd0c5975aaa549f6303db849af"
+}

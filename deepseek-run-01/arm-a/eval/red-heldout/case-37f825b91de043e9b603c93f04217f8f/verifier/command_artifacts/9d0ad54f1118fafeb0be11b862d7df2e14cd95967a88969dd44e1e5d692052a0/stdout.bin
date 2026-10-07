@@ -1,0 +1,60 @@
+
+-- Executing script file `/data2/huangyc/R3E-aic-ic-2026-latest/deepseek-run-01/arm-a/eval/red-heldout/case-37f825b91de043e9b603c93f04217f8f/verifier/C_db962bf385d2fb2d_0/elaborate.ys' --
+
+1. Executing Verilog-2005 frontend: /data2/huangyc/R3E-aic-ic-2026-latest/deepseek-run-01/arm-a/eval/red-heldout/case-37f825b91de043e9b603c93f04217f8f/verifier/C_db962bf385d2fb2d_0/candidate.sv
+Parsing SystemVerilog input from `/data2/huangyc/R3E-aic-ic-2026-latest/deepseek-run-01/arm-a/eval/red-heldout/case-37f825b91de043e9b603c93f04217f8f/verifier/C_db962bf385d2fb2d_0/candidate.sv' to AST representation.
+Generating RTLIL representation for module `\counter6bit_test'.
+Note: Assuming pure combinatorial block at /data2/huangyc/R3E-aic-ic-2026-latest/deepseek-run-01/arm-a/eval/red-heldout/case-37f825b91de043e9b603c93f04217f8f/verifier/C_db962bf385d2fb2d_0/candidate.sv:9 in
+compliance with IEC 62142(E):2005 / IEEE Std. 1364.1(E):2002. Recommending
+use of @* instead of @(...) for better match of synthesis and simulation.
+Successfully finished Verilog frontend.
+
+2. Executing HIERARCHY pass (managing design hierarchy).
+
+2.1. Analyzing design hierarchy..
+Top module:  \counter6bit_test
+
+2.2. Analyzing design hierarchy..
+Top module:  \counter6bit_test
+Removed 0 unused modules.
+
+3. Executing PROC pass (convert processes to netlists).
+
+3.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+3.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 9 switch rules as full_case in process $proc$/data2/huangyc/R3E-aic-ic-2026-latest/deepseek-run-01/arm-a/eval/red-heldout/case-37f825b91de043e9b603c93f04217f8f/verifier/C_db962bf385d2fb2d_0/candidate.sv:9$1 in module counter6bit_test.
+Removed a total of 0 dead cases.
+
+3.3. Executing PROC_INIT pass (extract init attributes).
+
+3.4. Executing PROC_ARST pass (detect async resets in processes).
+
+3.5. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\counter6bit_test.$proc$/data2/huangyc/R3E-aic-ic-2026-latest/deepseek-run-01/arm-a/eval/red-heldout/case-37f825b91de043e9b603c93f04217f8f/verifier/C_db962bf385d2fb2d_0/candidate.sv:9$1'.
+     1/6: $0\Q[23:0] [23:20]
+     2/6: $0\Q[23:0] [15:12]
+     3/6: $0\Q[23:0] [11:8]
+     4/6: $0\Q[23:0] [7:4]
+     5/6: $0\Q[23:0] [3:0]
+     6/6: $0\Q[23:0] [19:16]
+
+3.6. Executing PROC_DLATCH pass (convert process syncs to latches).
+Latch inferred for signal `\counter6bit_test.\Q [3:0]' from process `\counter6bit_test.$proc$/data2/huangyc/R3E-aic-ic-2026-latest/deepseek-run-01/arm-a/eval/red-heldout/case-37f825b91de043e9b603c93f04217f8f/verifier/C_db962bf385d2fb2d_0/candidate.sv:9$1': $auto$proc_dlatch.cc:409:proc_dlatch$164
+Latch inferred for signal `\counter6bit_test.\Q [7:4]' from process `\counter6bit_test.$proc$/data2/huangyc/R3E-aic-ic-2026-latest/deepseek-run-01/arm-a/eval/red-heldout/case-37f825b91de043e9b603c93f04217f8f/verifier/C_db962bf385d2fb2d_0/candidate.sv:9$1': $auto$proc_dlatch.cc:409:proc_dlatch$197
+Latch inferred for signal `\counter6bit_test.\Q [11:8]' from process `\counter6bit_test.$proc$/data2/huangyc/R3E-aic-ic-2026-latest/deepseek-run-01/arm-a/eval/red-heldout/case-37f825b91de043e9b603c93f04217f8f/verifier/C_db962bf385d2fb2d_0/candidate.sv:9$1': $auto$proc_dlatch.cc:409:proc_dlatch$236
+Latch inferred for signal `\counter6bit_test.\Q [15:12]' from process `\counter6bit_test.$proc$/data2/huangyc/R3E-aic-ic-2026-latest/deepseek-run-01/arm-a/eval/red-heldout/case-37f825b91de043e9b603c93f04217f8f/verifier/C_db962bf385d2fb2d_0/candidate.sv:9$1': $auto$proc_dlatch.cc:409:proc_dlatch$281
+Latch inferred for signal `\counter6bit_test.\Q [19:16]' from process `\counter6bit_test.$proc$/data2/huangyc/R3E-aic-ic-2026-latest/deepseek-run-01/arm-a/eval/red-heldout/case-37f825b91de043e9b603c93f04217f8f/verifier/C_db962bf385d2fb2d_0/candidate.sv:9$1': $auto$proc_dlatch.cc:409:proc_dlatch$332
+Latch inferred for signal `\counter6bit_test.\Q [23:20]' from process `\counter6bit_test.$proc$/data2/huangyc/R3E-aic-ic-2026-latest/deepseek-run-01/arm-a/eval/red-heldout/case-37f825b91de043e9b603c93f04217f8f/verifier/C_db962bf385d2fb2d_0/candidate.sv:9$1': $auto$proc_dlatch.cc:409:proc_dlatch$389
+
+3.7. Executing PROC_DFF pass (convert process syncs to FFs).
+
+3.8. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 9 empty switches in `\counter6bit_test.$proc$/data2/huangyc/R3E-aic-ic-2026-latest/deepseek-run-01/arm-a/eval/red-heldout/case-37f825b91de043e9b603c93f04217f8f/verifier/C_db962bf385d2fb2d_0/candidate.sv:9$1'.
+Removing empty process `counter6bit_test.$proc$/data2/huangyc/R3E-aic-ic-2026-latest/deepseek-run-01/arm-a/eval/red-heldout/case-37f825b91de043e9b603c93f04217f8f/verifier/C_db962bf385d2fb2d_0/candidate.sv:9$1'.
+Cleaned up 9 empty switches.
+
+4. Executing CHECK pass (checking for obvious problems).
+checking module counter6bit_test..
+found and reported 0 problems.

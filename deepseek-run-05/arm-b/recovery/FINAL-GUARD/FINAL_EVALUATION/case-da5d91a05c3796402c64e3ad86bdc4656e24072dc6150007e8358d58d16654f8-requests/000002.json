@@ -1,0 +1,34 @@
+{
+  "binding": "sha256:de43434e357c4f50405fd903e4f32c1db8d553e61cfdf2d0e3dca2432e30c491",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 1555,
+    "output_tokens": 134,
+    "raw_response_hash": "sha256:90370ed86d676a2169a31fffaf09667ccb19be4fd03ae57fef6dcf3d0f40788a",
+    "request_hash": "sha256:61f9489f937cda9507e84efa64bf71e8e8abaec3b25c1a8b642a4b55ad5514df",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 1555,
+      "output_tokens": 134,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Clear out_ready when the i[22] pulse is not active so it does not stay asserted.",
+      "edits": [
+        {
+          "replace": "    always @ (posedge clk)\n      if (reset)\n        out_ready <= 0;\n      else if (i[22])\n        out_ready <= 1;\n      else\n        out_ready <= 0;",
+          "search": "    always @ (posedge clk)\n      if (reset)\n        out_ready <= 0;\n      else if (i[22])\n        out_ready <= 1;"
+        }
+      ]
+    }
+  },
+  "result_hash": "sha256:3542c133a25b9dfa2b5dc0860835fb082a15659dca915c90518e5d37ca6d36b5"
+}

@@ -1,0 +1,29 @@
+{
+  "binding": "sha256:1fa7c943c4c7d331daa04a4aa00962473b7ffc33323b733e9480e4823978e635",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 687,
+    "output_tokens": 233,
+    "raw_response_hash": "sha256:ed4314f9dc346343d99351cab48206296c80d930f2df68cec7faba5907d3140d",
+    "request_hash": "sha256:ec25848783bdc3df7e61d416869fd88726218fe89fbf6a4963e9ecff02537bc1",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 687,
+      "output_tokens": 233,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Replaced the duplicate case item 3'd6 with 3'd7 so the case covers the missing input code 7, which the oracle expects to produce X=1,Y=0 (matching the observed cycle-7 mismatch where actual 00 should be 01).",
+      "replacement_rtl": "module JG3(ABC,X,Y);\n\t\n\tinput [2:0] ABC;\n\t\n\toutput X, Y;\n\treg X, Y;\n\t\n\talways@(ABC)\n    \n        \n\n\t\tcase(ABC)\n\t\t\t3'd0: begin X<=0;Y<=1; end\n\t\t\t3'd5: begin X<=1;Y=0; end\n\t\t\t3'd6: begin X<=1;Y=0; end\n\t\t\t3'd7: begin X<=1;Y=0; end\n\t\t\tdefault: begin X<=0;Y<=0; end\n\t\tendcase\t\n\t\t\n        \n\n\t\nendmodule"
+    }
+  },
+  "result_hash": "sha256:09bd0535550aec12e78023a97c9e2a148986721af5b91128f8659d30349eb48f"
+}

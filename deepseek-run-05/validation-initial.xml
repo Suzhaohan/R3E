@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="48" time="206.545" timestamp="2026-09-29T07:36:08.456745-07:00" hostname="memlab-gpu"><testcase classname="" name="test_direct_route_is_scoped_to_api_host_and_preserves_other_proxies" time="0.001" /><testcase classname="" name="test_stdlib_open_connection_ssl_eof_is_retryable_but_read_eof_is_not" time="0.000" /><testcase classname="" name="test_connect_failure_recovers_and_identical_invocations_stay_distinct" time="0.017" /><testcase classname="" name="test_retry_limit_and_budget_count_every_attempt" time="0.012" /><testcase classname="" name="test_retry_cannot_bypass_total_budget" time="0.005" /><testcase classname="" name="test_invalid_response_recovers_same_request_and_replays_paid_work[```json\n{&quot;ok&quot;:true}\n```-stop]" time="0.013" /><testcase classname="" name="test_invalid_response_recovers_same_request_and_replays_paid_work[{&quot;replacement_rtl&quot;:&quot;private-invalid-\\q&quot;}-stop]" time="0.013" /><testcase classname="" name="test_invalid_response_recovers_same_request_and_replays_paid_work[-stop]" time="0.014" /><testcase classname="" name="test_invalid_response_recovers_same_request_and_replays_paid_work[None-stop]" time="0.016" /><testcase classname="" name="test_persistent_invalid_json_stops_with_diagnostics_and_counts_failed_calls" time="0.011" /><testcase classname="" name="test_truncation_grows_only_current_request_and_accounts_effective_budget[False]" time="0.016" /><testcase classname="" name="test_truncation_grows_only_current_request_and_accounts_effective_budget[True]" time="0.014" /><testcase classname="" name="test_persistent_truncation_stops_at_cap_and_restart_makes_no_paid_call" time="0.010" /><testcase classname="" name="test_length_escalation_survives_disconnect_and_process_restart" time="0.010" /><testcase classname="" name="test_length_escalation_cannot_bypass_token_budget" time="0.004" /><testcase classname="" name="test_json_retry_cannot_bypass_budget" time="0.004" /><testcase classname="" name="test_json_recovery_does_not_retry_schemas_or_refusals[[]-stop-None]" time="0.004" /><testcase classname="" name="test_json_recovery_does_not_retry_schemas_or_refusals[broken-content_filter-None]" time="0.004" /><testcase classname="" name="test_json_recovery_does_not_retry_schemas_or_refusals[broken-stop-refused]" time="0.004" /><testcase classname="" name="test_json_recovery_does_not_retry_schemas_or_refusals[-stop-refused]" time="0.004" /><testcase classname="" name="test_ambiguous_or_content_errors_are_not_retried[error0]" time="0.001" /><testcase classname="" name="test_ambiguous_or_content_errors_are_not_retried[error1]" time="0.001" /><testcase classname="" name="test_ambiguous_or_content_errors_are_not_retried[error2]" time="0.001" /><testcase classname="" name="test_modified_request_or_cached_response_fails_closed" time="0.006" /><testcase classname="" name="test_real_eda_mid_case_disconnect_preserves_completed_work[connection-T0]" time="1.419" /><testcase classname="" name="test_real_eda_mid_case_disconnect_preserves_completed_work[connection-T1]" time="1.389" /><testcase classname="" name="test_real_eda_mid_case_disconnect_preserves_completed_work[connection-round]" time="1.410" /><testcase classname="" name="test_real_eda_mid_case_disconnect_preserves_completed_work[json-T0]" time="1.415" /><testcase classname="" name="test_real_eda_mid_case_disconnect_preserves_completed_work[json-T1]" time="1.410" /><testcase classname="" name="test_real_eda_mid_case_disconnect_preserves_completed_work[json-round]" time="1.409" /><testcase classname="" name="test_current_launcher_T0_records_overlay_without_changing_baseline" time="0.223"><failure message="ValueError: 冻结源码与 baseline 不一致；不会跳过源码校验">tmp_path = PosixPath('/tmp/pytest-of-huangyc/pytest-83/test_current_launcher_T0_recor0')
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x7176c3fda050&gt;
+
+    def test_current_launcher_T0_records_overlay_without_changing_baseline(tmp_path, monkeypatch):
+        from types import SimpleNamespace
+        from test_m3_arena import setup_arm
+        from competition.arena.evidence import freeze
+        from r3e.protocol.hashing import hash_file
+        import run_resilient as launcher
+        _, baseline, state = setup_arm(tmp_path, "static")
+        c = fixture_client([])
+        monkeypatch.setattr(launcher, "_client", lambda path: c)
+        monkeypatch.setattr(launcher, "preflight", lambda *args: {"ready": True})
+        monkeypatch.setenv(c.config.base_url_env, "https://api.deepseek.com")
+        monkeypatch.setenv("R3E_NETWORK_ROUTE", "direct")
+        original_baseline_hash = hash_file(state / "baseline.json")
+        attempts = []
+        def perform(root, args, progress=print):
+            attempts.append(args.baseline_only)
+            directory = state.parent / "baseline-evaluations/static"
+            for dataset in baseline["evaluation_manifests"]:
+                freeze(directory / (dataset + ".json"), {"fixture": dataset})
+            return {"phase": "T0", "baseline_complete": True}
+        monkeypatch.setattr(launcher, "_original_run", perform)
+        args = SimpleNamespace(check=False, client_config="unused", baseline=str(state / "baseline.json"),
+            state_root=str(state), arm="static", baseline_only=True, max_calls=2000, max_tokens=50000000)
+&gt;       result = launcher.resilient_run(ROOT, args)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+../recovery/test_resilience.py:397: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/data2/huangyc/R3E-aic-ic-2026-latest/deepseek-run-05/source')
+args = namespace(check=False, client_config='unused', baseline='/tmp/pytest-of-huangyc/pytest-83/test_current_launcher_T0_rec...test-83/test_current_launcher_T0_recor0/static', arm='static', baseline_only=True, max_calls=2000, max_tokens=50000000)
+progress = &lt;built-in function print&gt;
+
+    def resilient_run(root, args, progress=print):
+        report = preflight(root, args.client_config)
+        if args.check:
+            return report
+        if not report["ready"]:
+            raise ValueError("真实实验尚未就绪：" + json.dumps(report, ensure_ascii=False))
+        baseline = verify_signed(read(args.baseline), "baseline_hash")
+        identity = source_identity(root)
+        if identity["dirty"] or any(identity[k] != baseline[k] for k in ("git_commit", "source_hash")):
+&gt;           raise ValueError("冻结源码与 baseline 不一致；不会跳过源码校验")
+E           ValueError: 冻结源码与 baseline 不一致；不会跳过源码校验
+
+../recovery/run_resilient.py:99: ValueError</failure></testcase><testcase classname="" name="test_completed_core_replays_do_not_shift_remaining_response_slots" time="1.250" /><testcase classname="" name="test_red_restart_preserves_original_receipt_and_request_slots[False]" time="0.009" /><testcase classname="" name="test_red_restart_preserves_original_receipt_and_request_slots[True]" time="0.010" /><testcase classname="" name="test_red_recovery_rejects_changes_without_new_calls[artifact]" time="0.011" /><testcase classname="" name="test_red_recovery_rejects_changes_without_new_calls[row]" time="0.006" /><testcase classname="" name="test_red_recovery_rejects_changes_without_new_calls[response]" time="0.006" /><testcase classname="" name="test_red_recovery_rejects_changes_without_new_calls[missing_response]" time="0.006" /><testcase classname="" name="test_red_recovery_rejects_changes_without_new_calls[binding]" time="0.007" /><testcase classname="" name="test_overlay_revision_preserves_old_manifest_and_experiment_binding" time="0.003" /><testcase classname="tests.competition.test_m3_arena" name="test_static_policy_memory_and_arm_isolation" time="0.186" /><testcase classname="tests.competition.test_m3_arena" name="test_config_rejects_unfair_experiment[red-True]" time="0.001" /><testcase classname="tests.competition.test_m3_arena" name="test_config_rejects_unfair_experiment[budget-4]" time="0.001" /><testcase classname="tests.competition.test_m3_arena" name="test_config_rejects_unfair_experiment[seeds-value2]" time="0.001" /><testcase classname="tests.competition.test_m3_arena" name="test_config_rejects_unfair_experiment[memory-True]" time="0.001" /><testcase classname="tests.competition.test_m3_arena" name="test_heldout_seal_and_overlap" time="0.002" /><testcase classname="tests.competition.test_m3_arena" name="test_searched_policy_reaches_actual_model_and_eda" time="0.934" /><testcase classname="tests.competition.test_m3_arena" name="test_real_eda_round_is_auditable_and_resumable" time="194.878" /></testsuite></testsuites>

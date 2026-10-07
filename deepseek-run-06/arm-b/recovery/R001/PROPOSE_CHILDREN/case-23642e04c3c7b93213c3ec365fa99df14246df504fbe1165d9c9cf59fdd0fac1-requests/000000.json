@@ -1,0 +1,31 @@
+{
+  "binding": "sha256:15d8c1d2fb63a2ceed2c602aa8d1f6eb638492422b90d32da6021c63305c05df",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 1240,
+    "output_tokens": 148,
+    "raw_response_hash": "sha256:ab0713c01c6e478f1a8a497f036a2ae5e5efaea1de36eb3603e599a001d07e37",
+    "request_hash": "sha256:8900f8fb4ec1cdf62ce79c1b8d561ae326116a83a663cfbfe9090abc3356b7a9",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 1240,
+      "output_tokens": 148,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "candidate_id": "C_8c3ed2e94f46a0d7_0",
+      "candidate_seed": 1558781084,
+      "edit": "Swap the mux branch assignments so that s!=0 selects b and s==0 selects a, correcting the inverted select polarity; also wrap the if/else in begin/end for a clean always block.",
+      "replacement_rtl": "module mux21(a,b,s,y);\n\tinput a,b,s;\n\toutput y;\n\treg y;\n\talways @(a,b,s)\n\tbegin\n\t\tif(s!=0) y=b;\n\t\telse y=a;\n\tend\nendmodule"
+    }
+  },
+  "result_hash": "sha256:ddac135bddd267b0139056cde790d826923848a3f8e769f9323afd29db1eb0da"
+}

@@ -1,0 +1,34 @@
+{
+  "binding": "sha256:b77694b10da0e47e675c618eb6cd99cf19f5f3ba68b37dcc83a42c8de33c3f37",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 785,
+    "output_tokens": 129,
+    "raw_response_hash": "sha256:701cc0ba870bbfad11e095109b78a4fa74c8a26d34d9a66734373ed0921ae7f2",
+    "request_hash": "sha256:6c90cb4cdad4ba7b3ccf7e7311afcd7e16cf719bc2f810dda010b6031759c802",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 785,
+      "output_tokens": 129,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Reverse the shift loop direction and shift in a zero to fix the left-shift dataflow.",
+      "edits": [
+        {
+          "replace": "            for (i = 7; i > 0; i = i - 1) begin\n              op[i] = op[i-1];\n            end\n            op[0] = 1'b0;",
+          "search": "            for (i = 0; i < 8; i = i + 1) begin\n              op[i+1] = op[i];\n            end\n            op[0] = op[7];"
+        }
+      ]
+    }
+  },
+  "result_hash": "sha256:ef7f80afd665d0d8e77e366d5633e01ccb8d2796ab08f9927d9aed45ef20f010"
+}

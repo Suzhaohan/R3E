@@ -1,0 +1,23 @@
+{
+  "binding": "sha256:3b78fa54ce1b5b0c656285cd7d3a6a3703970154ecae04571c501ee3e9037c22",
+  "response": {
+    "input_tokens": 689,
+    "output_tokens": 212,
+    "raw_response_hash": "sha256:5d0c6e73975108bf73d9ed315efa3997b3d36f48cb2d2aaa74b69991abec55f7",
+    "request_hash": "sha256:6280a2a9c0fa340d837c7680530d619b2b5ed7d8586527560cd84a21450855b9",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 689,
+      "output_tokens": 212,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Removed the duplicate 3'd6 case item and the stray empty lines in the always block; the duplicate case label caused the cycle-7 mismatch (got 00, expected 01) by making the 3'd6 branch unreachable/ambiguous. The case now has unique labels 0,5,6 with default.",
+      "replacement_rtl": "module JG3(ABC,X,Y);\n\t\n\tinput [2:0] ABC;\n\t\n\toutput X, Y;\n\treg X, Y;\n\t\n\talways@(ABC)\n\t\tcase(ABC)\n\t\t\t3'd0: begin X<=0;Y<=1; end\n\t\t\t3'd5: begin X<=1;Y=0; end\n\t\t\t3'd6: begin X<=1;Y=0; end\n\t\t\tdefault: begin X<=0;Y=0; end\n\t\tendcase\t\n\t\nendmodule"
+    }
+  },
+  "result_hash": "sha256:e6552473817f5ebaf434d8ed78ebd98d7875b4cbfabe51661c1d4536ac8ce843"
+}

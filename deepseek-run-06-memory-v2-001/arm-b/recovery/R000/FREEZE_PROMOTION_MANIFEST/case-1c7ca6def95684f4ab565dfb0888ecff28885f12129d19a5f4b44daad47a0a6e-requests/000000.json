@@ -1,0 +1,29 @@
+{
+  "binding": "sha256:3e779751c693a696d5ae3c08bfc0d6e367ab25dd2e6a81e7f0d90fcb8d4c7568",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 687,
+    "output_tokens": 186,
+    "raw_response_hash": "sha256:06c4bc851c98e809405735c9e5f5267423a6525fead564093fd669c21c642ef1",
+    "request_hash": "sha256:ae29834c1f840c25a40ac43a146770027b5e9a3399cda5d776d232663f84f1c6",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 687,
+      "output_tokens": 186,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Removed the duplicate 3'd6 case item (identical to the preceding 3'd6 branch) so the case statement has unique, non-overlapping items; behavior for all inputs is otherwise unchanged.",
+      "replacement_rtl": "module JG3(ABC,X,Y);\n\t\n\tinput [2:0] ABC;\n\t\n\toutput X, Y;\n\treg X, Y;\n\t\n\talways@(ABC)\n\t\tcase(ABC)\n\t\t\t3'd0: begin X<=0;Y<=1; end\n\t\t\t3'd5: begin X<=1;Y=0; end\n\t\t\t3'd6: begin X<=1;Y=0; end\n\t\t\tdefault: begin X<=0;Y<=0; end\n\t\tendcase\t\n\t\nendmodule"
+    }
+  },
+  "result_hash": "sha256:823ed6cf8c8be6f23e246580687a0b5bee0eb5c8251b6fb40c4087405b636539"
+}

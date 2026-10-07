@@ -1,0 +1,29 @@
+{
+  "binding": "sha256:4ed05dfc0d88ee154bfca4c6e4af00651a32991de2c97a97795fd5bb62aceaa1",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 841,
+    "output_tokens": 197,
+    "raw_response_hash": "sha256:2b9f1025d112a62a0a9db0c32fd2cb2a0da72891fc8e796738d0a1315efd22de",
+    "request_hash": "sha256:13fac908c54424b18bbb3f12312ae4d87481538bc099a369ad68d123444d532a",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 841,
+      "output_tokens": 197,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Removed the duplicate case item 3'd6 and cleaned up the always block formatting; the duplicate case item was causing the simulator to ignore the second 3'd6 branch, leading to incorrect Y output at cycle 7.",
+      "replacement_rtl": "module JG3(ABC,X,Y);\n\t\n\tinput [2:0] ABC;\n\t\n\toutput X, Y;\n\treg X, Y;\n\t\n\talways@(ABC)\n\t\tcase(ABC)\n\t\t\t3'd0: begin X<=0;Y<=1; end\n\t\t\t3'd5: begin X<=1;Y=0; end\n\t\t\t3'd6: begin X<=1;Y=0; end\n\t\t\tdefault: begin X<=0;Y<=0; end\n\t\tendcase\t\n\t\nendmodule"
+    }
+  },
+  "result_hash": "sha256:86704538db780df065230f6c933c25e462f0ca0d0cf439fff52d8279a964c3fc"
+}

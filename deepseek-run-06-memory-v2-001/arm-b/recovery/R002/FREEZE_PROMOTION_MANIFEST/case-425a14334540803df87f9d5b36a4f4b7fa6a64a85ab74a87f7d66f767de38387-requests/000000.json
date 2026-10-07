@@ -1,0 +1,29 @@
+{
+  "binding": "sha256:d00d216b6a63332a5207bec628eaf858ed61547a670efc7e300f61e353198335",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 755,
+    "output_tokens": 289,
+    "raw_response_hash": "sha256:3dd0bcc3b1344a2136633488865ffabe72eafc2c2fc81cdae3bf9a9da5762fb3",
+    "request_hash": "sha256:d23c6127680e2559ef53d60d83ff137fce068423d0ef4be78cd6ac56f391753e",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 755,
+      "output_tokens": 289,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Fixed the 3'b100 and 3'b111 case literals to have the correct 8-bit widths (0001_0000 and 1000_0000), correcting the one-hot decoder output for those inputs.",
+      "replacement_rtl": "\n\nmodule decoder3e_test(a,ena,y);\n  input [2:0] a;\n  input ena;\n  output [7:0] y; \n  reg[7:0] Y;\n  \n\n\nalways @(ena or a)\nbegin\nif(ena==0)\nY=8'b0000_0000;\nelse\ncase (a)\n3'b000: Y=8'b0000_0001;\n3'b001: Y=8'b0000_0010;\n3'b010: Y=8'b0000_0100;\n3'b011: Y=8'b0000_1000;\n3'b100: Y=8'b0001_0000;\n3'b101: Y=8'b0010_0000;\n3'b110: Y=8'b0100_0000;\n3'b111: Y=8'b1000_0000;\nendcase\nend\nassign y=Y;\n\n\n\n\n\nendmodule\n"
+    }
+  },
+  "result_hash": "sha256:d0f19a97b77e1d46a2a34f55849b19bc2f721171ef64b702f3c26ae839a3971c"
+}

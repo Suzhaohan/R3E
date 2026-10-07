@@ -1,0 +1,73 @@
+{
+  "schema_version": "r3e-descriptor-routed-portfolio-milestone-v1",
+  "milestone_id": "descriptor-routed-portfolio-v1",
+  "status": "frozen",
+  "parent_milestone": {
+    "milestone_id": "fixed-mixed-portfolio-v1",
+    "milestone_hash": "sha256:9afc5408cd59cfab17dc66d11d5df8f220ab92b396d997f8952c52ba52b94104"
+  },
+  "completed_scope": [
+    "descriptor-router-v1-current-grounded-descriptor-only",
+    "deterministic-specialist-scoring-and-temporal-control-dataflow-tie-break",
+    "generic-primary-orthogonal-three-slot-allocation",
+    "hash-reconstructable-descriptor-router-receipt",
+    "descriptor-routed-four-lens-authorized-pool",
+    "router-receipt-bound-allocation-plan-and-blue-evaluation-v2",
+    "descriptor-router-prompt-history-red-truth-and-model-judge-exclusion",
+    "formal-arena-router-policy-provider-verifier-toolchain-authority",
+    "router-bound-blue-challenge-checkpoint-event-and-offline-audit",
+    "fixed-to-descriptor-routed-policy-v3-child-operator",
+    "portfolio-one-mechanism-transition-gate",
+    "deterministic-temporal-control-dataflow-and-tie-conformance"
+  ],
+  "frozen_interfaces": [
+    "r3e-descriptor-router-v1",
+    "r3e-descriptor-router-receipt-v1",
+    "r3e-candidate-portfolio-v1",
+    "r3e-candidate-allocation-plan-v1",
+    "r3e-blue-evaluation-v2",
+    "r3e-portfolio-operator-space-v1",
+    "candidate_portfolio_v1"
+  ],
+  "frozen_assets": {
+    "README.md": "sha256:c876095fe4630afa58dee7a336da995a16a7b5100ba1fe09bf801f98abcca312",
+    "configs/blue/descriptor_router_v1.json": "sha256:bac10968691e62797c469bbc69611c56faa588b4f6e7c3037caec9d28ffbd2ba",
+    "configs/blue/descriptor_routed_portfolio_v1.json": "sha256:2dcc2bdaf9e764c1a1909f4d2e7dd207c2d3a87ecd78552bcef0babb3291d9ba",
+    "configs/blue/portfolio_operator_space_v1.json": "sha256:2c6f7d8397713f333b7256756f0d3a13039c414bad0b63d7a8e4fd9ee1037265",
+    "configs/evolution/round_acp2_descriptor_routed_v1.json": "sha256:20ca6dd3b8fb56ed63788f4c5ee4fdff9077d378ba50de0115157f92791f9de2",
+    "r3e/policy/search.py": "sha256:4ddbcec0bbd98420bdff2809ba22e32c170a77e9cd6c7c284eab4a97e1e919c3",
+    "r3e/arena/portfolio.py": "sha256:223a3c93097c2a0ba80ed88f0484bbe4a43f5b3329d860905bbc8e40fd1fe3db",
+    "r3e/arena/runner.py": "sha256:e4f932dd223eaafebd551d65f4d2efc87966ac1ac8d9a06ddf429c08515ac2fd",
+    "r3e/arena/audit.py": "sha256:808111df5bc77d6223fa3dbb4ca6ac9a0803c0550401d997cb02fd6a82c3ce7c",
+    "r3e/blue/portfolio/__init__.py": "sha256:35ebe034817e7e656fa4894347f8510fd9782c587e82f1cfc76af1fe25275668",
+    "r3e/blue/portfolio/router.py": "sha256:20850cca44e9ddd13ed843a448eba789babb087bd8b0b643de4ceef247412c90",
+    "r3e/blue/portfolio/schema.py": "sha256:fab92822ffa59cfa6da546b8d1fcb445641b4e16a8e9de9a5f7c43287237dcf0",
+    "r3e/blue/portfolio/candidate_executor.py": "sha256:69bca1e9c5e480b9f02af29c46ba654d10ffa972f17d14faf0ebb8a750eac117",
+    "r3e/blue/portfolio/audit.py": "sha256:30b9b49ed8d4157e25db60dd8abbd69b78ef4ad6e24152556a1697a1f209b57c",
+    "r3e/blue/portfolio/fake_system.py": "sha256:ba839c9de03911e5ba48ef7e8811c73e9b3640046ca31a8c2c99c8d2573f3e71",
+    "tests/test_adaptive_candidate_protocol.py": "sha256:a1d708bf51303a63875c6faad4330de5d78835ba9cc84309a3fdf4287b5c3fe7",
+    "tests/test_adaptive_candidate_fixed_mixed.py": "sha256:e50ecd8d4787bf52b41659bd3d467d0dad14b88796a1d953dbfc7aedb56d97a3",
+    "tests/test_adaptive_candidate_descriptor_routed.py": "sha256:8ded0c3cd6af88815dd865d62973b2e16c48ce14e565ad79d1aa0cdafe9bb69b",
+    "tests/test_grounded_planner_raam_closure.py": "sha256:9578ea0f2c1f445b6cec188707d31b74b6232682b10500446caa3714f404a306"
+  },
+  "required_validation": [
+    "pytest -q -p no:cacheprovider tests/test_adaptive_candidate_protocol.py tests/test_adaptive_candidate_fixed_mixed.py tests/test_adaptive_candidate_descriptor_routed.py",
+    "python -m r3e.blue.portfolio.fake_system --project-root . --portfolio configs/blue/descriptor_routed_portfolio_v1.json --router configs/blue/descriptor_router_v1.json --out /tmp/r3e-acp2-blue-evaluation.json",
+    "pytest -q -p no:cacheprovider",
+    "python scripts/check_release.py",
+    "python scripts/verify_datasets.py"
+  ],
+  "deferred_scope": [
+    "real-model-router-accuracy-measurement",
+    "held-out-design-router-generalization",
+    "failure-descriptor-v2-signal-role-and-local-context",
+    "semantic-patch-diversity-and-recovery",
+    "offline-adaptive-allocation",
+    "raam-portfolio-control",
+    "portfolio-aware-red-challenge",
+    "real-model-candidate-provider",
+    "acp7-real-model-multi-round-experiment"
+  ],
+  "claim_boundary": "Frozen deterministic ACP-2 descriptor-only routing, router receipts, generic-primary-orthogonal allocation, Policy V3 child operation, formal arena authority, and fake-provider conformance only; no measured router accuracy, held-out generalization, semantic diversity, real-model repair gain, or adaptive/multi-round ACP result.",
+  "milestone_hash": "sha256:df870a30fd352455f39d63b4ec6413a2a8f32d3e6b6ada06e89c50a405474161"
+}

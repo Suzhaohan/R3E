@@ -1,0 +1,34 @@
+{
+  "binding": "sha256:b8bbef7ab1237ab12fe143b81e262401b98daca498656b77a3d30726be8fa640",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 1500,
+    "output_tokens": 71,
+    "raw_response_hash": "sha256:09fb638f0e6f75e0f26e7390fd5e1382a01a8c7fcf1b6d4274fac9d57707e011",
+    "request_hash": "sha256:09fe8f9f0a921718b49bbd8d11d59f2a8c15c12874bc9b0548f3277f1a7280c9",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 1500,
+      "output_tokens": 71,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Fix the shift concatenation width so the 32-bit v1 is shifted into the correct bit positions of the 576-bit out register.",
+      "edits": [
+        {
+          "replace": "        out <= {out[543:0], v1};",
+          "search": "        out <= {out[575-32:0], v1};"
+        }
+      ]
+    }
+  },
+  "result_hash": "sha256:b2e151cb30ac94d83771c8909a3ba5fcbf7c666e31043af13c9d98e7470e0735"
+}

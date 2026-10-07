@@ -1,0 +1,29 @@
+{
+  "binding": "sha256:ae1a42f8e5c74678aa52d4e4918a4b68b70b60849fa799b88ca61f6a4a8ffb3d",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 1150,
+    "output_tokens": 118,
+    "raw_response_hash": "sha256:5df5c7cd978170fff1f910fe823abab3083beab59bbaedbc7440632593a919b3",
+    "request_hash": "sha256:2a76d10ce6afc9d0de3f946c7ca5cd687a7a56e6028c7f9d8fc88eb1280c3951",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 1150,
+      "output_tokens": 118,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Add the missing else branch so that when s is not 0 the mux selects b, correcting the inverted/incomplete select polarity that left y unassigned for s==1.",
+      "replacement_rtl": "module mux21(a,b,s,y);\n\tinput a,b,s;\n\toutput y;\n\treg y;\n\talways @(a,b,s)\n\tbegin\n\t\tif(s==1'B0)begin y=a;end\n\t\telse begin y=b;end\n\tend\nendmodule"
+    }
+  },
+  "result_hash": "sha256:1bd5345eac98888724fa5f8689f3fdd0afe00464b04eb7cc9fd404ae53b01ce7"
+}

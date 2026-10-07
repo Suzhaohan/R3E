@@ -1,0 +1,34 @@
+{
+  "binding": "sha256:9b6c4248746aa15b5fddaebf784aa03999f78dfb9a3e8e6e0f65088f7c2660a8",
+  "output_recovery": {
+    "base_output_tokens": 4096,
+    "effective_client_config_hash": "sha256:12f861062037aa63dd38e1e700e131fe3a09dcff8627c9113fc1589093cd233c",
+    "effective_output_tokens": 4096,
+    "policy_hash": "sha256:4caf7cdacc3e9536faf18940a92a2901ca5ef2cf7286f42a3be0372b06a75727"
+  },
+  "response": {
+    "input_tokens": 965,
+    "output_tokens": 108,
+    "raw_response_hash": "sha256:00d95eee8db794e303c5857fdfbe4c328cade03dac7b0e02de1cbcbac9cf2aa4",
+    "request_hash": "sha256:1221226942b441f061a174ab1d80d2252e47031accc9c1b515bdf6d7185b4717",
+    "response_diagnostics": {
+      "content_state": "nonempty_content",
+      "finish_reason": "stop",
+      "input_tokens": 965,
+      "output_tokens": 108,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "result": {
+      "edit": "Restore the reset assignment that clears counter_out to 4'b0000.",
+      "edits": [
+        {
+          "replace": "    if(reset==1'b1) begin\n        counter_out <= #1 4'b0000;\n        overflow_out <= #1 1'b0;\n    end",
+          "search": "    if(reset==1'b1) begin\n        // counter_out <= #1 4'b0000;\n        overflow_out <= #1 1'b0;\n    end"
+        }
+      ]
+    }
+  },
+  "result_hash": "sha256:dba278503c87dfb0f636cd4956c599aaab3984e2cc10be24e982053ac3a869db"
+}
