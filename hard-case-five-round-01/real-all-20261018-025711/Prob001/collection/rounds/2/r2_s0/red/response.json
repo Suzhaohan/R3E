@@ -1,0 +1,60 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "else if (a_tem == 8'b0111_0001)",
+            "replace": "else if (a_tem == 8'b0111_0011)"
+          }
+        ],
+        "violated_requirement": "Output match should be 1 when a_tem equals 8'b0111_0001, but mutant asserts it for 8'b0111_0011",
+        "spec_basis": "Matching Logic: The output match should be asserted (logic 1) whenever the value of the shift register a_tem matches the specific 8-bit pattern 8'b0111_0001."
+      },
+      {
+        "edits": [
+          {
+            "find": "else if (a_tem == 8'b0111_0001)",
+            "replace": "else if (a_tem == 8'b0111_0001 && a_tem[0] == 1'b0)"
+          }
+        ],
+        "violated_requirement": "Output match should be 1 when a_tem equals 8'b0111_0001, but mutant requires an additional condition that LSB is 0",
+        "spec_basis": "Matching Logic: The output match should be asserted (logic 1) whenever the value of the shift register a_tem matches the specific 8-bit pattern 8'b0111_0001."
+      },
+      {
+        "edits": [
+          {
+            "find": "a_tem <= {a_tem[6:0],a};",
+            "replace": "a_tem <= {a_tem[6:0],~a};"
+          }
+        ],
+        "violated_requirement": "Shift register should store input a directly, but mutant inverts the input before storing",
+        "spec_basis": "Shift Register Behavior: On every positive edge of the clock, if rst_n is asserted (logic 1), the input a should be shifted into the least significant bit (LSB) of the shift register a_tem."
+      },
+      {
+        "edits": [
+          {
+            "find": "a_tem <= {a_tem[6:0],a};",
+            "replace": "a_tem <= {a,a_tem[7:1]};"
+          }
+        ],
+        "violated_requirement": "Shift register should shift left with new bit in LSB, but mutant shifts right with new bit in MSB",
+        "spec_basis": "Shift Register Behavior: The input a should be shifted into the least significant bit (LSB) of the shift register a_tem, and the previous bits should shift left by one position."
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:a85f00f4966f7e24ebc080ab608f28bfb6f8425ed01e2eb4fa10ad4ce7965ba7",
+  "input_tokens": 4442,
+  "output_tokens": 504,
+  "request_hash": "sha256:cb0d9635b93cf58df0650a238026c786105939e1b9f4e907de551b803c495dea",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 4442,
+    "output_tokens": 504
+  },
+  "model_seconds": 15.844966136850417
+}

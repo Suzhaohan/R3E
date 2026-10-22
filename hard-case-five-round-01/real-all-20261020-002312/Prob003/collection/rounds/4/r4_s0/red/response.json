@@ -1,0 +1,60 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "        sf1:\n            nstate=sf2;",
+            "replace": "        sf1:\n            nstate=data?s1:sf2;"
+          }
+        ],
+        "violated_requirement": "When in state sf1, the next state should unconditionally transition to sf2, but the mutant incorrectly makes it dependent on the input data",
+        "spec_basis": "Spec requires non-overlapping six-bit group detection with clear failure paths"
+      },
+      {
+        "edits": [
+          {
+            "find": "        sf2:\n            nstate=sf3;",
+            "replace": "        sf2:\n            nstate=data?s1:sf3;"
+          }
+        ],
+        "violated_requirement": "When in state sf2, the next state should unconditionally transition to sf3, but the mutant incorrectly makes it dependent on the input data",
+        "spec_basis": "Spec requires non-overlapping six-bit group detection with clear failure paths"
+      },
+      {
+        "edits": [
+          {
+            "find": "        sf3:\n            nstate=sf4;",
+            "replace": "        sf3:\n            nstate=data?s1:sf4;"
+          }
+        ],
+        "violated_requirement": "When in state sf3, the next state should unconditionally transition to sf4, but the mutant incorrectly makes it dependent on the input data",
+        "spec_basis": "Spec requires non-overlapping six-bit group detection with clear failure paths"
+      },
+      {
+        "edits": [
+          {
+            "find": "        sf4:\n            nstate=sf5;",
+            "replace": "        sf4:\n            nstate=data?s1:sf5;"
+          }
+        ],
+        "violated_requirement": "When in state sf4, the next state should unconditionally transition to sf5, but the mutant incorrectly makes it dependent on the input data",
+        "spec_basis": "Spec requires non-overlapping six-bit group detection with clear failure paths"
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:fc6873e3361d1f1dec644254276663792d9a1dec49542f87ebde5fac917c2e13",
+  "input_tokens": 11090,
+  "output_tokens": 375,
+  "request_hash": "sha256:5a14d45df7d961a436ee52ac48ed15ddaa079090331a38658542e717a6fce88b",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 11090,
+    "output_tokens": 375
+  },
+  "model_seconds": 15.690628317184746
+}

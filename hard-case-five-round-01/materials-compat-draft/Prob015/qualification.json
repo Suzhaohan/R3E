@@ -1,0 +1,111 @@
+{
+  "version": "witness_matrix_v1",
+  "carrier_id": "chipbench_Prob015_fixed_hard_questions",
+  "qualified": true,
+  "problems": [],
+  "freeze_checked": true,
+  "single_file": true,
+  "tool": "Icarus Verilog version 11.0 (stable) ()",
+  "package_files": {
+    "carrier.json": "sha256:75237009c157a96756ba34e6561469dd2f9c95b1ef4190cf5498b517ae1ea6a4",
+    "spec.md": "sha256:201f612dadff9bfe67a9ad956a3f8e2dcfd41bcfe2b57b4c2ec9acba467b6b28",
+    "src/rtl/sequence.sv": "sha256:1d8f97b6d2f7278ace95b1d48b238ac0e0fb035fae11f105d8ee1fddecb1c977",
+    "suites/W_bug/tb.sv": "sha256:b4e69470085df7725b55d6d7092bdda1f72d6c3d49d1ac0ca6282594a1e4edbb",
+    "suites/W_preserve/tb.sv": "sha256:c038101a93b1e691aaa5e0a4b0c4959855105905c1e97f9f8ea887ee065ae271",
+    "variants/exam_state_machine/rtl/sequence.sv": "sha256:b866c669c6c1000ca5396de251669a79d63d114dcd4513054cbf364308013c75",
+    "variants/exam_timing/rtl/sequence.sv": "sha256:fb8a6f8459ff1dbe36c5c8982783bb88db45c8219e886815c9a8f377d9d7c28b",
+    "variants/reset_control/rtl/sequence.sv": "sha256:1f6484d2a4a1d7f19b77a1a33aecd6e9c7f954358318e174a52383e403a0f33a"
+  },
+  "matrix": {
+    "clean/W_bug": {
+      "build_seconds": 0.01,
+      "tier": "pass",
+      "runs": [
+        "pass",
+        "pass"
+      ],
+      "log_hash": "sha256:f82a86bf89583b4bef8f483f0c2de73e450747ddcfb35f08385c83d0a6959743",
+      "deterministic": true
+    },
+    "clean/W_preserve": {
+      "build_seconds": 0.01,
+      "tier": "pass",
+      "runs": [
+        "pass",
+        "pass"
+      ],
+      "log_hash": "sha256:8f7b0d3e220050a01430389374487f2c739abe116929797e50e6f766ebba895a",
+      "deterministic": true
+    },
+    "reset_control/W_bug": {
+      "build_seconds": 0.01,
+      "tier": "pass",
+      "runs": [
+        "pass",
+        "pass"
+      ],
+      "log_hash": "sha256:f82a86bf89583b4bef8f483f0c2de73e450747ddcfb35f08385c83d0a6959743",
+      "deterministic": true
+    },
+    "reset_control/W_preserve": {
+      "build_seconds": 0.01,
+      "tier": "fail",
+      "runs": [
+        "fail",
+        "fail"
+      ],
+      "log_hash": "sha256:612bf052f5ef1231276b3248de20d2af5dea84f875b22b5c4da478d945116eba",
+      "deterministic": true
+    },
+    "exam_timing/W_bug": {
+      "build_seconds": 0.01,
+      "tier": "fail",
+      "runs": [
+        "fail",
+        "fail"
+      ],
+      "log_hash": "sha256:b045c8aa3caf999c5f246970e64173b06f6abdfd984929920e66ca1b26704743",
+      "deterministic": true
+    },
+    "exam_timing/W_preserve": {
+      "build_seconds": 0.01,
+      "tier": "pass",
+      "runs": [
+        "pass",
+        "pass"
+      ],
+      "log_hash": "sha256:8f7b0d3e220050a01430389374487f2c739abe116929797e50e6f766ebba895a",
+      "deterministic": true
+    },
+    "exam_state_machine/W_bug": {
+      "build_seconds": 0.01,
+      "tier": "fail",
+      "runs": [
+        "fail",
+        "fail"
+      ],
+      "log_hash": "sha256:8d8bb35a727baa94f314b77cee3fe734e84e18849e7c0c80302e77802128daf7",
+      "deterministic": true
+    },
+    "exam_state_machine/W_preserve": {
+      "build_seconds": 0.01,
+      "tier": "pass",
+      "runs": [
+        "pass",
+        "pass"
+      ],
+      "log_hash": "sha256:8f7b0d3e220050a01430389374487f2c739abe116929797e50e6f766ebba895a",
+      "deterministic": true
+    }
+  },
+  "logs": {
+    "clean/W_bug": "TESTBENCH PASS vending\n",
+    "clean/W_preserve": "TESTBENCH PASS preserve\n",
+    "reset_control/W_bug": "TESTBENCH PASS vending\n",
+    "reset_control/W_preserve": "CHECK_FAIL asynchronous state reset\n",
+    "exam_timing/W_bug": "CHECK_FAIL vending check=2 amount=3 sel=0 got=000 expected=100\n",
+    "exam_timing/W_preserve": "TESTBENCH PASS preserve\n",
+    "exam_state_machine/W_bug": "CHECK_FAIL vending check=411 amount=5 sel=1 got=000 expected=010\n",
+    "exam_state_machine/W_preserve": "TESTBENCH PASS preserve\n"
+  }
+}

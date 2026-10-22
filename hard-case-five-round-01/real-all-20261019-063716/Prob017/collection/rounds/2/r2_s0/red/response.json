@@ -1,0 +1,60 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "clk_cnt <= clk_cnt==(div_e-1)? 0: clk_cnt+1",
+            "replace": "clk_cnt <= clk_cnt==(div_e-2)? 0: clk_cnt+1"
+          }
+        ],
+        "violated_requirement": "Changes the clock counter wrap condition from div_e-1 to div_e-2, causing premature counter reset in even mode",
+        "spec_basis": "Count becomes 0 when count == (mode ? div_o : div_e)-1"
+      },
+      {
+        "edits": [
+          {
+            "find": "clk_cnt <= clk_cnt==(div_o-1)? 0: clk_cnt+1",
+            "replace": "clk_cnt <= clk_cnt==(div_o-2)? 0: clk_cnt+1"
+          }
+        ],
+        "violated_requirement": "Changes the clock counter wrap condition from div_o-1 to div_o-2, causing premature counter reset in odd mode",
+        "spec_basis": "Count becomes 0 when count == (mode ? div_o : div_e)-1"
+      },
+      {
+        "edits": [
+          {
+            "find": "cyc_cnt <= cyc_cnt==(M_N-1)? 0: cyc_cnt+1",
+            "replace": "cyc_cnt <= cyc_cnt==(M_N-2)? 0: cyc_cnt+1"
+          }
+        ],
+        "violated_requirement": "Changes the cycle counter wrap condition from M_N-1 to M_N-2, causing premature cycle counter reset",
+        "spec_basis": "Cycle_count wraps to zero at M_N-1"
+      },
+      {
+        "edits": [
+          {
+            "find": "div_flag <= cyc_cnt==(M_N-1)||cyc_cnt==(c89-1)? ~div_flag: div_flag",
+            "replace": "div_flag <= cyc_cnt==(M_N-1)||cyc_cnt==(c89-2)? ~div_flag: div_flag"
+          }
+        ],
+        "violated_requirement": "Changes the mode toggle condition from c89-1 to c89-2, causing premature mode switching",
+        "spec_basis": "Mode toggles iff cycle_count equals M_N-1 or c89-1"
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:ada721c32ca87e50438f5e96f91cd3172c1d065b0dcf677e3b587583c0cf5718",
+  "input_tokens": 5550,
+  "output_tokens": 534,
+  "request_hash": "sha256:21d7964f953ae7ba09a2ab657fa32ba04e279eaa915cc55ba3a44b595ee3d897",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 5550,
+    "output_tokens": 534
+  },
+  "model_seconds": 13.86346129141748
+}

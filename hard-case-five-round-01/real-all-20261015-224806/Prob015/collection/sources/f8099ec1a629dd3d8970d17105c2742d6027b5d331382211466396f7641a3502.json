@@ -1,0 +1,132 @@
+{
+  "source": {
+    "run_id": "collection",
+    "round": 5,
+    "slot_id": "r5_s0",
+    "task_hash": "sha256:ad05d1e8db0e6cad9e03c1d6cfc3531c96e40cc008cf0f4b5060fe0863ab83e4",
+    "carrier_id": "selected_Prob015",
+    "mutant_hash": "sha256:41dabd80446f959e005b7662c09559b748a9827729ba4d24eda14ed24ea59514",
+    "candidate_hash": "sha256:8869de4968c8174cd734676a999e706fa6f9c80b7fbd4c6b046b7e16aad2c3e6",
+    "encounter_hash": "sha256:f8099ec1a629dd3d8970d17105c2742d6027b5d331382211466396f7641a3502",
+    "archive_hash": "sha256:7ba7ddd9dbc00555a78a754803c113faeab62e83ad0ce80850d6e88d23ed7dd3",
+    "public_replay_hash": "sha256:a3c0cfa4c20882993656cb32cac91646ff106dfb0ba6bd431f4bd22a25bd77ac"
+  },
+  "encounter": {
+    "encounter": 0,
+    "seed": 1538524566091960,
+    "result": {
+      "task_id": "selected_Prob015__41dabd80446f959e",
+      "route": "direct",
+      "rtl_tokens": 562,
+      "closure": [
+        "rtl/sequence.sv",
+        "harness:W_bug_tb.sv",
+        "harness:W_preserve_tb.sv"
+      ],
+      "outcome": "fixed",
+      "attempts": [
+        {
+          "attempt": 0,
+          "route": "direct",
+          "submissions": [
+            {
+              "kind": "repair",
+              "tokens": {
+                "input": 6443,
+                "output": 34105,
+                "counted_request": 6443,
+                "model_seconds": 177.01
+              },
+              "format_valid": false,
+              "format_error": "Each file must contain exactly file and content, without find/replace."
+            },
+            {
+              "kind": "format_correction",
+              "tokens": {
+                "input": 7210,
+                "output": 3027,
+                "counted_request": 7210,
+                "model_seconds": 14.54
+              },
+              "format_valid": true,
+              "format_error": null
+            }
+          ],
+          "repair_tokens": {
+            "input": 13653,
+            "output": 37132,
+            "counted_request": 13653,
+            "model_seconds": 191.54999999999998
+          },
+          "edit": "Fix state S1 hold: in the next-state combinational block, the S1 arm's no-input default erroneously transitioned to S0, dropping accumulated funds. Change it to hold the current state (nstate) so accumulated money is retained when no currency is inserted.",
+          "candidate_hash": "sha256:8869de4968c8174cd734676a999e706fa6f9c80b7fbd4c6b046b7e16aad2c3e6",
+          "tier": "visible_pass",
+          "stage": "simulation",
+          "build_seconds": 0.02,
+          "sim_seconds": 0.01,
+          "changed_files": [
+            "rtl/sequence.sv"
+          ]
+        }
+      ],
+      "calls": 2,
+      "final_candidate_hash": "sha256:8869de4968c8174cd734676a999e706fa6f9c80b7fbd4c6b046b7e16aad2c3e6",
+      "inputs_read": [
+        "public/task.json",
+        "public/visible/build.json",
+        "public/visible/W_bug_tb.sv",
+        "public/visible/W_preserve_tb.sv",
+        "public/spec.txt"
+      ],
+      "experience": {
+        "snapshot_id": "B_4",
+        "snapshot_hash": "sha256:3086a469f2263d117037f157bbebec9e67212c3c03d7f1c4e69c8a3e43a72103",
+        "state_hash": "sha256:9fb9d5de806bcc3bb819a51a208b3d1d5b6cc95e74b6360d9ab6e3a374e07131",
+        "payload_hash": "sha256:3092f0d7fc08feac058171dbed616bb7c60daa43691d7b6d28875d3225d9b061",
+        "delivery_hash": "sha256:36d1f4abd45b35602c959f66a6cf296a92696738b50d442199269801f3c01223",
+        "delivered": false
+      }
+    }
+  },
+  "archive_path": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/real-all-20261015-224806/Prob015/collection/rounds/5/r5_s0/online/blue/archive/selected_Prob015__41dabd80446f959e__8869de4968c8174c.json",
+  "task_dir": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/real-all-20261015-224806/Prob015/collection/rounds/5/r5_s0/admission/blue_task",
+  "replay": {
+    "tier": "visible_pass",
+    "stage": "simulation",
+    "evidence": {
+      "suites": {
+        "W_bug": {
+          "result": "visible_pass",
+          "returncode": 0,
+          "pass_marker_found": true,
+          "fail_marker_found": false,
+          "log": "Hint: Output 'out1' has no mismatches.\nHint: Output 'out2' has no mismatches.\nHint: Output 'out3' has no mismatches.\nHint: Total mismatched samples is 0 out of 181 samples\n\nSimulation finished at 906 ps\nMismatches: 0 in 181 samples\nTESTBENCH PASS original samples"
+        },
+        "W_preserve": {
+          "result": "visible_pass",
+          "returncode": 0,
+          "pass_marker_found": true,
+          "fail_marker_found": false,
+          "log": "TESTBENCH PASS preserve"
+        }
+      }
+    },
+    "build_seconds": 0.01977110467851162,
+    "sim_seconds": 0.01166453119367361,
+    "closure": [
+      "rtl/sequence.sv",
+      "harness:W_bug_tb.sv",
+      "harness:W_preserve_tb.sv"
+    ]
+  },
+  "public_rows": {
+    "W_bug": "visible_pass",
+    "W_preserve": "visible_pass"
+  },
+  "mutation_edits": [
+    {
+      "find": "            S1     : nstate = d1? S1_5:\n                              d2? S2:\n                              nstate;",
+      "replace": "            S1     : nstate = d1? S1_5:\n                              d2? S2:\n                              S0;"
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "blue": {
+    "blue_config_hash": "sha256:b807b318353db101903229c541fd1c234fe2d8187c42282d5e0fa65dd6573e86",
+    "committed_round": 2,
+    "entries": [],
+    "learning_policy_hash": "sha256:4a09424dd1c7efe73565caf882441e236d76f12d2175725024c3057884eb1afe",
+    "parent_snapshot_hash": "sha256:0cbb99e1b7958fec435cfbe03d638daace0190ce20d8ce5982bece58d1871071",
+    "retrieval_policy_hash": "sha256:8b114d1dc640c0d8851c3796a1d6ed4e3bc9b65406c7341475b69b3d8568e26f",
+    "snapshot_id": "B_2",
+    "state_hash": "sha256:9fb9d5de806bcc3bb819a51a208b3d1d5b6cc95e74b6360d9ab6e3a374e07131",
+    "version": "continuous_blue_snapshot_v1"
+  },
+  "parent_commit_hash": "sha256:2e3a38fac7649bb683c832bb121f0c2a28d15f799da29c15cda4f3341ef2506d",
+  "promotion_hash": "sha256:a4fee4188cbdb62c0cf57d0a3fd05492358dbcff6485b7b48571ef2afb7e1db1",
+  "red": {
+    "observations": [
+      {
+        "blue_patch": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -8,7 +8,7 @@\n    // This always block gets executed whenever a/b/c/d/sel changes value\n    // When that happens, based on value in sel, output is assigned to either a/b/c/d\n    always @ (a or b or c or d or sel) begin\n-      case (sel[0])\n+      case (sel)\n          2'b00 : out <= a;\n          2'b01 : out <= b;\n          2'b10 : out <= c;\n",
+        "carrier_id": "selected_Mux",
+        "label": "public_pass_single_sample_hidden_unknown",
+        "mutant_hash": "sha256:8d14a2ff4eed3034aeee313a2399aac2689e4d5cfd79d3ac20a1be8b41cf109f",
+        "mutation_edits": [
+          {
+            "find": "      case (sel)",
+            "replace": "      case (sel[0])"
+          }
+        ],
+        "public_evidence": "{\"suites\": {\"W_bug\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"VCD info: dumpfile output_mux_4_1_tb.vcd opened for output.\\nVCD warning: $dumpvars: Unsupported argument type (vpiPackage)\\n[0] sel=0x0 a=0x1 b=0x2 c=0x4 d=0x8 out=0x1\\n[100] sel=0x1 a=0x1 b=0x2 c=0x4 d=0x8 out=0x2\\n[200] sel=0x2 a=0x1 b=0x2 c=0x4 d=0x8 out=0x4\\n[300] sel=0x3 a=0x1 b=0x2 c=0x4 d=0x8 out=0x8\\n[400] sel=0x0 a=0x8 b=0x4 c=0x2 d=0x1 out=0x8\\n[500] sel=0x1 a=0x8 b=0x4 c=0x2 d=0x1 out=0x4\\n[600] sel=0x2 a=0x8 b=0x4 c=0x2 d=0x1 out=0x2\\n[700] sel=0x3 a=0x8 b=0x4 c=0x2 d=0x1 out=0x1\\nTESTBENCH PASS original oracle\"}, \"W_preserve\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"TESTBENCH PASS preserve\"}}}",
+        "public_rows": {
+          "W_bug": "visible_pass",
+          "W_preserve": "visible_pass"
+        },
+        "round": 1,
+        "slot_id": "r1_s0",
+        "source_hash": "sha256:b9b292aee345f7087a8a6de94470a211521e96b0590ef10565871bc67033fc64",
+        "target_snapshot_hash": "sha256:ab15d21034b102efb7034cb8640bc64e12d395185fc1887e63b8dc96e8a4b068"
+      },
+      {
+        "blue_patch": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -11,6 +11,7 @@\n       case (sel)\n          2'b00 : out <= a;\n          2'b01 : out <= b;\n+         2'b10 : out <= c;\n          2'b11 : out <= d;\n       endcase\n    end\n",
+        "carrier_id": "selected_Mux",
+        "label": "public_pass_single_sample_hidden_unknown",
+        "mutant_hash": "sha256:1d22ad29914f9ed038b6c899c4aee60b9415dde54e7ccc067d3b916ea950d804",
+        "mutation_edits": [
+          {
+            "find": "         2'b10 : out <= c;\n",
+            "replace": ""
+          }
+        ],
+        "public_evidence": "{\"suites\": {\"W_bug\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"VCD info: dumpfile output_mux_4_1_tb.vcd opened for output.\\nVCD warning: $dumpvars: Unsupported argument type (vpiPackage)\\n[0] sel=0x0 a=0x1 b=0x2 c=0x4 d=0x8 out=0x1\\n[100] sel=0x1 a=0x1 b=0x2 c=0x4 d=0x8 out=0x2\\n[200] sel=0x2 a=0x1 b=0x2 c=0x4 d=0x8 out=0x4\\n[300] sel=0x3 a=0x1 b=0x2 c=0x4 d=0x8 out=0x8\\n[400] sel=0x0 a=0x8 b=0x4 c=0x2 d=0x1 out=0x8\\n[500] sel=0x1 a=0x8 b=0x4 c=0x2 d=0x1 out=0x4\\n[600] sel=0x2 a=0x8 b=0x4 c=0x2 d=0x1 out=0x2\\n[700] sel=0x3 a=0x8 b=0x4 c=0x2 d=0x1 out=0x1\\nTESTBENCH PASS original oracle\"}, \"W_preserve\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"TESTBENCH PASS preserve\"}}}",
+        "public_rows": {
+          "W_bug": "visible_pass",
+          "W_preserve": "visible_pass"
+        },
+        "round": 2,
+        "slot_id": "r2_s0",
+        "source_hash": "sha256:297efb7af85f24fd71fba38ce95ec2e2c03999899aa699ae8fe1f3301dcc9488",
+        "target_snapshot_hash": "sha256:0cbb99e1b7958fec435cfbe03d638daace0190ce20d8ce5982bece58d1871071"
+      }
+    ],
+    "round": 2
+  },
+  "round": 2,
+  "update_decisions": [
+    {
+      "entry_hash": "sha256:c00f23e88c88f5d6bba1b75a8dbe9625aad36bfc99f4048c42463205bf294810",
+      "reason": "accepted"
+    },
+    {
+      "accepted": false,
+      "promotion": "no_strict_gain"
+    }
+  ]
+}

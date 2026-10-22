@@ -1,0 +1,40 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "clk_cnt <= clk_cnt==(div_o-1)? 0: clk_cnt+1;",
+            "replace": "clk_cnt <= clk_cnt==(div_o-1)? 0: clk_cnt+2;"
+          }
+        ],
+        "violated_requirement": "Increments clk_cnt by 2 instead of 1 in odd mode, causing incorrect output timing",
+        "spec_basis": "Count becomes 0 when count == (mode ? div_o : div_e)-1; otherwise (count+1) modulo 16"
+      },
+      {
+        "edits": [
+          {
+            "find": "clk_cnt<=((div_o>>2)+1)",
+            "replace": "clk_cnt<=((div_o>>1)+1)"
+          }
+        ],
+        "violated_requirement": "Changes the threshold for setting clk_out_r in odd mode, causing incorrect output duty cycle",
+        "spec_basis": "Output becomes 1 iff count <= floor((mode ? div_o : div_e)/4) + 1"
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:78ec48164990a910debf0ffb7a42dedea7793cbd8b76c920ba501e8c28fb65c1",
+  "input_tokens": 6295,
+  "output_tokens": 213,
+  "request_hash": "sha256:86b61aeb679e30304b18b90763480e2bed872a5879078c3d975f57a1f2087fc8",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 6295,
+    "output_tokens": 213
+  },
+  "model_seconds": 9.597886816598475
+}

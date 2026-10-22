@@ -1,0 +1,44 @@
+{
+ "summary": {
+  "task_id": "chipbench_prob003_group_boundary_v1__de4fa74a556b155a",
+  "encounters": 1,
+  "categories": {
+   "public_pass_hidden_pass": 1
+  },
+  "functional_failure_candidates": 0,
+  "pending_review": 0,
+  "reviewed_functional_failures": 0,
+  "original_defect_persists": 0,
+  "new_regression": 0,
+  "mechanism_907_exploratory": 0
+ },
+ "encounters": [
+  {
+   "encounter": 0,
+   "endpoint_candidate": "sha256:5ad6a09c2ff681bf820bf239620370bf656ee67aad64fac2c21283a45bfdc3d2",
+   "endpoint_public": {
+    "tier": "visible_pass",
+    "suites": {
+     "W_bug": {
+      "result": "visible_pass",
+      "checker_violation": false,
+      "failures": []
+     },
+     "W_preserve": {
+      "result": "visible_pass",
+      "checker_violation": false,
+      "failures": []
+     }
+    }
+   },
+   "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -50,7 +50,7 @@\n         s5:\n             nstate=data?sf6:s6;\n         s6:\n-            nstate=s1;\n+            nstate=data?sf1:s1;\n         sf1:\n             nstate=sf2;\n         sf2:\n@@ -65,7 +65,7 @@\n \t\t\tnstate=data?sf1:s1;\n         default:\n             nstate=idle;\n-        endcase\n+    endcase\n end\n \n always @(pstate or data or rst_n)\n",
+   "endpoint_evaluator": {
+    "result": "pass",
+    "returncode": 0,
+    "failures": [],
+    "log_hash": "sha256:499a149f5555026d38404edca8a6bfb14cca569693048cf0519306651c322ead"
+   },
+   "category": "public_pass_hidden_pass"
+  }
+ ]
+}

@@ -1,0 +1,30 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "clk_cnt <= clk_cnt==(div_e-1)? 0: clk_cnt+1",
+            "replace": "clk_cnt <= clk_cnt==(div_e-2)? 0: clk_cnt+1"
+          }
+        ],
+        "violated_requirement": "The clock counter should wrap at div_e-1, but instead wraps at div_e-2, causing premature reset of the counter and incorrect output clock timing",
+        "spec_basis": "Output becomes 1 iff count <= floor((mode ? div_o : div_e)/4) + 1, otherwise 0"
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:bda7ec04c01edd16b8ab387abd84684bf23b6536421071a8952491a6b5405fa3",
+  "input_tokens": 7972,
+  "output_tokens": 132,
+  "request_hash": "sha256:f292f389132fadac5450bc8cb6f7cdecb30c545a857a8555219e64a4121a3ecd",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 7972,
+    "output_tokens": 132
+  },
+  "model_seconds": 7.7674344992265105
+}

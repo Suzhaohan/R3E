@@ -1,0 +1,30 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "cyc_cnt==(M_N-1)? 0: cyc_cnt+1",
+            "replace": "cyc_cnt==(M_N-1)? 1: cyc_cnt+1"
+          }
+        ],
+        "violated_requirement": "The cycle counter should wrap to 0 at M_N-1, but instead wraps to 1, causing incorrect mode toggling and output timing",
+        "spec_basis": "Cycle_count wraps to zero at M_N-1; otherwise it increments by one modulo 128"
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:ddc64033083f0b4703f1d6963040ca18890ca0dfc55ab4c788a492fd9bc087a9",
+  "input_tokens": 10427,
+  "output_tokens": 116,
+  "request_hash": "sha256:253abc83d837e8be07d46c5b900b296402fedd11ecc249654e022e478f34e96c",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 10427,
+    "output_tokens": 116
+  },
+  "model_seconds": 8.539440517313778
+}

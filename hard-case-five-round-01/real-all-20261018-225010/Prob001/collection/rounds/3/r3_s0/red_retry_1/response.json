@@ -1,0 +1,30 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "a_tem <= {a_tem[6:0],a}",
+            "replace": "a_tem <= {a_tem[6:0],~a}"
+          }
+        ],
+        "violated_requirement": "The shift register should store the exact input sequence, but the mutated version inverts the input bit before storing it. This will cause the match output to be incorrect when the input sequence matches 8'b0111_0001 but with inverted bits.",
+        "spec_basis": "The spec requires the shift register to retain the 8 most recent bits of input `a` exactly."
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:7cc1e5e667ba8950479c2f37875cfe2f5907a8644bb44cac2d24e834e3add09f",
+  "input_tokens": 6469,
+  "output_tokens": 132,
+  "request_hash": "sha256:1ee75beb4ea3c29b130d65128df84674cdb6a33a0d987abcbeb0b6d5e4546029",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 6469,
+    "output_tokens": 132
+  },
+  "model_seconds": 7.4594791457057
+}

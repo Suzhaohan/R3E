@@ -1,0 +1,30 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "a_tem <= {a_tem[6:0],a};",
+            "replace": "a_tem <= {a_tem[5:0],a,a_tem[7]};"
+          }
+        ],
+        "violated_requirement": "When shifting in new bits, the most significant bit should be discarded but is instead preserved and shifted back in. This causes incorrect pattern matching when the sequence wraps around.",
+        "spec_basis": "The shift register should retain the 8 most recent bits of input 'a' by discarding the oldest bit each cycle."
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:f86ec0320133da65cb7802394de8a6d6118aa247815d60a916a8cd6e547ddbac",
+  "input_tokens": 9742,
+  "output_tokens": 124,
+  "request_hash": "sha256:c45537c1c295f7489d0ff722323acb00e0f4584e1929280ce5322cd474b6efdf",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 9742,
+    "output_tokens": 124
+  },
+  "model_seconds": 7.959655401296914
+}

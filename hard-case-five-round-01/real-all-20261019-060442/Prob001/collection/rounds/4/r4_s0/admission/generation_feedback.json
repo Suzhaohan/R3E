@@ -1,0 +1,35 @@
+{
+  "round": 4,
+  "attempt": 0,
+  "reason": "repeated_rejected_proposal",
+  "edits": [
+    {
+      "find": "else if (a_tem == 8'b0111_0001)",
+      "replace": "else if ((a_tem == 8'b0111_0001) && (a_tem[7] == 1'b0))"
+    }
+  ],
+  "expected_public_results": {
+    "W_bug": "fail",
+    "W_preserve": "pass"
+  },
+  "actual_public_results": {},
+  "public_test_evidence": {},
+  "correction": "Syntax-token insertion/deletion is forbidden. Replace at most two existing operands/operators, or swap one existing two-operand concatenation. Do not append an if guard. This implementation was already attempted. Generate a different functional mutation, not different formatting or a new explanation of the same edit. MANDATORY RETRY CONTROL, overriding the round curriculum and historical mechanism seed. The last proposal failed for the concrete reasons listed here. Change to an unblocked mechanism; changing a bit index, constant or operand within a blocked route is forbidden. If added_condition_guard is blocked, do not append ANY extra guard to an if condition. Instead mutate a reachable history update, comparison/slice, output assignment or state transition as appropriate. State a concrete triggering input/history and changed output in violated_requirement; it remains an unverified claim. For compilation_error, correct the reported syntax first without repeating the broken grammar. Return the required candidates JSON batch (each candidate has edits/violated_requirement/spec_basis), or abstain if no valid alternative exists. Only one corrective request is allowed; if both online candidate batches lack a qualified challenge, record an empty practice slot with no replacement.",
+  "original_reason": "mutation_grammar_violation",
+  "reused_from": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/real-all-20261019-060442/Prob001/collection/rounds/3/r3_s0/admission_a0_c1",
+  "retry_control": {
+    "version": "online_diagnose_sites_no_replacement_v2",
+    "round": 4,
+    "failure_kind": "invalid_or_unavailable_proposal",
+    "failed_mechanisms": [
+      "added_condition_guard"
+    ],
+    "blocked_mechanisms": [],
+    "failed_site_ids": [],
+    "blocked_site_ids": [],
+    "specific_diagnosis": [
+      "Syntax-token insertion/deletion is forbidden. Replace at most two existing operands/operators, or swap one existing two-operand concatenation. Do not append an if guard. This implementation was already attempted. Generate a different functional mutation, not different formatting or a new explanation of the same edit."
+    ],
+    "instruction": "MANDATORY RETRY CONTROL, overriding the round curriculum and historical mechanism seed. The last proposal failed for the concrete reasons listed here. Change to an unblocked mechanism; changing a bit index, constant or operand within a blocked route is forbidden. If added_condition_guard is blocked, do not append ANY extra guard to an if condition. Instead mutate a reachable history update, comparison/slice, output assignment or state transition as appropriate. State a concrete triggering input/history and changed output in violated_requirement; it remains an unverified claim. For compilation_error, correct the reported syntax first without repeating the broken grammar. Return the required candidates JSON batch (each candidate has edits/violated_requirement/spec_basis), or abstain if no valid alternative exists. Only one corrective request is allowed; if both online candidate batches lack a qualified challenge, record an empty practice slot with no replacement."
+  }
+}

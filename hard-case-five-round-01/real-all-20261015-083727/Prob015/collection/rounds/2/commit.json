@@ -1,0 +1,87 @@
+{
+  "blue": {
+    "blue_config_hash": "sha256:6488d17825779ad62c69d1477a90e57c0c3bf3baa279a3b9b237c1183a2ef7f6",
+    "committed_round": 2,
+    "entries": [],
+    "learning_policy_hash": "sha256:4a09424dd1c7efe73565caf882441e236d76f12d2175725024c3057884eb1afe",
+    "parent_snapshot_hash": "sha256:0307320c097d0740424db5e1e460477853845d719950392ff432be94bcece7f2",
+    "retrieval_policy_hash": "sha256:8b114d1dc640c0d8851c3796a1d6ed4e3bc9b65406c7341475b69b3d8568e26f",
+    "snapshot_id": "B_2",
+    "state_hash": "sha256:b07b09361e2981152f1e25a0a2cadc18dfac4222572d63c3d5349ce5238a24f8",
+    "version": "continuous_blue_snapshot_v1"
+  },
+  "parent_commit_hash": "sha256:8f117643059f5434b79e4be7b9d12668e861d6b70d2de787a0bb4aabd480c219",
+  "red": {
+    "observations": [
+      {
+        "blue_patch": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -1,64 +1,53 @@\n+module TopModule(\n+    input wire clk,\n+    input wire rst,\n+    input wire d1,\n+    input wire d2,\n+    input wire sel,\n+    output reg out1,\n+    output reg out2,\n+    output reg out3\n+);\n \n-module TopModule(\n-\tinput wire clk  ,\n-\tinput wire rst  ,\n-\tinput wire d1 ,\n-\tinput wire d2 ,\n-\tinput wire sel ,\n-\t\n-\toutput reg out1,\n-\toutput reg out2,\n-\toutput reg out3\n-);\n-//*************code***********//\n+    reg [3:0] amount;\n+    reg d1_prev, d2_prev;\n+    reg add1, add2;\n+    integer next_amount;\n+    integer price;\n \n-    parameter [2:0] S0=0, S0_5=1, S1=2, S1_5=3, S2=4, S2_5=5, S3=6;\n-    reg[2:0] state, nstate;\n-    \n-    always@(posedge clk or negedge rst) begin\n-        if(~rst)\n-            state <= 0;\n-        else\n-            state <= nstate;\n-    end\n-    \n-    always@(*) begin\n-        case(state)\n-            S0     : nstate = d1? S0_5:\n-                              d2? S1:\n-                              nstate;\n-            S0_5   : nstate = d1? S1:\n-                              d2? S1_5:\n-                              nstate;\n-            S1     : nstate = d1? S1_5:\n-                              d2? S2:\n-                              nstate;\n-            S1_5   : nstate = ~sel? S0:\n-                              d1? S2:\n-                              d2? S2_5:\n-                              nstate;\n-            S2     : nstate = ~sel? S0:\n-                              d1? S2_5:\n-                              d2? S3:\n-                              nstate;\n-            default: nstate = S0;\n-        endcase\n-    end\n-    \n-    always@(posedge clk or negedge rst) begin\n-        if(~rst) begin\n-            {out1, out2, out3} <= 3'b000;\n-        end\n-        else begin\n-            case(state)\n-                S0, S0_5, S1: {out1, out2, out3} <= 0;\n-                S1_5        : {out1, out2, out3} <= ~sel? 3'b100: 3'b000;\n-                S2          : {out1, out2, out3} <= ~sel? 3'b101: 3'b000;\n-                S2_5        : {out1, out2, out3} <= ~sel? 3'b101: 3'b010;\n-                S3          : {out1, out2, out3} <= ~sel? 3'b101: 3'b011;\n-                default     : {out1, out2, out3} <= 3'b000;\n-            endcase\n+    always @(posedge clk or negedge rst) begin\n+        if (!rst) begin\n+            amount <= 0;\n+            d1_prev <= 0;\n+            d2_prev <= 0;\n+            out1 <= 0;\n+            out2 <= 0;\n+            out3 <= 0;\n+        end else begin\n+            add1 = d1 & ~d1_prev;\n+            add2 = d2 & ~d2_prev;\n+            d1_prev <= d1;\n+            d2_prev <= d2;\n+\n+            next_amount = amount;\n+            if (add1) next_amount = next_amount + 1;\n+            if (add2) next_amount = next_amount + 2;\n+\n+            price = sel ? 5 : 3;\n+\n+            out1 <= 0;\n+            out2 <= 0;\n+            out3 <= 0;\n+\n+            if (next_amount >= price) begin\n+                if (sel == 0) out1 <= 1;\n+                else out2 <= 1;\n+                if (next_amount > price) out3 <= 1;\n+                amount <= 0;\n+            end else begin\n+                amount <= next_amount;\n+            end\n         end\n     end\n-//*************code***********//\n+\n endmodule\n",
+        "carrier_id": "selected_Prob015",
+        "label": "public_functional_failure_single_sample_unconfirmed",
+        "mutant_hash": "sha256:89427b4c94b25e59a4e1f45b92290101cae281ddff5075f744239c11a3d3c561",
+        "mutation_edits": [
+          {
+            "find": "    always@(*) begin\n        if(~rst) begin\n            {out1, out2, out3} = 3'b000;",
+            "replace": "    always@(posedge clk or negedge rst) begin\n        if(~rst) begin\n            {out1, out2, out3} <= 3'b000;"
+          },
+          {
+            "find": "                S0, S0_5, S1: {out1, out2, out3} = 0;",
+            "replace": "                S0, S0_5, S1: {out1, out2, out3} <= 0;"
+          },
+          {
+            "find": "                S1_5        : {out1, out2, out3} = ~sel? 3'b100: 3'b000;",
+            "replace": "                S1_5        : {out1, out2, out3} <= ~sel? 3'b100: 3'b000;"
+          },
+          {
+            "find": "                S2          : {out1, out2, out3} = ~sel? 3'b101: 3'b000;",
+            "replace": "                S2          : {out1, out2, out3} <= ~sel? 3'b101: 3'b000;"
+          },
+          {
+            "find": "                S2_5        : {out1, out2, out3} = ~sel? 3'b101: 3'b010;",
+            "replace": "                S2_5        : {out1, out2, out3} <= ~sel? 3'b101: 3'b010;"
+          },
+          {
+            "find": "                S3          : {out1, out2, out3} = ~sel? 3'b101: 3'b011;",
+            "replace": "                S3          : {out1, out2, out3} <= ~sel? 3'b101: 3'b011;"
+          },
+          {
+            "find": "                default     : {out1, out2, out3} = 3'b000;",
+            "replace": "                default     : {out1, out2, out3} <= 3'b000;"
+          }
+        ],
+        "public_evidence": "{\"suites\": {\"W_bug\": {\"result\": \"visible_fail\", \"returncode\": 0, \"pass_marker_found\": false, \"fail_marker_found\": true, \"log\": \"Hint: Output 'out1' has 34 mismatches. First mismatch occurred at time 5.\\nHint: Output 'out2' has 4 mismatches. First mismatch occurred at time 5.\\nHint: Output 'out3' has 13 mismatches. First mismatch occurred at time 5.\\nHint: Total mismatched samples is 35 out of 181 samples\\n\\nSimulation finished at 906 ps\\nMismatches: 35 in 181 samples\\nCHECK_FAIL original samples\"}, \"W_preserve\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"TESTBENCH PASS preserve\"}}}",
+        "public_rows": {
+          "W_bug": "visible_fail",
+          "W_preserve": "visible_pass"
+        },
+        "round": 1,
+        "slot_id": "r1_s0",
+        "source_hash": "sha256:5f8a4feb84e5ffac562aedff120104941df04869f7f2f74215cc5f4d7f2c6601",
+        "target_snapshot_hash": "sha256:5600496c90f83f0e7b291f83030adaa6c63b03770716706768266b847116c119"
+      },
+      {
+        "blue_patch": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -12,53 +12,102 @@\n );\n //*************code***********//\n \n-    parameter [2:0] S0=0, S0_5=1, S1=2, S1_5=3, S2=4, S2_5=5, S3=6;\n-    reg[2:0] state, nstate;\n-    \n-    always@(posedge clk or negedge rst) begin\n-        if(~rst)\n-            state <= 0;\n+    localparam S0      = 4'd0,\n+               S05     = 4'd1,\n+               S1      = 4'd2,\n+               S15     = 4'd3,\n+               S2      = 4'd4,\n+               S25     = 4'd5,\n+               S3      = 4'd6,\n+               DISP1   = 4'd7,\n+               DISP1_3 = 4'd8,\n+               DISP2   = 4'd9,\n+               DISP2_3 = 4'd10;\n+\n+    reg [3:0] state, next_state;\n+\n+    always @(posedge clk or negedge rst) begin\n+        if (!rst)\n+            state <= S0;\n         else\n-            state <= nstate;\n+            state <= next_state;\n     end\n-    \n-    always@(*) begin\n-        case(state)\n-            S0     : nstate = d1? S0_5:\n-                              d2? S1:\n-                              nstate;\n-            S0_5   : nstate = d1? S1:\n-                              d2? S1_5:\n-                              nstate;\n-            S1     : nstate = d1? S1_5:\n-                              d2? S2:\n-                              nstate;\n-            S1_5   : nstate = ~sel? S0:\n-                              d1? S2:\n-                              d2? S2_5:\n-                              nstate;\n-            S2     : nstate = ~sel? S0:\n-                              d1? S2_5:\n-                              d2? S3:\n-                              nstate;\n-            default: nstate = S0;\n+\n+    always @(*) begin\n+        next_state = state;\n+        case (state)\n+            DISP1, DISP1_3, DISP2, DISP2_3: begin\n+                if (d1)\n+                    next_state = S05;\n+                else if (d2)\n+                    next_state = S1;\n+                else\n+                    next_state = S0;\n+            end\n+            S0: begin\n+                if (d1) next_state = S05;\n+                else if (d2) next_state = S1;\n+                else next_state = S0;\n+            end\n+            S05: begin\n+                if (d1) next_state = S1;\n+                else if (d2) next_state = S15;\n+                else next_state = S05;\n+            end\n+            S1: begin\n+                if (d1) next_state = S15;\n+                else if (d2) next_state = S2;\n+                else next_state = S1;\n+            end\n+            S15: begin\n+                if (sel == 0) begin\n+                    next_state = DISP1;\n+                end else begin\n+                    if (d1) next_state = S2;\n+                    else if (d2) next_state = S25;\n+                    else next_state = S15;\n+                end\n+            end\n+            S2: begin\n+                if (sel == 0) begin\n+                    next_state = DISP1_3;\n+                end else begin\n+                    if (d1) next_state = S25;\n+                    else if (d2) next_state = S3;\n+                    else next_state = S2;\n+                end\n+            end\n+            S25: begin\n+                if (sel == 1) begin\n+                    next_state = DISP2;\n+                end else begin\n+                    if (d1) next_state = S3;\n+                    else if (d2) next_state = S3;\n+                    else next_state = S25;\n+                end\n+            end\n+            S3: begin\n+                if (sel == 1) begin\n+                    next_state = DISP2_3;\n+                end else begin\n+                    next_state = DISP1_3;\n+                end\n+            end\n+            default: next_state = S0;\n         endcase\n     end\n-    \n-    always@(*) begin\n-        if(~rst) begin\n-            {out1, out2, out3} = 3'b000;\n-        end\n-        else begin\n-            case(nstate)\n-                S0, S0_5, S1: {out1, out2, out3} = 0;\n-                S1_5        : {out1, out2, out3} = ~sel? 3'b100: 3'b000;\n-                S2          : {out1, out2, out3} = ~sel? 3'b101: 3'b000;\n-                S2_5        : {out1, out2, out3} = ~sel? 3'b101: 3'b010;\n-                S3          : {out1, out2, out3} = ~sel? 3'b101: 3'b011;\n-                default     : {out1, out2, out3} = 3'b000;\n-            endcase\n-        end\n+\n+    always @(*) begin\n+        out1 = 0;\n+        out2 = 0;\n+        out3 = 0;\n+        case (state)\n+            DISP1:   out1 = 1;\n+            DISP1_3: begin out1 = 1; out3 = 1; end\n+            DISP2:   out2 = 1;\n+            DISP2_3: begin out2 = 1; out3 = 1; end\n+            default: begin out1 = 0; out2 = 0; out3 = 0; end\n+        endcase\n     end\n //*************code***********//\n endmodule\n",
+        "carrier_id": "selected_Prob015",
+        "label": "public_functional_failure_single_sample_unconfirmed",
+        "mutant_hash": "sha256:2ee49550dfdbf777a27d56cbf95c45e66a9abcc193399f91553d01365f87eedb",
+        "mutation_edits": [
+          {
+            "find": "    always@(*) begin\n        if(~rst) begin\n            {out1, out2, out3} = 3'b000;\n        end\n        else begin\n            case(state)",
+            "replace": "    always@(*) begin\n        if(~rst) begin\n            {out1, out2, out3} = 3'b000;\n        end\n        else begin\n            case(nstate)"
+          }
+        ],
+        "public_evidence": "{\"suites\": {\"W_bug\": {\"result\": \"visible_fail\", \"returncode\": 0, \"pass_marker_found\": false, \"fail_marker_found\": true, \"log\": \"Hint: Output 'out1' has 40 mismatches. First mismatch occurred at time 5.\\nHint: Output 'out2' has 14 mismatches. First mismatch occurred at time 5.\\nHint: Output 'out3' has 21 mismatches. First mismatch occurred at time 5.\\nHint: Total mismatched samples is 51 out of 181 samples\\n\\nSimulation finished at 906 ps\\nMismatches: 51 in 181 samples\\nCHECK_FAIL original samples\"}, \"W_preserve\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"TESTBENCH PASS preserve\"}}}",
+        "public_rows": {
+          "W_bug": "visible_fail",
+          "W_preserve": "visible_pass"
+        },
+        "round": 2,
+        "slot_id": "r2_s0",
+        "source_hash": "sha256:e8c4bc1aba9916a2f2a585e756f96445c4b8dbefdfee4065a3390ea650b6b1d0",
+        "target_snapshot_hash": "sha256:0307320c097d0740424db5e1e460477853845d719950392ff432be94bcece7f2"
+      }
+    ],
+    "round": 2
+  },
+  "round": 2,
+  "update_decisions": []
+}

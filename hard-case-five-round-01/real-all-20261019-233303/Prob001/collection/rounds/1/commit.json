@@ -1,0 +1,183 @@
+{
+  "blue": {
+    "blue_config_hash": "sha256:c415726432b70419db2718fb6ba4804ec48e11566c83a57050d9b481aaf74498",
+    "committed_round": 1,
+    "entries": [
+      {
+        "body": {
+          "content": {
+            "applied_patch": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -12,7 +12,7 @@\n \t\t\tbegin \n \t\t\t\tmatch <= 1'b0;\n \t\t\tend\n-\t\telse if (a_tem == 8'b01110000)\n+\t\telse if (a_tem == 8'b01110001)\n \t\t\tbegin\n \t\t\t\tmatch <= 1'b1;\n \t\t\tend\n@@ -25,7 +25,7 @@\n \t\tif (!rst_n)\n \t\t\tbegin \n \t\t\t\ta_tem <= 8'b0;\n-\t\t\tend\n+\t\t\t\tend\n \t\telse \n \t\t\tbegin\n \t\t\t\ta_tem <= {a_tem[6:0],a};\n",
+            "public_rows": {
+              "W_bug": "visible_pass",
+              "W_preserve": "visible_pass"
+            },
+            "specification_excerpt": "I would like you to implement a module named `TopModule` with the following interface. All input and output ports are one bit unless otherwise specified.\n\n- **Input ports**:\n  - `clk`\n  - `rst_n`\n  - `a`\n\n- **Output ports**:\n  - `match`\n\nThe module should implement an 8-bit shift register that shifts in the input `a` on every positive edge of the clock. The shift register is named `a_tem` and retains the 8 most recent bits of `a`. The module should perform the following functionality:\n\n1. **Reset Behavior**:\n   - When `rst_n` is de-asserted (logic 0), the shift register `a_tem` should be cleared to `8'b0`, and the output `match` should be set to `0`.\n\n2. **Shift Register Behavior**:\n   - On every positive edge of the clock, if `rst_n` is asserted (logic 1), the input `a` should be shifted into the least significant bit (LSB) of the shift register `a_tem`, and the previous bits should shift left by one position.\n\n3. **Matching Logic**:\n   - The output `match` should be asserted (logic 1) whenever the value of ",
+            "transfer_summary": {
+              "changed_lines": [
+                "-\t\telse if (a_tem == 8'b01110000)",
+                "+\t\telse if (a_tem == 8'b01110001)",
+                "-\t\t\tend",
+                "+\t\t\t\tend"
+              ],
+              "checks_on_transfer": [],
+              "scope": "Observed public success only; recheck applicability on a new task."
+            },
+            "validation": "public_pass_single_sample_hidden_unknown"
+          },
+          "created_round": 1,
+          "retrieval_terms": [
+            "a",
+            "a_tem",
+            "active",
+            "all",
+            "an",
+            "and",
+            "are",
+            "asserted",
+            "b0",
+            "b0111_0001",
+            "be",
+            "behavior",
+            "bit",
+            "bits",
+            "by",
+            "cleared",
+            "clk",
+            "clock",
+            "correctly",
+            "de",
+            "design",
+            "does",
+            "edge",
+            "ensure",
+            "every",
+            "following",
+            "functionality",
+            "i",
+            "if",
+            "implement",
+            "implements",
+            "in",
+            "input",
+            "interface",
+            "into",
+            "is",
+            "least",
+            "left",
+            "like",
+            "logic",
+            "lsb",
+            "match",
+            "matches",
+            "matching",
+            "module",
+            "most",
+            "must",
+            "named",
+            "negative",
+            "not",
+            "of",
+            "on",
+            "one",
+            "operate",
+            "otherwise",
+            "output",
+            "pattern",
+            "perform",
+            "ports",
+            "position",
+            "positive",
+            "previous",
+            "recent",
+            "register",
+            "remain",
+            "reset",
+            "retains",
+            "rst_n",
+            "set",
+            "shift",
+            "shifted",
+            "shifts",
+            "should",
+            "significant",
+            "specific",
+            "specified",
+            "synchronously",
+            "that",
+            "the",
+            "this",
+            "to",
+            "topmodule",
+            "unless",
+            "use",
+            "value",
+            "when",
+            "whenever",
+            "with",
+            "would",
+            "you"
+          ],
+          "source": {
+            "archive_hash": "sha256:b94a4471e52ca8178a85e0266ce127e896cff05e61fdff79570f7fd1c3d0e37a",
+            "candidate_hash": "sha256:7cd85b6e0f43bfadf702802ff2f4937afc9ef47361302be85ddf75a41cd67bb0",
+            "carrier_id": "chipbench_Prob001_fixed_hard_questions",
+            "encounter_hash": "sha256:aab33ce194344fa0f036ec9fd5b6d03fc5d960ac36b0d44c46b5d5d010241350",
+            "mutant_hash": "sha256:b069366b4255f82d0aea3cad33a3a7f507ccdffa0bf3fe67bbac6cbee8303f02",
+            "public_replay_hash": "sha256:1be3a2b83e2274cc876bf82ed6c72fea129710b19d520d8fd55d1ab4f3c9a9f2",
+            "round": 1,
+            "run_id": "collection",
+            "slot_id": "r1_s0",
+            "task_hash": "sha256:18cf7b5fbfbadad5716a2dc4058a221960bd96f468b3d107a21554dd5c4facc8"
+          },
+          "version": "continuous_repair_episode_v2"
+        },
+        "entry_hash": "sha256:3c3291ddac152484d9375dab7b8fce587fc2444f0903eab6fd6081ab1e1e8fae"
+      }
+    ],
+    "learning_policy_hash": "sha256:6941173bb663782fd5e9a9dc8dd9811bda8f77182f32f35079d6fe9052c82f2e",
+    "parent_snapshot_hash": "sha256:fdd897322465c2cd6582a67b731e403e8797bc762d0b49ff7039e0efc72ed957",
+    "retrieval_policy_hash": "sha256:8b114d1dc640c0d8851c3796a1d6ed4e3bc9b65406c7341475b69b3d8568e26f",
+    "snapshot_id": "B_1",
+    "state_hash": "sha256:7555616789e398750f544f7c9a64293b90978bb71c40665f8134d4d188484ffd",
+    "version": "continuous_blue_snapshot_v1"
+  },
+  "parent_commit_hash": "sha256:c952d5efd067702ad1ef06ba30b8422a5f6fdab2489a0f079049486089182fd1",
+  "promotion_hash": "sha256:3cb2483003f14895114ba8aa84ec23fa08b61f40678b77c592d4623972c0b284",
+  "red": {
+    "observations": [
+      {
+        "blue_patch": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -12,7 +12,7 @@\n \t\t\tbegin \n \t\t\t\tmatch <= 1'b0;\n \t\t\tend\n-\t\telse if (a_tem == 8'b01110000)\n+\t\telse if (a_tem == 8'b01110001)\n \t\t\tbegin\n \t\t\t\tmatch <= 1'b1;\n \t\t\tend\n@@ -25,7 +25,7 @@\n \t\tif (!rst_n)\n \t\t\tbegin \n \t\t\t\ta_tem <= 8'b0;\n-\t\t\tend\n+\t\t\t\tend\n \t\telse \n \t\t\tbegin\n \t\t\t\ta_tem <= {a_tem[6:0],a};\n",
+        "carrier_id": "chipbench_Prob001_fixed_hard_questions",
+        "label": "public_pass_single_sample_hidden_unknown",
+        "mutant_hash": "sha256:b069366b4255f82d0aea3cad33a3a7f507ccdffa0bf3fe67bbac6cbee8303f02",
+        "mutation_edits": [
+          {
+            "find": "else if (a_tem == 8'b0111_0001)",
+            "replace": "else if (a_tem == 8'b01110000)"
+          }
+        ],
+        "public_evidence": "{\"suites\": {\"W_bug\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"TESTBENCH PASS sequence\"}, \"W_preserve\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"TESTBENCH PASS preserve\"}}}",
+        "public_rows": {
+          "W_bug": "visible_pass",
+          "W_preserve": "visible_pass"
+        },
+        "round": 1,
+        "slot_id": "r1_s0",
+        "source_hash": "sha256:aab33ce194344fa0f036ec9fd5b6d03fc5d960ac36b0d44c46b5d5d010241350",
+        "target_snapshot_hash": "sha256:fdd897322465c2cd6582a67b731e403e8797bc762d0b49ff7039e0efc72ed957"
+      }
+    ],
+    "round": 1
+  },
+  "round": 1,
+  "update_decisions": [
+    {
+      "entry_hash": "sha256:3c3291ddac152484d9375dab7b8fce587fc2444f0903eab6fd6081ab1e1e8fae",
+      "reason": "accepted"
+    },
+    {
+      "accepted": true,
+      "promotion": "strict_gain_no_regression"
+    }
+  ]
+}

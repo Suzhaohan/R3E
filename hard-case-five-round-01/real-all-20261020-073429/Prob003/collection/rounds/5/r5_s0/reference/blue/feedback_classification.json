@@ -1,0 +1,46 @@
+{
+ "summary": {
+  "task_id": "chipbench_prob003_group_boundary_v1__13985c16513bc5d0",
+  "encounters": 1,
+  "categories": {
+   "public_functional_failure": 1
+  },
+  "functional_failure_candidates": 1,
+  "pending_review": 1,
+  "reviewed_functional_failures": 0,
+  "original_defect_persists": 1,
+  "new_regression": 0,
+  "mechanism_907_exploratory": 0
+ },
+ "encounters": [
+  {
+   "encounter": 0,
+   "endpoint_candidate": "sha256:ada8250d8741e02dd4d40373a5c25aadc8ef6415bc905a1e62f30ee7d507f738",
+   "endpoint_public": {
+    "tier": "visible_fail",
+    "suites": {
+     "W_bug": {
+      "result": "visible_fail",
+      "checker_violation": true,
+      "failures": [
+       "CHECK_FAIL W_bug cycle=18 group=100011 bit=0 match=1 not_match=0"
+      ]
+     },
+     "W_preserve": {
+      "result": "visible_pass",
+      "checker_violation": false,
+      "failures": []
+     }
+    }
+   },
+   "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -60,7 +60,7 @@\n         sf4:\n             nstate=sf5;\n         sf5:\n-            nstate=s6;\n+            nstate=data?s6:sf6;\n         sf6:\n \t\t\tnstate=data?sf1:s1;\n         default:\n",
+   "category": "public_functional_failure",
+   "original_defect_persists": true,
+   "new_regression": false,
+   "functional_failure_candidate": true,
+   "review": {
+    "decision": "PENDING"
+   }
+  }
+ ]
+}

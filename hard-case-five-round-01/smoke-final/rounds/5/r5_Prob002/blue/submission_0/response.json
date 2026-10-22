@@ -1,0 +1,24 @@
+{
+  "input_tokens": 100,
+  "output_tokens": 40,
+  "raw_response_hash": "sha256:bdfd6be73072b454359779823c61ae1c72f5cd1c761a22fd43f1eca2209d507e",
+  "request_hash": "sha256:328fda4260b325b4f2037b118db9f9ed7dfb663de9f64c631fba68691f34dbe5",
+  "response_diagnostics": {
+    "content_state": "nonempty_content",
+    "finish_reason": "missing",
+    "input_tokens": 100,
+    "output_tokens": 40,
+    "provider_request_id_present": true,
+    "refusal_present": false,
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+  },
+  "result": {
+    "edit": "offline fixture only",
+    "files": [
+      {
+        "content": "module TopModule(\n\tinput clk,\n\tinput rst_n,\n\tinput a,\n\toutput match\n\t);\n\n\treg [8:0] a_tem;\n\treg match_f;\n\treg match_b;\n\t\n\talways @(posedge clk or negedge rst_n)\n\t\tif (!rst_n)\n\t\t\tbegin \n\t\t\t\tmatch_f <= 1'b0;\n\t\t\tend\n\t\telse if (a_tem[8:6] == 3'b011)\n\t\t\tbegin\n\t\t\t\tmatch_f <= 1'b1;\n\t\t\tend\n\t\telse \n\t\t\tbegin\t\n\t\t\t\tmatch_f <= 1'b0;\n\t\t\tend\n\n\talways @(posedge clk or negedge rst_n)\n\t\tif (!rst_n)\n\t\t\tbegin \n\t\t\t\tmatch_b <= 1'b0;\n\t\t\tend\n\t\telse if (a_tem[2:0] == 3'b110)\n\t\t\tbegin\n\t\t\t\tmatch_b <= 1'b1;\n\t\t\tend\n\t\telse \n\t\t\tbegin\t\n\t\t\t\tmatch_b <= 1'b0;\n\t\t\tend\n\t\t\t\n\talways @(posedge clk or negedge rst_n)\n\t\tif (!rst_n)\n\t\t\tbegin \n\t\t\t\ta_tem <= 9'b0;\n\t\t\tend\n\t\telse \n\t\t\tbegin\n\t\t\t\ta_tem <= {a_tem[7:0],a};\n\t\t\tend\n\t\t\t\n\tassign match = match_b && match_f;\nendmodule",
+        "file": "rtl/design.sv"
+      }
+    ]
+  }
+}

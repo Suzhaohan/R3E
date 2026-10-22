@@ -1,0 +1,931 @@
+{
+  "attempts": 2,
+  "first": {
+    "answer_form": "full",
+    "candidate_hash": "sha256:bc9da6eb29f3b4ed9a87ae23183e7fa1323c9f749fb6ea5402212ee309a270dd",
+    "candidate_id": "C_042e13711281_0",
+    "command_hash": "sha256:4677c440c905d4072e0483f1337f50c1bef827b474d433485b8a52638e404ca9",
+    "edit": "Replaced the FSM with a separate accumulation register and dedicated dispense/change states. Money is accumulated in 0.5-yuan units, and dispensing occurs one cycle after sufficient funds. Change is dispensed as multiple 0.5-yuan pulses via out3 over consecutive cycles.",
+    "edit_class": "missing_or_extra_logic",
+    "feedback": {
+      "cycles_compared": 181,
+      "first_divergences": [
+        {
+          "expected": "1",
+          "first_cycle": 58,
+          "observed": "0",
+          "pattern": "stuck_value",
+          "signal": "out2"
+        },
+        {
+          "expected": "0",
+          "first_cycle": 62,
+          "observed": "1",
+          "pattern": "variable_offset",
+          "signal": "out1"
+        },
+        {
+          "expected": "0",
+          "first_cycle": 62,
+          "observed": "1",
+          "pattern": "variable_offset",
+          "signal": "out3"
+        }
+      ],
+      "passing_outputs": [],
+      "stage": "functional"
+    },
+    "hidden": "not_available",
+    "index": 0,
+    "memory_offered": false,
+    "phase": "confirmation",
+    "seconds": 145.24,
+    "tokens": {
+      "input": 2449,
+      "output": 26894
+    },
+    "verdict_tier": "visible_fail",
+    "window": {
+      "cycles_compared": 91,
+      "inputs_logged": true,
+      "rows": [
+        {
+          "cycle": 28,
+          "edge": "rising",
+          "inputs": {
+            "d1": "0",
+            "d2": "1",
+            "rst": "1",
+            "sel": "1"
+          },
+          "outputs": {
+            "out1": {
+              "expected": "0",
+              "observed": "0",
+              "ok": true
+            },
+            "out2": {
+              "expected": "0",
+              "observed": "0",
+              "ok": true
+            },
+            "out3": {
+              "expected": "0",
+              "observed": "0",
+              "ok": true
+            }
+          }
+        },
+        {
+          "cycle": 28,
+          "edge": "falling",
+          "inputs": {
+            "d1": "0",
+            "d2": "1",
+            "rst": "1",
+            "sel": "1"
+          },
+          "outputs": {
+            "out1": {
+              "expected": "0",
+              "observed": "0",
+              "ok": true
+            },
+            "out2": {
+              "expected": "0",
+              "observed": "0",
+              "ok": true
+            },
+            "out3": {
+              "expected": "0",
+              "observed": "0",
+              "ok": true
+            }
+          }
+        },
+        {
+          "cycle": 29,
+          "edge": "rising",
+          "inputs": {
+            "d1": "0",
+            "d2": "0",
+            "rst": "1",
+            "sel": "1"
+          },
+          "outputs": {
+            "out1": {
+              "expected": "0",
+              "observed": "0",
+              "ok": true
+            },
+            "out2": {
+              "expected": "1",
+              "observed": "0",
+              "ok": false
+            },
+            "out3": {
+              "expected": "0",
+              "observed": "0",
+              "ok": true
+            }
+          }
+        },
+        {
+          "cycle": 29,
+          "edge": "falling",
+          "inputs": {
+            "d1": "0",
+            "d2": "0",
+            "rst": "1",
+            "sel": "1"
+          },
+          "outputs": {
+            "out1": {
+              "expected": "0",
+              "observed": "0",
+              "ok": true
+            },
+            "out2": {
+              "expected": "1",
+              "observed": "0",
+              "ok": false
+            },
+            "out3": {
+              "expected": "0",
+              "observed": "0",
+              "ok": true
+            }
+          }
+        },
+        {
+          "cycle": 30,
+          "edge": "rising",
+          "inputs": {
+            "d1": "0",
+            "d2": "0",
+            "rst": "1",
+            "sel": "0"
+          },
+          "outputs": {
+            "out1": {
+              "expected": "0",
+              "observed": "0",
+              "ok": true
+            },
+            "out2": {
+              "expected": "0",
+              "observed": "0",
+              "ok": true
+            },
+            "out3": {
+              "expected": "0",
+              "observed": "0",
+              "ok": true
+            }
+          }
+        },
+        {
+          "cycle": 30,
+          "edge": "falling",
+          "inputs": {
+            "d1": "0",
+            "d2": "0",
+            "rst": "1",
+            "sel": "0"
+          },
+          "outputs": {
+            "out1": {
+              "expected": "0",
+              "observed": "0",
+              "ok": true
+            },
+            "out2": {
+              "expected": "0",
+              "observed": "0",
+              "ok": true
+            },
+            "out3": {
+              "expected": "0",
+              "observed": "0",
+              "ok": true
+            }
+          }
+        },
+        {
+          "cycle": 31,
+          "edge": "rising",
+          "inputs": {
+            "d1": "0",
+            "d2": "0",
+            "rst": "1",
+            "sel": "0"
+          },
+          "outputs": {
+            "out1": {
+              "expected": "0",
+              "observed": "1",
+              "ok": false
+            },
+            "out2": {
+              "expected": "0",
+              "observed": "0",
+              "ok": true
+            },
+            "out3": {
+              "expected": "0",
+              "observed": "1",
+              "ok": false
+            }
+          }
+        },
+        {
+          "cycle": 31,
+          "edge": "falling",
+          "inputs": {
+            "d1": "0",
+            "d2": "0",
+            "rst": "1",
+            "sel": "0"
+          },
+          "outputs": {
+            "out1": {
+              "expected": "0",
+              "observed": "1",
+              "ok": false
+            },
+            "out2": {
+              "expected": "0",
+              "observed": "0",
+              "ok": true
+            },
+            "out3": {
+              "expected": "0",
+              "observed": "1",
+              "ok": false
+            }
+          }
+        },
+        {
+          "cycle": 32,
+          "edge": "rising",
+          "inputs": {
+            "d1": "0",
+            "d2": "1",
+            "rst": "1",
+            "sel": "0"
+          },
+          "outputs": {
+            "out1": {
+              "expected": "0",
+              "observed": "0",
+              "ok": true
+            },
+            "out2": {
+              "expected": "0",
+              "observed": "0",
+              "ok": true
+            },
+            "out3": {
+              "expected": "0",
+              "observed": "0",
+              "ok": true
+            }
+          }
+        },
+        {
+          "cycle": 32,
+          "edge": "falling",
+          "inputs": {
+            "d1": "0",
+            "d2": "1",
+            "rst": "1",
+            "sel": "0"
+          },
+          "outputs": {
+            "out1": {
+              "expected": "0",
+              "observed": "0",
+              "ok": true
+            },
+            "out2": {
+              "expected": "0",
+              "observed": "0",
+              "ok": true
+            },
+            "out3": {
+              "expected": "0",
+              "observed": "0",
+              "ok": true
+            }
+          }
+        },
+        {
+          "cycle": 33,
+          "edge": "rising",
+          "inputs": {
+            "d1": "0",
+            "d2": "0",
+            "rst": "1",
+            "sel": "0"
+          },
+          "outputs": {
+            "out1": {
+              "expected": "0",
+              "observed": "0",
+              "ok": true
+            },
+            "out2": {
+              "expected": "0",
+              "observed": "0",
+              "ok": true
+            },
+            "out3": {
+              "expected": "0",
+              "observed": "0",
+              "ok": true
+            }
+          }
+        },
+        {
+          "cycle": 33,
+          "edge": "falling",
+          "inputs": {
+            "d1": "0",
+            "d2": "0",
+            "rst": "1",
+            "sel": "0"
+          },
+          "outputs": {
+            "out1": {
+              "expected": "0",
+              "observed": "0",
+              "ok": true
+            },
+            "out2": {
+              "expected": "0",
+              "observed": "0",
+              "ok": true
+            },
+            "out3": {
+              "expected": "0",
+              "observed": "0",
+              "ok": true
+            }
+          }
+        }
+      ],
+      "sampling": "two samples per clock cycle (after the rising and after the falling edge of clk); 181 samples",
+      "stimulus_notes": [
+        "Inputs sampled after NBA on both tb.clk edges, row-aligned with trace_visible.txt; clocks and resets included"
+      ],
+      "wrong_cycles": {
+        "out1": {
+          "count": 17,
+          "first_cycles": [
+            31,
+            35,
+            37,
+            44,
+            45,
+            48,
+            54,
+            62
+          ]
+        },
+        "out2": {
+          "count": 6,
+          "first_cycles": [
+            29,
+            42,
+            52,
+            58,
+            69,
+            88
+          ]
+        },
+        "out3": {
+          "count": 30,
+          "first_cycles": [
+            31,
+            35,
+            37,
+            44,
+            45,
+            54,
+            58,
+            64
+          ]
+        }
+      }
+    }
+  },
+  "inconclusive": false,
+  "record": {
+    "accounting": {
+      "fixed": true,
+      "fixed_at_attempt": 2,
+      "fixed_by_escalation": false,
+      "input_tokens": 6205,
+      "llm_calls": 2,
+      "memory_delivered": false,
+      "memory_items": [],
+      "memory_offered_from_attempt": null,
+      "model_seconds": 201.12,
+      "output_tokens": 37293,
+      "provider_failures": 0,
+      "repair_attempts": 2
+    },
+    "attempts": [
+      {
+        "answer_form": "full",
+        "candidate_hash": "sha256:bc9da6eb29f3b4ed9a87ae23183e7fa1323c9f749fb6ea5402212ee309a270dd",
+        "candidate_id": "C_042e13711281_0",
+        "command_hash": "sha256:4677c440c905d4072e0483f1337f50c1bef827b474d433485b8a52638e404ca9",
+        "edit": "Replaced the FSM with a separate accumulation register and dedicated dispense/change states. Money is accumulated in 0.5-yuan units, and dispensing occurs one cycle after sufficient funds. Change is dispensed as multiple 0.5-yuan pulses via out3 over consecutive cycles.",
+        "edit_class": "missing_or_extra_logic",
+        "feedback": {
+          "cycles_compared": 181,
+          "first_divergences": [
+            {
+              "expected": "1",
+              "first_cycle": 58,
+              "observed": "0",
+              "pattern": "stuck_value",
+              "signal": "out2"
+            },
+            {
+              "expected": "0",
+              "first_cycle": 62,
+              "observed": "1",
+              "pattern": "variable_offset",
+              "signal": "out1"
+            },
+            {
+              "expected": "0",
+              "first_cycle": 62,
+              "observed": "1",
+              "pattern": "variable_offset",
+              "signal": "out3"
+            }
+          ],
+          "passing_outputs": [],
+          "stage": "functional"
+        },
+        "hidden": "not_available",
+        "index": 0,
+        "memory_offered": false,
+        "phase": "confirmation",
+        "seconds": 145.24,
+        "tokens": {
+          "input": 2449,
+          "output": 26894
+        },
+        "verdict_tier": "visible_fail",
+        "window": {
+          "cycles_compared": 91,
+          "inputs_logged": true,
+          "rows": [
+            {
+              "cycle": 28,
+              "edge": "rising",
+              "inputs": {
+                "d1": "0",
+                "d2": "1",
+                "rst": "1",
+                "sel": "1"
+              },
+              "outputs": {
+                "out1": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                },
+                "out2": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                },
+                "out3": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                }
+              }
+            },
+            {
+              "cycle": 28,
+              "edge": "falling",
+              "inputs": {
+                "d1": "0",
+                "d2": "1",
+                "rst": "1",
+                "sel": "1"
+              },
+              "outputs": {
+                "out1": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                },
+                "out2": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                },
+                "out3": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                }
+              }
+            },
+            {
+              "cycle": 29,
+              "edge": "rising",
+              "inputs": {
+                "d1": "0",
+                "d2": "0",
+                "rst": "1",
+                "sel": "1"
+              },
+              "outputs": {
+                "out1": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                },
+                "out2": {
+                  "expected": "1",
+                  "observed": "0",
+                  "ok": false
+                },
+                "out3": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                }
+              }
+            },
+            {
+              "cycle": 29,
+              "edge": "falling",
+              "inputs": {
+                "d1": "0",
+                "d2": "0",
+                "rst": "1",
+                "sel": "1"
+              },
+              "outputs": {
+                "out1": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                },
+                "out2": {
+                  "expected": "1",
+                  "observed": "0",
+                  "ok": false
+                },
+                "out3": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                }
+              }
+            },
+            {
+              "cycle": 30,
+              "edge": "rising",
+              "inputs": {
+                "d1": "0",
+                "d2": "0",
+                "rst": "1",
+                "sel": "0"
+              },
+              "outputs": {
+                "out1": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                },
+                "out2": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                },
+                "out3": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                }
+              }
+            },
+            {
+              "cycle": 30,
+              "edge": "falling",
+              "inputs": {
+                "d1": "0",
+                "d2": "0",
+                "rst": "1",
+                "sel": "0"
+              },
+              "outputs": {
+                "out1": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                },
+                "out2": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                },
+                "out3": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                }
+              }
+            },
+            {
+              "cycle": 31,
+              "edge": "rising",
+              "inputs": {
+                "d1": "0",
+                "d2": "0",
+                "rst": "1",
+                "sel": "0"
+              },
+              "outputs": {
+                "out1": {
+                  "expected": "0",
+                  "observed": "1",
+                  "ok": false
+                },
+                "out2": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                },
+                "out3": {
+                  "expected": "0",
+                  "observed": "1",
+                  "ok": false
+                }
+              }
+            },
+            {
+              "cycle": 31,
+              "edge": "falling",
+              "inputs": {
+                "d1": "0",
+                "d2": "0",
+                "rst": "1",
+                "sel": "0"
+              },
+              "outputs": {
+                "out1": {
+                  "expected": "0",
+                  "observed": "1",
+                  "ok": false
+                },
+                "out2": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                },
+                "out3": {
+                  "expected": "0",
+                  "observed": "1",
+                  "ok": false
+                }
+              }
+            },
+            {
+              "cycle": 32,
+              "edge": "rising",
+              "inputs": {
+                "d1": "0",
+                "d2": "1",
+                "rst": "1",
+                "sel": "0"
+              },
+              "outputs": {
+                "out1": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                },
+                "out2": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                },
+                "out3": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                }
+              }
+            },
+            {
+              "cycle": 32,
+              "edge": "falling",
+              "inputs": {
+                "d1": "0",
+                "d2": "1",
+                "rst": "1",
+                "sel": "0"
+              },
+              "outputs": {
+                "out1": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                },
+                "out2": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                },
+                "out3": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                }
+              }
+            },
+            {
+              "cycle": 33,
+              "edge": "rising",
+              "inputs": {
+                "d1": "0",
+                "d2": "0",
+                "rst": "1",
+                "sel": "0"
+              },
+              "outputs": {
+                "out1": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                },
+                "out2": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                },
+                "out3": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                }
+              }
+            },
+            {
+              "cycle": 33,
+              "edge": "falling",
+              "inputs": {
+                "d1": "0",
+                "d2": "0",
+                "rst": "1",
+                "sel": "0"
+              },
+              "outputs": {
+                "out1": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                },
+                "out2": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                },
+                "out3": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                }
+              }
+            }
+          ],
+          "sampling": "two samples per clock cycle (after the rising and after the falling edge of clk); 181 samples",
+          "stimulus_notes": [
+            "Inputs sampled after NBA on both tb.clk edges, row-aligned with trace_visible.txt; clocks and resets included"
+          ],
+          "wrong_cycles": {
+            "out1": {
+              "count": 17,
+              "first_cycles": [
+                31,
+                35,
+                37,
+                44,
+                45,
+                48,
+                54,
+                62
+              ]
+            },
+            "out2": {
+              "count": 6,
+              "first_cycles": [
+                29,
+                42,
+                52,
+                58,
+                69,
+                88
+              ]
+            },
+            "out3": {
+              "count": 30,
+              "first_cycles": [
+                31,
+                35,
+                37,
+                44,
+                45,
+                54,
+                58,
+                64
+              ]
+            }
+          }
+        }
+      },
+      {
+        "answer_form": "full",
+        "candidate_hash": "sha256:f18bfbfb49cb99d5f4a59968039ee4fb5392741ff464297bae390a538e5b08a0",
+        "candidate_id": "C_10e51f446fcc_1",
+        "command_hash": "sha256:5a2d9b1da9be3560fa492e7ffe8a9d74f0f4f40e55f9d71bad1e8d24fb1220a9",
+        "edit": "Corrected two next-state transitions: S1 with d2 now goes to S2 instead of S3, and S1_5 with d2 now goes to S2_5 instead of S1.",
+        "feedback": {
+          "cycles_compared": 181,
+          "first_divergences": [],
+          "passing_outputs": [
+            "out1",
+            "out2",
+            "out3"
+          ],
+          "stage": "functional"
+        },
+        "hidden": "not_available",
+        "index": 1,
+        "memory_offered": false,
+        "phase": "confirmation",
+        "seconds": 55.88,
+        "tokens": {
+          "input": 3756,
+          "output": 10399
+        },
+        "verdict_tier": "visible_pass",
+        "window": {}
+      }
+    ],
+    "bundle_hash": "sha256:2e79645999833ded428a6a127880321a0301fc52566683d447bcd58e4877ef23",
+    "challenge_id": "chipbench:state_machine:Prob015_vending_machine2",
+    "deliveries": [
+      {
+        "bundle_hash": "sha256:2e79645999833ded428a6a127880321a0301fc52566683d447bcd58e4877ef23",
+        "injected": false,
+        "mode": "none",
+        "request_hash": "sha256:d3ff97d9e5215f6fe0571cc77a5f223748a0aa7666accb0af53255989757cdc6"
+      }
+    ],
+    "episode_hash": "sha256:653af1d05ca1de16e72208b46dc25eca0b969079d259359d4edae565440acc46",
+    "inconclusive": false,
+    "infra_failures": 0,
+    "matches": [],
+    "mode": "none",
+    "profile": {
+      "causal": {
+        "cone_has_control_dependency": true,
+        "cone_has_counter": true,
+        "cone_has_reset_logic": true,
+        "cone_has_state_machine": true,
+        "cone_size_bucket": "medium",
+        "output_driver_kind": "combinational",
+        "register_distance": "1",
+        "temporal_relation": "no_progress"
+      },
+      "schema_version": "r3e-observable-profile-v1",
+      "status": {
+        "delta_bucket": "-1",
+        "failing_output_bucket": "2-3",
+        "onset_bucket": "late",
+        "oracle_stage": "functional",
+        "output_width_bucket": "1bit",
+        "partial_failure": false,
+        "symptom": "stuck_value",
+        "x_involved": false
+      }
+    },
+    "retrieved_items": [],
+    "shown_items": [],
+    "solved_by_escalation": false,
+    "solved_within_budget": true
+  },
+  "solved": true
+}

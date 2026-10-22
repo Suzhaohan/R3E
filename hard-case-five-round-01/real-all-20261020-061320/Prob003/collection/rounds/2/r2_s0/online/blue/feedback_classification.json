@@ -1,0 +1,46 @@
+{
+ "summary": {
+  "task_id": "chipbench_prob003_group_boundary_v1__8bc7eda7e1f31710",
+  "encounters": 1,
+  "categories": {
+   "public_functional_failure": 1
+  },
+  "functional_failure_candidates": 1,
+  "pending_review": 1,
+  "reviewed_functional_failures": 0,
+  "original_defect_persists": 1,
+  "new_regression": 0,
+  "mechanism_907_exploratory": 0
+ },
+ "encounters": [
+  {
+   "encounter": 0,
+   "endpoint_candidate": "sha256:00e7de8c756b6c3b53fbab70f332f29e45a9003e11a66c45e324d43987f8883a",
+   "endpoint_public": {
+    "tier": "visible_fail",
+    "suites": {
+     "W_bug": {
+      "result": "visible_fail",
+      "checker_violation": true,
+      "failures": [
+       "CHECK_FAIL W_bug cycle=6 group=011100 bit=0 match=0 not_match=1"
+      ]
+     },
+     "W_preserve": {
+      "result": "visible_pass",
+      "checker_violation": false,
+      "failures": []
+     }
+    }
+   },
+   "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -5,7 +5,6 @@\n \toutput reg match,\n \toutput reg not_match\n \t);\n-\n \n reg [3:0] pstate,nstate;\n \n@@ -70,7 +69,7 @@\n \n always @(pstate or data or rst_n)\n begin\n-    if(!rst_n==1) \n+    if(!rst_n) \n \t\tbegin\n \t\t\tmatch=1'b0;\n \t\t\tnot_match = 1'b0;\n",
+   "category": "public_functional_failure",
+   "original_defect_persists": true,
+   "new_regression": false,
+   "functional_failure_candidate": true,
+   "review": {
+    "decision": "PENDING"
+   }
+  }
+ ]
+}

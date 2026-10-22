@@ -1,0 +1,153 @@
+{
+  "source": {
+    "run_id": "collection",
+    "round": 2,
+    "slot_id": "r2_s0",
+    "task_hash": "sha256:7571afbd094db5b2fa00a0420ef4144526ff87f5b5fc29435fd4fd780538dea5",
+    "carrier_id": "chipbench_Prob023_gray_counter",
+    "mutant_hash": "sha256:6b368b9f57bef2e92efe868ea33c1599adf328116a5ba3f399bd2a9251cbe368",
+    "candidate_hash": "sha256:b178e1846b90422bb3bb49bdd3c64b0e26eedfb777300bc9a16b148b213dd84e",
+    "encounter_hash": "sha256:020d895ddbbf49713638f8b8c328641f6a0c6881a54f569371815e53e34453f3",
+    "archive_hash": "sha256:f05d9f60c67b597bd16336defa7d7f81e5e003a2d7d293ff09bfd19f5f596939",
+    "public_replay_hash": "sha256:3aebf9a40f735834d09a213864bf1d857bed2a8a0d0cb3835db8eca194cc0050"
+  },
+  "encounter": {
+    "encounter": 0,
+    "seed": 1248742431038810,
+    "result": {
+      "task_id": "chipbench_Prob023_gray_counter__6b368b9f57bef2e9",
+      "route": "direct",
+      "rtl_tokens": 342,
+      "closure": [
+        "rtl/sequence.sv",
+        "harness:W_bug_tb.sv",
+        "harness:W_preserve_tb.sv"
+      ],
+      "outcome": "not_fixed",
+      "attempts": [
+        {
+          "attempt": 0,
+          "route": "direct",
+          "submissions": [
+            {
+              "kind": "repair",
+              "tokens": {
+                "input": 1801,
+                "output": 453,
+                "counted_request": 1849,
+                "model_seconds": 11.27
+              },
+              "format_valid": true,
+              "format_error": null
+            }
+          ],
+          "repair_tokens": {
+            "input": 1801,
+            "output": 453,
+            "counted_request": 1849,
+            "model_seconds": 11.27
+          },
+          "edit": "Fixed Gray-to-binary conversion by using nonblocking assignments and correcting the first bit (bin_out[3]) to use gray_wire[3] instead of gray_wire[2] to properly decode the Gray code input.",
+          "candidate_hash": "sha256:bf509115cc04d37b65d59f179792d9b28804015ea483cf9161c9a1fe707d4772",
+          "tier": "visible_fail",
+          "stage": "simulation",
+          "build_seconds": 0.02,
+          "sim_seconds": 0.01,
+          "changed_files": [
+            "rtl/sequence.sv"
+          ]
+        },
+        {
+          "attempt": 1,
+          "route": "direct",
+          "submissions": [
+            {
+              "kind": "public_feedback_correction",
+              "tokens": {
+                "input": 2061,
+                "output": 474,
+                "counted_request": 2110,
+                "model_seconds": 20.31
+              },
+              "format_valid": true,
+              "format_error": null
+            }
+          ],
+          "repair_tokens": {
+            "input": 2061,
+            "output": 474,
+            "counted_request": 2110,
+            "model_seconds": 20.31
+          },
+          "edit": "Added toggle signal to ensure counter increments every two clock cycles as specified, while preserving the correct Gray code sequence and maintaining all other functionality including reset behavior.",
+          "candidate_hash": "sha256:b178e1846b90422bb3bb49bdd3c64b0e26eedfb777300bc9a16b148b213dd84e",
+          "tier": "visible_fail",
+          "stage": "simulation",
+          "build_seconds": 0.02,
+          "sim_seconds": 0.01,
+          "changed_files": [
+            "rtl/sequence.sv"
+          ]
+        }
+      ],
+      "calls": 2,
+      "final_candidate_hash": "sha256:b178e1846b90422bb3bb49bdd3c64b0e26eedfb777300bc9a16b148b213dd84e",
+      "inputs_read": [
+        "public/task.json",
+        "public/visible/build.json",
+        "public/visible/W_bug_tb.sv",
+        "public/visible/W_preserve_tb.sv",
+        "public/spec.txt"
+      ],
+      "experience": {
+        "snapshot_id": "B_1",
+        "snapshot_hash": "sha256:4c4635cd8b49bd6dceabce3cb778d834310a8e573f54241674002e5a1825f54e",
+        "state_hash": "sha256:442d94b205c17d4aca36d03eb212da18bfff1beb6460ee65b8e2eb0540486de1",
+        "payload_hash": "sha256:3092f0d7fc08feac058171dbed616bb7c60daa43691d7b6d28875d3225d9b061",
+        "delivery_hash": "sha256:0cdefe9315c8b90a4f7ad8eaa34f8cdef2595d7bed6fbfce2621399e0ae8fcbb",
+        "delivered": false
+      }
+    }
+  },
+  "archive_path": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/real-all-20261019-052956/Prob023/collection/rounds/2/r2_s0/online/blue/archive/chipbench_Prob023_gray_counter__6b368b9f57bef2e9__b178e1846b90422b.json",
+  "task_dir": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/real-all-20261019-052956/Prob023/collection/rounds/2/r2_s0/admission/blue_task",
+  "replay": {
+    "tier": "visible_fail",
+    "stage": "simulation",
+    "evidence": {
+      "suites": {
+        "W_bug": {
+          "result": "visible_fail",
+          "returncode": 0,
+          "pass_marker_found": false,
+          "fail_marker_found": true,
+          "log": "CHECK_FAIL gray cycle=1 got=0000 expected=0001"
+        },
+        "W_preserve": {
+          "result": "visible_pass",
+          "returncode": 0,
+          "pass_marker_found": true,
+          "fail_marker_found": false,
+          "log": "TESTBENCH PASS gray preserve"
+        }
+      }
+    },
+    "build_seconds": 0.020690319128334522,
+    "sim_seconds": 0.010144938714802265,
+    "closure": [
+      "rtl/sequence.sv",
+      "harness:W_bug_tb.sv",
+      "harness:W_preserve_tb.sv"
+    ]
+  },
+  "public_rows": {
+    "W_bug": "visible_fail",
+    "W_preserve": "visible_pass"
+  },
+  "mutation_edits": [
+    {
+      "find": "bin_out[3] = gray_wire[3];",
+      "replace": "bin_out[3] = gray_wire[2];"
+    }
+  ]
+}

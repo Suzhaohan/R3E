@@ -1,0 +1,121 @@
+{
+  "source": {
+    "run_id": "collection",
+    "round": 5,
+    "slot_id": "r5_s0",
+    "task_hash": "sha256:1553b4f74a012bbd6bf1a7ff7555cacd5891e9ae34dcb0f88603a531e64bd3c3",
+    "carrier_id": "chipbench_prob003_group_boundary_v1",
+    "mutant_hash": "sha256:79cf491d0c87a5b2e1d629af23012038413f095d1e04150d435dd30206b0cea9",
+    "candidate_hash": "sha256:d8a88dfd3be6bbfa25159be4764f0e673ea3e8e8d5734331bcdd0afffbe3aa15",
+    "encounter_hash": "sha256:e71f236b2163746e35eca4efe7e8928f57cc39ae6a6796ac44675e8bc8c7bac4",
+    "archive_hash": "sha256:aa7c36509f0c1f1592a37c41ca566d824b0d747ab91cf9052b59520b341fecfa",
+    "public_replay_hash": "sha256:837b71f6dbb1fbe9eef68937c5238232fa39352a592d6b3e3f772ceafb8b6d44"
+  },
+  "encounter": {
+    "encounter": 0,
+    "seed": 2066499499556930,
+    "result": {
+      "task_id": "chipbench_prob003_group_boundary_v1__79cf491d0c87a5b2",
+      "route": "direct",
+      "rtl_tokens": 543,
+      "closure": [
+        "rtl/sequence.sv",
+        "harness:W_bug_tb.sv",
+        "harness:W_preserve_tb.sv"
+      ],
+      "outcome": "not_fixed",
+      "attempts": [
+        {
+          "attempt": 0,
+          "route": "direct",
+          "submissions": [
+            {
+              "kind": "repair",
+              "tokens": {
+                "input": 2981,
+                "output": 714,
+                "counted_request": 3029,
+                "model_seconds": 20.42
+              },
+              "format_valid": true,
+              "format_error": null
+            }
+          ],
+          "repair_tokens": {
+            "input": 2981,
+            "output": 714,
+            "counted_request": 3029,
+            "model_seconds": 20.42
+          },
+          "edit": "Fixed state transition from s4 to correctly go to s5 when data is 1 (matching sequence 011100) instead of incorrectly going to sf5",
+          "candidate_hash": "sha256:d8a88dfd3be6bbfa25159be4764f0e673ea3e8e8d5734331bcdd0afffbe3aa15",
+          "tier": "visible_fail",
+          "stage": "simulation",
+          "build_seconds": 0.02,
+          "sim_seconds": 0.02,
+          "changed_files": [
+            "rtl/sequence.sv"
+          ]
+        }
+      ],
+      "calls": 1,
+      "final_candidate_hash": "sha256:d8a88dfd3be6bbfa25159be4764f0e673ea3e8e8d5734331bcdd0afffbe3aa15",
+      "inputs_read": [
+        "public/task.json",
+        "public/visible/build.json",
+        "public/visible/W_bug_tb.sv",
+        "public/visible/W_preserve_tb.sv",
+        "public/spec.txt"
+      ],
+      "experience": {
+        "snapshot_id": "B_4",
+        "snapshot_hash": "sha256:0b001d4fddbf1a141713a0ed8f48536f6362138f3b17f638f310cbf08aeacc3d",
+        "state_hash": "sha256:f0fd275ad4aa72f5dc0bcb1360774c2e439b66362306c74881f7336931916b2b",
+        "payload_hash": "sha256:3092f0d7fc08feac058171dbed616bb7c60daa43691d7b6d28875d3225d9b061",
+        "delivery_hash": "sha256:0ccc7e925df7c181c1c595ab3284f2b8da1d03bb2e10a022e6ab54f31e57f3c3",
+        "delivered": false
+      }
+    }
+  },
+  "archive_path": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/real-all-20261018-025711/Prob003/collection/rounds/5/r5_s0/online/blue/archive/chipbench_prob003_group_boundary_v1__79cf491d0c87a5b2__d8a88dfd3be6bbfa.json",
+  "task_dir": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/real-all-20261018-025711/Prob003/collection/rounds/5/r5_s0/admission_a1_c0/blue_task",
+  "replay": {
+    "tier": "visible_fail",
+    "stage": "simulation",
+    "evidence": {
+      "suites": {
+        "W_bug": {
+          "result": "visible_fail",
+          "returncode": 0,
+          "pass_marker_found": false,
+          "fail_marker_found": true,
+          "log": "CHECK_FAIL W_bug cycle=6 group=011100 bit=0 match=0 not_match=1"
+        },
+        "W_preserve": {
+          "result": "visible_pass",
+          "returncode": 0,
+          "pass_marker_found": true,
+          "fail_marker_found": false,
+          "log": "TESTBENCH PASS W_preserve reset exclusivity stability"
+        }
+      }
+    },
+    "build_seconds": 0.019933623261749744,
+    "sim_seconds": 0.012920915149152279,
+    "closure": [
+      "rtl/sequence.sv",
+      "harness:W_bug_tb.sv",
+      "harness:W_preserve_tb.sv"
+    ]
+  },
+  "public_rows": {
+    "W_bug": "visible_fail",
+    "W_preserve": "visible_pass"
+  },
+  "mutation_edits": [
+    {
+      "find": "        s3:\n            nstate=data?s4:sf4;",
+      "replace": "        s3:\n            nstate=data?s4:s4;"
+    }
+  ]
+}

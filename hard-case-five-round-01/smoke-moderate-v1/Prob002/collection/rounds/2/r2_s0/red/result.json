@@ -1,0 +1,37 @@
+{
+  "status": "proposal",
+  "buggy_rtl": "module TopModule(\n\tinput clk,\n\tinput rst_n,\n\tinput a,\n\toutput match\n\t);\n\n\treg [8:0] a_tem;\n\treg match_f;\n\treg match_b;\n\t\n\talways @(posedge clk or negedge rst_n)\n\t\tif (!rst_n)\n\t\t\tbegin \n\t\t\t\tmatch_f <= 1'b0;\n\t\t\tend\n\t\telse if (a_tem[8:6] == 3'b000)\n\t\t\tbegin\n\t\t\t\tmatch_f <= 1'b1;\n\t\t\tend\n\t\telse \n\t\t\tbegin\t\n\t\t\t\tmatch_f <= 1'b0;\n\t\t\tend\n\n\talways @(posedge clk or negedge rst_n)\n\t\tif (!rst_n)\n\t\t\tbegin \n\t\t\t\tmatch_b <= 1'b0;\n\t\t\tend\n\t\telse if (a_tem[2:0] == 3'b110)\n\t\t\tbegin\n\t\t\t\tmatch_b <= 1'b1;\n\t\t\tend\n\t\telse \n\t\t\tbegin\t\n\t\t\t\tmatch_b <= 1'b0;\n\t\t\tend\n\t\t\t\n\talways @(posedge clk or negedge rst_n)\n\t\tif (!rst_n)\n\t\t\tbegin \n\t\t\t\ta_tem <= 9'b0;\n\t\t\tend\n\t\telse \n\t\t\tbegin\n\t\t\t\ta_tem <= {a_tem[7:0],a};\n\t\t\tend\n\t\t\t\n\tassign match = match_b && match_f;\nendmodule",
+  "buggy_rtl_hash": "sha256:1db3c845004e96ad8f92732bba750268f29b94425c8303cea3c8c731f70a4fb0",
+  "edit_budget": {
+    "metric": "sequence_matcher_token_edits_v1",
+    "tokenizer": "verilog_source_tokens_v2_macros",
+    "max_changed_fraction": 0.4,
+    "all_code": {
+      "original_tokens": 164,
+      "candidate_tokens": 164,
+      "changed_tokens": 1,
+      "allowed_tokens": 65,
+      "changed_fraction": 0.006097560975609756,
+      "within_limit": true
+    },
+    "body": {
+      "original_tokens": 147,
+      "candidate_tokens": 147,
+      "changed_tokens": 1,
+      "allowed_tokens": 58,
+      "changed_fraction": 0.006802721088435374,
+      "within_limit": true
+    }
+  },
+  "diff": "--- clean.sv\n+++ buggy.sv\n@@ -14,7 +14,7 @@\n \t\t\tbegin \n \t\t\t\tmatch_f <= 1'b0;\n \t\t\tend\n-\t\telse if (a_tem[8:6] == 3'b011)\n+\t\telse if (a_tem[8:6] == 3'b000)\n \t\t\tbegin\n \t\t\t\tmatch_f <= 1'b1;\n \t\t\tend\n",
+  "claims": {
+    "violated_requirement": "target mechanism",
+    "spec_basis": "unchanged specification"
+  },
+  "mutation_edits": [
+    {
+      "find": "3'b011",
+      "replace": "3'b000"
+    }
+  ]
+}

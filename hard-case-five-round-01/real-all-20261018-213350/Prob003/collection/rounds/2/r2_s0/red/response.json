@@ -1,0 +1,30 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "        s3:\n            nstate=data?s4:sf4;",
+            "replace": "        s3:\n            nstate=data?sf4:s4;"
+          }
+        ],
+        "violated_requirement": "When in state s3, if data is 0, the state should transition to sf4 (failure path), but the mutant transitions to s4 (success path) instead. This causes incorrect sequence detection for groups where the third bit is 0.",
+        "spec_basis": "The module must detect the sequence 011100 from the input signal data. If any bit in the sequence does not match, the module should transition to the failure path."
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:dfdf09579eb8ec126f34949b1af55a001d2c6ca49f5bda7b983b031c5bd6026a",
+  "input_tokens": 6732,
+  "output_tokens": 145,
+  "request_hash": "sha256:16b42af8a55fdedc73ec3134e292002b85f64850c44f54a061d9195df98185f3",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 6732,
+    "output_tokens": 145
+  },
+  "model_seconds": 6.8036757642403245
+}

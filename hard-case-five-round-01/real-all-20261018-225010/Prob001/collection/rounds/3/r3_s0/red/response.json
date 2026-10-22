@@ -1,0 +1,30 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "else if (a_tem == 8'b0111_0001)",
+            "replace": "else if (a_tem[7:1] == 7'b0111000)"
+          }
+        ],
+        "violated_requirement": "The match output should be asserted when the full 8-bit pattern 01110001 is detected, but the mutant only checks the first 7 bits (0111000), causing false positives when the LSB is 1",
+        "spec_basis": "The spec requires matching the specific 8-bit pattern 8'b0111_0001"
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:9e593cbd213ed0ae0e4bd4bdec0c7d6bde8b92a2ab77838e95b6a29dd07f3865",
+  "input_tokens": 5503,
+  "output_tokens": 129,
+  "request_hash": "sha256:e12ef1c14fbfd2fd28d7247a05e5c29aa1ef37c25ae92e33707df5c6c4bd91f0",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 5503,
+    "output_tokens": 129
+  },
+  "model_seconds": 8.188915794715285
+}

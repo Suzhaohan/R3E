@@ -1,0 +1,73 @@
+{
+  "blue": {
+    "blue_config_hash": "sha256:6af14cf077545c55901580ec2a9bd53e03f0dfe4b04fd1cfe8ec6c3e79c4e238",
+    "committed_round": 2,
+    "entries": [],
+    "learning_policy_hash": "sha256:8d48afa3992d706e5dc009ac794678a59f3c520206ae9b292d99a5a74d049c9f",
+    "parent_snapshot_hash": "sha256:337e42d3b171cdac38cf5b17c6b53cc20992969bd24976d548c32d59e23b260c",
+    "retrieval_policy_hash": "sha256:8b114d1dc640c0d8851c3796a1d6ed4e3bc9b65406c7341475b69b3d8568e26f",
+    "snapshot_id": "B_2",
+    "state_hash": "sha256:177923833145ce40bbf523dd0ec204b7985f41a5aa04267433357a4b1838f6a8",
+    "version": "continuous_blue_snapshot_v1"
+  },
+  "parent_commit_hash": "sha256:d6b2d0d2b72cdba9dcf62c03337fd83f8d9c9a2f1d119156058ebc1995da9b92",
+  "promotion_hash": "sha256:8804fb5523334ea5b7abfe6eaf8d0d74fd80a963353c72963ddad61c65894d5e",
+  "red": {
+    "observations": [
+      {
+        "blue_patch": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -12,7 +12,7 @@\n \t\t\tbegin \n \t\t\t\tmatch <= 1'b0;\n \t\t\tend\n-\t\telse if (a_tem == 8'b01110011)\n+\t\telse if (a_tem == 8'b01110001)\n \t\t\tbegin\n \t\t\t\tmatch <= 1'b1;\n \t\t\tend\n@@ -25,7 +25,7 @@\n \t\tif (!rst_n)\n \t\t\tbegin \n \t\t\t\ta_tem <= 8'b0;\n-\t\t\tend\n+\t\t\t\tend\n \t\telse \n \t\t\tbegin\n \t\t\t\ta_tem <= {a_tem[6:0],a};\n",
+        "carrier_id": "chipbench_Prob001_fixed_hard_questions",
+        "label": "public_pass_single_sample_hidden_unknown",
+        "mutant_hash": "sha256:b860e63fa140acd1ec7ff6a9c502ad110ff27e6481c73ea3bbbef24f78b1f254",
+        "mutation_edits": [
+          {
+            "find": "else if (a_tem == 8'b0111_0001)",
+            "replace": "else if (a_tem == 8'b01110011)"
+          }
+        ],
+        "public_evidence": "{\"suites\": {\"W_bug\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"TESTBENCH PASS sequence\"}, \"W_preserve\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"TESTBENCH PASS preserve\"}}}",
+        "public_rows": {
+          "W_bug": "visible_pass",
+          "W_preserve": "visible_pass"
+        },
+        "round": 1,
+        "slot_id": "r1_s0",
+        "source_hash": "sha256:5fb18f5eb7a8071c2aacc1d89afd1dab1d965836459b2825d3b07ffdcd5f05d3",
+        "target_snapshot_hash": "sha256:01a89bfb13fb8f719007f9f194599059ba79c39b9fd26d2c549fc7e20b67125b"
+      },
+      {
+        "blue_patch": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -12,7 +12,7 @@\n \t\t\tbegin \n \t\t\t\tmatch <= 1'b0;\n \t\t\tend\n-\t\telse if (a_tem == 8'b01110000)\n+\t\telse if (a_tem == 8'b01110001)\n \t\t\tbegin\n \t\t\t\tmatch <= 1'b1;\n \t\t\tend\n",
+        "carrier_id": "chipbench_Prob001_fixed_hard_questions",
+        "label": "public_pass_single_sample_hidden_unknown",
+        "mutant_hash": "sha256:b069366b4255f82d0aea3cad33a3a7f507ccdffa0bf3fe67bbac6cbee8303f02",
+        "mutation_edits": [
+          {
+            "find": "else if (a_tem == 8'b0111_0001)",
+            "replace": "else if (a_tem == 8'b01110000)"
+          }
+        ],
+        "public_evidence": "{\"suites\": {\"W_bug\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"TESTBENCH PASS sequence\"}, \"W_preserve\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"TESTBENCH PASS preserve\"}}}",
+        "public_rows": {
+          "W_bug": "visible_pass",
+          "W_preserve": "visible_pass"
+        },
+        "round": 2,
+        "slot_id": "r2_s0",
+        "source_hash": "sha256:a1702dda95ff9a611e45fa1176260b613a6ef6b153f003f14621de12fdfe07e2",
+        "target_snapshot_hash": "sha256:337e42d3b171cdac38cf5b17c6b53cc20992969bd24976d548c32d59e23b260c"
+      }
+    ],
+    "round": 2
+  },
+  "round": 2,
+  "update_decisions": [
+    {
+      "entry_hash": "sha256:49c432167e7921eb70e5f8745b3ebd6cc0fe125a394ad6d9761725cf2856f7b6",
+      "reason": "accepted"
+    },
+    {
+      "accepted": false,
+      "promotion": "no_strict_gain"
+    }
+  ]
+}

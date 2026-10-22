@@ -1,0 +1,44 @@
+{
+  "carriers": [
+    {
+      "package": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/materials/Prob001/package",
+      "suite_freeze": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/materials/Prob001/suite_freeze.json",
+      "evaluator_freeze": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/materials/Prob001/evaluator_freeze.json",
+      "evaluator_root": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/materials/Prob001"
+    }
+  ],
+  "anchors": [
+    {
+      "task_dir": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/materials/Prob001/reserved/exam_arithmetic",
+      "carrier_index": 0
+    }
+  ],
+  "mechanism_focus": {
+    "version": "continuous_mechanism_seed_v1",
+    "carrier_id": "chipbench_Prob001_fixed_hard_questions",
+    "mechanism": "Shift-register history bit ordering and cycle alignment.",
+    "selection": "human_selected_development_seed",
+    "seed_edits": [
+      {
+        "find": "module TopModule(\n\tinput clk,\n\tinput rst_n,\n\tinput a,\n\toutput reg match\n\t);\n\n\treg [7:0] a_tem;\n\t\n\talways @(posedge clk or negedge rst_n)\n\t\tif (!rst_n)\n\t\t\tbegin \n\t\t\t\tmatch <= 1'b0;\n\t\t\tend\n\t\telse if (a_tem == 8'b0111_0001)\n\t\t\tbegin\n\t\t\t\tmatch <= 1'b1;\n\t\t\tend\n\t\telse \n\t\t\tbegin\t\n\t\t\t\tmatch <= 1'b0;\n\t\t\tend\n\t\t\n\talways @(posedge clk or negedge rst_n)\n\t\tif (!rst_n)\n\t\t\tbegin \n\t\t\t\ta_tem <= 8'b0;\n\t\t\tend\n\t\telse \n\t\t\tbegin\n\t\t\t\ta_tem <= {a_tem[6:0],a};\n\t\t\tend\nendmodule",
+        "replace": "module TopModule(\n\tinput clk,\n\tinput rst_n,\n\tinput a,\n\toutput reg match\n\t);\n\n\treg [7:0] a_tem;\n\t\n\talways @(posedge clk or negedge rst_n)\n\t\tif (!rst_n)\n\t\t\tbegin \n\t\t\t\tmatch <= 1'b0;\n\t\t\tend\n\t\telse if (a_tem == 8'b0111_0001)\n\t\t\tbegin\n\t\t\t\tmatch <= 1'b1;\n\t\t\tend\n\t\telse \n\t\t\tbegin\t\n\t\t\t\tmatch <= 1'b0;\n\t\t\tend\n\t\t\n\talways @(posedge clk or negedge rst_n)\n\t\tif (!rst_n)\n\t\t\tbegin \n\t\t\t\ta_tem <= 8'b0;\n\t\t\tend\n\t\telse \n\t\t\tbegin\n\t\t\t\ta_tem <= {a, a_tem[6:0]};\n\t\t\tend\nendmodule\n"
+      }
+    ],
+    "history": {
+      "challenge_id": "chipbench:arithmetic:Prob001_continuous_input_sequence_detect",
+      "runs": 3,
+      "unrepaired": 2,
+      "label": "historical_budgeted_failure_not_current_confirmation"
+    },
+    "provenance": {
+      "clean_hash": "sha256:39470cf9c1371ebd5f662f16345cc852631df712d1c2ebbf68e3564d232bc297",
+      "seed_hash": "sha256:7b27109cefd32e01dfd2d7c9166aae9be70c15bab3faebaf73216af6b38962de",
+      "record_hashes": {
+        "selection.json": "sha256:996a4335bb13bbd41b39c29e692b9caea53bd393564d96dd71b193f219a9b8b0"
+      }
+    }
+  },
+  "questions": [
+    "chipbench:arithmetic:Prob001_continuous_input_sequence_detect"
+  ]
+}

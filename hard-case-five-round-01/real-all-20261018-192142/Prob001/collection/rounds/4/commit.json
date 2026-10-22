@@ -1,0 +1,115 @@
+{
+  "blue": {
+    "blue_config_hash": "sha256:3493e19556767dca2c457a29ed147930a22bf9f565136b7da9fdea722bda80d2",
+    "committed_round": 4,
+    "entries": [],
+    "learning_policy_hash": "sha256:8d48afa3992d706e5dc009ac794678a59f3c520206ae9b292d99a5a74d049c9f",
+    "parent_snapshot_hash": "sha256:ed7aa29a3636cd510c3992b6de072a1dbb2f32c0ac2c774f6942e6355b3fd76b",
+    "retrieval_policy_hash": "sha256:8b114d1dc640c0d8851c3796a1d6ed4e3bc9b65406c7341475b69b3d8568e26f",
+    "snapshot_id": "B_4",
+    "state_hash": "sha256:46e5e843b606dc1f448d3c839de79ad341fa07a2772906fec44cb2492aa1dffc",
+    "version": "continuous_blue_snapshot_v1"
+  },
+  "parent_commit_hash": "sha256:2f27b62b0ba7c796279c7e6f69f9347c3e080d927aaf835fe59164aca7c1214c",
+  "promotion_hash": "sha256:3d161b0db257d575ed7f9e52a17bdb850b113f7674661909ba35aa4f951571c9",
+  "red": {
+    "observations": [
+      {
+        "blue_patch": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -12,7 +12,7 @@\n \t\t\tbegin \n \t\t\t\tmatch <= 1'b0;\n \t\t\tend\n-\t\telse if (a_tem == 8'b0111_0011)\n+\t\telse if (a_tem == 8'b0111_0001)\n \t\t\tbegin\n \t\t\t\tmatch <= 1'b1;\n \t\t\tend\n",
+        "carrier_id": "chipbench_Prob001_fixed_hard_questions",
+        "label": "public_pass_single_sample_hidden_unknown",
+        "mutant_hash": "sha256:5ed1d9a97648a03875212c974c955996aa37ee73940fed288f33537d22d05f9f",
+        "mutation_edits": [
+          {
+            "find": "else if (a_tem == 8'b0111_0001)",
+            "replace": "else if (a_tem == 8'b0111_0011)"
+          }
+        ],
+        "public_evidence": "{\"suites\": {\"W_bug\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"TESTBENCH PASS sequence\"}, \"W_preserve\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"TESTBENCH PASS preserve\"}}}",
+        "public_rows": {
+          "W_bug": "visible_pass",
+          "W_preserve": "visible_pass"
+        },
+        "round": 1,
+        "slot_id": "r1_s0",
+        "source_hash": "sha256:3c45dbec33c009c021fe04cbecd0208e93a670152f6775ee91ce848494929c00",
+        "target_snapshot_hash": "sha256:1b3a25db947f5c68ecf1a65001ebd32469eb7e5ccaba144f45048920a5407e5b"
+      },
+      {
+        "blue_patch": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -12,7 +12,7 @@\n \t\t\tbegin \n \t\t\t\tmatch <= 1'b0;\n \t\t\tend\n-\t\telse if (a_tem == 8'b0111_0000)\n+\t\telse if (a_tem == 8'b0111_0001)\n \t\t\tbegin\n \t\t\t\tmatch <= 1'b1;\n \t\t\tend\n",
+        "carrier_id": "chipbench_Prob001_fixed_hard_questions",
+        "label": "public_pass_single_sample_hidden_unknown",
+        "mutant_hash": "sha256:ddf31680cbeb17fad040d099f72bb09acc821e2704f32993a305586e19f96fe5",
+        "mutation_edits": [
+          {
+            "find": "else if (a_tem == 8'b0111_0001)",
+            "replace": "else if (a_tem == 8'b0111_0000)"
+          }
+        ],
+        "public_evidence": "{\"suites\": {\"W_bug\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"TESTBENCH PASS sequence\"}, \"W_preserve\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"TESTBENCH PASS preserve\"}}}",
+        "public_rows": {
+          "W_bug": "visible_pass",
+          "W_preserve": "visible_pass"
+        },
+        "round": 2,
+        "slot_id": "r2_s0",
+        "source_hash": "sha256:a3ac4af96313fe788ba6aacd9cdc54072f21567c7cd83d82ba0ce115c9371e32",
+        "target_snapshot_hash": "sha256:66bbb384b66fbd9dd48ab8a7e92639475e48f0e942ad8147aebde758ab69af8b"
+      },
+      {
+        "blue_patch": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -11,8 +11,8 @@\n \t\tif (!rst_n)\n \t\t\tbegin \n \t\t\t\tmatch <= 1'b0;\n-\t\t\tend\n-\t\telse if (a_tem == 8'b1111_0001)\n+\t\t\t\tend\n+\t\telse if (a_tem == 8'b0111_0001)\n \t\t\tbegin\n \t\t\t\tmatch <= 1'b1;\n \t\t\tend\n",
+        "carrier_id": "chipbench_Prob001_fixed_hard_questions",
+        "label": "public_pass_single_sample_hidden_unknown",
+        "mutant_hash": "sha256:e9536cc22eff4718e169fb0a4d8d8bbc28db372867a4fbb03ffd015d4afd37c3",
+        "mutation_edits": [
+          {
+            "find": "else if (a_tem == 8'b0111_0001)",
+            "replace": "else if (a_tem == 8'b1111_0001)"
+          }
+        ],
+        "public_evidence": "{\"suites\": {\"W_bug\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"TESTBENCH PASS sequence\"}, \"W_preserve\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"TESTBENCH PASS preserve\"}}}",
+        "public_rows": {
+          "W_bug": "visible_pass",
+          "W_preserve": "visible_pass"
+        },
+        "round": 3,
+        "slot_id": "r3_s0",
+        "source_hash": "sha256:0f12923454385b533727bdc5521bb645644d475aa53f0c44fc5b83540915effb",
+        "target_snapshot_hash": "sha256:d831c2eac2ef97c337c39802b8769e6eeb6f62b1008b18659aa70785a2bd6108"
+      },
+      {
+        "blue_patch": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -11,23 +11,11 @@\n \t\tif (!rst_n)\n \t\t\tbegin \n \t\t\t\tmatch <= 1'b0;\n-\t\t\tend\n-\t\telse if (a_tem == 8'b0111_0001)\n-\t\t\tbegin\n-\t\t\t\tmatch <= 1'b1;\n-\t\t\tend\n-\t\telse \n-\t\t\tbegin\t\n-\t\t\t\tmatch <= 1'b0;\n-\t\t\tend\n-\t\t\n-\talways @(posedge clk or negedge rst_n)\n-\t\tif (!rst_n)\n-\t\t\tbegin \n \t\t\t\ta_tem <= 8'b0;\n \t\t\tend\n \t\telse \n \t\t\tbegin\n-\t\t\t\ta_tem <= {a_tem[7:1],a};\n+\t\t\t\ta_tem <= {a_tem[6:0], a};\n+\t\t\t\tmatch <= (a_tem == 8'b0111_0001);\n \t\t\tend\n endmodule",
+        "carrier_id": "chipbench_Prob001_fixed_hard_questions",
+        "label": "public_pass_single_sample_hidden_unknown",
+        "mutant_hash": "sha256:70aa352f6b49f8780a0204ae9314a0b6d5c21251b473acb765be35e52ee1365c",
+        "mutation_edits": [
+          {
+            "find": "a_tem <= {a_tem[6:0],a}",
+            "replace": "a_tem <= {a_tem[7:1],a}"
+          }
+        ],
+        "public_evidence": "{\"suites\": {\"W_bug\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"TESTBENCH PASS sequence\"}, \"W_preserve\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"TESTBENCH PASS preserve\"}}}",
+        "public_rows": {
+          "W_bug": "visible_pass",
+          "W_preserve": "visible_pass"
+        },
+        "round": 4,
+        "slot_id": "r4_s0",
+        "source_hash": "sha256:77898fab9cb44ac7cedf78f2c3fd994e4530e8cb1d662185e4e649e5eba14457",
+        "target_snapshot_hash": "sha256:ed7aa29a3636cd510c3992b6de072a1dbb2f32c0ac2c774f6942e6355b3fd76b"
+      }
+    ],
+    "round": 4
+  },
+  "round": 4,
+  "update_decisions": [
+    {
+      "entry_hash": "sha256:0d3821fcbf2e0ae8f1f99ce10301911e184b653883b88d67463068fecefdbcc5",
+      "reason": "accepted"
+    },
+    {
+      "accepted": false,
+      "promotion": "no_strict_gain"
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "        s3:\n            nstate=data?s4:sf4;",
+            "replace": "        s3:\n            nstate=data?sf4:s4;"
+          }
+        ],
+        "violated_requirement": "When in state s3 with data=1, the next state should be s4 but will incorrectly transition to sf4",
+        "spec_basis": "The sequence detector should progress to s4 when the third bit matches the target sequence (1)"
+      },
+      {
+        "edits": [
+          {
+            "find": "        s5:\n            nstate=data?sf6:s6;",
+            "replace": "        s5:\n            nstate=data?s6:sf6;"
+          }
+        ],
+        "violated_requirement": "When in state s5 with data=0, the next state should be s6 but will incorrectly transition to sf6",
+        "spec_basis": "The sequence detector should progress to s6 when the fifth bit matches the target sequence (0)"
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:3f7ca1d2c08ca626c12cc8b7bcfa57bb35ef795afc09669096d9588581975663",
+  "input_tokens": 9192,
+  "output_tokens": 199,
+  "request_hash": "sha256:10bd8a5a99c0b91bbc5b442526f225a7464d4e8a91279984b9303140dfae5e62",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 9192,
+    "output_tokens": 199
+  },
+  "model_seconds": 12.863507834263146
+}

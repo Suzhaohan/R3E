@@ -1,0 +1,47 @@
+{
+  "schema": "low-pass-pilot-v3-selection-from-pilot02",
+  "source": "low-pass-pilot-02/real-state/qualification.jsonl",
+  "source_sha256": "974168b7f758f67feba457e77c5590bd5bb237eb810ebfa5f19957c204a51d53",
+  "deduplication": "one baseline per round, case and seed; repeated rounds are not independent designs",
+  "baseline_summary": {
+    "chipbench:assignment:Prob017_arbitrary_fractional_frequency_division": {
+      "unique_round_seed_records": 15,
+      "passed": 15,
+      "failed": 0,
+      "inconclusive": 0,
+      "first_attempt_passed": 12,
+      "max_successful_attempts": 2
+    },
+    "chipbench:arithmetic:Prob017_arbitrary_fractional_frequency_division": {
+      "unique_round_seed_records": 12,
+      "passed": 11,
+      "failed": 0,
+      "inconclusive": 1,
+      "first_attempt_passed": 7,
+      "max_successful_attempts": 2
+    },
+    "chipbench:timing:Prob017_arbitrary_fractional_frequency_division": {
+      "unique_round_seed_records": 12,
+      "passed": 12,
+      "failed": 0,
+      "inconclusive": 0,
+      "first_attempt_passed": 9,
+      "max_successful_attempts": 3
+    },
+    "chipbench:arithmetic:Prob023_gray_code_counter": {
+      "unique_round_seed_records": 12,
+      "passed": 10,
+      "failed": 0,
+      "inconclusive": 2,
+      "first_attempt_passed": 8,
+      "max_successful_attempts": 2
+    }
+  },
+  "excluded_case_ids": [
+    "chipbench:assignment:Prob017_arbitrary_fractional_frequency_division",
+    "chipbench:arithmetic:Prob017_arbitrary_fractional_frequency_division"
+  ],
+  "reason": "Remove two saturated variants of Prob017; retain timing as the variant with one observed three-attempt success. Keep Prob023 as a distinct design and Prob002 as an observed failure-bearing exam case.",
+  "new_model_calls": 0,
+  "scope": "historically selected development exam; no guarantee of a future improvement"
+}

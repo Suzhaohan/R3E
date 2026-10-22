@@ -1,0 +1,30 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "a_tem <= {a_tem[6:0],a};",
+            "replace": "a_tem <= {a_tem[5:0],a,a_tem[7]};"
+          }
+        ],
+        "violated_requirement": "The shift register should retain the 8 most recent bits of 'a', but instead it incorrectly rotates the bits by inserting the MSB back into the LSB position. This causes the pattern match to fail when the correct sequence appears but is shifted incorrectly.",
+        "spec_basis": "The specification requires the shift register to retain the 8 most recent bits of 'a' by shifting in the new bit and discarding the oldest bit."
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:9e825dfb511f4fd82f2e786fde55d975b1bf6f0b3f9c1c25d440f043c6a8cd92",
+  "input_tokens": 7854,
+  "output_tokens": 148,
+  "request_hash": "sha256:4355e1dc22f0a136af9d5d95c04ab0f06b9001357c8b9ffe666c81ccfb140391",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 7854,
+    "output_tokens": 148
+  },
+  "model_seconds": 7.631239714100957
+}

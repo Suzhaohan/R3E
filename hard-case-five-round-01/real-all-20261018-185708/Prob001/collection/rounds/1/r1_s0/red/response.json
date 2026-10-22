@@ -1,0 +1,60 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "else if (a_tem == 8'b0111_0001)",
+            "replace": "else if (a_tem == 8'b01110011)"
+          }
+        ],
+        "violated_requirement": "Output match should be 1 when shift register equals 8'b0111_0001, but mutant matches 8'b01110011 instead",
+        "spec_basis": "Matching Logic: The output match should be asserted (logic 1) whenever the value of the shift register a_tem matches the specific 8-bit pattern 8'b0111_0001."
+      },
+      {
+        "edits": [
+          {
+            "find": "else if (a_tem == 8'b0111_0001)",
+            "replace": "else if (a_tem == 8'b01110001 && a_tem[0])"
+          }
+        ],
+        "violated_requirement": "Output match should depend only on full pattern match, but mutant adds an extra condition on LSB",
+        "spec_basis": "Matching Logic: The output match should be asserted (logic 1) whenever the value of the shift register a_tem matches the specific 8-bit pattern 8'b0111_0001."
+      },
+      {
+        "edits": [
+          {
+            "find": "a_tem <= {a_tem[6:0],a}",
+            "replace": "a_tem <= {a_tem[5:0],a,a_tem[7]}"
+          }
+        ],
+        "violated_requirement": "Shift register should retain 8 most recent bits in order, but mutant rotates bits incorrectly",
+        "spec_basis": "Shift Register Behavior: On every positive edge of the clock, if rst_n is asserted (logic 1), the input a should be shifted into the least significant bit (LSB) of the shift register a_tem, and the previous bits should shift left by one position."
+      },
+      {
+        "edits": [
+          {
+            "find": "else if (a_tem == 8'b0111_0001)",
+            "replace": "else if (a_tem[7:1] == 7'b0111000)"
+          }
+        ],
+        "violated_requirement": "Output match should check all 8 bits, but mutant only checks 7 bits",
+        "spec_basis": "Matching Logic: The output match should be asserted (logic 1) whenever the value of the shift register a_tem matches the specific 8-bit pattern 8'b0111_0001."
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:d3619a3f8eb491cd0cbe59774d30a95bf610b72d6aaee1e803b6f4765f50eedf",
+  "input_tokens": 3632,
+  "output_tokens": 495,
+  "request_hash": "sha256:9a3d3a56b239d900dde0851a4d897010f1a864c16bb969d03cff4109d25b0739",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 3632,
+    "output_tokens": 495
+  },
+  "model_seconds": 25.55418417043984
+}

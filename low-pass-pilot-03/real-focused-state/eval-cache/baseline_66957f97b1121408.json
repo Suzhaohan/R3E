@@ -1,0 +1,112 @@
+{
+  "attempts": 1,
+  "first": {
+    "answer_form": "full",
+    "candidate_hash": "sha256:c97d3bb1ee0d3974ad0c37b6b3feb597f8f936d39f28b33ad6e853651c656c0c",
+    "candidate_id": "C_874934bc1155_0",
+    "command_hash": "sha256:bd060c4ba44b088c629888414f3c0979bc8f5084696a4e18559baa1b96478307",
+    "edit": "Fixed the sf6 transition to correctly start a new group: changed `sf6: nstate=data?s1:sf1;` to `sf6: nstate=data?sf1:s1;` so a first bit of 0 starts matching and 1 skips, consistent with idle. Also simplified the asynchronous reset check in the output logic to `if(!rst_n)`.",
+    "feedback": {
+      "cycles_compared": 2324,
+      "first_divergences": [],
+      "passing_outputs": [
+        "match",
+        "not_match"
+      ],
+      "stage": "functional"
+    },
+    "hidden": "not_available",
+    "index": 0,
+    "memory_offered": false,
+    "phase": "evaluation",
+    "seconds": 64.68,
+    "tokens": {
+      "input": 2352,
+      "output": 15648
+    },
+    "verdict_tier": "visible_pass",
+    "window": {}
+  },
+  "inconclusive": false,
+  "record": {
+    "accounting": {
+      "fixed": true,
+      "fixed_at_attempt": 1,
+      "fixed_by_escalation": false,
+      "input_tokens": 2352,
+      "llm_calls": 1,
+      "memory_delivered": false,
+      "memory_items": [],
+      "memory_offered_from_attempt": null,
+      "model_seconds": 64.68,
+      "output_tokens": 15648,
+      "provider_failures": 0,
+      "repair_attempts": 1
+    },
+    "attempts": [
+      {
+        "answer_form": "full",
+        "candidate_hash": "sha256:c97d3bb1ee0d3974ad0c37b6b3feb597f8f936d39f28b33ad6e853651c656c0c",
+        "candidate_id": "C_874934bc1155_0",
+        "command_hash": "sha256:bd060c4ba44b088c629888414f3c0979bc8f5084696a4e18559baa1b96478307",
+        "edit": "Fixed the sf6 transition to correctly start a new group: changed `sf6: nstate=data?s1:sf1;` to `sf6: nstate=data?sf1:s1;` so a first bit of 0 starts matching and 1 skips, consistent with idle. Also simplified the asynchronous reset check in the output logic to `if(!rst_n)`.",
+        "feedback": {
+          "cycles_compared": 2324,
+          "first_divergences": [],
+          "passing_outputs": [
+            "match",
+            "not_match"
+          ],
+          "stage": "functional"
+        },
+        "hidden": "not_available",
+        "index": 0,
+        "memory_offered": false,
+        "phase": "evaluation",
+        "seconds": 64.68,
+        "tokens": {
+          "input": 2352,
+          "output": 15648
+        },
+        "verdict_tier": "visible_pass",
+        "window": {}
+      }
+    ],
+    "bundle_hash": "sha256:02a32930651810ecbf29c87db1580853c0757c49ca925af7b23a0b727a470e1c",
+    "challenge_id": "handoff:Prob003:eval_miss_branch",
+    "deliveries": [],
+    "episode_hash": "sha256:12044f0c750233263168a1caa138cc98901da0ab262477716111ceadc4bb8df4",
+    "inconclusive": false,
+    "infra_failures": 0,
+    "matches": [],
+    "mode": "none",
+    "profile": {
+      "causal": {
+        "cone_has_control_dependency": true,
+        "cone_has_counter": false,
+        "cone_has_reset_logic": true,
+        "cone_has_state_machine": true,
+        "cone_size_bucket": "small",
+        "output_driver_kind": "combinational",
+        "register_distance": "1",
+        "temporal_relation": "no_progress"
+      },
+      "schema_version": "r3e-observable-profile-v1",
+      "status": {
+        "delta_bucket": "-1",
+        "failing_output_bucket": "2-3",
+        "onset_bucket": "late",
+        "oracle_stage": "functional",
+        "output_width_bucket": "1bit",
+        "partial_failure": false,
+        "symptom": "stuck_value",
+        "x_involved": false
+      }
+    },
+    "retrieved_items": [],
+    "shown_items": [],
+    "solved_by_escalation": false,
+    "solved_within_budget": true
+  },
+  "solved": true
+}

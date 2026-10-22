@@ -1,0 +1,40 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "sf5:\n            nstate=sf6;",
+            "replace": "sf5:\n            nstate=data?sf6:s6;"
+          }
+        ],
+        "violated_requirement": "When in state sf5, the next state should unconditionally transition to sf6, but the mutation makes it dependent on the input data. This will cause incorrect state transitions when data is 0, leading to wrong match/not_match outputs for certain input sequences.",
+        "spec_basis": "Module description states that if the first bit of a group does not match the sequence, the module skips the entire group and starts checking from the next group."
+      },
+      {
+        "edits": [
+          {
+            "find": "sf4:\n            nstate=sf5;",
+            "replace": "sf4:\n            nstate=data?sf5:s5;"
+          }
+        ],
+        "violated_requirement": "When in state sf4, the next state should unconditionally transition to sf5, but the mutation makes it dependent on the input data. This will cause incorrect state transitions when data is 1, leading to wrong match/not_match outputs for certain input sequences.",
+        "spec_basis": "Module description states that if the first bit of a group does not match the sequence, the module skips the entire group and starts checking from the next group."
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:c81bff736f1742a50d3b76cbad6c16a53f503bdef61a7d8b258460cde41bded5",
+  "input_tokens": 10584,
+  "output_tokens": 273,
+  "request_hash": "sha256:7a764bd47ee8c4b042fe7ec8f3c0133f6535d0ef9cedafd57709b1db98a79d3d",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 10584,
+    "output_tokens": 273
+  },
+  "model_seconds": 12.392711765132844
+}

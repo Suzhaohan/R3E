@@ -1,0 +1,60 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "clk_cnt <= clk_cnt==(div_e-1)? 0: clk_cnt+1;",
+            "replace": "clk_cnt <= clk_cnt==(div_e-1)? 0: clk_cnt+2;"
+          }
+        ],
+        "violated_requirement": "Increments clk_cnt by 2 instead of 1 when not wrapping, causing faster count progression and incorrect output timing",
+        "spec_basis": "Count becomes 0 when count == (mode ? div_o : div_e)-1; otherwise (count+1) modulo 16"
+      },
+      {
+        "edits": [
+          {
+            "find": "clk_out_r <= clk_cnt<=((div_e>>2)+1);",
+            "replace": "clk_out_r <= clk_cnt<=((div_e>>1)+1);"
+          }
+        ],
+        "violated_requirement": "Uses div_e>>1 (divide by 2) instead of div_e>>2 (divide by 4) for output threshold, causing incorrect output pulse width",
+        "spec_basis": "Output becomes 1 iff count <= floor((mode ? div_o : div_e)/4) + 1"
+      },
+      {
+        "edits": [
+          {
+            "find": "div_flag <= cyc_cnt==(M_N-1)||cyc_cnt==(c89-1)? ~div_flag: div_flag;",
+            "replace": "div_flag <= cyc_cnt==(M_N-1)? ~div_flag: div_flag;"
+          }
+        ],
+        "violated_requirement": "Removes the c89-1 condition for toggling div_flag, causing incorrect mode switching behavior",
+        "spec_basis": "Mode toggles iff cycle_count equals M_N-1 or c89-1; otherwise it holds"
+      },
+      {
+        "edits": [
+          {
+            "find": "cyc_cnt <= cyc_cnt==(M_N-1)? 0: cyc_cnt+1;",
+            "replace": "cyc_cnt <= cyc_cnt==(M_N-1)? 0: cyc_cnt+2;"
+          }
+        ],
+        "violated_requirement": "Increments cyc_cnt by 2 instead of 1 when not wrapping, causing faster cycle progression and incorrect mode switching timing",
+        "spec_basis": "Cycle_count wraps to zero at M_N-1; otherwise it increments by one modulo 128"
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:48c3b105579ad7607078b7e3b2eb6093eb989cd5038a110a4faa433f01093288",
+  "input_tokens": 4637,
+  "output_tokens": 566,
+  "request_hash": "sha256:841654ba46ef16aa1d9fc76d9557b247fde3ba16eba50577a1985d531761af49",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 4637,
+    "output_tokens": 566
+  },
+  "model_seconds": 17.07000406179577
+}

@@ -1,0 +1,111 @@
+{
+  "blue": {
+    "blue_config_hash": "sha256:b807b318353db101903229c541fd1c234fe2d8187c42282d5e0fa65dd6573e86",
+    "committed_round": 4,
+    "entries": [],
+    "learning_policy_hash": "sha256:4a09424dd1c7efe73565caf882441e236d76f12d2175725024c3057884eb1afe",
+    "parent_snapshot_hash": "sha256:bb328c54caa1114f69904e4f2c5a9bf35de8e3155e11437a4dc14e9eb7f84329",
+    "retrieval_policy_hash": "sha256:8b114d1dc640c0d8851c3796a1d6ed4e3bc9b65406c7341475b69b3d8568e26f",
+    "snapshot_id": "B_4",
+    "state_hash": "sha256:9fb9d5de806bcc3bb819a51a208b3d1d5b6cc95e74b6360d9ab6e3a374e07131",
+    "version": "continuous_blue_snapshot_v1"
+  },
+  "parent_commit_hash": "sha256:65f6dad14241ed4124f0617c18ecaaa45ba60878e4bbb36e4b8800124b44685d",
+  "promotion_hash": "sha256:2109ff39f82bc7a4d01041e1c445a66bb4ef4fd8542fc0e5179a74fce8ac19f2",
+  "red": {
+    "observations": [
+      {
+        "blue_patch": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -53,7 +53,7 @@\n             case(state)\n                 S0, S0_5, S1: {out1, out2, out3} = 0;\n                 S1_5        : {out1, out2, out3} = ~sel? 3'b100: 3'b000;\n-                S2          : {out1, out2, out3} = ~sel? 3'b100: 3'b000;\n+                S2          : {out1, out2, out3} = ~sel? 3'b101: 3'b000;\n                 S2_5        : {out1, out2, out3} = ~sel? 3'b101: 3'b010;\n                 S3          : {out1, out2, out3} = ~sel? 3'b101: 3'b011;\n                 default     : {out1, out2, out3} = 3'b000;\n",
+        "carrier_id": "selected_Prob015",
+        "label": "public_pass_single_sample_hidden_unknown",
+        "mutant_hash": "sha256:9334eb0dca436ee4b9418c210062e316836adf6a5576770d2d716faf31c616e9",
+        "mutation_edits": [
+          {
+            "find": "                S2          : {out1, out2, out3} = ~sel? 3'b101: 3'b000;",
+            "replace": "                S2          : {out1, out2, out3} = ~sel? 3'b100: 3'b000;"
+          }
+        ],
+        "public_evidence": "{\"suites\": {\"W_bug\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"Hint: Output 'out1' has no mismatches.\\nHint: Output 'out2' has no mismatches.\\nHint: Output 'out3' has no mismatches.\\nHint: Total mismatched samples is 0 out of 181 samples\\n\\nSimulation finished at 906 ps\\nMismatches: 0 in 181 samples\\nTESTBENCH PASS original samples\"}, \"W_preserve\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"TESTBENCH PASS preserve\"}}}",
+        "public_rows": {
+          "W_bug": "visible_pass",
+          "W_preserve": "visible_pass"
+        },
+        "round": 1,
+        "slot_id": "r1_s0",
+        "source_hash": "sha256:f90ccbf4672e42c12f0e32c94ad75fa0cba11643bcfd850bb0def6056a989659",
+        "target_snapshot_hash": "sha256:ab15d21034b102efb7034cb8640bc64e12d395185fc1887e63b8dc96e8a4b068"
+      },
+      {
+        "blue_patch": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -54,8 +54,8 @@\n                 S0, S0_5, S1: {out1, out2, out3} = 0;\n                 S1_5        : {out1, out2, out3} = ~sel? 3'b100: 3'b000;\n                 S2          : {out1, out2, out3} = ~sel? 3'b101: 3'b000;\n-                S2_5        : {out1, out2, out3} = ~sel? 3'b101: 3'b011;\n-                S3          : {out1, out2, out3} = ~sel? 3'b101: 3'b011;\n+                S2_5        : {out1, out2, out3} = ~sel? 3'b101: 3'b010;\n+                S3          : {out1, out2, out3} = ~sel? 3'b101: 3'b010;\n                 default     : {out1, out2, out3} = 3'b000;\n             endcase\n         end\n",
+        "carrier_id": "selected_Prob015",
+        "label": "public_pass_single_sample_hidden_unknown",
+        "mutant_hash": "sha256:01789e72932d6e3853cea98a2f26b6f58309421c6fdb1ccced8fd655904a8217",
+        "mutation_edits": [
+          {
+            "find": "                S2_5        : {out1, out2, out3} = ~sel? 3'b101: 3'b010;",
+            "replace": "                S2_5        : {out1, out2, out3} = ~sel? 3'b101: 3'b011;"
+          }
+        ],
+        "public_evidence": "{\"suites\": {\"W_bug\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"Hint: Output 'out1' has no mismatches.\\nHint: Output 'out2' has no mismatches.\\nHint: Output 'out3' has no mismatches.\\nHint: Total mismatched samples is 0 out of 181 samples\\n\\nSimulation finished at 906 ps\\nMismatches: 0 in 181 samples\\nTESTBENCH PASS original samples\"}, \"W_preserve\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"TESTBENCH PASS preserve\"}}}",
+        "public_rows": {
+          "W_bug": "visible_pass",
+          "W_preserve": "visible_pass"
+        },
+        "round": 2,
+        "slot_id": "r2_s0",
+        "source_hash": "sha256:384255e39644d16941acd87411dca3048df35740d25c4df98b9393d609ace636",
+        "target_snapshot_hash": "sha256:0cbb99e1b7958fec435cfbe03d638daace0190ce20d8ce5982bece58d1871071"
+      },
+      {
+        "blue_patch": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -52,7 +52,7 @@\n         else begin\n             case(state)\n                 S0, S0_5, S1: {out1, out2, out3} = 0;\n-                S1_5        : {out1, out2, out3} = ~sel? 3'b010: 3'b000;\n+                S1_5        : {out1, out2, out3} = ~sel? 3'b100: 3'b000;\n                 S2          : {out1, out2, out3} = ~sel? 3'b101: 3'b000;\n                 S2_5        : {out1, out2, out3} = ~sel? 3'b101: 3'b010;\n                 S3          : {out1, out2, out3} = ~sel? 3'b101: 3'b011;\n",
+        "carrier_id": "selected_Prob015",
+        "label": "public_pass_single_sample_hidden_unknown",
+        "mutant_hash": "sha256:fa92b4bf7c4afac5792ecb1c5c9117983c2f5ae50abde758b9cf5cd75aa04fe3",
+        "mutation_edits": [
+          {
+            "find": "                S1_5        : {out1, out2, out3} = ~sel? 3'b100: 3'b000;",
+            "replace": "                S1_5        : {out1, out2, out3} = ~sel? 3'b010: 3'b000;"
+          }
+        ],
+        "public_evidence": "{\"suites\": {\"W_bug\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"Hint: Output 'out1' has no mismatches.\\nHint: Output 'out2' has no mismatches.\\nHint: Output 'out3' has no mismatches.\\nHint: Total mismatched samples is 0 out of 181 samples\\n\\nSimulation finished at 906 ps\\nMismatches: 0 in 181 samples\\nTESTBENCH PASS original samples\"}, \"W_preserve\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"TESTBENCH PASS preserve\"}}}",
+        "public_rows": {
+          "W_bug": "visible_pass",
+          "W_preserve": "visible_pass"
+        },
+        "round": 3,
+        "slot_id": "r3_s0",
+        "source_hash": "sha256:29a019a2495de62900b8ce419db52096c94a549c9e247c6083e0cea24cc0ceb7",
+        "target_snapshot_hash": "sha256:fd43fdb28a825fec6bef0f05226b7e3f3af6146d59b607b503bf6a01172f805b"
+      },
+      {
+        "blue_patch": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -1,4 +1,3 @@\n-\n module TopModule(\n \tinput wire clk  ,\n \tinput wire rst  ,\n@@ -17,30 +16,46 @@\n     \n     always@(posedge clk or negedge rst) begin\n         if(~rst)\n-            state <= 0;\n+            state <= S0;\n         else\n             state <= nstate;\n     end\n     \n     always@(*) begin\n+        nstate = state; // default assignment to avoid latch\n         case(state)\n-            S0     : nstate = d1? S0_5:\n-                              d2? S1:\n-                              nstate;\n-            S0_5   : nstate = d1? S1:\n-                              d2? S1_5:\n-                              nstate;\n-            S1     : nstate = d1? S1_5:\n-                              d2? S1_5:\n-                              nstate;\n-            S1_5   : nstate = ~sel? S0:\n-                              d1? S2:\n-                              d2? S2_5:\n-                              nstate;\n-            S2     : nstate = ~sel? S0:\n-                              d1? S2_5:\n-                              d2? S3:\n-                              nstate;\n+            S0     : begin\n+                        if(d1) nstate = S0_5;\n+                        else if(d2) nstate = S1;\n+                     end\n+            S0_5   : begin\n+                        if(d1) nstate = S1;\n+                        else if(d2) nstate = S1_5;\n+                     end\n+            S1     : begin\n+                        if(d1) nstate = S1_5;\n+                        else if(d2) nstate = S2;\n+                     end\n+            S1_5   : begin\n+                        if(d1) nstate = S2;\n+                        else if(d2) nstate = S2_5;\n+                        else nstate = S0;\n+                     end\n+            S2     : begin\n+                        if(d1) nstate = S2_5;\n+                        else if(d2) nstate = S3;\n+                        else nstate = S0;\n+                     end\n+            S2_5   : begin\n+                        if(d1) nstate = S3;\n+                        else if(d2) nstate = S3;\n+                        else nstate = S0;\n+                     end\n+            S3     : begin\n+                        if(d1) nstate = S3;\n+                        else if(d2) nstate = S3;\n+                        else nstate = S0;\n+                     end\n             default: nstate = S0;\n         endcase\n     end\n@@ -51,7 +66,7 @@\n         end\n         else begin\n             case(state)\n-                S0, S0_5, S1: {out1, out2, out3} = 0;\n+                S0, S0_5, S1: {out1, out2, out3} = 3'b000;\n                 S1_5        : {out1, out2, out3} = ~sel? 3'b100: 3'b000;\n                 S2          : {out1, out2, out3} = ~sel? 3'b101: 3'b000;\n                 S2_5        : {out1, out2, out3} = ~sel? 3'b101: 3'b010;\n",
+        "carrier_id": "selected_Prob015",
+        "label": "public_functional_failure_single_sample_unconfirmed",
+        "mutant_hash": "sha256:083cb0fcc7f0d5d3c792909506b9c818c3b51c9135879f2147ca1dfd0fb5b876",
+        "mutation_edits": [
+          {
+            "find": "            S1     : nstate = d1? S1_5:\n                              d2? S2:\n                              nstate;",
+            "replace": "            S1     : nstate = d1? S1_5:\n                              d2? S1_5:\n                              nstate;"
+          }
+        ],
+        "public_evidence": "{\"suites\": {\"W_bug\": {\"result\": \"visible_fail\", \"returncode\": 0, \"pass_marker_found\": false, \"fail_marker_found\": true, \"log\": \"Hint: Output 'out1' has 26 mismatches. First mismatch occurred at time 340.\\nHint: Output 'out2' has 14 mismatches. First mismatch occurred at time 300.\\nHint: Output 'out3' has 31 mismatches. First mismatch occurred at time 340.\\nHint: Total mismatched samples is 44 out of 181 samples\\n\\nSimulation finished at 906 ps\\nMismatches: 44 in 181 samples\\nCHECK_FAIL original samples\"}, \"W_preserve\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"TESTBENCH PASS preserve\"}}}",
+        "public_rows": {
+          "W_bug": "visible_fail",
+          "W_preserve": "visible_pass"
+        },
+        "round": 4,
+        "slot_id": "r4_s0",
+        "source_hash": "sha256:46f29ffb2d537f3985b8ec3b6b23bb6a9a7708f0a2eef61c9a86f41aceb1593a",
+        "target_snapshot_hash": "sha256:bb328c54caa1114f69904e4f2c5a9bf35de8e3155e11437a4dc14e9eb7f84329"
+      }
+    ],
+    "round": 4
+  },
+  "round": 4,
+  "update_decisions": [
+    {
+      "accepted": false,
+      "promotion": "no_new_experience"
+    }
+  ]
+}

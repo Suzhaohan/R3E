@@ -1,0 +1,60 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "        sf1:\n            nstate=sf2;",
+            "replace": "        sf1:\n            nstate=sf1;"
+          }
+        ],
+        "violated_requirement": "When the first bit of a group does not match (data=1), the state machine should transition through the failure states (sf1 to sf6). However, with this mutation, the state machine gets stuck in sf1, preventing proper classification of the group as a non-match.",
+        "spec_basis": "The module must detect the sequence `011100` from the input signal `data`. If the first bit of a group does not match the sequence, the module skips the entire group and starts checking from the next group."
+      },
+      {
+        "edits": [
+          {
+            "find": "        sf2:\n            nstate=sf3;",
+            "replace": "        sf2:\n            nstate=sf2;"
+          }
+        ],
+        "violated_requirement": "When the first bit of a group does not match (data=1), the state machine should transition through the failure states (sf1 to sf6). However, with this mutation, the state machine gets stuck in sf2, preventing proper classification of the group as a non-match.",
+        "spec_basis": "The module must detect the sequence `011100` from the input signal `data`. If the first bit of a group does not match the sequence, the module skips the entire group and starts checking from the next group."
+      },
+      {
+        "edits": [
+          {
+            "find": "        sf3:\n            nstate=sf4;",
+            "replace": "        sf3:\n            nstate=sf3;"
+          }
+        ],
+        "violated_requirement": "When the first bit of a group does not match (data=1), the state machine should transition through the failure states (sf1 to sf6). However, with this mutation, the state machine gets stuck in sf3, preventing proper classification of the group as a non-match.",
+        "spec_basis": "The module must detect the sequence `011100` from the input signal `data`. If the first bit of a group does not match the sequence, the module skips the entire group and starts checking from the next group."
+      },
+      {
+        "edits": [
+          {
+            "find": "        sf4:\n            nstate=sf5;",
+            "replace": "        sf4:\n            nstate=sf4;"
+          }
+        ],
+        "violated_requirement": "When the first bit of a group does not match (data=1), the state machine should transition through the failure states (sf1 to sf6). However, with this mutation, the state machine gets stuck in sf4, preventing proper classification of the group as a non-match.",
+        "spec_basis": "The module must detect the sequence `011100` from the input signal `data`. If the first bit of a group does not match the sequence, the module skips the entire group and starts checking from the next group."
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:455ba8e6deccdeb513a3b3a5d4734d84545b9c50ac256f9a9d8ef753eb92f5e8",
+  "input_tokens": 11592,
+  "output_tokens": 603,
+  "request_hash": "sha256:03d648d1ce92919aa7462ad6d2abc1cc23993a1ca00889759de83091d2b5fd1c",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 11592,
+    "output_tokens": 603
+  },
+  "model_seconds": 21.692733792588115
+}

@@ -1,0 +1,386 @@
+{
+  "source": {
+    "run_id": "collection",
+    "round": 3,
+    "slot_id": "r3_s0",
+    "task_hash": "sha256:aa944967785969509c249575c90680e8e1bdd17da58ada7740a3075f63b03a1f",
+    "carrier_id": "chipbench_prob003_group_boundary_v1",
+    "mutant_hash": "sha256:8bc7eda7e1f31710488bec6fee0a57eab515adf61fcb3aaf21f998e6aa3b8a53",
+    "candidate_hash": "sha256:517d09ebb9f08552f7d5a28039bd496237f32f60af6c6b86055e9231676fb164",
+    "encounter_hash": "sha256:3c896981bf505e4f693e1bdf09fd8daacda647f4cb49cb676823419f45652a81",
+    "archive_hash": "sha256:bb4e936910034db2d378909769966f0a99c5da7c3c8e6c63c08fe3bcd540a3f5",
+    "public_replay_hash": "sha256:d7b424a8c2e528b4cfe78e67e843e077bc79e0de6ec16945f39c6b0d01c62478"
+  },
+  "encounter": {
+    "encounter": 0,
+    "seed": 1343095866064520,
+    "result": {
+      "task_id": "chipbench_prob003_group_boundary_v1__8bc7eda7e1f31710",
+      "route": "direct",
+      "rtl_tokens": 544,
+      "closure": [
+        "rtl/sequence.sv",
+        "harness:W_bug_tb.sv",
+        "harness:W_preserve_tb.sv"
+      ],
+      "outcome": "not_fixed",
+      "attempts": [
+        {
+          "attempt": 0,
+          "route": "direct",
+          "submissions": [
+            {
+              "kind": "repair",
+              "tokens": {
+                "input": 3962,
+                "output": 707,
+                "counted_request": 4010,
+                "model_seconds": 19.9
+              },
+              "format_valid": true,
+              "format_error": null
+            }
+          ],
+          "repair_tokens": {
+            "input": 3962,
+            "output": 707,
+            "counted_request": 4010,
+            "model_seconds": 19.9
+          },
+          "edit": "Changed sf6 state transition to go to idle instead of s1/sf1 to properly reset for next group after completing a sequence check",
+          "candidate_hash": "sha256:8ca21f2e82ea6d085c343fa67f8bbdc32e886cf5d139678b3af13ea93ad93521",
+          "tier": "visible_fail",
+          "stage": "simulation",
+          "build_seconds": 0.02,
+          "sim_seconds": 0.01,
+          "changed_files": [
+            "rtl/sequence.sv"
+          ]
+        },
+        {
+          "attempt": 1,
+          "route": "direct",
+          "submissions": [
+            {
+              "kind": "public_feedback_correction",
+              "tokens": {
+                "input": 6556,
+                "output": 703,
+                "counted_request": 6604,
+                "model_seconds": 21.96
+              },
+              "format_valid": true,
+              "format_error": null
+            }
+          ],
+          "repair_tokens": {
+            "input": 6556,
+            "output": 703,
+            "counted_request": 6604,
+            "model_seconds": 21.96
+          },
+          "edit": "Fixed incorrect output in sf6 state by ensuring both s6 and sf6 transitions go to idle state to properly reset for next group",
+          "candidate_hash": "sha256:517d09ebb9f08552f7d5a28039bd496237f32f60af6c6b86055e9231676fb164",
+          "tier": "visible_fail",
+          "stage": "simulation",
+          "build_seconds": 0.02,
+          "sim_seconds": 0.01,
+          "changed_files": [
+            "rtl/sequence.sv"
+          ]
+        },
+        {
+          "attempt": 2,
+          "route": "direct",
+          "submissions": [
+            {
+              "kind": "public_feedback_correction",
+              "tokens": {
+                "input": 8181,
+                "output": 703,
+                "counted_request": 8229,
+                "model_seconds": 19.28
+              },
+              "format_valid": true,
+              "format_error": null
+            }
+          ],
+          "repair_tokens": {
+            "input": 8181,
+            "output": 703,
+            "counted_request": 8229,
+            "model_seconds": 19.28
+          },
+          "edit": "Fixed incorrect output in sf6 state by ensuring both s6 and sf6 transitions go to idle state to properly reset for next group",
+          "candidate_hash": "sha256:517d09ebb9f08552f7d5a28039bd496237f32f60af6c6b86055e9231676fb164",
+          "tier": "visible_fail",
+          "stage": "simulation",
+          "build_seconds": 0.02,
+          "sim_seconds": 0.01,
+          "changed_files": [
+            "rtl/sequence.sv"
+          ]
+        },
+        {
+          "attempt": 3,
+          "route": "direct",
+          "submissions": [
+            {
+              "kind": "public_feedback_correction",
+              "tokens": {
+                "input": 9737,
+                "output": 703,
+                "counted_request": 9785,
+                "model_seconds": 20.64
+              },
+              "format_valid": true,
+              "format_error": null
+            }
+          ],
+          "repair_tokens": {
+            "input": 9737,
+            "output": 703,
+            "counted_request": 9785,
+            "model_seconds": 20.64
+          },
+          "edit": "Fixed incorrect output in sf6 state by ensuring both s6 and sf6 transitions go to idle state to properly reset for next group",
+          "candidate_hash": "sha256:517d09ebb9f08552f7d5a28039bd496237f32f60af6c6b86055e9231676fb164",
+          "tier": "visible_fail",
+          "stage": "simulation",
+          "build_seconds": 0.02,
+          "sim_seconds": 0.01,
+          "changed_files": [
+            "rtl/sequence.sv"
+          ]
+        }
+      ],
+      "calls": 4,
+      "final_candidate_hash": "sha256:517d09ebb9f08552f7d5a28039bd496237f32f60af6c6b86055e9231676fb164",
+      "inputs_read": [
+        "public/task.json",
+        "public/visible/build.json",
+        "public/visible/W_bug_tb.sv",
+        "public/visible/W_preserve_tb.sv",
+        "public/spec.txt"
+      ],
+      "experience": {
+        "snapshot_id": "B_2",
+        "snapshot_hash": "sha256:2c92cc6e5cc399f257410086ce04ab71c335c7ce31cbee6fa6726ee26a3236bb",
+        "state_hash": "sha256:e856f97fe0f076154115325dbd1bbb272b878268ef35259950db9fd56eebfd91",
+        "payload_hash": "sha256:3092f0d7fc08feac058171dbed616bb7c60daa43691d7b6d28875d3225d9b061",
+        "delivery_hash": "sha256:5c81cc27ba2508086ef6594932fcab1a4fb89f3c083fd86866cb0abacaad6ff2",
+        "delivered": false
+      }
+    }
+  },
+  "archive_path": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/real-all-20261020-011058/Prob003/collection/rounds/3/r3_s0/online/blue/archive/chipbench_prob003_group_boundary_v1__8bc7eda7e1f31710__517d09ebb9f08552.json",
+  "task_dir": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/real-all-20261020-011058/Prob003/collection/rounds/3/r3_s0/admission/blue_task",
+  "replay": {
+    "tier": "visible_fail",
+    "stage": "simulation",
+    "evidence": {
+      "suites": {
+        "W_bug": {
+          "result": "visible_fail",
+          "returncode": 0,
+          "pass_marker_found": false,
+          "fail_marker_found": true,
+          "log": "CHECK_FAIL W_bug cycle=6 group=011100 bit=0 match=0 not_match=1",
+          "public_state_trace": {
+            "version": "public_group_trace_v1",
+            "status": "observed",
+            "source": "same public test and submitted RTL only",
+            "scoring_unchanged": true,
+            "failure_reproduced": true,
+            "records": [
+              "PUBLIC_FSM_TRACE cycle=1 position=1 sampled_prefix=000000 pre_state=0 pre_next=1 post_state=1 actual=00 expected=00",
+              "PUBLIC_FSM_TRACE cycle=2 position=2 sampled_prefix=000001 pre_state=1 pre_next=2 post_state=2 actual=00 expected=00",
+              "PUBLIC_FSM_TRACE cycle=3 position=3 sampled_prefix=000011 pre_state=2 pre_next=3 post_state=3 actual=00 expected=00",
+              "PUBLIC_FSM_TRACE cycle=4 position=4 sampled_prefix=000111 pre_state=3 pre_next=10 post_state=10 actual=00 expected=00",
+              "PUBLIC_FSM_TRACE cycle=5 position=5 sampled_prefix=001110 pre_state=10 pre_next=11 post_state=11 actual=00 expected=00",
+              "PUBLIC_FSM_TRACE cycle=6 position=6 sampled_prefix=011100 pre_state=11 pre_next=12 post_state=12 actual=01 expected=10"
+            ],
+            "localization": {
+              "version": "prob003_public_fault_focus_v1",
+              "status": "observed",
+              "source": "current submitted RTL, public specification and same public test only",
+              "first_output_mismatch": {
+                "cycle": 6,
+                "position": 6,
+                "input_bit": 0,
+                "consumed_prefix": "011100",
+                "prefix_matches_target": true,
+                "pre_state": 11,
+                "pre_state_name": "sf5",
+                "observed_next": 12,
+                "post_state": 12,
+                "post_state_name": "sf6",
+                "actual": "01",
+                "expected": "10",
+                "current_branch": {
+                  "input_0": "sf6",
+                  "input_1": "sf6",
+                  "selected": "sf6",
+                  "agrees_with_simulator": true
+                }
+              },
+              "earliest_observed_state_context_conflict": null,
+              "focus_window": [
+                {
+                  "cycle": 1,
+                  "position": 1,
+                  "input_bit": 0,
+                  "consumed_prefix": "0",
+                  "prefix_matches_target": true,
+                  "pre_state": 0,
+                  "pre_state_name": "idle",
+                  "observed_next": 1,
+                  "post_state": 1,
+                  "post_state_name": "s1",
+                  "actual": "00",
+                  "expected": "00",
+                  "current_branch": {
+                    "input_0": "s1",
+                    "input_1": "sf1",
+                    "selected": "s1",
+                    "agrees_with_simulator": true
+                  }
+                },
+                {
+                  "cycle": 2,
+                  "position": 2,
+                  "input_bit": 1,
+                  "consumed_prefix": "01",
+                  "prefix_matches_target": true,
+                  "pre_state": 1,
+                  "pre_state_name": "s1",
+                  "observed_next": 2,
+                  "post_state": 2,
+                  "post_state_name": "s2",
+                  "actual": "00",
+                  "expected": "00",
+                  "current_branch": {
+                    "input_0": "sf2",
+                    "input_1": "s2",
+                    "selected": "s2",
+                    "agrees_with_simulator": true
+                  }
+                },
+                {
+                  "cycle": 3,
+                  "position": 3,
+                  "input_bit": 1,
+                  "consumed_prefix": "011",
+                  "prefix_matches_target": true,
+                  "pre_state": 2,
+                  "pre_state_name": "s2",
+                  "observed_next": 3,
+                  "post_state": 3,
+                  "post_state_name": "s3",
+                  "actual": "00",
+                  "expected": "00",
+                  "current_branch": {
+                    "input_0": "sf3",
+                    "input_1": "s3",
+                    "selected": "s3",
+                    "agrees_with_simulator": true
+                  }
+                },
+                {
+                  "cycle": 4,
+                  "position": 4,
+                  "input_bit": 1,
+                  "consumed_prefix": "0111",
+                  "prefix_matches_target": true,
+                  "pre_state": 3,
+                  "pre_state_name": "s3",
+                  "observed_next": 10,
+                  "post_state": 10,
+                  "post_state_name": "sf4",
+                  "actual": "00",
+                  "expected": "00",
+                  "current_branch": {
+                    "input_0": "s4",
+                    "input_1": "sf4",
+                    "selected": "sf4",
+                    "agrees_with_simulator": true
+                  }
+                },
+                {
+                  "cycle": 5,
+                  "position": 5,
+                  "input_bit": 0,
+                  "consumed_prefix": "01110",
+                  "prefix_matches_target": true,
+                  "pre_state": 10,
+                  "pre_state_name": "sf4",
+                  "observed_next": 11,
+                  "post_state": 11,
+                  "post_state_name": "sf5",
+                  "actual": "00",
+                  "expected": "00",
+                  "current_branch": {
+                    "input_0": "sf5",
+                    "input_1": "sf5",
+                    "selected": "sf5",
+                    "agrees_with_simulator": true
+                  }
+                },
+                {
+                  "cycle": 6,
+                  "position": 6,
+                  "input_bit": 0,
+                  "consumed_prefix": "011100",
+                  "prefix_matches_target": true,
+                  "pre_state": 11,
+                  "pre_state_name": "sf5",
+                  "observed_next": 12,
+                  "post_state": 12,
+                  "post_state_name": "sf6",
+                  "actual": "01",
+                  "expected": "10",
+                  "current_branch": {
+                    "input_0": "sf6",
+                    "input_1": "sf6",
+                    "selected": "sf6",
+                    "agrees_with_simulator": true
+                  }
+                }
+              ],
+              "repair_focus": "The first group already fails. Inspect its consumed-prefix path before editing a transition used only after a completed group.",
+              "limitation": "An output mismatch is observed. A context conflict is a hint for a pstate-only architecture; finite public traces cannot always uniquely locate the original faulty expression. No expected state target or reference patch is provided."
+            },
+            "failure": [
+              "CHECK_FAIL W_bug cycle=6 group=011100 bit=0 match=0 not_match=1"
+            ],
+            "limitation": "Numeric states describe this submitted candidate; expected outputs derive only from the public group contract."
+          }
+        },
+        "W_preserve": {
+          "result": "visible_pass",
+          "returncode": 0,
+          "pass_marker_found": true,
+          "fail_marker_found": false,
+          "log": "TESTBENCH PASS W_preserve reset exclusivity stability"
+        }
+      }
+    },
+    "build_seconds": 0.021207847632467747,
+    "sim_seconds": 0.011654511094093323,
+    "closure": [
+      "rtl/sequence.sv",
+      "harness:W_bug_tb.sv",
+      "harness:W_preserve_tb.sv"
+    ]
+  },
+  "public_rows": {
+    "W_bug": "visible_fail",
+    "W_preserve": "visible_pass"
+  },
+  "mutation_edits": [
+    {
+      "find": "        s3:\n            nstate=data?s4:sf4;",
+      "replace": "        s3:\n            nstate=data?sf4:s4;"
+    }
+  ]
+}

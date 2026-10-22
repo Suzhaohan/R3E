@@ -1,0 +1,52 @@
+{
+  "blue": {
+    "blue_config_hash": "sha256:e9050a05340e1a4a331b06ef805f6d7b81f89ff50fcff1a545185f31162b8aee",
+    "committed_round": 1,
+    "entries": [],
+    "learning_policy_hash": "sha256:6941173bb663782fd5e9a9dc8dd9811bda8f77182f32f35079d6fe9052c82f2e",
+    "parent_snapshot_hash": "sha256:030f8c0bf733a4ee2b5b21b5c144726305c64277cd47a1090fa8baf35db6e5dc",
+    "retrieval_policy_hash": "sha256:8b114d1dc640c0d8851c3796a1d6ed4e3bc9b65406c7341475b69b3d8568e26f",
+    "snapshot_id": "B_1",
+    "state_hash": "sha256:e856f97fe0f076154115325dbd1bbb272b878268ef35259950db9fd56eebfd91",
+    "version": "continuous_blue_snapshot_v1"
+  },
+  "parent_commit_hash": "sha256:c3e2c7a114028741b5ba91cb37a9f10aef8dc8fa6961ea7d97a5f1e2391b633c",
+  "promotion_hash": "sha256:f80553a3da5aee7cbf86ab5ea1ff39ef264710b4d3b37ebe145dd0d5cf1508c9",
+  "red": {
+    "observations": [
+      {
+        "blue_patch": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -43,7 +43,7 @@\n         else if(~div_flag)\n             clk_out_r <= clk_cnt<=((div_e>>2)+1);\n         else\n-            clk_out_r <= clk_cnt<=((div_o>>1)+1);\n+            clk_out_r <= clk_cnt<=((div_o>>2)+1);\n     end\n     \n     assign clk_out = clk_out_r;\n",
+        "carrier_id": "chipbench_Prob017_fractional_divider",
+        "label": "public_pass_single_sample_hidden_unknown",
+        "mutant_hash": "sha256:fdae4ce04367df9e91771a0ff109ea3437cef7d8353cd5b84caab20e3fe6aeff",
+        "mutation_edits": [
+          {
+            "find": "clk_cnt<=((div_o>>2)+1)",
+            "replace": "clk_cnt<=((div_o>>1)+1)"
+          }
+        ],
+        "public_evidence": "{\"suites\": {\"W_bug\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"TESTBENCH PASS divider public waveform\"}, \"W_preserve\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"TESTBENCH PASS divider preserve\"}}}",
+        "public_rows": {
+          "W_bug": "visible_pass",
+          "W_preserve": "visible_pass"
+        },
+        "round": 1,
+        "slot_id": "r1_s0",
+        "source_hash": "sha256:76c78d3991e9a4f797fed9a3bdecd2684a03e3e4748b3ec47989abff73bf00b4",
+        "target_snapshot_hash": "sha256:030f8c0bf733a4ee2b5b21b5c144726305c64277cd47a1090fa8baf35db6e5dc"
+      }
+    ],
+    "round": 1
+  },
+  "round": 1,
+  "update_decisions": [
+    {
+      "entry_hash": "sha256:fc3c0edc5f49d4f624a4dd5123a4bda94a282de9f297efed5d62ca5c739ab415",
+      "reason": "accepted"
+    },
+    {
+      "accepted": false,
+      "promotion": "regression"
+    }
+  ]
+}

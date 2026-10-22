@@ -1,0 +1,121 @@
+module TopModule(
+	input wire clk  ,
+	input wire rst  ,
+	input wire d1 ,
+	input wire d2 ,
+	input wire sel ,
+	
+	output reg out1,
+	output reg out2,
+	output reg out3
+);
+//*************code***********//
+
+    localparam S0=0, S0_5=1, S1=2, S1_5=3, S2=4, S2_5=5, S3=6;
+    localparam CHANGE=7;
+    
+    reg [2:0] state, nstate;
+    reg [1:0] change_cnt, nchange_cnt;
+    
+    always @(posedge clk or negedge rst) begin
+        if (~rst) begin
+            state <= S0;
+            change_cnt <= 0;
+        end else begin
+            state <= nstate;
+            change_cnt <= nchange_cnt;
+        end
+    end
+    
+    always @(*) begin
+        nstate = state;
+        nchange_cnt = change_cnt;
+        case (state)
+            S0: begin
+                if (d1) nstate = S0_5;
+                else if (d2) nstate = S1;
+            end
+            S0_5: begin
+                if (d1) nstate = S1;
+                else if (d2) nstate = S1_5;
+            end
+            S1: begin
+                if (d1) nstate = S1_5;
+                else if (d2) nstate = S2;
+            end
+            S1_5: begin
+                if (~sel) begin
+                    nstate = S0;
+                end else begin
+                    if (d1) nstate = S2;
+                    else if (d2) nstate = S2_5;
+                end
+            end
+            S2: begin
+                if (~sel) begin
+                    nstate = S0;
+                end else begin
+                    if (d1) nstate = S2_5;
+                    else if (d2) nstate = S3;
+                end
+            end
+            S2_5: begin
+                if (~sel) begin
+                    nstate = CHANGE;
+                    nchange_cnt = 1;
+                end else begin
+                    nstate = S0;
+                end
+            end
+            S3: begin
+                if (~sel) begin
+                    nstate = CHANGE;
+                    nchange_cnt = 2;
+                end else begin
+                    nstate = S0;
+                end
+            end
+            CHANGE: begin
+                if (change_cnt > 0) begin
+                    nstate = (change_cnt == 1) ? S0 : CHANGE;
+                    nchange_cnt = change_cnt - 1;
+                end else begin
+                    nstate = S0;
+                end
+            end
+            default: nstate = S0;
+        endcase
+    end
+    
+    always @(posedge clk or negedge rst) begin
+        if (~rst) begin
+            {out1, out2, out3} <= 3'b000;
+        end else begin
+            case (state)
+                S0, S0_5, S1: {out1, out2, out3} <= 3'b000;
+                S1_5: begin
+                    if (~sel) {out1, out2, out3} <= 3'b100;
+                    else {out1, out2, out3} <= 3'b000;
+                end
+                S2: begin
+                    if (~sel) {out1, out2, out3} <= 3'b101;
+                    else {out1, out2, out3} <= 3'b000;
+                end
+                S2_5: begin
+                    if (~sel) {out1, out2, out3} <= 3'b101;
+                    else {out1, out2, out3} <= 3'b010;
+                end
+                S3: begin
+                    if (~sel) {out1, out2, out3} <= 3'b101;
+                    else {out1, out2, out3} <= 3'b011;
+                end
+                CHANGE: begin
+                    if (change_cnt > 0) {out1, out2, out3} <= 3'b001;
+                    else {out1, out2, out3} <= 3'b000;
+                end
+                default: {out1, out2, out3} <= 3'b000;
+            endcase
+        end
+    end
+//*************code***********//
+endmodule

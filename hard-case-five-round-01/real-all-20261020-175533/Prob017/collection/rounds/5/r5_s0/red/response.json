@@ -1,0 +1,40 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "clk_out_r <= clk_cnt<=((div_e>>2)+1);",
+            "replace": "clk_out_r <= clk_cnt<=((div_e>>3)+1);"
+          }
+        ],
+        "violated_requirement": "Output clock pulse width is reduced when div_flag is 0, causing incorrect duty cycle during even period division",
+        "spec_basis": "Output becomes 1 iff count <= floor((mode ? div_o : div_e)/4) + 1"
+      },
+      {
+        "edits": [
+          {
+            "find": "clk_out_r <= clk_cnt<=((div_o>>2)+1);",
+            "replace": "clk_out_r <= clk_cnt<=((div_o>>3)+1);"
+          }
+        ],
+        "violated_requirement": "Output clock pulse width is reduced when div_flag is 1, causing incorrect duty cycle during odd period division",
+        "spec_basis": "Output becomes 1 iff count <= floor((mode ? div_o : div_e)/4) + 1"
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:ab631dd3591926e90a4cafa79a7062f0024d57ad31438b64355f3e6fd0d695c5",
+  "input_tokens": 9908,
+  "output_tokens": 257,
+  "request_hash": "sha256:16abb574e4bdc0cd0dac09609a3e8c5862808bff0acc074e74fd635f45f93e19",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 9908,
+    "output_tokens": 257
+  },
+  "model_seconds": 16.092060464434326
+}

@@ -1,0 +1,94 @@
+{
+  "blue": {
+    "blue_config_hash": "sha256:ae282cf6effc76efdc1247bcc956f0143332fb99c714b79ead0d865686f50966",
+    "committed_round": 3,
+    "entries": [],
+    "learning_policy_hash": "sha256:4a09424dd1c7efe73565caf882441e236d76f12d2175725024c3057884eb1afe",
+    "parent_snapshot_hash": "sha256:bd077223b730a468237d8aa1cf6e0f64376d511b80d739419cdacfbefdb5f8d9",
+    "retrieval_policy_hash": "sha256:8b114d1dc640c0d8851c3796a1d6ed4e3bc9b65406c7341475b69b3d8568e26f",
+    "snapshot_id": "B_3",
+    "state_hash": "sha256:831017327dc4caf546fcce1c2a44feb9ac291ad3a98564d855b6bcc075af7c5b",
+    "version": "continuous_blue_snapshot_v1"
+  },
+  "parent_commit_hash": "sha256:1dc96e070fa37b78949663b19e0bfb356f031408722f71eced074b174270442f",
+  "promotion_hash": "sha256:4dec583a346626079d67a35419dad93aedd101246d26527b46e11a8259295274",
+  "red": {
+    "observations": [
+      {
+        "blue_patch": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -45,7 +45,7 @@\n \n     end\n     // if it overflows, set overflow_out to be 1\n-    if(counter_out == 4'b1110)\n+    if(counter_out == 4'b1111)\n     begin\n         overflow_out <= 1'b1;\n     end\n",
+        "carrier_id": "selected_Counter",
+        "label": "public_pass_single_sample_hidden_unknown",
+        "mutant_hash": "sha256:ae4726d6afb92f0d25f83bfd161e8d19bd0d00d3992599e16350ac004afdeef7",
+        "mutation_edits": [
+          {
+            "find": "counter_out == 4'b1111",
+            "replace": "counter_out == 4'b1110"
+          }
+        ],
+        "public_evidence": "{\"suites\": {\"W_bug\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"         106, \\t1, \\t0, \\t1, \\t 7, \\t\\t0\\n                 110, \\t0, \\t0, \\t1, \\t 7, \\t\\t0\\n                 115, \\t1, \\t0, \\t1, \\t 7, \\t\\t0\\n                 116, \\t1, \\t0, \\t1, \\t 8, \\t\\t0\\n                 120, \\t0, \\t0, \\t1, \\t 8, \\t\\t0\\n                 125, \\t1, \\t0, \\t1, \\t 8, \\t\\t0\\n                 126, \\t1, \\t0, \\t1, \\t 9, \\t\\t0\\n                 130, \\t0, \\t0, \\t1, \\t 9, \\t\\t0\\n                 135, \\t1, \\t0, \\t1, \\t 9, \\t\\t0\\n                 136, \\t1, \\t0, \\t1, \\t10, \\t\\t0\\n                 140, \\t0, \\t0, \\t1, \\t10, \\t\\t0\\n                 145, \\t1, \\t0, \\t1, \\t10, \\t\\t0\\n                 146, \\t1, \\t0, \\t1, \\t11, \\t\\t0\\n                 150, \\t0, \\t0, \\t1, \\t11, \\t\\t0\\n                 155, \\t1, \\t0, \\t1, \\t11, \\t\\t0\\n                 156, \\t1, \\t0, \\t1, \\t12, \\t\\t0\\n                 160, \\t0, \\t0, \\t1, \\t12, \\t\\t0\\n                 165, \\t1, \\t0, \\t1, \\t12, \\t\\t0\\n                 166, \\t1, \\t0, \\t1, \\t13, \\t\\t0\\n                 170, \\t0, \\t0, \\t1, \\t13, \\t\\t0\\n                 175, \\t1, \\t0, \\t1, \\t13, \\t\\t0\\n                 176, \\t1, \\t0, \\t1, \\t14, \\t\\t0\\n                 180, \\t0, \\t0, \\t1, \\t14, \\t\\t0\\n                 185, \\t1, \\t0, \\t1, \\t14, \\t\\t0\\n                 186, \\t1, \\t0, \\t1, \\t15, \\t\\t0\\n                 190, \\t0, \\t0, \\t1, \\t15, \\t\\t0\\n                 195, \\t1, \\t0, \\t1, \\t15, \\t\\t1\\n                 196, \\t1, \\t0, \\t1, \\t 0, \\t\\t1\\n                 200, \\t0, \\t0, \\t1, \\t 0, \\t\\t1\\n                 205, \\t1, \\t0, \\t1, \\t 0, \\t\\t1\\n                 206, \\t1, \\t0, \\t1, \\t 1, \\t\\t1\\n                 210, \\t0, \\t0, \\t1, \\t 1, \\t\\t1\\n                 215, \\t1, \\t0, \\t1, \\t 1, \\t\\t1\\n                 216, \\t1, \\t0, \\t1, \\t 2, \\t\\t1\\n                 220, \\t0, \\t0, \\t1, \\t 2, \\t\\t1\\n                 225, \\t1, \\t0, \\t1, \\t 2, \\t\\t1\\n                 226, \\t1, \\t0, \\t1, \\t 3, \\t\\t1\\n                 230, \\t0, \\t0, \\t1, \\t 3, \\t\\t1\\n                 235, \\t1, \\t0, \\t1, \\t 3, \\t\\t1\\n                 236, \\t1, \\t0, \\t1, \\t 4, \\t\\t1\\n                 240, \\t0, \\t0, \\t1, \\t 4, \\t\\t1\\n                 245, \\t1, \\t0, \\t1, \\t 4, \\t\\t1\\n                 246, \\t1, \\t0, \\t1, \\t 5, \\t\\t1\\n                 250, \\t0, \\t0, \\t1, \\t 5, \\t\\t1\\n                 255, \\t1, \\t0, \\t1, \\t 5, \\t\\t1\\n                 256, \\t1, \\t0, \\t1, \\t 6, \\t\\t1\\nTESTBENCH PASS original oracle\"}, \"W_preserve\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"TESTBENCH PASS preserve\"}}}",
+        "public_rows": {
+          "W_bug": "visible_pass",
+          "W_preserve": "visible_pass"
+        },
+        "round": 1,
+        "slot_id": "r1_s0",
+        "source_hash": "sha256:1465ad5d1dfc5ed1985ddcfbae7f1fab393ac900502e7c7b45a215dd0242ae06",
+        "target_snapshot_hash": "sha256:a3f8dbb730c7d9d32d38fd2cf666aee561b0cec0a8ea6b1109101a93e2937cd8"
+      },
+      {
+        "blue_patch": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -45,7 +45,7 @@\n \n     end\n     // if it overflows, set overflow_out to be 1\n-    if(counter_out == 4'b1011)\n+    if(counter_out == 4'b1111)\n     begin\n         overflow_out <= 1'b1;\n     end\n",
+        "carrier_id": "selected_Counter",
+        "label": "public_pass_single_sample_hidden_unknown",
+        "mutant_hash": "sha256:94dfcc8789c1cdd7792c3ab4cbe840ad03cbd7c8a147343805f6d44ecb4d2321",
+        "mutation_edits": [
+          {
+            "find": "counter_out == 4'b1111",
+            "replace": "counter_out == 4'b1011"
+          }
+        ],
+        "public_evidence": "{\"suites\": {\"W_bug\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"         106, \\t1, \\t0, \\t1, \\t 7, \\t\\t0\\n                 110, \\t0, \\t0, \\t1, \\t 7, \\t\\t0\\n                 115, \\t1, \\t0, \\t1, \\t 7, \\t\\t0\\n                 116, \\t1, \\t0, \\t1, \\t 8, \\t\\t0\\n                 120, \\t0, \\t0, \\t1, \\t 8, \\t\\t0\\n                 125, \\t1, \\t0, \\t1, \\t 8, \\t\\t0\\n                 126, \\t1, \\t0, \\t1, \\t 9, \\t\\t0\\n                 130, \\t0, \\t0, \\t1, \\t 9, \\t\\t0\\n                 135, \\t1, \\t0, \\t1, \\t 9, \\t\\t0\\n                 136, \\t1, \\t0, \\t1, \\t10, \\t\\t0\\n                 140, \\t0, \\t0, \\t1, \\t10, \\t\\t0\\n                 145, \\t1, \\t0, \\t1, \\t10, \\t\\t0\\n                 146, \\t1, \\t0, \\t1, \\t11, \\t\\t0\\n                 150, \\t0, \\t0, \\t1, \\t11, \\t\\t0\\n                 155, \\t1, \\t0, \\t1, \\t11, \\t\\t0\\n                 156, \\t1, \\t0, \\t1, \\t12, \\t\\t0\\n                 160, \\t0, \\t0, \\t1, \\t12, \\t\\t0\\n                 165, \\t1, \\t0, \\t1, \\t12, \\t\\t0\\n                 166, \\t1, \\t0, \\t1, \\t13, \\t\\t0\\n                 170, \\t0, \\t0, \\t1, \\t13, \\t\\t0\\n                 175, \\t1, \\t0, \\t1, \\t13, \\t\\t0\\n                 176, \\t1, \\t0, \\t1, \\t14, \\t\\t0\\n                 180, \\t0, \\t0, \\t1, \\t14, \\t\\t0\\n                 185, \\t1, \\t0, \\t1, \\t14, \\t\\t0\\n                 186, \\t1, \\t0, \\t1, \\t15, \\t\\t0\\n                 190, \\t0, \\t0, \\t1, \\t15, \\t\\t0\\n                 195, \\t1, \\t0, \\t1, \\t15, \\t\\t1\\n                 196, \\t1, \\t0, \\t1, \\t 0, \\t\\t1\\n                 200, \\t0, \\t0, \\t1, \\t 0, \\t\\t1\\n                 205, \\t1, \\t0, \\t1, \\t 0, \\t\\t1\\n                 206, \\t1, \\t0, \\t1, \\t 1, \\t\\t1\\n                 210, \\t0, \\t0, \\t1, \\t 1, \\t\\t1\\n                 215, \\t1, \\t0, \\t1, \\t 1, \\t\\t1\\n                 216, \\t1, \\t0, \\t1, \\t 2, \\t\\t1\\n                 220, \\t0, \\t0, \\t1, \\t 2, \\t\\t1\\n                 225, \\t1, \\t0, \\t1, \\t 2, \\t\\t1\\n                 226, \\t1, \\t0, \\t1, \\t 3, \\t\\t1\\n                 230, \\t0, \\t0, \\t1, \\t 3, \\t\\t1\\n                 235, \\t1, \\t0, \\t1, \\t 3, \\t\\t1\\n                 236, \\t1, \\t0, \\t1, \\t 4, \\t\\t1\\n                 240, \\t0, \\t0, \\t1, \\t 4, \\t\\t1\\n                 245, \\t1, \\t0, \\t1, \\t 4, \\t\\t1\\n                 246, \\t1, \\t0, \\t1, \\t 5, \\t\\t1\\n                 250, \\t0, \\t0, \\t1, \\t 5, \\t\\t1\\n                 255, \\t1, \\t0, \\t1, \\t 5, \\t\\t1\\n                 256, \\t1, \\t0, \\t1, \\t 6, \\t\\t1\\nTESTBENCH PASS original oracle\"}, \"W_preserve\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"TESTBENCH PASS preserve\"}}}",
+        "public_rows": {
+          "W_bug": "visible_pass",
+          "W_preserve": "visible_pass"
+        },
+        "round": 2,
+        "slot_id": "r2_s0",
+        "source_hash": "sha256:bd7b48d6f046140dec5eafb797fd57f5e1c498f7b83279567cc3afb648d95c83",
+        "target_snapshot_hash": "sha256:a226b9bae0ed76ec04f77cf245ab5ff2396e7b4d4f75e564ae41044961068e83"
+      },
+      {
+        "blue_patch": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -45,7 +45,7 @@\n \n     end\n     // if it overflows, set overflow_out to be 1\n-    if(counter_out == 4'b0111)\n+    if(counter_out == 4'b1111)\n     begin\n         overflow_out <= 1'b1;\n     end\n",
+        "carrier_id": "selected_Counter",
+        "label": "public_pass_single_sample_hidden_unknown",
+        "mutant_hash": "sha256:f02b5552fb68f10592422e55d8b3474cf887851c8012af180298008bbd213d85",
+        "mutation_edits": [
+          {
+            "find": "counter_out == 4'b1111",
+            "replace": "counter_out == 4'b0111"
+          }
+        ],
+        "public_evidence": "{\"suites\": {\"W_bug\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"         106, \\t1, \\t0, \\t1, \\t 7, \\t\\t0\\n                 110, \\t0, \\t0, \\t1, \\t 7, \\t\\t0\\n                 115, \\t1, \\t0, \\t1, \\t 7, \\t\\t0\\n                 116, \\t1, \\t0, \\t1, \\t 8, \\t\\t0\\n                 120, \\t0, \\t0, \\t1, \\t 8, \\t\\t0\\n                 125, \\t1, \\t0, \\t1, \\t 8, \\t\\t0\\n                 126, \\t1, \\t0, \\t1, \\t 9, \\t\\t0\\n                 130, \\t0, \\t0, \\t1, \\t 9, \\t\\t0\\n                 135, \\t1, \\t0, \\t1, \\t 9, \\t\\t0\\n                 136, \\t1, \\t0, \\t1, \\t10, \\t\\t0\\n                 140, \\t0, \\t0, \\t1, \\t10, \\t\\t0\\n                 145, \\t1, \\t0, \\t1, \\t10, \\t\\t0\\n                 146, \\t1, \\t0, \\t1, \\t11, \\t\\t0\\n                 150, \\t0, \\t0, \\t1, \\t11, \\t\\t0\\n                 155, \\t1, \\t0, \\t1, \\t11, \\t\\t0\\n                 156, \\t1, \\t0, \\t1, \\t12, \\t\\t0\\n                 160, \\t0, \\t0, \\t1, \\t12, \\t\\t0\\n                 165, \\t1, \\t0, \\t1, \\t12, \\t\\t0\\n                 166, \\t1, \\t0, \\t1, \\t13, \\t\\t0\\n                 170, \\t0, \\t0, \\t1, \\t13, \\t\\t0\\n                 175, \\t1, \\t0, \\t1, \\t13, \\t\\t0\\n                 176, \\t1, \\t0, \\t1, \\t14, \\t\\t0\\n                 180, \\t0, \\t0, \\t1, \\t14, \\t\\t0\\n                 185, \\t1, \\t0, \\t1, \\t14, \\t\\t0\\n                 186, \\t1, \\t0, \\t1, \\t15, \\t\\t0\\n                 190, \\t0, \\t0, \\t1, \\t15, \\t\\t0\\n                 195, \\t1, \\t0, \\t1, \\t15, \\t\\t1\\n                 196, \\t1, \\t0, \\t1, \\t 0, \\t\\t1\\n                 200, \\t0, \\t0, \\t1, \\t 0, \\t\\t1\\n                 205, \\t1, \\t0, \\t1, \\t 0, \\t\\t1\\n                 206, \\t1, \\t0, \\t1, \\t 1, \\t\\t1\\n                 210, \\t0, \\t0, \\t1, \\t 1, \\t\\t1\\n                 215, \\t1, \\t0, \\t1, \\t 1, \\t\\t1\\n                 216, \\t1, \\t0, \\t1, \\t 2, \\t\\t1\\n                 220, \\t0, \\t0, \\t1, \\t 2, \\t\\t1\\n                 225, \\t1, \\t0, \\t1, \\t 2, \\t\\t1\\n                 226, \\t1, \\t0, \\t1, \\t 3, \\t\\t1\\n                 230, \\t0, \\t0, \\t1, \\t 3, \\t\\t1\\n                 235, \\t1, \\t0, \\t1, \\t 3, \\t\\t1\\n                 236, \\t1, \\t0, \\t1, \\t 4, \\t\\t1\\n                 240, \\t0, \\t0, \\t1, \\t 4, \\t\\t1\\n                 245, \\t1, \\t0, \\t1, \\t 4, \\t\\t1\\n                 246, \\t1, \\t0, \\t1, \\t 5, \\t\\t1\\n                 250, \\t0, \\t0, \\t1, \\t 5, \\t\\t1\\n                 255, \\t1, \\t0, \\t1, \\t 5, \\t\\t1\\n                 256, \\t1, \\t0, \\t1, \\t 6, \\t\\t1\\nTESTBENCH PASS original oracle\"}, \"W_preserve\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"TESTBENCH PASS preserve\"}}}",
+        "public_rows": {
+          "W_bug": "visible_pass",
+          "W_preserve": "visible_pass"
+        },
+        "round": 3,
+        "slot_id": "r3_s0",
+        "source_hash": "sha256:f4a750af18a4b1d904a780e618ee582b9dcbf9e16c44019b9b0e1cb2fb22352e",
+        "target_snapshot_hash": "sha256:bd077223b730a468237d8aa1cf6e0f64376d511b80d739419cdacfbefdb5f8d9"
+      }
+    ],
+    "round": 3
+  },
+  "round": 3,
+  "update_decisions": [
+    {
+      "entry_hash": "sha256:3ae7be6bab5e34aacd2a1ed13ca4832109feecc5b2cf856f0a276e18f7560fa5",
+      "reason": "accepted"
+    },
+    {
+      "accepted": false,
+      "promotion": "no_strict_gain"
+    }
+  ]
+}

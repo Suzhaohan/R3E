@@ -1,0 +1,50 @@
+{
+  "version": "public_feedback_success_adaptive_v1",
+  "model_calls": 0,
+  "paid_run_started": false,
+  "full_regression": {
+    "passed": 115,
+    "failed": 0,
+    "seconds": 345.14
+  },
+  "final_targeted": {
+    "passed": 21,
+    "failed": 0,
+    "suites": [
+      "test_public_feedback.py",
+      "test_start_all.py"
+    ],
+    "note": "Retested the final immediately-previous-round success gate after the full-suite checkpoint had passed these tests."
+  },
+  "final_stage_edge_check": {
+    "passed": 2,
+    "failed": 0
+  },
+  "startup_check": {
+    "status": "PASS",
+    "designs": 3,
+    "max_calls_per_design": 162,
+    "model_calls": 0
+  },
+  "offline_smoke": {
+    "complete": true,
+    "stand_in_only": true,
+    "model_calls": 0,
+    "note": "Scripted replies and actual local compilation/simulation; not evidence of a real model gain."
+  },
+  "tested_properties": [
+    "real public compile and simulation feedback supplied to a bounded second functional attempt",
+    "up to four requests per sample including per-attempt format correction; early success stops",
+    "identical attempt policy for online/reference/validation/B0/B5",
+    "failed endpoints cannot create successful repair episodes",
+    "corrected successful repairs can create authenticated transfer summaries and pass independent promotion",
+    "success-gated curriculum protects register scheduling and group boundaries; stale success cannot cover empty/unusable rounds",
+    "global B0 first/full-pass stop, sealed result reuse, independent experience, B5 after all training"
+  ],
+  "normal_max_requests": 243,
+  "normal_request_scope": "One Red request per round; up to two functional attempts per Blue sample; no formatting corrections. Red corrective requests and format corrections use the hard cap.",
+  "hard_max_requests": 486,
+  "source_manifest": "promotion_code_feedback_v1.json",
+  "plan": "plan-v3-0324-feedback-v1",
+  "historical_runs_modified": false
+}

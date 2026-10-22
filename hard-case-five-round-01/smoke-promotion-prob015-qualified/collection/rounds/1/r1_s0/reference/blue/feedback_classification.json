@@ -1,0 +1,44 @@
+{
+ "summary": {
+  "task_id": "selected_Prob015__ea12cd07980d4898",
+  "encounters": 1,
+  "categories": {
+   "public_pass_hidden_pass": 1
+  },
+  "functional_failure_candidates": 0,
+  "pending_review": 0,
+  "reviewed_functional_failures": 0,
+  "original_defect_persists": 0,
+  "new_regression": 0,
+  "mechanism_907_exploratory": 0
+ },
+ "encounters": [
+  {
+   "encounter": 0,
+   "endpoint_candidate": "sha256:8869de4968c8174cd734676a999e706fa6f9c80b7fbd4c6b046b7e16aad2c3e6",
+   "endpoint_public": {
+    "tier": "visible_pass",
+    "suites": {
+     "W_bug": {
+      "result": "visible_pass",
+      "checker_violation": false,
+      "failures": []
+     },
+     "W_preserve": {
+      "result": "visible_pass",
+      "checker_violation": false,
+      "failures": []
+     }
+    }
+   },
+   "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -25,7 +25,7 @@\n     always@(*) begin\n         case(state)\n             S0     : nstate = d1? S0_5:\n-                              d2? S0_5:\n+                              d2? S1:\n                               nstate;\n             S0_5   : nstate = d1? S1:\n                               d2? S1_5:\n",
+   "endpoint_evaluator": {
+    "result": "pass",
+    "returncode": 0,
+    "failures": [],
+    "log_hash": "sha256:2830216deb3a4a39847aad62e0bbf4027558d8d92a12addafd978c42b59d5ea9"
+   },
+   "category": "public_pass_hidden_pass"
+  }
+ ]
+}

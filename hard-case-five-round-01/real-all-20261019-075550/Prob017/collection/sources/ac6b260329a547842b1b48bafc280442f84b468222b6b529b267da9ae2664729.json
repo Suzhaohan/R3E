@@ -1,0 +1,151 @@
+{
+  "source": {
+    "run_id": "collection",
+    "round": 5,
+    "slot_id": "r5_s0",
+    "task_hash": "sha256:453280e9ed72e4ede6a9f8eab97626c1ef8113900a0fccbbb3bd3205f7283aa5",
+    "carrier_id": "chipbench_Prob017_fractional_divider",
+    "mutant_hash": "sha256:759eb2314d60bb7241f2923646c3cc8c53e5886f3de812a635f04db6168026d8",
+    "candidate_hash": "sha256:96380a5d443a62c93669e2ab80da98f21866f8f85550e55c7b7e0ba7f2a6701c",
+    "encounter_hash": "sha256:ac6b260329a547842b1b48bafc280442f84b468222b6b529b267da9ae2664729",
+    "archive_hash": "sha256:764120f8cc7d3e93bdb15d972ae73e0e5bd198cc2e4d54b46147f60ea819661b",
+    "public_replay_hash": "sha256:de4ecf9cbce8264f79686d8fe9d433ea65266dfcbe40d2993ff0e02f52261364"
+  },
+  "encounter": {
+    "encounter": 0,
+    "seed": 1248742431038900,
+    "result": {
+      "task_id": "chipbench_Prob017_fractional_divider__759eb2314d60bb72",
+      "route": "direct",
+      "rtl_tokens": 443,
+      "closure": [
+        "rtl/sequence.sv",
+        "harness:W_bug_tb.sv",
+        "harness:W_preserve_tb.sv"
+      ],
+      "outcome": "fixed",
+      "attempts": [
+        {
+          "attempt": 0,
+          "route": "direct",
+          "submissions": [
+            {
+              "kind": "repair",
+              "tokens": {
+                "input": 3255,
+                "output": 543,
+                "counted_request": 3303,
+                "model_seconds": 13.0
+              },
+              "format_valid": true,
+              "format_error": null
+            }
+          ],
+          "repair_tokens": {
+            "input": 3255,
+            "output": 543,
+            "counted_request": 3303,
+            "model_seconds": 13.0
+          },
+          "edit": "Fixed cycle counter wrap to 0 instead of 1 to match waveform contract",
+          "candidate_hash": null,
+          "tier": "visible_fail",
+          "stage": "simulation",
+          "build_seconds": 0.02,
+          "sim_seconds": 0.01,
+          "changed_files": []
+        },
+        {
+          "attempt": 1,
+          "route": "direct",
+          "submissions": [
+            {
+              "kind": "public_feedback_correction",
+              "tokens": {
+                "input": 3493,
+                "output": 543,
+                "counted_request": 3541,
+                "model_seconds": 12.88
+              },
+              "format_valid": true,
+              "format_error": null
+            }
+          ],
+          "repair_tokens": {
+            "input": 3493,
+            "output": 543,
+            "counted_request": 3541,
+            "model_seconds": 12.88
+          },
+          "edit": "Fixed cycle counter wrap to 0 instead of 1 to match waveform contract",
+          "candidate_hash": "sha256:96380a5d443a62c93669e2ab80da98f21866f8f85550e55c7b7e0ba7f2a6701c",
+          "tier": "visible_pass",
+          "stage": "simulation",
+          "build_seconds": 0.02,
+          "sim_seconds": 0.03,
+          "changed_files": [
+            "rtl/sequence.sv"
+          ]
+        }
+      ],
+      "calls": 2,
+      "final_candidate_hash": "sha256:96380a5d443a62c93669e2ab80da98f21866f8f85550e55c7b7e0ba7f2a6701c",
+      "inputs_read": [
+        "public/task.json",
+        "public/visible/build.json",
+        "public/visible/W_bug_tb.sv",
+        "public/visible/W_preserve_tb.sv",
+        "public/spec.txt"
+      ],
+      "experience": {
+        "snapshot_id": "B_4",
+        "snapshot_hash": "sha256:d97a31921f54ffa5a928b1089d0c656267a2507b54e156c4af021086696b7b2e",
+        "state_hash": "sha256:f04cb26cd82d77804ffe3d34ebf45377b6970ec42b04e6c663d3d2a7933e4bc8",
+        "payload_hash": "sha256:2e9da09916632ef2cd21ad6a13514b15dbeb9016ac86c14760d0eb9a72ea68b9",
+        "delivery_hash": "sha256:c52626ab3a5c4d4a5977767859dfc7a4e8fc7381b2409c31796a561b30a39059",
+        "delivered": true
+      }
+    }
+  },
+  "archive_path": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/real-all-20261019-075550/Prob017/collection/rounds/5/r5_s0/online/blue/archive/chipbench_Prob017_fractional_divider__759eb2314d60bb72__96380a5d443a62c9.json",
+  "task_dir": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/real-all-20261019-075550/Prob017/collection/rounds/5/r5_s0/admission/blue_task",
+  "replay": {
+    "tier": "visible_pass",
+    "stage": "simulation",
+    "evidence": {
+      "suites": {
+        "W_bug": {
+          "result": "visible_pass",
+          "returncode": 0,
+          "pass_marker_found": true,
+          "fail_marker_found": false,
+          "log": "TESTBENCH PASS divider public waveform"
+        },
+        "W_preserve": {
+          "result": "visible_pass",
+          "returncode": 0,
+          "pass_marker_found": true,
+          "fail_marker_found": false,
+          "log": "TESTBENCH PASS divider preserve"
+        }
+      }
+    },
+    "build_seconds": 0.02321322076022625,
+    "sim_seconds": 0.032976917922496796,
+    "closure": [
+      "rtl/sequence.sv",
+      "harness:W_bug_tb.sv",
+      "harness:W_preserve_tb.sv"
+    ]
+  },
+  "public_rows": {
+    "W_bug": "visible_pass",
+    "W_preserve": "visible_pass"
+  },
+  "mutation_edits": [
+    {
+      "find": "cyc_cnt==(M_N-1)? 0: cyc_cnt+1",
+      "replace": "cyc_cnt==(M_N-1)? 1: cyc_cnt+1"
+    }
+  ]
+}

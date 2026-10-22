@@ -1,0 +1,61 @@
+{
+  "status": "proposal",
+  "buggy_rtl": "\nmodule TopModule(\n\tinput wire clk  ,\n\tinput wire rst  ,\n\tinput wire d1 ,\n\tinput wire d2 ,\n\tinput wire sel ,\n\t\n\toutput reg out1,\n\toutput reg out2,\n\toutput reg out3\n);\n//*************code***********//\n\n    parameter [2:0] S0=0, S0_5=1, S1=2, S1_5=3, S2=4, S2_5=5, S3=6;\n    reg[2:0] state, nstate;\n    \n    always@(posedge clk or negedge rst) begin\n        if(~rst)\n            state <= 0;\n        else\n            state <= nstate;\n    end\n    \n    always@(*) begin\n        case(state)\n            S0     : nstate = d1? S0_5:\n                              d2? S1:\n                              nstate;\n            S0_5   : nstate = d1? S1:\n                              d2? S1_5:\n                              nstate;\n            S1     : nstate = d1? S1_5:\n                              d2? S2:\n                              nstate;\n            S1_5   : nstate = ~sel? S0:\n                              d1? S2:\n                              d2? S2_5:\n                              nstate;\n            S2     : nstate = ~sel? S0:\n                              d1? S2_5:\n                              d2? S3:\n                              nstate;\n            default: nstate = S0;\n        endcase\n    end\n    \n    always@(posedge clk or negedge rst) begin\n        if(~rst) begin\n            {out1, out2, out3} <= 3'b000;\n        end\n        else begin\n            case(state)\n                S0, S0_5, S1: {out1, out2, out3} <= 0;\n                S1_5        : {out1, out2, out3} <= ~sel? 3'b100: 3'b000;\n                S2          : {out1, out2, out3} <= ~sel? 3'b101: 3'b000;\n                S2_5        : {out1, out2, out3} <= ~sel? 3'b101: 3'b010;\n                S3          : {out1, out2, out3} <= ~sel? 3'b101: 3'b011;\n                default     : {out1, out2, out3} <= 3'b000;\n            endcase\n        end\n    end\n//*************code***********//\nendmodule\n",
+  "buggy_rtl_hash": "sha256:89427b4c94b25e59a4e1f45b92290101cae281ddff5075f744239c11a3d3c561",
+  "edit_budget": {
+    "metric": "sequence_matcher_token_edits_v1",
+    "tokenizer": "verilog_source_tokens_v2_macros",
+    "max_changed_fraction": 0.4,
+    "all_code": {
+      "original_tokens": 332,
+      "candidate_tokens": 336,
+      "changed_tokens": 12,
+      "allowed_tokens": 132,
+      "changed_fraction": 0.03614457831325301,
+      "within_limit": true
+    },
+    "body": {
+      "original_tokens": 295,
+      "candidate_tokens": 299,
+      "changed_tokens": 12,
+      "allowed_tokens": 118,
+      "changed_fraction": 0.04067796610169491,
+      "within_limit": true
+    }
+  },
+  "diff": "--- clean.sv\n+++ buggy.sv\n@@ -45,18 +45,18 @@\n         endcase\n     end\n     \n-    always@(*) begin\n+    always@(posedge clk or negedge rst) begin\n         if(~rst) begin\n-            {out1, out2, out3} = 3'b000;\n+            {out1, out2, out3} <= 3'b000;\n         end\n         else begin\n             case(state)\n-                S0, S0_5, S1: {out1, out2, out3} = 0;\n-                S1_5        : {out1, out2, out3} = ~sel? 3'b100: 3'b000;\n-                S2          : {out1, out2, out3} = ~sel? 3'b101: 3'b000;\n-                S2_5        : {out1, out2, out3} = ~sel? 3'b101: 3'b010;\n-                S3          : {out1, out2, out3} = ~sel? 3'b101: 3'b011;\n-                default     : {out1, out2, out3} = 3'b000;\n+                S0, S0_5, S1: {out1, out2, out3} <= 0;\n+                S1_5        : {out1, out2, out3} <= ~sel? 3'b100: 3'b000;\n+                S2          : {out1, out2, out3} <= ~sel? 3'b101: 3'b000;\n+                S2_5        : {out1, out2, out3} <= ~sel? 3'b101: 3'b010;\n+                S3          : {out1, out2, out3} <= ~sel? 3'b101: 3'b011;\n+                default     : {out1, out2, out3} <= 3'b000;\n             endcase\n         end\n     end\n",
+  "claims": {
+    "violated_requirement": "Dispensing outputs must be combinational from the current state and selection; making them registered delays out1/out2/out3 by one clock edge relative to the accumulated amount.",
+    "spec_basis": "Beverage dispensing outputs out1/out2/out3 reflect the current accumulated amount and beverage selection."
+  },
+  "mutation_edits": [
+    {
+      "find": "    always@(*) begin\n        if(~rst) begin\n            {out1, out2, out3} = 3'b000;",
+      "replace": "    always@(posedge clk or negedge rst) begin\n        if(~rst) begin\n            {out1, out2, out3} <= 3'b000;"
+    },
+    {
+      "find": "                S0, S0_5, S1: {out1, out2, out3} = 0;",
+      "replace": "                S0, S0_5, S1: {out1, out2, out3} <= 0;"
+    },
+    {
+      "find": "                S1_5        : {out1, out2, out3} = ~sel? 3'b100: 3'b000;",
+      "replace": "                S1_5        : {out1, out2, out3} <= ~sel? 3'b100: 3'b000;"
+    },
+    {
+      "find": "                S2          : {out1, out2, out3} = ~sel? 3'b101: 3'b000;",
+      "replace": "                S2          : {out1, out2, out3} <= ~sel? 3'b101: 3'b000;"
+    },
+    {
+      "find": "                S2_5        : {out1, out2, out3} = ~sel? 3'b101: 3'b010;",
+      "replace": "                S2_5        : {out1, out2, out3} <= ~sel? 3'b101: 3'b010;"
+    },
+    {
+      "find": "                S3          : {out1, out2, out3} = ~sel? 3'b101: 3'b011;",
+      "replace": "                S3          : {out1, out2, out3} <= ~sel? 3'b101: 3'b011;"
+    },
+    {
+      "find": "                default     : {out1, out2, out3} = 3'b000;",
+      "replace": "                default     : {out1, out2, out3} <= 3'b000;"
+    }
+  ]
+}

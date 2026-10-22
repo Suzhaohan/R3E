@@ -1,0 +1,50 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "else if (a_tem == 8'b0111_0001)",
+            "replace": "else if (a_tem == 8'b0111_0000)"
+          }
+        ],
+        "violated_requirement": "The output match should be asserted when the shift register matches 8'b0111_0001, but the mutant asserts it for 8'b0111_0000 instead. This will cause false positives when the sequence is 8'b0111_0000.",
+        "spec_basis": "The output `match` should be asserted (logic 1) whenever the value of the shift register `a_tem` matches the specific 8-bit pattern `8'b0111_0001`."
+      },
+      {
+        "edits": [
+          {
+            "find": "else if (a_tem == 8'b0111_0001)",
+            "replace": "else if (a_tem == 8'b0111_0001 && a == 1'b0)"
+          }
+        ],
+        "violated_requirement": "The output match should be asserted whenever the shift register matches 8'b0111_0001, but the mutant adds an extra condition that the current input a must be 0. This will miss some valid matches when a=1.",
+        "spec_basis": "The output `match` should be asserted (logic 1) whenever the value of the shift register `a_tem` matches the specific 8-bit pattern `8'b0111_0001`."
+      },
+      {
+        "edits": [
+          {
+            "find": "a_tem <= {a_tem[6:0],a};",
+            "replace": "a_tem <= {a_tem[5:0],a,1'b0};"
+          }
+        ],
+        "violated_requirement": "The shift register should retain the 8 most recent bits of a, but the mutant inserts an extra 0 bit and drops the MSB, corrupting the history. This will cause incorrect pattern matching.",
+        "spec_basis": "The shift register `a_tem` should retain the 8 most recent bits of `a`."
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:f4154797ff0fcceee96ad0b6d777df3053383cd6f21bb940b3b0a87a5435159c",
+  "input_tokens": 5467,
+  "output_tokens": 429,
+  "request_hash": "sha256:7d4a3db4e36b298557aa8a2681303a18c8da13e76319d588cae01acfd678812d",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 5467,
+    "output_tokens": 429
+  },
+  "model_seconds": 12.444475868716836
+}

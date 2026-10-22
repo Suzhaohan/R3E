@@ -1,0 +1,1003 @@
+{
+  "attempts": 3,
+  "first": {
+    "answer_form": "full",
+    "candidate_hash": "sha256:22d27fbca2cece7e9f5e4581e8597c1e4f593cd09b094a933a32b85bc08f992f",
+    "candidate_id": "C_8a7792a8f348_0",
+    "command_hash": "sha256:1ae1b78eceeeea35863f1eaa6f2a706f89183e24cadee736a6facb6b4c33eb20",
+    "edit": "Removed the registered match_f/match_b pipeline delay and compute match combinationally from the 9-bit shift register, so the pattern is detected in the same cycle after the new bit is shifted in.",
+    "edit_class": "missing_or_extra_logic",
+    "feedback": {
+      "cycles_compared": 237,
+      "first_divergences": [
+        {
+          "expected": "1",
+          "first_cycle": 20,
+          "observed": "0",
+          "pattern": "stuck_value",
+          "signal": "match"
+        }
+      ],
+      "passing_outputs": [],
+      "stage": "functional"
+    },
+    "hidden": "not_available",
+    "index": 0,
+    "memory_offered": false,
+    "phase": "evaluation",
+    "seconds": 7.23,
+    "tokens": {
+      "input": 1643,
+      "output": 1141
+    },
+    "verdict_tier": "visible_fail",
+    "window": {
+      "cycles_compared": 119,
+      "inputs_logged": true,
+      "rows": [
+        {
+          "cycle": 9,
+          "edge": "rising",
+          "inputs": {
+            "a": "0",
+            "rst_n": "1"
+          },
+          "outputs": {
+            "match": {
+              "expected": "0",
+              "observed": "0",
+              "ok": true
+            }
+          }
+        },
+        {
+          "cycle": 9,
+          "edge": "falling",
+          "inputs": {
+            "a": "0",
+            "rst_n": "1"
+          },
+          "outputs": {
+            "match": {
+              "expected": "0",
+              "observed": "0",
+              "ok": true
+            }
+          }
+        },
+        {
+          "cycle": 10,
+          "edge": "rising",
+          "inputs": {
+            "a": "0",
+            "rst_n": "1"
+          },
+          "outputs": {
+            "match": {
+              "expected": "1",
+              "observed": "0",
+              "ok": false
+            }
+          }
+        },
+        {
+          "cycle": 10,
+          "edge": "falling",
+          "inputs": {
+            "a": "0",
+            "rst_n": "1"
+          },
+          "outputs": {
+            "match": {
+              "expected": "1",
+              "observed": "0",
+              "ok": false
+            }
+          }
+        },
+        {
+          "cycle": 11,
+          "edge": "rising",
+          "inputs": {
+            "a": "1",
+            "rst_n": "1"
+          },
+          "outputs": {
+            "match": {
+              "expected": "0",
+              "observed": "0",
+              "ok": true
+            }
+          }
+        },
+        {
+          "cycle": 11,
+          "edge": "falling",
+          "inputs": {
+            "a": "1",
+            "rst_n": "1"
+          },
+          "outputs": {
+            "match": {
+              "expected": "0",
+              "observed": "0",
+              "ok": true
+            }
+          }
+        },
+        {
+          "cycle": 12,
+          "edge": "rising",
+          "inputs": {
+            "a": "1",
+            "rst_n": "1"
+          },
+          "outputs": {
+            "match": {
+              "expected": "0",
+              "observed": "0",
+              "ok": true
+            }
+          }
+        },
+        {
+          "cycle": 12,
+          "edge": "falling",
+          "inputs": {
+            "a": "1",
+            "rst_n": "1"
+          },
+          "outputs": {
+            "match": {
+              "expected": "0",
+              "observed": "0",
+              "ok": true
+            }
+          }
+        },
+        {
+          "cycle": 13,
+          "edge": "rising",
+          "inputs": {
+            "a": "0",
+            "rst_n": "1"
+          },
+          "outputs": {
+            "match": {
+              "expected": "0",
+              "observed": "0",
+              "ok": true
+            }
+          }
+        },
+        {
+          "cycle": 13,
+          "edge": "falling",
+          "inputs": {
+            "a": "0",
+            "rst_n": "1"
+          },
+          "outputs": {
+            "match": {
+              "expected": "0",
+              "observed": "0",
+              "ok": true
+            }
+          }
+        },
+        {
+          "cycle": 14,
+          "edge": "rising",
+          "inputs": {
+            "a": "0",
+            "rst_n": "1"
+          },
+          "outputs": {
+            "match": {
+              "expected": "1",
+              "observed": "0",
+              "ok": false
+            }
+          }
+        },
+        {
+          "cycle": 14,
+          "edge": "falling",
+          "inputs": {
+            "a": "0",
+            "rst_n": "1"
+          },
+          "outputs": {
+            "match": {
+              "expected": "1",
+              "observed": "0",
+              "ok": false
+            }
+          }
+        }
+      ],
+      "sampling": "two samples per clock cycle (after the rising and after the falling edge of clk); 237 samples",
+      "stimulus_notes": [
+        "Inputs sampled after NBA on both tb.clk edges, row-aligned with trace_visible.txt; clocks and resets included"
+      ],
+      "wrong_cycles": {
+        "match": {
+          "count": 4,
+          "first_cycles": [
+            10,
+            14,
+            19,
+            41
+          ]
+        }
+      }
+    }
+  },
+  "inconclusive": false,
+  "record": {
+    "accounting": {
+      "fixed": false,
+      "fixed_at_attempt": null,
+      "fixed_by_escalation": false,
+      "input_tokens": 6414,
+      "llm_calls": 3,
+      "memory_delivered": false,
+      "memory_items": [],
+      "memory_offered_from_attempt": null,
+      "model_seconds": 268.25,
+      "output_tokens": 50779,
+      "provider_failures": 0,
+      "repair_attempts": 3
+    },
+    "attempts": [
+      {
+        "answer_form": "full",
+        "candidate_hash": "sha256:22d27fbca2cece7e9f5e4581e8597c1e4f593cd09b094a933a32b85bc08f992f",
+        "candidate_id": "C_8a7792a8f348_0",
+        "command_hash": "sha256:1ae1b78eceeeea35863f1eaa6f2a706f89183e24cadee736a6facb6b4c33eb20",
+        "edit": "Removed the registered match_f/match_b pipeline delay and compute match combinationally from the 9-bit shift register, so the pattern is detected in the same cycle after the new bit is shifted in.",
+        "edit_class": "missing_or_extra_logic",
+        "feedback": {
+          "cycles_compared": 237,
+          "first_divergences": [
+            {
+              "expected": "1",
+              "first_cycle": 20,
+              "observed": "0",
+              "pattern": "stuck_value",
+              "signal": "match"
+            }
+          ],
+          "passing_outputs": [],
+          "stage": "functional"
+        },
+        "hidden": "not_available",
+        "index": 0,
+        "memory_offered": false,
+        "phase": "evaluation",
+        "seconds": 7.23,
+        "tokens": {
+          "input": 1643,
+          "output": 1141
+        },
+        "verdict_tier": "visible_fail",
+        "window": {
+          "cycles_compared": 119,
+          "inputs_logged": true,
+          "rows": [
+            {
+              "cycle": 9,
+              "edge": "rising",
+              "inputs": {
+                "a": "0",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                }
+              }
+            },
+            {
+              "cycle": 9,
+              "edge": "falling",
+              "inputs": {
+                "a": "0",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                }
+              }
+            },
+            {
+              "cycle": 10,
+              "edge": "rising",
+              "inputs": {
+                "a": "0",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "1",
+                  "observed": "0",
+                  "ok": false
+                }
+              }
+            },
+            {
+              "cycle": 10,
+              "edge": "falling",
+              "inputs": {
+                "a": "0",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "1",
+                  "observed": "0",
+                  "ok": false
+                }
+              }
+            },
+            {
+              "cycle": 11,
+              "edge": "rising",
+              "inputs": {
+                "a": "1",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                }
+              }
+            },
+            {
+              "cycle": 11,
+              "edge": "falling",
+              "inputs": {
+                "a": "1",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                }
+              }
+            },
+            {
+              "cycle": 12,
+              "edge": "rising",
+              "inputs": {
+                "a": "1",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                }
+              }
+            },
+            {
+              "cycle": 12,
+              "edge": "falling",
+              "inputs": {
+                "a": "1",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                }
+              }
+            },
+            {
+              "cycle": 13,
+              "edge": "rising",
+              "inputs": {
+                "a": "0",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                }
+              }
+            },
+            {
+              "cycle": 13,
+              "edge": "falling",
+              "inputs": {
+                "a": "0",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                }
+              }
+            },
+            {
+              "cycle": 14,
+              "edge": "rising",
+              "inputs": {
+                "a": "0",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "1",
+                  "observed": "0",
+                  "ok": false
+                }
+              }
+            },
+            {
+              "cycle": 14,
+              "edge": "falling",
+              "inputs": {
+                "a": "0",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "1",
+                  "observed": "0",
+                  "ok": false
+                }
+              }
+            }
+          ],
+          "sampling": "two samples per clock cycle (after the rising and after the falling edge of clk); 237 samples",
+          "stimulus_notes": [
+            "Inputs sampled after NBA on both tb.clk edges, row-aligned with trace_visible.txt; clocks and resets included"
+          ],
+          "wrong_cycles": {
+            "match": {
+              "count": 4,
+              "first_cycles": [
+                10,
+                14,
+                19,
+                41
+              ]
+            }
+          }
+        }
+      },
+      {
+        "answer_form": "full",
+        "candidate_hash": "sha256:fb955609d3f686d889777ae240d9f1dfda7b4f534e373cdbc71dc0bdd16b5ddf",
+        "candidate_id": "C_25942d746a9f_1",
+        "command_hash": "sha256:5a8bcdf04a06d393703c982372a47a939931f4c7f7e12eaf0b29ccc396579ae6",
+        "edit": "Removed the two extra output pipeline registers (match_f/match_b). The sequence detector now asserts `match` combinationally from the 9-bit shift register, i.e. when a_tem[8:6]==3'b011 and a_tem[2:0]==3'b110 (middle bits don't care), so the match is produced in the same cycle the pattern is present ",
+        "edit_class": "missing_or_extra_logic",
+        "feedback": {
+          "cycles_compared": 237,
+          "first_divergences": [
+            {
+              "expected": "1",
+              "first_cycle": 20,
+              "observed": "0",
+              "pattern": "stuck_value",
+              "signal": "match"
+            }
+          ],
+          "passing_outputs": [],
+          "stage": "functional"
+        },
+        "hidden": "not_available",
+        "index": 1,
+        "memory_offered": false,
+        "phase": "evaluation",
+        "seconds": 193.5,
+        "tokens": {
+          "input": 2312,
+          "output": 36115
+        },
+        "verdict_tier": "visible_fail",
+        "window": {
+          "cycles_compared": 119,
+          "inputs_logged": true,
+          "rows": [
+            {
+              "cycle": 9,
+              "edge": "rising",
+              "inputs": {
+                "a": "0",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                }
+              }
+            },
+            {
+              "cycle": 9,
+              "edge": "falling",
+              "inputs": {
+                "a": "0",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                }
+              }
+            },
+            {
+              "cycle": 10,
+              "edge": "rising",
+              "inputs": {
+                "a": "0",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "1",
+                  "observed": "0",
+                  "ok": false
+                }
+              }
+            },
+            {
+              "cycle": 10,
+              "edge": "falling",
+              "inputs": {
+                "a": "0",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "1",
+                  "observed": "0",
+                  "ok": false
+                }
+              }
+            },
+            {
+              "cycle": 11,
+              "edge": "rising",
+              "inputs": {
+                "a": "1",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                }
+              }
+            },
+            {
+              "cycle": 11,
+              "edge": "falling",
+              "inputs": {
+                "a": "1",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                }
+              }
+            },
+            {
+              "cycle": 12,
+              "edge": "rising",
+              "inputs": {
+                "a": "1",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                }
+              }
+            },
+            {
+              "cycle": 12,
+              "edge": "falling",
+              "inputs": {
+                "a": "1",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                }
+              }
+            },
+            {
+              "cycle": 13,
+              "edge": "rising",
+              "inputs": {
+                "a": "0",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                }
+              }
+            },
+            {
+              "cycle": 13,
+              "edge": "falling",
+              "inputs": {
+                "a": "0",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                }
+              }
+            },
+            {
+              "cycle": 14,
+              "edge": "rising",
+              "inputs": {
+                "a": "0",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "1",
+                  "observed": "0",
+                  "ok": false
+                }
+              }
+            },
+            {
+              "cycle": 14,
+              "edge": "falling",
+              "inputs": {
+                "a": "0",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "1",
+                  "observed": "0",
+                  "ok": false
+                }
+              }
+            }
+          ],
+          "sampling": "two samples per clock cycle (after the rising and after the falling edge of clk); 237 samples",
+          "stimulus_notes": [
+            "Inputs sampled after NBA on both tb.clk edges, row-aligned with trace_visible.txt; clocks and resets included"
+          ],
+          "wrong_cycles": {
+            "match": {
+              "count": 4,
+              "first_cycles": [
+                10,
+                14,
+                19,
+                41
+              ]
+            }
+          }
+        }
+      },
+      {
+        "answer_form": "full",
+        "candidate_hash": "sha256:22d27fbca2cece7e9f5e4581e8597c1e4f593cd09b094a933a32b85bc08f992f",
+        "candidate_id": "C_41df238b06c8_2",
+        "command_hash": "sha256:68139d14f55b46e7adee9303f7a4ea98d8508047266fd4f590cacb787277bd28",
+        "edit": "Removed the two-stage registered output pipeline (match_f/match_b). The match signal is now driven combinationally from the 9-bit shift register a_tem, asserting high in the same cycle the sampled 9 bits satisfy a_tem[8:6]==3'b011 and a_tem[2:0]==3'b110 (middle bits don't care). The shift register s",
+        "edit_class": "missing_or_extra_logic",
+        "feedback": {
+          "cycles_compared": 237,
+          "first_divergences": [
+            {
+              "expected": "1",
+              "first_cycle": 20,
+              "observed": "0",
+              "pattern": "stuck_value",
+              "signal": "match"
+            }
+          ],
+          "passing_outputs": [],
+          "stage": "functional"
+        },
+        "hidden": "not_available",
+        "index": 2,
+        "memory_offered": false,
+        "phase": "evaluation",
+        "seconds": 67.52,
+        "tokens": {
+          "input": 2459,
+          "output": 13523
+        },
+        "verdict_tier": "visible_fail",
+        "window": {
+          "cycles_compared": 119,
+          "inputs_logged": true,
+          "rows": [
+            {
+              "cycle": 9,
+              "edge": "rising",
+              "inputs": {
+                "a": "0",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                }
+              }
+            },
+            {
+              "cycle": 9,
+              "edge": "falling",
+              "inputs": {
+                "a": "0",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                }
+              }
+            },
+            {
+              "cycle": 10,
+              "edge": "rising",
+              "inputs": {
+                "a": "0",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "1",
+                  "observed": "0",
+                  "ok": false
+                }
+              }
+            },
+            {
+              "cycle": 10,
+              "edge": "falling",
+              "inputs": {
+                "a": "0",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "1",
+                  "observed": "0",
+                  "ok": false
+                }
+              }
+            },
+            {
+              "cycle": 11,
+              "edge": "rising",
+              "inputs": {
+                "a": "1",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                }
+              }
+            },
+            {
+              "cycle": 11,
+              "edge": "falling",
+              "inputs": {
+                "a": "1",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                }
+              }
+            },
+            {
+              "cycle": 12,
+              "edge": "rising",
+              "inputs": {
+                "a": "1",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                }
+              }
+            },
+            {
+              "cycle": 12,
+              "edge": "falling",
+              "inputs": {
+                "a": "1",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                }
+              }
+            },
+            {
+              "cycle": 13,
+              "edge": "rising",
+              "inputs": {
+                "a": "0",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                }
+              }
+            },
+            {
+              "cycle": 13,
+              "edge": "falling",
+              "inputs": {
+                "a": "0",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                }
+              }
+            },
+            {
+              "cycle": 14,
+              "edge": "rising",
+              "inputs": {
+                "a": "0",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "1",
+                  "observed": "0",
+                  "ok": false
+                }
+              }
+            },
+            {
+              "cycle": 14,
+              "edge": "falling",
+              "inputs": {
+                "a": "0",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "1",
+                  "observed": "0",
+                  "ok": false
+                }
+              }
+            }
+          ],
+          "sampling": "two samples per clock cycle (after the rising and after the falling edge of clk); 237 samples",
+          "stimulus_notes": [
+            "Inputs sampled after NBA on both tb.clk edges, row-aligned with trace_visible.txt; clocks and resets included"
+          ],
+          "wrong_cycles": {
+            "match": {
+              "count": 4,
+              "first_cycles": [
+                10,
+                14,
+                19,
+                41
+              ]
+            }
+          }
+        }
+      }
+    ],
+    "bundle_hash": "sha256:e600f74ca2c2774fbaf2968cdfbb2ad97b021a8726d3dd4f6a1ce3bf7ff5c1b0",
+    "challenge_id": "chipbench:arithmetic:Prob002_extraneous_items_sequence_detect",
+    "deliveries": [
+      {
+        "bundle_hash": "sha256:e600f74ca2c2774fbaf2968cdfbb2ad97b021a8726d3dd4f6a1ce3bf7ff5c1b0",
+        "injected": false,
+        "mode": "none",
+        "request_hash": "sha256:0d1499e72d5e4bba3ade1ef516b8043d4b11afc4b9ccc352c1d64b7e9299594b"
+      },
+      {
+        "bundle_hash": "sha256:e600f74ca2c2774fbaf2968cdfbb2ad97b021a8726d3dd4f6a1ce3bf7ff5c1b0",
+        "injected": false,
+        "mode": "none",
+        "request_hash": "sha256:62feb52dac9ef9dd9a933061314f870b53ae64aad55bce3fbc6d3f9220cf90b7"
+      }
+    ],
+    "episode_hash": "sha256:cf3d200cc937327f1f59dfc15347bf3a57ecdeaaa06cd590e8a8bab7188c31aa",
+    "inconclusive": false,
+    "infra_failures": 0,
+    "matches": [],
+    "mode": "none",
+    "profile": {
+      "causal": {
+        "cone_has_control_dependency": true,
+        "cone_has_counter": true,
+        "cone_has_reset_logic": true,
+        "cone_has_state_machine": false,
+        "cone_size_bucket": "medium",
+        "output_driver_kind": "combinational",
+        "register_distance": "1",
+        "temporal_relation": "no_progress"
+      },
+      "schema_version": "r3e-observable-profile-v1",
+      "status": {
+        "delta_bucket": "-1",
+        "failing_output_bucket": "1",
+        "onset_bucket": "late",
+        "oracle_stage": "functional",
+        "output_width_bucket": "1bit",
+        "partial_failure": false,
+        "symptom": "stuck_value",
+        "x_involved": false
+      }
+    },
+    "retrieved_items": [],
+    "shown_items": [],
+    "solved_by_escalation": false,
+    "solved_within_budget": false
+  },
+  "solved": false
+}

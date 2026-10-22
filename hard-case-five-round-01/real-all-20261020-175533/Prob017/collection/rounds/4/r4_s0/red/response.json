@@ -1,0 +1,40 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "clk_out_r <= clk_cnt<=((div_e>>2)+1);",
+            "replace": "clk_out_r <= clk_cnt<=((div_e>>1)+1);"
+          }
+        ],
+        "violated_requirement": "Output clock pulse width is incorrectly extended when div_flag is 0, causing clk_out to stay high longer than specified",
+        "spec_basis": "Output becomes 1 iff count <= floor((mode ? div_o : div_e)/4) + 1"
+      },
+      {
+        "edits": [
+          {
+            "find": "clk_out_r <= clk_cnt<=((div_o>>2)+1);",
+            "replace": "clk_out_r <= clk_cnt<=((div_o>>1)+1);"
+          }
+        ],
+        "violated_requirement": "Output clock pulse width is incorrectly extended when div_flag is 1, causing clk_out to stay high longer than specified",
+        "spec_basis": "Output becomes 1 iff count <= floor((mode ? div_o : div_e)/4) + 1"
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:4b23c2602ab9314b17d8e5445f582211aff9e278d6ab7260a82065ba568c1175",
+  "input_tokens": 8398,
+  "output_tokens": 215,
+  "request_hash": "sha256:aae336ec58dc671290dda0055bc16f055667017b9dac4acfbbca1108a1b03992",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 8398,
+    "output_tokens": 215
+  },
+  "model_seconds": 10.935123248957098
+}

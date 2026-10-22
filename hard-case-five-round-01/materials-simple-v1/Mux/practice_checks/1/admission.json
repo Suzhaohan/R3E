@@ -1,0 +1,100 @@
+{
+  "version": "red_progress_preservation_v4",
+  "status": "admitted",
+  "candidate_hash": "sha256:632510e79e5779ed262593745b317e87cbf23a025ad0ee8196cf7e1cb0fc51a2",
+  "fingerprint": "sha256:8ffb23b6391b60082be299b24aa8a71a905d74213c0dc8ff6eb0e26cc71929e9",
+  "edit_budget": {
+    "metric": "sequence_matcher_token_edits_v1",
+    "tokenizer": "verilog_source_tokens_v2_macros",
+    "max_changed_fraction": 0.4,
+    "all_code": {
+      "original_tokens": 98,
+      "candidate_tokens": 98,
+      "changed_tokens": 1,
+      "allowed_tokens": 39,
+      "changed_fraction": 0.01020408163265306,
+      "within_limit": true
+    },
+    "body": {
+      "original_tokens": 44,
+      "candidate_tokens": 44,
+      "changed_tokens": 1,
+      "allowed_tokens": 17,
+      "changed_fraction": 0.022727272727272728,
+      "within_limit": true
+    }
+  },
+  "freeze_hash": "sha256:159a3b61b5386d044150cb28234b71c4bdf5bc03d87d4916447aa743c238feae",
+  "language_review": {
+    "comments_unchanged": true,
+    "clean_comments_hash": "sha256:5133d2dfe05a07c2700196f579190487078675c84e94f94974123c0176e921b1",
+    "candidate_comments_hash": "sha256:5133d2dfe05a07c2700196f579190487078675c84e94f94974123c0176e921b1",
+    "new_identifiers": [],
+    "identifier_review": "informational; not an admission veto"
+  },
+  "baseline": {
+    "suites": {
+      "W_bug": {
+        "build_seconds": 0.02,
+        "tier": "pass",
+        "runs": [
+          "pass",
+          "pass"
+        ],
+        "log_hash": "sha256:637e853713dcb8622c1599abd0afba34978b11fbb106c6a719cbd1cddd8f8f5e",
+        "deterministic": true,
+        "log": "VCD info: dumpfile output_mux_4_1_tb.vcd opened for output.\nVCD warning: $dumpvars: Unsupported argument type (vpiPackage)\n[0] sel=0x0 a=0x1 b=0x2 c=0x4 d=0x8 out=0x1\n[100] sel=0x1 a=0x1 b=0x2 c=0x4 d=0x8 out=0x2\n[200] sel=0x2 a=0x1 b=0x2 c=0x4 d=0x8 out=0x4\n[300] sel=0x3 a=0x1 b=0x2 c=0x4 d=0x8 out=0x8\n[400] sel=0x0 a=0x8 b=0x4 c=0x2 d=0x1 out=0x8\n[500] sel=0x1 a=0x8 b=0x4 c=0x2 d=0x1 out=0x4\n[600] sel=0x2 a=0x8 b=0x4 c=0x2 d=0x1 out=0x2\n[700] sel=0x3 a=0x8 b=0x4 c=0x2 d=0x1 out=0x1\nTESTBENCH PASS original oracle\n"
+      },
+      "W_preserve": {
+        "build_seconds": 0.01,
+        "tier": "pass",
+        "runs": [
+          "pass",
+          "pass"
+        ],
+        "log_hash": "sha256:8f7b0d3e220050a01430389374487f2c739abe116929797e50e6f766ebba895a",
+        "deterministic": true,
+        "log": "TESTBENCH PASS preserve\n"
+      }
+    },
+    "structural": {
+      "status": "ok",
+      "returncode": 0,
+      "log": "\n-- Running command `read_verilog -sv \"rtl/sequence.sv\"; hierarchy -check -top mux_4to1_case ; proc; flatten; check -assert' --\n\n1. Executing Verilog-2005 frontend: rtl/sequence.sv\nParsing SystemVerilog input from `rtl/sequence.sv' to AST representation.\nGenerating RTLIL representation for module `\\mux_4to1_case'.\nNote: Assuming pure combinatorial block at rtl/sequence.sv:10 in\ncompliance with IEC 62142(E):2005 / IEEE Std. 1364.1(E):2002. Recommending\nuse of @* instead of @(...) for better match of synthesis and simulation.\nSuccessfully finished Verilog frontend.\n\n2. Executing HIERARCHY pass (managing design hierarchy).\n\n2.1. Analyzing design hierarchy..\nTop module:  \\mux_4to1_case\n\n2.2. Analyzing design hierarchy..\nTop module:  \\mux_4to1_case\nRemoved 0 unused modules.\n\n3. Executing PROC pass (convert processes to netlists).\n\n3.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).\nCleaned up 0 empty switches.\n\n3.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).\nMarked 1 switch rules as full_case in process $proc$rtl/sequence.sv:10$1 in module mux_4to1_case.\nRemoved a total of 0 dead cases.\n\n3.3. Executing PROC_INIT pass (extract init attributes).\n\n3.4. Executing PROC_ARST pass (detect async resets in processes).\n\n3.5. Executing PROC_MUX pass (convert decision trees to multiplexers).\nCreating decoders for process `\\mux_4to1_case.$proc$rtl/sequence.sv:10$1'.\n     1/1: $0\\out[3:0]\n\n3.6. Executing PROC_DLATCH pass (convert process syncs to latches).\nNo latch inferred for signal `\\mux_4to1_case.\\out' from process `\\mux_4to1_case.$proc$rtl/sequence.sv:10$1'.\n\n3.7. Executing PROC_DFF pass (convert process syncs to FFs).\n\n3.8. Executing PROC_CLEAN pass (remove empty switches from decision trees).\nFound and cleaned up 1 empty switch in `\\mux_4to1_case.$proc$rtl/sequence.sv:10$1'.\nRemoving empty process `mux_4to1_case.$proc$rtl/sequence.sv:10$1'.\nCleaned up 1 empty switch.\n\n4. Executing FLATTEN pass (flatten design).\nNo more expansions possible.\n\n5. Executing CHECK pass (checking for obvious problems).\nchecking module mux_4to1_case..\nfound and reported 0 problems.\n",
+      "command": "read_verilog -sv \"rtl/sequence.sv\"; hierarchy -check -top mux_4to1_case ; proc; flatten; check -assert"
+    }
+  },
+  "suites": {
+    "W_bug": {
+      "build_seconds": 0.02,
+      "tier": "fail",
+      "runs": [
+        "fail",
+        "fail"
+      ],
+      "log_hash": "sha256:d28f6081230d83f0d27e8661b0741cbebf301839eb207a796bf95189f73f1a84",
+      "deterministic": true,
+      "log": "or output.\nVCD warning: $dumpvars: Unsupported argument type (vpiPackage)\n[0] sel=0x0 a=0x1 b=0x2 c=0x4 d=0x8 out=0x1\n[100] sel=0x1 a=0x1 b=0x2 c=0x4 d=0x8 out=0x8\nCHECK_FAIL oracle sample=10 got=1000 expected=0010\nCHECK_FAIL oracle sample=11 got=1000 expected=0010\nCHECK_FAIL oracle sample=12 got=1000 expected=0010\nCHECK_FAIL oracle sample=13 got=1000 expected=0010\nCHECK_FAIL oracle sample=14 got=1000 expected=0010\nCHECK_FAIL oracle sample=15 got=1000 expected=0010\nCHECK_FAIL oracle sample=16 got=1000 expected=0010\nCHECK_FAIL oracle sample=17 got=1000 expected=0010\nCHECK_FAIL oracle sample=18 got=1000 expected=0010\nCHECK_FAIL oracle sample=19 got=1000 expected=0010\n[200] sel=0x2 a=0x1 b=0x2 c=0x4 d=0x8 out=0x4\n[300] sel=0x3 a=0x1 b=0x2 c=0x4 d=0x8 out=0x8\n[400] sel=0x0 a=0x8 b=0x4 c=0x2 d=0x1 out=0x8\n[500] sel=0x1 a=0x8 b=0x4 c=0x2 d=0x1 out=0x1\nCHECK_FAIL oracle sample=50 got=0001 expected=0100\nCHECK_FAIL oracle sample=51 got=0001 expected=0100\nCHECK_FAIL oracle sample=52 got=0001 expected=0100\nCHECK_FAIL oracle sample=53 got=0001 expected=0100\nCHECK_FAIL oracle sample=54 got=0001 expected=0100\nCHECK_FAIL oracle sample=55 got=0001 expected=0100\nCHECK_FAIL oracle sample=56 got=0001 expected=0100\nCHECK_FAIL oracle sample=57 got=0001 expected=0100\nCHECK_FAIL oracle sample=58 got=0001 expected=0100\nCHECK_FAIL oracle sample=59 got=0001 expected=0100\n[600] sel=0x2 a=0x8 b=0x4 c=0x2 d=0x1 out=0x2\n[700] sel=0x3 a=0x8 b=0x4 c=0x2 d=0x1 out=0x1\nCHECK_FAIL oracle errors=20 samples=150\n"
+    },
+    "W_preserve": {
+      "build_seconds": 0.01,
+      "tier": "pass",
+      "runs": [
+        "pass",
+        "pass"
+      ],
+      "log_hash": "sha256:8f7b0d3e220050a01430389374487f2c739abe116929797e50e6f766ebba895a",
+      "deterministic": true,
+      "log": "TESTBENCH PASS preserve\n"
+    }
+  },
+  "structural": {
+    "status": "ok",
+    "returncode": 0,
+    "log": "\n-- Running command `read_verilog -sv \"rtl/sequence.sv\"; hierarchy -check -top mux_4to1_case ; proc; flatten; check -assert' --\n\n1. Executing Verilog-2005 frontend: rtl/sequence.sv\nParsing SystemVerilog input from `rtl/sequence.sv' to AST representation.\nGenerating RTLIL representation for module `\\mux_4to1_case'.\nNote: Assuming pure combinatorial block at rtl/sequence.sv:10 in\ncompliance with IEC 62142(E):2005 / IEEE Std. 1364.1(E):2002. Recommending\nuse of @* instead of @(...) for better match of synthesis and simulation.\nSuccessfully finished Verilog frontend.\n\n2. Executing HIERARCHY pass (managing design hierarchy).\n\n2.1. Analyzing design hierarchy..\nTop module:  \\mux_4to1_case\n\n2.2. Analyzing design hierarchy..\nTop module:  \\mux_4to1_case\nRemoved 0 unused modules.\n\n3. Executing PROC pass (convert processes to netlists).\n\n3.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).\nCleaned up 0 empty switches.\n\n3.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).\nMarked 1 switch rules as full_case in process $proc$rtl/sequence.sv:10$1 in module mux_4to1_case.\nRemoved a total of 0 dead cases.\n\n3.3. Executing PROC_INIT pass (extract init attributes).\n\n3.4. Executing PROC_ARST pass (detect async resets in processes).\n\n3.5. Executing PROC_MUX pass (convert decision trees to multiplexers).\nCreating decoders for process `\\mux_4to1_case.$proc$rtl/sequence.sv:10$1'.\n     1/1: $0\\out[3:0]\n\n3.6. Executing PROC_DLATCH pass (convert process syncs to latches).\nNo latch inferred for signal `\\mux_4to1_case.\\out' from process `\\mux_4to1_case.$proc$rtl/sequence.sv:10$1'.\n\n3.7. Executing PROC_DFF pass (convert process syncs to FFs).\n\n3.8. Executing PROC_CLEAN pass (remove empty switches from decision trees).\nFound and cleaned up 1 empty switch in `\\mux_4to1_case.$proc$rtl/sequence.sv:10$1'.\nRemoving empty process `mux_4to1_case.$proc$rtl/sequence.sv:10$1'.\nCleaned up 1 empty switch.\n\n4. Executing FLATTEN pass (flatten design).\nNo more expansions possible.\n\n5. Executing CHECK pass (checking for obvious problems).\nchecking module mux_4to1_case..\nfound and reported 0 problems.\n",
+    "command": "read_verilog -sv \"rtl/sequence.sv\"; hierarchy -check -top mux_4to1_case ; proc; flatten; check -assert"
+  },
+  "reason": "public_matrix_and_structure_pass",
+  "blue_task": "blue_task",
+  "tools_seconds": 0.18023194838315248
+}

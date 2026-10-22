@@ -1,0 +1,60 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "        s4:\n            nstate=data?sf5:s5;",
+            "replace": "        s4:\n            nstate=data?sf5:sf5;"
+          }
+        ],
+        "violated_requirement": "When in state s4 with data=0, the state machine incorrectly transitions to sf5 instead of s5, causing incorrect sequence detection for inputs that should match 011100",
+        "spec_basis": "The module must detect the sequence 011100 from the input signal data"
+      },
+      {
+        "edits": [
+          {
+            "find": "        s5:\n            nstate=data?sf6:s6;",
+            "replace": "        s5:\n            nstate=data?s6:sf6;"
+          }
+        ],
+        "violated_requirement": "When in state s5 with data=1, the state machine incorrectly transitions to s6 instead of sf6, causing incorrect sequence detection for inputs that should not match 011100",
+        "spec_basis": "The module must detect the sequence 011100 from the input signal data"
+      },
+      {
+        "edits": [
+          {
+            "find": "        s6:\n            nstate=data?sf1:s1;",
+            "replace": "        s6:\n            nstate=data?s1:sf1;"
+          }
+        ],
+        "violated_requirement": "When in state s6 with data=1, the state machine incorrectly transitions to s1 instead of sf1, affecting the detection of the next sequence group",
+        "spec_basis": "The sequence check begins with every sixth bit of input data"
+      },
+      {
+        "edits": [
+          {
+            "find": "        sf6:\n\t\t\tnstate=data?sf1:s1;",
+            "replace": "        sf6:\n\t\t\tnstate=data?s1:sf1;"
+          }
+        ],
+        "violated_requirement": "When in state sf6 with data=1, the state machine incorrectly transitions to s1 instead of sf1, affecting the detection of the next sequence group",
+        "spec_basis": "The sequence check begins with every sixth bit of input data"
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:3c7e411143c675b2b5be3824d118a1ac9b9ab4babd2ee8a46f5adddeaf7b6d52",
+  "input_tokens": 5202,
+  "output_tokens": 504,
+  "request_hash": "sha256:eb3ff82b610e7bd728dc6670f5176dc6e98058cc7f36cd92f7b10e7ff7abcef8",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 5202,
+    "output_tokens": 504
+  },
+  "model_seconds": 18.79494445119053
+}

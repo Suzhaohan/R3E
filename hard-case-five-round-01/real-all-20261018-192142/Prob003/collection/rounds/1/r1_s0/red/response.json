@@ -1,0 +1,60 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "        s5:\n            nstate=data?sf6:s6;",
+            "replace": "        s5:\n            nstate=data?s6:sf6;"
+          }
+        ],
+        "violated_requirement": "When the fifth bit of a group is 1, the state machine incorrectly transitions to s6 instead of sf6, causing a false match for sequences ending with 1",
+        "spec_basis": "The module must detect the sequence `011100` from the input signal `data`"
+      },
+      {
+        "edits": [
+          {
+            "find": "        s4:\n            nstate=data?sf5:s5;",
+            "replace": "        s4:\n            nstate=data?s5:sf5;"
+          }
+        ],
+        "violated_requirement": "When the fourth bit of a group is 1, the state machine incorrectly transitions to s5 instead of sf5, causing incorrect sequence detection",
+        "spec_basis": "The detection rules specify that if any bit doesn't match the sequence, the module should transition to failure states"
+      },
+      {
+        "edits": [
+          {
+            "find": "        s3:\n            nstate=data?s4:sf4;",
+            "replace": "        s3:\n            nstate=data?sf4:s4;"
+          }
+        ],
+        "violated_requirement": "When the third bit of a group is 1, the state machine incorrectly transitions to sf4 instead of s4, preventing detection of valid sequences",
+        "spec_basis": "The sequence check begins with every sixth bit of input data and must correctly follow the pattern `011100`"
+      },
+      {
+        "edits": [
+          {
+            "find": "        s2:\n            nstate=data?s3:sf3;",
+            "replace": "        s2:\n            nstate=data?sf3:s3;"
+          }
+        ],
+        "violated_requirement": "When the second bit of a group is 1, the state machine incorrectly transitions to sf3 instead of s3, breaking the sequence detection logic",
+        "spec_basis": "The module must correctly follow the state transitions for the target sequence `011100`"
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:c73ad87673c9213a17727df91cf07e134b10f3ab4f57e9157b5440fbacedb01d",
+  "input_tokens": 5468,
+  "output_tokens": 418,
+  "request_hash": "sha256:0590fbf596d9d17047696d4281c92e32a129eb8647046ac05701d89bcfc63de5",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 5468,
+    "output_tokens": 418
+  },
+  "model_seconds": 19.279867323115468
+}

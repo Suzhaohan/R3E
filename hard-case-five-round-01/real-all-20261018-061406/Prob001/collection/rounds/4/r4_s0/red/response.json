@@ -1,0 +1,64 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "else if (a_tem == 8'b0111_0001)",
+            "replace": "else if (a_tem == 8'b0111_0001) && (match)"
+          }
+        ],
+        "violated_requirement": "The output match should not depend on its previous value when checking the shift register pattern. This mutation causes match to remain asserted once triggered, even if the shift register no longer matches the pattern.",
+        "spec_basis": "The output `match` should be asserted (logic 1) whenever the value of the shift register `a_tem` matches the specific 8-bit pattern `8'b0111_0001`."
+      },
+      {
+        "edits": [
+          {
+            "find": "a_tem <= {a_tem[6:0],a}",
+            "replace": "a_tem <= {a_tem[7:1],a}"
+          }
+        ],
+        "violated_requirement": "The shift register should shift left by one position, but this mutation shifts right instead, causing incorrect pattern matching timing.",
+        "spec_basis": "On every positive edge of the clock, if `rst_n` is asserted (logic 1), the input `a` should be shifted into the least significant bit (LSB) of the shift register `a_tem`, and the previous bits should shift left by one position."
+      },
+      {
+        "edits": [
+          {
+            "find": "match <= 1'b1;",
+            "replace": "match <= 1'b0;"
+          },
+          {
+            "find": "match <= 1'b0;",
+            "replace": "match <= 1'b1;"
+          }
+        ],
+        "violated_requirement": "Inverts the match output logic, causing it to be asserted when the pattern doesn't match and de-asserted when it does.",
+        "spec_basis": "The output `match` should be asserted (logic 1) whenever the value of the shift register `a_tem` matches the specific 8-bit pattern `8'b0111_0001`."
+      },
+      {
+        "edits": [
+          {
+            "find": "else if (a_tem == 8'b0111_0001)",
+            "replace": "else if (a_tem == 8'b0111_0001) || (a_tem == 8'b0111_0011)"
+          }
+        ],
+        "violated_requirement": "Causes the match signal to be asserted for two patterns instead of one, violating the single-pattern requirement.",
+        "spec_basis": "The output `match` should be asserted (logic 1) whenever the value of the shift register `a_tem` matches the specific 8-bit pattern `8'b0111_0001`."
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:465fd64a9327fad962ec4549b3cff96c3179990317311263eba14c5173f50838",
+  "input_tokens": 8396,
+  "output_tokens": 539,
+  "request_hash": "sha256:19772e84175c445b334af000563fe7c0b44e028502f6ba2080e43869e61f1d7b",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 8396,
+    "output_tokens": 539
+  },
+  "model_seconds": 17.946536851115525
+}

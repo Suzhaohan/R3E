@@ -1,0 +1,30 @@
+{
+  "result": {
+    "candidate_actions": [
+      {
+        "action_id": "sha256:933336f97e60572f10c58a05b3a1f8853cfa748a00ec4c9f82506fd9475a0efa",
+        "violated_requirement": "After a non-matching group (sf6 state), the next state should start checking from the first bit of the next group (s1) regardless of data value, but currently it conditionally transitions based on data",
+        "spec_basis": "The specification states that sequence checks begin with every sixth bit and groups don't overlap. After a non-match, we should start fresh with the next group."
+      },
+      {
+        "action_id": "sha256:17d03ff4cdb4d4f2f3266abac580dabeee212eefcc9e7e2b85f1e1b0bf5e1d45",
+        "violated_requirement": "The boundary between groups isn't properly maintained after a non-match - the transition from sf6 should unconditionally go to sf1 to properly reset the sequence check",
+        "spec_basis": "The specification requires that groups are processed independently with no bit reuse between groups. After sf6, we should always go to sf1 to begin checking the next group."
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:2cda8f3df3e9226a37ce7539c60d6ae52b1c5690be46f0284aa1c3e04107b515",
+  "input_tokens": 10279,
+  "output_tokens": 267,
+  "request_hash": "sha256:d247246474ecd9276ea240f91643b5cee89477e831fd3a5814eb46b35d91384a",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 10279,
+    "output_tokens": 267
+  },
+  "model_seconds": 11.248125492595136
+}

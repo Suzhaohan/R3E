@@ -1,0 +1,241 @@
+{
+  "blue": {
+    "blue_config_hash": "sha256:c4d92941ddf7eec6d30df3466ce55c2da484f87720fa31707c5f22462d00cbe5",
+    "committed_round": 4,
+    "entries": [
+      {
+        "body": {
+          "content": {
+            "applied_patch": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -14,7 +14,7 @@\n \t\t\tbegin \n \t\t\t\tmatch_f <= 1'b0;\n \t\t\tend\n-\t\telse if (a_tem[8:6] == 3'b111)\n+\t\telse if (a_tem[8:6] == 3'b011)\n \t\t\tbegin\n \t\t\t\tmatch_f <= 1'b1;\n \t\t\tend\n",
+            "public_rows": {
+              "W_bug": "visible_pass",
+              "W_preserve": "visible_pass"
+            },
+            "specification_excerpt": "I would like you to implement a module named TopModule with the following\ninterface. All input and output ports are one bit unless otherwise\nspecified.\n\n - input  clk\n - input  rst_n\n - input  a\n - output match\n\nThe module should implement a sequence detection circuit that detects the\npattern \"011XXX110\" in the input data stream. The pattern consists of 9 bits\nwhere the first 3 bits are \"011\", the last 3 bits are \"110\", and the middle\n3 bits can be any value (don't care).\n\nThe sequence detection should work as follows:\n- Monitor the input data stream continuously\n- Detect when the pattern \"011XXX110\" appears in the input\n- Output match signal should be high when the pattern is detected\n- Output match signal should be low at all other times\n\nImplementation approach:\nThe module should use a 9-bit shift register to store the last 9 input bits.\nThe match signal should be asserted when:\n- The first 3 bits (bits 8:6) equal \"011\" AND\n- The last 3 bits (bits 2:0) equal \"110\"\n- The middle 3 bits (bits 5:3) can be any ",
+            "validation": "public_pass_single_sample_hidden_unknown"
+          },
+          "created_round": 1,
+          "retrieval_terms": [
+            "a",
+            "all",
+            "and",
+            "any",
+            "appears",
+            "approach",
+            "are",
+            "as",
+            "asserted",
+            "at",
+            "be",
+            "behavior",
+            "bit",
+            "bits",
+            "can",
+            "care",
+            "checks",
+            "circuit",
+            "clk",
+            "clock",
+            "consists",
+            "continuous",
+            "continuously",
+            "cycle",
+            "data",
+            "detect",
+            "detected",
+            "detection",
+            "detects",
+            "don",
+            "edge",
+            "equal",
+            "every",
+            "first",
+            "following",
+            "follows",
+            "for",
+            "high",
+            "i",
+            "implement",
+            "implementation",
+            "in",
+            "initial",
+            "input",
+            "interface",
+            "is",
+            "its",
+            "last",
+            "like",
+            "low",
+            "match",
+            "middle",
+            "module",
+            "monitor",
+            "named",
+            "new",
+            "of",
+            "on",
+            "one",
+            "other",
+            "otherwise",
+            "output",
+            "pattern",
+            "ports",
+            "positive",
+            "register",
+            "reset",
+            "rst_n",
+            "sequence",
+            "sequentially",
+            "shift",
+            "should",
+            "signal",
+            "specified",
+            "state",
+            "store",
+            "stream",
+            "t",
+            "that",
+            "the",
+            "times",
+            "timing",
+            "to",
+            "topmodule",
+            "unless",
+            "updated",
+            "use",
+            "value",
+            "when",
+            "where",
+            "with",
+            "work",
+            "would",
+            "xxx110",
+            "you"
+          ],
+          "source": {
+            "archive_hash": "sha256:17bf2ad971df520d2a750e20a783c253c7218fdfc0cb08a5852b6dce594b9000",
+            "candidate_hash": "sha256:2a3b0afdf5dc5aed718bc94a420a0610c0e1bdc8c28593689e9f27f20b9af21d",
+            "carrier_id": "chipbench_Prob002_wildcard_medium",
+            "encounter_hash": "sha256:bc9d204258f741b7e576cdd1cc3e15ddcab475b57768cb3bee069e5e918b0613",
+            "mutant_hash": "sha256:60445fb0fa06eced97f64c5175f415ab2abfb220a6cf57e1ba2b359b0a828169",
+            "public_replay_hash": "sha256:87b50195f4085e60d0f4ec67d4964a7077c781e436bd9bcfff31e5f48e911ede",
+            "round": 1,
+            "run_id": "collection",
+            "slot_id": "r1_s0",
+            "task_hash": "sha256:3bacd9888ebfbee25b619fab0ae15f11c180d84bc510ecbd8edf659ed787b2ea"
+          },
+          "version": "continuous_repair_episode_v1"
+        },
+        "entry_hash": "sha256:66e6757f6de2c283e10068e504105dbd2ae9684df2b81c6c626ce3d89aa15851"
+      }
+    ],
+    "learning_policy_hash": "sha256:4a09424dd1c7efe73565caf882441e236d76f12d2175725024c3057884eb1afe",
+    "parent_snapshot_hash": "sha256:1c07a53749d549a78b495c799d7986ea3793e664055a56f9957741cb3980c0bb",
+    "retrieval_policy_hash": "sha256:8b114d1dc640c0d8851c3796a1d6ed4e3bc9b65406c7341475b69b3d8568e26f",
+    "snapshot_id": "B_4",
+    "state_hash": "sha256:d940c2bb54a5ae84f6dc95340f4047c5710b746a20d8a547516c692fc41b8095",
+    "version": "continuous_blue_snapshot_v1"
+  },
+  "parent_commit_hash": "sha256:01e7be460634476bc263644fbdf548590d8787083772e9cfd65f40bac20c9f03",
+  "promotion_hash": "sha256:9b3e78e34ac914e29583077619d147c2c19d849172598c980b75b68e712d1eaa",
+  "red": {
+    "observations": [
+      {
+        "blue_patch": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -14,7 +14,7 @@\n \t\t\tbegin \n \t\t\t\tmatch_f <= 1'b0;\n \t\t\tend\n-\t\telse if (a_tem[8:6] == 3'b111)\n+\t\telse if (a_tem[8:6] == 3'b011)\n \t\t\tbegin\n \t\t\t\tmatch_f <= 1'b1;\n \t\t\tend\n",
+        "carrier_id": "chipbench_Prob002_wildcard_medium",
+        "label": "public_pass_single_sample_hidden_unknown",
+        "mutant_hash": "sha256:60445fb0fa06eced97f64c5175f415ab2abfb220a6cf57e1ba2b359b0a828169",
+        "mutation_edits": [
+          {
+            "find": "3'b011",
+            "replace": "3'b111"
+          }
+        ],
+        "public_evidence": "{\"suites\": {\"W_bug\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"TESTBENCH PASS wildcard checks=9216\"}, \"W_preserve\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"TESTBENCH PASS reset\"}}}",
+        "public_rows": {
+          "W_bug": "visible_pass",
+          "W_preserve": "visible_pass"
+        },
+        "round": 1,
+        "slot_id": "r1_s0",
+        "source_hash": "sha256:bc9d204258f741b7e576cdd1cc3e15ddcab475b57768cb3bee069e5e918b0613",
+        "target_snapshot_hash": "sha256:2e977708b8840ff208418da4126c1e87c75c95a93854fe3f6dbcd63d7862401d"
+      },
+      {
+        "blue_patch": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -14,7 +14,7 @@\n \t\t\tbegin \n \t\t\t\tmatch_f <= 1'b0;\n \t\t\tend\n-\t\telse if (a_tem[8:6] == 3'b000)\n+\t\telse if (a_tem[8:6] == 3'b011)\n \t\t\tbegin\n \t\t\t\tmatch_f <= 1'b1;\n \t\t\tend\n",
+        "carrier_id": "chipbench_Prob002_wildcard_medium",
+        "label": "public_pass_single_sample_hidden_unknown",
+        "mutant_hash": "sha256:1db3c845004e96ad8f92732bba750268f29b94425c8303cea3c8c731f70a4fb0",
+        "mutation_edits": [
+          {
+            "find": "3'b011",
+            "replace": "3'b000"
+          }
+        ],
+        "public_evidence": "{\"suites\": {\"W_bug\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"TESTBENCH PASS wildcard checks=9216\"}, \"W_preserve\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"TESTBENCH PASS reset\"}}}",
+        "public_rows": {
+          "W_bug": "visible_pass",
+          "W_preserve": "visible_pass"
+        },
+        "round": 2,
+        "slot_id": "r2_s0",
+        "source_hash": "sha256:cf08e1118ecc4c009aa9c04a3303a740d082898eced65118ebb931f6aeba249b",
+        "target_snapshot_hash": "sha256:b89a1ad70e27e39f5a9bcfad945c14957de1a65fef33eea0e2c080c881fb211d"
+      },
+      {
+        "blue_patch": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -28,7 +28,7 @@\n \t\t\tbegin \n \t\t\t\tmatch_b <= 1'b0;\n \t\t\tend\n-\t\telse if (a_tem[2:0] == 3'b010)\n+\t\telse if (a_tem[2:0] == 3'b110)\n \t\t\tbegin\n \t\t\t\tmatch_b <= 1'b1;\n \t\t\tend\n",
+        "carrier_id": "chipbench_Prob002_wildcard_medium",
+        "label": "public_pass_single_sample_hidden_unknown",
+        "mutant_hash": "sha256:f2bafaa98f80bdba1e7c6fef31da5b445868a791a5519651f0ece213e34e757c",
+        "mutation_edits": [
+          {
+            "find": "3'b110",
+            "replace": "3'b010"
+          }
+        ],
+        "public_evidence": "{\"suites\": {\"W_bug\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"TESTBENCH PASS wildcard checks=9216\"}, \"W_preserve\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"TESTBENCH PASS reset\"}}}",
+        "public_rows": {
+          "W_bug": "visible_pass",
+          "W_preserve": "visible_pass"
+        },
+        "round": 3,
+        "slot_id": "r3_s0",
+        "source_hash": "sha256:3bfafa5d5789aa3e3c1dee3b95393dfac55f32634b882429893c6a147409eb9a",
+        "target_snapshot_hash": "sha256:2c0b5a866d518b16a64e92075d1cc45de082d5f0d7f068413251b7ae1cd31d8f"
+      },
+      {
+        "blue_patch": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -28,7 +28,7 @@\n \t\t\tbegin \n \t\t\t\tmatch_b <= 1'b0;\n \t\t\tend\n-\t\telse if (a_tem[2:0] == 3'b100)\n+\t\telse if (a_tem[2:0] == 3'b110)\n \t\t\tbegin\n \t\t\t\tmatch_b <= 1'b1;\n \t\t\tend\n",
+        "carrier_id": "chipbench_Prob002_wildcard_medium",
+        "label": "public_pass_single_sample_hidden_unknown",
+        "mutant_hash": "sha256:f3c24162dfbb3a148c8bbe4dc28c96bf73dbf38073cda1f82c8162468b81c0f1",
+        "mutation_edits": [
+          {
+            "find": "3'b110",
+            "replace": "3'b100"
+          }
+        ],
+        "public_evidence": "{\"suites\": {\"W_bug\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"TESTBENCH PASS wildcard checks=9216\"}, \"W_preserve\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"TESTBENCH PASS reset\"}}}",
+        "public_rows": {
+          "W_bug": "visible_pass",
+          "W_preserve": "visible_pass"
+        },
+        "round": 4,
+        "slot_id": "r4_s0",
+        "source_hash": "sha256:6c34e8314472ab684fdd1a664a6f374642ea30ab39a8d98d44b4070ebd42e569",
+        "target_snapshot_hash": "sha256:1c07a53749d549a78b495c799d7986ea3793e664055a56f9957741cb3980c0bb"
+      }
+    ],
+    "round": 4
+  },
+  "round": 4,
+  "update_decisions": [
+    {
+      "entry_hash": "sha256:5408eec313a5ae3ea1d31be88d4ef61bfc3585bb36d88ccc5e5969d070a3fe91",
+      "reason": "accepted"
+    },
+    {
+      "accepted": false,
+      "promotion": "no_strict_gain"
+    }
+  ]
+}

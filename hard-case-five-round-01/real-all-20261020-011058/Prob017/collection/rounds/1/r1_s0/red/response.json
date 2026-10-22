@@ -1,0 +1,40 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "clk_cnt<=((div_e>>2)+1)",
+            "replace": "clk_cnt<=((div_e>>1)+1)"
+          }
+        ],
+        "violated_requirement": "Output clock duty cycle is incorrect when div_flag is 0 (even period). The output will stay high for more cycles than specified, changing the waveform behavior.",
+        "spec_basis": "Output becomes 1 iff count <= floor((mode ? div_o : div_e)/4) + 1"
+      },
+      {
+        "edits": [
+          {
+            "find": "clk_cnt<=((div_o>>2)+1)",
+            "replace": "clk_cnt<=((div_o>>1)+1)"
+          }
+        ],
+        "violated_requirement": "Output clock duty cycle is incorrect when div_flag is 1 (odd period). The output will stay high for more cycles than specified, changing the waveform behavior.",
+        "spec_basis": "Output becomes 1 iff count <= floor((mode ? div_o : div_e)/4) + 1"
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:b591bd1a2eeabee58130700e27dc7f1209b609533b0c56b68ecbc3f97f75ac0e",
+  "input_tokens": 4630,
+  "output_tokens": 211,
+  "request_hash": "sha256:426c8dc59ae4e1bfe50098c604ee85e8ad00987582c7cefcf77f999dda454c66",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 4630,
+    "output_tokens": 211
+  },
+  "model_seconds": 9.475850703194737
+}

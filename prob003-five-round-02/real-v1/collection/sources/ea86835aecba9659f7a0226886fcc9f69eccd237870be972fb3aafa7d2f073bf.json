@@ -1,0 +1,112 @@
+{
+  "source": {
+    "run_id": "collection",
+    "round": 1,
+    "slot_id": "r1_s0",
+    "task_hash": "sha256:44d190bd9f73565c75f74db5c52eda898f748c3e69f2be2063e053438ac0bbaa",
+    "carrier_id": "chipbench_prob003_group_boundary_v1",
+    "mutant_hash": "sha256:f1f33b1c58c420ccc798cbd3a729de62f9a81acd12bcbba1eb7c301f15fa1905",
+    "candidate_hash": "sha256:5db25cf23be68f8598a6c08838954a6a7392acac467c3238c9c6a73c2115613c",
+    "encounter_hash": "sha256:ea86835aecba9659f7a0226886fcc9f69eccd237870be972fb3aafa7d2f073bf",
+    "archive_hash": "sha256:e5efec577cc802fba33f4aa2faedb21cab77160dc070dcce9defcb4afa270d58",
+    "public_replay_hash": "sha256:45b7d4160a3bd7efe9fab1a650356c6cf3a6f19b343fdce15ce36f73ebd3051d"
+  },
+  "encounter": {
+    "encounter": 0,
+    "seed": 1299457421909690,
+    "result": {
+      "task_id": "chipbench_prob003_group_boundary_v1__f1f33b1c58c420cc",
+      "route": "direct",
+      "rtl_tokens": 544,
+      "closure": [
+        "rtl/sequence.sv",
+        "harness:W_bug_tb.sv",
+        "harness:W_preserve_tb.sv"
+      ],
+      "outcome": "fixed",
+      "attempts": [
+        {
+          "attempt": 0,
+          "route": "direct",
+          "repair_tokens": {
+            "input": 2754,
+            "output": 3236,
+            "counted_request": 2754,
+            "model_seconds": 18.17
+          },
+          "edit": "Fix inverted branch logic in the terminal states s6 and sf6: when a group completes, the next bit begins a new group and must go to s1 if it is 0 and sf1 if it is 1 (matching the idle state's convention). The current code `nstate=data?s1:sf1;` sends data=0 to sf1, wrongly declaring a mismatch on a new group starting with 0.",
+          "candidate_hash": "sha256:5db25cf23be68f8598a6c08838954a6a7392acac467c3238c9c6a73c2115613c",
+          "tier": "visible_pass",
+          "stage": "simulation",
+          "build_seconds": 0.02,
+          "sim_seconds": 0.02,
+          "changed_files": [
+            "rtl/sequence.sv"
+          ]
+        }
+      ],
+      "calls": 1,
+      "final_candidate_hash": "sha256:5db25cf23be68f8598a6c08838954a6a7392acac467c3238c9c6a73c2115613c",
+      "inputs_read": [
+        "public/task.json",
+        "public/visible/build.json",
+        "public/visible/W_bug_tb.sv",
+        "public/visible/W_preserve_tb.sv",
+        "public/spec.txt"
+      ],
+      "experience": {
+        "snapshot_id": "B_0",
+        "snapshot_hash": "sha256:b0fd7d3ed43a3636208b6dba6121e5adeaac64540a8f713b3fbf0a9757b9cd0a",
+        "state_hash": "sha256:08c5831200dbf206534c28b7111c6df980777a5167ec18cb8907cb6d0e519964",
+        "payload_hash": "sha256:3092f0d7fc08feac058171dbed616bb7c60daa43691d7b6d28875d3225d9b061",
+        "delivery_hash": "sha256:e9c9a05ec99785dd99fd4889e2213ed3ff4074d9c58f402ee2f9cf0082b53d3f",
+        "delivered": false
+      }
+    }
+  },
+  "archive_path": "/data2/huangyc/R3E-aic-ic-2026-latest/prob003-five-round-02/real-v1/collection/rounds/1/r1_s0/online/blue/archive/chipbench_prob003_group_boundary_v1__f1f33b1c58c420cc__5db25cf23be68f85.json",
+  "task_dir": "/data2/huangyc/R3E-aic-ic-2026-latest/prob003-five-round-02/real-v1/collection/rounds/1/r1_s0/admission/blue_task",
+  "replay": {
+    "tier": "visible_pass",
+    "stage": "simulation",
+    "evidence": {
+      "suites": {
+        "W_bug": {
+          "result": "visible_pass",
+          "returncode": 0,
+          "pass_marker_found": true,
+          "fail_marker_found": false,
+          "log": "TESTBENCH PASS W_bug groups=256 cycles=1536"
+        },
+        "W_preserve": {
+          "result": "visible_pass",
+          "returncode": 0,
+          "pass_marker_found": true,
+          "fail_marker_found": false,
+          "log": "TESTBENCH PASS W_preserve reset exclusivity stability"
+        }
+      }
+    },
+    "build_seconds": 0.017309078946709633,
+    "sim_seconds": 0.016022689640522003,
+    "closure": [
+      "rtl/sequence.sv",
+      "harness:W_bug_tb.sv",
+      "harness:W_preserve_tb.sv"
+    ]
+  },
+  "public_rows": {
+    "W_bug": "visible_pass",
+    "W_preserve": "visible_pass"
+  },
+  "mutation_edits": [
+    {
+      "find": "        s6:\n            nstate=data?sf1:s1;\n",
+      "replace": "        s6:\n            nstate=data?s1:sf1;\n"
+    },
+    {
+      "find": "        sf6:\n\t\t\tnstate=data?sf1:s1;\n",
+      "replace": "        sf6:\n\t\t\tnstate=data?s1:sf1;\n"
+    }
+  ]
+}

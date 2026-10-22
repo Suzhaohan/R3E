@@ -1,0 +1,26 @@
+{
+  "result": {
+    "edits": [
+      {
+        "find": "        s6:\n            nstate=data?sf1:s1;",
+        "replace": "        s6:\n            nstate=data?idle:s1;"
+      }
+    ],
+    "violated_requirement": "The module must consume each input bit exactly once across six-bit group boundaries and start checking every group from its first bit, without dropping or misaligning the first bit after a match.",
+    "spec_basis": "If the first bit of a group does not match the sequence, the module skips the entire group and starts checking from the next group beginning at the seventh bit; every rising edge with reset high consumes exactly one bit."
+  },
+  "raw_response_hash": "sha256:2dea018569fe69c046bcb485a933bb18248f922165c5ceb3dc11aa5301579b29",
+  "input_tokens": 4818,
+  "output_tokens": 14226,
+  "request_hash": "sha256:809ec5cb31c45a6f23cc9d28425c5edb10bcfa81ea6d03e64fbdfca15be8b4ee",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 4818,
+    "output_tokens": 14226
+  },
+  "model_seconds": 85.24462352879345
+}

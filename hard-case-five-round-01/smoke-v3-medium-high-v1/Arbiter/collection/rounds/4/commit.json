@@ -1,0 +1,115 @@
+{
+  "blue": {
+    "blue_config_hash": "sha256:ae282cf6effc76efdc1247bcc956f0143332fb99c714b79ead0d865686f50966",
+    "committed_round": 4,
+    "entries": [],
+    "learning_policy_hash": "sha256:4a09424dd1c7efe73565caf882441e236d76f12d2175725024c3057884eb1afe",
+    "parent_snapshot_hash": "sha256:4155c33e06951a84de8b5fda2d32950d800357b73555250d68d4b3f4103aaccb",
+    "retrieval_policy_hash": "sha256:8b114d1dc640c0d8851c3796a1d6ed4e3bc9b65406c7341475b69b3d8568e26f",
+    "snapshot_id": "B_4",
+    "state_hash": "sha256:831017327dc4caf546fcce1c2a44feb9ac291ad3a98564d855b6bcc075af7c5b",
+    "version": "continuous_blue_snapshot_v1"
+  },
+  "parent_commit_hash": "sha256:198c577e45ff4e48a3cff1711d923a919fd399b22372f4e18dcaf6b14962f882",
+  "promotion_hash": "sha256:9c6df787902fa0e89f7c304b5c3ca936bb2de6cd809b4229e97d771ffd0f349b",
+  "red": {
+    "observations": [
+      {
+        "blue_patch": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -43,7 +43,7 @@\n     IDLE : if (req_0 == 1'b1) begin\n   \t     next_state = GNT0;\n            end else if (req_1 == 1'b1) begin\n-  \t     next_state= GNT2;\n+  \t     next_state= GNT1;\n            end else if (req_2 == 1'b1) begin\n   \t     next_state= GNT2;\n            end else if (req_3 == 1'b1) begin\n",
+        "carrier_id": "medium_high_Arbiter",
+        "label": "public_pass_single_sample_hidden_unknown",
+        "mutant_hash": "sha256:457212be91f165697ca13aebb7161fa9948683e79724a8b855727d4682e8777f",
+        "mutation_edits": [
+          {
+            "find": "next_state= GNT1;",
+            "replace": "next_state= GNT2;"
+          }
+        ],
+        "public_evidence": "{\"suites\": {\"W_bug\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"VCD info: dumpfile output_fsm_full_tb_t1.vcd opened for output.\\nVCD warning: $dumpvars: Unsupported argument type (vpiPackage)\\ntime\\t    req_0 req_1 req_2 req_3 gnt_0 gnt_1 gnt_2 gnt_3\\n0\\t    x  x  x  x  x  x  x  x\\n4\\t    0  0  0  0  x  x  x  x\\n9\\t    0  0  0  0  0  0  0  0\\n34\\t    1  0  0  0  0  0  0  0\\n41\\t    1  0  0  0  1  0  0  0\\n54\\t    0  0  0  0  1  0  0  0\\n61\\t    0  0  0  0  0  0  0  0\\n64\\t    0  1  0  0  0  0  0  0\\n69\\t    0  1  0  0  0  1  0  0\\n84\\t    0  0  0  0  0  1  0  0\\n89\\t    0  0  0  0  0  0  0  0\\n94\\t    0  0  1  0  0  0  0  0\\n101\\t    0  0  1  0  0  0  1  0\\n114\\t    0  0  0  0  0  0  1  0\\n121\\t    0  0  0  0  0  0  0  0\\n124\\t    0  0  0  1  0  0  0  0\\n129\\t    0  0  0  1  0  0  0  1\\n144\\t    0  0  0  0  0  0  0  1\\n149\\t    0  0  0  0  0  0  0  0\\nTESTBENCH PASS original oracle\"}, \"W_preserve\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"TESTBENCH PASS preserve\"}}}",
+        "public_rows": {
+          "W_bug": "visible_pass",
+          "W_preserve": "visible_pass"
+        },
+        "round": 1,
+        "slot_id": "r1_s0",
+        "source_hash": "sha256:844e98cade64658731e362e64ea296b5b9cc57dec0653a06ce1f1c23267d017e",
+        "target_snapshot_hash": "sha256:a3f8dbb730c7d9d32d38fd2cf666aee561b0cec0a8ea6b1109101a93e2937cd8"
+      },
+      {
+        "blue_patch": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -47,7 +47,7 @@\n            end else if (req_2 == 1'b1) begin\n   \t     next_state= GNT2;\n            end else if (req_3 == 1'b1) begin\n-  \t     next_state= GNT2;\n+  \t     next_state= GNT3;\n \t   end else begin\n   \t     next_state = IDLE;\n            end\t\t\t\n",
+        "carrier_id": "medium_high_Arbiter",
+        "label": "public_pass_single_sample_hidden_unknown",
+        "mutant_hash": "sha256:46481b1f949f4977006adccbaa325d56f5e2dae82158cccbdc7a42056ee8cd0e",
+        "mutation_edits": [
+          {
+            "find": "next_state= GNT3;",
+            "replace": "next_state= GNT2;"
+          }
+        ],
+        "public_evidence": "{\"suites\": {\"W_bug\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"VCD info: dumpfile output_fsm_full_tb_t1.vcd opened for output.\\nVCD warning: $dumpvars: Unsupported argument type (vpiPackage)\\ntime\\t    req_0 req_1 req_2 req_3 gnt_0 gnt_1 gnt_2 gnt_3\\n0\\t    x  x  x  x  x  x  x  x\\n4\\t    0  0  0  0  x  x  x  x\\n9\\t    0  0  0  0  0  0  0  0\\n34\\t    1  0  0  0  0  0  0  0\\n41\\t    1  0  0  0  1  0  0  0\\n54\\t    0  0  0  0  1  0  0  0\\n61\\t    0  0  0  0  0  0  0  0\\n64\\t    0  1  0  0  0  0  0  0\\n69\\t    0  1  0  0  0  1  0  0\\n84\\t    0  0  0  0  0  1  0  0\\n89\\t    0  0  0  0  0  0  0  0\\n94\\t    0  0  1  0  0  0  0  0\\n101\\t    0  0  1  0  0  0  1  0\\n114\\t    0  0  0  0  0  0  1  0\\n121\\t    0  0  0  0  0  0  0  0\\n124\\t    0  0  0  1  0  0  0  0\\n129\\t    0  0  0  1  0  0  0  1\\n144\\t    0  0  0  0  0  0  0  1\\n149\\t    0  0  0  0  0  0  0  0\\nTESTBENCH PASS original oracle\"}, \"W_preserve\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"TESTBENCH PASS preserve\"}}}",
+        "public_rows": {
+          "W_bug": "visible_pass",
+          "W_preserve": "visible_pass"
+        },
+        "round": 2,
+        "slot_id": "r2_s0",
+        "source_hash": "sha256:eff040f36ad52acb404145cc0322656f358482f671b737d6c6c561c6eae4cb84",
+        "target_snapshot_hash": "sha256:a226b9bae0ed76ec04f77cf245ab5ff2396e7b4d4f75e564ae41044961068e83"
+      },
+      {
+        "blue_patch": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -99,7 +99,7 @@\n                  gnt_1 <= #1 1'b1;\n                end\n         GNT2 : begin\n-                 gnt_2 <= #1 1'b0;\n+                 gnt_2 <= #1 1'b1;\n                end\n         GNT3 : begin\n                  gnt_3 <= #1 1'b1;\n",
+        "carrier_id": "medium_high_Arbiter",
+        "label": "public_pass_single_sample_hidden_unknown",
+        "mutant_hash": "sha256:f52f504cb43e41c046d26b0d357299b90d1b7558d06d4006c61b34f38428d1ce",
+        "mutation_edits": [
+          {
+            "find": "gnt_2 <= #1 1'b1;",
+            "replace": "gnt_2 <= #1 1'b0;"
+          }
+        ],
+        "public_evidence": "{\"suites\": {\"W_bug\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"VCD info: dumpfile output_fsm_full_tb_t1.vcd opened for output.\\nVCD warning: $dumpvars: Unsupported argument type (vpiPackage)\\ntime\\t    req_0 req_1 req_2 req_3 gnt_0 gnt_1 gnt_2 gnt_3\\n0\\t    x  x  x  x  x  x  x  x\\n4\\t    0  0  0  0  x  x  x  x\\n9\\t    0  0  0  0  0  0  0  0\\n34\\t    1  0  0  0  0  0  0  0\\n41\\t    1  0  0  0  1  0  0  0\\n54\\t    0  0  0  0  1  0  0  0\\n61\\t    0  0  0  0  0  0  0  0\\n64\\t    0  1  0  0  0  0  0  0\\n69\\t    0  1  0  0  0  1  0  0\\n84\\t    0  0  0  0  0  1  0  0\\n89\\t    0  0  0  0  0  0  0  0\\n94\\t    0  0  1  0  0  0  0  0\\n101\\t    0  0  1  0  0  0  1  0\\n114\\t    0  0  0  0  0  0  1  0\\n121\\t    0  0  0  0  0  0  0  0\\n124\\t    0  0  0  1  0  0  0  0\\n129\\t    0  0  0  1  0  0  0  1\\n144\\t    0  0  0  0  0  0  0  1\\n149\\t    0  0  0  0  0  0  0  0\\nTESTBENCH PASS original oracle\"}, \"W_preserve\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"TESTBENCH PASS preserve\"}}}",
+        "public_rows": {
+          "W_bug": "visible_pass",
+          "W_preserve": "visible_pass"
+        },
+        "round": 3,
+        "slot_id": "r3_s0",
+        "source_hash": "sha256:404ccecbd1a2ee26f7af760be74241ed6ca58513b576a02990c5821e3398f647",
+        "target_snapshot_hash": "sha256:bd077223b730a468237d8aa1cf6e0f64376d511b80d739419cdacfbefdb5f8d9"
+      },
+      {
+        "blue_patch": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -102,7 +102,7 @@\n                  gnt_2 <= #1 1'b1;\n                end\n         GNT3 : begin\n-                 gnt_3 <= #1 1'b0;\n+                 gnt_3 <= #1 1'b1;\n                end\n      default : begin\n                  state <= #1 IDLE;\n",
+        "carrier_id": "medium_high_Arbiter",
+        "label": "public_pass_single_sample_hidden_unknown",
+        "mutant_hash": "sha256:ed8673625212b48cdcef44e0a75cd16ae6c8fe86651e6cb1be60042a42989fff",
+        "mutation_edits": [
+          {
+            "find": "gnt_3 <= #1 1'b1;",
+            "replace": "gnt_3 <= #1 1'b0;"
+          }
+        ],
+        "public_evidence": "{\"suites\": {\"W_bug\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"VCD info: dumpfile output_fsm_full_tb_t1.vcd opened for output.\\nVCD warning: $dumpvars: Unsupported argument type (vpiPackage)\\ntime\\t    req_0 req_1 req_2 req_3 gnt_0 gnt_1 gnt_2 gnt_3\\n0\\t    x  x  x  x  x  x  x  x\\n4\\t    0  0  0  0  x  x  x  x\\n9\\t    0  0  0  0  0  0  0  0\\n34\\t    1  0  0  0  0  0  0  0\\n41\\t    1  0  0  0  1  0  0  0\\n54\\t    0  0  0  0  1  0  0  0\\n61\\t    0  0  0  0  0  0  0  0\\n64\\t    0  1  0  0  0  0  0  0\\n69\\t    0  1  0  0  0  1  0  0\\n84\\t    0  0  0  0  0  1  0  0\\n89\\t    0  0  0  0  0  0  0  0\\n94\\t    0  0  1  0  0  0  0  0\\n101\\t    0  0  1  0  0  0  1  0\\n114\\t    0  0  0  0  0  0  1  0\\n121\\t    0  0  0  0  0  0  0  0\\n124\\t    0  0  0  1  0  0  0  0\\n129\\t    0  0  0  1  0  0  0  1\\n144\\t    0  0  0  0  0  0  0  1\\n149\\t    0  0  0  0  0  0  0  0\\nTESTBENCH PASS original oracle\"}, \"W_preserve\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"TESTBENCH PASS preserve\"}}}",
+        "public_rows": {
+          "W_bug": "visible_pass",
+          "W_preserve": "visible_pass"
+        },
+        "round": 4,
+        "slot_id": "r4_s0",
+        "source_hash": "sha256:0018985710d297b3c07945604b1f0c6d07063a7b44d351a8e3285a817696b97c",
+        "target_snapshot_hash": "sha256:4155c33e06951a84de8b5fda2d32950d800357b73555250d68d4b3f4103aaccb"
+      }
+    ],
+    "round": 4
+  },
+  "round": 4,
+  "update_decisions": [
+    {
+      "entry_hash": "sha256:1cc18373951f515afc1773017dabdd11d01692bf45957d4be86e9436e24c93e2",
+      "reason": "accepted"
+    },
+    {
+      "accepted": false,
+      "promotion": "no_strict_gain"
+    }
+  ]
+}

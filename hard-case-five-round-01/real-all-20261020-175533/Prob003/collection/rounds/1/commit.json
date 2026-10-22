@@ -1,0 +1,306 @@
+{
+  "blue": {
+    "blue_config_hash": "sha256:9335408c15ec8461d688530617738077012fba13ae120ddae0de57b23055a90e",
+    "committed_round": 1,
+    "entries": [
+      {
+        "body": {
+          "content": {
+            "applied_patch": "--- original_buggy/rtl/sequence.sv\n+++ repaired/rtl/sequence.sv\n@@ original lines 50-52; repaired lines 50-52 @@\n-        s5:\n-            nstate=data?s6:sf6;\n-        s6:\n+        s5:\n+            nstate=data?sf6:s6;\n+        s6:",
+            "public_rows": {
+              "W_bug": "visible_pass",
+              "W_preserve": "visible_pass"
+            },
+            "repair_evidence": {
+              "changed_ranges": [
+                {
+                  "after_lines": [
+                    50,
+                    52
+                  ],
+                  "before_lines": [
+                    50,
+                    52
+                  ],
+                  "file": "rtl/sequence.sv",
+                  "truncated": false
+                }
+              ],
+              "full_patch_hash": "sha256:defd7affc7272d25ad47cef5a8c10124bc45dec372465706e9ffaeedeb4dde27",
+              "omitted_change_regions": 0,
+              "public_after": {
+                "W_bug": {
+                  "markers": [
+                    "TESTBENCH PASS W_bug groups=256 cycles=1536"
+                  ],
+                  "result": "visible_pass"
+                },
+                "W_preserve": {
+                  "markers": [
+                    "TESTBENCH PASS W_preserve reset exclusivity stability"
+                  ],
+                  "result": "visible_pass"
+                }
+              },
+              "public_before": {
+                "W_bug": {
+                  "markers": [
+                    "CHECK_FAIL W_bug cycle=6 group=011100 bit=0 match=0 not_match=1"
+                  ],
+                  "result": "visible_fail"
+                },
+                "W_preserve": {
+                  "markers": [
+                    "TESTBENCH PASS W_preserve reset exclusivity stability"
+                  ],
+                  "result": "visible_pass"
+                }
+              },
+              "scope": "Current-run public task and submitted repair only; excerpts are not a standalone patch.",
+              "version": "public_repair_context_v1"
+            },
+            "specification_excerpt": "I would like you to implement a module named `TopModule` with the following interface. All input and output ports are one bit unless otherwise specified.\n\n### Inputs:\n- `clk`: System clock signal.\n- `rst_n`: Asynchronous reset signal, active low.\n- `data`: Single-bit input signal, representing the data to be checked.\n\n### Outputs:\n- `match`: A signal that outputs `1` when the input signal `data` matches the target sequence `011100`. It remains `0` at all other times.\n- `not_match`: A signal that outputs `1` when the input signal `data` does not match the target sequence `011100`. It remains `0` at all other times.\n\n### Module Description:\nThe module must detect the sequence `011100` from the input signal `data`. Please use the state machine to solve this problem. The detection rules are as follows:\n1. The sequence check begins with every sixth bit of input data, meaning the module processes the input in groups of six bits and does not overlap or reuse bits between groups.\n2. If the first bit of a group does n",
+            "transfer_summary": {
+              "changed_lines": [
+                "-         s5:             nstate=data?s6:sf6;         s6:",
+                "+         s5:             nstate=data?sf6:s6;         s6:"
+              ],
+              "checks_on_transfer": [],
+              "scope": "Observed public success only; recheck applicability on a new task."
+            },
+            "validation": "public_pass_single_sample_hidden_unknown"
+          },
+          "created_round": 1,
+          "retrieval_terms": [
+            "a",
+            "accordingly",
+            "active",
+            "after",
+            "all",
+            "an",
+            "and",
+            "are",
+            "as",
+            "assert",
+            "asynchronous",
+            "at",
+            "be",
+            "before",
+            "begin",
+            "beginning",
+            "begins",
+            "behavior",
+            "between",
+            "binary",
+            "bit",
+            "bits",
+            "block",
+            "both",
+            "can",
+            "change",
+            "check",
+            "checked",
+            "checking",
+            "classify",
+            "clears",
+            "clk",
+            "clock",
+            "combinational",
+            "consumes",
+            "contract",
+            "control",
+            "cycle",
+            "data",
+            "declare",
+            "defined",
+            "depend",
+            "description",
+            "detect",
+            "detected",
+            "detection",
+            "development",
+            "discards",
+            "do",
+            "does",
+            "each",
+            "edge",
+            "edges",
+            "entire",
+            "evaluate",
+            "every",
+            "exactly",
+            "exclusive",
+            "first",
+            "five",
+            "following",
+            "follows",
+            "for",
+            "from",
+            "go",
+            "group",
+            "groups",
+            "high",
+            "i",
+            "idle",
+            "if",
+            "immediately",
+            "implement",
+            "implemented",
+            "in",
+            "initial",
+            "input",
+            "inputs",
+            "interface",
+            "is",
+            "it",
+            "its",
+            "like",
+            "list",
+            "logic",
+            "long",
+            "low",
+            "machine",
+            "match",
+            "matches",
+            "may",
+            "meaning",
+            "module",
+            "must",
+            "mutually",
+            "named",
+            "new",
+            "next",
+            "no",
+            "not",
+            "not_match",
+            "of",
+            "on",
+            "one",
+            "only",
+            "or",
+            "other",
+            "otherwise",
+            "output",
+            "outputs",
+            "overlap",
+            "partial",
+            "please",
+            "ports",
+            "positive",
+            "problem",
+            "processes",
+            "prospective",
+            "reg",
+            "remain",
+            "remains",
+            "representing",
+            "reset",
+            "reuse",
+            "rising",
+            "rst_n",
+            "rules",
+            "sensitivity",
+            "sequence",
+            "seventh",
+            "should",
+            "signal",
+            "signals",
+            "single",
+            "six",
+            "sixth",
+            "skips",
+            "solve",
+            "specified",
+            "stable",
+            "start",
+            "starts",
+            "state",
+            "states",
+            "system",
+            "target",
+            "that",
+            "the",
+            "this",
+            "time",
+            "times",
+            "timing",
+            "to",
+            "topmodule",
+            "transition",
+            "type",
+            "unevaluated",
+            "unless",
+            "use",
+            "value",
+            "when",
+            "wildcard",
+            "with",
+            "would",
+            "you",
+            "zero"
+          ],
+          "source": {
+            "archive_hash": "sha256:f27c35587b8e6d3c51bf33b59a53f8fc9ae940665f43c770e5759a07d6ffa5ed",
+            "baseline_public_hash": "sha256:422b0dbbb3a392443fd545c12bb2aac76f6e97cf99e49c38d4674ee30269f316",
+            "candidate_hash": "sha256:5db25cf23be68f8598a6c08838954a6a7392acac467c3238c9c6a73c2115613c",
+            "carrier_id": "chipbench_prob003_group_boundary_v1",
+            "encounter_hash": "sha256:441c0bae678270712703513768b5475adc555faeab666869fa4b2286dead0a18",
+            "mutant_hash": "sha256:e1359be4b673d394840ca817b0bf60f31cc19ced8ed64c6b4b1567b490f39ad4",
+            "public_replay_hash": "sha256:e4be044d320392aa3006f3c5fbeaf7cb4062af5c8fc944d38ab99227892653c9",
+            "round": 1,
+            "run_id": "collection",
+            "slot_id": "r1_s0",
+            "task_hash": "sha256:ba279a2286585337ba900d8d2746805d80a68ec76f98b2eb210cf92a9576a919"
+          },
+          "version": "continuous_repair_episode_v3"
+        },
+        "entry_hash": "sha256:b9bc2b8a0c9db9cddc0dc5ecf829ad6db779b48cb908d3e20a779f362cbc45e9"
+      }
+    ],
+    "learning_policy_hash": "sha256:e125eaba0c567205327a9b834761e336b610bc2e29ccbbe86fd91bcb64a5fd6c",
+    "parent_snapshot_hash": "sha256:8b062b213ed61ecf341ce385ee515e026fa2dd67e077c54f5c39b3731d9d0be8",
+    "retrieval_policy_hash": "sha256:8b114d1dc640c0d8851c3796a1d6ed4e3bc9b65406c7341475b69b3d8568e26f",
+    "snapshot_id": "B_1",
+    "state_hash": "sha256:f9cdfeed8c1722a08dd90db46c89562c178d5f7e0c0c8c92059a2ac1e87fa50c",
+    "version": "continuous_blue_snapshot_v1"
+  },
+  "parent_commit_hash": "sha256:2037a0e12e03be165b8a5e0fc8739ab3313bb9aff0644277327963dd6677e5aa",
+  "promotion_hash": "sha256:174539ed7c3fd5846efe698cf0ed4999169b2c882a889b83ce4f34888e0fdfaa",
+  "red": {
+    "observations": [
+      {
+        "blue_patch": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -48,7 +48,7 @@\n         s4:\n             nstate=data?sf5:s5;\n         s5:\n-            nstate=data?s6:sf6;\n+            nstate=data?sf6:s6;\n         s6:\n             nstate=data?sf1:s1;\n         sf1:\n",
+        "carrier_id": "chipbench_prob003_group_boundary_v1",
+        "label": "public_pass_single_sample_hidden_unknown",
+        "mutant_hash": "sha256:e1359be4b673d394840ca817b0bf60f31cc19ced8ed64c6b4b1567b490f39ad4",
+        "mutation_edits": [
+          {
+            "find": "nstate=data?sf6:s6;",
+            "replace": "nstate=data?s6:sf6;"
+          }
+        ],
+        "public_evidence": "{\"suites\": {\"W_bug\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"TESTBENCH PASS W_bug groups=256 cycles=1536\"}, \"W_preserve\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"TESTBENCH PASS W_preserve reset exclusivity stability\"}}}",
+        "public_rows": {
+          "W_bug": "visible_pass",
+          "W_preserve": "visible_pass"
+        },
+        "round": 1,
+        "slot_id": "r1_s0",
+        "source_hash": "sha256:441c0bae678270712703513768b5475adc555faeab666869fa4b2286dead0a18",
+        "target_snapshot_hash": "sha256:8b062b213ed61ecf341ce385ee515e026fa2dd67e077c54f5c39b3731d9d0be8"
+      }
+    ],
+    "round": 1
+  },
+  "round": 1,
+  "update_decisions": [
+    {
+      "entry_hash": "sha256:b9bc2b8a0c9db9cddc0dc5ecf829ad6db779b48cb908d3e20a779f362cbc45e9",
+      "reason": "accepted"
+    },
+    {
+      "accepted": true,
+      "promotion": "retained_no_regression_no_measured_gain"
+    }
+  ]
+}

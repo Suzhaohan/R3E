@@ -1,0 +1,995 @@
+{
+  "attempts": 3,
+  "first": {
+    "answer_form": "full",
+    "candidate_hash": "sha256:f98f042802b7a56dbd390bf9e478ba33811e8d19d92a3355070524b481215836",
+    "candidate_id": "C_d0db79a0d571_0",
+    "command_hash": "sha256:7b39516aae43925196e4d523d4f3d53f10a5034c47f860c83868815a8b9f021c",
+    "edit": "Fixed the shift-register direction to shift the input into the LSB (a_tem <= {a_tem[6:0], a}), and made match a combinational comparison of a_tem against 8'b0111_0001 so it reflects the newly shifted value (instead of the stale registered value).",
+    "edit_class": "missing_or_extra_logic",
+    "feedback": {
+      "cycles_compared": 455,
+      "first_divergences": [
+        {
+          "expected": "0",
+          "first_cycle": 36,
+          "observed": "1",
+          "pattern": "variable_offset",
+          "signal": "match"
+        }
+      ],
+      "passing_outputs": [],
+      "stage": "functional"
+    },
+    "hidden": "not_available",
+    "index": 0,
+    "memory_offered": false,
+    "phase": "evaluation",
+    "seconds": 18.21,
+    "tokens": {
+      "input": 1525,
+      "output": 3031
+    },
+    "verdict_tier": "visible_fail",
+    "window": {
+      "cycles_compared": 228,
+      "inputs_logged": true,
+      "rows": [
+        {
+          "cycle": 17,
+          "edge": "rising",
+          "inputs": {
+            "a": "1",
+            "rst_n": "1"
+          },
+          "outputs": {
+            "match": {
+              "expected": "0",
+              "observed": "0",
+              "ok": true
+            }
+          }
+        },
+        {
+          "cycle": 17,
+          "edge": "falling",
+          "inputs": {
+            "a": "1",
+            "rst_n": "1"
+          },
+          "outputs": {
+            "match": {
+              "expected": "0",
+              "observed": "0",
+              "ok": true
+            }
+          }
+        },
+        {
+          "cycle": 18,
+          "edge": "rising",
+          "inputs": {
+            "a": "0",
+            "rst_n": "1"
+          },
+          "outputs": {
+            "match": {
+              "expected": "0",
+              "observed": "1",
+              "ok": false
+            }
+          }
+        },
+        {
+          "cycle": 18,
+          "edge": "falling",
+          "inputs": {
+            "a": "0",
+            "rst_n": "1"
+          },
+          "outputs": {
+            "match": {
+              "expected": "0",
+              "observed": "1",
+              "ok": false
+            }
+          }
+        },
+        {
+          "cycle": 19,
+          "edge": "rising",
+          "inputs": {
+            "a": "1",
+            "rst_n": "1"
+          },
+          "outputs": {
+            "match": {
+              "expected": "1",
+              "observed": "0",
+              "ok": false
+            }
+          }
+        },
+        {
+          "cycle": 19,
+          "edge": "falling",
+          "inputs": {
+            "a": "1",
+            "rst_n": "1"
+          },
+          "outputs": {
+            "match": {
+              "expected": "1",
+              "observed": "0",
+              "ok": false
+            }
+          }
+        },
+        {
+          "cycle": 20,
+          "edge": "rising",
+          "inputs": {
+            "a": "1",
+            "rst_n": "1"
+          },
+          "outputs": {
+            "match": {
+              "expected": "0",
+              "observed": "0",
+              "ok": true
+            }
+          }
+        },
+        {
+          "cycle": 20,
+          "edge": "falling",
+          "inputs": {
+            "a": "1",
+            "rst_n": "1"
+          },
+          "outputs": {
+            "match": {
+              "expected": "0",
+              "observed": "0",
+              "ok": true
+            }
+          }
+        },
+        {
+          "cycle": 21,
+          "edge": "rising",
+          "inputs": {
+            "a": "1",
+            "rst_n": "1"
+          },
+          "outputs": {
+            "match": {
+              "expected": "0",
+              "observed": "0",
+              "ok": true
+            }
+          }
+        },
+        {
+          "cycle": 21,
+          "edge": "falling",
+          "inputs": {
+            "a": "1",
+            "rst_n": "1"
+          },
+          "outputs": {
+            "match": {
+              "expected": "0",
+              "observed": "0",
+              "ok": true
+            }
+          }
+        },
+        {
+          "cycle": 22,
+          "edge": "rising",
+          "inputs": {
+            "a": "1",
+            "rst_n": "1"
+          },
+          "outputs": {
+            "match": {
+              "expected": "0",
+              "observed": "0",
+              "ok": true
+            }
+          }
+        },
+        {
+          "cycle": 22,
+          "edge": "falling",
+          "inputs": {
+            "a": "1",
+            "rst_n": "1"
+          },
+          "outputs": {
+            "match": {
+              "expected": "0",
+              "observed": "0",
+              "ok": true
+            }
+          }
+        }
+      ],
+      "sampling": "two samples per clock cycle (after the rising and after the falling edge of clk); 455 samples",
+      "stimulus_notes": [
+        "Inputs sampled after NBA on both tb.clk edges, row-aligned with trace_visible.txt; clocks and resets included"
+      ],
+      "wrong_cycles": {
+        "match": {
+          "count": 2,
+          "first_cycles": [
+            18,
+            19
+          ]
+        }
+      }
+    }
+  },
+  "inconclusive": false,
+  "record": {
+    "accounting": {
+      "fixed": false,
+      "fixed_at_attempt": null,
+      "fixed_by_escalation": false,
+      "input_tokens": 6066,
+      "llm_calls": 3,
+      "memory_delivered": false,
+      "memory_items": [],
+      "memory_offered_from_attempt": null,
+      "model_seconds": 173.71,
+      "output_tokens": 32598,
+      "provider_failures": 0,
+      "repair_attempts": 3
+    },
+    "attempts": [
+      {
+        "answer_form": "full",
+        "candidate_hash": "sha256:f98f042802b7a56dbd390bf9e478ba33811e8d19d92a3355070524b481215836",
+        "candidate_id": "C_d0db79a0d571_0",
+        "command_hash": "sha256:7b39516aae43925196e4d523d4f3d53f10a5034c47f860c83868815a8b9f021c",
+        "edit": "Fixed the shift-register direction to shift the input into the LSB (a_tem <= {a_tem[6:0], a}), and made match a combinational comparison of a_tem against 8'b0111_0001 so it reflects the newly shifted value (instead of the stale registered value).",
+        "edit_class": "missing_or_extra_logic",
+        "feedback": {
+          "cycles_compared": 455,
+          "first_divergences": [
+            {
+              "expected": "0",
+              "first_cycle": 36,
+              "observed": "1",
+              "pattern": "variable_offset",
+              "signal": "match"
+            }
+          ],
+          "passing_outputs": [],
+          "stage": "functional"
+        },
+        "hidden": "not_available",
+        "index": 0,
+        "memory_offered": false,
+        "phase": "evaluation",
+        "seconds": 18.21,
+        "tokens": {
+          "input": 1525,
+          "output": 3031
+        },
+        "verdict_tier": "visible_fail",
+        "window": {
+          "cycles_compared": 228,
+          "inputs_logged": true,
+          "rows": [
+            {
+              "cycle": 17,
+              "edge": "rising",
+              "inputs": {
+                "a": "1",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                }
+              }
+            },
+            {
+              "cycle": 17,
+              "edge": "falling",
+              "inputs": {
+                "a": "1",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                }
+              }
+            },
+            {
+              "cycle": 18,
+              "edge": "rising",
+              "inputs": {
+                "a": "0",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "0",
+                  "observed": "1",
+                  "ok": false
+                }
+              }
+            },
+            {
+              "cycle": 18,
+              "edge": "falling",
+              "inputs": {
+                "a": "0",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "0",
+                  "observed": "1",
+                  "ok": false
+                }
+              }
+            },
+            {
+              "cycle": 19,
+              "edge": "rising",
+              "inputs": {
+                "a": "1",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "1",
+                  "observed": "0",
+                  "ok": false
+                }
+              }
+            },
+            {
+              "cycle": 19,
+              "edge": "falling",
+              "inputs": {
+                "a": "1",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "1",
+                  "observed": "0",
+                  "ok": false
+                }
+              }
+            },
+            {
+              "cycle": 20,
+              "edge": "rising",
+              "inputs": {
+                "a": "1",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                }
+              }
+            },
+            {
+              "cycle": 20,
+              "edge": "falling",
+              "inputs": {
+                "a": "1",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                }
+              }
+            },
+            {
+              "cycle": 21,
+              "edge": "rising",
+              "inputs": {
+                "a": "1",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                }
+              }
+            },
+            {
+              "cycle": 21,
+              "edge": "falling",
+              "inputs": {
+                "a": "1",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                }
+              }
+            },
+            {
+              "cycle": 22,
+              "edge": "rising",
+              "inputs": {
+                "a": "1",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                }
+              }
+            },
+            {
+              "cycle": 22,
+              "edge": "falling",
+              "inputs": {
+                "a": "1",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                }
+              }
+            }
+          ],
+          "sampling": "two samples per clock cycle (after the rising and after the falling edge of clk); 455 samples",
+          "stimulus_notes": [
+            "Inputs sampled after NBA on both tb.clk edges, row-aligned with trace_visible.txt; clocks and resets included"
+          ],
+          "wrong_cycles": {
+            "match": {
+              "count": 2,
+              "first_cycles": [
+                18,
+                19
+              ]
+            }
+          }
+        }
+      },
+      {
+        "answer_form": "full",
+        "candidate_hash": "sha256:8adc3ac2d45c4807673f717beb4eafdb6cbd53854fddee0bf7d5913a05256f71",
+        "candidate_id": "C_25f006eb044b_1",
+        "command_hash": "sha256:4c6c77771c5a8014b96cedb8f51f40f410ffbc93712af3f8257313c86b73fec3",
+        "edit": "Shift input a into the LSB of a_tem ({a_tem[6:0], a}) and register match from the next shift-register value so match aligns with the newly shifted a_tem.",
+        "edit_class": "missing_or_extra_logic",
+        "feedback": {
+          "cycles_compared": 455,
+          "first_divergences": [
+            {
+              "expected": "0",
+              "first_cycle": 36,
+              "observed": "1",
+              "pattern": "variable_offset",
+              "signal": "match"
+            }
+          ],
+          "passing_outputs": [],
+          "stage": "functional"
+        },
+        "hidden": "not_available",
+        "index": 1,
+        "memory_offered": false,
+        "phase": "evaluation",
+        "seconds": 39.67,
+        "tokens": {
+          "input": 2214,
+          "output": 6847
+        },
+        "verdict_tier": "visible_fail",
+        "window": {
+          "cycles_compared": 228,
+          "inputs_logged": true,
+          "rows": [
+            {
+              "cycle": 17,
+              "edge": "rising",
+              "inputs": {
+                "a": "1",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                }
+              }
+            },
+            {
+              "cycle": 17,
+              "edge": "falling",
+              "inputs": {
+                "a": "1",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                }
+              }
+            },
+            {
+              "cycle": 18,
+              "edge": "rising",
+              "inputs": {
+                "a": "0",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "0",
+                  "observed": "1",
+                  "ok": false
+                }
+              }
+            },
+            {
+              "cycle": 18,
+              "edge": "falling",
+              "inputs": {
+                "a": "0",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "0",
+                  "observed": "1",
+                  "ok": false
+                }
+              }
+            },
+            {
+              "cycle": 19,
+              "edge": "rising",
+              "inputs": {
+                "a": "1",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "1",
+                  "observed": "0",
+                  "ok": false
+                }
+              }
+            },
+            {
+              "cycle": 19,
+              "edge": "falling",
+              "inputs": {
+                "a": "1",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "1",
+                  "observed": "0",
+                  "ok": false
+                }
+              }
+            },
+            {
+              "cycle": 20,
+              "edge": "rising",
+              "inputs": {
+                "a": "1",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                }
+              }
+            },
+            {
+              "cycle": 20,
+              "edge": "falling",
+              "inputs": {
+                "a": "1",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                }
+              }
+            },
+            {
+              "cycle": 21,
+              "edge": "rising",
+              "inputs": {
+                "a": "1",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                }
+              }
+            },
+            {
+              "cycle": 21,
+              "edge": "falling",
+              "inputs": {
+                "a": "1",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                }
+              }
+            },
+            {
+              "cycle": 22,
+              "edge": "rising",
+              "inputs": {
+                "a": "1",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                }
+              }
+            },
+            {
+              "cycle": 22,
+              "edge": "falling",
+              "inputs": {
+                "a": "1",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                }
+              }
+            }
+          ],
+          "sampling": "two samples per clock cycle (after the rising and after the falling edge of clk); 455 samples",
+          "stimulus_notes": [
+            "Inputs sampled after NBA on both tb.clk edges, row-aligned with trace_visible.txt; clocks and resets included"
+          ],
+          "wrong_cycles": {
+            "match": {
+              "count": 2,
+              "first_cycles": [
+                18,
+                19
+              ]
+            }
+          }
+        }
+      },
+      {
+        "answer_form": "full",
+        "candidate_hash": "sha256:813803ff0b609789200425e7374aa2864c135f04123b47b2ce13dfe63ddf2a36",
+        "candidate_id": "C_dd7c0a92e70e_2",
+        "command_hash": "sha256:7fba63de401a0630e0459610e904c260f9fea7b3d160ffca5dab131aaea42fad",
+        "edit": "Changed the shift-register direction to shift the input into the LSB (a_tem <= {a_tem[6:0], a}) and made match a combinational comparison of a_tem against 8'b0111_0001 so it reflects the newly shifted value.",
+        "edit_class": "missing_or_extra_logic",
+        "feedback": {
+          "cycles_compared": 455,
+          "first_divergences": [
+            {
+              "expected": "0",
+              "first_cycle": 36,
+              "observed": "1",
+              "pattern": "variable_offset",
+              "signal": "match"
+            }
+          ],
+          "passing_outputs": [],
+          "stage": "functional"
+        },
+        "hidden": "not_available",
+        "index": 2,
+        "memory_offered": false,
+        "phase": "evaluation",
+        "seconds": 115.83,
+        "tokens": {
+          "input": 2327,
+          "output": 22720
+        },
+        "verdict_tier": "visible_fail",
+        "window": {
+          "cycles_compared": 228,
+          "inputs_logged": true,
+          "rows": [
+            {
+              "cycle": 17,
+              "edge": "rising",
+              "inputs": {
+                "a": "1",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                }
+              }
+            },
+            {
+              "cycle": 17,
+              "edge": "falling",
+              "inputs": {
+                "a": "1",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                }
+              }
+            },
+            {
+              "cycle": 18,
+              "edge": "rising",
+              "inputs": {
+                "a": "0",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "0",
+                  "observed": "1",
+                  "ok": false
+                }
+              }
+            },
+            {
+              "cycle": 18,
+              "edge": "falling",
+              "inputs": {
+                "a": "0",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "0",
+                  "observed": "1",
+                  "ok": false
+                }
+              }
+            },
+            {
+              "cycle": 19,
+              "edge": "rising",
+              "inputs": {
+                "a": "1",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "1",
+                  "observed": "0",
+                  "ok": false
+                }
+              }
+            },
+            {
+              "cycle": 19,
+              "edge": "falling",
+              "inputs": {
+                "a": "1",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "1",
+                  "observed": "0",
+                  "ok": false
+                }
+              }
+            },
+            {
+              "cycle": 20,
+              "edge": "rising",
+              "inputs": {
+                "a": "1",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                }
+              }
+            },
+            {
+              "cycle": 20,
+              "edge": "falling",
+              "inputs": {
+                "a": "1",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                }
+              }
+            },
+            {
+              "cycle": 21,
+              "edge": "rising",
+              "inputs": {
+                "a": "1",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                }
+              }
+            },
+            {
+              "cycle": 21,
+              "edge": "falling",
+              "inputs": {
+                "a": "1",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                }
+              }
+            },
+            {
+              "cycle": 22,
+              "edge": "rising",
+              "inputs": {
+                "a": "1",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                }
+              }
+            },
+            {
+              "cycle": 22,
+              "edge": "falling",
+              "inputs": {
+                "a": "1",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                }
+              }
+            }
+          ],
+          "sampling": "two samples per clock cycle (after the rising and after the falling edge of clk); 455 samples",
+          "stimulus_notes": [
+            "Inputs sampled after NBA on both tb.clk edges, row-aligned with trace_visible.txt; clocks and resets included"
+          ],
+          "wrong_cycles": {
+            "match": {
+              "count": 2,
+              "first_cycles": [
+                18,
+                19
+              ]
+            }
+          }
+        }
+      }
+    ],
+    "bundle_hash": "sha256:37e6e004c3d39974d3210942b5109149d75a41f253393ad958e9f81a66630ba7",
+    "challenge_id": "chipbench:arithmetic:Prob001_continuous_input_sequence_detect",
+    "deliveries": [
+      {
+        "bundle_hash": "sha256:37e6e004c3d39974d3210942b5109149d75a41f253393ad958e9f81a66630ba7",
+        "injected": false,
+        "mode": "none",
+        "request_hash": "sha256:d242dd43b22ba9af4467f90803573ddb70c56bb15558a60025c8db0ed8e7dc06"
+      },
+      {
+        "bundle_hash": "sha256:37e6e004c3d39974d3210942b5109149d75a41f253393ad958e9f81a66630ba7",
+        "injected": false,
+        "mode": "none",
+        "request_hash": "sha256:9c69db0cf039a2b9f639d29a4affaefb9a825f8837c1cab3067398a1b82e0206"
+      }
+    ],
+    "episode_hash": "sha256:e48f6e19a5c3a5ca71290c8dbb8a22f5f92286e6b1b894da42bd5b7bc50d6c08",
+    "inconclusive": false,
+    "infra_failures": 0,
+    "matches": [],
+    "mode": "none",
+    "profile": {
+      "causal": {
+        "cone_has_control_dependency": true,
+        "cone_has_counter": true,
+        "cone_has_reset_logic": true,
+        "cone_has_state_machine": false,
+        "cone_size_bucket": "small",
+        "output_driver_kind": "sequential",
+        "register_distance": "0",
+        "temporal_relation": "no_progress"
+      },
+      "schema_version": "r3e-observable-profile-v1",
+      "status": {
+        "delta_bucket": "-1",
+        "failing_output_bucket": "1",
+        "onset_bucket": "late",
+        "oracle_stage": "functional",
+        "output_width_bucket": "1bit",
+        "partial_failure": false,
+        "symptom": "stuck_value",
+        "x_involved": false
+      }
+    },
+    "retrieved_items": [],
+    "shown_items": [],
+    "solved_by_escalation": false,
+    "solved_within_budget": false
+  },
+  "solved": false
+}

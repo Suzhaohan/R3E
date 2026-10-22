@@ -1,0 +1,26 @@
+{
+  "result": {
+    "edits": [
+      {
+        "find": "        s6:\n            nstate=data?sf1:s1;\n",
+        "replace": "        s6:\n            nstate=data?sf2:s2;\n"
+      }
+    ],
+    "violated_requirement": "After a six-bit group boundary, the next input bit must be consumed as the first bit of the next group; the state machine must not pre-advance as if an extra matching bit had already occurred.",
+    "spec_basis": "Spec: groups of six bits with no overlap or reuse between groups; every rising edge with reset high consumes exactly one bit; the next group begins at the seventh bit."
+  },
+  "raw_response_hash": "sha256:522cf3c5ab758c4959589110258f7f17086a72bfca37654c5f8845a6a414f641",
+  "input_tokens": 4852,
+  "output_tokens": 10474,
+  "request_hash": "sha256:80f0e330cc9f7669d13af25f27a5b52cff8416f5d7f03434a603565f58f9f03b",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 4852,
+    "output_tokens": 10474
+  },
+  "model_seconds": 68.66033073700964
+}

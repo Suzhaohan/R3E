@@ -1,0 +1,16 @@
+{
+  "input_tokens": 807,
+  "messages": [
+    {
+      "content": "Repair the supplied RTL to satisfy its unchanged specification.\nUse prior successful practice examples when applicable; they passed only the stated\npublic checks and are not correctness proofs. Return only JSON with exactly these keys:\n{\"files\":[{\"file\":\"rtl/design.sv\",\"content\":\"complete repaired Verilog\"}],\n\"edit\":\"brief description\"}. Submit one complete file, never text-replacement edits.\nPreserve the top-level interface. Do not modify or bypass the test infrastructure.\n",
+      "role": "system"
+    },
+    {
+      "content": "{\"specification\": \"I would like you to implement a module named `TopModule` with the following interface. All input and output ports are one bit unless otherwise specified.\\n\\n- **Input ports**:\\n  - `clk`\\n  - `rst_n`\\n  - `a`\\n\\n- **Output ports**:\\n  - `match`\\n\\nThe module should implement an 8-bit shift register that shifts in the input `a` on every positive edge of the clock. The shift register is named `a_tem` and retains the 8 most recent bits of `a`. The module should perform the following functionality:\\n\\n1. **Reset Behavior**:\\n   - When `rst_n` is de-asserted (logic 0), the shift register `a_tem` should be cleared to `8'b0`, and the output `match` should be set to `0`.\\n\\n2. **Shift Register Behavior**:\\n   - On every positive edge of the clock, if `rst_n` is asserted (logic 1), the input `a` should be shifted into the least significant bit (LSB) of the shift register `a_tem`, and the previous bits should shift left by one position.\\n\\n3. **Matching Logic**:\\n   - The output `match` should be asserted (logic 1) whenever the value of the shift register `a_tem` matches the specific 8-bit pattern `8'b0111_0001`.\\n   - If the shift register does not match this pattern, the output `match` should remain de-asserted (logic 0).\\n\\nThe design must operate synchronously with the clock and use a negative edge active reset (`rst_n`). Ensure the module correctly implements this functionality.\", \"files\": {\"rtl/design.sv\": {\"content\": \"module TopModule(\\n\\tinput clk,\\n\\tinput rst_n,\\n\\tinput a,\\n\\toutput reg match\\n\\t);\\n\\n\\treg [7:0] a_tem;\\n\\t\\n\\talways @(posedge clk or negedge rst_n)\\n\\t\\tif (!rst_n)\\n\\t\\t\\tbegin \\n\\t\\t\\t\\tmatch <= 1'b0;\\n\\t\\t\\tend\\n\\t\\telse if (a_tem == 8'b0111_0001)\\n\\t\\t\\tbegin\\n\\t\\t\\t\\tmatch <= 1'b1;\\n\\t\\t\\tend\\n\\t\\telse \\n\\t\\t\\tbegin\\t\\n\\t\\t\\t\\tmatch <= 1'b0;\\n\\t\\t\\tend\\n\\t\\t\\n\\talways @(posedge clk or negedge rst_n)\\n\\t\\tif (!rst_n)\\n\\t\\t\\tbegin \\n\\t\\t\\t\\ta_tem <= 8'b0;\\n\\t\\t\\tend\\n\\t\\telse \\n\\t\\t\\tbegin\\n\\t\\t\\t\\ta_tem <= {a, a_tem[6:0]};\\n\\t\\t\\tend\\nendmodule\\n\"}}, \"repair_experience\": []}",
+      "role": "user"
+    }
+  ],
+  "output_limit": 65536,
+  "request_hash": "sha256:cadec9c4ba355e64a59b789560acc4e265bc3b4b4369ba788add0389e0722149",
+  "seed": 100710
+}

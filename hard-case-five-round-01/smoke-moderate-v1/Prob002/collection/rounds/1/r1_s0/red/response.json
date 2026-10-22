@@ -1,0 +1,26 @@
+{
+  "result": {
+    "edits": [
+      {
+        "find": "module TopModule(\n\tinput clk,\n\tinput rst_n,\n\tinput a,\n\toutput match\n\t);\n\n\treg [8:0] a_tem;\n\treg match_f;\n\treg match_b;\n\t\n\talways @(posedge clk or negedge rst_n)\n\t\tif (!rst_n)\n\t\t\tbegin \n\t\t\t\tmatch_f <= 1'b0;\n\t\t\tend\n\t\telse if (a_tem[8:6] == 3'b011)\n\t\t\tbegin\n\t\t\t\tmatch_f <= 1'b1;\n\t\t\tend\n\t\telse \n\t\t\tbegin\t\n\t\t\t\tmatch_f <= 1'b0;\n\t\t\tend\n\n\talways @(posedge clk or negedge rst_n)\n\t\tif (!rst_n)\n\t\t\tbegin \n\t\t\t\tmatch_b <= 1'b0;\n\t\t\tend\n\t\telse if (a_tem[2:0] == 3'b110)\n\t\t\tbegin\n\t\t\t\tmatch_b <= 1'b1;\n\t\t\tend\n\t\telse \n\t\t\tbegin\t\n\t\t\t\tmatch_b <= 1'b0;\n\t\t\tend\n\t\t\t\n\talways @(posedge clk or negedge rst_n)\n\t\tif (!rst_n)\n\t\t\tbegin \n\t\t\t\ta_tem <= 9'b0;\n\t\t\tend\n\t\telse \n\t\t\tbegin\n\t\t\t\ta_tem <= {a_tem[7:0],a};\n\t\t\tend\n\t\t\t\n\tassign match = match_b && match_f;\nendmodule",
+        "replace": "module TopModule(\n\tinput clk,\n\tinput rst_n,\n\tinput a,\n\toutput match\n\t);\n\n\treg [8:0] a_tem;\n\treg match_f;\n\treg match_b;\n\t\n\talways @(posedge clk or negedge rst_n)\n\t\tif (!rst_n)\n\t\t\tbegin \n\t\t\t\tmatch_f <= 1'b0;\n\t\t\tend\n\t\telse if (a_tem[8:6] == 3'b011)\n\t\t\tbegin\n\t\t\t\tmatch_f <= 1'b1;\n\t\t\tend\n\t\telse \n\t\t\tbegin\t\n\t\t\t\tmatch_f <= 1'b0;\n\t\t\tend\n\n\talways @(posedge clk or negedge rst_n)\n\t\tif (!rst_n)\n\t\t\tbegin \n\t\t\t\tmatch_b <= 1'b0;\n\t\t\tend\n\t\telse if (a_tem[2:0] == 3'b110)\n\t\t\tbegin\n\t\t\t\tmatch_b <= 1'b1;\n\t\t\tend\n\t\telse \n\t\t\tbegin\t\n\t\t\t\tmatch_b <= 1'b0;\n\t\t\tend\n\t\t\t\n\talways @(posedge clk or negedge rst_n)\n\t\tif (!rst_n)\n\t\t\tbegin \n\t\t\t\ta_tem <= 9'b0;\n\t\t\tend\n\t\telse \n\t\t\tbegin\n\t\t\t\ta_tem <= {a, a_tem[7:0]};\n\t\t\tend\n\t\t\t\n\tassign match = match_b && match_f;\nendmodule\n"
+      }
+    ],
+    "violated_requirement": "target mechanism",
+    "spec_basis": "unchanged specification"
+  },
+  "raw_response_hash": "sha256:7eee8940c8bea04d7c070b87f42502baf34e0ab3d1c45257ef19a071d8883605",
+  "input_tokens": 100,
+  "output_tokens": 40,
+  "request_hash": "sha256:fb59342f52a57fa446a75194c320ac4d1957a40f16880e608f9427d0a688cff7",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "missing",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 100,
+    "output_tokens": 40
+  },
+  "model_seconds": 0.005539276637136936
+}

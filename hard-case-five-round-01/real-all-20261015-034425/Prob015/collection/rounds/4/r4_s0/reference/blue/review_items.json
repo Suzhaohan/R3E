@@ -1,0 +1,32 @@
+[
+ {
+  "item": "66e8e5005b2e7463",
+  "task": "chipbench_Prob015_fixed_hard_questions__b81fea8696b8c049",
+  "encounter": 0,
+  "category": "public_pass_hidden_fail",
+  "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -41,6 +41,8 @@\n                               d1? S2_5:\n                               d2? S3:\n                               nstate;\n+            S2_5   : nstate = (d1 | d2) ? S0 : state;\n+            S3     : nstate = (d1 | d2) ? S0 : state;\n             default: nstate = state;\n         endcase\n     end\n",
+  "public": {
+   "tier": "visible_pass",
+   "suites": {
+    "W_bug": {
+     "result": "visible_pass",
+     "checker_violation": false,
+     "failures": []
+    },
+    "W_preserve": {
+     "result": "visible_pass",
+     "checker_violation": false,
+     "failures": []
+    }
+   }
+  },
+  "evaluator": {
+   "result": "fail",
+   "returncode": 0,
+   "failures": [
+    "CHECK_FAIL evaluator mismatches"
+   ],
+   "log_hash": "sha256:3fc811869d3f531cae8e77430b13a03e5e649530a81ea6e4893a67965fa032aa"
+  }
+ }
+]

@@ -1,0 +1,60 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "sf5:\n            nstate=sf6;",
+            "replace": "sf5:\n            nstate=data?sf6:s6;"
+          }
+        ],
+        "violated_requirement": "After five mismatched bits, the sixth bit should unconditionally transition to sf6, but the mutant makes it data-dependent like the matching path",
+        "spec_basis": "The specification requires that after a mismatch is detected, the remaining bits in the group should be consumed without further checking"
+      },
+      {
+        "edits": [
+          {
+            "find": "sf4:\n            nstate=sf5;",
+            "replace": "sf4:\n            nstate=data?sf5:s5;"
+          }
+        ],
+        "violated_requirement": "After four mismatched bits, the fifth bit should unconditionally progress to sf5, but the mutant makes it data-dependent",
+        "spec_basis": "The specification requires that once a mismatch is detected, all remaining bits in the group should be consumed without further checking"
+      },
+      {
+        "edits": [
+          {
+            "find": "s5:\n            nstate=data?sf6:s6;",
+            "replace": "s5:\n            nstate=data?s6:sf6;"
+          }
+        ],
+        "violated_requirement": "In the matching path, the fifth bit should transition to s6 when data is 0 (continuing the match), but the mutant incorrectly transitions to sf6",
+        "spec_basis": "The target sequence 011100 requires a 0 in the fifth position to continue matching"
+      },
+      {
+        "edits": [
+          {
+            "find": "sf3:\n            nstate=sf4;",
+            "replace": "sf3:\n            nstate=data?sf4:s4;"
+          }
+        ],
+        "violated_requirement": "After three mismatched bits, the fourth bit should unconditionally progress to sf4, but the mutant makes it data-dependent",
+        "spec_basis": "The specification requires that once a mismatch is detected, all remaining bits in the group should be consumed without further checking"
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:e87a30e663289ce4def3d3486dbd93f22eb7c90ed7cd02130db1c6ae51bf14ed",
+  "input_tokens": 5876,
+  "output_tokens": 489,
+  "request_hash": "sha256:c0390a6f0d3e6c26d956eb92af5d344a957a2e2b9be4b7ef14ab2edfd98923c5",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 5876,
+    "output_tokens": 489
+  },
+  "model_seconds": 11.815525898709893
+}

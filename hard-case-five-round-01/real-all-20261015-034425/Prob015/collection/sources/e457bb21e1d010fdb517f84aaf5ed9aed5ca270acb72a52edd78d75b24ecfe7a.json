@@ -1,0 +1,121 @@
+{
+  "source": {
+    "run_id": "collection",
+    "round": 5,
+    "slot_id": "r5_s0",
+    "task_hash": "sha256:736df0cb26a11ee220e21c6525087b714ae313e81ce7a41e65d7c10465e04ee9",
+    "carrier_id": "chipbench_Prob015_fixed_hard_questions",
+    "mutant_hash": "sha256:497f00ad25a588a974eb1e7cddc47146c48b4807ffaf6eb71c84d74af3814ad1",
+    "candidate_hash": "sha256:8869de4968c8174cd734676a999e706fa6f9c80b7fbd4c6b046b7e16aad2c3e6",
+    "encounter_hash": "sha256:e457bb21e1d010fdb517f84aaf5ed9aed5ca270acb72a52edd78d75b24ecfe7a",
+    "archive_hash": "sha256:2b789fd5d5e21c511f47bf4e799ea18518e3432b06f45cad078c0c50313e208a",
+    "public_replay_hash": "sha256:1bfc504521a07b3f038eab9effb847dad9f85689bade49592f96faff086f28c1"
+  },
+  "encounter": {
+    "encounter": 0,
+    "seed": 1299457421909810,
+    "result": {
+      "task_id": "chipbench_Prob015_fixed_hard_questions__497f00ad25a588a9",
+      "route": "direct",
+      "rtl_tokens": 562,
+      "closure": [
+        "rtl/sequence.sv",
+        "harness:W_bug_tb.sv",
+        "harness:W_preserve_tb.sv"
+      ],
+      "outcome": "fixed",
+      "attempts": [
+        {
+          "attempt": 0,
+          "route": "direct",
+          "submissions": [
+            {
+              "kind": "repair",
+              "tokens": {
+                "input": 3170,
+                "output": 5505,
+                "counted_request": 3170,
+                "model_seconds": 26.61
+              },
+              "format_valid": true,
+              "format_error": null
+            }
+          ],
+          "repair_tokens": {
+            "input": 3170,
+            "output": 5505,
+            "counted_request": 3170,
+            "model_seconds": 26.61
+          },
+          "edit": "Fix S3 output for sel=1: change 3'b010 to 3'b011 to dispense beverage 2 plus 0.5 yuan change when total amount is 3.0 yuan.",
+          "candidate_hash": "sha256:8869de4968c8174cd734676a999e706fa6f9c80b7fbd4c6b046b7e16aad2c3e6",
+          "tier": "visible_pass",
+          "stage": "simulation",
+          "build_seconds": 0.02,
+          "sim_seconds": 0.01,
+          "changed_files": [
+            "rtl/sequence.sv"
+          ]
+        }
+      ],
+      "calls": 1,
+      "final_candidate_hash": "sha256:8869de4968c8174cd734676a999e706fa6f9c80b7fbd4c6b046b7e16aad2c3e6",
+      "inputs_read": [
+        "public/task.json",
+        "public/visible/build.json",
+        "public/visible/W_bug_tb.sv",
+        "public/visible/W_preserve_tb.sv",
+        "public/spec.txt"
+      ],
+      "experience": {
+        "snapshot_id": "B_4",
+        "snapshot_hash": "sha256:6f9ec49b207a786103ad31564aeb5e7a4d2ce48ad5b709e5261aa8c75963e294",
+        "state_hash": "sha256:f2a37d53a5e2cafbf292b6a9ea3ba69b6fa17793d400ff34af70d9085816c276",
+        "payload_hash": "sha256:0377538a5133968426ceb7a81e11317327e5771599b8bf592959d1b41a5de157",
+        "delivery_hash": "sha256:45d14d718d85b1e43c621f2bcbf18361292049ec389340010759d67e2ba1c662",
+        "delivered": true
+      }
+    }
+  },
+  "archive_path": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/real-all-20261015-034425/Prob015/collection/rounds/5/r5_s0/online/blue/archive/chipbench_Prob015_fixed_hard_questions__497f00ad25a588a9__8869de4968c8174c.json",
+  "task_dir": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/real-all-20261015-034425/Prob015/collection/rounds/5/r5_s0/admission/blue_task",
+  "replay": {
+    "tier": "visible_pass",
+    "stage": "simulation",
+    "evidence": {
+      "suites": {
+        "W_bug": {
+          "result": "visible_pass",
+          "returncode": 0,
+          "pass_marker_found": true,
+          "fail_marker_found": false,
+          "log": "TESTBENCH PASS vending"
+        },
+        "W_preserve": {
+          "result": "visible_pass",
+          "returncode": 0,
+          "pass_marker_found": true,
+          "fail_marker_found": false,
+          "log": "TESTBENCH PASS preserve"
+        }
+      }
+    },
+    "build_seconds": 0.016878155060112476,
+    "sim_seconds": 0.0137167451903224,
+    "closure": [
+      "rtl/sequence.sv",
+      "harness:W_bug_tb.sv",
+      "harness:W_preserve_tb.sv"
+    ]
+  },
+  "public_rows": {
+    "W_bug": "visible_pass",
+    "W_preserve": "visible_pass"
+  },
+  "mutation_edits": [
+    {
+      "find": "                S3          : {out1, out2, out3} = ~sel? 3'b101: 3'b011;",
+      "replace": "                S3          : {out1, out2, out3} = ~sel? 3'b101: 3'b010;"
+    }
+  ]
+}

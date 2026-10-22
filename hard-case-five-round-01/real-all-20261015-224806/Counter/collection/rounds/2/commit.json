@@ -1,0 +1,73 @@
+{
+  "blue": {
+    "blue_config_hash": "sha256:b807b318353db101903229c541fd1c234fe2d8187c42282d5e0fa65dd6573e86",
+    "committed_round": 2,
+    "entries": [],
+    "learning_policy_hash": "sha256:4a09424dd1c7efe73565caf882441e236d76f12d2175725024c3057884eb1afe",
+    "parent_snapshot_hash": "sha256:0cbb99e1b7958fec435cfbe03d638daace0190ce20d8ce5982bece58d1871071",
+    "retrieval_policy_hash": "sha256:8b114d1dc640c0d8851c3796a1d6ed4e3bc9b65406c7341475b69b3d8568e26f",
+    "snapshot_id": "B_2",
+    "state_hash": "sha256:9fb9d5de806bcc3bb819a51a208b3d1d5b6cc95e74b6360d9ab6e3a374e07131",
+    "version": "continuous_blue_snapshot_v1"
+  },
+  "parent_commit_hash": "sha256:506db82637f7b5f88104f6ef33856340405133e06f7e8675814f9f4770e33f4e",
+  "promotion_hash": "sha256:70299aabad713c194109dbb5f843c3983f3e3257cfc69f20ffdb161629d8a94a",
+  "red": {
+    "observations": [
+      {
+        "blue_patch": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -39,15 +39,17 @@\n         counter_out <= #1 4'b0000;\n         overflow_out <= #1 1'b0;\n     end\n-    //If enable is active, we increment the counter\n-    else if(enable == 1'b1) begin\n-        counter_out <= #1 counter_out + 1;\n-\n-    end\n-    // if it overflows, set overflow_out to be 1\n-    else if(counter_out == 4'b1111)\n-    begin\n-        overflow_out <= 1'b1;\n+    else begin\n+        // If the pre-edge count is 15, set sticky overflow\n+        // even when enable is high.\n+        if(counter_out == 4'b1111)\n+        begin\n+            overflow_out <= #1 1'b1;\n+        end\n+        //If enable is active, we increment the counter\n+        if(enable == 1'b1) begin\n+            counter_out <= #1 counter_out + 1;\n+        end\n     end\n end // End of block COUNTER\n \n",
+        "carrier_id": "selected_Counter",
+        "label": "public_pass_single_sample_hidden_unknown",
+        "mutant_hash": "sha256:24cbc13d8ca701c818c70d9f1de10d8d0a9579afec333794a776ee32b2a65b26",
+        "mutation_edits": [
+          {
+            "find": "    // if it overflows, set overflow_out to be 1\n    if(counter_out == 4'b1111)\n    begin\n        overflow_out <= 1'b1;\n    end",
+            "replace": "    // if it overflows, set overflow_out to be 1\n    else if(counter_out == 4'b1111)\n    begin\n        overflow_out <= 1'b1;\n    end"
+          }
+        ],
+        "public_evidence": "{\"suites\": {\"W_bug\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"         106, \\t1, \\t0, \\t1, \\t 7, \\t\\t0\\n                 110, \\t0, \\t0, \\t1, \\t 7, \\t\\t0\\n                 115, \\t1, \\t0, \\t1, \\t 7, \\t\\t0\\n                 116, \\t1, \\t0, \\t1, \\t 8, \\t\\t0\\n                 120, \\t0, \\t0, \\t1, \\t 8, \\t\\t0\\n                 125, \\t1, \\t0, \\t1, \\t 8, \\t\\t0\\n                 126, \\t1, \\t0, \\t1, \\t 9, \\t\\t0\\n                 130, \\t0, \\t0, \\t1, \\t 9, \\t\\t0\\n                 135, \\t1, \\t0, \\t1, \\t 9, \\t\\t0\\n                 136, \\t1, \\t0, \\t1, \\t10, \\t\\t0\\n                 140, \\t0, \\t0, \\t1, \\t10, \\t\\t0\\n                 145, \\t1, \\t0, \\t1, \\t10, \\t\\t0\\n                 146, \\t1, \\t0, \\t1, \\t11, \\t\\t0\\n                 150, \\t0, \\t0, \\t1, \\t11, \\t\\t0\\n                 155, \\t1, \\t0, \\t1, \\t11, \\t\\t0\\n                 156, \\t1, \\t0, \\t1, \\t12, \\t\\t0\\n                 160, \\t0, \\t0, \\t1, \\t12, \\t\\t0\\n                 165, \\t1, \\t0, \\t1, \\t12, \\t\\t0\\n                 166, \\t1, \\t0, \\t1, \\t13, \\t\\t0\\n                 170, \\t0, \\t0, \\t1, \\t13, \\t\\t0\\n                 175, \\t1, \\t0, \\t1, \\t13, \\t\\t0\\n                 176, \\t1, \\t0, \\t1, \\t14, \\t\\t0\\n                 180, \\t0, \\t0, \\t1, \\t14, \\t\\t0\\n                 185, \\t1, \\t0, \\t1, \\t14, \\t\\t0\\n                 186, \\t1, \\t0, \\t1, \\t15, \\t\\t0\\n                 190, \\t0, \\t0, \\t1, \\t15, \\t\\t0\\n                 195, \\t1, \\t0, \\t1, \\t15, \\t\\t0\\n                 196, \\t1, \\t0, \\t1, \\t 0, \\t\\t1\\n                 200, \\t0, \\t0, \\t1, \\t 0, \\t\\t1\\n                 205, \\t1, \\t0, \\t1, \\t 0, \\t\\t1\\n                 206, \\t1, \\t0, \\t1, \\t 1, \\t\\t1\\n                 210, \\t0, \\t0, \\t1, \\t 1, \\t\\t1\\n                 215, \\t1, \\t0, \\t1, \\t 1, \\t\\t1\\n                 216, \\t1, \\t0, \\t1, \\t 2, \\t\\t1\\n                 220, \\t0, \\t0, \\t1, \\t 2, \\t\\t1\\n                 225, \\t1, \\t0, \\t1, \\t 2, \\t\\t1\\n                 226, \\t1, \\t0, \\t1, \\t 3, \\t\\t1\\n                 230, \\t0, \\t0, \\t1, \\t 3, \\t\\t1\\n                 235, \\t1, \\t0, \\t1, \\t 3, \\t\\t1\\n                 236, \\t1, \\t0, \\t1, \\t 4, \\t\\t1\\n                 240, \\t0, \\t0, \\t1, \\t 4, \\t\\t1\\n                 245, \\t1, \\t0, \\t1, \\t 4, \\t\\t1\\n                 246, \\t1, \\t0, \\t1, \\t 5, \\t\\t1\\n                 250, \\t0, \\t0, \\t1, \\t 5, \\t\\t1\\n                 255, \\t1, \\t0, \\t1, \\t 5, \\t\\t1\\n                 256, \\t1, \\t0, \\t1, \\t 6, \\t\\t1\\nTESTBENCH PASS original oracle\"}, \"W_preserve\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"TESTBENCH PASS preserve\"}}}",
+        "public_rows": {
+          "W_bug": "visible_pass",
+          "W_preserve": "visible_pass"
+        },
+        "round": 1,
+        "slot_id": "r1_s0",
+        "source_hash": "sha256:8beab146e00bb668a54cde9df897c93cc4eac1de128d34d876293b4f478efcef",
+        "target_snapshot_hash": "sha256:ab15d21034b102efb7034cb8640bc64e12d395185fc1887e63b8dc96e8a4b068"
+      },
+      {
+        "blue_patch": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -45,7 +45,7 @@\n \n     end\n     // if it overflows, set overflow_out to be 1\n-    if(counter_out == 4'b1110)\n+    if(counter_out == 4'b1111)\n     begin\n         overflow_out <= 1'b1;\n     end\n",
+        "carrier_id": "selected_Counter",
+        "label": "public_pass_single_sample_hidden_unknown",
+        "mutant_hash": "sha256:ae4726d6afb92f0d25f83bfd161e8d19bd0d00d3992599e16350ac004afdeef7",
+        "mutation_edits": [
+          {
+            "find": "    if(counter_out == 4'b1111)",
+            "replace": "    if(counter_out == 4'b1110)"
+          }
+        ],
+        "public_evidence": "{\"suites\": {\"W_bug\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"         106, \\t1, \\t0, \\t1, \\t 7, \\t\\t0\\n                 110, \\t0, \\t0, \\t1, \\t 7, \\t\\t0\\n                 115, \\t1, \\t0, \\t1, \\t 7, \\t\\t0\\n                 116, \\t1, \\t0, \\t1, \\t 8, \\t\\t0\\n                 120, \\t0, \\t0, \\t1, \\t 8, \\t\\t0\\n                 125, \\t1, \\t0, \\t1, \\t 8, \\t\\t0\\n                 126, \\t1, \\t0, \\t1, \\t 9, \\t\\t0\\n                 130, \\t0, \\t0, \\t1, \\t 9, \\t\\t0\\n                 135, \\t1, \\t0, \\t1, \\t 9, \\t\\t0\\n                 136, \\t1, \\t0, \\t1, \\t10, \\t\\t0\\n                 140, \\t0, \\t0, \\t1, \\t10, \\t\\t0\\n                 145, \\t1, \\t0, \\t1, \\t10, \\t\\t0\\n                 146, \\t1, \\t0, \\t1, \\t11, \\t\\t0\\n                 150, \\t0, \\t0, \\t1, \\t11, \\t\\t0\\n                 155, \\t1, \\t0, \\t1, \\t11, \\t\\t0\\n                 156, \\t1, \\t0, \\t1, \\t12, \\t\\t0\\n                 160, \\t0, \\t0, \\t1, \\t12, \\t\\t0\\n                 165, \\t1, \\t0, \\t1, \\t12, \\t\\t0\\n                 166, \\t1, \\t0, \\t1, \\t13, \\t\\t0\\n                 170, \\t0, \\t0, \\t1, \\t13, \\t\\t0\\n                 175, \\t1, \\t0, \\t1, \\t13, \\t\\t0\\n                 176, \\t1, \\t0, \\t1, \\t14, \\t\\t0\\n                 180, \\t0, \\t0, \\t1, \\t14, \\t\\t0\\n                 185, \\t1, \\t0, \\t1, \\t14, \\t\\t0\\n                 186, \\t1, \\t0, \\t1, \\t15, \\t\\t0\\n                 190, \\t0, \\t0, \\t1, \\t15, \\t\\t0\\n                 195, \\t1, \\t0, \\t1, \\t15, \\t\\t1\\n                 196, \\t1, \\t0, \\t1, \\t 0, \\t\\t1\\n                 200, \\t0, \\t0, \\t1, \\t 0, \\t\\t1\\n                 205, \\t1, \\t0, \\t1, \\t 0, \\t\\t1\\n                 206, \\t1, \\t0, \\t1, \\t 1, \\t\\t1\\n                 210, \\t0, \\t0, \\t1, \\t 1, \\t\\t1\\n                 215, \\t1, \\t0, \\t1, \\t 1, \\t\\t1\\n                 216, \\t1, \\t0, \\t1, \\t 2, \\t\\t1\\n                 220, \\t0, \\t0, \\t1, \\t 2, \\t\\t1\\n                 225, \\t1, \\t0, \\t1, \\t 2, \\t\\t1\\n                 226, \\t1, \\t0, \\t1, \\t 3, \\t\\t1\\n                 230, \\t0, \\t0, \\t1, \\t 3, \\t\\t1\\n                 235, \\t1, \\t0, \\t1, \\t 3, \\t\\t1\\n                 236, \\t1, \\t0, \\t1, \\t 4, \\t\\t1\\n                 240, \\t0, \\t0, \\t1, \\t 4, \\t\\t1\\n                 245, \\t1, \\t0, \\t1, \\t 4, \\t\\t1\\n                 246, \\t1, \\t0, \\t1, \\t 5, \\t\\t1\\n                 250, \\t0, \\t0, \\t1, \\t 5, \\t\\t1\\n                 255, \\t1, \\t0, \\t1, \\t 5, \\t\\t1\\n                 256, \\t1, \\t0, \\t1, \\t 6, \\t\\t1\\nTESTBENCH PASS original oracle\"}, \"W_preserve\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"TESTBENCH PASS preserve\"}}}",
+        "public_rows": {
+          "W_bug": "visible_pass",
+          "W_preserve": "visible_pass"
+        },
+        "round": 2,
+        "slot_id": "r2_s0",
+        "source_hash": "sha256:836b7242f9dfd878f39f145add8c216b334639db3f1e5aaaf4d440724131ac4c",
+        "target_snapshot_hash": "sha256:0cbb99e1b7958fec435cfbe03d638daace0190ce20d8ce5982bece58d1871071"
+      }
+    ],
+    "round": 2
+  },
+  "round": 2,
+  "update_decisions": [
+    {
+      "entry_hash": "sha256:99a31a934f203a6021f457669df74e492220bc96c2ca5eb2beccf74a1bea68bf",
+      "reason": "accepted"
+    },
+    {
+      "accepted": false,
+      "promotion": "no_strict_gain"
+    }
+  ]
+}

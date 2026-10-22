@@ -1,0 +1,30 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "a_tem <= {a_tem[6:0],a}",
+            "replace": "a_tem <= {a_tem[6:0],~a}"
+          }
+        ],
+        "violated_requirement": "The shift register should correctly capture the input 'a' value. This mutation inverts the input before shifting it in, causing the stored history to be incorrect. When the input sequence matches 8'b0111_0001, the stored value will be incorrect due to the inversion, causing the match output to be incorrect.",
+        "spec_basis": "Shift Register Behavior: On every positive edge of the clock, if rst_n is asserted (logic 1), the input a should be shifted into the least significant bit (LSB) of the shift register a_tem, and the previous bits should shift left by one position."
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:10244e7d5834beb55751525e2699e29c505807aeaa3cf353ced379e5b4757762",
+  "input_tokens": 8328,
+  "output_tokens": 182,
+  "request_hash": "sha256:4afac5681c0f1361bf16134261bd07d1233aef823ea5bfbb80ece9695cc9477b",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 8328,
+    "output_tokens": 182
+  },
+  "model_seconds": 16.264041635207832
+}

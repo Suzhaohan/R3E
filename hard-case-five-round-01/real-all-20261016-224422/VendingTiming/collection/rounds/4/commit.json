@@ -1,0 +1,48 @@
+{
+  "blue": {
+    "blue_config_hash": "sha256:b7f721721c20e2d8bd89e7dffa9472cad0bd6b6b43a3f265886e3a318bc08ed4",
+    "committed_round": 4,
+    "entries": [],
+    "learning_policy_hash": "sha256:4a09424dd1c7efe73565caf882441e236d76f12d2175725024c3057884eb1afe",
+    "parent_snapshot_hash": "sha256:7164161114f9aa804c7f0905f50126e43a903969ca308a7b3065707d9b734095",
+    "retrieval_policy_hash": "sha256:8b114d1dc640c0d8851c3796a1d6ed4e3bc9b65406c7341475b69b3d8568e26f",
+    "snapshot_id": "B_4",
+    "state_hash": "sha256:4f1842656e60d5c4155ef64b9e739370589f7d6b631f1d70be1e127e4240677f",
+    "version": "continuous_blue_snapshot_v1"
+  },
+  "parent_commit_hash": "sha256:a73e32bb224c9acce4ec725359f558034085c472df793e1a2916f5633108b024",
+  "promotion_hash": "sha256:f1bcef6be8273a5e689c191dc26ecf933478f79a7e745688e78d2b75864a6dc3",
+  "red": {
+    "observations": [
+      {
+        "blue_patch": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -1,4 +1,3 @@\n-\n module TopModule(\n \tinput wire clk  ,\n \tinput wire rst  ,\n@@ -10,7 +9,6 @@\n \toutput reg out2,\n \toutput reg out3\n );\n-//*************code***********//\n \n     parameter [2:0] S0=0, S0_5=1, S1=2, S1_5=3, S2=4, S2_5=5, S3=6;\n     reg[2:0] state, nstate;\n@@ -26,21 +24,21 @@\n         case(state)\n             S0     : nstate = d1? S0_5:\n                               d2? S1:\n-                              nstate;\n+                              S0;\n             S0_5   : nstate = d1? S1:\n                               d2? S1_5:\n-                              nstate;\n+                              S0_5;\n             S1     : nstate = d1? S1_5:\n                               d2? S2:\n-                              nstate;\n+                              S1;\n             S1_5   : nstate = ~sel? S0:\n                               d1? S2:\n                               d2? S2_5:\n-                              nstate;\n+                              S1_5;\n             S2     : nstate = ~sel? S0:\n                               d1? S2_5:\n                               d2? S3:\n-                              nstate;\n+                              S2;\n             default: nstate = S0;\n         endcase\n     end\n@@ -51,7 +49,7 @@\n         end\n         else begin\n             case(state)\n-                S0, S0_5, S1: {out1, out2, out3} = 0;\n+                S0, S0_5, S1: {out1, out2, out3} = 3'b000;\n                 S1_5        : {out1, out2, out3} = ~sel? 3'b101: 3'b000;\n                 S2          : {out1, out2, out3} = ~sel? 3'b101: 3'b000;\n                 S2_5        : {out1, out2, out3} = ~sel? 3'b101: 3'b010;\n@@ -60,5 +58,4 @@\n             endcase\n         end\n     end\n-//*************code***********//\n-endmodule\n+endmodule",
+        "carrier_id": "medium_high_VendingTiming",
+        "label": "public_functional_failure_single_sample_unconfirmed",
+        "mutant_hash": "sha256:fe8011ae2c90cd8f3f726fcbebe2d12671a266981a062f63d5a91e0f33286779",
+        "mutation_edits": [
+          {
+            "find": "S1_5        : {out1, out2, out3} = ~sel? 3'b100: 3'b000;",
+            "replace": "S1_5        : {out1, out2, out3} = ~sel? 3'b101: 3'b000;"
+          }
+        ],
+        "public_evidence": "{\"suites\": {\"W_bug\": {\"result\": \"visible_fail\", \"returncode\": 0, \"pass_marker_found\": false, \"fail_marker_found\": true, \"log\": \"Hint: Output 'out1' has 26 mismatches. First mismatch occurred at time 490.\\nHint: Output 'out2' has 3 mismatches. First mismatch occurred at time 830.\\nHint: Output 'out3' has 21 mismatches. First mismatch occurred at time 160.\\nHint: Total mismatched samples is 33 out of 181 samples\\n\\nSimulation finished at 906 ps\\nMismatches: 33 in 181 samples\\nCHECK_FAIL original samples\"}, \"W_preserve\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"TESTBENCH PASS preserve\"}}}",
+        "public_rows": {
+          "W_bug": "visible_fail",
+          "W_preserve": "visible_pass"
+        },
+        "round": 1,
+        "slot_id": "r1_s0",
+        "source_hash": "sha256:a33a95b15f394a64f8f9943e42972a8c276c9559c46054083c74450c4c77c091",
+        "target_snapshot_hash": "sha256:591b64e7e0aeeb2fa180fe98d501add5dcae086266470e60825f54f736980921"
+      }
+    ],
+    "round": 4
+  },
+  "round": 4,
+  "update_decisions": [
+    {
+      "accepted": false,
+      "promotion": "no_new_experience"
+    }
+  ]
+}

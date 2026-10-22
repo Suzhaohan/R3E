@@ -1,0 +1,132 @@
+{
+  "source": {
+    "run_id": "collection",
+    "round": 1,
+    "slot_id": "r1_s0",
+    "task_hash": "sha256:d5df484be6a1bfcf842c3c2e1b46942166a7b6d86e5b6105b7b877a66fa61433",
+    "carrier_id": "selected_Mux",
+    "mutant_hash": "sha256:e7c61c4945b0104a7c87791a650d4f2ffaddb3d51d91426d5977ad59018b5e84",
+    "candidate_hash": "sha256:ffb6ff92d53ef1dc120177ea53bd6d19561e5dbf5e35a094ad1c2b7844a244c8",
+    "encounter_hash": "sha256:97869dd8aa3fb6cb3072fba1d01bc70e5b860c94852e100a7361aab69d2b901f",
+    "archive_hash": "sha256:8e365dd9afe4869d20a9608fdccfc10e0388ad9fb1ec4123713632311cce946c",
+    "public_replay_hash": "sha256:11ca3d05b774542891f4c0400480172bc61cd57264b4354b4feb657650ad5d74"
+  },
+  "encounter": {
+    "encounter": 0,
+    "seed": 1926226352789320,
+    "result": {
+      "task_id": "selected_Mux__e7c61c4945b0104a",
+      "route": "direct",
+      "rtl_tokens": 228,
+      "closure": [
+        "rtl/sequence.sv",
+        "harness:W_bug_tb.sv",
+        "harness:W_preserve_tb.sv"
+      ],
+      "outcome": "fixed",
+      "attempts": [
+        {
+          "attempt": 0,
+          "route": "direct",
+          "submissions": [
+            {
+              "kind": "repair",
+              "tokens": {
+                "input": 100,
+                "output": 40,
+                "counted_request": 3917,
+                "model_seconds": 0.03
+              },
+              "format_valid": false,
+              "format_error": "Use exactly files and edit; do not submit edits, find/replace or other keys."
+            },
+            {
+              "kind": "format_correction",
+              "tokens": {
+                "input": 100,
+                "output": 40,
+                "counted_request": 3991,
+                "model_seconds": 0.03
+              },
+              "format_valid": true,
+              "format_error": null
+            }
+          ],
+          "repair_tokens": {
+            "input": 200,
+            "output": 80,
+            "counted_request": 7908,
+            "model_seconds": 0.06
+          },
+          "edit": "offline fixture only",
+          "candidate_hash": "sha256:ffb6ff92d53ef1dc120177ea53bd6d19561e5dbf5e35a094ad1c2b7844a244c8",
+          "tier": "visible_pass",
+          "stage": "simulation",
+          "build_seconds": 0.02,
+          "sim_seconds": 0.01,
+          "changed_files": [
+            "rtl/sequence.sv"
+          ]
+        }
+      ],
+      "calls": 2,
+      "final_candidate_hash": "sha256:ffb6ff92d53ef1dc120177ea53bd6d19561e5dbf5e35a094ad1c2b7844a244c8",
+      "inputs_read": [
+        "public/task.json",
+        "public/visible/build.json",
+        "public/visible/W_bug_tb.sv",
+        "public/visible/W_preserve_tb.sv",
+        "public/spec.txt"
+      ],
+      "experience": {
+        "snapshot_id": "B_0",
+        "snapshot_hash": "sha256:2e977708b8840ff208418da4126c1e87c75c95a93854fe3f6dbcd63d7862401d",
+        "state_hash": "sha256:4742db3b6871221b5aa6d898f491251b43ff3e7c8d8f1f99815648a63664bd16",
+        "payload_hash": "sha256:3092f0d7fc08feac058171dbed616bb7c60daa43691d7b6d28875d3225d9b061",
+        "delivery_hash": "sha256:4825f88484e10f9820a33094200f23495afa83571abadd23c3f90be2905931ef",
+        "delivered": false
+      }
+    }
+  },
+  "archive_path": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/smoke-simple-v1/Mux/collection/rounds/1/r1_s0/online/blue/archive/selected_Mux__e7c61c4945b0104a__ffb6ff92d53ef1dc.json",
+  "task_dir": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/smoke-simple-v1/Mux/collection/rounds/1/r1_s0/admission_retry_1/blue_task",
+  "replay": {
+    "tier": "visible_pass",
+    "stage": "simulation",
+    "evidence": {
+      "suites": {
+        "W_bug": {
+          "result": "visible_pass",
+          "returncode": 0,
+          "pass_marker_found": true,
+          "fail_marker_found": false,
+          "log": "VCD info: dumpfile output_mux_4_1_tb.vcd opened for output.\nVCD warning: $dumpvars: Unsupported argument type (vpiPackage)\n[0] sel=0x0 a=0x1 b=0x2 c=0x4 d=0x8 out=0x1\n[100] sel=0x1 a=0x1 b=0x2 c=0x4 d=0x8 out=0x2\n[200] sel=0x2 a=0x1 b=0x2 c=0x4 d=0x8 out=0x4\n[300] sel=0x3 a=0x1 b=0x2 c=0x4 d=0x8 out=0x8\n[400] sel=0x0 a=0x8 b=0x4 c=0x2 d=0x1 out=0x8\n[500] sel=0x1 a=0x8 b=0x4 c=0x2 d=0x1 out=0x4\n[600] sel=0x2 a=0x8 b=0x4 c=0x2 d=0x1 out=0x2\n[700] sel=0x3 a=0x8 b=0x4 c=0x2 d=0x1 out=0x1\nTESTBENCH PASS original oracle"
+        },
+        "W_preserve": {
+          "result": "visible_pass",
+          "returncode": 0,
+          "pass_marker_found": true,
+          "fail_marker_found": false,
+          "log": "TESTBENCH PASS preserve"
+        }
+      }
+    },
+    "build_seconds": 0.019765589386224747,
+    "sim_seconds": 0.011498142033815384,
+    "closure": [
+      "rtl/sequence.sv",
+      "harness:W_bug_tb.sv",
+      "harness:W_preserve_tb.sv"
+    ]
+  },
+  "public_rows": {
+    "W_bug": "visible_pass",
+    "W_preserve": "visible_pass"
+  },
+  "mutation_edits": [
+    {
+      "find": "out <= b;",
+      "replace": "out <= c;"
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "blue": {
+    "blue_config_hash": "sha256:ae282cf6effc76efdc1247bcc956f0143332fb99c714b79ead0d865686f50966",
+    "committed_round": 2,
+    "entries": [],
+    "learning_policy_hash": "sha256:4a09424dd1c7efe73565caf882441e236d76f12d2175725024c3057884eb1afe",
+    "parent_snapshot_hash": "sha256:a226b9bae0ed76ec04f77cf245ab5ff2396e7b4d4f75e564ae41044961068e83",
+    "retrieval_policy_hash": "sha256:8b114d1dc640c0d8851c3796a1d6ed4e3bc9b65406c7341475b69b3d8568e26f",
+    "snapshot_id": "B_2",
+    "state_hash": "sha256:831017327dc4caf546fcce1c2a44feb9ac291ad3a98564d855b6bcc075af7c5b",
+    "version": "continuous_blue_snapshot_v1"
+  },
+  "parent_commit_hash": "sha256:edba75c304294536faff1b49adb368bdffd6ffa8ce7c246a9bd7e920eb36770e",
+  "promotion_hash": "sha256:2ca8ed7e8bec56f741dd9ac2cd6862ec4a36955fbea71f27afbde90bf62d62c0",
+  "red": {
+    "observations": [
+      {
+        "blue_patch": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -25,7 +25,7 @@\n     always@(*) begin\n         case(state)\n             S0     : nstate = d1? S0_5:\n-                              d2? S0_5:\n+                              d2? S1:\n                               nstate;\n             S0_5   : nstate = d1? S1:\n                               d2? S1_5:\n",
+        "carrier_id": "medium_high_VendingTiming",
+        "label": "public_pass_single_sample_hidden_unknown",
+        "mutant_hash": "sha256:ea12cd07980d4898202271aefe6a89566a2338b2fbad6fe9d192538b2e7813a3",
+        "mutation_edits": [
+          {
+            "find": "d2? S1:",
+            "replace": "d2? S0_5:"
+          }
+        ],
+        "public_evidence": "{\"suites\": {\"W_bug\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"Hint: Output 'out1' has no mismatches.\\nHint: Output 'out2' has no mismatches.\\nHint: Output 'out3' has no mismatches.\\nHint: Total mismatched samples is 0 out of 181 samples\\n\\nSimulation finished at 906 ps\\nMismatches: 0 in 181 samples\\nTESTBENCH PASS original samples\"}, \"W_preserve\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"TESTBENCH PASS preserve\"}}}",
+        "public_rows": {
+          "W_bug": "visible_pass",
+          "W_preserve": "visible_pass"
+        },
+        "round": 1,
+        "slot_id": "r1_s0",
+        "source_hash": "sha256:1cc184cf277efece92640715705c9f3a145087b19504ac5b2e283cff625e03e6",
+        "target_snapshot_hash": "sha256:a3f8dbb730c7d9d32d38fd2cf666aee561b0cec0a8ea6b1109101a93e2937cd8"
+      },
+      {
+        "blue_patch": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -38,7 +38,7 @@\n                               d2? S2_5:\n                               nstate;\n             S2     : nstate = ~sel? S0:\n-                              d1? S3:\n+                              d1? S2_5:\n                               d2? S3:\n                               nstate;\n             default: nstate = S0;\n",
+        "carrier_id": "medium_high_VendingTiming",
+        "label": "public_pass_single_sample_hidden_unknown",
+        "mutant_hash": "sha256:c4b3b76ad3a102f4cbcf89839ce7adc5ad2afa101bc0728a48e114c10c441f22",
+        "mutation_edits": [
+          {
+            "find": "d1? S2_5:",
+            "replace": "d1? S3:"
+          }
+        ],
+        "public_evidence": "{\"suites\": {\"W_bug\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"Hint: Output 'out1' has no mismatches.\\nHint: Output 'out2' has no mismatches.\\nHint: Output 'out3' has no mismatches.\\nHint: Total mismatched samples is 0 out of 181 samples\\n\\nSimulation finished at 906 ps\\nMismatches: 0 in 181 samples\\nTESTBENCH PASS original samples\"}, \"W_preserve\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"TESTBENCH PASS preserve\"}}}",
+        "public_rows": {
+          "W_bug": "visible_pass",
+          "W_preserve": "visible_pass"
+        },
+        "round": 2,
+        "slot_id": "r2_s0",
+        "source_hash": "sha256:eb5c7c766ccca30885b3440ad769718edfd386befc12c6246725592238fa4f2c",
+        "target_snapshot_hash": "sha256:a226b9bae0ed76ec04f77cf245ab5ff2396e7b4d4f75e564ae41044961068e83"
+      }
+    ],
+    "round": 2
+  },
+  "round": 2,
+  "update_decisions": [
+    {
+      "entry_hash": "sha256:2a6e3baf8eb9019194f3a31b4a4656412a01853e12ad22bd3c2b59057b5a9896",
+      "reason": "accepted"
+    },
+    {
+      "accepted": false,
+      "promotion": "no_strict_gain"
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "status": "proposal",
+  "buggy_rtl": "//-----------------------------------------\n//Design name: first_counter\n//File Name: first_counter.v\n//Function: This is a 4-bit up-counter with\n//Synchronous active high reset and \n//with active high enable signal\n//------------------------------------------\nmodule first_counter(\n    clk,\n    reset,\n    enable,\n    counter_out,\n    overflow_out\n);// End of port list\n//----------------Input Ports---------------\ninput clk;\ninput reset;\ninput enable;\n//----------------Output Ports--------------\noutput[3:0] counter_out;\noutput overflow_out;\n//----------------Input ports Data Type-----\n//By rule all the input ports should be wires\nwire clk;\nwire reset;\nwire enable;\n//----------------Output ports data type----\n//Output port can be a storage element(reg) or a wire\nreg[3:0] counter_out;\nreg overflow_out;\n// overflow outport\n\n//---------------Code starts here-----------\nalways@(posedge clk)\nbegin: COUNTER //block name\n    //At every rising edge of clock we check if reset is active\n    //If active, we load the counter output with 4'b0000\n    if(reset==1'b1) begin\n        counter_out <= #1 4'b0000;\n        overflow_out <= #1 1'b0;\n    end\n    //If enable is active, we increment the counter\n    else if(enable == 1'b1 && counter_out != 4'b1110) begin\n        counter_out <= #1 counter_out + 1;\n\n    end\n    // if it overflows, set overflow_out to be 1\n    if(counter_out == 4'b1111)\n    begin\n        overflow_out <= 1'b1;\n    end\nend // End of block COUNTER\n\nendmodule // End of module counter\n\n",
+  "buggy_rtl_hash": "sha256:f379da7644f963d804ec8854ba88a3267e37efe70982587824f4ecc97c3231f6",
+  "edit_budget": {
+    "metric": "sequence_matcher_token_edits_v1",
+    "tokenizer": "verilog_source_tokens_v2_macros",
+    "max_changed_fraction": 0.4,
+    "all_code": {
+      "original_tokens": 114,
+      "candidate_tokens": 118,
+      "changed_tokens": 4,
+      "allowed_tokens": 45,
+      "changed_fraction": 0.03508771929824561,
+      "within_limit": true
+    },
+    "body": {
+      "original_tokens": 79,
+      "candidate_tokens": 83,
+      "changed_tokens": 4,
+      "allowed_tokens": 31,
+      "changed_fraction": 0.05063291139240506,
+      "within_limit": true
+    }
+  },
+  "diff": "--- clean.sv\n+++ buggy.sv\n@@ -40,7 +40,7 @@\n         overflow_out <= #1 1'b0;\n     end\n     //If enable is active, we increment the counter\n-    else if(enable == 1'b1) begin\n+    else if(enable == 1'b1 && counter_out != 4'b1110) begin\n         counter_out <= #1 counter_out + 1;\n \n     end\n",
+  "claims": {
+    "violated_requirement": "The counter must increment modulo 16 when enable is high; it must not hold at 14.",
+    "spec_basis": "enable increments count modulo 16, otherwise count holds."
+  },
+  "mutation_edits": [
+    {
+      "find": "    else if(enable == 1'b1) begin",
+      "replace": "    else if(enable == 1'b1 && counter_out != 4'b1110) begin"
+    }
+  ]
+}

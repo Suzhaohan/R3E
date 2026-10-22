@@ -1,0 +1,50 @@
+{
+  "result": {
+    "edits": [
+      {
+        "find": "    always@(*) begin\n        if(~rst) begin\n            {out1, out2, out3} = 3'b000;",
+        "replace": "    always@(posedge clk or negedge rst) begin\n        if(~rst) begin\n            {out1, out2, out3} <= 3'b000;"
+      },
+      {
+        "find": "                S0, S0_5, S1: {out1, out2, out3} = 0;",
+        "replace": "                S0, S0_5, S1: {out1, out2, out3} <= 0;"
+      },
+      {
+        "find": "                S1_5        : {out1, out2, out3} = ~sel? 3'b100: 3'b000;",
+        "replace": "                S1_5        : {out1, out2, out3} <= ~sel? 3'b100: 3'b000;"
+      },
+      {
+        "find": "                S2          : {out1, out2, out3} = ~sel? 3'b101: 3'b000;",
+        "replace": "                S2          : {out1, out2, out3} <= ~sel? 3'b101: 3'b000;"
+      },
+      {
+        "find": "                S2_5        : {out1, out2, out3} = ~sel? 3'b101: 3'b010;",
+        "replace": "                S2_5        : {out1, out2, out3} <= ~sel? 3'b101: 3'b010;"
+      },
+      {
+        "find": "                S3          : {out1, out2, out3} = ~sel? 3'b101: 3'b011;",
+        "replace": "                S3          : {out1, out2, out3} <= ~sel? 3'b101: 3'b011;"
+      },
+      {
+        "find": "                default     : {out1, out2, out3} = 3'b000;",
+        "replace": "                default     : {out1, out2, out3} <= 3'b000;"
+      }
+    ],
+    "violated_requirement": "Dispensing outputs must be combinational from the current state and selection; making them registered delays out1/out2/out3 by one clock edge relative to the accumulated amount.",
+    "spec_basis": "Beverage dispensing outputs out1/out2/out3 reflect the current accumulated amount and beverage selection."
+  },
+  "raw_response_hash": "sha256:f7f402398234a330d17b92b01949b840b1c0f5a08230a7303e96e7c6f20d7419",
+  "input_tokens": 8422,
+  "output_tokens": 10374,
+  "request_hash": "sha256:d9cf29c1f4e0eee438fc14f6560626964c01ea275ea005037de0df4591c5ace5",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 8422,
+    "output_tokens": 10374
+  },
+  "model_seconds": 57.67691684514284
+}

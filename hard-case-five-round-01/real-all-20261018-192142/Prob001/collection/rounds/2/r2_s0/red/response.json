@@ -1,0 +1,60 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "else if (a_tem == 8'b0111_0001)",
+            "replace": "else if (a_tem == 8'b0111_0000)"
+          }
+        ],
+        "violated_requirement": "The output match should be asserted when the shift register matches 8'b0111_0001, but this mutation causes it to match on 8'b0111_0000 instead",
+        "spec_basis": "Matching Logic: The output match should be asserted (logic 1) whenever the value of the shift register a_tem matches the specific 8-bit pattern 8'b0111_0001"
+      },
+      {
+        "edits": [
+          {
+            "find": "a_tem <= {a_tem[6:0],a}",
+            "replace": "a_tem <= {a_tem[5:0],a,1'b0}"
+          }
+        ],
+        "violated_requirement": "The shift register should retain the 8 most recent bits of a, but this mutation causes it to shift in a zero bit and lose one bit of history",
+        "spec_basis": "Shift Register Behavior: On every positive edge of the clock, if rst_n is asserted (logic 1), the input a should be shifted into the least significant bit (LSB) of the shift register a_tem, and the previous bits should shift left by one position"
+      },
+      {
+        "edits": [
+          {
+            "find": "else if (a_tem == 8'b0111_0001)",
+            "replace": "else if (a_tem[7:1] == 7'b0111000)"
+          }
+        ],
+        "violated_requirement": "The output match should check all 8 bits of the shift register, but this mutation only checks the upper 7 bits, ignoring the LSB",
+        "spec_basis": "Matching Logic: The output match should be asserted (logic 1) whenever the value of the shift register a_tem matches the specific 8-bit pattern 8'b0111_0001"
+      },
+      {
+        "edits": [
+          {
+            "find": "match <= 1'b0;",
+            "replace": "match <= 1'b1;"
+          }
+        ],
+        "violated_requirement": "The output match should be de-asserted when the shift register doesn't match the pattern, but this mutation keeps it always asserted",
+        "spec_basis": "Matching Logic: If the shift register does not match this pattern, the output match should remain de-asserted (logic 0)"
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:e3b69442f3d6afff2af45a3755c6ff8fed5bc68f8ec8f5172a62c745e82c321f",
+  "input_tokens": 4190,
+  "output_tokens": 590,
+  "request_hash": "sha256:bc082ef9924696e9b0a414982d5002395519b5af943b969ba0b500b082c0ce7a",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 4190,
+    "output_tokens": 590
+  },
+  "model_seconds": 19.449501837603748
+}

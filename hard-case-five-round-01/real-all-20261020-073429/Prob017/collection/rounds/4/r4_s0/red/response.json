@@ -1,0 +1,50 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "div_flag <= cyc_cnt==(M_N-1)||cyc_cnt==(c89-1)? ~div_flag: div_flag;",
+            "replace": "div_flag <= cyc_cnt==(M_N-1)||cyc_cnt==(c89-1)? div_flag: ~div_flag;"
+          }
+        ],
+        "violated_requirement": "The mode toggle condition is inverted, causing incorrect switching between even and odd periods",
+        "spec_basis": "Mode toggles iff cycle_count equals M_N-1 or c89-1; otherwise it holds"
+      },
+      {
+        "edits": [
+          {
+            "find": "clk_out_r <= clk_cnt<=((div_e>>2)+1);",
+            "replace": "clk_out_r <= clk_cnt<=((div_e>>2));"
+          }
+        ],
+        "violated_requirement": "Output clock pulse width is reduced by one count in even mode",
+        "spec_basis": "Output becomes 1 iff count <= floor((mode ? div_o : div_e)/4) + 1"
+      },
+      {
+        "edits": [
+          {
+            "find": "clk_out_r <= clk_cnt<=((div_o>>2)+1);",
+            "replace": "clk_out_r <= clk_cnt<=((div_o>>2));"
+          }
+        ],
+        "violated_requirement": "Output clock pulse width is reduced by one count in odd mode",
+        "spec_basis": "Output becomes 1 iff count <= floor((mode ? div_o : div_e)/4) + 1"
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:4e23a2eb40d96072300dabf6d16cdca2d1ed6c2467bb0b210beb45e9e6c1eecc",
+  "input_tokens": 9680,
+  "output_tokens": 309,
+  "request_hash": "sha256:7ce27c514b7b6024727bf2d2df853f36e3a0f1dcc83d1d60d5b064be4fe7dda5",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 9680,
+    "output_tokens": 309
+  },
+  "model_seconds": 12.21352206915617
+}

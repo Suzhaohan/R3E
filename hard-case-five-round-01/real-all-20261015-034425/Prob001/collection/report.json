@@ -1,0 +1,760 @@
+{
+  "scope": "single design, human-selected mechanism, deferred unseen-variant probes",
+  "scheduled_generation": 5,
+  "admitted": 5,
+  "distinct_admitted": 5,
+  "online_and_frozen_reference": [
+    {
+      "round": 1,
+      "slot_id": "r1_s0",
+      "admission": "admitted",
+      "reason": "public_matrix_and_structure_pass",
+      "mutant_hash": "sha256:e44b548790cec30d5d067e28dafc1c1101f0d7deab21cfda6897973ba294b24e",
+      "normalized_identity": "sha256:564bab5a089faef7a7eacd14a2d68ee982452e55dbc51ec3d89a601c731fc12d",
+      "changed_fraction": 0.08823529411764706,
+      "repeats_historical_seed": false,
+      "online": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:1951e57b77b736427d17192f5446f3a1d5bc6d42a3b997eec5ab906a8583215c",
+        "endpoint_public": {
+          "tier": "visible_pass",
+          "suites": {
+            "W_bug": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -12,7 +12,7 @@\n \t\t\tbegin \n \t\t\t\tmatch <= 1'b0;\n \t\t\tend\n-\t\telse if ({a_tem[6:0],a} == 8'b0111_0001)\n+\t\telse if (a_tem == 8'b0111_0001)\n \t\t\tbegin\n \t\t\t\tmatch <= 1'b1;\n \t\t\tend\n",
+        "endpoint_evaluator": {
+          "result": "pass",
+          "returncode": 0,
+          "failures": [],
+          "log_hash": "sha256:ca8c99fe0cdf6ca706143ad9900890db2df287ee510118b9b91cf7f95ed225d9"
+        },
+        "category": "public_pass_hidden_pass"
+      },
+      "reference": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:bd23c2b8c0147de0b4e76176c5f44a9aa76f74a179a506cfc266e2ada584d9e1",
+        "endpoint_public": {
+          "tier": "visible_pass",
+          "suites": {
+            "W_bug": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -12,7 +12,7 @@\n \t\t\tbegin \n \t\t\t\tmatch <= 1'b0;\n \t\t\tend\n-\t\telse if ({a_tem[6:0],a} == 8'b0111_0001)\n+\t\telse if (a_tem == 8'b0111_0001)\n \t\t\tbegin\n \t\t\t\tmatch <= 1'b1;\n \t\t\tend\n@@ -30,4 +30,4 @@\n \t\t\tbegin\n \t\t\t\ta_tem <= {a_tem[6:0],a};\n \t\t\tend\n-endmodule+endmodule\n",
+        "endpoint_evaluator": {
+          "result": "pass",
+          "returncode": 0,
+          "failures": [],
+          "log_hash": "sha256:ca8c99fe0cdf6ca706143ad9900890db2df287ee510118b9b91cf7f95ed225d9"
+        },
+        "category": "public_pass_hidden_pass"
+      }
+    },
+    {
+      "round": 2,
+      "slot_id": "r2_s0",
+      "admission": "admitted",
+      "reason": "public_matrix_and_structure_pass",
+      "mutant_hash": "sha256:01489c6d94aff76565363ac8d92544430197517c5b81cd59ca6ee0a526d94cc9",
+      "normalized_identity": "sha256:a4e4b1d3dff5bfc6b3a5be43aa84d8ad4223d6e6ef0dc5480e869856bbf89d89",
+      "changed_fraction": 0.00980392156862745,
+      "repeats_historical_seed": false,
+      "online": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:1951e57b77b736427d17192f5446f3a1d5bc6d42a3b997eec5ab906a8583215c",
+        "endpoint_public": {
+          "tier": "visible_pass",
+          "suites": {
+            "W_bug": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -12,7 +12,7 @@\n \t\t\tbegin \n \t\t\t\tmatch <= 1'b0;\n \t\t\tend\n-\t\telse if (a_tem == 8'b1000_1110)\n+\t\telse if (a_tem == 8'b0111_0001)\n \t\t\tbegin\n \t\t\t\tmatch <= 1'b1;\n \t\t\tend\n",
+        "endpoint_evaluator": {
+          "result": "pass",
+          "returncode": 0,
+          "failures": [],
+          "log_hash": "sha256:ca8c99fe0cdf6ca706143ad9900890db2df287ee510118b9b91cf7f95ed225d9"
+        },
+        "category": "public_pass_hidden_pass"
+      },
+      "reference": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:1951e57b77b736427d17192f5446f3a1d5bc6d42a3b997eec5ab906a8583215c",
+        "endpoint_public": {
+          "tier": "visible_pass",
+          "suites": {
+            "W_bug": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -12,7 +12,7 @@\n \t\t\tbegin \n \t\t\t\tmatch <= 1'b0;\n \t\t\tend\n-\t\telse if (a_tem == 8'b1000_1110)\n+\t\telse if (a_tem == 8'b0111_0001)\n \t\t\tbegin\n \t\t\t\tmatch <= 1'b1;\n \t\t\tend\n",
+        "endpoint_evaluator": {
+          "result": "pass",
+          "returncode": 0,
+          "failures": [],
+          "log_hash": "sha256:ca8c99fe0cdf6ca706143ad9900890db2df287ee510118b9b91cf7f95ed225d9"
+        },
+        "category": "public_pass_hidden_pass"
+      }
+    },
+    {
+      "round": 3,
+      "slot_id": "r3_s0",
+      "admission": "admitted",
+      "reason": "public_matrix_and_structure_pass",
+      "mutant_hash": "sha256:14fc66d9344961b7f40e7d22b608cd788d4cc9e03a4000bb1191598d2b32b2cf",
+      "normalized_identity": "sha256:93b47350ce51a25097adc3d6c5deb826125ef917bc330e68d3b34968e8f4acd2",
+      "changed_fraction": 0.058823529411764705,
+      "repeats_historical_seed": false,
+      "online": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:03e7ce305e288c245efe101a85ada2f219064643982e0ffc6ff703d6f581baf2",
+        "endpoint_public": {
+          "tier": "visible_pass",
+          "suites": {
+            "W_bug": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -28,6 +28,6 @@\n \t\t\tend\n \t\telse \n \t\t\tbegin\n-\t\t\t\ta_tem <= {a, a_tem[7:1]};\n+\t\t\t\ta_tem <= {a_tem[6:0], a};\n \t\t\tend\n endmodule",
+        "endpoint_evaluator": {
+          "result": "pass",
+          "returncode": 0,
+          "failures": [],
+          "log_hash": "sha256:ca8c99fe0cdf6ca706143ad9900890db2df287ee510118b9b91cf7f95ed225d9"
+        },
+        "category": "public_pass_hidden_pass"
+      },
+      "reference": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:03e7ce305e288c245efe101a85ada2f219064643982e0ffc6ff703d6f581baf2",
+        "endpoint_public": {
+          "tier": "visible_pass",
+          "suites": {
+            "W_bug": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -28,6 +28,6 @@\n \t\t\tend\n \t\telse \n \t\t\tbegin\n-\t\t\t\ta_tem <= {a, a_tem[7:1]};\n+\t\t\t\ta_tem <= {a_tem[6:0], a};\n \t\t\tend\n endmodule",
+        "endpoint_evaluator": {
+          "result": "pass",
+          "returncode": 0,
+          "failures": [],
+          "log_hash": "sha256:ca8c99fe0cdf6ca706143ad9900890db2df287ee510118b9b91cf7f95ed225d9"
+        },
+        "category": "public_pass_hidden_pass"
+      }
+    },
+    {
+      "round": 4,
+      "slot_id": "r4_s0",
+      "admission": "admitted",
+      "reason": "public_matrix_and_structure_pass",
+      "mutant_hash": "sha256:bd6e077fd530fb2f1321c9ea1830918370bbc3026ee92a558d36e7a1897175f3",
+      "normalized_identity": "sha256:b4081f63cf376aa553800394759a6eaffc9dba2f993b3a83236b85b8643299b2",
+      "changed_fraction": 0.00980392156862745,
+      "repeats_historical_seed": false,
+      "online": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:1951e57b77b736427d17192f5446f3a1d5bc6d42a3b997eec5ab906a8583215c",
+        "endpoint_public": {
+          "tier": "visible_pass",
+          "suites": {
+            "W_bug": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -12,7 +12,7 @@\n \t\t\tbegin \n \t\t\t\tmatch <= 1'b0;\n \t\t\tend\n-\t\telse if (a_tem == 8'b1110_0010)\n+\t\telse if (a_tem == 8'b0111_0001)\n \t\t\tbegin\n \t\t\t\tmatch <= 1'b1;\n \t\t\tend\n",
+        "endpoint_evaluator": {
+          "result": "pass",
+          "returncode": 0,
+          "failures": [],
+          "log_hash": "sha256:ca8c99fe0cdf6ca706143ad9900890db2df287ee510118b9b91cf7f95ed225d9"
+        },
+        "category": "public_pass_hidden_pass"
+      },
+      "reference": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:1951e57b77b736427d17192f5446f3a1d5bc6d42a3b997eec5ab906a8583215c",
+        "endpoint_public": {
+          "tier": "visible_pass",
+          "suites": {
+            "W_bug": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -12,7 +12,7 @@\n \t\t\tbegin \n \t\t\t\tmatch <= 1'b0;\n \t\t\tend\n-\t\telse if (a_tem == 8'b1110_0010)\n+\t\telse if (a_tem == 8'b0111_0001)\n \t\t\tbegin\n \t\t\t\tmatch <= 1'b1;\n \t\t\tend\n",
+        "endpoint_evaluator": {
+          "result": "pass",
+          "returncode": 0,
+          "failures": [],
+          "log_hash": "sha256:ca8c99fe0cdf6ca706143ad9900890db2df287ee510118b9b91cf7f95ed225d9"
+        },
+        "category": "public_pass_hidden_pass"
+      }
+    },
+    {
+      "round": 5,
+      "slot_id": "r5_s0",
+      "admission": "admitted",
+      "reason": "public_matrix_and_structure_pass",
+      "mutant_hash": "sha256:18396b0c36600b622855e7139efdce1fdf2a0deca36ec7ca05a177972bd75f19",
+      "normalized_identity": "sha256:4191c9cb8f1e9ad7836fdf9fa615c9426bfa4fd839111379d75b9d4a415f66c4",
+      "changed_fraction": 0.00980392156862745,
+      "repeats_historical_seed": false,
+      "online": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:1951e57b77b736427d17192f5446f3a1d5bc6d42a3b997eec5ab906a8583215c",
+        "endpoint_public": {
+          "tier": "visible_pass",
+          "suites": {
+            "W_bug": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -12,7 +12,7 @@\n \t\t\tbegin \n \t\t\t\tmatch <= 1'b0;\n \t\t\tend\n-\t\telse if (a_tem >= 8'b0111_0001)\n+\t\telse if (a_tem == 8'b0111_0001)\n \t\t\tbegin\n \t\t\t\tmatch <= 1'b1;\n \t\t\tend\n",
+        "endpoint_evaluator": {
+          "result": "pass",
+          "returncode": 0,
+          "failures": [],
+          "log_hash": "sha256:ca8c99fe0cdf6ca706143ad9900890db2df287ee510118b9b91cf7f95ed225d9"
+        },
+        "category": "public_pass_hidden_pass"
+      },
+      "reference": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:1951e57b77b736427d17192f5446f3a1d5bc6d42a3b997eec5ab906a8583215c",
+        "endpoint_public": {
+          "tier": "visible_pass",
+          "suites": {
+            "W_bug": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -12,7 +12,7 @@\n \t\t\tbegin \n \t\t\t\tmatch <= 1'b0;\n \t\t\tend\n-\t\telse if (a_tem >= 8'b0111_0001)\n+\t\telse if (a_tem == 8'b0111_0001)\n \t\t\tbegin\n \t\t\t\tmatch <= 1'b1;\n \t\t\tend\n",
+        "endpoint_evaluator": {
+          "result": "pass",
+          "returncode": 0,
+          "failures": [],
+          "log_hash": "sha256:ca8c99fe0cdf6ca706143ad9900890db2df287ee510118b9b91cf7f95ed225d9"
+        },
+        "category": "public_pass_hidden_pass"
+      }
+    }
+  ],
+  "reserved_variants_by_snapshot": [
+    {
+      "snapshot": "B_0",
+      "scheduled": 2,
+      "categories": {
+        "public_pass_hidden_pass": 2
+      }
+    },
+    {
+      "snapshot": "B_1",
+      "scheduled": 2,
+      "categories": {
+        "public_pass_hidden_pass": 2
+      }
+    },
+    {
+      "snapshot": "B_2",
+      "scheduled": 2,
+      "categories": {
+        "public_pass_hidden_pass": 2
+      }
+    },
+    {
+      "snapshot": "B_3",
+      "scheduled": 2,
+      "categories": {
+        "public_pass_hidden_pass": 2
+      }
+    },
+    {
+      "snapshot": "B_4",
+      "scheduled": 2,
+      "categories": {
+        "public_pass_hidden_pass": 2
+      }
+    },
+    {
+      "snapshot": "B_5",
+      "scheduled": 2,
+      "categories": {
+        "public_pass_hidden_pass": 2
+      }
+    }
+  ],
+  "probes": [
+    {
+      "snapshot": 0,
+      "anchor_index": 0,
+      "repeat": 0,
+      "endpoint": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:c3da5b94ac76ba8dba023300114ac059175d5e54b04e2f949daf80e4420f7f1b",
+        "endpoint_public": {
+          "tier": "visible_pass",
+          "suites": {
+            "W_bug": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -28,6 +28,6 @@\n \t\t\tend\n \t\telse \n \t\t\tbegin\n-\t\t\t\ta_tem <= {a, a_tem[6:0]};\n+\t\t\t\ta_tem <= {a_tem[6:0], a};\n \t\t\tend\n endmodule\n",
+        "endpoint_evaluator": {
+          "result": "pass",
+          "returncode": 0,
+          "failures": [],
+          "log_hash": "sha256:ca8c99fe0cdf6ca706143ad9900890db2df287ee510118b9b91cf7f95ed225d9"
+        },
+        "category": "public_pass_hidden_pass"
+      }
+    },
+    {
+      "snapshot": 0,
+      "anchor_index": 0,
+      "repeat": 1,
+      "endpoint": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:c3da5b94ac76ba8dba023300114ac059175d5e54b04e2f949daf80e4420f7f1b",
+        "endpoint_public": {
+          "tier": "visible_pass",
+          "suites": {
+            "W_bug": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -28,6 +28,6 @@\n \t\t\tend\n \t\telse \n \t\t\tbegin\n-\t\t\t\ta_tem <= {a, a_tem[6:0]};\n+\t\t\t\ta_tem <= {a_tem[6:0], a};\n \t\t\tend\n endmodule\n",
+        "endpoint_evaluator": {
+          "result": "pass",
+          "returncode": 0,
+          "failures": [],
+          "log_hash": "sha256:ca8c99fe0cdf6ca706143ad9900890db2df287ee510118b9b91cf7f95ed225d9"
+        },
+        "category": "public_pass_hidden_pass"
+      }
+    },
+    {
+      "snapshot": 1,
+      "anchor_index": 0,
+      "repeat": 0,
+      "endpoint": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:c3da5b94ac76ba8dba023300114ac059175d5e54b04e2f949daf80e4420f7f1b",
+        "endpoint_public": {
+          "tier": "visible_pass",
+          "suites": {
+            "W_bug": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -28,6 +28,6 @@\n \t\t\tend\n \t\telse \n \t\t\tbegin\n-\t\t\t\ta_tem <= {a, a_tem[6:0]};\n+\t\t\t\ta_tem <= {a_tem[6:0], a};\n \t\t\tend\n endmodule\n",
+        "endpoint_evaluator": {
+          "result": "pass",
+          "returncode": 0,
+          "failures": [],
+          "log_hash": "sha256:ca8c99fe0cdf6ca706143ad9900890db2df287ee510118b9b91cf7f95ed225d9"
+        },
+        "category": "public_pass_hidden_pass"
+      }
+    },
+    {
+      "snapshot": 1,
+      "anchor_index": 0,
+      "repeat": 1,
+      "endpoint": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:c3da5b94ac76ba8dba023300114ac059175d5e54b04e2f949daf80e4420f7f1b",
+        "endpoint_public": {
+          "tier": "visible_pass",
+          "suites": {
+            "W_bug": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -28,6 +28,6 @@\n \t\t\tend\n \t\telse \n \t\t\tbegin\n-\t\t\t\ta_tem <= {a, a_tem[6:0]};\n+\t\t\t\ta_tem <= {a_tem[6:0], a};\n \t\t\tend\n endmodule\n",
+        "endpoint_evaluator": {
+          "result": "pass",
+          "returncode": 0,
+          "failures": [],
+          "log_hash": "sha256:ca8c99fe0cdf6ca706143ad9900890db2df287ee510118b9b91cf7f95ed225d9"
+        },
+        "category": "public_pass_hidden_pass"
+      }
+    },
+    {
+      "snapshot": 2,
+      "anchor_index": 0,
+      "repeat": 0,
+      "endpoint": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:c3da5b94ac76ba8dba023300114ac059175d5e54b04e2f949daf80e4420f7f1b",
+        "endpoint_public": {
+          "tier": "visible_pass",
+          "suites": {
+            "W_bug": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -28,6 +28,6 @@\n \t\t\tend\n \t\telse \n \t\t\tbegin\n-\t\t\t\ta_tem <= {a, a_tem[6:0]};\n+\t\t\t\ta_tem <= {a_tem[6:0], a};\n \t\t\tend\n endmodule\n",
+        "endpoint_evaluator": {
+          "result": "pass",
+          "returncode": 0,
+          "failures": [],
+          "log_hash": "sha256:ca8c99fe0cdf6ca706143ad9900890db2df287ee510118b9b91cf7f95ed225d9"
+        },
+        "category": "public_pass_hidden_pass"
+      }
+    },
+    {
+      "snapshot": 2,
+      "anchor_index": 0,
+      "repeat": 1,
+      "endpoint": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:c3da5b94ac76ba8dba023300114ac059175d5e54b04e2f949daf80e4420f7f1b",
+        "endpoint_public": {
+          "tier": "visible_pass",
+          "suites": {
+            "W_bug": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -28,6 +28,6 @@\n \t\t\tend\n \t\telse \n \t\t\tbegin\n-\t\t\t\ta_tem <= {a, a_tem[6:0]};\n+\t\t\t\ta_tem <= {a_tem[6:0], a};\n \t\t\tend\n endmodule\n",
+        "endpoint_evaluator": {
+          "result": "pass",
+          "returncode": 0,
+          "failures": [],
+          "log_hash": "sha256:ca8c99fe0cdf6ca706143ad9900890db2df287ee510118b9b91cf7f95ed225d9"
+        },
+        "category": "public_pass_hidden_pass"
+      }
+    },
+    {
+      "snapshot": 3,
+      "anchor_index": 0,
+      "repeat": 0,
+      "endpoint": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:c3da5b94ac76ba8dba023300114ac059175d5e54b04e2f949daf80e4420f7f1b",
+        "endpoint_public": {
+          "tier": "visible_pass",
+          "suites": {
+            "W_bug": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -28,6 +28,6 @@\n \t\t\tend\n \t\telse \n \t\t\tbegin\n-\t\t\t\ta_tem <= {a, a_tem[6:0]};\n+\t\t\t\ta_tem <= {a_tem[6:0], a};\n \t\t\tend\n endmodule\n",
+        "endpoint_evaluator": {
+          "result": "pass",
+          "returncode": 0,
+          "failures": [],
+          "log_hash": "sha256:ca8c99fe0cdf6ca706143ad9900890db2df287ee510118b9b91cf7f95ed225d9"
+        },
+        "category": "public_pass_hidden_pass"
+      }
+    },
+    {
+      "snapshot": 3,
+      "anchor_index": 0,
+      "repeat": 1,
+      "endpoint": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:c3da5b94ac76ba8dba023300114ac059175d5e54b04e2f949daf80e4420f7f1b",
+        "endpoint_public": {
+          "tier": "visible_pass",
+          "suites": {
+            "W_bug": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -28,6 +28,6 @@\n \t\t\tend\n \t\telse \n \t\t\tbegin\n-\t\t\t\ta_tem <= {a, a_tem[6:0]};\n+\t\t\t\ta_tem <= {a_tem[6:0], a};\n \t\t\tend\n endmodule\n",
+        "endpoint_evaluator": {
+          "result": "pass",
+          "returncode": 0,
+          "failures": [],
+          "log_hash": "sha256:ca8c99fe0cdf6ca706143ad9900890db2df287ee510118b9b91cf7f95ed225d9"
+        },
+        "category": "public_pass_hidden_pass"
+      }
+    },
+    {
+      "snapshot": 4,
+      "anchor_index": 0,
+      "repeat": 0,
+      "endpoint": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:c3da5b94ac76ba8dba023300114ac059175d5e54b04e2f949daf80e4420f7f1b",
+        "endpoint_public": {
+          "tier": "visible_pass",
+          "suites": {
+            "W_bug": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -28,6 +28,6 @@\n \t\t\tend\n \t\telse \n \t\t\tbegin\n-\t\t\t\ta_tem <= {a, a_tem[6:0]};\n+\t\t\t\ta_tem <= {a_tem[6:0], a};\n \t\t\tend\n endmodule\n",
+        "endpoint_evaluator": {
+          "result": "pass",
+          "returncode": 0,
+          "failures": [],
+          "log_hash": "sha256:ca8c99fe0cdf6ca706143ad9900890db2df287ee510118b9b91cf7f95ed225d9"
+        },
+        "category": "public_pass_hidden_pass"
+      }
+    },
+    {
+      "snapshot": 4,
+      "anchor_index": 0,
+      "repeat": 1,
+      "endpoint": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:c3da5b94ac76ba8dba023300114ac059175d5e54b04e2f949daf80e4420f7f1b",
+        "endpoint_public": {
+          "tier": "visible_pass",
+          "suites": {
+            "W_bug": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -28,6 +28,6 @@\n \t\t\tend\n \t\telse \n \t\t\tbegin\n-\t\t\t\ta_tem <= {a, a_tem[6:0]};\n+\t\t\t\ta_tem <= {a_tem[6:0], a};\n \t\t\tend\n endmodule\n",
+        "endpoint_evaluator": {
+          "result": "pass",
+          "returncode": 0,
+          "failures": [],
+          "log_hash": "sha256:ca8c99fe0cdf6ca706143ad9900890db2df287ee510118b9b91cf7f95ed225d9"
+        },
+        "category": "public_pass_hidden_pass"
+      }
+    },
+    {
+      "snapshot": 5,
+      "anchor_index": 0,
+      "repeat": 0,
+      "endpoint": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:c3da5b94ac76ba8dba023300114ac059175d5e54b04e2f949daf80e4420f7f1b",
+        "endpoint_public": {
+          "tier": "visible_pass",
+          "suites": {
+            "W_bug": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -28,6 +28,6 @@\n \t\t\tend\n \t\telse \n \t\t\tbegin\n-\t\t\t\ta_tem <= {a, a_tem[6:0]};\n+\t\t\t\ta_tem <= {a_tem[6:0], a};\n \t\t\tend\n endmodule\n",
+        "endpoint_evaluator": {
+          "result": "pass",
+          "returncode": 0,
+          "failures": [],
+          "log_hash": "sha256:ca8c99fe0cdf6ca706143ad9900890db2df287ee510118b9b91cf7f95ed225d9"
+        },
+        "category": "public_pass_hidden_pass"
+      }
+    },
+    {
+      "snapshot": 5,
+      "anchor_index": 0,
+      "repeat": 1,
+      "endpoint": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:c3da5b94ac76ba8dba023300114ac059175d5e54b04e2f949daf80e4420f7f1b",
+        "endpoint_public": {
+          "tier": "visible_pass",
+          "suites": {
+            "W_bug": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -28,6 +28,6 @@\n \t\t\tend\n \t\telse \n \t\t\tbegin\n-\t\t\t\ta_tem <= {a, a_tem[6:0]};\n+\t\t\t\ta_tem <= {a_tem[6:0], a};\n \t\t\tend\n endmodule\n",
+        "endpoint_evaluator": {
+          "result": "pass",
+          "returncode": 0,
+          "failures": [],
+          "log_hash": "sha256:ca8c99fe0cdf6ca706143ad9900890db2df287ee510118b9b91cf7f95ed225d9"
+        },
+        "category": "public_pass_hidden_pass"
+      }
+    }
+  ],
+  "confirmation": "not scheduled; single-sample failures require separate reviewed confirmation",
+  "limits": "Two reserved variants and two samples each per snapshot are diagnostic, not evidence of mastery or transfer."
+}

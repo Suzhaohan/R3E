@@ -1,0 +1,60 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "else if (a_tem == 8'b0111_0001)",
+            "replace": "else if (a_tem == 8'b0111_0001 && a_tem[7] == 1'b0)"
+          }
+        ],
+        "violated_requirement": "The output match should be asserted only when the shift register exactly matches 8'b0111_0001, but the mutant requires an additional condition that the MSB is 0",
+        "spec_basis": "Matching Logic: The output match should be asserted (logic 1) whenever the value of the shift register a_tem matches the specific 8-bit pattern 8'b0111_0001."
+      },
+      {
+        "edits": [
+          {
+            "find": "else if (a_tem == 8'b0111_0001)",
+            "replace": "else if (a_tem == 8'b0111_0001 && a_tem[0] == 1'b1)"
+          }
+        ],
+        "violated_requirement": "The output match should be asserted only when the shift register exactly matches 8'b0111_0001, but the mutant requires an additional condition that the LSB is 1",
+        "spec_basis": "Matching Logic: The output match should be asserted (logic 1) whenever the value of the shift register a_tem matches the specific 8-bit pattern 8'b0111_0001."
+      },
+      {
+        "edits": [
+          {
+            "find": "a_tem <= {a_tem[6:0],a}",
+            "replace": "a_tem <= {a_tem[7:1],a}"
+          }
+        ],
+        "violated_requirement": "The shift register should retain the 8 most recent bits of a, but the mutant incorrectly shifts in the new bit at the wrong position",
+        "spec_basis": "Shift Register Behavior: On every positive edge of the clock, if rst_n is asserted (logic 1), the input a should be shifted into the least significant bit (LSB) of the shift register a_tem, and the previous bits should shift left by one position."
+      },
+      {
+        "edits": [
+          {
+            "find": "a_tem <= {a_tem[6:0],a}",
+            "replace": "a_tem <= {a_tem[5:0],a,a_tem[7]}"
+          }
+        ],
+        "violated_requirement": "The shift register should retain the 8 most recent bits of a, but the mutant incorrectly rotates the bits instead of shifting",
+        "spec_basis": "Shift Register Behavior: On every positive edge of the clock, if rst_n is asserted (logic 1), the input a should be shifted into the least significant bit (LSB) of the shift register a_tem, and the previous bits should shift left by one position."
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:0ca531f7d8aa29074279fe73447e6085c5ed5fe0095871c823987f237fc861d9",
+  "input_tokens": 5228,
+  "output_tokens": 570,
+  "request_hash": "sha256:618cb1a4150deade7ecf7745022433ae6e803acb6ba4c6d58ac2abd50cb89e3d",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 5228,
+    "output_tokens": 570
+  },
+  "model_seconds": 19.411070802249014
+}

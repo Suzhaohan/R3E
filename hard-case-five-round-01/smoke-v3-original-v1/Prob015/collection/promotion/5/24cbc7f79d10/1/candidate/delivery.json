@@ -1,0 +1,34 @@
+{
+  "version": "continuous_blue_delivery_v1",
+  "snapshot_id": "B_5",
+  "snapshot_hash": "sha256:7cd543188826d6cd6d1faef6ca5ae1be718fff22b666075a2f61c1150ef9576f",
+  "state_hash": "sha256:07d99b5db93e8c8bc2c3e3b351c36fce80116db0791af3d6f906cfeaccbd1682",
+  "task_hash": "sha256:24cbc7f79d10e617632a30ccbcf186b88c7577a8d34e05de149c420d432ed852",
+  "retrieval_policy_hash": "sha256:8b114d1dc640c0d8851c3796a1d6ed4e3bc9b65406c7341475b69b3d8568e26f",
+  "payload": {
+    "version": "continuous_blue_experience_v1",
+    "notice": "Prior repair examples passed public tests only; validate their applicability to this task.",
+    "entries": [
+      {
+        "entry_hash": "sha256:f6801ddc1c4aec9499b3fd3a933ea262f685096933c28fcc6a4303ed090a8a79",
+        "content": {
+          "validation": "public_pass_single_sample_hidden_unknown",
+          "specification_excerpt": "I would like you to implement a module named TopModule with the following\ninterface. All input and output ports are one bit unless otherwise\nspecified.\n\n - input  clk\n - input  rst\n - input  d1\n - input  d2\n - input  sel\n - output reg out1\n - output reg out2\n - output reg out3\n\nThe module should implement a vending machine that accepts two types of\ncurrency (0.5 yuan and 1 yuan) and dispenses two types of beverages\n(1.5 yuan and 2.5 yuan) with change dispensing capability.\nreset is active low\n\nThe vending machine should work as follows:\n- Input currency: d1 represents 0.5 yuan, d2 represents 1 yuan\n- Beverage selection: sel chooses between two beverages\n- Beverage prices: Beverage 1 costs 1.5 yuan, Beverage 2 costs 2.5 yuan\n- Change dispensing: Only 0.5 yuan coins are dispensed as change\n\nCurrency input behavior:\n- Input currency signals (d1, d2) are automatically edge-detected\n- Each currency input produces a pulse signal that goes high on clock\n  rising edge and low on clock falling edge\n- The machine accum",
+          "applied_patch": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -54,7 +54,7 @@\n                 S0, S0_5, S1: {out1, out2, out3} = 0;\n                 S1_5        : {out1, out2, out3} = ~sel? 3'b100: 3'b000;\n                 S2          : {out1, out2, out3} = ~sel? 3'b101: 3'b000;\n-                S2_5        : {out1, out2, out3} = ~sel? 3'b000: 3'b010;\n+                S2_5        : {out1, out2, out3} = ~sel? 3'b101: 3'b010;\n                 S3          : {out1, out2, out3} = ~sel? 3'b101: 3'b011;\n                 default     : {out1, out2, out3} = 3'b000;\n             endcase\n",
+          "public_rows": {
+            "W_bug": "visible_pass",
+            "W_preserve": "visible_pass"
+          }
+        }
+      }
+    ]
+  },
+  "selected_entry_hashes": [
+    "sha256:f6801ddc1c4aec9499b3fd3a933ea262f685096933c28fcc6a4303ed090a8a79"
+  ],
+  "source_record_hashes": [
+    "sha256:564ff1b4660736cbee8614ef4c935d122b0adef5bfb2bf8877f892c5983f7d7c"
+  ],
+  "omissions": [],
+  "payload_hash": "sha256:f2b4d8cf3fef1f60cbbb6716663a2dca609f11eea7151f0f47dd2b787fe06908"
+}

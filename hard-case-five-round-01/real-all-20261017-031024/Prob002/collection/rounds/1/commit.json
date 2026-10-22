@@ -1,0 +1,52 @@
+{
+  "blue": {
+    "blue_config_hash": "sha256:a4f3a7db64f45cc44b6b1987cdfbbebf07b0654562f5cca31a3b25c76c7bba33",
+    "committed_round": 1,
+    "entries": [],
+    "learning_policy_hash": "sha256:4a09424dd1c7efe73565caf882441e236d76f12d2175725024c3057884eb1afe",
+    "parent_snapshot_hash": "sha256:ece8d99d59c0b6405fb6cd9f5711ea53aec330881965dc51b233aef0f9150dea",
+    "retrieval_policy_hash": "sha256:8b114d1dc640c0d8851c3796a1d6ed4e3bc9b65406c7341475b69b3d8568e26f",
+    "snapshot_id": "B_1",
+    "state_hash": "sha256:85e8fbb707b6fca997463be8d6ef1bbf03526260aab6b2abb4db57f9d81f665d",
+    "version": "continuous_blue_snapshot_v1"
+  },
+  "parent_commit_hash": "sha256:47c59b0e2ea46687f3217be1b300ccbd83df4b4b7c379c7a8400c944c96bb77f",
+  "promotion_hash": "sha256:a761ea904e0094707c09fb93a147803255256ad2bf2daab9f7cca3ffba7b6df0",
+  "red": {
+    "observations": [
+      {
+        "blue_patch": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -28,7 +28,7 @@\n \t\t\tbegin \n \t\t\t\tmatch_b <= 1'b0;\n \t\t\tend\n-\t\telse if (a_tem[2:0] == 3'b111)\n+\t\telse if (a_tem[2:0] == 3'b110)\n \t\t\tbegin\n \t\t\t\tmatch_b <= 1'b1;\n \t\t\tend\n",
+        "carrier_id": "chipbench_Prob002_wildcard_medium",
+        "label": "public_pass_single_sample_hidden_unknown",
+        "mutant_hash": "sha256:dfc4b350eef11c076d8b99f9023c0019ed0c7c2fe9bcd59c527483e9d8dfd270",
+        "mutation_edits": [
+          {
+            "find": "else if (a_tem[2:0] == 3'b110)\n\t\t\tbegin\n\t\t\t\tmatch_b <= 1'b1;\n\t\t\tend",
+            "replace": "else if (a_tem[2:0] == 3'b111)\n\t\t\tbegin\n\t\t\t\tmatch_b <= 1'b1;\n\t\t\tend"
+          }
+        ],
+        "public_evidence": "{\"suites\": {\"W_bug\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"TESTBENCH PASS wildcard checks=9216\"}, \"W_preserve\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"TESTBENCH PASS reset\"}}}",
+        "public_rows": {
+          "W_bug": "visible_pass",
+          "W_preserve": "visible_pass"
+        },
+        "round": 1,
+        "slot_id": "r1_s0",
+        "source_hash": "sha256:69aa88a0159a523cb3e306121471f4923c848f5ea42c413bf6ff80d8bb3f9a2e",
+        "target_snapshot_hash": "sha256:ece8d99d59c0b6405fb6cd9f5711ea53aec330881965dc51b233aef0f9150dea"
+      }
+    ],
+    "round": 1
+  },
+  "round": 1,
+  "update_decisions": [
+    {
+      "entry_hash": "sha256:d39e90f8fdfc312fe95a2579dc6072ce03496f8b33e57c91ec82c4384d0fb641",
+      "reason": "accepted"
+    },
+    {
+      "accepted": false,
+      "promotion": "regression"
+    }
+  ]
+}

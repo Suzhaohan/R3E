@@ -1,0 +1,30 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "else if (a_tem == 8'b0111_0001)",
+            "replace": "else if (a_tem == 8'b0111_0001) && (a_tem[0] == 1'b1)"
+          }
+        ],
+        "violated_requirement": "The output match should be asserted only when the shift register equals 8'b0111_0001, but the mutant requires an additional condition that the LSB is 1. This will fail when a_tem is 8'b0111_0001 but a_tem[0] is 0.",
+        "spec_basis": "The spec states 'The output match should be asserted (logic 1) whenever the value of the shift register a_tem matches the specific 8-bit pattern 8'b0111_0001'."
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:0523f413f253d846b014a809e2262ab71985c4aa7aa970853f8c611d833a136d",
+  "input_tokens": 6188,
+  "output_tokens": 181,
+  "request_hash": "sha256:6d402836a2a99265123e0307a18252aca9d14ccf9b052d3216482c3c3ce6fbd5",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 6188,
+    "output_tokens": 181
+  },
+  "model_seconds": 6.931588880717754
+}

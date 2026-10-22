@@ -1,0 +1,100 @@
+{
+  "version": "red_progress_preservation_v4",
+  "status": "admitted",
+  "candidate_hash": "sha256:f52f504cb43e41c046d26b0d357299b90d1b7558d06d4006c61b34f38428d1ce",
+  "fingerprint": "sha256:0f70567e9c23245553197219447bff9123f0628679273d2894cc3460a197909e",
+  "edit_budget": {
+    "metric": "sequence_matcher_token_edits_v1",
+    "tokenizer": "verilog_source_tokens_v2_macros",
+    "max_changed_fraction": 0.4,
+    "all_code": {
+      "original_tokens": 439,
+      "candidate_tokens": 439,
+      "changed_tokens": 1,
+      "allowed_tokens": 175,
+      "changed_fraction": 0.002277904328018223,
+      "within_limit": true
+    },
+    "body": {
+      "original_tokens": 384,
+      "candidate_tokens": 384,
+      "changed_tokens": 1,
+      "allowed_tokens": 153,
+      "changed_fraction": 0.0026041666666666665,
+      "within_limit": true
+    }
+  },
+  "freeze_hash": "sha256:2ef8387d724aab1c98809cddc95fe010ce0120745b9e7e060a3c745279d0a8be",
+  "language_review": {
+    "comments_unchanged": true,
+    "clean_comments_hash": "sha256:d0c46514a85e4c88cfeb8cee5891bce97c2340e16c581641f3687773d72140d4",
+    "candidate_comments_hash": "sha256:d0c46514a85e4c88cfeb8cee5891bce97c2340e16c581641f3687773d72140d4",
+    "new_identifiers": [],
+    "identifier_review": "informational; not an admission veto"
+  },
+  "baseline": {
+    "suites": {
+      "W_bug": {
+        "build_seconds": 0.01,
+        "tier": "pass",
+        "runs": [
+          "pass",
+          "pass"
+        ],
+        "log_hash": "sha256:df856be12dc07607a74b8bf481d7bcd592e1ef047f2a1041568a287183c95f58",
+        "deterministic": true,
+        "log": "VCD info: dumpfile output_fsm_full_tb_t1.vcd opened for output.\nVCD warning: $dumpvars: Unsupported argument type (vpiPackage)\ntime\t    req_0 req_1 req_2 req_3 gnt_0 gnt_1 gnt_2 gnt_3\n0\t    x  x  x  x  x  x  x  x\n4\t    0  0  0  0  x  x  x  x\n9\t    0  0  0  0  0  0  0  0\n34\t    1  0  0  0  0  0  0  0\n41\t    1  0  0  0  1  0  0  0\n54\t    0  0  0  0  1  0  0  0\n61\t    0  0  0  0  0  0  0  0\n64\t    0  1  0  0  0  0  0  0\n69\t    0  1  0  0  0  1  0  0\n84\t    0  0  0  0  0  1  0  0\n89\t    0  0  0  0  0  0  0  0\n94\t    0  0  1  0  0  0  0  0\n101\t    0  0  1  0  0  0  1  0\n114\t    0  0  0  0  0  0  1  0\n121\t    0  0  0  0  0  0  0  0\n124\t    0  0  0  1  0  0  0  0\n129\t    0  0  0  1  0  0  0  1\n144\t    0  0  0  0  0  0  0  1\n149\t    0  0  0  0  0  0  0  0\nTESTBENCH PASS original oracle\n"
+      },
+      "W_preserve": {
+        "build_seconds": 0.02,
+        "tier": "pass",
+        "runs": [
+          "pass",
+          "pass"
+        ],
+        "log_hash": "sha256:8f7b0d3e220050a01430389374487f2c739abe116929797e50e6f766ebba895a",
+        "deterministic": true,
+        "log": "TESTBENCH PASS preserve\n"
+      }
+    },
+    "structural": {
+      "status": "ok",
+      "returncode": 0,
+      "log": ".1. Analyzing design hierarchy..\nTop module:  \\fsm_full\n\n2.2. Analyzing design hierarchy..\nTop module:  \\fsm_full\nRemoved 0 unused modules.\n\n3. Executing PROC pass (convert processes to netlists).\n\n3.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).\nCleaned up 0 empty switches.\n\n3.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).\nMarked 2 switch rules as full_case in process $proc$rtl/sequence.sv:78$10 in module fsm_full.\nMarked 9 switch rules as full_case in process $proc$rtl/sequence.sv:39$1 in module fsm_full.\nRemoved a total of 0 dead cases.\n\n3.3. Executing PROC_INIT pass (extract init attributes).\n\n3.4. Executing PROC_ARST pass (detect async resets in processes).\n\n3.5. Executing PROC_MUX pass (convert decision trees to multiplexers).\nCreating decoders for process `\\fsm_full.$proc$rtl/sequence.sv:78$10'.\n     1/5: $0\\state[2:0]\n     2/5: $0\\gnt_3[0:0]\n     3/5: $0\\gnt_2[0:0]\n     4/5: $0\\gnt_1[0:0]\n     5/5: $0\\gnt_0[0:0]\nCreating decoders for process `\\fsm_full.$proc$rtl/sequence.sv:39$1'.\n     1/10: $9\\next_state[2:0]\n     2/10: $8\\next_state[2:0]\n     3/10: $7\\next_state[2:0]\n     4/10: $6\\next_state[2:0]\n     5/10: $5\\next_state[2:0]\n     6/10: $4\\next_state[2:0]\n     7/10: $3\\next_state[2:0]\n     8/10: $2\\next_state[2:0]\n     9/10: $1\\next_state[2:0]\n    10/10: $0\\next_state[2:0]\n\n3.6. Executing PROC_DLATCH pass (convert process syncs to latches).\nNo latch inferred for signal `\\fsm_full.\\next_state' from process `\\fsm_full.$proc$rtl/sequence.sv:39$1'.\n\n3.7. Executing PROC_DFF pass (convert process syncs to FFs).\nCreating register for signal `\\fsm_full.\\gnt_0' using process `\\fsm_full.$proc$rtl/sequence.sv:78$10'.\n  created $dff cell `$procdff$150' with positive edge clock.\nCreating register for signal `\\fsm_full.\\gnt_1' using process `\\fsm_full.$proc$rtl/sequence.sv:78$10'.\n  created $dff cell `$procdff$151' with positive edge clock.\nCreating register for signal `\\fsm_full.\\gnt_2' using process `\\fsm_full.$proc$rtl/sequence.sv:78$10'.\n  created $dff cell `$procdff$152' with positive edge clock.\nCreating register for signal `\\fsm_full.\\gnt_3' using process `\\fsm_full.$proc$rtl/sequence.sv:78$10'.\n  created $dff cell `$procdff$153' with positive edge clock.\nCreating register for signal `\\fsm_full.\\state' using process `\\fsm_full.$proc$rtl/sequence.sv:78$10'.\n  created $dff cell `$procdff$154' with positive edge clock.\n\n3.8. Executing PROC_CLEAN pass (remove empty switches from decision trees).\nFound and cleaned up 2 empty switches in `\\fsm_full.$proc$rtl/sequence.sv:78$10'.\nRemoving empty process `fsm_full.$proc$rtl/sequence.sv:78$10'.\nFound and cleaned up 9 empty switches in `\\fsm_full.$proc$rtl/sequence.sv:39$1'.\nRemoving empty process `fsm_full.$proc$rtl/sequence.sv:39$1'.\nCleaned up 11 empty switches.\n\n4. Executing FLATTEN pass (flatten design).\nNo more expansions possible.\n\n5. Executing CHECK pass (checking for obvious problems).\nchecking module fsm_full..\nfound and reported 0 problems.\n",
+      "command": "read_verilog -sv \"rtl/sequence.sv\"; hierarchy -check -top fsm_full ; proc; flatten; check -assert"
+    }
+  },
+  "suites": {
+    "W_bug": {
+      "build_seconds": 0.01,
+      "tier": "fail",
+      "runs": [
+        "fail",
+        "fail"
+      ],
+      "log_hash": "sha256:00daec8c549d9171126f26af147617209ed56b06870356c6243d9cbc3a2e4d13",
+      "deterministic": true,
+      "log": "VCD info: dumpfile output_fsm_full_tb_t1.vcd opened for output.\nVCD warning: $dumpvars: Unsupported argument type (vpiPackage)\ntime\t    req_0 req_1 req_2 req_3 gnt_0 gnt_1 gnt_2 gnt_3\n0\t    x  x  x  x  x  x  x  x\n4\t    0  0  0  0  x  x  x  x\n9\t    0  0  0  0  0  0  0  0\n34\t    1  0  0  0  0  0  0  0\n41\t    1  0  0  0  1  0  0  0\n54\t    0  0  0  0  1  0  0  0\n61\t    0  0  0  0  0  0  0  0\n64\t    0  1  0  0  0  0  0  0\n69\t    0  1  0  0  0  1  0  0\n84\t    0  0  0  0  0  1  0  0\n89\t    0  0  0  0  0  0  0  0\n94\t    0  0  1  0  0  0  0  0\nCHECK_FAIL oracle sample=25 got=0000 expected=0010\nCHECK_FAIL oracle sample=26 got=0000 expected=0010\nCHECK_FAIL oracle sample=27 got=0000 expected=0010\n114\t    0  0  0  0  0  0  0  0\nCHECK_FAIL oracle sample=28 got=0000 expected=0010\nCHECK_FAIL oracle sample=29 got=0000 expected=0010\n124\t    0  0  0  1  0  0  0  0\n129\t    0  0  0  1  0  0  0  1\n144\t    0  0  0  0  0  0  0  1\n149\t    0  0  0  0  0  0  0  0\nCHECK_FAIL oracle errors=5 samples=38\n"
+    },
+    "W_preserve": {
+      "build_seconds": 0.01,
+      "tier": "pass",
+      "runs": [
+        "pass",
+        "pass"
+      ],
+      "log_hash": "sha256:8f7b0d3e220050a01430389374487f2c739abe116929797e50e6f766ebba895a",
+      "deterministic": true,
+      "log": "TESTBENCH PASS preserve\n"
+    }
+  },
+  "structural": {
+    "status": "ok",
+    "returncode": 0,
+    "log": ".1. Analyzing design hierarchy..\nTop module:  \\fsm_full\n\n2.2. Analyzing design hierarchy..\nTop module:  \\fsm_full\nRemoved 0 unused modules.\n\n3. Executing PROC pass (convert processes to netlists).\n\n3.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).\nCleaned up 0 empty switches.\n\n3.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).\nMarked 2 switch rules as full_case in process $proc$rtl/sequence.sv:78$10 in module fsm_full.\nMarked 9 switch rules as full_case in process $proc$rtl/sequence.sv:39$1 in module fsm_full.\nRemoved a total of 0 dead cases.\n\n3.3. Executing PROC_INIT pass (extract init attributes).\n\n3.4. Executing PROC_ARST pass (detect async resets in processes).\n\n3.5. Executing PROC_MUX pass (convert decision trees to multiplexers).\nCreating decoders for process `\\fsm_full.$proc$rtl/sequence.sv:78$10'.\n     1/5: $0\\state[2:0]\n     2/5: $0\\gnt_3[0:0]\n     3/5: $0\\gnt_2[0:0]\n     4/5: $0\\gnt_1[0:0]\n     5/5: $0\\gnt_0[0:0]\nCreating decoders for process `\\fsm_full.$proc$rtl/sequence.sv:39$1'.\n     1/10: $9\\next_state[2:0]\n     2/10: $8\\next_state[2:0]\n     3/10: $7\\next_state[2:0]\n     4/10: $6\\next_state[2:0]\n     5/10: $5\\next_state[2:0]\n     6/10: $4\\next_state[2:0]\n     7/10: $3\\next_state[2:0]\n     8/10: $2\\next_state[2:0]\n     9/10: $1\\next_state[2:0]\n    10/10: $0\\next_state[2:0]\n\n3.6. Executing PROC_DLATCH pass (convert process syncs to latches).\nNo latch inferred for signal `\\fsm_full.\\next_state' from process `\\fsm_full.$proc$rtl/sequence.sv:39$1'.\n\n3.7. Executing PROC_DFF pass (convert process syncs to FFs).\nCreating register for signal `\\fsm_full.\\gnt_0' using process `\\fsm_full.$proc$rtl/sequence.sv:78$10'.\n  created $dff cell `$procdff$150' with positive edge clock.\nCreating register for signal `\\fsm_full.\\gnt_1' using process `\\fsm_full.$proc$rtl/sequence.sv:78$10'.\n  created $dff cell `$procdff$151' with positive edge clock.\nCreating register for signal `\\fsm_full.\\gnt_2' using process `\\fsm_full.$proc$rtl/sequence.sv:78$10'.\n  created $dff cell `$procdff$152' with positive edge clock.\nCreating register for signal `\\fsm_full.\\gnt_3' using process `\\fsm_full.$proc$rtl/sequence.sv:78$10'.\n  created $dff cell `$procdff$153' with positive edge clock.\nCreating register for signal `\\fsm_full.\\state' using process `\\fsm_full.$proc$rtl/sequence.sv:78$10'.\n  created $dff cell `$procdff$154' with positive edge clock.\n\n3.8. Executing PROC_CLEAN pass (remove empty switches from decision trees).\nFound and cleaned up 2 empty switches in `\\fsm_full.$proc$rtl/sequence.sv:78$10'.\nRemoving empty process `fsm_full.$proc$rtl/sequence.sv:78$10'.\nFound and cleaned up 9 empty switches in `\\fsm_full.$proc$rtl/sequence.sv:39$1'.\nRemoving empty process `fsm_full.$proc$rtl/sequence.sv:39$1'.\nCleaned up 11 empty switches.\n\n4. Executing FLATTEN pass (flatten design).\nNo more expansions possible.\n\n5. Executing CHECK pass (checking for obvious problems).\nchecking module fsm_full..\nfound and reported 0 problems.\n",
+    "command": "read_verilog -sv \"rtl/sequence.sv\"; hierarchy -check -top fsm_full ; proc; flatten; check -assert"
+  },
+  "reason": "public_matrix_and_structure_pass",
+  "blue_task": "blue_task",
+  "tools_seconds": 0.16324288863688707
+}

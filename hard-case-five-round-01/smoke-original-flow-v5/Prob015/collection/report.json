@@ -1,0 +1,854 @@
+{
+  "scope": "single design, human-selected mechanism, deferred unseen-variant probes",
+  "scheduled_generation": 5,
+  "admitted": 0,
+  "distinct_admitted": 0,
+  "online_and_frozen_reference": [
+    {
+      "round": 1,
+      "slot_id": "r1_s0",
+      "admission": "inconclusive",
+      "reason": "clean_baseline_not_qualified"
+    },
+    {
+      "round": 2,
+      "slot_id": "r2_s0",
+      "admission": "inconclusive",
+      "reason": "clean_baseline_not_qualified"
+    },
+    {
+      "round": 3,
+      "slot_id": "r3_s0",
+      "admission": "inconclusive",
+      "reason": "clean_baseline_not_qualified"
+    },
+    {
+      "round": 4,
+      "slot_id": "r4_s0",
+      "admission": "inconclusive",
+      "reason": "clean_baseline_not_qualified"
+    },
+    {
+      "round": 5,
+      "slot_id": "r5_s0",
+      "admission": "inconclusive",
+      "reason": "clean_baseline_not_qualified"
+    }
+  ],
+  "reserved_variants_by_snapshot": [
+    {
+      "snapshot": "B_0",
+      "scheduled": 4,
+      "categories": {
+        "public_pass_hidden_pass": 4
+      }
+    },
+    {
+      "snapshot": "B_1",
+      "scheduled": 4,
+      "categories": {
+        "public_pass_hidden_pass": 4
+      }
+    },
+    {
+      "snapshot": "B_2",
+      "scheduled": 4,
+      "categories": {
+        "public_pass_hidden_pass": 4
+      }
+    },
+    {
+      "snapshot": "B_3",
+      "scheduled": 4,
+      "categories": {
+        "public_pass_hidden_pass": 4
+      }
+    },
+    {
+      "snapshot": "B_4",
+      "scheduled": 4,
+      "categories": {
+        "public_pass_hidden_pass": 4
+      }
+    },
+    {
+      "snapshot": "B_5",
+      "scheduled": 4,
+      "categories": {
+        "public_pass_hidden_pass": 4
+      }
+    }
+  ],
+  "probes": [
+    {
+      "snapshot": 0,
+      "anchor_index": 0,
+      "repeat": 0,
+      "endpoint": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:f48c8dc4563201d29a3e34d275c8c60d615e9de52d80eb4f2ca0fa80720ba79b",
+        "endpoint_public": {
+          "tier": "visible_pass",
+          "suites": {
+            "W_bug": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -1,3 +1,4 @@\n+\n module TopModule(\n \tinput wire clk  ,\n \tinput wire rst  ,\n@@ -44,20 +45,20 @@\n         endcase\n     end\n     \n-    always @(posedge clk or negedge rst) begin\n-      if (~rst) begin\n-        {out1, out2, out3} <= 3'b000;\n-      end\n-      else begin\n-        case (state)\n-          S0, S0_5, S1:  {out1, out2, out3} <= 3'b000;\n-          S1_5:          {out1, out2, out3} <= (~sel) ? 3'b100 : 3'b000;\n-          S2:            {out1, out2, out3} <= (~sel) ? 3'b101 : 3'b000;\n-          S2_5:          {out1, out2, out3} <= (~sel) ? 3'b101 : 3'b010;\n-          S3:            {out1, out2, out3} <= (~sel) ? 3'b101 : 3'b011;\n-          default:        {out1, out2, out3} <= 3'b000;\n-        endcase\n-      end\n+    always@(*) begin\n+        if(~rst) begin\n+            {out1, out2, out3} = 3'b000;\n+        end\n+        else begin\n+            case(state)\n+                S0, S0_5, S1: {out1, out2, out3} = 0;\n+                S1_5        : {out1, out2, out3} = ~sel? 3'b100: 3'b000;\n+                S2          : {out1, out2, out3} = ~sel? 3'b101: 3'b000;\n+                S2_5        : {out1, out2, out3} = ~sel? 3'b101: 3'b010;\n+                S3          : {out1, out2, out3} = ~sel? 3'b101: 3'b011;\n+                default     : {out1, out2, out3} = 3'b000;\n+            endcase\n+        end\n     end\n //*************code***********//\n endmodule\n",
+        "endpoint_evaluator": {
+          "result": "pass",
+          "returncode": 0,
+          "failures": [],
+          "log_hash": "sha256:2830216deb3a4a39847aad62e0bbf4027558d8d92a12addafd978c42b59d5ea9"
+        },
+        "category": "public_pass_hidden_pass"
+      }
+    },
+    {
+      "snapshot": 0,
+      "anchor_index": 0,
+      "repeat": 1,
+      "endpoint": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:f48c8dc4563201d29a3e34d275c8c60d615e9de52d80eb4f2ca0fa80720ba79b",
+        "endpoint_public": {
+          "tier": "visible_pass",
+          "suites": {
+            "W_bug": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -1,3 +1,4 @@\n+\n module TopModule(\n \tinput wire clk  ,\n \tinput wire rst  ,\n@@ -44,20 +45,20 @@\n         endcase\n     end\n     \n-    always @(posedge clk or negedge rst) begin\n-      if (~rst) begin\n-        {out1, out2, out3} <= 3'b000;\n-      end\n-      else begin\n-        case (state)\n-          S0, S0_5, S1:  {out1, out2, out3} <= 3'b000;\n-          S1_5:          {out1, out2, out3} <= (~sel) ? 3'b100 : 3'b000;\n-          S2:            {out1, out2, out3} <= (~sel) ? 3'b101 : 3'b000;\n-          S2_5:          {out1, out2, out3} <= (~sel) ? 3'b101 : 3'b010;\n-          S3:            {out1, out2, out3} <= (~sel) ? 3'b101 : 3'b011;\n-          default:        {out1, out2, out3} <= 3'b000;\n-        endcase\n-      end\n+    always@(*) begin\n+        if(~rst) begin\n+            {out1, out2, out3} = 3'b000;\n+        end\n+        else begin\n+            case(state)\n+                S0, S0_5, S1: {out1, out2, out3} = 0;\n+                S1_5        : {out1, out2, out3} = ~sel? 3'b100: 3'b000;\n+                S2          : {out1, out2, out3} = ~sel? 3'b101: 3'b000;\n+                S2_5        : {out1, out2, out3} = ~sel? 3'b101: 3'b010;\n+                S3          : {out1, out2, out3} = ~sel? 3'b101: 3'b011;\n+                default     : {out1, out2, out3} = 3'b000;\n+            endcase\n+        end\n     end\n //*************code***********//\n endmodule\n",
+        "endpoint_evaluator": {
+          "result": "pass",
+          "returncode": 0,
+          "failures": [],
+          "log_hash": "sha256:2830216deb3a4a39847aad62e0bbf4027558d8d92a12addafd978c42b59d5ea9"
+        },
+        "category": "public_pass_hidden_pass"
+      }
+    },
+    {
+      "snapshot": 0,
+      "anchor_index": 1,
+      "repeat": 0,
+      "endpoint": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:f48c8dc4563201d29a3e34d275c8c60d615e9de52d80eb4f2ca0fa80720ba79b",
+        "endpoint_public": {
+          "tier": "visible_pass",
+          "suites": {
+            "W_bug": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -1,3 +1,4 @@\n+\n module TopModule(\n \tinput wire clk  ,\n \tinput wire rst  ,\n@@ -30,11 +31,11 @@\n                               d2? S1_5:\n                               nstate;\n             S1     : nstate = d1? S1_5:\n-                              d2? S3:\n+                              d2? S2:\n                               nstate;\n             S1_5   : nstate = ~sel? S0:\n                               d1? S2:\n-                              d2? S1:\n+                              d2? S2_5:\n                               nstate;\n             S2     : nstate = ~sel? S0:\n                               d1? S2_5:\n",
+        "endpoint_evaluator": {
+          "result": "pass",
+          "returncode": 0,
+          "failures": [],
+          "log_hash": "sha256:2830216deb3a4a39847aad62e0bbf4027558d8d92a12addafd978c42b59d5ea9"
+        },
+        "category": "public_pass_hidden_pass"
+      }
+    },
+    {
+      "snapshot": 0,
+      "anchor_index": 1,
+      "repeat": 1,
+      "endpoint": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:f48c8dc4563201d29a3e34d275c8c60d615e9de52d80eb4f2ca0fa80720ba79b",
+        "endpoint_public": {
+          "tier": "visible_pass",
+          "suites": {
+            "W_bug": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -1,3 +1,4 @@\n+\n module TopModule(\n \tinput wire clk  ,\n \tinput wire rst  ,\n@@ -30,11 +31,11 @@\n                               d2? S1_5:\n                               nstate;\n             S1     : nstate = d1? S1_5:\n-                              d2? S3:\n+                              d2? S2:\n                               nstate;\n             S1_5   : nstate = ~sel? S0:\n                               d1? S2:\n-                              d2? S1:\n+                              d2? S2_5:\n                               nstate;\n             S2     : nstate = ~sel? S0:\n                               d1? S2_5:\n",
+        "endpoint_evaluator": {
+          "result": "pass",
+          "returncode": 0,
+          "failures": [],
+          "log_hash": "sha256:2830216deb3a4a39847aad62e0bbf4027558d8d92a12addafd978c42b59d5ea9"
+        },
+        "category": "public_pass_hidden_pass"
+      }
+    },
+    {
+      "snapshot": 1,
+      "anchor_index": 0,
+      "repeat": 0,
+      "endpoint": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:f48c8dc4563201d29a3e34d275c8c60d615e9de52d80eb4f2ca0fa80720ba79b",
+        "endpoint_public": {
+          "tier": "visible_pass",
+          "suites": {
+            "W_bug": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -1,3 +1,4 @@\n+\n module TopModule(\n \tinput wire clk  ,\n \tinput wire rst  ,\n@@ -44,20 +45,20 @@\n         endcase\n     end\n     \n-    always @(posedge clk or negedge rst) begin\n-      if (~rst) begin\n-        {out1, out2, out3} <= 3'b000;\n-      end\n-      else begin\n-        case (state)\n-          S0, S0_5, S1:  {out1, out2, out3} <= 3'b000;\n-          S1_5:          {out1, out2, out3} <= (~sel) ? 3'b100 : 3'b000;\n-          S2:            {out1, out2, out3} <= (~sel) ? 3'b101 : 3'b000;\n-          S2_5:          {out1, out2, out3} <= (~sel) ? 3'b101 : 3'b010;\n-          S3:            {out1, out2, out3} <= (~sel) ? 3'b101 : 3'b011;\n-          default:        {out1, out2, out3} <= 3'b000;\n-        endcase\n-      end\n+    always@(*) begin\n+        if(~rst) begin\n+            {out1, out2, out3} = 3'b000;\n+        end\n+        else begin\n+            case(state)\n+                S0, S0_5, S1: {out1, out2, out3} = 0;\n+                S1_5        : {out1, out2, out3} = ~sel? 3'b100: 3'b000;\n+                S2          : {out1, out2, out3} = ~sel? 3'b101: 3'b000;\n+                S2_5        : {out1, out2, out3} = ~sel? 3'b101: 3'b010;\n+                S3          : {out1, out2, out3} = ~sel? 3'b101: 3'b011;\n+                default     : {out1, out2, out3} = 3'b000;\n+            endcase\n+        end\n     end\n //*************code***********//\n endmodule\n",
+        "endpoint_evaluator": {
+          "result": "pass",
+          "returncode": 0,
+          "failures": [],
+          "log_hash": "sha256:2830216deb3a4a39847aad62e0bbf4027558d8d92a12addafd978c42b59d5ea9"
+        },
+        "category": "public_pass_hidden_pass"
+      }
+    },
+    {
+      "snapshot": 1,
+      "anchor_index": 0,
+      "repeat": 1,
+      "endpoint": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:f48c8dc4563201d29a3e34d275c8c60d615e9de52d80eb4f2ca0fa80720ba79b",
+        "endpoint_public": {
+          "tier": "visible_pass",
+          "suites": {
+            "W_bug": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -1,3 +1,4 @@\n+\n module TopModule(\n \tinput wire clk  ,\n \tinput wire rst  ,\n@@ -44,20 +45,20 @@\n         endcase\n     end\n     \n-    always @(posedge clk or negedge rst) begin\n-      if (~rst) begin\n-        {out1, out2, out3} <= 3'b000;\n-      end\n-      else begin\n-        case (state)\n-          S0, S0_5, S1:  {out1, out2, out3} <= 3'b000;\n-          S1_5:          {out1, out2, out3} <= (~sel) ? 3'b100 : 3'b000;\n-          S2:            {out1, out2, out3} <= (~sel) ? 3'b101 : 3'b000;\n-          S2_5:          {out1, out2, out3} <= (~sel) ? 3'b101 : 3'b010;\n-          S3:            {out1, out2, out3} <= (~sel) ? 3'b101 : 3'b011;\n-          default:        {out1, out2, out3} <= 3'b000;\n-        endcase\n-      end\n+    always@(*) begin\n+        if(~rst) begin\n+            {out1, out2, out3} = 3'b000;\n+        end\n+        else begin\n+            case(state)\n+                S0, S0_5, S1: {out1, out2, out3} = 0;\n+                S1_5        : {out1, out2, out3} = ~sel? 3'b100: 3'b000;\n+                S2          : {out1, out2, out3} = ~sel? 3'b101: 3'b000;\n+                S2_5        : {out1, out2, out3} = ~sel? 3'b101: 3'b010;\n+                S3          : {out1, out2, out3} = ~sel? 3'b101: 3'b011;\n+                default     : {out1, out2, out3} = 3'b000;\n+            endcase\n+        end\n     end\n //*************code***********//\n endmodule\n",
+        "endpoint_evaluator": {
+          "result": "pass",
+          "returncode": 0,
+          "failures": [],
+          "log_hash": "sha256:2830216deb3a4a39847aad62e0bbf4027558d8d92a12addafd978c42b59d5ea9"
+        },
+        "category": "public_pass_hidden_pass"
+      }
+    },
+    {
+      "snapshot": 1,
+      "anchor_index": 1,
+      "repeat": 0,
+      "endpoint": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:f48c8dc4563201d29a3e34d275c8c60d615e9de52d80eb4f2ca0fa80720ba79b",
+        "endpoint_public": {
+          "tier": "visible_pass",
+          "suites": {
+            "W_bug": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -1,3 +1,4 @@\n+\n module TopModule(\n \tinput wire clk  ,\n \tinput wire rst  ,\n@@ -30,11 +31,11 @@\n                               d2? S1_5:\n                               nstate;\n             S1     : nstate = d1? S1_5:\n-                              d2? S3:\n+                              d2? S2:\n                               nstate;\n             S1_5   : nstate = ~sel? S0:\n                               d1? S2:\n-                              d2? S1:\n+                              d2? S2_5:\n                               nstate;\n             S2     : nstate = ~sel? S0:\n                               d1? S2_5:\n",
+        "endpoint_evaluator": {
+          "result": "pass",
+          "returncode": 0,
+          "failures": [],
+          "log_hash": "sha256:2830216deb3a4a39847aad62e0bbf4027558d8d92a12addafd978c42b59d5ea9"
+        },
+        "category": "public_pass_hidden_pass"
+      }
+    },
+    {
+      "snapshot": 1,
+      "anchor_index": 1,
+      "repeat": 1,
+      "endpoint": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:f48c8dc4563201d29a3e34d275c8c60d615e9de52d80eb4f2ca0fa80720ba79b",
+        "endpoint_public": {
+          "tier": "visible_pass",
+          "suites": {
+            "W_bug": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -1,3 +1,4 @@\n+\n module TopModule(\n \tinput wire clk  ,\n \tinput wire rst  ,\n@@ -30,11 +31,11 @@\n                               d2? S1_5:\n                               nstate;\n             S1     : nstate = d1? S1_5:\n-                              d2? S3:\n+                              d2? S2:\n                               nstate;\n             S1_5   : nstate = ~sel? S0:\n                               d1? S2:\n-                              d2? S1:\n+                              d2? S2_5:\n                               nstate;\n             S2     : nstate = ~sel? S0:\n                               d1? S2_5:\n",
+        "endpoint_evaluator": {
+          "result": "pass",
+          "returncode": 0,
+          "failures": [],
+          "log_hash": "sha256:2830216deb3a4a39847aad62e0bbf4027558d8d92a12addafd978c42b59d5ea9"
+        },
+        "category": "public_pass_hidden_pass"
+      }
+    },
+    {
+      "snapshot": 2,
+      "anchor_index": 0,
+      "repeat": 0,
+      "endpoint": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:f48c8dc4563201d29a3e34d275c8c60d615e9de52d80eb4f2ca0fa80720ba79b",
+        "endpoint_public": {
+          "tier": "visible_pass",
+          "suites": {
+            "W_bug": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -1,3 +1,4 @@\n+\n module TopModule(\n \tinput wire clk  ,\n \tinput wire rst  ,\n@@ -44,20 +45,20 @@\n         endcase\n     end\n     \n-    always @(posedge clk or negedge rst) begin\n-      if (~rst) begin\n-        {out1, out2, out3} <= 3'b000;\n-      end\n-      else begin\n-        case (state)\n-          S0, S0_5, S1:  {out1, out2, out3} <= 3'b000;\n-          S1_5:          {out1, out2, out3} <= (~sel) ? 3'b100 : 3'b000;\n-          S2:            {out1, out2, out3} <= (~sel) ? 3'b101 : 3'b000;\n-          S2_5:          {out1, out2, out3} <= (~sel) ? 3'b101 : 3'b010;\n-          S3:            {out1, out2, out3} <= (~sel) ? 3'b101 : 3'b011;\n-          default:        {out1, out2, out3} <= 3'b000;\n-        endcase\n-      end\n+    always@(*) begin\n+        if(~rst) begin\n+            {out1, out2, out3} = 3'b000;\n+        end\n+        else begin\n+            case(state)\n+                S0, S0_5, S1: {out1, out2, out3} = 0;\n+                S1_5        : {out1, out2, out3} = ~sel? 3'b100: 3'b000;\n+                S2          : {out1, out2, out3} = ~sel? 3'b101: 3'b000;\n+                S2_5        : {out1, out2, out3} = ~sel? 3'b101: 3'b010;\n+                S3          : {out1, out2, out3} = ~sel? 3'b101: 3'b011;\n+                default     : {out1, out2, out3} = 3'b000;\n+            endcase\n+        end\n     end\n //*************code***********//\n endmodule\n",
+        "endpoint_evaluator": {
+          "result": "pass",
+          "returncode": 0,
+          "failures": [],
+          "log_hash": "sha256:2830216deb3a4a39847aad62e0bbf4027558d8d92a12addafd978c42b59d5ea9"
+        },
+        "category": "public_pass_hidden_pass"
+      }
+    },
+    {
+      "snapshot": 2,
+      "anchor_index": 0,
+      "repeat": 1,
+      "endpoint": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:f48c8dc4563201d29a3e34d275c8c60d615e9de52d80eb4f2ca0fa80720ba79b",
+        "endpoint_public": {
+          "tier": "visible_pass",
+          "suites": {
+            "W_bug": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -1,3 +1,4 @@\n+\n module TopModule(\n \tinput wire clk  ,\n \tinput wire rst  ,\n@@ -44,20 +45,20 @@\n         endcase\n     end\n     \n-    always @(posedge clk or negedge rst) begin\n-      if (~rst) begin\n-        {out1, out2, out3} <= 3'b000;\n-      end\n-      else begin\n-        case (state)\n-          S0, S0_5, S1:  {out1, out2, out3} <= 3'b000;\n-          S1_5:          {out1, out2, out3} <= (~sel) ? 3'b100 : 3'b000;\n-          S2:            {out1, out2, out3} <= (~sel) ? 3'b101 : 3'b000;\n-          S2_5:          {out1, out2, out3} <= (~sel) ? 3'b101 : 3'b010;\n-          S3:            {out1, out2, out3} <= (~sel) ? 3'b101 : 3'b011;\n-          default:        {out1, out2, out3} <= 3'b000;\n-        endcase\n-      end\n+    always@(*) begin\n+        if(~rst) begin\n+            {out1, out2, out3} = 3'b000;\n+        end\n+        else begin\n+            case(state)\n+                S0, S0_5, S1: {out1, out2, out3} = 0;\n+                S1_5        : {out1, out2, out3} = ~sel? 3'b100: 3'b000;\n+                S2          : {out1, out2, out3} = ~sel? 3'b101: 3'b000;\n+                S2_5        : {out1, out2, out3} = ~sel? 3'b101: 3'b010;\n+                S3          : {out1, out2, out3} = ~sel? 3'b101: 3'b011;\n+                default     : {out1, out2, out3} = 3'b000;\n+            endcase\n+        end\n     end\n //*************code***********//\n endmodule\n",
+        "endpoint_evaluator": {
+          "result": "pass",
+          "returncode": 0,
+          "failures": [],
+          "log_hash": "sha256:2830216deb3a4a39847aad62e0bbf4027558d8d92a12addafd978c42b59d5ea9"
+        },
+        "category": "public_pass_hidden_pass"
+      }
+    },
+    {
+      "snapshot": 2,
+      "anchor_index": 1,
+      "repeat": 0,
+      "endpoint": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:f48c8dc4563201d29a3e34d275c8c60d615e9de52d80eb4f2ca0fa80720ba79b",
+        "endpoint_public": {
+          "tier": "visible_pass",
+          "suites": {
+            "W_bug": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -1,3 +1,4 @@\n+\n module TopModule(\n \tinput wire clk  ,\n \tinput wire rst  ,\n@@ -30,11 +31,11 @@\n                               d2? S1_5:\n                               nstate;\n             S1     : nstate = d1? S1_5:\n-                              d2? S3:\n+                              d2? S2:\n                               nstate;\n             S1_5   : nstate = ~sel? S0:\n                               d1? S2:\n-                              d2? S1:\n+                              d2? S2_5:\n                               nstate;\n             S2     : nstate = ~sel? S0:\n                               d1? S2_5:\n",
+        "endpoint_evaluator": {
+          "result": "pass",
+          "returncode": 0,
+          "failures": [],
+          "log_hash": "sha256:2830216deb3a4a39847aad62e0bbf4027558d8d92a12addafd978c42b59d5ea9"
+        },
+        "category": "public_pass_hidden_pass"
+      }
+    },
+    {
+      "snapshot": 2,
+      "anchor_index": 1,
+      "repeat": 1,
+      "endpoint": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:f48c8dc4563201d29a3e34d275c8c60d615e9de52d80eb4f2ca0fa80720ba79b",
+        "endpoint_public": {
+          "tier": "visible_pass",
+          "suites": {
+            "W_bug": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -1,3 +1,4 @@\n+\n module TopModule(\n \tinput wire clk  ,\n \tinput wire rst  ,\n@@ -30,11 +31,11 @@\n                               d2? S1_5:\n                               nstate;\n             S1     : nstate = d1? S1_5:\n-                              d2? S3:\n+                              d2? S2:\n                               nstate;\n             S1_5   : nstate = ~sel? S0:\n                               d1? S2:\n-                              d2? S1:\n+                              d2? S2_5:\n                               nstate;\n             S2     : nstate = ~sel? S0:\n                               d1? S2_5:\n",
+        "endpoint_evaluator": {
+          "result": "pass",
+          "returncode": 0,
+          "failures": [],
+          "log_hash": "sha256:2830216deb3a4a39847aad62e0bbf4027558d8d92a12addafd978c42b59d5ea9"
+        },
+        "category": "public_pass_hidden_pass"
+      }
+    },
+    {
+      "snapshot": 3,
+      "anchor_index": 0,
+      "repeat": 0,
+      "endpoint": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:f48c8dc4563201d29a3e34d275c8c60d615e9de52d80eb4f2ca0fa80720ba79b",
+        "endpoint_public": {
+          "tier": "visible_pass",
+          "suites": {
+            "W_bug": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -1,3 +1,4 @@\n+\n module TopModule(\n \tinput wire clk  ,\n \tinput wire rst  ,\n@@ -44,20 +45,20 @@\n         endcase\n     end\n     \n-    always @(posedge clk or negedge rst) begin\n-      if (~rst) begin\n-        {out1, out2, out3} <= 3'b000;\n-      end\n-      else begin\n-        case (state)\n-          S0, S0_5, S1:  {out1, out2, out3} <= 3'b000;\n-          S1_5:          {out1, out2, out3} <= (~sel) ? 3'b100 : 3'b000;\n-          S2:            {out1, out2, out3} <= (~sel) ? 3'b101 : 3'b000;\n-          S2_5:          {out1, out2, out3} <= (~sel) ? 3'b101 : 3'b010;\n-          S3:            {out1, out2, out3} <= (~sel) ? 3'b101 : 3'b011;\n-          default:        {out1, out2, out3} <= 3'b000;\n-        endcase\n-      end\n+    always@(*) begin\n+        if(~rst) begin\n+            {out1, out2, out3} = 3'b000;\n+        end\n+        else begin\n+            case(state)\n+                S0, S0_5, S1: {out1, out2, out3} = 0;\n+                S1_5        : {out1, out2, out3} = ~sel? 3'b100: 3'b000;\n+                S2          : {out1, out2, out3} = ~sel? 3'b101: 3'b000;\n+                S2_5        : {out1, out2, out3} = ~sel? 3'b101: 3'b010;\n+                S3          : {out1, out2, out3} = ~sel? 3'b101: 3'b011;\n+                default     : {out1, out2, out3} = 3'b000;\n+            endcase\n+        end\n     end\n //*************code***********//\n endmodule\n",
+        "endpoint_evaluator": {
+          "result": "pass",
+          "returncode": 0,
+          "failures": [],
+          "log_hash": "sha256:2830216deb3a4a39847aad62e0bbf4027558d8d92a12addafd978c42b59d5ea9"
+        },
+        "category": "public_pass_hidden_pass"
+      }
+    },
+    {
+      "snapshot": 3,
+      "anchor_index": 0,
+      "repeat": 1,
+      "endpoint": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:f48c8dc4563201d29a3e34d275c8c60d615e9de52d80eb4f2ca0fa80720ba79b",
+        "endpoint_public": {
+          "tier": "visible_pass",
+          "suites": {
+            "W_bug": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -1,3 +1,4 @@\n+\n module TopModule(\n \tinput wire clk  ,\n \tinput wire rst  ,\n@@ -44,20 +45,20 @@\n         endcase\n     end\n     \n-    always @(posedge clk or negedge rst) begin\n-      if (~rst) begin\n-        {out1, out2, out3} <= 3'b000;\n-      end\n-      else begin\n-        case (state)\n-          S0, S0_5, S1:  {out1, out2, out3} <= 3'b000;\n-          S1_5:          {out1, out2, out3} <= (~sel) ? 3'b100 : 3'b000;\n-          S2:            {out1, out2, out3} <= (~sel) ? 3'b101 : 3'b000;\n-          S2_5:          {out1, out2, out3} <= (~sel) ? 3'b101 : 3'b010;\n-          S3:            {out1, out2, out3} <= (~sel) ? 3'b101 : 3'b011;\n-          default:        {out1, out2, out3} <= 3'b000;\n-        endcase\n-      end\n+    always@(*) begin\n+        if(~rst) begin\n+            {out1, out2, out3} = 3'b000;\n+        end\n+        else begin\n+            case(state)\n+                S0, S0_5, S1: {out1, out2, out3} = 0;\n+                S1_5        : {out1, out2, out3} = ~sel? 3'b100: 3'b000;\n+                S2          : {out1, out2, out3} = ~sel? 3'b101: 3'b000;\n+                S2_5        : {out1, out2, out3} = ~sel? 3'b101: 3'b010;\n+                S3          : {out1, out2, out3} = ~sel? 3'b101: 3'b011;\n+                default     : {out1, out2, out3} = 3'b000;\n+            endcase\n+        end\n     end\n //*************code***********//\n endmodule\n",
+        "endpoint_evaluator": {
+          "result": "pass",
+          "returncode": 0,
+          "failures": [],
+          "log_hash": "sha256:2830216deb3a4a39847aad62e0bbf4027558d8d92a12addafd978c42b59d5ea9"
+        },
+        "category": "public_pass_hidden_pass"
+      }
+    },
+    {
+      "snapshot": 3,
+      "anchor_index": 1,
+      "repeat": 0,
+      "endpoint": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:f48c8dc4563201d29a3e34d275c8c60d615e9de52d80eb4f2ca0fa80720ba79b",
+        "endpoint_public": {
+          "tier": "visible_pass",
+          "suites": {
+            "W_bug": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -1,3 +1,4 @@\n+\n module TopModule(\n \tinput wire clk  ,\n \tinput wire rst  ,\n@@ -30,11 +31,11 @@\n                               d2? S1_5:\n                               nstate;\n             S1     : nstate = d1? S1_5:\n-                              d2? S3:\n+                              d2? S2:\n                               nstate;\n             S1_5   : nstate = ~sel? S0:\n                               d1? S2:\n-                              d2? S1:\n+                              d2? S2_5:\n                               nstate;\n             S2     : nstate = ~sel? S0:\n                               d1? S2_5:\n",
+        "endpoint_evaluator": {
+          "result": "pass",
+          "returncode": 0,
+          "failures": [],
+          "log_hash": "sha256:2830216deb3a4a39847aad62e0bbf4027558d8d92a12addafd978c42b59d5ea9"
+        },
+        "category": "public_pass_hidden_pass"
+      }
+    },
+    {
+      "snapshot": 3,
+      "anchor_index": 1,
+      "repeat": 1,
+      "endpoint": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:f48c8dc4563201d29a3e34d275c8c60d615e9de52d80eb4f2ca0fa80720ba79b",
+        "endpoint_public": {
+          "tier": "visible_pass",
+          "suites": {
+            "W_bug": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -1,3 +1,4 @@\n+\n module TopModule(\n \tinput wire clk  ,\n \tinput wire rst  ,\n@@ -30,11 +31,11 @@\n                               d2? S1_5:\n                               nstate;\n             S1     : nstate = d1? S1_5:\n-                              d2? S3:\n+                              d2? S2:\n                               nstate;\n             S1_5   : nstate = ~sel? S0:\n                               d1? S2:\n-                              d2? S1:\n+                              d2? S2_5:\n                               nstate;\n             S2     : nstate = ~sel? S0:\n                               d1? S2_5:\n",
+        "endpoint_evaluator": {
+          "result": "pass",
+          "returncode": 0,
+          "failures": [],
+          "log_hash": "sha256:2830216deb3a4a39847aad62e0bbf4027558d8d92a12addafd978c42b59d5ea9"
+        },
+        "category": "public_pass_hidden_pass"
+      }
+    },
+    {
+      "snapshot": 4,
+      "anchor_index": 0,
+      "repeat": 0,
+      "endpoint": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:f48c8dc4563201d29a3e34d275c8c60d615e9de52d80eb4f2ca0fa80720ba79b",
+        "endpoint_public": {
+          "tier": "visible_pass",
+          "suites": {
+            "W_bug": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -1,3 +1,4 @@\n+\n module TopModule(\n \tinput wire clk  ,\n \tinput wire rst  ,\n@@ -44,20 +45,20 @@\n         endcase\n     end\n     \n-    always @(posedge clk or negedge rst) begin\n-      if (~rst) begin\n-        {out1, out2, out3} <= 3'b000;\n-      end\n-      else begin\n-        case (state)\n-          S0, S0_5, S1:  {out1, out2, out3} <= 3'b000;\n-          S1_5:          {out1, out2, out3} <= (~sel) ? 3'b100 : 3'b000;\n-          S2:            {out1, out2, out3} <= (~sel) ? 3'b101 : 3'b000;\n-          S2_5:          {out1, out2, out3} <= (~sel) ? 3'b101 : 3'b010;\n-          S3:            {out1, out2, out3} <= (~sel) ? 3'b101 : 3'b011;\n-          default:        {out1, out2, out3} <= 3'b000;\n-        endcase\n-      end\n+    always@(*) begin\n+        if(~rst) begin\n+            {out1, out2, out3} = 3'b000;\n+        end\n+        else begin\n+            case(state)\n+                S0, S0_5, S1: {out1, out2, out3} = 0;\n+                S1_5        : {out1, out2, out3} = ~sel? 3'b100: 3'b000;\n+                S2          : {out1, out2, out3} = ~sel? 3'b101: 3'b000;\n+                S2_5        : {out1, out2, out3} = ~sel? 3'b101: 3'b010;\n+                S3          : {out1, out2, out3} = ~sel? 3'b101: 3'b011;\n+                default     : {out1, out2, out3} = 3'b000;\n+            endcase\n+        end\n     end\n //*************code***********//\n endmodule\n",
+        "endpoint_evaluator": {
+          "result": "pass",
+          "returncode": 0,
+          "failures": [],
+          "log_hash": "sha256:2830216deb3a4a39847aad62e0bbf4027558d8d92a12addafd978c42b59d5ea9"
+        },
+        "category": "public_pass_hidden_pass"
+      }
+    },
+    {
+      "snapshot": 4,
+      "anchor_index": 0,
+      "repeat": 1,
+      "endpoint": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:f48c8dc4563201d29a3e34d275c8c60d615e9de52d80eb4f2ca0fa80720ba79b",
+        "endpoint_public": {
+          "tier": "visible_pass",
+          "suites": {
+            "W_bug": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -1,3 +1,4 @@\n+\n module TopModule(\n \tinput wire clk  ,\n \tinput wire rst  ,\n@@ -44,20 +45,20 @@\n         endcase\n     end\n     \n-    always @(posedge clk or negedge rst) begin\n-      if (~rst) begin\n-        {out1, out2, out3} <= 3'b000;\n-      end\n-      else begin\n-        case (state)\n-          S0, S0_5, S1:  {out1, out2, out3} <= 3'b000;\n-          S1_5:          {out1, out2, out3} <= (~sel) ? 3'b100 : 3'b000;\n-          S2:            {out1, out2, out3} <= (~sel) ? 3'b101 : 3'b000;\n-          S2_5:          {out1, out2, out3} <= (~sel) ? 3'b101 : 3'b010;\n-          S3:            {out1, out2, out3} <= (~sel) ? 3'b101 : 3'b011;\n-          default:        {out1, out2, out3} <= 3'b000;\n-        endcase\n-      end\n+    always@(*) begin\n+        if(~rst) begin\n+            {out1, out2, out3} = 3'b000;\n+        end\n+        else begin\n+            case(state)\n+                S0, S0_5, S1: {out1, out2, out3} = 0;\n+                S1_5        : {out1, out2, out3} = ~sel? 3'b100: 3'b000;\n+                S2          : {out1, out2, out3} = ~sel? 3'b101: 3'b000;\n+                S2_5        : {out1, out2, out3} = ~sel? 3'b101: 3'b010;\n+                S3          : {out1, out2, out3} = ~sel? 3'b101: 3'b011;\n+                default     : {out1, out2, out3} = 3'b000;\n+            endcase\n+        end\n     end\n //*************code***********//\n endmodule\n",
+        "endpoint_evaluator": {
+          "result": "pass",
+          "returncode": 0,
+          "failures": [],
+          "log_hash": "sha256:2830216deb3a4a39847aad62e0bbf4027558d8d92a12addafd978c42b59d5ea9"
+        },
+        "category": "public_pass_hidden_pass"
+      }
+    },
+    {
+      "snapshot": 4,
+      "anchor_index": 1,
+      "repeat": 0,
+      "endpoint": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:f48c8dc4563201d29a3e34d275c8c60d615e9de52d80eb4f2ca0fa80720ba79b",
+        "endpoint_public": {
+          "tier": "visible_pass",
+          "suites": {
+            "W_bug": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -1,3 +1,4 @@\n+\n module TopModule(\n \tinput wire clk  ,\n \tinput wire rst  ,\n@@ -30,11 +31,11 @@\n                               d2? S1_5:\n                               nstate;\n             S1     : nstate = d1? S1_5:\n-                              d2? S3:\n+                              d2? S2:\n                               nstate;\n             S1_5   : nstate = ~sel? S0:\n                               d1? S2:\n-                              d2? S1:\n+                              d2? S2_5:\n                               nstate;\n             S2     : nstate = ~sel? S0:\n                               d1? S2_5:\n",
+        "endpoint_evaluator": {
+          "result": "pass",
+          "returncode": 0,
+          "failures": [],
+          "log_hash": "sha256:2830216deb3a4a39847aad62e0bbf4027558d8d92a12addafd978c42b59d5ea9"
+        },
+        "category": "public_pass_hidden_pass"
+      }
+    },
+    {
+      "snapshot": 4,
+      "anchor_index": 1,
+      "repeat": 1,
+      "endpoint": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:f48c8dc4563201d29a3e34d275c8c60d615e9de52d80eb4f2ca0fa80720ba79b",
+        "endpoint_public": {
+          "tier": "visible_pass",
+          "suites": {
+            "W_bug": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -1,3 +1,4 @@\n+\n module TopModule(\n \tinput wire clk  ,\n \tinput wire rst  ,\n@@ -30,11 +31,11 @@\n                               d2? S1_5:\n                               nstate;\n             S1     : nstate = d1? S1_5:\n-                              d2? S3:\n+                              d2? S2:\n                               nstate;\n             S1_5   : nstate = ~sel? S0:\n                               d1? S2:\n-                              d2? S1:\n+                              d2? S2_5:\n                               nstate;\n             S2     : nstate = ~sel? S0:\n                               d1? S2_5:\n",
+        "endpoint_evaluator": {
+          "result": "pass",
+          "returncode": 0,
+          "failures": [],
+          "log_hash": "sha256:2830216deb3a4a39847aad62e0bbf4027558d8d92a12addafd978c42b59d5ea9"
+        },
+        "category": "public_pass_hidden_pass"
+      }
+    },
+    {
+      "snapshot": 5,
+      "anchor_index": 0,
+      "repeat": 0,
+      "endpoint": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:f48c8dc4563201d29a3e34d275c8c60d615e9de52d80eb4f2ca0fa80720ba79b",
+        "endpoint_public": {
+          "tier": "visible_pass",
+          "suites": {
+            "W_bug": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -1,3 +1,4 @@\n+\n module TopModule(\n \tinput wire clk  ,\n \tinput wire rst  ,\n@@ -44,20 +45,20 @@\n         endcase\n     end\n     \n-    always @(posedge clk or negedge rst) begin\n-      if (~rst) begin\n-        {out1, out2, out3} <= 3'b000;\n-      end\n-      else begin\n-        case (state)\n-          S0, S0_5, S1:  {out1, out2, out3} <= 3'b000;\n-          S1_5:          {out1, out2, out3} <= (~sel) ? 3'b100 : 3'b000;\n-          S2:            {out1, out2, out3} <= (~sel) ? 3'b101 : 3'b000;\n-          S2_5:          {out1, out2, out3} <= (~sel) ? 3'b101 : 3'b010;\n-          S3:            {out1, out2, out3} <= (~sel) ? 3'b101 : 3'b011;\n-          default:        {out1, out2, out3} <= 3'b000;\n-        endcase\n-      end\n+    always@(*) begin\n+        if(~rst) begin\n+            {out1, out2, out3} = 3'b000;\n+        end\n+        else begin\n+            case(state)\n+                S0, S0_5, S1: {out1, out2, out3} = 0;\n+                S1_5        : {out1, out2, out3} = ~sel? 3'b100: 3'b000;\n+                S2          : {out1, out2, out3} = ~sel? 3'b101: 3'b000;\n+                S2_5        : {out1, out2, out3} = ~sel? 3'b101: 3'b010;\n+                S3          : {out1, out2, out3} = ~sel? 3'b101: 3'b011;\n+                default     : {out1, out2, out3} = 3'b000;\n+            endcase\n+        end\n     end\n //*************code***********//\n endmodule\n",
+        "endpoint_evaluator": {
+          "result": "pass",
+          "returncode": 0,
+          "failures": [],
+          "log_hash": "sha256:2830216deb3a4a39847aad62e0bbf4027558d8d92a12addafd978c42b59d5ea9"
+        },
+        "category": "public_pass_hidden_pass"
+      }
+    },
+    {
+      "snapshot": 5,
+      "anchor_index": 0,
+      "repeat": 1,
+      "endpoint": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:f48c8dc4563201d29a3e34d275c8c60d615e9de52d80eb4f2ca0fa80720ba79b",
+        "endpoint_public": {
+          "tier": "visible_pass",
+          "suites": {
+            "W_bug": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -1,3 +1,4 @@\n+\n module TopModule(\n \tinput wire clk  ,\n \tinput wire rst  ,\n@@ -44,20 +45,20 @@\n         endcase\n     end\n     \n-    always @(posedge clk or negedge rst) begin\n-      if (~rst) begin\n-        {out1, out2, out3} <= 3'b000;\n-      end\n-      else begin\n-        case (state)\n-          S0, S0_5, S1:  {out1, out2, out3} <= 3'b000;\n-          S1_5:          {out1, out2, out3} <= (~sel) ? 3'b100 : 3'b000;\n-          S2:            {out1, out2, out3} <= (~sel) ? 3'b101 : 3'b000;\n-          S2_5:          {out1, out2, out3} <= (~sel) ? 3'b101 : 3'b010;\n-          S3:            {out1, out2, out3} <= (~sel) ? 3'b101 : 3'b011;\n-          default:        {out1, out2, out3} <= 3'b000;\n-        endcase\n-      end\n+    always@(*) begin\n+        if(~rst) begin\n+            {out1, out2, out3} = 3'b000;\n+        end\n+        else begin\n+            case(state)\n+                S0, S0_5, S1: {out1, out2, out3} = 0;\n+                S1_5        : {out1, out2, out3} = ~sel? 3'b100: 3'b000;\n+                S2          : {out1, out2, out3} = ~sel? 3'b101: 3'b000;\n+                S2_5        : {out1, out2, out3} = ~sel? 3'b101: 3'b010;\n+                S3          : {out1, out2, out3} = ~sel? 3'b101: 3'b011;\n+                default     : {out1, out2, out3} = 3'b000;\n+            endcase\n+        end\n     end\n //*************code***********//\n endmodule\n",
+        "endpoint_evaluator": {
+          "result": "pass",
+          "returncode": 0,
+          "failures": [],
+          "log_hash": "sha256:2830216deb3a4a39847aad62e0bbf4027558d8d92a12addafd978c42b59d5ea9"
+        },
+        "category": "public_pass_hidden_pass"
+      }
+    },
+    {
+      "snapshot": 5,
+      "anchor_index": 1,
+      "repeat": 0,
+      "endpoint": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:f48c8dc4563201d29a3e34d275c8c60d615e9de52d80eb4f2ca0fa80720ba79b",
+        "endpoint_public": {
+          "tier": "visible_pass",
+          "suites": {
+            "W_bug": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -1,3 +1,4 @@\n+\n module TopModule(\n \tinput wire clk  ,\n \tinput wire rst  ,\n@@ -30,11 +31,11 @@\n                               d2? S1_5:\n                               nstate;\n             S1     : nstate = d1? S1_5:\n-                              d2? S3:\n+                              d2? S2:\n                               nstate;\n             S1_5   : nstate = ~sel? S0:\n                               d1? S2:\n-                              d2? S1:\n+                              d2? S2_5:\n                               nstate;\n             S2     : nstate = ~sel? S0:\n                               d1? S2_5:\n",
+        "endpoint_evaluator": {
+          "result": "pass",
+          "returncode": 0,
+          "failures": [],
+          "log_hash": "sha256:2830216deb3a4a39847aad62e0bbf4027558d8d92a12addafd978c42b59d5ea9"
+        },
+        "category": "public_pass_hidden_pass"
+      }
+    },
+    {
+      "snapshot": 5,
+      "anchor_index": 1,
+      "repeat": 1,
+      "endpoint": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:f48c8dc4563201d29a3e34d275c8c60d615e9de52d80eb4f2ca0fa80720ba79b",
+        "endpoint_public": {
+          "tier": "visible_pass",
+          "suites": {
+            "W_bug": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -1,3 +1,4 @@\n+\n module TopModule(\n \tinput wire clk  ,\n \tinput wire rst  ,\n@@ -30,11 +31,11 @@\n                               d2? S1_5:\n                               nstate;\n             S1     : nstate = d1? S1_5:\n-                              d2? S3:\n+                              d2? S2:\n                               nstate;\n             S1_5   : nstate = ~sel? S0:\n                               d1? S2:\n-                              d2? S1:\n+                              d2? S2_5:\n                               nstate;\n             S2     : nstate = ~sel? S0:\n                               d1? S2_5:\n",
+        "endpoint_evaluator": {
+          "result": "pass",
+          "returncode": 0,
+          "failures": [],
+          "log_hash": "sha256:2830216deb3a4a39847aad62e0bbf4027558d8d92a12addafd978c42b59d5ea9"
+        },
+        "category": "public_pass_hidden_pass"
+      }
+    }
+  ],
+  "confirmation": "not scheduled; single-sample failures require separate reviewed confirmation",
+  "limits": "Two reserved variants and two samples each per snapshot are diagnostic, not evidence of mastery or transfer."
+}

@@ -1,0 +1,40 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "clk_out_r <= clk_cnt<=((div_o>>2)+1);",
+            "replace": "clk_out_r <= clk_cnt<=((div_o>>1)+1);"
+          }
+        ],
+        "violated_requirement": "Output clock pulse width should be floor(div_o/4)+1 cycles but becomes floor(div_o/2)+1 cycles when div_flag is set, causing incorrect duty cycle in odd period mode",
+        "spec_basis": "Output becomes 1 iff count <= floor((mode ? div_o : div_e)/4) + 1"
+      },
+      {
+        "edits": [
+          {
+            "find": "clk_out_r <= clk_cnt<=((div_e>>2)+1);",
+            "replace": "clk_out_r <= clk_cnt<=((div_e>>1)+1);"
+          }
+        ],
+        "violated_requirement": "Output clock pulse width should be floor(div_e/4)+1 cycles but becomes floor(div_e/2)+1 cycles when div_flag is clear, causing incorrect duty cycle in even period mode",
+        "spec_basis": "Output becomes 1 iff count <= floor((mode ? div_o : div_e)/4) + 1"
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:5ed2e1d3019f8f0e3b3dc6241172120ce6afe70606f327b1057c52e5e4a351f3",
+  "input_tokens": 8074,
+  "output_tokens": 247,
+  "request_hash": "sha256:02fae257fa4a61b460996e002de4f9d7d3c95769fafbcc8b37cb87fdd8cdff77",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 8074,
+    "output_tokens": 247
+  },
+  "model_seconds": 10.378464559093118
+}

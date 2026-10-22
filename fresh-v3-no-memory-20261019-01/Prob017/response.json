@@ -1,0 +1,57 @@
+{
+  "id": "gen-1792476211-Q7vdD7Hd95DPsXCPjUQO",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```json\n{\n  \"rtl\": \"module TopModule(\\n     input  wire clk_in,\\n     input  wire rst,\\n     output wire clk_out\\n);\\n    parameter M_N = 8'd87; \\n    parameter c89 = 8'd24;  \\n    parameter div_e = 5'd8;\\n    parameter div_o = 5'd9;\\n\\n    reg [3:0] count;\\n    reg [6:0] cycle_count;\\n    reg mode;\\n    reg clk_out_reg;\\n\\n    always @(posedge clk_in or negedge rst) begin\\n        if (~rst) begin\\n            count <= 4'b0;\\n            cycle_count <= 7'b0;\\n            mode <= 1'b0;\\n            clk_out_reg <= 1'b0;\\n        end else begin\\n            // Update output clock\\n            clk_out_reg <= (count <= ((mode ? div_o : div_e) / 4) + 1);\\n\\n            // Update count\\n            if (count == (mode ? div_o : div_e) - 1) begin\\n                count <= 4'b0;\\n            end else begin\\n                count <= count + 1;\\n            end\\n\\n            // Update mode\\n            if (cycle_count == M_N - 1 || cycle_count == c89 - 1) begin\\n                mode <= ~mode;\\n            end\\n\\n            // Update cycle_count\\n            if (cycle_count == M_N - 1) begin\\n                cycle_count <= 7'b0;\\n            end else begin\\n                cycle_count <= cycle_count + 1;\\n            end\\n        end\\n    end\\n\\n    assign clk_out = clk_out_reg;\\nendmodule\"\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null,
+        "reasoning": null
+      },
+      "native_finish_reason": "stop"
+    }
+  ],
+  "created": 1792476211,
+  "model": "deepseek/deepseek-chat-v3-0324",
+  "object": "chat.completion",
+  "metadata": null,
+  "moderation": null,
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 392,
+    "prompt_tokens": 1219,
+    "total_tokens": 1611,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null,
+      "text_tokens": null,
+      "image_tokens": 0
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cache_write_tokens": 0,
+      "cached_tokens": 0,
+      "image_tokens": null,
+      "text_tokens": null,
+      "video_tokens": 0
+    },
+    "cost": 0.00080039,
+    "is_byok": false,
+    "cost_details": {
+      "upstream_inference_cost": 0.00080039,
+      "upstream_inference_prompt_cost": 0.00035351,
+      "upstream_inference_completions_cost": 0.00044688
+    }
+  },
+  "provider": "GMICloud"
+}

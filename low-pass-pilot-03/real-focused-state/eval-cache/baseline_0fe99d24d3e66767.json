@@ -1,0 +1,112 @@
+{
+  "attempts": 1,
+  "first": {
+    "answer_form": "full",
+    "candidate_hash": "sha256:5ae281f5e89375ec174bc42ff905788f7eaefcc023e632b89a2fc00b8f932add",
+    "candidate_id": "C_27ca0958a120_0",
+    "command_hash": "sha256:ad7f9bbc3ea812a75e1ed4ee9da6d9c672b20870a4e7e30c18d15993ddc48d7e",
+    "edit": "Fixed the next-state logic for state s6 (match state) so that the first bit of the next non-overlapping group is correctly checked: changed `nstate=data?s1:sf1;` to `nstate=data?sf1:s1;`. This ensures that after a successful match, a '0' input starts the next group (s1) and a '1' input goes to the f",
+    "feedback": {
+      "cycles_compared": 2324,
+      "first_divergences": [],
+      "passing_outputs": [
+        "match",
+        "not_match"
+      ],
+      "stage": "functional"
+    },
+    "hidden": "not_available",
+    "index": 0,
+    "memory_offered": false,
+    "phase": "evaluation",
+    "seconds": 56.29,
+    "tokens": {
+      "input": 2360,
+      "output": 13312
+    },
+    "verdict_tier": "visible_pass",
+    "window": {}
+  },
+  "inconclusive": false,
+  "record": {
+    "accounting": {
+      "fixed": true,
+      "fixed_at_attempt": 1,
+      "fixed_by_escalation": false,
+      "input_tokens": 2360,
+      "llm_calls": 1,
+      "memory_delivered": false,
+      "memory_items": [],
+      "memory_offered_from_attempt": null,
+      "model_seconds": 56.29,
+      "output_tokens": 13312,
+      "provider_failures": 0,
+      "repair_attempts": 1
+    },
+    "attempts": [
+      {
+        "answer_form": "full",
+        "candidate_hash": "sha256:5ae281f5e89375ec174bc42ff905788f7eaefcc023e632b89a2fc00b8f932add",
+        "candidate_id": "C_27ca0958a120_0",
+        "command_hash": "sha256:ad7f9bbc3ea812a75e1ed4ee9da6d9c672b20870a4e7e30c18d15993ddc48d7e",
+        "edit": "Fixed the next-state logic for state s6 (match state) so that the first bit of the next non-overlapping group is correctly checked: changed `nstate=data?s1:sf1;` to `nstate=data?sf1:s1;`. This ensures that after a successful match, a '0' input starts the next group (s1) and a '1' input goes to the f",
+        "feedback": {
+          "cycles_compared": 2324,
+          "first_divergences": [],
+          "passing_outputs": [
+            "match",
+            "not_match"
+          ],
+          "stage": "functional"
+        },
+        "hidden": "not_available",
+        "index": 0,
+        "memory_offered": false,
+        "phase": "evaluation",
+        "seconds": 56.29,
+        "tokens": {
+          "input": 2360,
+          "output": 13312
+        },
+        "verdict_tier": "visible_pass",
+        "window": {}
+      }
+    ],
+    "bundle_hash": "sha256:ccc11a32941cf60a10989b34979c2a0f7c3021762d9c5e24754dcaf5fd32ed04",
+    "challenge_id": "handoff:Prob003:eval_match_branch",
+    "deliveries": [],
+    "episode_hash": "sha256:ac97a4364668e850a9d15a4b8d3efb16e1b5f9d657a694f026cb4bbbcd6fa984",
+    "inconclusive": false,
+    "infra_failures": 0,
+    "matches": [],
+    "mode": "none",
+    "profile": {
+      "causal": {
+        "cone_has_control_dependency": true,
+        "cone_has_counter": false,
+        "cone_has_reset_logic": true,
+        "cone_has_state_machine": true,
+        "cone_size_bucket": "small",
+        "output_driver_kind": "combinational",
+        "register_distance": "1",
+        "temporal_relation": "transient"
+      },
+      "schema_version": "r3e-observable-profile-v1",
+      "status": {
+        "delta_bucket": "-1",
+        "failing_output_bucket": "2-3",
+        "onset_bucket": "late",
+        "oracle_stage": "functional",
+        "output_width_bucket": "1bit",
+        "partial_failure": false,
+        "symptom": "single_cycle_glitch",
+        "x_involved": false
+      }
+    },
+    "retrieved_items": [],
+    "shown_items": [],
+    "solved_by_escalation": false,
+    "solved_within_budget": true
+  },
+  "solved": true
+}

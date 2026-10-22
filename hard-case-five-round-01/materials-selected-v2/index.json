@@ -1,0 +1,134 @@
+{
+  "Mux": {
+    "carriers": [
+      {
+        "package": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/materials-selected-v2/Mux/package",
+        "suite_freeze": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/materials-selected-v2/Mux/suite_freeze.json",
+        "evaluator_freeze": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/materials-selected-v2/Mux/evaluator_freeze.json",
+        "evaluator_root": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/materials-selected-v2/Mux"
+      }
+    ],
+    "anchors": [
+      {
+        "task_dir": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/materials-selected-v2/Mux/reserved/exam_defect",
+        "carrier_index": 0
+      }
+    ],
+    "mechanism_focus": {
+      "version": "continuous_mechanism_seed_v1",
+      "carrier_id": "selected_Mux",
+      "mechanism": "Across five rounds build transferable repair experience for sized literal radix, truncation, duplicate case labels, selector coverage and combinational sensitivity. Generate distinct nearby defects using actual prior repair observations; preserve sel=00 behavior. Aim for reusable diagnostic experience, not copies of the held-out defect. Do not emit a solution or assume historical failures still apply.",
+      "selection": "human_selected_development_seed",
+      "seed_edits": [
+        {
+          "find": "module mux_4to1_case ( input [3:0] a,                 // 4-bit input called a\n                       input [3:0] b,                 // 4-bit input called b\n                       input [3:0] c,                 // 4-bit input called c\n                       input [3:0] d,                 // 4-bit input called d\n                       input [1:0] sel,               // input sel used to select between a,b,c,d\n                       output reg [3:0] out);         // 4-bit output based on input sel\n\n   // This always block gets executed whenever a/b/c/d/sel changes value\n   // When that happens, based on value in sel, output is assigned to either a/b/c/d\n   always @ (a or b or c or d or sel) begin\n      case (sel)\n         2'b00 : out <= a;\n         2'b01 : out <= b;\n         2'b10 : out <= c;\n         2'b11 : out <= d;\n      endcase\n   end\nendmodule",
+          "replace": "module mux_4to1_case ( input [3:0] a,                 // 4-bit input called a\n                       input [3:0] b,                 // 4-bit input called b\n                       input [3:0] c,                 // 4-bit input called c\n                       input [3:0] d,                 // 4-bit input called d\n                       input [1:0] sel,               // input sel used to select between a,b,c,d\n                       output reg [3:0] out);         // 4-bit output based on input sel\n\n   // This always block gets executed whenever a/b/c/d/sel changes value\n   // When that happens, based on value in sel, output is assigned to either a/b/c/d\n   always @ (a or b or c or d or sel) begin\n      case (sel)\n         2'b00 : out <= a;\n         2'b01 : out <= b;\n         2'b10 : out <= d;\n         2'b11 : out <= d;\n      endcase\n   end\nendmodule"
+        }
+      ],
+      "history": {
+        "challenge_id": "strider:mux_4_1_2",
+        "runs": 3,
+        "unrepaired": 3,
+        "label": "historical_budgeted_failure_not_current_confirmation"
+      },
+      "provenance": {
+        "clean_hash": "sha256:ddc221ac8e9226a332a7f9cc889f1be0beea6e86fc4aac8456ec56bb6c83dd72",
+        "seed_hash": "sha256:0f74a955a66a0536ac783347193913e1385dd006de8773042bda1032c6598178",
+        "record_hashes": {
+          "selection_audit": "sha256:cf841f0237bc167a12af0d5344fc6f015184ef1e2ccbbabf70d14ceb88fa9ca5"
+        }
+      }
+    },
+    "questions": [
+      "strider:mux_4_1_2"
+    ]
+  },
+  "Counter": {
+    "carriers": [
+      {
+        "package": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/materials-selected-v2/Counter/package",
+        "suite_freeze": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/materials-selected-v2/Counter/suite_freeze.json",
+        "evaluator_freeze": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/materials-selected-v2/Counter/evaluator_freeze.json",
+        "evaluator_root": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/materials-selected-v2/Counter"
+      }
+    ],
+    "anchors": [
+      {
+        "task_dir": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/materials-selected-v2/Counter/reserved/exam_defect",
+        "carrier_index": 0
+      }
+    ],
+    "mechanism_focus": {
+      "version": "continuous_mechanism_seed_v1",
+      "carrier_id": "selected_Counter",
+      "mechanism": "Across five rounds build transferable repair experience for pre-edge versus post-edge values, independent if versus else-if priority, sticky overflow, enable interaction and nonblocking scheduling. Generate distinct nearby defects using actual prior repair observations; preserve low counts and reset with enable. Aim for reusable diagnostic experience, not copies of the held-out defect. Do not emit a solution or assume historical failures still apply.",
+      "selection": "human_selected_development_seed",
+      "seed_edits": [
+        {
+          "find": "//-----------------------------------------\n//Design name: first_counter\n//File Name: first_counter.v\n//Function: This is a 4-bit up-counter with\n//Synchronous active high reset and \n//with active high enable signal\n//------------------------------------------\nmodule first_counter(\n    clk,\n    reset,\n    enable,\n    counter_out,\n    overflow_out\n);// End of port list\n//----------------Input Ports---------------\ninput clk;\ninput reset;\ninput enable;\n//----------------Output Ports--------------\noutput[3:0] counter_out;\noutput overflow_out;\n//----------------Input ports Data Type-----\n//By rule all the input ports should be wires\nwire clk;\nwire reset;\nwire enable;\n//----------------Output ports data type----\n//Output port can be a storage element(reg) or a wire\nreg[3:0] counter_out;\nreg overflow_out;\n// overflow outport\n\n//---------------Code starts here-----------\nalways@(posedge clk)\nbegin: COUNTER //block name\n    //At every rising edge of clock we check if reset is active\n    //If active, we load the counter output with 4'b0000\n    if(reset==1'b1) begin\n        counter_out <= #1 4'b0000;\n        overflow_out <= #1 1'b0;\n    end\n    //If enable is active, we increment the counter\n    else if(enable == 1'b1) begin\n        counter_out <= #1 counter_out + 1;\n\n    end\n    // if it overflows, set overflow_out to be 1\n    if(counter_out == 4'b1111)\n    begin\n        overflow_out <= 1'b1;\n    end\nend // End of block COUNTER\n\nendmodule // End of module counter\n\n",
+          "replace": "//-----------------------------------------\n//Design name: first_counter\n//File Name: first_counter.v\n//Function: This is a 4-bit up-counter with\n//Synchronous active high reset and \n//with active high enable signal\n//------------------------------------------\nmodule first_counter(\n    clk,\n    reset,\n    enable,\n    counter_out,\n    overflow_out\n);// End of port list\n//----------------Input Ports---------------\ninput clk;\ninput reset;\ninput enable;\n//----------------Output Ports--------------\noutput[3:0] counter_out;\noutput overflow_out;\n//----------------Input ports Data Type-----\n//By rule all the input ports should be wires\nwire clk;\nwire reset;\nwire enable;\n//----------------Output ports data type----\n//Output port can be a storage element(reg) or a wire\nreg[3:0] counter_out;\nreg overflow_out;\n// overflow outport\n\n//---------------Code starts here-----------\nalways@(posedge clk)\nbegin: COUNTER //block name\n    //At every rising edge of clock we check if reset is active\n    //If active, we load the counter output with 4'b0000\n    if(reset==1'b1) begin\n        counter_out <= #1 4'b0000;\n        overflow_out <= #1 1'b0;\n    end\n    //If enable is active, we increment the counter\n    else if(enable == 1'b1) begin\n        counter_out <= #1 counter_out + 1;\n\n    end\n    // if it overflows, set overflow_out to be 1\n    if(counter_out == 4'b1010)\n    begin\n        overflow_out <= 1'b1;\n    end\nend // End of block COUNTER\n\nendmodule // End of module counter\n\n"
+        }
+      ],
+      "history": {
+        "challenge_id": "strider:first_counter_overflow_2",
+        "runs": 3,
+        "unrepaired": 3,
+        "label": "historical_budgeted_failure_not_current_confirmation"
+      },
+      "provenance": {
+        "clean_hash": "sha256:d480d7484bb915d887cb248543543e1df345c320cf115ab40b30d50c7e403209",
+        "seed_hash": "sha256:a3a6386a08843ce5b5ab77936a2d6b04b887a33eec09c6d46473dd620d17e94a",
+        "record_hashes": {
+          "selection_audit": "sha256:cf841f0237bc167a12af0d5344fc6f015184ef1e2ccbbabf70d14ceb88fa9ca5"
+        }
+      }
+    },
+    "questions": [
+      "strider:first_counter_overflow_2"
+    ]
+  },
+  "Prob015": {
+    "carriers": [
+      {
+        "package": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/materials-selected-v2/Prob015/package",
+        "suite_freeze": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/materials-selected-v2/Prob015/suite_freeze.json",
+        "evaluator_freeze": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/materials-selected-v2/Prob015/evaluator_freeze.json",
+        "evaluator_root": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/materials-selected-v2/Prob015"
+      }
+    ],
+    "anchors": [
+      {
+        "task_dir": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/materials-selected-v2/Prob015/reserved/exam_defect",
+        "carrier_index": 0
+      }
+    ],
+    "mechanism_focus": {
+      "version": "continuous_mechanism_seed_v1",
+      "carrier_id": "selected_Prob015",
+      "mechanism": "Across five rounds build transferable repair experience for combinational output timing versus registered outputs, asynchronous reset, input selection between clock edges, next-state hold behavior and event scheduling. Vary defects using prior real repair observations and the original sampled behavior checks. Aim for reusable diagnostic experience, not copies of the held-out defect. Do not emit a solution or assume historical failures still apply.",
+      "selection": "human_selected_development_seed",
+      "seed_edits": [
+        {
+          "find": "\nmodule TopModule(\n\tinput wire clk  ,\n\tinput wire rst  ,\n\tinput wire d1 ,\n\tinput wire d2 ,\n\tinput wire sel ,\n\t\n\toutput reg out1,\n\toutput reg out2,\n\toutput reg out3\n);\n//*************code***********//\n\n    parameter [2:0] S0=0, S0_5=1, S1=2, S1_5=3, S2=4, S2_5=5, S3=6;\n    reg[2:0] state, nstate;\n    \n    always@(posedge clk or negedge rst) begin\n        if(~rst)\n            state <= 0;\n        else\n            state <= nstate;\n    end\n    \n    always@(*) begin\n        case(state)\n            S0     : nstate = d1? S0_5:\n                              d2? S1:\n                              nstate;\n            S0_5   : nstate = d1? S1:\n                              d2? S1_5:\n                              nstate;\n            S1     : nstate = d1? S1_5:\n                              d2? S2:\n                              nstate;\n            S1_5   : nstate = ~sel? S0:\n                              d1? S2:\n                              d2? S2_5:\n                              nstate;\n            S2     : nstate = ~sel? S0:\n                              d1? S2_5:\n                              d2? S3:\n                              nstate;\n            default: nstate = S0;\n        endcase\n    end\n    \n    always@(*) begin\n        if(~rst) begin\n            {out1, out2, out3} = 3'b000;\n        end\n        else begin\n            case(state)\n                S0, S0_5, S1: {out1, out2, out3} = 0;\n                S1_5        : {out1, out2, out3} = ~sel? 3'b100: 3'b000;\n                S2          : {out1, out2, out3} = ~sel? 3'b101: 3'b000;\n                S2_5        : {out1, out2, out3} = ~sel? 3'b101: 3'b010;\n                S3          : {out1, out2, out3} = ~sel? 3'b101: 3'b011;\n                default     : {out1, out2, out3} = 3'b000;\n            endcase\n        end\n    end\n//*************code***********//\nendmodule\n",
+          "replace": "\nmodule TopModule(\n\tinput wire clk  ,\n\tinput wire rst  ,\n\tinput wire d1 ,\n\tinput wire d2 ,\n\tinput wire sel ,\n\t\n\toutput reg out1,\n\toutput reg out2,\n\toutput reg out3\n);\n//*************code***********//\n\n    parameter [2:0] S0=0, S0_5=1, S1=2, S1_5=3, S2=4, S2_5=5, S3=6;\n    reg[2:0] state, nstate;\n    \n    always@(posedge clk or negedge rst) begin\n        if(~rst)\n            state <= 0;\n        else\n            state <= nstate;\n    end\n    \n    always@(*) begin\n        case(state)\n            S0     : nstate = d1? S0_5:\n                              d2? S1:\n                              nstate;\n            S0_5   : nstate = d1? S1:\n                              d2? S1:\n                              nstate;\n            S1     : nstate = d1? S1_5:\n                              d2? S2:\n                              nstate;\n            S1_5   : nstate = ~sel? S0:\n                              d1? S2:\n                              d2? S2:\n                              nstate;\n            S2     : nstate = ~sel? S0:\n                              d1? S2_5:\n                              d2? S3:\n                              nstate;\n            default: nstate = S0;\n        endcase\n    end\n    \n    always@(*) begin\n        if(~rst) begin\n            {out1, out2, out3} = 3'b000;\n        end\n        else begin\n            case(state)\n                S0, S0_5, S1: {out1, out2, out3} = 0;\n                S1_5        : {out1, out2, out3} = ~sel? 3'b100: 3'b000;\n                S2          : {out1, out2, out3} = ~sel? 3'b101: 3'b000;\n                S2_5        : {out1, out2, out3} = ~sel? 3'b101: 3'b010;\n                S3          : {out1, out2, out3} = ~sel? 3'b101: 3'b011;\n                default     : {out1, out2, out3} = 3'b000;\n            endcase\n        end\n    end\n//*************code***********//\nendmodule\n"
+        }
+      ],
+      "history": {
+        "challenge_id": "chipbench:timing:Prob015_vending_machine2",
+        "runs": 2,
+        "unrepaired": 2,
+        "label": "historical_budgeted_failure_not_current_confirmation"
+      },
+      "provenance": {
+        "clean_hash": "sha256:cd8e2b6255e13bd844a7a178b60bcc33c05dea78096c283b743d7142a2e1691d",
+        "seed_hash": "sha256:84dc9dcb362c0422511953413f9717a5132ea3af964076c8cdee28a61d03473b",
+        "record_hashes": {
+          "selection_audit": "sha256:cf841f0237bc167a12af0d5344fc6f015184ef1e2ccbbabf70d14ceb88fa9ca5"
+        }
+      }
+    },
+    "questions": [
+      "chipbench:timing:Prob015_vending_machine2"
+    ]
+  }
+}

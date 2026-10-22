@@ -1,0 +1,60 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "clk_cnt <= clk_cnt==(div_e-1)? 0: clk_cnt+1;",
+            "replace": "clk_cnt <= clk_cnt==(div_e-1)? 0: clk_cnt+2;"
+          }
+        ],
+        "violated_requirement": "Incrementing clk_cnt by 2 instead of 1 in even-divisor mode causes incorrect output timing",
+        "spec_basis": "Count becomes 0 when count == (mode ? div_o : div_e)-1; otherwise (count+1) modulo 16"
+      },
+      {
+        "edits": [
+          {
+            "find": "clk_cnt <= clk_cnt==(div_o-1)? 0: clk_cnt+1;",
+            "replace": "clk_cnt <= clk_cnt==(div_o-1)? 0: clk_cnt+2;"
+          }
+        ],
+        "violated_requirement": "Incrementing clk_cnt by 2 instead of 1 in odd-divisor mode causes incorrect output timing",
+        "spec_basis": "Count becomes 0 when count == (mode ? div_o : div_e)-1; otherwise (count+1) modulo 16"
+      },
+      {
+        "edits": [
+          {
+            "find": "cyc_cnt <= cyc_cnt==(M_N-1)? 0: cyc_cnt+1;",
+            "replace": "cyc_cnt <= cyc_cnt==(M_N-1)? 0: cyc_cnt+2;"
+          }
+        ],
+        "violated_requirement": "Incrementing cyc_cnt by 2 instead of 1 causes incorrect mode switching timing",
+        "spec_basis": "Cycle_count wraps to zero at M_N-1; otherwise it increments by one modulo 128"
+      },
+      {
+        "edits": [
+          {
+            "find": "div_flag <= cyc_cnt==(M_N-1)||cyc_cnt==(c89-1)? ~div_flag: div_flag;",
+            "replace": "div_flag <= cyc_cnt==(M_N-1)||cyc_cnt==(c89-1)? div_flag: ~div_flag;"
+          }
+        ],
+        "violated_requirement": "Inverted div_flag toggle condition causes incorrect mode switching",
+        "spec_basis": "Mode toggles iff cycle_count equals M_N-1 or c89-1; otherwise it holds"
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:38fe2224fbc60961fc09e97a3632d6a108401879c259fac23ebec33940a8975a",
+  "input_tokens": 6124,
+  "output_tokens": 469,
+  "request_hash": "sha256:4ae17b72a2273b9d5a996b15567f5fc08e812664239676b79cd90044a90f3f2d",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 6124,
+    "output_tokens": 469
+  },
+  "model_seconds": 14.971643016673625
+}

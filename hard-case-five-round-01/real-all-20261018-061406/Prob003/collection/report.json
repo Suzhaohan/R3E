@@ -1,0 +1,374 @@
+{
+  "scope": "single design, human-selected mechanism, deferred unseen-variant probes",
+  "scheduled_generation": 5,
+  "admitted": 3,
+  "distinct_admitted": 3,
+  "online_and_frozen_reference": [
+    {
+      "round": 1,
+      "slot_id": "r1_s0",
+      "admission": "admitted",
+      "reason": "public_matrix_and_structure_pass",
+      "mutant_hash": "sha256:4d0f7f40cf3bd71bf4dc8de81cf1da32e1c99fd7c3db9bcd0663ab0d6d1695a0",
+      "normalized_identity": "sha256:91d88cff02e90325644156f6b50f2ced516426d26961144989602746e0b9827e",
+      "changed_fraction": 0.003125,
+      "repeats_historical_seed": false,
+      "online": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:a96d770c1e03f6113f427c4f33ffdf22bba514b1b4d3ebf9ea41e9be23870ce4",
+        "endpoint_public": {
+          "tier": "visible_fail",
+          "suites": {
+            "W_bug": {
+              "result": "visible_fail",
+              "checker_violation": true,
+              "failures": [
+                "CHECK_FAIL W_bug cycle=12 group=000000 bit=0 match=0 not_match=0"
+              ]
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -50,7 +50,7 @@\n         s5:\n             nstate=data?sf6:s6;\n         s6:\n-            nstate=data?sf1:s1;\n+            nstate=idle;\n         sf1:\n             nstate=sf2;\n         sf2:\n@@ -60,17 +60,17 @@\n         sf4:\n             nstate=sf5;\n         sf5:\n-            nstate=sf5;\n+            nstate=sf6;\n         sf6:\n-\t\t\tnstate=data?sf1:s1;\n+\t\t\tnstate=idle;\n         default:\n             nstate=idle;\n         endcase\n end\n \n-always @(pstate or data or rst_n)\n+always @(pstate or rst_n)\n begin\n-    if(!rst_n==1) \n+    if(!rst_n) \n \t\tbegin\n \t\t\tmatch=1'b0;\n \t\t\tnot_match = 1'b0;\n",
+        "category": "public_functional_failure",
+        "original_defect_persists": true,
+        "new_regression": false,
+        "functional_failure_candidate": true,
+        "review": {
+          "decision": "PENDING"
+        }
+      },
+      "reference": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:5db25cf23be68f8598a6c08838954a6a7392acac467c3238c9c6a73c2115613c",
+        "endpoint_public": {
+          "tier": "visible_pass",
+          "suites": {
+            "W_bug": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -60,7 +60,7 @@\n         sf4:\n             nstate=sf5;\n         sf5:\n-            nstate=sf5;\n+            nstate=sf6;\n         sf6:\n \t\t\tnstate=data?sf1:s1;\n         default:\n",
+        "endpoint_evaluator": {
+          "result": "pass",
+          "returncode": 0,
+          "failures": [],
+          "log_hash": "sha256:499a149f5555026d38404edca8a6bfb14cca569693048cf0519306651c322ead"
+        },
+        "category": "public_pass_hidden_pass"
+      }
+    },
+    {
+      "round": 2,
+      "slot_id": "r2_s0",
+      "admission": "admitted",
+      "reason": "public_matrix_and_structure_pass",
+      "mutant_hash": "sha256:2203813041fd4581bd4f481defb2eb077ebb6ae76fb92d3854d3f59f31716546",
+      "normalized_identity": "sha256:d2060bb982a57547e4a4f731db17f093200d05e78e5c23913f12a39a849f6fb3",
+      "changed_fraction": 0.003125,
+      "repeats_historical_seed": false,
+      "online": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:40301f0c3cf1c1f002294ddb34bc5cd7578df75334d16ce6004ef9daf0a69b9a",
+        "endpoint_public": {
+          "tier": "visible_fail",
+          "suites": {
+            "W_bug": {
+              "result": "visible_fail",
+              "checker_violation": true,
+              "failures": [
+                "CHECK_FAIL W_bug cycle=6 group=011100 bit=0 match=0 not_match=1"
+              ]
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -5,7 +5,6 @@\n \toutput reg match,\n \toutput reg not_match\n \t);\n-\n \n reg [3:0] pstate,nstate;\n \n@@ -46,9 +45,9 @@\n         s3:\n             nstate=data?s4:sf4;\n         s4:\n-            nstate=data?sf5:sf5;\n+            nstate=data?s5:sf5;\n         s5:\n-            nstate=data?sf6:s6;\n+            nstate=data?s6:sf6;\n         s6:\n             nstate=data?sf1:s1;\n         sf1:\n",
+        "category": "public_functional_failure",
+        "original_defect_persists": true,
+        "new_regression": false,
+        "functional_failure_candidate": true,
+        "review": {
+          "decision": "PENDING"
+        }
+      },
+      "reference": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:1e4e95d02fccced21c432a76451e1a4bebf6c7d3effd59e691e2ad31a6f0fb4a",
+        "endpoint_public": {
+          "tier": "visible_fail",
+          "suites": {
+            "W_bug": {
+              "result": "visible_fail",
+              "checker_violation": true,
+              "failures": [
+                "CHECK_FAIL W_bug cycle=6 group=011100 bit=0 match=0 not_match=1"
+              ]
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -46,11 +46,11 @@\n         s3:\n             nstate=data?s4:sf4;\n         s4:\n-            nstate=data?sf5:sf5;\n+            nstate=data?s5:sf5;\n         s5:\n             nstate=data?sf6:s6;\n         s6:\n-            nstate=data?sf1:s1;\n+            nstate=idle;\n         sf1:\n             nstate=sf2;\n         sf2:\n@@ -62,7 +62,7 @@\n         sf5:\n             nstate=sf6;\n         sf6:\n-\t\t\tnstate=data?sf1:s1;\n+\t\t\tnstate=idle;\n         default:\n             nstate=idle;\n         endcase\n",
+        "category": "public_functional_failure",
+        "original_defect_persists": true,
+        "new_regression": false,
+        "functional_failure_candidate": true,
+        "review": {
+          "decision": "PENDING"
+        }
+      }
+    },
+    {
+      "round": 3,
+      "slot_id": "r3_s0",
+      "admission": "admitted",
+      "reason": "public_matrix_and_structure_pass",
+      "mutant_hash": "sha256:7fcacef3a9210c1be2a1b178334370911ab07c622e55751be92e3f82fa52979d",
+      "normalized_identity": "sha256:de1a9d20aeb2f42b74a5e80cdb90b5c7f505c014a092567aee29e4d4b6033ed6",
+      "changed_fraction": 0.003125,
+      "repeats_historical_seed": false,
+      "online": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:5db25cf23be68f8598a6c08838954a6a7392acac467c3238c9c6a73c2115613c",
+        "endpoint_public": {
+          "tier": "visible_pass",
+          "suites": {
+            "W_bug": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -48,7 +48,7 @@\n         s4:\n             nstate=data?sf5:s5;\n         s5:\n-            nstate=data?sf6:sf6;\n+            nstate=data?sf6:s6;\n         s6:\n             nstate=data?sf1:s1;\n         sf1:\n",
+        "endpoint_evaluator": {
+          "result": "pass",
+          "returncode": 0,
+          "failures": [],
+          "log_hash": "sha256:499a149f5555026d38404edca8a6bfb14cca569693048cf0519306651c322ead"
+        },
+        "category": "public_pass_hidden_pass"
+      },
+      "reference": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:5db25cf23be68f8598a6c08838954a6a7392acac467c3238c9c6a73c2115613c",
+        "endpoint_public": {
+          "tier": "visible_pass",
+          "suites": {
+            "W_bug": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -48,7 +48,7 @@\n         s4:\n             nstate=data?sf5:s5;\n         s5:\n-            nstate=data?sf6:sf6;\n+            nstate=data?sf6:s6;\n         s6:\n             nstate=data?sf1:s1;\n         sf1:\n",
+        "endpoint_evaluator": {
+          "result": "pass",
+          "returncode": 0,
+          "failures": [],
+          "log_hash": "sha256:499a149f5555026d38404edca8a6bfb14cca569693048cf0519306651c322ead"
+        },
+        "category": "public_pass_hidden_pass"
+      }
+    },
+    {
+      "round": 4,
+      "slot_id": "r4_s0",
+      "admission": "rejected",
+      "reason": "curriculum_stage_violation"
+    },
+    {
+      "round": 5,
+      "slot_id": "r5_s0",
+      "admission": "rejected",
+      "reason": "curriculum_stage_violation"
+    }
+  ],
+  "reserved_variants_by_snapshot": [
+    {
+      "snapshot": "B_0",
+      "scheduled": 2,
+      "categories": {
+        "public_functional_failure": 2
+      }
+    },
+    {
+      "snapshot": "B_5",
+      "scheduled": 2,
+      "categories": {
+        "public_functional_failure": 2
+      }
+    }
+  ],
+  "probes": [
+    {
+      "snapshot": 0,
+      "anchor_index": 0,
+      "repeat": 0,
+      "endpoint": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:88760f677ee0e3f9b19fe5f12ce51e62e2a0feaddd157337bc74cef6afce48d4",
+        "endpoint_public": {
+          "tier": "visible_fail",
+          "suites": {
+            "W_bug": {
+              "result": "visible_fail",
+              "checker_violation": true,
+              "failures": [
+                "CHECK_FAIL W_bug cycle=6 group=011100 bit=0 match=0 not_match=1"
+              ]
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -46,7 +46,7 @@\n         s3:\n             nstate=data?s4:sf4;\n         s4:\n-            nstate=data?sf5:s5;\n+            nstate=data?s5:sf5;\n         s5:\n             nstate=data?sf6:s6;\n         s6:\n@@ -70,7 +70,7 @@\n \n always @(pstate or data or rst_n)\n begin\n-    if(!rst_n==1) \n+    if(!rst_n) \n \t\tbegin\n \t\t\tmatch=1'b0;\n \t\t\tnot_match = 1'b0;\n",
+        "category": "public_functional_failure",
+        "original_defect_persists": true,
+        "new_regression": false,
+        "functional_failure_candidate": true,
+        "review": {
+          "decision": "PENDING"
+        }
+      }
+    },
+    {
+      "snapshot": 0,
+      "anchor_index": 0,
+      "repeat": 1,
+      "endpoint": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:6c4d17e4c04f1232e9eaf6aa959b0c6e51895a3ca73e24354c77923ee364765c",
+        "endpoint_public": {
+          "tier": "visible_fail",
+          "suites": {
+            "W_bug": {
+              "result": "visible_fail",
+              "checker_violation": true,
+              "failures": [
+                "CHECK_FAIL W_bug cycle=6 group=011100 bit=0 match=0 not_match=1"
+              ]
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -5,7 +5,6 @@\n \toutput reg match,\n \toutput reg not_match\n \t);\n-\n \n reg [3:0] pstate,nstate;\n \n@@ -46,7 +45,7 @@\n         s3:\n             nstate=data?s4:sf4;\n         s4:\n-            nstate=data?sf5:s5;\n+            nstate=data?s5:sf5;\n         s5:\n             nstate=data?sf6:s6;\n         s6:\n@@ -65,31 +64,31 @@\n \t\t\tnstate=idle;\n         default:\n             nstate=idle;\n-        endcase\n+    endcase\n end\n \n-always @(pstate or data or rst_n)\n+always @(pstate or rst_n)\n begin\n-    if(!rst_n==1) \n-\t\tbegin\n-\t\t\tmatch=1'b0;\n-\t\t\tnot_match = 1'b0;\n-\t\tend\n+    if(!rst_n) \n+\tbegin\n+\t\tmatch=1'b0;\n+\t\tnot_match = 1'b0;\n+\tend\n     else if(pstate==s6)\n-\t\tbegin\n-\t\t\tmatch=1'b1;\n-\t\t\tnot_match = 1'b0;\n-\t\tend\n+\tbegin\n+\t\tmatch=1'b1;\n+\t\tnot_match = 1'b0;\n+\tend\n \telse if(pstate==sf6)\n-\t\tbegin\n-\t\t\tmatch=1'b0;\n-\t\t\tnot_match = 1'b1;\n-\t\tend\n+\tbegin\n+\t\tmatch=1'b0;\n+\t\tnot_match = 1'b1;\n+\tend\n     else\n-\t\tbegin\n-\t\t\tmatch=1'b0;\n-\t\t\tnot_match = 1'b0;\n-\t\tend\n+\tbegin\n+\t\tmatch=1'b0;\n+\t\tnot_match = 1'b0;\n+\tend\n end\n \n endmodule",
+        "category": "public_functional_failure",
+        "original_defect_persists": true,
+        "new_regression": false,
+        "functional_failure_candidate": true,
+        "review": {
+          "decision": "PENDING"
+        }
+      }
+    },
+    {
+      "snapshot": 5,
+      "anchor_index": 0,
+      "repeat": 0,
+      "endpoint": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:cee0d9620e7954177bb3329a5ea4523a5bae168a1a579493d23d7c64cef721b7",
+        "endpoint_public": {
+          "tier": "visible_fail",
+          "suites": {
+            "W_bug": {
+              "result": "visible_fail",
+              "checker_violation": true,
+              "failures": [
+                "CHECK_FAIL W_bug cycle=6 group=011100 bit=0 match=0 not_match=1"
+              ]
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -46,7 +46,7 @@\n         s3:\n             nstate=data?s4:sf4;\n         s4:\n-            nstate=data?sf5:s5;\n+            nstate=data?s5:sf5;\n         s5:\n             nstate=data?sf6:s6;\n         s6:\n@@ -68,9 +68,9 @@\n         endcase\n end\n \n-always @(pstate or data or rst_n)\n+always @(pstate or rst_n)\n begin\n-    if(!rst_n==1) \n+    if(!rst_n) \n \t\tbegin\n \t\t\tmatch=1'b0;\n \t\t\tnot_match = 1'b0;\n",
+        "category": "public_functional_failure",
+        "original_defect_persists": true,
+        "new_regression": false,
+        "functional_failure_candidate": true,
+        "review": {
+          "decision": "PENDING"
+        }
+      }
+    },
+    {
+      "snapshot": 5,
+      "anchor_index": 0,
+      "repeat": 1,
+      "endpoint": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:4a1da52243978bf35ca2c9598f5b232af39ea2dc8d124452f9eb0395f35eb2b8",
+        "endpoint_public": {
+          "tier": "visible_fail",
+          "suites": {
+            "W_bug": {
+              "result": "visible_fail",
+              "checker_violation": true,
+              "failures": [
+                "CHECK_FAIL W_bug cycle=6 group=011100 bit=0 match=0 not_match=1"
+              ]
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -46,9 +46,9 @@\n         s3:\n             nstate=data?s4:sf4;\n         s4:\n-            nstate=data?sf5:s5;\n+            nstate=data?s5:sf5;\n         s5:\n-            nstate=data?sf6:s6;\n+            nstate=data?s6:sf6;\n         s6:\n             nstate=idle;\n         sf1:\n",
+        "category": "public_functional_failure",
+        "original_defect_persists": true,
+        "new_regression": false,
+        "functional_failure_candidate": true,
+        "review": {
+          "decision": "PENDING"
+        }
+      }
+    }
+  ],
+  "confirmation": "not scheduled; single-sample failures require separate reviewed confirmation",
+  "limits": "Held-out exams compare frozen B0/B5 after all training; repeated samples are not distinct questions or proof of mastery."
+}

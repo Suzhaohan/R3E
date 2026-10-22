@@ -1,0 +1,57 @@
+{
+  "id": "gen-1792476201-YWmsCQRs4SyWLLr5w1Hg",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```json\n{\n  \"rtl\": \"module TopModule(\\n   input   clk,\\n   input   rst_n,\\n   output  reg [3:0] gray_out\\n);\\n\\nreg [3:0] gray_reg;\\nreg [3:0] bin_val;\\nreg count_en;\\nreg toggle;\\n\\n// Gray to binary conversion\\nalways @(posedge clk or negedge rst_n) begin\\n   if(!rst_n) begin\\n      gray_reg <= 4'b0000;\\n      bin_val <= 4'b0000;\\n      count_en <= 1'b0;\\n      toggle <= 1'b0;\\n   end\\n   else begin\\n      toggle <= ~toggle;\\n      count_en <= toggle;\\n      \\n      if(count_en) begin\\n         // Gray to binary conversion\\n         bin_val[3] = gray_reg[3];\\n         bin_val[2] = gray_reg[2] ^ bin_val[3];\\n         bin_val[1] = gray_reg[1] ^ bin_val[2];\\n         bin_val[0] = gray_reg[0] ^ bin_val[1];\\n         \\n         // Increment binary\\n         bin_val <= bin_val + 1'b1;\\n         \\n         // Binary to Gray conversion\\n         gray_reg <= bin_val ^ (bin_val >> 1);\\n      end\\n      \\n      gray_out <= gray_reg;\\n   end\\nend\\n\\nendmodule\"\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null,
+        "reasoning": null
+      },
+      "native_finish_reason": "stop"
+    }
+  ],
+  "created": 1792476201,
+  "model": "deepseek/deepseek-chat-v3-0324",
+  "object": "chat.completion",
+  "metadata": null,
+  "moderation": null,
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 331,
+    "prompt_tokens": 704,
+    "total_tokens": 1035,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null,
+      "text_tokens": null,
+      "image_tokens": 0
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cache_write_tokens": 0,
+      "cached_tokens": 0,
+      "image_tokens": null,
+      "text_tokens": null,
+      "video_tokens": 0
+    },
+    "cost": 0.0005815,
+    "is_byok": false,
+    "cost_details": {
+      "upstream_inference_cost": 0.0005815,
+      "upstream_inference_prompt_cost": 0.00020416,
+      "upstream_inference_completions_cost": 0.00037734
+    }
+  },
+  "provider": "GMICloud"
+}

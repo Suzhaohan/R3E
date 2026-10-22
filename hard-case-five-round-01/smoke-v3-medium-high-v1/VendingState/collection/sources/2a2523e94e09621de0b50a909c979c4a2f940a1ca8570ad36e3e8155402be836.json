@@ -1,0 +1,121 @@
+{
+  "source": {
+    "run_id": "collection",
+    "round": 3,
+    "slot_id": "r3_s0",
+    "task_hash": "sha256:819baa30c5f29e0cc26541ddd6686e982fe3e608151009c21fda5493c82d5979",
+    "carrier_id": "medium_high_VendingState",
+    "mutant_hash": "sha256:8cbbff8bcd777b9b274493d6de901abfbd308ecb7b25e6ba6e13c0c41268c1e4",
+    "candidate_hash": "sha256:8869de4968c8174cd734676a999e706fa6f9c80b7fbd4c6b046b7e16aad2c3e6",
+    "encounter_hash": "sha256:2a2523e94e09621de0b50a909c979c4a2f940a1ca8570ad36e3e8155402be836",
+    "archive_hash": "sha256:c884957ab6369ca9a5605ec9da01de8a61103d4bf00ec7af81125cc5e0f8739a",
+    "public_replay_hash": "sha256:8c309378ddc8c55220fc72c1430ca69ce3f4091ecec704fd9a75d11909fb0075"
+  },
+  "encounter": {
+    "encounter": 0,
+    "seed": 1538524566091900,
+    "result": {
+      "task_id": "medium_high_VendingState__8cbbff8bcd777b9b",
+      "route": "direct",
+      "rtl_tokens": 562,
+      "closure": [
+        "rtl/sequence.sv",
+        "harness:W_bug_tb.sv",
+        "harness:W_preserve_tb.sv"
+      ],
+      "outcome": "fixed",
+      "attempts": [
+        {
+          "attempt": 0,
+          "route": "direct",
+          "submissions": [
+            {
+              "kind": "repair",
+              "tokens": {
+                "input": 100,
+                "output": 40,
+                "counted_request": 6443,
+                "model_seconds": 0.01
+              },
+              "format_valid": true,
+              "format_error": null
+            }
+          ],
+          "repair_tokens": {
+            "input": 100,
+            "output": 40,
+            "counted_request": 6443,
+            "model_seconds": 0.01
+          },
+          "edit": "offline fixture only",
+          "candidate_hash": "sha256:8869de4968c8174cd734676a999e706fa6f9c80b7fbd4c6b046b7e16aad2c3e6",
+          "tier": "visible_pass",
+          "stage": "simulation",
+          "build_seconds": 0.02,
+          "sim_seconds": 0.01,
+          "changed_files": [
+            "rtl/sequence.sv"
+          ]
+        }
+      ],
+      "calls": 1,
+      "final_candidate_hash": "sha256:8869de4968c8174cd734676a999e706fa6f9c80b7fbd4c6b046b7e16aad2c3e6",
+      "inputs_read": [
+        "public/task.json",
+        "public/visible/build.json",
+        "public/visible/W_bug_tb.sv",
+        "public/visible/W_preserve_tb.sv",
+        "public/spec.txt"
+      ],
+      "experience": {
+        "snapshot_id": "B_2",
+        "snapshot_hash": "sha256:bd077223b730a468237d8aa1cf6e0f64376d511b80d739419cdacfbefdb5f8d9",
+        "state_hash": "sha256:831017327dc4caf546fcce1c2a44feb9ac291ad3a98564d855b6bcc075af7c5b",
+        "payload_hash": "sha256:3092f0d7fc08feac058171dbed616bb7c60daa43691d7b6d28875d3225d9b061",
+        "delivery_hash": "sha256:512bb8786a1ff6c1a28dffcfb5fff1bb12006c14ca468020ad5e078c95ee451f",
+        "delivered": false
+      }
+    }
+  },
+  "archive_path": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/smoke-v3-medium-high-v1/VendingState/collection/rounds/3/r3_s0/online/blue/archive/medium_high_VendingState__8cbbff8bcd777b9b__8869de4968c8174c.json",
+  "task_dir": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/smoke-v3-medium-high-v1/VendingState/collection/rounds/3/r3_s0/admission/blue_task",
+  "replay": {
+    "tier": "visible_pass",
+    "stage": "simulation",
+    "evidence": {
+      "suites": {
+        "W_bug": {
+          "result": "visible_pass",
+          "returncode": 0,
+          "pass_marker_found": true,
+          "fail_marker_found": false,
+          "log": "Hint: Output 'out1' has no mismatches.\nHint: Output 'out2' has no mismatches.\nHint: Output 'out3' has no mismatches.\nHint: Total mismatched samples is 0 out of 181 samples\n\nSimulation finished at 906 ps\nMismatches: 0 in 181 samples\nTESTBENCH PASS original samples"
+        },
+        "W_preserve": {
+          "result": "visible_pass",
+          "returncode": 0,
+          "pass_marker_found": true,
+          "fail_marker_found": false,
+          "log": "TESTBENCH PASS preserve"
+        }
+      }
+    },
+    "build_seconds": 0.017953693866729736,
+    "sim_seconds": 0.012112246826291084,
+    "closure": [
+      "rtl/sequence.sv",
+      "harness:W_bug_tb.sv",
+      "harness:W_preserve_tb.sv"
+    ]
+  },
+  "public_rows": {
+    "W_bug": "visible_pass",
+    "W_preserve": "visible_pass"
+  },
+  "mutation_edits": [
+    {
+      "find": "d1? S2:",
+      "replace": "d1? S1:"
+    }
+  ]
+}

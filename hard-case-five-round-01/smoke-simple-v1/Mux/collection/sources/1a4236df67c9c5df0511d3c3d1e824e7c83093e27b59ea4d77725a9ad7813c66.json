@@ -1,0 +1,121 @@
+{
+  "source": {
+    "run_id": "collection",
+    "round": 2,
+    "slot_id": "r2_s0",
+    "task_hash": "sha256:fe9bf3b02af81dc7f4871844d6ff52594ecde70d3b46c9387e1f8abd3c78d6b0",
+    "carrier_id": "selected_Mux",
+    "mutant_hash": "sha256:632510e79e5779ed262593745b317e87cbf23a025ad0ee8196cf7e1cb0fc51a2",
+    "candidate_hash": "sha256:ffb6ff92d53ef1dc120177ea53bd6d19561e5dbf5e35a094ad1c2b7844a244c8",
+    "encounter_hash": "sha256:1a4236df67c9c5df0511d3c3d1e824e7c83093e27b59ea4d77725a9ad7813c66",
+    "archive_hash": "sha256:98676a6f43931b5e65868fae60512151f962da088d33772c2a600242d4f9a7db",
+    "public_replay_hash": "sha256:81114a33650d40f3141058a93bc0186b4bc46098dcd2cdf640c8f85fe3bb4860"
+  },
+  "encounter": {
+    "encounter": 0,
+    "seed": 1926226352789350,
+    "result": {
+      "task_id": "selected_Mux__632510e79e5779ed",
+      "route": "direct",
+      "rtl_tokens": 228,
+      "closure": [
+        "rtl/sequence.sv",
+        "harness:W_bug_tb.sv",
+        "harness:W_preserve_tb.sv"
+      ],
+      "outcome": "fixed",
+      "attempts": [
+        {
+          "attempt": 0,
+          "route": "direct",
+          "submissions": [
+            {
+              "kind": "repair",
+              "tokens": {
+                "input": 100,
+                "output": 40,
+                "counted_request": 4216,
+                "model_seconds": 0.07
+              },
+              "format_valid": true,
+              "format_error": null
+            }
+          ],
+          "repair_tokens": {
+            "input": 100,
+            "output": 40,
+            "counted_request": 4216,
+            "model_seconds": 0.07
+          },
+          "edit": "offline fixture only",
+          "candidate_hash": "sha256:ffb6ff92d53ef1dc120177ea53bd6d19561e5dbf5e35a094ad1c2b7844a244c8",
+          "tier": "visible_pass",
+          "stage": "simulation",
+          "build_seconds": 0.02,
+          "sim_seconds": 0.01,
+          "changed_files": [
+            "rtl/sequence.sv"
+          ]
+        }
+      ],
+      "calls": 1,
+      "final_candidate_hash": "sha256:ffb6ff92d53ef1dc120177ea53bd6d19561e5dbf5e35a094ad1c2b7844a244c8",
+      "inputs_read": [
+        "public/task.json",
+        "public/visible/build.json",
+        "public/visible/W_bug_tb.sv",
+        "public/visible/W_preserve_tb.sv",
+        "public/spec.txt"
+      ],
+      "experience": {
+        "snapshot_id": "B_1",
+        "snapshot_hash": "sha256:d27f26fd88f12c25d5de854d604897cb853d2b736c8775c78646d1f6b284fc96",
+        "state_hash": "sha256:9fa27ef669583d618625053827f2d2de7205ac56fa31f975a3d340847dac61cd",
+        "payload_hash": "sha256:ca6a106fe01deff65eaefab0b84b2fba982584315d043e89764cdf3e7c1c3bfc",
+        "delivery_hash": "sha256:126d924ae7a16b62476f08fdf21579aaad1c5f5e493d4e1d0eedba502ddf038d",
+        "delivered": true
+      }
+    }
+  },
+  "archive_path": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/smoke-simple-v1/Mux/collection/rounds/2/r2_s0/online/blue/archive/selected_Mux__632510e79e5779ed__ffb6ff92d53ef1dc.json",
+  "task_dir": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/smoke-simple-v1/Mux/collection/rounds/2/r2_s0/admission/blue_task",
+  "replay": {
+    "tier": "visible_pass",
+    "stage": "simulation",
+    "evidence": {
+      "suites": {
+        "W_bug": {
+          "result": "visible_pass",
+          "returncode": 0,
+          "pass_marker_found": true,
+          "fail_marker_found": false,
+          "log": "VCD info: dumpfile output_mux_4_1_tb.vcd opened for output.\nVCD warning: $dumpvars: Unsupported argument type (vpiPackage)\n[0] sel=0x0 a=0x1 b=0x2 c=0x4 d=0x8 out=0x1\n[100] sel=0x1 a=0x1 b=0x2 c=0x4 d=0x8 out=0x2\n[200] sel=0x2 a=0x1 b=0x2 c=0x4 d=0x8 out=0x4\n[300] sel=0x3 a=0x1 b=0x2 c=0x4 d=0x8 out=0x8\n[400] sel=0x0 a=0x8 b=0x4 c=0x2 d=0x1 out=0x8\n[500] sel=0x1 a=0x8 b=0x4 c=0x2 d=0x1 out=0x4\n[600] sel=0x2 a=0x8 b=0x4 c=0x2 d=0x1 out=0x2\n[700] sel=0x3 a=0x8 b=0x4 c=0x2 d=0x1 out=0x1\nTESTBENCH PASS original oracle"
+        },
+        "W_preserve": {
+          "result": "visible_pass",
+          "returncode": 0,
+          "pass_marker_found": true,
+          "fail_marker_found": false,
+          "log": "TESTBENCH PASS preserve"
+        }
+      }
+    },
+    "build_seconds": 0.019941730424761772,
+    "sim_seconds": 0.013768311589956284,
+    "closure": [
+      "rtl/sequence.sv",
+      "harness:W_bug_tb.sv",
+      "harness:W_preserve_tb.sv"
+    ]
+  },
+  "public_rows": {
+    "W_bug": "visible_pass",
+    "W_preserve": "visible_pass"
+  },
+  "mutation_edits": [
+    {
+      "find": "out <= b;",
+      "replace": "out <= d;"
+    }
+  ]
+}

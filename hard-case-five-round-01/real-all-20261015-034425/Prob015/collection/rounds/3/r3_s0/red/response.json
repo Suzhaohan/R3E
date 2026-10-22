@@ -1,0 +1,26 @@
+{
+  "result": {
+    "edits": [
+      {
+        "find": "            S0     : nstate = d1? S0_5:\n                              d2? S1:\n                              nstate;",
+        "replace": "            S0     : nstate = d1? S0_5:\n                              d2? S0_5:\n                              nstate;"
+      }
+    ],
+    "violated_requirement": "From the empty state (S0) a 1-yuan input (d2) must add one yuan and advance to the 1-yuan state S1; the mutant instead advances to the 0.5-yuan state S0_5, so the accumulated amount diverges from the coins inserted.",
+    "spec_basis": "Input currency: d1 represents 0.5 yuan, d2 represents 1 yuan; the machine accumulates the total amount of money inserted."
+  },
+  "raw_response_hash": "sha256:f0cba1e735b19287745a694d291e5fb77ae26fda530ddc00e49f30bd17468878",
+  "input_tokens": 6362,
+  "output_tokens": 10495,
+  "request_hash": "sha256:237c77b8776018a8cdc3a06d56252ba48793a2d9ed157cbf11ecc117ee950a0b",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 6362,
+    "output_tokens": 10495
+  },
+  "model_seconds": 49.92883493471891
+}

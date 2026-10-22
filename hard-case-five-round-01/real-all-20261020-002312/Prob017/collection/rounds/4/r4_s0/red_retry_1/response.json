@@ -1,0 +1,30 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "div_flag <= cyc_cnt==(M_N-1)||cyc_cnt==(c89-1)? ~div_flag: div_flag;",
+            "replace": "div_flag <= cyc_cnt==(M_N-1)||cyc_cnt==(c89-1)? div_flag: ~div_flag;"
+          }
+        ],
+        "violated_requirement": "The div_flag toggle condition is inverted, causing incorrect mode switching when cyc_cnt equals M_N-1 or c89-1",
+        "spec_basis": "Mode toggles iff cycle_count equals M_N-1 or c89-1; otherwise it holds"
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:e7affb990afee120f82089ea25e5254f15b8d9e7681419aa9a9e9781cb02e19d",
+  "input_tokens": 9469,
+  "output_tokens": 140,
+  "request_hash": "sha256:87e8b69c7f1318f0a985b20cd82b5e88cfdc0e0cd2c0d5ed0bc98503b77ba487",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 9469,
+    "output_tokens": 140
+  },
+  "model_seconds": 7.61023152153939
+}

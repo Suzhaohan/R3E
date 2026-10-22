@@ -1,0 +1,69 @@
+{
+  "version": "red_progress_preservation_v4",
+  "status": "inconclusive",
+  "candidate_hash": "sha256:e0a8d2ff7052f155ce4956668d99d2b814be8d5f7c10c0686fd3a117fb4f9ab7",
+  "fingerprint": "sha256:c77f781be529bfa7fe3c59280db4fb87e3f4c7f4f751fb19c6e0d38df8996fcd",
+  "edit_budget": {
+    "metric": "sequence_matcher_token_edits_v1",
+    "tokenizer": "verilog_source_tokens_v2_macros",
+    "max_changed_fraction": 0.4,
+    "all_code": {
+      "original_tokens": 327,
+      "candidate_tokens": 327,
+      "changed_tokens": 1,
+      "allowed_tokens": 130,
+      "changed_fraction": 0.0030581039755351682,
+      "within_limit": true
+    },
+    "body": {
+      "original_tokens": 290,
+      "candidate_tokens": 290,
+      "changed_tokens": 1,
+      "allowed_tokens": 116,
+      "changed_fraction": 0.0034482758620689655,
+      "within_limit": true
+    }
+  },
+  "freeze_hash": "sha256:da5a4e6d225a1a55a841c31b3db7cf148649dfec45b39ca6a6051cebdd186f79",
+  "language_review": {
+    "comments_unchanged": true,
+    "clean_comments_hash": "sha256:65603407fc319eca4675f6b159b5ba92fb961b402543ee132e6472169bf69b14",
+    "candidate_comments_hash": "sha256:65603407fc319eca4675f6b159b5ba92fb961b402543ee132e6472169bf69b14",
+    "new_identifiers": [],
+    "identifier_review": "informational; not an admission veto"
+  },
+  "baseline": {
+    "suites": {
+      "W_bug": {
+        "build_seconds": 0.01,
+        "tier": "pass",
+        "runs": [
+          "pass",
+          "pass"
+        ],
+        "log_hash": "sha256:f82a86bf89583b4bef8f483f0c2de73e450747ddcfb35f08385c83d0a6959743",
+        "deterministic": true,
+        "log": "TESTBENCH PASS vending\n"
+      },
+      "W_preserve": {
+        "build_seconds": 0.01,
+        "tier": "pass",
+        "runs": [
+          "pass",
+          "pass"
+        ],
+        "log_hash": "sha256:8f7b0d3e220050a01430389374487f2c739abe116929797e50e6f766ebba895a",
+        "deterministic": true,
+        "log": "TESTBENCH PASS preserve\n"
+      }
+    },
+    "structural": {
+      "status": "logic_loop",
+      "returncode": 1,
+      "log": "e.sv:29$4_Y [8]\n    wire $procmux$52_Y [0]\n    wire $ternary$rtl/sequence.sv:29$5_Y [0]\n    wire $ternary$rtl/sequence.sv:29$6_Y [0]\nWarning: found logic loop in module TopModule:\n    cell $extend$rtl/sequence.sv:29$4 ($pos)\n    cell $procmux$52 ($pmux)\n    cell $ternary$rtl/sequence.sv:29$5 ($mux)\n    cell $ternary$rtl/sequence.sv:29$6 ($mux)\n    wire $extend$rtl/sequence.sv:29$4_Y [9]\n    wire $procmux$52_Y [0]\n    wire $ternary$rtl/sequence.sv:29$5_Y [0]\n    wire $ternary$rtl/sequence.sv:29$6_Y [0]\nWarning: found logic loop in module TopModule:\n    cell $extend$rtl/sequence.sv:32$7 ($pos)\n    cell $procmux$52 ($pmux)\n    cell $ternary$rtl/sequence.sv:32$8 ($mux)\n    cell $ternary$rtl/sequence.sv:32$9 ($mux)\n    wire $extend$rtl/sequence.sv:32$7_Y [0]\n    wire $procmux$52_Y [0]\n    wire $ternary$rtl/sequence.sv:32$8_Y [0]\n    wire $ternary$rtl/sequence.sv:32$9_Y [0]\nWarning: found logic loop in module TopModule:\n    cell $extend$rtl/sequence.sv:32$7 ($pos)\n    cell $procmux$52 ($pmux)\n    cell $ternary$rtl/sequence.sv:32$8 ($mux)\n    cell $ternary$rtl/sequence.sv:32$9 ($mux)\n    wire $extend$rtl/sequence.sv:32$7_Y [0]\n    wire $procmux$52_Y [1]\n    wire $ternary$rtl/sequence.sv:32$8_Y [0]\n    wire $ternary$rtl/sequence.sv:32$9_Y [0]\nWarning: found logic loop in module TopModule:\n    cell $extend$rtl/sequence.sv:32$7 ($pos)\n    cell $procmux$52 ($pmux)\n    cell $ternary$rtl/sequence.sv:32$8 ($mux)\n    cell $ternary$rtl/sequence.sv:32$9 ($mux)\n    wire $extend$rtl/sequence.sv:32$7_Y [0]\n    wire $procmux$52_Y [2]\n    wire $ternary$rtl/sequence.sv:32$8_Y [0]\n    wire $ternary$rtl/sequence.sv:32$9_Y [0]\nWarning: found logic loop in module TopModule:\n    cell $extend$rtl/sequence.sv:35$10 ($pos)\n    cell $procmux$52 ($pmux)\n    cell $ternary$rtl/sequence.sv:35$11 ($mux)\n    cell $ternary$rtl/sequence.sv:35$12 ($mux)\n    wire $extend$rtl/sequence.sv:35$10_Y [0]\n    wire $procmux$52_Y [0]\n    wire $ternary$rtl/sequence.sv:35$11_Y [0]\n    wire $ternary$rtl/sequence.sv:35$12_Y [0]\nWarning: found logic loop in module TopModule:\n    cell $extend$rtl/sequence.sv:39$14 ($pos)\n    cell $procmux$52 ($pmux)\n    cell $ternary$rtl/sequence.sv:39$15 ($mux)\n    cell $ternary$rtl/sequence.sv:39$16 ($mux)\n    cell $ternary$rtl/sequence.sv:39$17 ($mux)\n    wire $extend$rtl/sequence.sv:39$14_Y [0]\n    wire $procmux$52_Y [0]\n    wire $ternary$rtl/sequence.sv:39$15_Y [0]\n    wire $ternary$rtl/sequence.sv:39$16_Y [0]\n    wire $ternary$rtl/sequence.sv:39$17_Y [0]\nWarning: found logic loop in module TopModule:\n    cell $extend$rtl/sequence.sv:43$19 ($pos)\n    cell $procmux$52 ($pmux)\n    cell $ternary$rtl/sequence.sv:43$20 ($mux)\n    cell $ternary$rtl/sequence.sv:43$21 ($mux)\n    cell $ternary$rtl/sequence.sv:43$22 ($mux)\n    wire $extend$rtl/sequence.sv:43$19_Y [0]\n    wire $procmux$52_Y [0]\n    wire $ternary$rtl/sequence.sv:43$20_Y [0]\n    wire $ternary$rtl/sequence.sv:43$21_Y [0]\n    wire $ternary$rtl/sequence.sv:43$22_Y [0]\nERROR: Found 38 problems in 'check -assert'.\n",
+      "command": "read_verilog -sv \"rtl/sequence.sv\"; hierarchy -check -top TopModule ; proc; flatten; check -assert"
+    }
+  },
+  "reason": "clean_baseline_not_qualified",
+  "tools_seconds": 0.08136811200529337
+}

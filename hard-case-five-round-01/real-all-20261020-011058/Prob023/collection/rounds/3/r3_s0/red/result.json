@@ -1,0 +1,183 @@
+{
+  "status": "candidate_batch",
+  "candidates": [
+    {
+      "status": "proposal",
+      "buggy_rtl": "\nmodule TopModule(\n   input   clk,\n   input   rst_n,\n\n   output  reg [3:0] gray_out\n);\n//Gray code to binary conversion\nreg  [3:0] bin_out;\nwire [3:0] gray_wire;\n\nalways @(posedge clk or negedge rst_n)begin\n   if(rst_n == 1'b0) begin\n      bin_out <= 4'b0;\n   end\n   else begin\n      bin_out[3] = gray_wire[3];\n      bin_out[2] = gray_wire[2]^bin_out[3];\n      bin_out[1] = gray_wire[1]^bin_out[2];\n      bin_out[0] = gray_wire[0]&bin_out[1];\n   end \nend\n//Binary increment\nreg [3:0] bin_add_wire;\nalways @(posedge clk or negedge rst_n)begin\n   if(rst_n == 1'b0) begin\n      bin_add_wire <= 4'b0;\n   end\n   else begin\n      bin_add_wire <= bin_out + 1'b1;\n   end\nend\n//Binary to gray code conversion\nassign gray_wire = (bin_add_wire >> 1) ^ bin_add_wire;\n\nalways @(posedge clk or negedge rst_n)begin\n   if(rst_n == 1'b0) begin\n      gray_out <= 4'b0;\n   end\n   else begin\n      gray_out <= gray_wire;\n   end\nend\nendmodule",
+      "buggy_rtl_hash": "sha256:ed0979d9e5dec150527be0be72eab90bebe554c9c3d08c7958a1d743e8c4e9c1",
+      "edit_budget": {
+        "metric": "sequence_matcher_token_edits_v1",
+        "tokenizer": "verilog_source_tokens_v2_macros",
+        "max_changed_fraction": 0.4,
+        "all_code": {
+          "original_tokens": 198,
+          "candidate_tokens": 198,
+          "changed_tokens": 1,
+          "allowed_tokens": 79,
+          "changed_fraction": 0.005050505050505051,
+          "within_limit": true
+        },
+        "body": {
+          "original_tokens": 178,
+          "candidate_tokens": 178,
+          "changed_tokens": 1,
+          "allowed_tokens": 71,
+          "changed_fraction": 0.0056179775280898875,
+          "within_limit": true
+        }
+      },
+      "diff": "--- clean.sv\n+++ buggy.sv\n@@ -17,7 +17,7 @@\n       bin_out[3] = gray_wire[3];\n       bin_out[2] = gray_wire[2]^bin_out[3];\n       bin_out[1] = gray_wire[1]^bin_out[2];\n-      bin_out[0] = gray_wire[0]^bin_out[1];\n+      bin_out[0] = gray_wire[0]&bin_out[1];\n    end \n end\n //Binary increment\n",
+      "claims": {
+        "violated_requirement": "The Gray code conversion from binary will be incorrect due to the wrong XOR operation being replaced with AND, causing incorrect single-bit transitions in the output sequence.",
+        "spec_basis": "Gray code is a binary numeral system where two successive values differ in only one bit position"
+      },
+      "mutation_edits": [
+        {
+          "find": "bin_out[0] = gray_wire[0]^bin_out[1];",
+          "replace": "bin_out[0] = gray_wire[0]&bin_out[1];"
+        }
+      ],
+      "syntax_corrections": [],
+      "original_mutation_edits": [
+        {
+          "find": "bin_out[0] = gray_wire[0]^bin_out[1];",
+          "replace": "bin_out[0] = gray_wire[0]&bin_out[1];"
+        }
+      ]
+    },
+    {
+      "status": "proposal",
+      "buggy_rtl": "\nmodule TopModule(\n   input   clk,\n   input   rst_n,\n\n   output  reg [3:0] gray_out\n);\n//Gray code to binary conversion\nreg  [3:0] bin_out;\nwire [3:0] gray_wire;\n\nalways @(posedge clk or negedge rst_n)begin\n   if(rst_n == 1'b0) begin\n      bin_out <= 4'b0;\n   end\n   else begin\n      bin_out[3] = gray_wire[0];\n      bin_out[2] = gray_wire[2]^bin_out[3];\n      bin_out[1] = gray_wire[1]^bin_out[2];\n      bin_out[0] = gray_wire[0]^bin_out[1];\n   end \nend\n//Binary increment\nreg [3:0] bin_add_wire;\nalways @(posedge clk or negedge rst_n)begin\n   if(rst_n == 1'b0) begin\n      bin_add_wire <= 4'b0;\n   end\n   else begin\n      bin_add_wire <= bin_out + 1'b1;\n   end\nend\n//Binary to gray code conversion\nassign gray_wire = (bin_add_wire >> 1) ^ bin_add_wire;\n\nalways @(posedge clk or negedge rst_n)begin\n   if(rst_n == 1'b0) begin\n      gray_out <= 4'b0;\n   end\n   else begin\n      gray_out <= gray_wire;\n   end\nend\nendmodule",
+      "buggy_rtl_hash": "sha256:5c5b50e0088522601175f60d706513b069b40f2c630040f137881b15bc9c4a36",
+      "edit_budget": {
+        "metric": "sequence_matcher_token_edits_v1",
+        "tokenizer": "verilog_source_tokens_v2_macros",
+        "max_changed_fraction": 0.4,
+        "all_code": {
+          "original_tokens": 198,
+          "candidate_tokens": 198,
+          "changed_tokens": 1,
+          "allowed_tokens": 79,
+          "changed_fraction": 0.005050505050505051,
+          "within_limit": true
+        },
+        "body": {
+          "original_tokens": 178,
+          "candidate_tokens": 178,
+          "changed_tokens": 1,
+          "allowed_tokens": 71,
+          "changed_fraction": 0.0056179775280898875,
+          "within_limit": true
+        }
+      },
+      "diff": "--- clean.sv\n+++ buggy.sv\n@@ -14,7 +14,7 @@\n       bin_out <= 4'b0;\n    end\n    else begin\n-      bin_out[3] = gray_wire[3];\n+      bin_out[3] = gray_wire[0];\n       bin_out[2] = gray_wire[2]^bin_out[3];\n       bin_out[1] = gray_wire[1]^bin_out[2];\n       bin_out[0] = gray_wire[0]^bin_out[1];\n",
+      "claims": {
+        "violated_requirement": "The Gray-to-binary conversion will incorrectly use the LSB instead of the MSB for the highest bit, causing incorrect binary values and thus incorrect Gray code output.",
+        "spec_basis": "The implementation should follow this process: 1. Input a Gray code value... 2. Convert the Gray code to binary representation"
+      },
+      "mutation_edits": [
+        {
+          "find": "bin_out[3] = gray_wire[3];",
+          "replace": "bin_out[3] = gray_wire[0];"
+        }
+      ],
+      "syntax_corrections": [],
+      "original_mutation_edits": [
+        {
+          "find": "bin_out[3] = gray_wire[3];",
+          "replace": "bin_out[3] = gray_wire[0];"
+        }
+      ]
+    },
+    {
+      "status": "proposal",
+      "buggy_rtl": "\nmodule TopModule(\n   input   clk,\n   input   rst_n,\n\n   output  reg [3:0] gray_out\n);\n//Gray code to binary conversion\nreg  [3:0] bin_out;\nwire [3:0] gray_wire;\n\nalways @(posedge clk or negedge rst_n)begin\n   if(rst_n == 1'b0) begin\n      bin_out <= 4'b1111;\n   end\n   else begin\n      bin_out[3] = gray_wire[3];\n      bin_out[2] = gray_wire[2]^bin_out[3];\n      bin_out[1] = gray_wire[1]^bin_out[2];\n      bin_out[0] = gray_wire[0]^bin_out[1];\n   end \nend\n//Binary increment\nreg [3:0] bin_add_wire;\nalways @(posedge clk or negedge rst_n)begin\n   if(rst_n == 1'b0) begin\n      bin_add_wire <= 4'b0;\n   end\n   else begin\n      bin_add_wire <= bin_out + 1'b1;\n   end\nend\n//Binary to gray code conversion\nassign gray_wire = (bin_add_wire >> 1) ^ bin_add_wire;\n\nalways @(posedge clk or negedge rst_n)begin\n   if(rst_n == 1'b0) begin\n      gray_out <= 4'b0;\n   end\n   else begin\n      gray_out <= gray_wire;\n   end\nend\nendmodule",
+      "buggy_rtl_hash": "sha256:84279c06c09bfe374f2d05dccaa28d98128941a446a431bd64d66a772d4982d0",
+      "edit_budget": {
+        "metric": "sequence_matcher_token_edits_v1",
+        "tokenizer": "verilog_source_tokens_v2_macros",
+        "max_changed_fraction": 0.4,
+        "all_code": {
+          "original_tokens": 198,
+          "candidate_tokens": 198,
+          "changed_tokens": 1,
+          "allowed_tokens": 79,
+          "changed_fraction": 0.005050505050505051,
+          "within_limit": true
+        },
+        "body": {
+          "original_tokens": 178,
+          "candidate_tokens": 178,
+          "changed_tokens": 1,
+          "allowed_tokens": 71,
+          "changed_fraction": 0.0056179775280898875,
+          "within_limit": true
+        }
+      },
+      "diff": "--- clean.sv\n+++ buggy.sv\n@@ -11,7 +11,7 @@\n \n always @(posedge clk or negedge rst_n)begin\n    if(rst_n == 1'b0) begin\n-      bin_out <= 4'b0;\n+      bin_out <= 4'b1111;\n    end\n    else begin\n       bin_out[3] = gray_wire[3];\n",
+      "claims": {
+        "violated_requirement": "The reset value will be incorrect, causing the counter to start from the wrong initial state instead of 0000.",
+        "spec_basis": "When rst_n is low, the counter should reset to 0000"
+      },
+      "mutation_edits": [
+        {
+          "find": "bin_out <= 4'b0;",
+          "replace": "bin_out <= 4'b1111;"
+        }
+      ],
+      "syntax_corrections": [],
+      "original_mutation_edits": [
+        {
+          "find": "bin_out <= 4'b0;",
+          "replace": "bin_out <= 4'b1111;"
+        }
+      ]
+    },
+    {
+      "status": "rejected",
+      "buggy_rtl": "\nmodule TopModule(\n   input   clk,\n   input   rst_n,\n\n   output  reg [3:0] gray_out\n);\n//Gray code to binary conversion\nreg  [3:0] bin_out;\nwire [3:0] gray_wire;\n\nalways @(posedge clk or negedge rst_n)begin\n   if(rst_n == 1'b0) begin\n      bin_out <= 4'b0;\n   end\n   else begin\n      bin_out[3] = gray_wire[3];\n      bin_out[2] = gray_wire[2]^bin_out[3];\n      bin_out[1] = gray_wire[1]^bin_out[2];\n      bin_out[0] = gray_wire[0]^bin_out[1];\n   end \nend\n//Binary increment\nreg [3:0] bin_add_wire;\nalways @(posedge clk or negedge rst_n)begin\n   if(rst_n == 1'b0) begin\n      bin_add_wire <= 4'b0;\n   end\n   else begin\n      bin_add_wire <= bin_out + 1'b1;\n   end\nend\n//Binary to gray code conversion\nassign gray_wire = (bin_add_wire >> 1) ^ bin_add_wire;\n\nalways @(posedge clk or negedge rst_n)begin\n   if(rst_n == 1'b0) begin\n      gray_out <= 4'b0;\n   end\n   else begin\n      gray_out <= bin_add_wire;\n   end\nend\nendmodule",
+      "buggy_rtl_hash": "sha256:fb92a338a73a2e8146791d44cf3f854b2d8818e9212080319f32a09339184fa9",
+      "edit_budget": {
+        "metric": "sequence_matcher_token_edits_v1",
+        "tokenizer": "verilog_source_tokens_v2_macros",
+        "max_changed_fraction": 0.4,
+        "all_code": {
+          "original_tokens": 198,
+          "candidate_tokens": 198,
+          "changed_tokens": 1,
+          "allowed_tokens": 79,
+          "changed_fraction": 0.005050505050505051,
+          "within_limit": true
+        },
+        "body": {
+          "original_tokens": 178,
+          "candidate_tokens": 178,
+          "changed_tokens": 1,
+          "allowed_tokens": 71,
+          "changed_fraction": 0.0056179775280898875,
+          "within_limit": true
+        }
+      },
+      "diff": "--- clean.sv\n+++ buggy.sv\n@@ -38,7 +38,7 @@\n       gray_out <= 4'b0;\n    end\n    else begin\n-      gray_out <= gray_wire;\n+      gray_out <= bin_add_wire;\n    end\n end\n endmodule",
+      "claims": {
+        "violated_requirement": "The final output will be the binary value instead of the Gray code, violating the Gray code sequence requirement.",
+        "spec_basis": "The module should implement a 4-bit Gray code counter"
+      },
+      "mutation_edits": [
+        {
+          "find": "gray_out <= gray_wire;",
+          "replace": "gray_out <= bin_add_wire;"
+        }
+      ],
+      "syntax_corrections": [],
+      "original_mutation_edits": [
+        {
+          "find": "gray_out <= gray_wire;",
+          "replace": "gray_out <= bin_add_wire;"
+        }
+      ],
+      "reason": "mutation_grammar_violation",
+      "grammar_error": "Unsupported token substitution 'gray_wire' -> 'bin_add_wire'. Use an allowed operator/literal/state-constant operation without changing grammar."
+    }
+  ]
+}

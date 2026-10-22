@@ -1,0 +1,160 @@
+{
+  "version": "continuous_blue_delivery_v1",
+  "snapshot_id": "B_4",
+  "snapshot_hash": "sha256:29ece0c3395456ac5fa78ca55a4b0a839ddcb2eb2cbd0585370c40cb5e04d7fb",
+  "state_hash": "sha256:ed6113b071c51f3a554e9d88f86e68b9abde11df2bfff2628a05bcff8b0a58db",
+  "task_hash": "sha256:5b290c8256bb8cdc3e8d6d57014a3b5a8cdf4a7de310886461328a452b2786d4",
+  "retrieval_policy_hash": "sha256:8b114d1dc640c0d8851c3796a1d6ed4e3bc9b65406c7341475b69b3d8568e26f",
+  "payload": {
+    "version": "continuous_blue_experience_context_v2",
+    "notice": "Prior repair examples passed public tests only; validate their applicability to this task.",
+    "entries": [
+      {
+        "entry_hash": "sha256:3c6630c708472119d55e6578d4ab95a5c9e929149de7169b4e23bc819976e1f3",
+        "content": {
+          "validation": "public_pass_single_sample_hidden_unknown",
+          "specification_excerpt": "I would like you to implement a module named `TopModule` with the following interface. All input and output ports are one bit unless otherwise specified.\n\n### Inputs:\n- `clk`: System clock signal.\n- `rst_n`: Asynchronous reset signal, active low.\n- `data`: Single-bit input signal, representing the data to be checked.\n\n### Outputs:\n- `match`: A signal that outputs `1` when the input signal `data` matches the target sequence `011100`. It remains `0` at all other times.\n- `not_match`: A signal that outputs `1` when the input signal `data` does not match the target sequence `011100`. It remains `0` at all other times.\n\n### Module Description:\nThe module must detect the sequence `011100` from the input signal `data`. Please use the state machine to solve this problem. The detection rules are as follows:\n1. The sequence check begins with every sixth bit of input data, meaning the module processes the input in groups of six bits and does not overlap or reuse bits between groups.\n2. If the first bit of a group does n",
+          "applied_patch": "--- original_buggy/rtl/sequence.sv\n+++ repaired/rtl/sequence.sv\n@@ original lines 60-62; repaired lines 60-62 @@\n-        sf4:\n-            nstate=sf1;\n-        sf5:\n+        sf4:\n+            nstate=sf5;\n+        sf5:",
+          "repair_evidence": {
+            "version": "public_repair_context_v1",
+            "full_patch_hash": "sha256:7c5810564084ac2b2d9dd89e612e0f61b93770fccc481d81d9f41ad6a20ea133",
+            "changed_ranges": [
+              {
+                "file": "rtl/sequence.sv",
+                "before_lines": [
+                  60,
+                  62
+                ],
+                "after_lines": [
+                  60,
+                  62
+                ],
+                "truncated": false
+              }
+            ],
+            "omitted_change_regions": 0,
+            "public_before": {
+              "W_bug": {
+                "result": "visible_fail",
+                "markers": [
+                  "CHECK_FAIL W_bug cycle=12 group=000000 bit=0 match=0 not_match=0"
+                ]
+              },
+              "W_preserve": {
+                "result": "visible_pass",
+                "markers": [
+                  "TESTBENCH PASS W_preserve reset exclusivity stability"
+                ]
+              }
+            },
+            "public_after": {
+              "W_bug": {
+                "result": "visible_pass",
+                "markers": [
+                  "TESTBENCH PASS W_bug groups=256 cycles=1536"
+                ]
+              },
+              "W_preserve": {
+                "result": "visible_pass",
+                "markers": [
+                  "TESTBENCH PASS W_preserve reset exclusivity stability"
+                ]
+              }
+            },
+            "scope": "Current-run public task and submitted repair only; excerpts are not a standalone patch."
+          },
+          "public_rows": {
+            "W_bug": "visible_pass",
+            "W_preserve": "visible_pass"
+          },
+          "transfer_summary": {
+            "changed_lines": [
+              "-         sf4:             nstate=sf1;         sf5:",
+              "+         sf4:             nstate=sf5;         sf5:"
+            ],
+            "checks_on_transfer": [],
+            "scope": "Observed public success only; recheck applicability on a new task."
+          }
+        }
+      },
+      {
+        "entry_hash": "sha256:c949dc3824d8a7500dac5800343adde3c25ab68ff8cdff382ab4cbc1d94cd415",
+        "content": {
+          "validation": "public_pass_single_sample_hidden_unknown",
+          "specification_excerpt": "I would like you to implement a module named `TopModule` with the following interface. All input and output ports are one bit unless otherwise specified.\n\n### Inputs:\n- `clk`: System clock signal.\n- `rst_n`: Asynchronous reset signal, active low.\n- `data`: Single-bit input signal, representing the data to be checked.\n\n### Outputs:\n- `match`: A signal that outputs `1` when the input signal `data` matches the target sequence `011100`. It remains `0` at all other times.\n- `not_match`: A signal that outputs `1` when the input signal `data` does not match the target sequence `011100`. It remains `0` at all other times.\n\n### Module Description:\nThe module must detect the sequence `011100` from the input signal `data`. Please use the state machine to solve this problem. The detection rules are as follows:\n1. The sequence check begins with every sixth bit of input data, meaning the module processes the input in groups of six bits and does not overlap or reuse bits between groups.\n2. If the first bit of a group does n",
+          "applied_patch": "--- original_buggy/rtl/sequence.sv\n+++ repaired/rtl/sequence.sv\n@@ original lines 64-66; repaired lines 64-66 @@\n-        sf6:\n-\t\t\tnstate=data?sf1:sf1;\n-        default:\n+        sf6:\n+\t\t\tnstate=data?sf1:s1;\n+        default:",
+          "repair_evidence": {
+            "version": "public_repair_context_v1",
+            "full_patch_hash": "sha256:3add926ca08f41e4c1baa52a3a25abde915ad592872c21de7527d8f978390814",
+            "changed_ranges": [
+              {
+                "file": "rtl/sequence.sv",
+                "before_lines": [
+                  64,
+                  66
+                ],
+                "after_lines": [
+                  64,
+                  66
+                ],
+                "truncated": false
+              }
+            ],
+            "omitted_change_regions": 0,
+            "public_before": {
+              "W_bug": {
+                "result": "visible_fail",
+                "markers": [
+                  "CHECK_FAIL W_bug cycle=24 group=011100 bit=0 match=0 not_match=1"
+                ]
+              },
+              "W_preserve": {
+                "result": "visible_pass",
+                "markers": [
+                  "TESTBENCH PASS W_preserve reset exclusivity stability"
+                ]
+              }
+            },
+            "public_after": {
+              "W_bug": {
+                "result": "visible_pass",
+                "markers": [
+                  "TESTBENCH PASS W_bug groups=256 cycles=1536"
+                ]
+              },
+              "W_preserve": {
+                "result": "visible_pass",
+                "markers": [
+                  "TESTBENCH PASS W_preserve reset exclusivity stability"
+                ]
+              }
+            },
+            "scope": "Current-run public task and submitted repair only; excerpts are not a standalone patch."
+          },
+          "public_rows": {
+            "W_bug": "visible_pass",
+            "W_preserve": "visible_pass"
+          },
+          "transfer_summary": {
+            "changed_lines": [
+              "-         sf6: \t\t\tnstate=data?sf1:sf1;         default:",
+              "+         sf6: \t\t\tnstate=data?sf1:s1;         default:"
+            ],
+            "checks_on_transfer": [],
+            "scope": "Observed public success only; recheck applicability on a new task."
+          }
+        }
+      }
+    ]
+  },
+  "selected_entry_hashes": [
+    "sha256:3c6630c708472119d55e6578d4ab95a5c9e929149de7169b4e23bc819976e1f3",
+    "sha256:c949dc3824d8a7500dac5800343adde3c25ab68ff8cdff382ab4cbc1d94cd415"
+  ],
+  "source_record_hashes": [
+    "sha256:e9d1f5a39140d867d5c75aef7913f4ce48f83c3eb5d200c1dc1bd6ec051645fb",
+    "sha256:67e5ddc508965b6a42c527de854caefaa99a64b588287d1ff1f2cfabf72d049a"
+  ],
+  "omissions": [],
+  "payload_hash": "sha256:50fd085c0ab41a598105603717f7c96b503043a05be29de518d5cc66775d6da8"
+}

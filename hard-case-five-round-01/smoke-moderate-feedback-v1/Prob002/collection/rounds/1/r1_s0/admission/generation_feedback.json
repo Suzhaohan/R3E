@@ -1,0 +1,18 @@
+{
+  "round": 1,
+  "attempt": 0,
+  "reason": "reserved_task_collision",
+  "edits": [
+    {
+      "find": "module TopModule(\n\tinput clk,\n\tinput rst_n,\n\tinput a,\n\toutput match\n\t);\n\n\treg [8:0] a_tem;\n\treg match_f;\n\treg match_b;\n\t\n\talways @(posedge clk or negedge rst_n)\n\t\tif (!rst_n)\n\t\t\tbegin \n\t\t\t\tmatch_f <= 1'b0;\n\t\t\tend\n\t\telse if (a_tem[8:6] == 3'b011)\n\t\t\tbegin\n\t\t\t\tmatch_f <= 1'b1;\n\t\t\tend\n\t\telse \n\t\t\tbegin\t\n\t\t\t\tmatch_f <= 1'b0;\n\t\t\tend\n\n\talways @(posedge clk or negedge rst_n)\n\t\tif (!rst_n)\n\t\t\tbegin \n\t\t\t\tmatch_b <= 1'b0;\n\t\t\tend\n\t\telse if (a_tem[2:0] == 3'b110)\n\t\t\tbegin\n\t\t\t\tmatch_b <= 1'b1;\n\t\t\tend\n\t\telse \n\t\t\tbegin\t\n\t\t\t\tmatch_b <= 1'b0;\n\t\t\tend\n\t\t\t\n\talways @(posedge clk or negedge rst_n)\n\t\tif (!rst_n)\n\t\t\tbegin \n\t\t\t\ta_tem <= 9'b0;\n\t\t\tend\n\t\telse \n\t\t\tbegin\n\t\t\t\ta_tem <= {a_tem[7:0],a};\n\t\t\tend\n\t\t\t\n\tassign match = match_b && match_f;\nendmodule",
+      "replace": "module TopModule(\n\tinput clk,\n\tinput rst_n,\n\tinput a,\n\toutput match\n\t);\n\n\treg [8:0] a_tem;\n\treg match_f;\n\treg match_b;\n\t\n\talways @(posedge clk or negedge rst_n)\n\t\tif (!rst_n)\n\t\t\tbegin \n\t\t\t\tmatch_f <= 1'b0;\n\t\t\tend\n\t\telse if (a_tem[8:6] == 3'b011)\n\t\t\tbegin\n\t\t\t\tmatch_f <= 1'b1;\n\t\t\tend\n\t\telse \n\t\t\tbegin\t\n\t\t\t\tmatch_f <= 1'b0;\n\t\t\tend\n\n\talways @(posedge clk or negedge rst_n)\n\t\tif (!rst_n)\n\t\t\tbegin \n\t\t\t\tmatch_b <= 1'b0;\n\t\t\tend\n\t\telse if (a_tem[2:0] == 3'b110)\n\t\t\tbegin\n\t\t\t\tmatch_b <= 1'b1;\n\t\t\tend\n\t\telse \n\t\t\tbegin\t\n\t\t\t\tmatch_b <= 1'b0;\n\t\t\tend\n\t\t\t\n\talways @(posedge clk or negedge rst_n)\n\t\tif (!rst_n)\n\t\t\tbegin \n\t\t\t\ta_tem <= 9'b0;\n\t\t\tend\n\t\telse \n\t\t\tbegin\n\t\t\t\ta_tem <= {a, a_tem[7:0]};\n\t\t\tend\n\t\t\t\n\tassign match = match_b && match_f;\nendmodule\n"
+    }
+  ],
+  "expected_public_results": {
+    "W_bug": "fail",
+    "W_preserve": "pass"
+  },
+  "actual_public_results": {},
+  "public_test_evidence": {},
+  "correction": "Correct the stated rejection and obey unique find locations, interfaces, edit budget and the public test contract; do not repeat excluded proposals."
+}

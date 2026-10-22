@@ -1,0 +1,337 @@
+{
+  "blue": {
+    "blue_config_hash": "sha256:0fb2d1c01a894646f6b259d4dbc69e970c96b94bc65bbf4454132011e96aa229",
+    "committed_round": 3,
+    "entries": [],
+    "learning_policy_hash": "sha256:e125eaba0c567205327a9b834761e336b610bc2e29ccbbe86fd91bcb64a5fd6c",
+    "parent_snapshot_hash": "sha256:9b674690203260243cf4b52c6d9c1907edc7b4bdff19fa9d694cdc3b00b731ed",
+    "retrieval_policy_hash": "sha256:8b114d1dc640c0d8851c3796a1d6ed4e3bc9b65406c7341475b69b3d8568e26f",
+    "snapshot_id": "B_3",
+    "state_hash": "sha256:7701c09c885ffc30b401b4537509b5eb29ad2dcd3a4b0c99ec5b436e21e70454",
+    "version": "continuous_blue_snapshot_v1"
+  },
+  "parent_commit_hash": "sha256:acf68fc1eb9b34a930ea53625ce7328dd2327ec58c27fd22d93242854af28a0d",
+  "practice_blue": {
+    "blue_config_hash": "sha256:0fb2d1c01a894646f6b259d4dbc69e970c96b94bc65bbf4454132011e96aa229",
+    "committed_round": 3,
+    "entries": [
+      {
+        "body": {
+          "content": {
+            "applied_patch": "--- original_buggy/rtl/sequence.sv\n+++ repaired/rtl/sequence.sv\n@@ original lines 45-47; repaired lines 45-47 @@\n-        else\n-            clk_out_r <= clk_cnt<=((div_o>>1)+1);\n-    end\n+        else\n+            clk_out_r <= clk_cnt<=((div_o>>2)+1);\n+    end",
+            "public_rows": {
+              "W_bug": "visible_pass",
+              "W_preserve": "visible_pass"
+            },
+            "repair_evidence": {
+              "changed_ranges": [
+                {
+                  "after_lines": [
+                    45,
+                    47
+                  ],
+                  "before_lines": [
+                    45,
+                    47
+                  ],
+                  "file": "rtl/sequence.sv",
+                  "truncated": false
+                }
+              ],
+              "full_patch_hash": "sha256:fdc3137a10569b6205a4eb5526fa1902f6a74d51bf2d1562b0ba4935c06aa1e6",
+              "omitted_change_regions": 0,
+              "public_after": {
+                "W_bug": {
+                  "markers": [
+                    "TESTBENCH PASS divider public waveform"
+                  ],
+                  "result": "visible_pass"
+                },
+                "W_preserve": {
+                  "markers": [
+                    "TESTBENCH PASS divider preserve"
+                  ],
+                  "result": "visible_pass"
+                }
+              },
+              "public_before": {
+                "W_bug": {
+                  "markers": [
+                    "CHECK_FAIL divider config=1 got=1 expected=0 count=4 cycle=8 mode=1"
+                  ],
+                  "result": "visible_fail"
+                },
+                "W_preserve": {
+                  "markers": [
+                    "TESTBENCH PASS divider preserve"
+                  ],
+                  "result": "visible_pass"
+                }
+              },
+              "scope": "Current-run public task and submitted repair only; excerpts are not a standalone patch.",
+              "version": "public_repair_context_v1"
+            },
+            "specification_excerpt": "I would like you to implement a module named TopModule with the following\ninterface. All input and output ports are one bit unless otherwise\nspecified.\n\n - input  clk_in\n - input  rst\n - output clk_out\n\nThe module should implement an arbitrary fractional frequency divider that\ncan achieve non-integer division ratios, such as 8.7x frequency division.\n\nThe fractional frequency divider should work as follows:\n- Input clock: clk_in (reference clock signal)\n- Output clock: clk_out (divided clock signal)\n- Division ratio: 8.7x (output frequency is 1/8.7 of input frequency)\n- Reset: rst is active low\n\nFractional division principle:\nSince hardware cannot perform fractional operations (e.g., 2.1 clock cycles\nor 3.3 registers), fractional division cannot achieve exact fractional\nperiods for each output clock cycle. Instead, the implementation uses\nthe least common multiple approach to achieve the desired average frequency.\n\nFor 8.7x division:\n- Over 10 input clock cycles, the output should produce 53 output clock\n  cyc",
+            "transfer_summary": {
+              "changed_lines": [
+                "-         else             clk_out_r <= clk_cnt<=((div_o>>1)+1);     end",
+                "+         else             clk_out_r <= clk_cnt<=((div_o>>2)+1);     end"
+              ],
+              "checks_on_transfer": [],
+              "scope": "Observed public success only; recheck applicability on a new task."
+            },
+            "validation": "public_pass_single_sample_hidden_unknown"
+          },
+          "created_round": 3,
+          "retrieval_terms": [
+            "a",
+            "above",
+            "acceptance",
+            "achieve",
+            "active",
+            "additional",
+            "all",
+            "an",
+            "and",
+            "approach",
+            "arbitrary",
+            "are",
+            "as",
+            "asynchronous",
+            "at",
+            "average",
+            "be",
+            "becomes",
+            "behavior",
+            "benchmark",
+            "between",
+            "bit",
+            "bits",
+            "by",
+            "c89",
+            "can",
+            "cannot",
+            "claim",
+            "clk_in",
+            "clk_out",
+            "clock",
+            "common",
+            "contains",
+            "contract",
+            "count",
+            "counter",
+            "criterion",
+            "cycle",
+            "cycle_count",
+            "cycles",
+            "d24",
+            "d8",
+            "d87",
+            "d9",
+            "declarations",
+            "default",
+            "defines",
+            "desired",
+            "div_e",
+            "div_o",
+            "divided",
+            "divider",
+            "division",
+            "e",
+            "each",
+            "edge",
+            "edges",
+            "effect",
+            "equals",
+            "evaluator",
+            "even",
+            "exact",
+            "example",
+            "except",
+            "experiment",
+            "floor",
+            "following",
+            "follows",
+            "for",
+            "four",
+            "fractional",
+            "frequency",
+            "further",
+            "g",
+            "give",
+            "gives",
+            "hardware",
+            "holds",
+            "i",
+            "ideal",
+            "iff",
+            "implement",
+            "implementation",
+            "in",
+            "include",
+            "inconsistent",
+            "increments",
+            "independent",
+            "input",
+            "instead",
+            "integer",
+            "interface",
+            "inverted",
+            "is",
+            "it",
+            "least",
+            "like",
+            "low",
+            "m_n",
+            "made",
+            "means",
+            "mode",
+            "module",
+            "modulo",
+            "multiple",
+            "must",
+            "named",
+            "no",
+            "non",
+            "not",
+            "numerical",
+            "odd",
+            "of",
+            "on",
+            "one",
+            "operations",
+            "or",
+            "original",
+            "otherwise",
+            "output",
+            "over",
+            "parameter",
+            "parameterized",
+            "parameters",
+            "perform",
+            "period",
+            "periods",
+            "point",
+            "ports",
+            "pre",
+            "preserved",
+            "principle",
+            "produce",
+            "prose",
+            "public",
+            "ratio",
+            "ratios",
+            "reference",
+            "register",
+            "registered",
+            "registers",
+            "released",
+            "repairs",
+            "required",
+            "reset",
+            "rising",
+            "rst",
+            "safe",
+            "selected",
+            "seven",
+            "should",
+            "signal",
+            "since",
+            "some",
+            "specified",
+            "state",
+            "such",
+            "switching",
+            "take",
+            "task",
+            "tests",
+            "that",
+            "the",
+            "this",
+            "to",
+            "together",
+            "toggles",
+            "topmodule",
+            "traces",
+            "u",
+            "unless",
+            "updates",
+            "use",
+            "useful",
+            "uses",
+            "values",
+            "waveform",
+            "when",
+            "which",
+            "with",
+            "work",
+            "would",
+            "wraps",
+            "x",
+            "you",
+            "zero"
+          ],
+          "source": {
+            "archive_hash": "sha256:7098afab8341240d15c2ca1be04d2215a1d7919765c7853a029bcf75cef9ff66",
+            "baseline_public_hash": "sha256:5849e1eceb5333469f08cad7589038e05140b19c62b4f46d1034a5a612fc376f",
+            "candidate_hash": "sha256:96380a5d443a62c93669e2ab80da98f21866f8f85550e55c7b7e0ba7f2a6701c",
+            "carrier_id": "chipbench_Prob017_fractional_divider",
+            "encounter_hash": "sha256:8c8aec4ada1417c9c0451b258258368749645e99cdb6c8cb23c7118abc688831",
+            "mutant_hash": "sha256:fdae4ce04367df9e91771a0ff109ea3437cef7d8353cd5b84caab20e3fe6aeff",
+            "public_replay_hash": "sha256:27e35de8c705f030a763bb34faaf701c62c02adb36a5cfe9f001c201acf7b758",
+            "round": 3,
+            "run_id": "collection",
+            "slot_id": "r3_s0",
+            "task_hash": "sha256:a0d8d607466b501a15d5708f0892aa6fa7eb4d52f3342e44a0216d58190f6cd7"
+          },
+          "version": "continuous_repair_episode_v3"
+        },
+        "entry_hash": "sha256:77b9478c21845e03fafba48bff9c290226adc19b0ddb3d863d71d57f27a864e2"
+      }
+    ],
+    "learning_policy_hash": "sha256:e125eaba0c567205327a9b834761e336b610bc2e29ccbbe86fd91bcb64a5fd6c",
+    "parent_snapshot_hash": "sha256:9b674690203260243cf4b52c6d9c1907edc7b4bdff19fa9d694cdc3b00b731ed",
+    "retrieval_policy_hash": "sha256:8b114d1dc640c0d8851c3796a1d6ed4e3bc9b65406c7341475b69b3d8568e26f",
+    "snapshot_id": "B_3",
+    "state_hash": "sha256:812f04b7a2322e41e8edcf4841406c2b566f06a5e8963a8f3d8a9ad95d5f8295",
+    "version": "continuous_blue_snapshot_v1"
+  },
+  "promotion_hash": "sha256:fab927b8196b0a20d25e3b9efde151dce09bce00e202d2a8f91f8a7f15c68230",
+  "red": {
+    "observations": [
+      {
+        "blue_patch": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -43,7 +43,7 @@\n         else if(~div_flag)\n             clk_out_r <= clk_cnt<=((div_e>>2)+1);\n         else\n-            clk_out_r <= clk_cnt<=((div_o>>1)+1);\n+            clk_out_r <= clk_cnt<=((div_o>>2)+1);\n     end\n     \n     assign clk_out = clk_out_r;\n",
+        "carrier_id": "chipbench_Prob017_fractional_divider",
+        "label": "public_pass_single_sample_hidden_unknown",
+        "mutant_hash": "sha256:fdae4ce04367df9e91771a0ff109ea3437cef7d8353cd5b84caab20e3fe6aeff",
+        "mutation_edits": [
+          {
+            "find": "clk_cnt<=((div_o>>2)+1)",
+            "replace": "clk_cnt<=((div_o>>1)+1)"
+          }
+        ],
+        "public_evidence": "{\"suites\": {\"W_bug\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"TESTBENCH PASS divider public waveform\"}, \"W_preserve\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"TESTBENCH PASS divider preserve\"}}}",
+        "public_rows": {
+          "W_bug": "visible_pass",
+          "W_preserve": "visible_pass"
+        },
+        "round": 3,
+        "slot_id": "r3_s0",
+        "source_hash": "sha256:8c8aec4ada1417c9c0451b258258368749645e99cdb6c8cb23c7118abc688831",
+        "target_snapshot_hash": "sha256:9b674690203260243cf4b52c6d9c1907edc7b4bdff19fa9d694cdc3b00b731ed"
+      }
+    ],
+    "round": 3
+  },
+  "round": 3,
+  "update_decisions": [
+    {
+      "entry_hash": "sha256:77b9478c21845e03fafba48bff9c290226adc19b0ddb3d863d71d57f27a864e2",
+      "reason": "accepted"
+    },
+    {
+      "accepted": false,
+      "promotion": "no_strict_gain_training_only"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "cyc_cnt==(M_N-1)||cyc_cnt==(c89-1)? ~div_flag: div_flag",
+            "replace": "cyc_cnt==(M_N-1)? ~div_flag: div_flag"
+          }
+        ],
+        "violated_requirement": "The mode toggle should occur at both M_N-1 and c89-1 cycle counts, but the mutation removes the c89-1 condition, causing incorrect mode switching behavior",
+        "spec_basis": "Mode toggles iff cycle_count equals M_N-1 or c89-1; otherwise it holds."
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:46ffee1fce4613523273e59514fbe89d36850972f8d31e1843e30238ba1bfe5a",
+  "input_tokens": 8796,
+  "output_tokens": 130,
+  "request_hash": "sha256:e8cf4c91b1fba1de61399f295abb46025e61d5607c322b76c95c4b105c660b9a",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 8796,
+    "output_tokens": 130
+  },
+  "model_seconds": 6.069950753822923
+}

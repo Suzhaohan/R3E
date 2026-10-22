@@ -1,0 +1,69 @@
+{
+  "blue": {
+    "blue_config_hash": "sha256:82cedc3ceb66609355b85e2309867354b4402d65522fd408e34ee4c161df62a3",
+    "committed_round": 3,
+    "entries": [],
+    "learning_policy_hash": "sha256:8d48afa3992d706e5dc009ac794678a59f3c520206ae9b292d99a5a74d049c9f",
+    "parent_snapshot_hash": "sha256:3bff35e89d0cd5a89bf887a984596a65fad6b57c4da99332d73301ee85d6f22a",
+    "retrieval_policy_hash": "sha256:8b114d1dc640c0d8851c3796a1d6ed4e3bc9b65406c7341475b69b3d8568e26f",
+    "snapshot_id": "B_3",
+    "state_hash": "sha256:4507e67a8de88aaf76194015298fe7731493415e557fdbe6999ea7d87ede6019",
+    "version": "continuous_blue_snapshot_v1"
+  },
+  "parent_commit_hash": "sha256:2bbc751961488d579339afae65f084a38079b90758b491d5c9c7cf233739d457",
+  "promotion_hash": "sha256:b61588650ab24468219c5f15e42ccac707fd39ad08929f3b66be5d2537515eca",
+  "red": {
+    "observations": [
+      {
+        "blue_patch": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -11,23 +11,23 @@\n \t\tif (!rst_n)\n \t\t\tbegin \n \t\t\t\tmatch <= 1'b0;\n-\t\t\tend\n-\t\telse if (a_tem == 8'b0111_0011)\n+\t\t\t\tend\n+\t\telse if (a_tem == 8'b0111_0001)\n \t\t\tbegin\n \t\t\t\tmatch <= 1'b1;\n-\t\t\tend\n+\t\t\t\tend\n \t\telse \n \t\t\tbegin\t\n \t\t\t\tmatch <= 1'b0;\n-\t\t\tend\n+\t\t\t\tend\n \t\t\n \talways @(posedge clk or negedge rst_n)\n \t\tif (!rst_n)\n \t\t\tbegin \n \t\t\t\ta_tem <= 8'b0;\n-\t\t\tend\n+\t\t\t\tend\n \t\telse \n \t\t\tbegin\n \t\t\t\ta_tem <= {a_tem[6:0],a};\n-\t\t\tend\n+\t\t\t\tend\n endmodule",
+        "carrier_id": "chipbench_Prob001_fixed_hard_questions",
+        "label": "public_pass_single_sample_hidden_unknown",
+        "mutant_hash": "sha256:5ed1d9a97648a03875212c974c955996aa37ee73940fed288f33537d22d05f9f",
+        "mutation_edits": [
+          {
+            "find": "else if (a_tem == 8'b0111_0001)",
+            "replace": "else if (a_tem == 8'b0111_0011)"
+          }
+        ],
+        "public_evidence": "{\"suites\": {\"W_bug\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"TESTBENCH PASS sequence\"}, \"W_preserve\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"TESTBENCH PASS preserve\"}}}",
+        "public_rows": {
+          "W_bug": "visible_pass",
+          "W_preserve": "visible_pass"
+        },
+        "round": 1,
+        "slot_id": "r1_s0",
+        "source_hash": "sha256:78146aae616412118a29b1c71611620a9520cc0292435464c7c67d88dae79dcc",
+        "target_snapshot_hash": "sha256:7da3a6f10c1927e4c82310d812f5b07010d2fb91a5408346366964411cf64f4a"
+      },
+      {
+        "blue_patch": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -12,7 +12,7 @@\n \t\t\tbegin \n \t\t\t\tmatch <= 1'b0;\n \t\t\tend\n-\t\telse if (a_tem == 8'b0111_0000)\n+\t\telse if (a_tem == 8'b0111_0001)\n \t\t\tbegin\n \t\t\t\tmatch <= 1'b1;\n \t\t\tend\n",
+        "carrier_id": "chipbench_Prob001_fixed_hard_questions",
+        "label": "public_pass_single_sample_hidden_unknown",
+        "mutant_hash": "sha256:ddf31680cbeb17fad040d099f72bb09acc821e2704f32993a305586e19f96fe5",
+        "mutation_edits": [
+          {
+            "find": "else if (a_tem == 8'b0111_0001)",
+            "replace": "else if (a_tem == 8'b0111_0000)"
+          }
+        ],
+        "public_evidence": "{\"suites\": {\"W_bug\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"TESTBENCH PASS sequence\"}, \"W_preserve\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"TESTBENCH PASS preserve\"}}}",
+        "public_rows": {
+          "W_bug": "visible_pass",
+          "W_preserve": "visible_pass"
+        },
+        "round": 2,
+        "slot_id": "r2_s0",
+        "source_hash": "sha256:574b9a3a7a5e0af4d6d8a7753689ca9b35ac9d072a3e9ac7f943e3001cd85059",
+        "target_snapshot_hash": "sha256:b6e64b1e0e12f4d1349da2141cc678e5cfc3b2b6c7271ae6dd92142cd555981c"
+      }
+    ],
+    "round": 3
+  },
+  "round": 3,
+  "update_decisions": [
+    {
+      "accepted": false,
+      "promotion": "no_new_experience"
+    }
+  ]
+}

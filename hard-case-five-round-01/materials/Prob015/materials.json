@@ -1,0 +1,49 @@
+{
+  "carriers": [
+    {
+      "package": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/materials/Prob015/package",
+      "suite_freeze": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/materials/Prob015/suite_freeze.json",
+      "evaluator_freeze": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/materials/Prob015/evaluator_freeze.json",
+      "evaluator_root": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/materials/Prob015"
+    }
+  ],
+  "anchors": [
+    {
+      "task_dir": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/materials/Prob015/reserved/exam_timing",
+      "carrier_index": 0
+    },
+    {
+      "task_dir": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/materials/Prob015/reserved/exam_state_machine",
+      "carrier_index": 0
+    }
+  ],
+  "mechanism_focus": {
+    "version": "continuous_mechanism_seed_v1",
+    "carrier_id": "chipbench_Prob015_fixed_hard_questions",
+    "mechanism": "Coin-value state transitions, hold behavior, combinational output timing and reset.",
+    "selection": "human_selected_development_seed",
+    "seed_edits": [
+      {
+        "find": "\nmodule TopModule(\n\tinput wire clk  ,\n\tinput wire rst  ,\n\tinput wire d1 ,\n\tinput wire d2 ,\n\tinput wire sel ,\n\t\n\toutput reg out1,\n\toutput reg out2,\n\toutput reg out3\n);\n//*************code***********//\n\n    parameter [2:0] S0=0, S0_5=1, S1=2, S1_5=3, S2=4, S2_5=5, S3=6;\n    reg[2:0] state, nstate;\n    \n    always@(posedge clk or negedge rst) begin\n        if(~rst)\n            state <= 0;\n        else\n            state <= nstate;\n    end\n    \n    always@(*) begin\n        case(state)\n            S0     : nstate = d1? S0_5:\n                              d2? S1:\n                              nstate;\n            S0_5   : nstate = d1? S1:\n                              d2? S1_5:\n                              nstate;\n            S1     : nstate = d1? S1_5:\n                              d2? S2:\n                              nstate;\n            S1_5   : nstate = ~sel? S0:\n                              d1? S2:\n                              d2? S2_5:\n                              nstate;\n            S2     : nstate = ~sel? S0:\n                              d1? S2_5:\n                              d2? S3:\n                              nstate;\n            default: nstate = S0;\n        endcase\n    end\n    \n    always@(*) begin\n        if(~rst) begin\n            {out1, out2, out3} = 3'b000;\n        end\n        else begin\n            case(state)\n                S0, S0_5, S1: {out1, out2, out3} = 0;\n                S1_5        : {out1, out2, out3} = ~sel? 3'b100: 3'b000;\n                S2          : {out1, out2, out3} = ~sel? 3'b101: 3'b000;\n                S2_5        : {out1, out2, out3} = ~sel? 3'b101: 3'b010;\n                S3          : {out1, out2, out3} = ~sel? 3'b101: 3'b011;\n                default     : {out1, out2, out3} = 3'b000;\n            endcase\n        end\n    end\n//*************code***********//\nendmodule\n",
+        "replace": "\nmodule TopModule(\n\tinput wire clk  ,\n\tinput wire rst  ,\n\tinput wire d1 ,\n\tinput wire d2 ,\n\tinput wire sel ,\n\t\n\toutput reg out1,\n\toutput reg out2,\n\toutput reg out3\n);\n//*************code***********//\n\n    parameter [2:0] S0=0, S0_5=1, S1=2, S1_5=3, S2=4, S2_5=5, S3=6;\n    reg[2:0] state, nstate;\n    \n    always@(posedge clk or negedge rst) begin\n        if(~rst)\n            state <= 0;\n        else\n            state <= nstate;\n    end\n    \n    always@(*) begin\n        case(state)\n            S0     : nstate = d1? S0_5:\n                              d2? S1:\n                              nstate;\n            S0_5   : nstate = d1? S1:\n                              d2? S1:\n                              nstate;\n            S1     : nstate = d1? S1_5:\n                              d2? S2:\n                              nstate;\n            S1_5   : nstate = ~sel? S0:\n                              d1? S2:\n                              d2? S2:\n                              nstate;\n            S2     : nstate = ~sel? S0:\n                              d1? S2_5:\n                              d2? S3:\n                              nstate;\n            default: nstate = S0;\n        endcase\n    end\n    \n    always@(*) begin\n        if(~rst) begin\n            {out1, out2, out3} = 3'b000;\n        end\n        else begin\n            case(state)\n                S0, S0_5, S1: {out1, out2, out3} = 0;\n                S1_5        : {out1, out2, out3} = ~sel? 3'b100: 3'b000;\n                S2          : {out1, out2, out3} = ~sel? 3'b101: 3'b000;\n                S2_5        : {out1, out2, out3} = ~sel? 3'b101: 3'b010;\n                S3          : {out1, out2, out3} = ~sel? 3'b101: 3'b011;\n                default     : {out1, out2, out3} = 3'b000;\n            endcase\n        end\n    end\n//*************code***********//\nendmodule\n"
+      }
+    ],
+    "history": {
+      "challenge_id": "reconstructed:RC_02caa510ba2821",
+      "runs": 3,
+      "unrepaired": 1,
+      "label": "historical_budgeted_failure_not_current_confirmation"
+    },
+    "provenance": {
+      "clean_hash": "sha256:cd8e2b6255e13bd844a7a178b60bcc33c05dea78096c283b743d7142a2e1691d",
+      "seed_hash": "sha256:84dc9dcb362c0422511953413f9717a5132ea3af964076c8cdee28a61d03473b",
+      "record_hashes": {
+        "selection.json": "sha256:996a4335bb13bbd41b39c29e692b9caea53bd393564d96dd71b193f219a9b8b0"
+      }
+    }
+  },
+  "questions": [
+    "chipbench:timing:Prob015_vending_machine2",
+    "chipbench:state_machine:Prob015_vending_machine2"
+  ]
+}

@@ -1,0 +1,100 @@
+{
+  "version": "red_progress_preservation_v4",
+  "status": "admitted",
+  "candidate_hash": "sha256:9a9f18451a8f49be3861a587db4f01bb4fa64ade6af3ce3d1ae654364f44d778",
+  "fingerprint": "sha256:be54a992935dce2bb00b5dd5d9ef1d0f80a563aca4aae7a222f4c4d18cd3f22d",
+  "edit_budget": {
+    "metric": "sequence_matcher_token_edits_v1",
+    "tokenizer": "verilog_source_tokens_v2_macros",
+    "max_changed_fraction": 0.4,
+    "all_code": {
+      "original_tokens": 259,
+      "candidate_tokens": 259,
+      "changed_tokens": 1,
+      "allowed_tokens": 103,
+      "changed_fraction": 0.003861003861003861,
+      "within_limit": true
+    },
+    "body": {
+      "original_tokens": 242,
+      "candidate_tokens": 242,
+      "changed_tokens": 1,
+      "allowed_tokens": 96,
+      "changed_fraction": 0.004132231404958678,
+      "within_limit": true
+    }
+  },
+  "freeze_hash": "sha256:52d90da7b7b1f43658c8596eddbc135a918d174fc531decbf93a7431e982a6c0",
+  "language_review": {
+    "comments_unchanged": true,
+    "clean_comments_hash": "sha256:7466e62072fe4616302d48a0853e2c60c2ea9b9e3130103e2a1b2682bda92641",
+    "candidate_comments_hash": "sha256:7466e62072fe4616302d48a0853e2c60c2ea9b9e3130103e2a1b2682bda92641",
+    "new_identifiers": [],
+    "identifier_review": "informational; not an admission veto"
+  },
+  "baseline": {
+    "suites": {
+      "W_bug": {
+        "build_seconds": 0.01,
+        "tier": "pass",
+        "runs": [
+          "pass",
+          "pass"
+        ],
+        "log_hash": "sha256:787f12ac286dbf2e57002024ad803eeed900e11cef912f7b06524b7cac74b86a",
+        "deterministic": true,
+        "log": "TESTBENCH PASS divider public waveform\n"
+      },
+      "W_preserve": {
+        "build_seconds": 0.01,
+        "tier": "pass",
+        "runs": [
+          "pass",
+          "pass"
+        ],
+        "log_hash": "sha256:6fff3301c7ae239961e7de1477fb980c0bb35b6b4f5cd074451c8dce8b836f34",
+        "deterministic": true,
+        "log": "TESTBENCH PASS divider preserve\n"
+      }
+    },
+    "structural": {
+      "status": "ok",
+      "returncode": 0,
+      "log": ".\nCleaned up 0 empty switches.\n\n3.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).\nMarked 2 switch rules as full_case in process $proc$rtl/sequence.sv:40$22 in module TopModule.\nMarked 1 switch rules as full_case in process $proc$rtl/sequence.sv:33$15 in module TopModule.\nMarked 1 switch rules as full_case in process $proc$rtl/sequence.sv:26$10 in module TopModule.\nMarked 2 switch rules as full_case in process $proc$rtl/sequence.sv:17$1 in module TopModule.\nRemoved a total of 0 dead cases.\n\n3.3. Executing PROC_INIT pass (extract init attributes).\n\n3.4. Executing PROC_ARST pass (detect async resets in processes).\nFound async reset \\rst in `\\TopModule.$proc$rtl/sequence.sv:40$22'.\nFound async reset \\rst in `\\TopModule.$proc$rtl/sequence.sv:33$15'.\nFound async reset \\rst in `\\TopModule.$proc$rtl/sequence.sv:26$10'.\nFound async reset \\rst in `\\TopModule.$proc$rtl/sequence.sv:17$1'.\n\n3.5. Executing PROC_MUX pass (convert decision trees to multiplexers).\nCreating decoders for process `\\TopModule.$proc$rtl/sequence.sv:40$22'.\n     1/1: $0\\clk_out_r[0:0]\nCreating decoders for process `\\TopModule.$proc$rtl/sequence.sv:33$15'.\n     1/1: $0\\div_flag[0:0]\nCreating decoders for process `\\TopModule.$proc$rtl/sequence.sv:26$10'.\n     1/1: $0\\cyc_cnt[6:0]\nCreating decoders for process `\\TopModule.$proc$rtl/sequence.sv:17$1'.\n     1/1: $0\\clk_cnt[3:0]\n\n3.6. Executing PROC_DLATCH pass (convert process syncs to latches).\n\n3.7. Executing PROC_DFF pass (convert process syncs to FFs).\nCreating register for signal `\\TopModule.\\clk_out_r' using process `\\TopModule.$proc$rtl/sequence.sv:40$22'.\n  created $adff cell `$procdff$33' with positive edge clock and negative level reset.\nCreating register for signal `\\TopModule.\\div_flag' using process `\\TopModule.$proc$rtl/sequence.sv:33$15'.\n  created $adff cell `$procdff$34' with positive edge clock and negative level reset.\nCreating register for signal `\\TopModule.\\cyc_cnt' using process `\\TopModule.$proc$rtl/sequence.sv:26$10'.\n  created $adff cell `$procdff$35' with positive edge clock and negative level reset.\nCreating register for signal `\\TopModule.\\clk_cnt' using process `\\TopModule.$proc$rtl/sequence.sv:17$1'.\n  created $adff cell `$procdff$36' with positive edge clock and negative level reset.\n\n3.8. Executing PROC_CLEAN pass (remove empty switches from decision trees).\nFound and cleaned up 1 empty switch in `\\TopModule.$proc$rtl/sequence.sv:40$22'.\nRemoving empty process `TopModule.$proc$rtl/sequence.sv:40$22'.\nRemoving empty process `TopModule.$proc$rtl/sequence.sv:33$15'.\nRemoving empty process `TopModule.$proc$rtl/sequence.sv:26$10'.\nFound and cleaned up 1 empty switch in `\\TopModule.$proc$rtl/sequence.sv:17$1'.\nRemoving empty process `TopModule.$proc$rtl/sequence.sv:17$1'.\nCleaned up 2 empty switches.\n\n4. Executing FLATTEN pass (flatten design).\nNo more expansions possible.\n\n5. Executing CHECK pass (checking for obvious problems).\nchecking module TopModule..\nfound and reported 0 problems.\n",
+      "command": "read_verilog -sv \"rtl/sequence.sv\"; hierarchy -check -top TopModule ; proc; flatten; check -assert"
+    }
+  },
+  "suites": {
+    "W_bug": {
+      "build_seconds": 0.01,
+      "tier": "fail",
+      "runs": [
+        "fail",
+        "fail"
+      ],
+      "log_hash": "sha256:4f6e641dcfda0076be159e1afc9174d708ad4f174dd8c3a023f6599f25ce7a12",
+      "deterministic": true,
+      "log": "CHECK_FAIL divider config=1 got=1 expected=0 count=0 cycle=9 mode=1\n"
+    },
+    "W_preserve": {
+      "build_seconds": 0.01,
+      "tier": "pass",
+      "runs": [
+        "pass",
+        "pass"
+      ],
+      "log_hash": "sha256:6fff3301c7ae239961e7de1477fb980c0bb35b6b4f5cd074451c8dce8b836f34",
+      "deterministic": true,
+      "log": "TESTBENCH PASS divider preserve\n"
+    }
+  },
+  "structural": {
+    "status": "ok",
+    "returncode": 0,
+    "log": ".\nCleaned up 0 empty switches.\n\n3.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).\nMarked 2 switch rules as full_case in process $proc$rtl/sequence.sv:40$22 in module TopModule.\nMarked 1 switch rules as full_case in process $proc$rtl/sequence.sv:33$15 in module TopModule.\nMarked 1 switch rules as full_case in process $proc$rtl/sequence.sv:26$10 in module TopModule.\nMarked 2 switch rules as full_case in process $proc$rtl/sequence.sv:17$1 in module TopModule.\nRemoved a total of 0 dead cases.\n\n3.3. Executing PROC_INIT pass (extract init attributes).\n\n3.4. Executing PROC_ARST pass (detect async resets in processes).\nFound async reset \\rst in `\\TopModule.$proc$rtl/sequence.sv:40$22'.\nFound async reset \\rst in `\\TopModule.$proc$rtl/sequence.sv:33$15'.\nFound async reset \\rst in `\\TopModule.$proc$rtl/sequence.sv:26$10'.\nFound async reset \\rst in `\\TopModule.$proc$rtl/sequence.sv:17$1'.\n\n3.5. Executing PROC_MUX pass (convert decision trees to multiplexers).\nCreating decoders for process `\\TopModule.$proc$rtl/sequence.sv:40$22'.\n     1/1: $0\\clk_out_r[0:0]\nCreating decoders for process `\\TopModule.$proc$rtl/sequence.sv:33$15'.\n     1/1: $0\\div_flag[0:0]\nCreating decoders for process `\\TopModule.$proc$rtl/sequence.sv:26$10'.\n     1/1: $0\\cyc_cnt[6:0]\nCreating decoders for process `\\TopModule.$proc$rtl/sequence.sv:17$1'.\n     1/1: $0\\clk_cnt[3:0]\n\n3.6. Executing PROC_DLATCH pass (convert process syncs to latches).\n\n3.7. Executing PROC_DFF pass (convert process syncs to FFs).\nCreating register for signal `\\TopModule.\\clk_out_r' using process `\\TopModule.$proc$rtl/sequence.sv:40$22'.\n  created $adff cell `$procdff$33' with positive edge clock and negative level reset.\nCreating register for signal `\\TopModule.\\div_flag' using process `\\TopModule.$proc$rtl/sequence.sv:33$15'.\n  created $adff cell `$procdff$34' with positive edge clock and negative level reset.\nCreating register for signal `\\TopModule.\\cyc_cnt' using process `\\TopModule.$proc$rtl/sequence.sv:26$10'.\n  created $adff cell `$procdff$35' with positive edge clock and negative level reset.\nCreating register for signal `\\TopModule.\\clk_cnt' using process `\\TopModule.$proc$rtl/sequence.sv:17$1'.\n  created $adff cell `$procdff$36' with positive edge clock and negative level reset.\n\n3.8. Executing PROC_CLEAN pass (remove empty switches from decision trees).\nFound and cleaned up 1 empty switch in `\\TopModule.$proc$rtl/sequence.sv:40$22'.\nRemoving empty process `TopModule.$proc$rtl/sequence.sv:40$22'.\nRemoving empty process `TopModule.$proc$rtl/sequence.sv:33$15'.\nRemoving empty process `TopModule.$proc$rtl/sequence.sv:26$10'.\nFound and cleaned up 1 empty switch in `\\TopModule.$proc$rtl/sequence.sv:17$1'.\nRemoving empty process `TopModule.$proc$rtl/sequence.sv:17$1'.\nCleaned up 2 empty switches.\n\n4. Executing FLATTEN pass (flatten design).\nNo more expansions possible.\n\n5. Executing CHECK pass (checking for obvious problems).\nchecking module TopModule..\nfound and reported 0 problems.\n",
+    "command": "read_verilog -sv \"rtl/sequence.sv\"; hierarchy -check -top TopModule ; proc; flatten; check -assert"
+  },
+  "reason": "public_matrix_and_structure_pass",
+  "blue_task": "blue_task",
+  "tools_seconds": 0.1726906904950738
+}

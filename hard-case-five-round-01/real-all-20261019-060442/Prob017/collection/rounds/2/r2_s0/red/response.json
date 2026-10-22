@@ -1,0 +1,60 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "clk_cnt <= clk_cnt==(div_e-1)? 0: clk_cnt+1;",
+            "replace": "clk_cnt <= clk_cnt==(div_e-2)? 0: clk_cnt+1;"
+          }
+        ],
+        "violated_requirement": "The clock counter should reset when reaching div_e-1, but the mutation causes it to reset one cycle early, affecting the output clock generation timing.",
+        "spec_basis": "Count becomes 0 when count == (mode ? div_o : div_e)-1; otherwise (count+1) modulo 16"
+      },
+      {
+        "edits": [
+          {
+            "find": "clk_cnt<=((div_e>>2)+1)",
+            "replace": "clk_cnt<=((div_e>>1)-1)"
+          }
+        ],
+        "violated_requirement": "The output clock should be high when count is less than or equal to floor(div_e/4)+1, but the mutation changes the threshold to floor(div_e/2)-1, causing incorrect output timing.",
+        "spec_basis": "Output becomes 1 iff count <= floor((mode ? div_o : div_e)/4) + 1, otherwise 0"
+      },
+      {
+        "edits": [
+          {
+            "find": "div_flag <= cyc_cnt==(M_N-1)||cyc_cnt==(c89-1)? ~div_flag: div_flag;",
+            "replace": "div_flag <= cyc_cnt==(M_N-1)? ~div_flag: div_flag;"
+          }
+        ],
+        "violated_requirement": "The div_flag should toggle when cycle count reaches M_N-1 or c89-1, but the mutation removes the c89-1 condition, causing incorrect mode switching.",
+        "spec_basis": "Mode toggles iff cycle_count equals M_N-1 or c89-1; otherwise it holds"
+      },
+      {
+        "edits": [
+          {
+            "find": "clk_cnt <= clk_cnt==(div_o-1)? 0: clk_cnt+1;",
+            "replace": "clk_cnt <= clk_cnt==(div_o-2)? 0: clk_cnt+1;"
+          }
+        ],
+        "violated_requirement": "The clock counter should reset when reaching div_o-1, but the mutation causes it to reset one cycle early, affecting the output clock generation timing in odd mode.",
+        "spec_basis": "Count becomes 0 when count == (mode ? div_o : div_e)-1; otherwise (count+1) modulo 16"
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:3eb2e8a1b9c8935cf9d33c334df929dc615e51455ebc3f58cd8ba2a530dfd451",
+  "input_tokens": 5351,
+  "output_tokens": 541,
+  "request_hash": "sha256:017b674a13bffcb9374e75f0fcdcf500df83628bd53fa1d7555a1254b296a199",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 5351,
+    "output_tokens": 541
+  },
+  "model_seconds": 13.432060931809247
+}

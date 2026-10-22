@@ -1,0 +1,32 @@
+[
+  [
+    {
+      "find": "bin_out[3] = gray_wire[3];",
+      "replace": "bin_out[3] = ~gray_wire[3];"
+    }
+  ],
+  [
+    {
+      "find": "gray_wire[2]^bin_out[3]",
+      "replace": "gray_wire[2]|bin_out[3]"
+    }
+  ],
+  [
+    {
+      "find": "gray_wire[1]^bin_out[2]",
+      "replace": "gray_wire[1]&bin_out[2]"
+    }
+  ],
+  [
+    {
+      "find": "gray_wire[0]^bin_out[1]",
+      "replace": "gray_wire[0]|bin_out[1]"
+    }
+  ],
+  [
+    {
+      "find": "gray_out <= gray_wire;",
+      "replace": "gray_out <= bin_add_wire;"
+    }
+  ]
+]

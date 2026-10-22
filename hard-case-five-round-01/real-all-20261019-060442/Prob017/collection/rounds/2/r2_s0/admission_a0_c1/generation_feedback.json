@@ -1,0 +1,35 @@
+{
+  "round": 2,
+  "attempt": 0,
+  "reason": "curriculum_stage_violation",
+  "edits": [
+    {
+      "find": "clk_cnt<=((div_e>>2)+1)",
+      "replace": "clk_cnt<=((div_e>>1)-1)"
+    }
+  ],
+  "expected_public_results": {
+    "W_bug": "fail",
+    "W_preserve": "pass"
+  },
+  "actual_public_results": {},
+  "public_test_evidence": {},
+  "correction": "Current stage: {'design': 'prob017', 'stage': 'single_local_fault', 'online_public_successes': 0, 'latest_online_passed': False, 'maximum_token_substitutions': 1, 'maximum_next_state_expressions': 1, 'preserve_register_schedule': True, 'allow_group_boundary_changes': False, 'local_scope': 'one non-reset divider RHS expression; preserve register timing, widths and parameter declarations'}. Use one localized fault until public repair success unlocks the later stage. MANDATORY DIVIDER RETRY: stay within the current local RHS stage. Use a different eligible unblocked public register-expression site. Do not add branches/guards or change parameters, reset, widths or clock edges. Do not repeat an excluded implementation. Generate up to four distinct online candidates under the unchanged two-request limit; real public tests decide qualification.",
+  "retry_control": {
+    "version": "online_diagnose_sites_no_replacement_v2",
+    "round": 2,
+    "failure_kind": "invalid_or_unavailable_proposal",
+    "failed_mechanisms": [
+      "other"
+    ],
+    "blocked_mechanisms": [],
+    "failed_site_ids": [
+      "clk_out_r:rhs:8"
+    ],
+    "blocked_site_ids": [],
+    "specific_diagnosis": [
+      "Current stage: {'design': 'prob017', 'stage': 'single_local_fault', 'online_public_successes': 0, 'latest_online_passed': False, 'maximum_token_substitutions': 1, 'maximum_next_state_expressions': 1, 'preserve_register_schedule': True, 'allow_group_boundary_changes': False, 'local_scope': 'one non-reset divider RHS expression; preserve register timing, widths and parameter declarations'}. Use one localized fault until public repair success unlocks the later stage."
+    ],
+    "instruction": "MANDATORY DIVIDER RETRY: stay within the current local RHS stage. Use a different eligible unblocked public register-expression site. Do not add branches/guards or change parameters, reset, widths or clock edges. Do not repeat an excluded implementation. Generate up to four distinct online candidates under the unchanged two-request limit; real public tests decide qualification."
+  }
+}

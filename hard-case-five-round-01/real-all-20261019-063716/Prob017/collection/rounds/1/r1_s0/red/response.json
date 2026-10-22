@@ -1,0 +1,60 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "clk_cnt<=((div_e>>2)+1)",
+            "replace": "clk_cnt<=((div_e>>1)+1)"
+          }
+        ],
+        "violated_requirement": "Output clock duty cycle is incorrect when div_flag is 0 (even period). The output will stay high for longer than expected due to the changed threshold calculation.",
+        "spec_basis": "Output becomes 1 iff count <= floor((mode ? div_o : div_e)/4) + 1"
+      },
+      {
+        "edits": [
+          {
+            "find": "clk_cnt<=((div_o>>2)+1)",
+            "replace": "clk_cnt<=((div_o>>1)+1)"
+          }
+        ],
+        "violated_requirement": "Output clock duty cycle is incorrect when div_flag is 1 (odd period). The output will stay high for longer than expected due to the changed threshold calculation.",
+        "spec_basis": "Output becomes 1 iff count <= floor((mode ? div_o : div_e)/4) + 1"
+      },
+      {
+        "edits": [
+          {
+            "find": "cyc_cnt==(M_N-1)? 0: cyc_cnt+1",
+            "replace": "cyc_cnt==(M_N-1)? 0: cyc_cnt+2"
+          }
+        ],
+        "violated_requirement": "Cycle counter increments by 2 instead of 1, causing mode toggling and output changes to occur at incorrect intervals.",
+        "spec_basis": "Cycle_count wraps to zero at M_N-1; otherwise it increments by one modulo 128"
+      },
+      {
+        "edits": [
+          {
+            "find": "cyc_cnt==(M_N-1)||cyc_cnt==(c89-1)? ~div_flag: div_flag",
+            "replace": "cyc_cnt==(M_N-1)||cyc_cnt==(c89-1)? div_flag: ~div_flag"
+          }
+        ],
+        "violated_requirement": "div_flag toggles at incorrect times, causing incorrect switching between even and odd periods.",
+        "spec_basis": "Mode toggles iff cycle_count equals M_N-1 or c89-1; otherwise it holds"
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:852d8c735eab0a6469a6a0c4cd829e9da407145a7d3d81fde063381d8977d9f4",
+  "input_tokens": 4580,
+  "output_tokens": 432,
+  "request_hash": "sha256:1cb77fb12ffb80ad0223362a729d89c7c5b440be9d3f30dea9c610a60e017528",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 4580,
+    "output_tokens": 432
+  },
+  "model_seconds": 9.799541084095836
+}

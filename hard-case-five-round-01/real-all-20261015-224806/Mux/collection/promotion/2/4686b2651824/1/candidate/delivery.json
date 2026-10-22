@@ -1,0 +1,34 @@
+{
+  "version": "continuous_blue_delivery_v1",
+  "snapshot_id": "B_2",
+  "snapshot_hash": "sha256:f9b795fb167cd6b1d5db81fd97edc0a529820bea7a456d9f008994ef8060ab2f",
+  "state_hash": "sha256:b1c00469eb315cbe3ede6f0cbe915b2c9cd585c57becfa1eea8689504bbb7818",
+  "task_hash": "sha256:4686b265182404ff878684a1ef912e3e0387e317d3742fdd51aa32cee9ac1fc9",
+  "retrieval_policy_hash": "sha256:8b114d1dc640c0d8851c3796a1d6ed4e3bc9b65406c7341475b69b3d8568e26f",
+  "payload": {
+    "version": "continuous_blue_experience_v1",
+    "notice": "Prior repair examples passed public tests only; validate their applicability to this task.",
+    "entries": [
+      {
+        "entry_hash": "sha256:c00f23e88c88f5d6bba1b75a8dbe9625aad36bfc99f4048c42463205bf294810",
+        "content": {
+          "validation": "public_pass_single_sample_hidden_unknown",
+          "specification_excerpt": "Four-bit combinational 4:1 multiplexer. sel is a two-bit binary selector: 00 selects a, 01 b, 10 c, 11 d. Output follows the selected input when it or sel changes. Preserve the interface and all comments.\n",
+          "applied_patch": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -11,6 +11,7 @@\n       case (sel)\n          2'b00 : out <= a;\n          2'b01 : out <= b;\n+         2'b10 : out <= c;\n          2'b11 : out <= d;\n       endcase\n    end\n",
+          "public_rows": {
+            "W_bug": "visible_pass",
+            "W_preserve": "visible_pass"
+          }
+        }
+      }
+    ]
+  },
+  "selected_entry_hashes": [
+    "sha256:c00f23e88c88f5d6bba1b75a8dbe9625aad36bfc99f4048c42463205bf294810"
+  ],
+  "source_record_hashes": [
+    "sha256:297efb7af85f24fd71fba38ce95ec2e2c03999899aa699ae8fe1f3301dcc9488"
+  ],
+  "omissions": [],
+  "payload_hash": "sha256:d7fc39762f3042c4c0f8e2ba2ee88fcd7f854382fe9f795d82b1ae45bf28e303"
+}

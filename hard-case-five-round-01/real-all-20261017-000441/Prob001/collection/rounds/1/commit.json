@@ -1,0 +1,173 @@
+{
+  "blue": {
+    "blue_config_hash": "sha256:a4f3a7db64f45cc44b6b1987cdfbbebf07b0654562f5cca31a3b25c76c7bba33",
+    "committed_round": 1,
+    "entries": [
+      {
+        "body": {
+          "content": {
+            "applied_patch": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -16,10 +16,6 @@\n \t\t\tbegin\n \t\t\t\tmatch <= 1'b1;\n \t\t\tend\n-\t\telse if (a_tem == 8'b1111_0001)\n-\t\t\tbegin\n-\t\t\t\tmatch <= 1'b1;\n-\t\t\tend\n \t\telse \n \t\t\tbegin\t\n \t\t\t\tmatch <= 1'b0;\n",
+            "public_rows": {
+              "W_bug": "visible_pass",
+              "W_preserve": "visible_pass"
+            },
+            "specification_excerpt": "I would like you to implement a module named `TopModule` with the following interface. All input and output ports are one bit unless otherwise specified.\n\n- **Input ports**:\n  - `clk`\n  - `rst_n`\n  - `a`\n\n- **Output ports**:\n  - `match`\n\nThe module should implement an 8-bit shift register that shifts in the input `a` on every positive edge of the clock. The shift register is named `a_tem` and retains the 8 most recent bits of `a`. The module should perform the following functionality:\n\n1. **Reset Behavior**:\n   - When `rst_n` is de-asserted (logic 0), the shift register `a_tem` should be cleared to `8'b0`, and the output `match` should be set to `0`.\n\n2. **Shift Register Behavior**:\n   - On every positive edge of the clock, if `rst_n` is asserted (logic 1), the input `a` should be shifted into the least significant bit (LSB) of the shift register `a_tem`, and the previous bits should shift left by one position.\n\n3. **Matching Logic**:\n   - The output `match` should be asserted (logic 1) whenever the value of ",
+            "validation": "public_pass_single_sample_hidden_unknown"
+          },
+          "created_round": 1,
+          "retrieval_terms": [
+            "a",
+            "a_tem",
+            "active",
+            "all",
+            "an",
+            "and",
+            "are",
+            "asserted",
+            "b0",
+            "b0111_0001",
+            "be",
+            "behavior",
+            "bit",
+            "bits",
+            "by",
+            "cleared",
+            "clk",
+            "clock",
+            "correctly",
+            "de",
+            "design",
+            "does",
+            "edge",
+            "ensure",
+            "every",
+            "following",
+            "functionality",
+            "i",
+            "if",
+            "implement",
+            "implements",
+            "in",
+            "input",
+            "interface",
+            "into",
+            "is",
+            "least",
+            "left",
+            "like",
+            "logic",
+            "lsb",
+            "match",
+            "matches",
+            "matching",
+            "module",
+            "most",
+            "must",
+            "named",
+            "negative",
+            "not",
+            "of",
+            "on",
+            "one",
+            "operate",
+            "otherwise",
+            "output",
+            "pattern",
+            "perform",
+            "ports",
+            "position",
+            "positive",
+            "previous",
+            "recent",
+            "register",
+            "remain",
+            "reset",
+            "retains",
+            "rst_n",
+            "set",
+            "shift",
+            "shifted",
+            "shifts",
+            "should",
+            "significant",
+            "specific",
+            "specified",
+            "synchronously",
+            "that",
+            "the",
+            "this",
+            "to",
+            "topmodule",
+            "unless",
+            "use",
+            "value",
+            "when",
+            "whenever",
+            "with",
+            "would",
+            "you"
+          ],
+          "source": {
+            "archive_hash": "sha256:93b72f2f796af99c1ead2d82a04afa189e11ad2d3d70186aa01b357b74aa9b14",
+            "candidate_hash": "sha256:1951e57b77b736427d17192f5446f3a1d5bc6d42a3b997eec5ab906a8583215c",
+            "carrier_id": "chipbench_Prob001_fixed_hard_questions",
+            "encounter_hash": "sha256:103dff512d30dd917c59196930c97e6118508a24d27d5462134dd5a67be25a74",
+            "mutant_hash": "sha256:727b7af994299f5fa2701442628c199f814f6ff802210cc600141aee16110f91",
+            "public_replay_hash": "sha256:427d7b7033f8188fc3d3eda8855c8273c7c401935648f75692708af86b1cef54",
+            "round": 1,
+            "run_id": "collection",
+            "slot_id": "r1_s0",
+            "task_hash": "sha256:2217d092c5a7fd4e5b72c3ae65b6e755bc12356d51cdad894ec008aacb145e14"
+          },
+          "version": "continuous_repair_episode_v1"
+        },
+        "entry_hash": "sha256:38ee292c0f96ae9533463f9199585aed4ad7546e1f681d50d46fa6af7a7561be"
+      }
+    ],
+    "learning_policy_hash": "sha256:4a09424dd1c7efe73565caf882441e236d76f12d2175725024c3057884eb1afe",
+    "parent_snapshot_hash": "sha256:ece8d99d59c0b6405fb6cd9f5711ea53aec330881965dc51b233aef0f9150dea",
+    "retrieval_policy_hash": "sha256:8b114d1dc640c0d8851c3796a1d6ed4e3bc9b65406c7341475b69b3d8568e26f",
+    "snapshot_id": "B_1",
+    "state_hash": "sha256:493c9ebd585301db61ef9114ac0e0353ef55aace5b6cf8745aa1be1371c237f2",
+    "version": "continuous_blue_snapshot_v1"
+  },
+  "parent_commit_hash": "sha256:47c59b0e2ea46687f3217be1b300ccbd83df4b4b7c379c7a8400c944c96bb77f",
+  "promotion_hash": "sha256:ec96c8321346f6427206175b2c3d6f9eaac9231fc817f60e941d5df8ca6f4a73",
+  "red": {
+    "observations": [
+      {
+        "blue_patch": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -16,10 +16,6 @@\n \t\t\tbegin\n \t\t\t\tmatch <= 1'b1;\n \t\t\tend\n-\t\telse if (a_tem == 8'b1111_0001)\n-\t\t\tbegin\n-\t\t\t\tmatch <= 1'b1;\n-\t\t\tend\n \t\telse \n \t\t\tbegin\t\n \t\t\t\tmatch <= 1'b0;\n",
+        "carrier_id": "chipbench_Prob001_fixed_hard_questions",
+        "label": "public_pass_single_sample_hidden_unknown",
+        "mutant_hash": "sha256:727b7af994299f5fa2701442628c199f814f6ff802210cc600141aee16110f91",
+        "mutation_edits": [
+          {
+            "find": "else if (a_tem == 8'b0111_0001)\n\t\t\tbegin\n\t\t\t\tmatch <= 1'b1;\n\t\t\tend\n\t\telse \n\t\t\tbegin\t\n\t\t\t\tmatch <= 1'b0;\n\t\t\tend",
+            "replace": "else if (a_tem == 8'b0111_0001)\n\t\t\tbegin\n\t\t\t\tmatch <= 1'b1;\n\t\t\tend\n\t\telse if (a_tem == 8'b1111_0001)\n\t\t\tbegin\n\t\t\t\tmatch <= 1'b1;\n\t\t\tend\n\t\telse \n\t\t\tbegin\t\n\t\t\t\tmatch <= 1'b0;\n\t\t\tend"
+          }
+        ],
+        "public_evidence": "{\"suites\": {\"W_bug\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"TESTBENCH PASS sequence\"}, \"W_preserve\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"TESTBENCH PASS preserve\"}}}",
+        "public_rows": {
+          "W_bug": "visible_pass",
+          "W_preserve": "visible_pass"
+        },
+        "round": 1,
+        "slot_id": "r1_s0",
+        "source_hash": "sha256:103dff512d30dd917c59196930c97e6118508a24d27d5462134dd5a67be25a74",
+        "target_snapshot_hash": "sha256:ece8d99d59c0b6405fb6cd9f5711ea53aec330881965dc51b233aef0f9150dea"
+      }
+    ],
+    "round": 1
+  },
+  "round": 1,
+  "update_decisions": [
+    {
+      "entry_hash": "sha256:38ee292c0f96ae9533463f9199585aed4ad7546e1f681d50d46fa6af7a7561be",
+      "reason": "accepted"
+    },
+    {
+      "accepted": true,
+      "promotion": "strict_gain_no_regression"
+    }
+  ]
+}

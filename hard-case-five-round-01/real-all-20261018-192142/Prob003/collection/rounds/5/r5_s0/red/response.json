@@ -1,0 +1,30 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "        sf1:\n            nstate=sf2;",
+            "replace": "        sf1:\n            nstate=data?sf2:sf2;"
+          }
+        ],
+        "violated_requirement": "The state machine should unconditionally transition to sf2 from sf1, but the mutation makes it data-dependent, potentially causing incorrect group classification when the first bit of a group doesn't match.",
+        "spec_basis": "The module must detect the sequence '011100' from the input signal 'data' using a state machine with specific transition rules."
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:dc2e3b4bada79c4985a4ae45491be9926297f1b1625b71d29f8f0098472eb201",
+  "input_tokens": 9368,
+  "output_tokens": 122,
+  "request_hash": "sha256:808bf3488f3635720d423f810a6dc6787a89377d114ccc496c2d93295172d132",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 9368,
+    "output_tokens": 122
+  },
+  "model_seconds": 8.669513992965221
+}

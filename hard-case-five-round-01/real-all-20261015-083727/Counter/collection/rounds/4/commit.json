@@ -1,0 +1,298 @@
+{
+  "blue": {
+    "blue_config_hash": "sha256:6488d17825779ad62c69d1477a90e57c0c3bf3baa279a3b9b237c1183a2ef7f6",
+    "committed_round": 4,
+    "entries": [
+      {
+        "body": {
+          "content": {
+            "applied_patch": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -45,7 +45,7 @@\n \n     end\n     // if it overflows, set overflow_out to be 1\n-    if(enable == 1'b0 && counter_out == 4'b1111)\n+    if(counter_out == 4'b1111)\n     begin\n         overflow_out <= 1'b1;\n     end\n",
+            "public_rows": {
+              "W_bug": "visible_pass",
+              "W_preserve": "visible_pass"
+            },
+            "specification_excerpt": "Four-bit up counter on rising clk. Synchronous active-high reset clears count and overflow; enable increments count modulo 16, otherwise count holds. The independent overflow test observes the pre-edge count: if it is 15, set sticky overflow even when enable is high. Overflow holds until reset; preserve the original delayed counter assignments and reset/overflow scheduling. Preserve interface and comments.\n",
+            "validation": "public_pass_single_sample_hidden_unknown"
+          },
+          "created_round": 1,
+          "retrieval_terms": [
+            "active",
+            "and",
+            "assignments",
+            "bit",
+            "clears",
+            "clk",
+            "comments",
+            "count",
+            "counter",
+            "delayed",
+            "edge",
+            "enable",
+            "even",
+            "four",
+            "high",
+            "holds",
+            "if",
+            "increments",
+            "independent",
+            "interface",
+            "is",
+            "it",
+            "modulo",
+            "observes",
+            "on",
+            "original",
+            "otherwise",
+            "overflow",
+            "pre",
+            "preserve",
+            "reset",
+            "rising",
+            "scheduling",
+            "set",
+            "sticky",
+            "synchronous",
+            "test",
+            "the",
+            "until",
+            "up",
+            "when"
+          ],
+          "source": {
+            "archive_hash": "sha256:988d0169d40f254f39ca34de44e148c332fc15bc61e1c0e59ed96d25f48370b1",
+            "candidate_hash": "sha256:6f80d2c589950e131b47be4316be6845bb4163abb7c186431908ff78cad291ba",
+            "carrier_id": "selected_Counter",
+            "encounter_hash": "sha256:96181cc0bdeed17009c4e4bcf6fac0b5f47916e7f5681a907f3fa15df1362a5e",
+            "mutant_hash": "sha256:c2061f16d27c2ba4a9462f78b35592dbfec01a2f697b5505d80ddc7f570ec2ea",
+            "public_replay_hash": "sha256:d0c65618f5fdbce518d0e5b56f3514cbf12d5bb590824321e4824f271e79c694",
+            "round": 1,
+            "run_id": "collection",
+            "slot_id": "r1_s0",
+            "task_hash": "sha256:6267e75f298ea31c3906ff2efd6bb166b5da1665baf2b4fc14edf2e094e9d540"
+          },
+          "version": "continuous_repair_episode_v1"
+        },
+        "entry_hash": "sha256:72f9f42fc2b72c00d533609a17ab05e29829cc57d2c362c4c931590d94d3a6d7"
+      },
+      {
+        "body": {
+          "content": {
+            "applied_patch": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -39,19 +39,16 @@\n         counter_out <= #1 4'b0000;\n         overflow_out <= #1 1'b0;\n     end\n-    //If enable is active, we increment the counter\n-    else if(enable == 1'b1) begin\n-        counter_out <= #1 counter_out + 1;\n-\n-    end\n-    // if it overflows, set overflow_out to be 1\n-    if(counter_out == 4'b1111)\n-    begin\n-        overflow_out <= 1'b1;\n-    end\n-    else\n-    begin\n-        overflow_out <= 1'b0;\n+    else begin\n+        //If enable is active, we increment the counter\n+        if(enable == 1'b1) begin\n+            counter_out <= #1 counter_out + 1;\n+        end\n+        // if the pre-edge count is 4'b1111, set sticky overflow\n+        if(counter_out == 4'b1111)\n+        begin\n+            overflow_out <= #1 1'b1;\n+        end\n     end\n end // End of block COUNTER\n \n",
+            "public_rows": {
+              "W_bug": "visible_pass",
+              "W_preserve": "visible_pass"
+            },
+            "specification_excerpt": "Four-bit up counter on rising clk. Synchronous active-high reset clears count and overflow; enable increments count modulo 16, otherwise count holds. The independent overflow test observes the pre-edge count: if it is 15, set sticky overflow even when enable is high. Overflow holds until reset; preserve the original delayed counter assignments and reset/overflow scheduling. Preserve interface and comments.\n",
+            "validation": "public_pass_single_sample_hidden_unknown"
+          },
+          "created_round": 2,
+          "retrieval_terms": [
+            "active",
+            "and",
+            "assignments",
+            "bit",
+            "clears",
+            "clk",
+            "comments",
+            "count",
+            "counter",
+            "delayed",
+            "edge",
+            "enable",
+            "even",
+            "four",
+            "high",
+            "holds",
+            "if",
+            "increments",
+            "independent",
+            "interface",
+            "is",
+            "it",
+            "modulo",
+            "observes",
+            "on",
+            "original",
+            "otherwise",
+            "overflow",
+            "pre",
+            "preserve",
+            "reset",
+            "rising",
+            "scheduling",
+            "set",
+            "sticky",
+            "synchronous",
+            "test",
+            "the",
+            "until",
+            "up",
+            "when"
+          ],
+          "source": {
+            "archive_hash": "sha256:3fd5a65e742b2f48f0c5a6fd7ac2a2b358731e11edd0201b2c8519f22527853d",
+            "candidate_hash": "sha256:71b75d3f39c8473929ff6b850edf64e9110ccafbb6a4e43d176d87780f77c3ad",
+            "carrier_id": "selected_Counter",
+            "encounter_hash": "sha256:ade78ceac63037ede79bb2b9e9c4aa29f250e2fd3261b284068be8c426db7e31",
+            "mutant_hash": "sha256:bb459faaf7c1590a55e26c91aa0ad223da42695d07f46128c07ddd1dfa46656a",
+            "public_replay_hash": "sha256:f824a7ce1c4c21f6bd48ecee86e434f31bf6bfeac74bc7d54ad54d9e67b0c313",
+            "round": 2,
+            "run_id": "collection",
+            "slot_id": "r2_s0",
+            "task_hash": "sha256:b267a0db2e9dcffd8115729839a2f3c1e1e92e2f9f694fda9bc65d500246dbf8"
+          },
+          "version": "continuous_repair_episode_v1"
+        },
+        "entry_hash": "sha256:160236b4c8c2215bd37bbf1324b783c656fdec3d5e52842b5e98852274908a51"
+      },
+      {
+        "body": {
+          "content": {
+            "applied_patch": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -39,15 +39,16 @@\n         counter_out <= #1 4'b0000;\n         overflow_out <= #1 1'b0;\n     end\n-    //If enable is active, we increment the counter\n-    else if(enable == 1'b1) begin\n-        counter_out <= #1 counter_out + 1;\n-\n-    end\n-    // if it overflows, set overflow_out to be 1\n-    if(counter_out == 4'b1110)\n-    begin\n-        overflow_out <= 1'b1;\n+    else begin\n+        //If enable is active, we increment the counter\n+        if(enable == 1'b1) begin\n+            counter_out <= #1 counter_out + 1;\n+        end\n+        // if the pre-edge count is 15, set sticky overflow_out\n+        if(counter_out == 4'b1111)\n+        begin\n+            overflow_out <= 1'b1;\n+        end\n     end\n end // End of block COUNTER\n \n",
+            "public_rows": {
+              "W_bug": "visible_pass",
+              "W_preserve": "visible_pass"
+            },
+            "specification_excerpt": "Four-bit up counter on rising clk. Synchronous active-high reset clears count and overflow; enable increments count modulo 16, otherwise count holds. The independent overflow test observes the pre-edge count: if it is 15, set sticky overflow even when enable is high. Overflow holds until reset; preserve the original delayed counter assignments and reset/overflow scheduling. Preserve interface and comments.\n",
+            "validation": "public_pass_single_sample_hidden_unknown"
+          },
+          "created_round": 3,
+          "retrieval_terms": [
+            "active",
+            "and",
+            "assignments",
+            "bit",
+            "clears",
+            "clk",
+            "comments",
+            "count",
+            "counter",
+            "delayed",
+            "edge",
+            "enable",
+            "even",
+            "four",
+            "high",
+            "holds",
+            "if",
+            "increments",
+            "independent",
+            "interface",
+            "is",
+            "it",
+            "modulo",
+            "observes",
+            "on",
+            "original",
+            "otherwise",
+            "overflow",
+            "pre",
+            "preserve",
+            "reset",
+            "rising",
+            "scheduling",
+            "set",
+            "sticky",
+            "synchronous",
+            "test",
+            "the",
+            "until",
+            "up",
+            "when"
+          ],
+          "source": {
+            "archive_hash": "sha256:ec4e6119345eadd144b67b69c30f0ca69f0a35761fdfa7b05d34f4df59f486db",
+            "candidate_hash": "sha256:bb85a98e86f116457ac23fd2924e8857f35953a9c5eccd4b1824ddcd0b58c9ac",
+            "carrier_id": "selected_Counter",
+            "encounter_hash": "sha256:fca5f0815a6d6f48d3616188f5499ddbffcfacd44b4a462eb636ecfb02793a2a",
+            "mutant_hash": "sha256:ae4726d6afb92f0d25f83bfd161e8d19bd0d00d3992599e16350ac004afdeef7",
+            "public_replay_hash": "sha256:1278330eff745541a29e29570f45ab132b3f094e308cce7614a189b2dae8f80f",
+            "round": 3,
+            "run_id": "collection",
+            "slot_id": "r3_s0",
+            "task_hash": "sha256:51e366b4e0a1e8f5b1293aead782b3b9491673cc7c192c36889eab6020600caf"
+          },
+          "version": "continuous_repair_episode_v1"
+        },
+        "entry_hash": "sha256:8c455b9cde11904a124732103789239592528d3211a3f46f27e144f5d1da3efa"
+      }
+    ],
+    "learning_policy_hash": "sha256:4a09424dd1c7efe73565caf882441e236d76f12d2175725024c3057884eb1afe",
+    "parent_snapshot_hash": "sha256:6ed0aec3a6ab66404f4cc6655b6fffd43de2edd7c3d0f3d1fa3ff276d172bec0",
+    "retrieval_policy_hash": "sha256:8b114d1dc640c0d8851c3796a1d6ed4e3bc9b65406c7341475b69b3d8568e26f",
+    "snapshot_id": "B_4",
+    "state_hash": "sha256:9cbd8af4f75ecc092fa1bebcfcd6ad1911c7ec515e4ead427743ebfed22e08d4",
+    "version": "continuous_blue_snapshot_v1"
+  },
+  "parent_commit_hash": "sha256:97a4c9d9f7a314f33a1d8955e8a76a06dc9cdb86ea0057af0d5adf9db159993f",
+  "red": {
+    "observations": [
+      {
+        "blue_patch": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -45,7 +45,7 @@\n \n     end\n     // if it overflows, set overflow_out to be 1\n-    if(enable == 1'b0 && counter_out == 4'b1111)\n+    if(counter_out == 4'b1111)\n     begin\n         overflow_out <= 1'b1;\n     end\n",
+        "carrier_id": "selected_Counter",
+        "label": "public_pass_single_sample_hidden_unknown",
+        "mutant_hash": "sha256:c2061f16d27c2ba4a9462f78b35592dbfec01a2f697b5505d80ddc7f570ec2ea",
+        "mutation_edits": [
+          {
+            "find": "if(counter_out == 4'b1111)",
+            "replace": "if(enable == 1'b0 && counter_out == 4'b1111)"
+          }
+        ],
+        "public_evidence": "{\"suites\": {\"W_bug\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"         106, \\t1, \\t0, \\t1, \\t 7, \\t\\t0\\n                 110, \\t0, \\t0, \\t1, \\t 7, \\t\\t0\\n                 115, \\t1, \\t0, \\t1, \\t 7, \\t\\t0\\n                 116, \\t1, \\t0, \\t1, \\t 8, \\t\\t0\\n                 120, \\t0, \\t0, \\t1, \\t 8, \\t\\t0\\n                 125, \\t1, \\t0, \\t1, \\t 8, \\t\\t0\\n                 126, \\t1, \\t0, \\t1, \\t 9, \\t\\t0\\n                 130, \\t0, \\t0, \\t1, \\t 9, \\t\\t0\\n                 135, \\t1, \\t0, \\t1, \\t 9, \\t\\t0\\n                 136, \\t1, \\t0, \\t1, \\t10, \\t\\t0\\n                 140, \\t0, \\t0, \\t1, \\t10, \\t\\t0\\n                 145, \\t1, \\t0, \\t1, \\t10, \\t\\t0\\n                 146, \\t1, \\t0, \\t1, \\t11, \\t\\t0\\n                 150, \\t0, \\t0, \\t1, \\t11, \\t\\t0\\n                 155, \\t1, \\t0, \\t1, \\t11, \\t\\t0\\n                 156, \\t1, \\t0, \\t1, \\t12, \\t\\t0\\n                 160, \\t0, \\t0, \\t1, \\t12, \\t\\t0\\n                 165, \\t1, \\t0, \\t1, \\t12, \\t\\t0\\n                 166, \\t1, \\t0, \\t1, \\t13, \\t\\t0\\n                 170, \\t0, \\t0, \\t1, \\t13, \\t\\t0\\n                 175, \\t1, \\t0, \\t1, \\t13, \\t\\t0\\n                 176, \\t1, \\t0, \\t1, \\t14, \\t\\t0\\n                 180, \\t0, \\t0, \\t1, \\t14, \\t\\t0\\n                 185, \\t1, \\t0, \\t1, \\t14, \\t\\t0\\n                 186, \\t1, \\t0, \\t1, \\t15, \\t\\t0\\n                 190, \\t0, \\t0, \\t1, \\t15, \\t\\t0\\n                 195, \\t1, \\t0, \\t1, \\t15, \\t\\t1\\n                 196, \\t1, \\t0, \\t1, \\t 0, \\t\\t1\\n                 200, \\t0, \\t0, \\t1, \\t 0, \\t\\t1\\n                 205, \\t1, \\t0, \\t1, \\t 0, \\t\\t1\\n                 206, \\t1, \\t0, \\t1, \\t 1, \\t\\t1\\n                 210, \\t0, \\t0, \\t1, \\t 1, \\t\\t1\\n                 215, \\t1, \\t0, \\t1, \\t 1, \\t\\t1\\n                 216, \\t1, \\t0, \\t1, \\t 2, \\t\\t1\\n                 220, \\t0, \\t0, \\t1, \\t 2, \\t\\t1\\n                 225, \\t1, \\t0, \\t1, \\t 2, \\t\\t1\\n                 226, \\t1, \\t0, \\t1, \\t 3, \\t\\t1\\n                 230, \\t0, \\t0, \\t1, \\t 3, \\t\\t1\\n                 235, \\t1, \\t0, \\t1, \\t 3, \\t\\t1\\n                 236, \\t1, \\t0, \\t1, \\t 4, \\t\\t1\\n                 240, \\t0, \\t0, \\t1, \\t 4, \\t\\t1\\n                 245, \\t1, \\t0, \\t1, \\t 4, \\t\\t1\\n                 246, \\t1, \\t0, \\t1, \\t 5, \\t\\t1\\n                 250, \\t0, \\t0, \\t1, \\t 5, \\t\\t1\\n                 255, \\t1, \\t0, \\t1, \\t 5, \\t\\t1\\n                 256, \\t1, \\t0, \\t1, \\t 6, \\t\\t1\\nTESTBENCH PASS original oracle\"}, \"W_preserve\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"TESTBENCH PASS preserve\"}}}",
+        "public_rows": {
+          "W_bug": "visible_pass",
+          "W_preserve": "visible_pass"
+        },
+        "round": 1,
+        "slot_id": "r1_s0",
+        "source_hash": "sha256:96181cc0bdeed17009c4e4bcf6fac0b5f47916e7f5681a907f3fa15df1362a5e",
+        "target_snapshot_hash": "sha256:5600496c90f83f0e7b291f83030adaa6c63b03770716706768266b847116c119"
+      },
+      {
+        "blue_patch": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -39,19 +39,16 @@\n         counter_out <= #1 4'b0000;\n         overflow_out <= #1 1'b0;\n     end\n-    //If enable is active, we increment the counter\n-    else if(enable == 1'b1) begin\n-        counter_out <= #1 counter_out + 1;\n-\n-    end\n-    // if it overflows, set overflow_out to be 1\n-    if(counter_out == 4'b1111)\n-    begin\n-        overflow_out <= 1'b1;\n-    end\n-    else\n-    begin\n-        overflow_out <= 1'b0;\n+    else begin\n+        //If enable is active, we increment the counter\n+        if(enable == 1'b1) begin\n+            counter_out <= #1 counter_out + 1;\n+        end\n+        // if the pre-edge count is 4'b1111, set sticky overflow\n+        if(counter_out == 4'b1111)\n+        begin\n+            overflow_out <= #1 1'b1;\n+        end\n     end\n end // End of block COUNTER\n \n",
+        "carrier_id": "selected_Counter",
+        "label": "public_pass_single_sample_hidden_unknown",
+        "mutant_hash": "sha256:bb459faaf7c1590a55e26c91aa0ad223da42695d07f46128c07ddd1dfa46656a",
+        "mutation_edits": [
+          {
+            "find": "    // if it overflows, set overflow_out to be 1\n    if(counter_out == 4'b1111)\n    begin\n        overflow_out <= 1'b1;\n    end",
+            "replace": "    // if it overflows, set overflow_out to be 1\n    if(counter_out == 4'b1111)\n    begin\n        overflow_out <= 1'b1;\n    end\n    else\n    begin\n        overflow_out <= 1'b0;\n    end"
+          }
+        ],
+        "public_evidence": "{\"suites\": {\"W_bug\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"         106, \\t1, \\t0, \\t1, \\t 7, \\t\\t0\\n                 110, \\t0, \\t0, \\t1, \\t 7, \\t\\t0\\n                 115, \\t1, \\t0, \\t1, \\t 7, \\t\\t0\\n                 116, \\t1, \\t0, \\t1, \\t 8, \\t\\t0\\n                 120, \\t0, \\t0, \\t1, \\t 8, \\t\\t0\\n                 125, \\t1, \\t0, \\t1, \\t 8, \\t\\t0\\n                 126, \\t1, \\t0, \\t1, \\t 9, \\t\\t0\\n                 130, \\t0, \\t0, \\t1, \\t 9, \\t\\t0\\n                 135, \\t1, \\t0, \\t1, \\t 9, \\t\\t0\\n                 136, \\t1, \\t0, \\t1, \\t10, \\t\\t0\\n                 140, \\t0, \\t0, \\t1, \\t10, \\t\\t0\\n                 145, \\t1, \\t0, \\t1, \\t10, \\t\\t0\\n                 146, \\t1, \\t0, \\t1, \\t11, \\t\\t0\\n                 150, \\t0, \\t0, \\t1, \\t11, \\t\\t0\\n                 155, \\t1, \\t0, \\t1, \\t11, \\t\\t0\\n                 156, \\t1, \\t0, \\t1, \\t12, \\t\\t0\\n                 160, \\t0, \\t0, \\t1, \\t12, \\t\\t0\\n                 165, \\t1, \\t0, \\t1, \\t12, \\t\\t0\\n                 166, \\t1, \\t0, \\t1, \\t13, \\t\\t0\\n                 170, \\t0, \\t0, \\t1, \\t13, \\t\\t0\\n                 175, \\t1, \\t0, \\t1, \\t13, \\t\\t0\\n                 176, \\t1, \\t0, \\t1, \\t14, \\t\\t0\\n                 180, \\t0, \\t0, \\t1, \\t14, \\t\\t0\\n                 185, \\t1, \\t0, \\t1, \\t14, \\t\\t0\\n                 186, \\t1, \\t0, \\t1, \\t15, \\t\\t0\\n                 190, \\t0, \\t0, \\t1, \\t15, \\t\\t0\\n                 195, \\t1, \\t0, \\t1, \\t15, \\t\\t0\\n                 196, \\t1, \\t0, \\t1, \\t 0, \\t\\t1\\n                 200, \\t0, \\t0, \\t1, \\t 0, \\t\\t1\\n                 205, \\t1, \\t0, \\t1, \\t 0, \\t\\t1\\n                 206, \\t1, \\t0, \\t1, \\t 1, \\t\\t1\\n                 210, \\t0, \\t0, \\t1, \\t 1, \\t\\t1\\n                 215, \\t1, \\t0, \\t1, \\t 1, \\t\\t1\\n                 216, \\t1, \\t0, \\t1, \\t 2, \\t\\t1\\n                 220, \\t0, \\t0, \\t1, \\t 2, \\t\\t1\\n                 225, \\t1, \\t0, \\t1, \\t 2, \\t\\t1\\n                 226, \\t1, \\t0, \\t1, \\t 3, \\t\\t1\\n                 230, \\t0, \\t0, \\t1, \\t 3, \\t\\t1\\n                 235, \\t1, \\t0, \\t1, \\t 3, \\t\\t1\\n                 236, \\t1, \\t0, \\t1, \\t 4, \\t\\t1\\n                 240, \\t0, \\t0, \\t1, \\t 4, \\t\\t1\\n                 245, \\t1, \\t0, \\t1, \\t 4, \\t\\t1\\n                 246, \\t1, \\t0, \\t1, \\t 5, \\t\\t1\\n                 250, \\t0, \\t0, \\t1, \\t 5, \\t\\t1\\n                 255, \\t1, \\t0, \\t1, \\t 5, \\t\\t1\\n                 256, \\t1, \\t0, \\t1, \\t 6, \\t\\t1\\nTESTBENCH PASS original oracle\"}, \"W_preserve\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"TESTBENCH PASS preserve\"}}}",
+        "public_rows": {
+          "W_bug": "visible_pass",
+          "W_preserve": "visible_pass"
+        },
+        "round": 2,
+        "slot_id": "r2_s0",
+        "source_hash": "sha256:ade78ceac63037ede79bb2b9e9c4aa29f250e2fd3261b284068be8c426db7e31",
+        "target_snapshot_hash": "sha256:1d8f9f860456ef84dda55b4372453e13db87c55db919c1adde758d8377243146"
+      },
+      {
+        "blue_patch": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -39,15 +39,16 @@\n         counter_out <= #1 4'b0000;\n         overflow_out <= #1 1'b0;\n     end\n-    //If enable is active, we increment the counter\n-    else if(enable == 1'b1) begin\n-        counter_out <= #1 counter_out + 1;\n-\n-    end\n-    // if it overflows, set overflow_out to be 1\n-    if(counter_out == 4'b1110)\n-    begin\n-        overflow_out <= 1'b1;\n+    else begin\n+        //If enable is active, we increment the counter\n+        if(enable == 1'b1) begin\n+            counter_out <= #1 counter_out + 1;\n+        end\n+        // if the pre-edge count is 15, set sticky overflow_out\n+        if(counter_out == 4'b1111)\n+        begin\n+            overflow_out <= 1'b1;\n+        end\n     end\n end // End of block COUNTER\n \n",
+        "carrier_id": "selected_Counter",
+        "label": "public_pass_single_sample_hidden_unknown",
+        "mutant_hash": "sha256:ae4726d6afb92f0d25f83bfd161e8d19bd0d00d3992599e16350ac004afdeef7",
+        "mutation_edits": [
+          {
+            "find": "if(counter_out == 4'b1111)",
+            "replace": "if(counter_out == 4'b1110)"
+          }
+        ],
+        "public_evidence": "{\"suites\": {\"W_bug\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"         106, \\t1, \\t0, \\t1, \\t 7, \\t\\t0\\n                 110, \\t0, \\t0, \\t1, \\t 7, \\t\\t0\\n                 115, \\t1, \\t0, \\t1, \\t 7, \\t\\t0\\n                 116, \\t1, \\t0, \\t1, \\t 8, \\t\\t0\\n                 120, \\t0, \\t0, \\t1, \\t 8, \\t\\t0\\n                 125, \\t1, \\t0, \\t1, \\t 8, \\t\\t0\\n                 126, \\t1, \\t0, \\t1, \\t 9, \\t\\t0\\n                 130, \\t0, \\t0, \\t1, \\t 9, \\t\\t0\\n                 135, \\t1, \\t0, \\t1, \\t 9, \\t\\t0\\n                 136, \\t1, \\t0, \\t1, \\t10, \\t\\t0\\n                 140, \\t0, \\t0, \\t1, \\t10, \\t\\t0\\n                 145, \\t1, \\t0, \\t1, \\t10, \\t\\t0\\n                 146, \\t1, \\t0, \\t1, \\t11, \\t\\t0\\n                 150, \\t0, \\t0, \\t1, \\t11, \\t\\t0\\n                 155, \\t1, \\t0, \\t1, \\t11, \\t\\t0\\n                 156, \\t1, \\t0, \\t1, \\t12, \\t\\t0\\n                 160, \\t0, \\t0, \\t1, \\t12, \\t\\t0\\n                 165, \\t1, \\t0, \\t1, \\t12, \\t\\t0\\n                 166, \\t1, \\t0, \\t1, \\t13, \\t\\t0\\n                 170, \\t0, \\t0, \\t1, \\t13, \\t\\t0\\n                 175, \\t1, \\t0, \\t1, \\t13, \\t\\t0\\n                 176, \\t1, \\t0, \\t1, \\t14, \\t\\t0\\n                 180, \\t0, \\t0, \\t1, \\t14, \\t\\t0\\n                 185, \\t1, \\t0, \\t1, \\t14, \\t\\t0\\n                 186, \\t1, \\t0, \\t1, \\t15, \\t\\t0\\n                 190, \\t0, \\t0, \\t1, \\t15, \\t\\t0\\n                 195, \\t1, \\t0, \\t1, \\t15, \\t\\t1\\n                 196, \\t1, \\t0, \\t1, \\t 0, \\t\\t1\\n                 200, \\t0, \\t0, \\t1, \\t 0, \\t\\t1\\n                 205, \\t1, \\t0, \\t1, \\t 0, \\t\\t1\\n                 206, \\t1, \\t0, \\t1, \\t 1, \\t\\t1\\n                 210, \\t0, \\t0, \\t1, \\t 1, \\t\\t1\\n                 215, \\t1, \\t0, \\t1, \\t 1, \\t\\t1\\n                 216, \\t1, \\t0, \\t1, \\t 2, \\t\\t1\\n                 220, \\t0, \\t0, \\t1, \\t 2, \\t\\t1\\n                 225, \\t1, \\t0, \\t1, \\t 2, \\t\\t1\\n                 226, \\t1, \\t0, \\t1, \\t 3, \\t\\t1\\n                 230, \\t0, \\t0, \\t1, \\t 3, \\t\\t1\\n                 235, \\t1, \\t0, \\t1, \\t 3, \\t\\t1\\n                 236, \\t1, \\t0, \\t1, \\t 4, \\t\\t1\\n                 240, \\t0, \\t0, \\t1, \\t 4, \\t\\t1\\n                 245, \\t1, \\t0, \\t1, \\t 4, \\t\\t1\\n                 246, \\t1, \\t0, \\t1, \\t 5, \\t\\t1\\n                 250, \\t0, \\t0, \\t1, \\t 5, \\t\\t1\\n                 255, \\t1, \\t0, \\t1, \\t 5, \\t\\t1\\n                 256, \\t1, \\t0, \\t1, \\t 6, \\t\\t1\\nTESTBENCH PASS original oracle\"}, \"W_preserve\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"TESTBENCH PASS preserve\"}}}",
+        "public_rows": {
+          "W_bug": "visible_pass",
+          "W_preserve": "visible_pass"
+        },
+        "round": 3,
+        "slot_id": "r3_s0",
+        "source_hash": "sha256:fca5f0815a6d6f48d3616188f5499ddbffcfacd44b4a462eb636ecfb02793a2a",
+        "target_snapshot_hash": "sha256:8f3ab1faaea2419a861cdcbe5bd57d6f9b68a50aee4ca70f26a25a6af2f912cd"
+      }
+    ],
+    "round": 4
+  },
+  "round": 4,
+  "update_decisions": []
+}

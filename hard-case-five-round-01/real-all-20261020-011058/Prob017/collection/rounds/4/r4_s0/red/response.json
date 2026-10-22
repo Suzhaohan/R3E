@@ -1,0 +1,40 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "div_flag <= cyc_cnt==(M_N-1)||cyc_cnt==(c89-1)? ~div_flag: div_flag",
+            "replace": "div_flag <= cyc_cnt==(M_N-1)||cyc_cnt==(c89-1)? div_flag: ~div_flag"
+          }
+        ],
+        "violated_requirement": "The div_flag toggle condition is inverted - it should toggle when cyc_cnt equals M_N-1 or c89-1, but instead it toggles when cyc_cnt does NOT equal those values. This will cause incorrect mode switching behavior.",
+        "spec_basis": "Mode toggles iff cycle_count equals M_N-1 or c89-1; otherwise it holds."
+      },
+      {
+        "edits": [
+          {
+            "find": "cyc_cnt <= cyc_cnt==(M_N-1)? 0: cyc_cnt+1",
+            "replace": "cyc_cnt <= cyc_cnt==(M_N-1)? 1: cyc_cnt+1"
+          }
+        ],
+        "violated_requirement": "The cycle counter reset value is incorrect - it should reset to 0 when reaching M_N-1, but instead resets to 1. This will cause incorrect cycle counting and mode switching timing.",
+        "spec_basis": "Cycle_count wraps to zero at M_N-1; otherwise it increments by one modulo 128"
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:e2b83fcd9cec55f9d428f6e12f31c0f13cc2af8de22cc156fc6401e39869de7e",
+  "input_tokens": 8744,
+  "output_tokens": 335,
+  "request_hash": "sha256:c410d5b6cd7400170a717b774fe9ed3cedd753ef4d183f992c0b461d9b368a98",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 8744,
+    "output_tokens": 335
+  },
+  "model_seconds": 11.09993041306734
+}

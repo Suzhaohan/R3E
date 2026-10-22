@@ -1,0 +1,94 @@
+{
+  "blue": {
+    "blue_config_hash": "sha256:a4f3a7db64f45cc44b6b1987cdfbbebf07b0654562f5cca31a3b25c76c7bba33",
+    "committed_round": 3,
+    "entries": [],
+    "learning_policy_hash": "sha256:4a09424dd1c7efe73565caf882441e236d76f12d2175725024c3057884eb1afe",
+    "parent_snapshot_hash": "sha256:79ea4ca44a1e780673e1f82ddbeb38e6f5eadde9626da0e01677e745ae4cb596",
+    "retrieval_policy_hash": "sha256:8b114d1dc640c0d8851c3796a1d6ed4e3bc9b65406c7341475b69b3d8568e26f",
+    "snapshot_id": "B_3",
+    "state_hash": "sha256:85e8fbb707b6fca997463be8d6ef1bbf03526260aab6b2abb4db57f9d81f665d",
+    "version": "continuous_blue_snapshot_v1"
+  },
+  "parent_commit_hash": "sha256:2409298d589187312168ce974171c2e192fc87e3dfca14a24bd77697979e08c5",
+  "promotion_hash": "sha256:aa9436cf5b108602c87c11bd83e7fd7f7edf1c1ad7d150f12562526754601f6f",
+  "red": {
+    "observations": [
+      {
+        "blue_patch": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -28,7 +28,7 @@\n \t\t\tbegin \n \t\t\t\tmatch_b <= 1'b0;\n \t\t\tend\n-\t\telse if (a_tem[2:0] == 3'b111)\n+\t\telse if (a_tem[2:0] == 3'b110)\n \t\t\tbegin\n \t\t\t\tmatch_b <= 1'b1;\n \t\t\tend\n",
+        "carrier_id": "chipbench_Prob002_wildcard_medium",
+        "label": "public_pass_single_sample_hidden_unknown",
+        "mutant_hash": "sha256:dfc4b350eef11c076d8b99f9023c0019ed0c7c2fe9bcd59c527483e9d8dfd270",
+        "mutation_edits": [
+          {
+            "find": "else if (a_tem[2:0] == 3'b110)\n\t\t\tbegin\n\t\t\t\tmatch_b <= 1'b1;\n\t\t\tend",
+            "replace": "else if (a_tem[2:0] == 3'b111)\n\t\t\tbegin\n\t\t\t\tmatch_b <= 1'b1;\n\t\t\tend"
+          }
+        ],
+        "public_evidence": "{\"suites\": {\"W_bug\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"TESTBENCH PASS wildcard checks=9216\"}, \"W_preserve\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"TESTBENCH PASS reset\"}}}",
+        "public_rows": {
+          "W_bug": "visible_pass",
+          "W_preserve": "visible_pass"
+        },
+        "round": 1,
+        "slot_id": "r1_s0",
+        "source_hash": "sha256:69aa88a0159a523cb3e306121471f4923c848f5ea42c413bf6ff80d8bb3f9a2e",
+        "target_snapshot_hash": "sha256:ece8d99d59c0b6405fb6cd9f5711ea53aec330881965dc51b233aef0f9150dea"
+      },
+      {
+        "blue_patch": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -14,7 +14,7 @@\n \t\t\tbegin \n \t\t\t\tmatch_f <= 1'b0;\n \t\t\tend\n-\t\telse if (a_tem[8:6] == 3'b001)\n+\t\telse if (a_tem[8:6] == 3'b011)\n \t\t\tbegin\n \t\t\t\tmatch_f <= 1'b1;\n \t\t\tend\n",
+        "carrier_id": "chipbench_Prob002_wildcard_medium",
+        "label": "public_pass_single_sample_hidden_unknown",
+        "mutant_hash": "sha256:215c311d5a2ba4a4a0b2e6d1e2bcff0c2d9306565e62e5783e0ad6903c4f4485",
+        "mutation_edits": [
+          {
+            "find": "else if (a_tem[8:6] == 3'b011)",
+            "replace": "else if (a_tem[8:6] == 3'b001)"
+          }
+        ],
+        "public_evidence": "{\"suites\": {\"W_bug\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"TESTBENCH PASS wildcard checks=9216\"}, \"W_preserve\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"TESTBENCH PASS reset\"}}}",
+        "public_rows": {
+          "W_bug": "visible_pass",
+          "W_preserve": "visible_pass"
+        },
+        "round": 2,
+        "slot_id": "r2_s0",
+        "source_hash": "sha256:140fee251d1d7da7b477196ec3d457f4271543fe027cea73613e2764c5e1e830",
+        "target_snapshot_hash": "sha256:f4377d0cb460d46ffdfd9845f9c6160d0bc376414e5f72eb9b89b138d246c1b8"
+      },
+      {
+        "blue_patch": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -14,7 +14,7 @@\n \t\t\tbegin \n \t\t\t\tmatch_f <= 1'b0;\n \t\t\tend\n-\t\telse if (a_tem[7:5] == 3'b011)\n+\t\telse if (a_tem[8:6] == 3'b011)\n \t\t\tbegin\n \t\t\t\tmatch_f <= 1'b1;\n \t\t\tend\n",
+        "carrier_id": "chipbench_Prob002_wildcard_medium",
+        "label": "public_pass_single_sample_hidden_unknown",
+        "mutant_hash": "sha256:beba090ef497f225c4c37ac645bd4f9701eb6686de17e94f39fec6131f825ff4",
+        "mutation_edits": [
+          {
+            "find": "else if (a_tem[8:6] == 3'b011)",
+            "replace": "else if (a_tem[7:5] == 3'b011)"
+          }
+        ],
+        "public_evidence": "{\"suites\": {\"W_bug\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"TESTBENCH PASS wildcard checks=9216\"}, \"W_preserve\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"TESTBENCH PASS reset\"}}}",
+        "public_rows": {
+          "W_bug": "visible_pass",
+          "W_preserve": "visible_pass"
+        },
+        "round": 3,
+        "slot_id": "r3_s0",
+        "source_hash": "sha256:9d703fb1f417e0ed11cb1cde8bc3d0faca2fe1bbfaf2aff1d5e9d32a8a06591a",
+        "target_snapshot_hash": "sha256:79ea4ca44a1e780673e1f82ddbeb38e6f5eadde9626da0e01677e745ae4cb596"
+      }
+    ],
+    "round": 3
+  },
+  "round": 3,
+  "update_decisions": [
+    {
+      "entry_hash": "sha256:d37b94cd49a388616e9b18655831bd8d2f88d6c1829e5cd3443ae80680354f14",
+      "reason": "accepted"
+    },
+    {
+      "accepted": false,
+      "promotion": "regression"
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "blue": {
+    "blue_config_hash": "sha256:9335408c15ec8461d688530617738077012fba13ae120ddae0de57b23055a90e",
+    "committed_round": 2,
+    "entries": [],
+    "learning_policy_hash": "sha256:e125eaba0c567205327a9b834761e336b610bc2e29ccbbe86fd91bcb64a5fd6c",
+    "parent_snapshot_hash": "sha256:8aff4685a1b3239ae0d7c95349fdedeb626326ee1378f401f3921e94b77f4663",
+    "retrieval_policy_hash": "sha256:8b114d1dc640c0d8851c3796a1d6ed4e3bc9b65406c7341475b69b3d8568e26f",
+    "snapshot_id": "B_2",
+    "state_hash": "sha256:5f149e9919f40300de64d71bd6a7ae6b72785d8ba75d28b2bbb55fbba97aa458",
+    "version": "continuous_blue_snapshot_v1"
+  },
+  "parent_commit_hash": "sha256:522797e458b60cdb0209e3cd7c7c33159f42b85d5b318cb02d393930b4910c13",
+  "promotion_hash": "sha256:7dcc641e92c99a105c8b2f96f0187932f9bd5bf8e196e63497d003983fa49aaf",
+  "red": {
+    "observations": [
+      {
+        "blue_patch": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -18,7 +18,7 @@\n         if(~rst)\n             clk_cnt <= 0;\n         else if(~div_flag)\n-            clk_cnt <= clk_cnt==(div_e-1)? 0: clk_cnt+2;\n+            clk_cnt <= clk_cnt==(div_e-1)? 0: clk_cnt+1;\n         else\n             clk_cnt <= clk_cnt==(div_o-1)? 0: clk_cnt+1;\n     end\n",
+        "carrier_id": "chipbench_Prob017_fractional_divider",
+        "label": "public_pass_single_sample_hidden_unknown",
+        "mutant_hash": "sha256:de0d4f88d2ed5488424e2cd8cde8624fd42ecc180e790558103708655fdad8ac",
+        "mutation_edits": [
+          {
+            "find": "clk_cnt <= clk_cnt==(div_e-1)? 0: clk_cnt+1;",
+            "replace": "clk_cnt <= clk_cnt==(div_e-1)? 0: clk_cnt+2;"
+          }
+        ],
+        "public_evidence": "{\"suites\": {\"W_bug\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"TESTBENCH PASS divider public waveform\"}, \"W_preserve\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"TESTBENCH PASS divider preserve\"}}}",
+        "public_rows": {
+          "W_bug": "visible_pass",
+          "W_preserve": "visible_pass"
+        },
+        "round": 1,
+        "slot_id": "r1_s0",
+        "source_hash": "sha256:d406c397dc0d8efdd9217fc9451c6e9aa7ca109a2c839d4bde49e93d44331f82",
+        "target_snapshot_hash": "sha256:8b062b213ed61ecf341ce385ee515e026fa2dd67e077c54f5c39b3731d9d0be8"
+      },
+      {
+        "blue_patch": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -20,7 +20,7 @@\n         else if(~div_flag)\n             clk_cnt <= clk_cnt==(div_e-1)? 0: clk_cnt+1;\n         else\n-            clk_cnt <= clk_cnt==(div_o-1)? 0: clk_cnt+2;\n+            clk_cnt <= clk_cnt==(div_o-1)? 0: clk_cnt+1;\n     end\n     \n     always@(posedge clk_in or negedge rst) begin\n",
+        "carrier_id": "chipbench_Prob017_fractional_divider",
+        "label": "public_pass_single_sample_hidden_unknown",
+        "mutant_hash": "sha256:e5bde06f24d2f9ac9173ae4ab402d780d49743466890712feff72af1113a3269",
+        "mutation_edits": [
+          {
+            "find": "clk_cnt <= clk_cnt==(div_o-1)? 0: clk_cnt+1;",
+            "replace": "clk_cnt <= clk_cnt==(div_o-1)? 0: clk_cnt+2;"
+          }
+        ],
+        "public_evidence": "{\"suites\": {\"W_bug\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"TESTBENCH PASS divider public waveform\"}, \"W_preserve\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"TESTBENCH PASS divider preserve\"}}}",
+        "public_rows": {
+          "W_bug": "visible_pass",
+          "W_preserve": "visible_pass"
+        },
+        "round": 2,
+        "slot_id": "r2_s0",
+        "source_hash": "sha256:40815211e435212f07902b90d9fd4ba63050ca3346a8e2bd7edd091e8d7316ed",
+        "target_snapshot_hash": "sha256:8aff4685a1b3239ae0d7c95349fdedeb626326ee1378f401f3921e94b77f4663"
+      }
+    ],
+    "round": 2
+  },
+  "round": 2,
+  "update_decisions": [
+    {
+      "entry_hash": "sha256:29dc78ac3349954c8431a59d4fd526acde550159cdb38de2c242600860c8a915",
+      "reason": "accepted"
+    },
+    {
+      "accepted": false,
+      "promotion": "regression"
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "clk_cnt<=((div_e>>2)+1)",
+            "replace": "clk_cnt<=((div_e>>1)+1)"
+          }
+        ],
+        "violated_requirement": "Output clock duty cycle will be incorrect when div_flag is 0 (even period) because the threshold for setting clk_out_r is changed from approximately 25% to 50% of the period",
+        "spec_basis": "Output becomes 1 iff count <= floor((mode ? div_o : div_e)/4) + 1"
+      },
+      {
+        "edits": [
+          {
+            "find": "clk_cnt<=((div_o>>2)+1)",
+            "replace": "clk_cnt<=((div_o>>1)+1)"
+          }
+        ],
+        "violated_requirement": "Output clock duty cycle will be incorrect when div_flag is 1 (odd period) because the threshold for setting clk_out_r is changed from approximately 25% to 50% of the period",
+        "spec_basis": "Output becomes 1 iff count <= floor((mode ? div_o : div_e)/4) + 1"
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:92af0e71e7f2e52733d173629448779913c18d9e0cc31d9e42ab19a31c8df23e",
+  "input_tokens": 4580,
+  "output_tokens": 242,
+  "request_hash": "sha256:1cb77fb12ffb80ad0223362a729d89c7c5b440be9d3f30dea9c610a60e017528",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 4580,
+    "output_tokens": 242
+  },
+  "model_seconds": 9.721249183639884
+}

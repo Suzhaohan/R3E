@@ -1,0 +1,44 @@
+{
+  "batch": "prob003-table-20261018-235509",
+  "status": "aborted",
+  "model": "deepseek/deepseek-chat-v3-0324",
+  "B0_exam": {
+    "passed": 0,
+    "samples": 2
+  },
+  "validation_baseline": {
+    "passed": 0,
+    "samples": 4
+  },
+  "completed_training_rounds": 0,
+  "B5_exam": null,
+  "http_attempts": 13,
+  "http_responses": 13,
+  "ledger_events": 14,
+  "last_call": {
+    "phase": "blue_inference",
+    "ok": false,
+    "error": "UsageStop",
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "finish_reason": null,
+    "role": "online",
+    "slot_id": "r1_s0",
+    "snapshot_id": "B_0"
+  },
+  "root_cause": "Prob003 transition training SYSTEM missing from real launch UsageGuard allowlist; rejected before HTTP",
+  "initial_exam_seal_unchanged": true,
+  "fix": {
+    "entry": "experiment.py",
+    "plan": "plan-v3-0324-prob003-table-guard-v1",
+    "registered_only_for_design": "Prob003",
+    "model_output_context_guards_preserved": true,
+    "offline_tests_passed": 15,
+    "test_seconds": 20.19,
+    "original_failed_request_replayed_through_real_guard": true,
+    "actual_launcher_client_guard_path_tested_with_local_transport": true,
+    "model_calls": 0,
+    "paid_rerun_started": false
+  },
+  "historical_run_files_modified": false
+}

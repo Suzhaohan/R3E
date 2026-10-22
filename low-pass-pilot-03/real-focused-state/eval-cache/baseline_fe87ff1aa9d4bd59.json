@@ -1,0 +1,150 @@
+{
+  "attempts": 2,
+  "first": {
+    "candidate_id": "C_dbc42217d0c4_0",
+    "diagnostics": {
+      "content_state": "blank_content",
+      "finish_reason": "length",
+      "input_tokens": 2361,
+      "output_tokens": 65536,
+      "provider_request_id_present": true,
+      "refusal_present": false,
+      "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+    },
+    "edit": "<no usable provider output>",
+    "error": "OpenAICompatibleEmptyContentViolation",
+    "error_message": "provider returned empty content",
+    "feedback": {
+      "message": "previous attempt ran out of output budget before answering; reason more briefly",
+      "stage": "provider"
+    },
+    "index": 0,
+    "infra_failure": false,
+    "memory_offered": false,
+    "phase": "evaluation",
+    "seconds": 216.63,
+    "tokens": {
+      "input": 2361,
+      "output": 65536
+    },
+    "verdict_tier": "no_answer"
+  },
+  "inconclusive": false,
+  "record": {
+    "accounting": {
+      "fixed": true,
+      "fixed_at_attempt": 2,
+      "fixed_by_escalation": false,
+      "input_tokens": 4765,
+      "llm_calls": 2,
+      "memory_delivered": false,
+      "memory_items": [],
+      "memory_offered_from_attempt": null,
+      "model_seconds": 364.67,
+      "output_tokens": 102655,
+      "provider_failures": 0,
+      "repair_attempts": 2
+    },
+    "attempts": [
+      {
+        "candidate_id": "C_dbc42217d0c4_0",
+        "diagnostics": {
+          "content_state": "blank_content",
+          "finish_reason": "length",
+          "input_tokens": 2361,
+          "output_tokens": 65536,
+          "provider_request_id_present": true,
+          "refusal_present": false,
+          "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+        },
+        "edit": "<no usable provider output>",
+        "error": "OpenAICompatibleEmptyContentViolation",
+        "error_message": "provider returned empty content",
+        "feedback": {
+          "message": "previous attempt ran out of output budget before answering; reason more briefly",
+          "stage": "provider"
+        },
+        "index": 0,
+        "infra_failure": false,
+        "memory_offered": false,
+        "phase": "evaluation",
+        "seconds": 216.63,
+        "tokens": {
+          "input": 2361,
+          "output": 65536
+        },
+        "verdict_tier": "no_answer"
+      },
+      {
+        "answer_form": "full",
+        "candidate_hash": "sha256:c97d3bb1ee0d3974ad0c37b6b3feb597f8f936d39f28b33ad6e853651c656c0c",
+        "candidate_id": "C_034b9cea8524_1",
+        "command_hash": "sha256:5372a78777b908f25331490b867cbf283713cc5f5abbea93d26eda32f1dd76bf",
+        "edit": "Fixed the reversed transition condition in state s6: changed `nstate=data?s1:sf1;` to `nstate=data?sf1:s1;` so that after a match, a first bit of 0 correctly starts a new group at s1, and a first bit of 1 goes to sf1. Also simplified the reset check in the output logic from `if(!rst_n==1)` to `if(!r",
+        "feedback": {
+          "cycles_compared": 2324,
+          "first_divergences": [],
+          "passing_outputs": [
+            "match",
+            "not_match"
+          ],
+          "stage": "functional"
+        },
+        "hidden": "not_available",
+        "index": 1,
+        "memory_offered": false,
+        "phase": "evaluation",
+        "seconds": 148.04,
+        "tokens": {
+          "input": 2404,
+          "output": 37119
+        },
+        "verdict_tier": "visible_pass",
+        "window": {}
+      }
+    ],
+    "bundle_hash": "sha256:ccc11a32941cf60a10989b34979c2a0f7c3021762d9c5e24754dcaf5fd32ed04",
+    "challenge_id": "handoff:Prob003:eval_match_branch",
+    "deliveries": [
+      {
+        "bundle_hash": "sha256:ccc11a32941cf60a10989b34979c2a0f7c3021762d9c5e24754dcaf5fd32ed04",
+        "injected": false,
+        "mode": "none",
+        "request_hash": "sha256:a9a5fc178ea606541ae9f1a9abf567cbea914e5a470d1e63f526c54be32b8451"
+      }
+    ],
+    "episode_hash": "sha256:9821ef91dfaa159ec5ad2083dfff1c8a43c3cdb1303f12ef69fb7b36cf0cfa3b",
+    "inconclusive": false,
+    "infra_failures": 0,
+    "matches": [],
+    "mode": "none",
+    "profile": {
+      "causal": {
+        "cone_has_control_dependency": true,
+        "cone_has_counter": false,
+        "cone_has_reset_logic": true,
+        "cone_has_state_machine": true,
+        "cone_size_bucket": "small",
+        "output_driver_kind": "combinational",
+        "register_distance": "1",
+        "temporal_relation": "transient"
+      },
+      "schema_version": "r3e-observable-profile-v1",
+      "status": {
+        "delta_bucket": "-1",
+        "failing_output_bucket": "2-3",
+        "onset_bucket": "late",
+        "oracle_stage": "functional",
+        "output_width_bucket": "1bit",
+        "partial_failure": false,
+        "symptom": "single_cycle_glitch",
+        "x_involved": false
+      }
+    },
+    "retrieved_items": [],
+    "shown_items": [],
+    "solved_by_escalation": false,
+    "solved_within_budget": true
+  },
+  "solved": true
+}

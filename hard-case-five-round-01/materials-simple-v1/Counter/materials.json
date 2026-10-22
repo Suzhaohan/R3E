@@ -1,0 +1,44 @@
+{
+  "carriers": [
+    {
+      "package": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/materials-simple-v1/Counter/package",
+      "suite_freeze": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/materials-simple-v1/Counter/suite_freeze.json",
+      "evaluator_freeze": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/materials-simple-v1/Counter/evaluator_freeze.json",
+      "evaluator_root": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/materials-simple-v1/Counter"
+    }
+  ],
+  "anchors": [
+    {
+      "task_dir": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/materials-simple-v1/Counter/reserved/exam_defect",
+      "carrier_index": 0
+    }
+  ],
+  "mechanism_focus": {
+    "version": "continuous_mechanism_seed_v1",
+    "carrier_id": "selected_Counter",
+    "mechanism": "Across five rounds build transferable repair experience. Small four-bit counter: enable/reset priority, overflow threshold, independent condition checks and sticky overflow. Preserve the exact original pre-edge and #1 timing contract; avoid unrelated rewrites. Preserve low counts and reset with enable.",
+    "selection": "human_selected_development_seed",
+    "seed_edits": [
+      {
+        "find": "counter_out == 4'b1111",
+        "replace": "counter_out == 4'b1110"
+      }
+    ],
+    "history": {
+      "challenge_id": "strider:first_counter_overflow_2",
+      "runs": 2,
+      "unrepaired": 0,
+      "label": "historical_budgeted_failure_not_current_confirmation"
+    },
+    "provenance": {
+      "clean_hash": "sha256:d480d7484bb915d887cb248543543e1df345c320cf115ab40b30d50c7e403209",
+      "seed_hash": "sha256:ae4726d6afb92f0d25f83bfd161e8d19bd0d00d3992599e16350ac004afdeef7",
+      "record_hashes": {
+        "selection_audit": "sha256:f958762117d05d0bf8a5757254b968b3751989a803caed143f51f8e3f0f4888e"
+      }
+    }
+  },
+  "questions": [
+    "strider:first_counter_overflow_2"
+  ]
+}

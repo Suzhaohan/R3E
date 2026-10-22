@@ -1,0 +1,60 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "        s1:\n            nstate=data?s2:sf2;",
+            "replace": "        s1:\n            nstate=data?s2:s1;"
+          }
+        ],
+        "violated_requirement": "After first bit match (0), if second bit is 1, transitions to s2 correctly, but if second bit is 0, incorrectly stays in s1 instead of transitioning to failure path sf2. This causes incorrect sequence acceptance for patterns starting with 00.",
+        "spec_basis": "The module must detect the sequence 011100 from the input signal data. If the first bit of a group does not match the sequence, the module skips the entire group."
+      },
+      {
+        "edits": [
+          {
+            "find": "        s2:\n            nstate=data?s3:sf3;",
+            "replace": "        s2:\n            nstate=data?s3:s2;"
+          }
+        ],
+        "violated_requirement": "After first two bits match (01), if third bit is 1, transitions to s3 correctly, but if third bit is 0, incorrectly stays in s2 instead of transitioning to failure path sf3. This causes incorrect sequence acceptance for patterns starting with 010.",
+        "spec_basis": "The module must detect the sequence 011100 from the input signal data. If any bit in the sequence doesn't match, it should transition to failure path."
+      },
+      {
+        "edits": [
+          {
+            "find": "        s3:\n            nstate=data?s4:sf4;",
+            "replace": "        s3:\n            nstate=data?sf4:s4;"
+          }
+        ],
+        "violated_requirement": "After first three bits match (011), if fourth bit is 1, incorrectly transitions to failure path sf4 instead of continuing to s4, and if fourth bit is 0, incorrectly transitions to s4 instead of failure path. This breaks detection of the full 011100 sequence.",
+        "spec_basis": "The module must detect the sequence 011100 from the input signal data. The fourth bit should be 1 to continue the sequence."
+      },
+      {
+        "edits": [
+          {
+            "find": "        s4:\n            nstate=data?sf5:s5;",
+            "replace": "        s4:\n            nstate=data?s5:sf5;"
+          }
+        ],
+        "violated_requirement": "After first four bits match (0111), if fifth bit is 1, incorrectly transitions to s5 instead of failure path, and if fifth bit is 0, incorrectly transitions to failure path instead of s5. This breaks detection of the full 011100 sequence.",
+        "spec_basis": "The module must detect the sequence 011100 from the input signal data. The fifth bit should be 0 to continue the sequence."
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:77078cde0fcead46799f188faa172400ecb2d3f4ced24badd69846b083ffb2f9",
+  "input_tokens": 5429,
+  "output_tokens": 646,
+  "request_hash": "sha256:686739fa6f123d0d0d3e9f2ab728204623c3412703ff2cf483aad04215175a62",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 5429,
+    "output_tokens": 646
+  },
+  "model_seconds": 19.6519009238109
+}

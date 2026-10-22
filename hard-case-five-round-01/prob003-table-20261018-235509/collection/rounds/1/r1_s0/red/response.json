@@ -1,0 +1,60 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "        s4:\n            nstate=data?sf5:s5;",
+            "replace": "        s4:\n            nstate=data?s5:sf5;"
+          }
+        ],
+        "violated_requirement": "After matching the first three bits (011), the fourth bit (1) should transition to sf5 on mismatch, but the mutated version transitions to s5 instead, causing incorrect sequence detection for groups like 011000",
+        "spec_basis": "The module must detect the sequence 011100 from the input signal data"
+      },
+      {
+        "edits": [
+          {
+            "find": "        s2:\n            nstate=data?s3:sf3;",
+            "replace": "        s2:\n            nstate=data?sf3:s3;"
+          }
+        ],
+        "violated_requirement": "After matching the first two bits (01), the third bit (1) should transition to s3 on match, but the mutated version transitions to sf3 instead, causing incorrect sequence detection for groups like 011100",
+        "spec_basis": "The module must detect the sequence 011100 from the input signal data"
+      },
+      {
+        "edits": [
+          {
+            "find": "        s3:\n            nstate=data?s4:sf4;",
+            "replace": "        s3:\n            nstate=data?sf4:s4;"
+          }
+        ],
+        "violated_requirement": "After matching the first three bits (011), the fourth bit (1) should transition to s4 on match, but the mutated version transitions to sf4 instead, causing incorrect sequence detection for groups like 011100",
+        "spec_basis": "The module must detect the sequence 011100 from the input signal data"
+      },
+      {
+        "edits": [
+          {
+            "find": "        s5:\n            nstate=data?sf6:s6;",
+            "replace": "        s5:\n            nstate=data?s6:sf6;"
+          }
+        ],
+        "violated_requirement": "After matching the first five bits (01110), the sixth bit (0) should transition to s6 on match, but the mutated version transitions to sf6 instead, causing incorrect sequence detection for groups like 011100",
+        "spec_basis": "The module must detect the sequence 011100 from the input signal data"
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:a76982d16ab7760af7a1dcdd89fe57f35d4728edbd0cd80429aa63a12110754f",
+  "input_tokens": 5460,
+  "output_tokens": 541,
+  "request_hash": "sha256:4e48730a6cdb9da983a6e1891b62e3d302a2d4d0fffc10cbb4bf001429c7732b",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 5460,
+    "output_tokens": 541
+  },
+  "model_seconds": 20.6710700718686
+}

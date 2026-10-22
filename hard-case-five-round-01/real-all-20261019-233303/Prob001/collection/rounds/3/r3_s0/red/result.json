@@ -1,0 +1,141 @@
+{
+  "status": "candidate_batch",
+  "candidates": [
+    {
+      "status": "proposal",
+      "buggy_rtl": "module TopModule(\n\tinput clk,\n\tinput rst_n,\n\tinput a,\n\toutput reg match\n\t);\n\n\treg [7:0] a_tem;\n\t\n\talways @(posedge clk or negedge rst_n)\n\t\tif (!rst_n)\n\t\t\tbegin \n\t\t\t\tmatch <= 1'b0;\n\t\t\tend\n\t\telse if (a_tem == 8'b0111_0000)\n\t\t\tbegin\n\t\t\t\tmatch <= 1'b1;\n\t\t\tend\n\t\telse \n\t\t\tbegin\t\n\t\t\t\tmatch <= 1'b0;\n\t\t\tend\n\t\t\n\talways @(posedge clk or negedge rst_n)\n\t\tif (!rst_n)\n\t\t\tbegin \n\t\t\t\ta_tem <= 8'b0;\n\t\t\tend\n\t\telse \n\t\t\tbegin\n\t\t\t\ta_tem <= {a_tem[6:0],a};\n\t\t\tend\nendmodule",
+      "buggy_rtl_hash": "sha256:ddf31680cbeb17fad040d099f72bb09acc821e2704f32993a305586e19f96fe5",
+      "edit_budget": {
+        "metric": "sequence_matcher_token_edits_v1",
+        "tokenizer": "verilog_source_tokens_v2_macros",
+        "max_changed_fraction": 0.4,
+        "all_code": {
+          "original_tokens": 102,
+          "candidate_tokens": 102,
+          "changed_tokens": 1,
+          "allowed_tokens": 40,
+          "changed_fraction": 0.00980392156862745,
+          "within_limit": true
+        },
+        "body": {
+          "original_tokens": 84,
+          "candidate_tokens": 84,
+          "changed_tokens": 1,
+          "allowed_tokens": 33,
+          "changed_fraction": 0.011904761904761904,
+          "within_limit": true
+        }
+      },
+      "diff": "--- clean.sv\n+++ buggy.sv\n@@ -12,7 +12,7 @@\n \t\t\tbegin \n \t\t\t\tmatch <= 1'b0;\n \t\t\tend\n-\t\telse if (a_tem == 8'b0111_0001)\n+\t\telse if (a_tem == 8'b0111_0000)\n \t\t\tbegin\n \t\t\t\tmatch <= 1'b1;\n \t\t\tend\n",
+      "claims": {
+        "violated_requirement": "The output match should be asserted when the shift register matches 8'b0111_0001, but the mutant asserts it for 8'b0111_0000 instead. This will cause false positives when the sequence is 8'b0111_0000.",
+        "spec_basis": "The output `match` should be asserted (logic 1) whenever the value of the shift register `a_tem` matches the specific 8-bit pattern `8'b0111_0001`."
+      },
+      "mutation_edits": [
+        {
+          "find": "else if (a_tem == 8'b0111_0001)",
+          "replace": "else if (a_tem == 8'b0111_0000)"
+        }
+      ],
+      "syntax_corrections": [],
+      "original_mutation_edits": [
+        {
+          "find": "else if (a_tem == 8'b0111_0001)",
+          "replace": "else if (a_tem == 8'b0111_0000)"
+        }
+      ]
+    },
+    {
+      "status": "rejected",
+      "buggy_rtl": "module TopModule(\n\tinput clk,\n\tinput rst_n,\n\tinput a,\n\toutput reg match\n\t);\n\n\treg [7:0] a_tem;\n\t\n\talways @(posedge clk or negedge rst_n)\n\t\tif (!rst_n)\n\t\t\tbegin \n\t\t\t\tmatch <= 1'b0;\n\t\t\tend\n\t\telse if (a_tem == 8'b0111_0001 && a == 1'b0)\n\t\t\tbegin\n\t\t\t\tmatch <= 1'b1;\n\t\t\tend\n\t\telse \n\t\t\tbegin\t\n\t\t\t\tmatch <= 1'b0;\n\t\t\tend\n\t\t\n\talways @(posedge clk or negedge rst_n)\n\t\tif (!rst_n)\n\t\t\tbegin \n\t\t\t\ta_tem <= 8'b0;\n\t\t\tend\n\t\telse \n\t\t\tbegin\n\t\t\t\ta_tem <= {a_tem[6:0],a};\n\t\t\tend\nendmodule",
+      "buggy_rtl_hash": "sha256:9e8940b4b94d849b4e13c386c16640f3360de29a493b8dec7af743b5709879ca",
+      "edit_budget": {
+        "metric": "sequence_matcher_token_edits_v1",
+        "tokenizer": "verilog_source_tokens_v2_macros",
+        "max_changed_fraction": 0.4,
+        "all_code": {
+          "original_tokens": 102,
+          "candidate_tokens": 106,
+          "changed_tokens": 4,
+          "allowed_tokens": 40,
+          "changed_fraction": 0.0392156862745098,
+          "within_limit": true
+        },
+        "body": {
+          "original_tokens": 84,
+          "candidate_tokens": 88,
+          "changed_tokens": 4,
+          "allowed_tokens": 33,
+          "changed_fraction": 0.047619047619047616,
+          "within_limit": true
+        }
+      },
+      "diff": "--- clean.sv\n+++ buggy.sv\n@@ -12,7 +12,7 @@\n \t\t\tbegin \n \t\t\t\tmatch <= 1'b0;\n \t\t\tend\n-\t\telse if (a_tem == 8'b0111_0001)\n+\t\telse if (a_tem == 8'b0111_0001 && a == 1'b0)\n \t\t\tbegin\n \t\t\t\tmatch <= 1'b1;\n \t\t\tend\n",
+      "claims": {
+        "violated_requirement": "The output match should be asserted whenever the shift register matches 8'b0111_0001, but the mutant adds an extra condition that the current input a must be 0. This will miss some valid matches when a=1.",
+        "spec_basis": "The output `match` should be asserted (logic 1) whenever the value of the shift register `a_tem` matches the specific 8-bit pattern `8'b0111_0001`."
+      },
+      "mutation_edits": [
+        {
+          "find": "else if (a_tem == 8'b0111_0001)",
+          "replace": "else if (a_tem == 8'b0111_0001 && a == 1'b0)"
+        }
+      ],
+      "syntax_corrections": [],
+      "original_mutation_edits": [
+        {
+          "find": "else if (a_tem == 8'b0111_0001)",
+          "replace": "else if (a_tem == 8'b0111_0001 && a == 1'b0)"
+        }
+      ],
+      "reason": "mutation_grammar_violation",
+      "grammar_error": "Syntax-token insertion/deletion is forbidden. Replace at most two existing operands/operators, or swap one existing two-operand concatenation. Do not append an if guard."
+    },
+    {
+      "status": "rejected",
+      "buggy_rtl": "module TopModule(\n\tinput clk,\n\tinput rst_n,\n\tinput a,\n\toutput reg match\n\t);\n\n\treg [7:0] a_tem;\n\t\n\talways @(posedge clk or negedge rst_n)\n\t\tif (!rst_n)\n\t\t\tbegin \n\t\t\t\tmatch <= 1'b0;\n\t\t\tend\n\t\telse if (a_tem == 8'b0111_0001)\n\t\t\tbegin\n\t\t\t\tmatch <= 1'b1;\n\t\t\tend\n\t\telse \n\t\t\tbegin\t\n\t\t\t\tmatch <= 1'b0;\n\t\t\tend\n\t\t\n\talways @(posedge clk or negedge rst_n)\n\t\tif (!rst_n)\n\t\t\tbegin \n\t\t\t\ta_tem <= 8'b0;\n\t\t\tend\n\t\telse \n\t\t\tbegin\n\t\t\t\ta_tem <= {a_tem[5:0],a,1'b0};\n\t\t\tend\nendmodule",
+      "buggy_rtl_hash": "sha256:1753bcd8654ecdc1ef3400c010d47d33bde93b6432571f714b42e4df49ebddbb",
+      "edit_budget": {
+        "metric": "sequence_matcher_token_edits_v1",
+        "tokenizer": "verilog_source_tokens_v2_macros",
+        "max_changed_fraction": 0.4,
+        "all_code": {
+          "original_tokens": 102,
+          "candidate_tokens": 104,
+          "changed_tokens": 3,
+          "allowed_tokens": 40,
+          "changed_fraction": 0.029411764705882353,
+          "within_limit": true
+        },
+        "body": {
+          "original_tokens": 84,
+          "candidate_tokens": 86,
+          "changed_tokens": 3,
+          "allowed_tokens": 33,
+          "changed_fraction": 0.03571428571428571,
+          "within_limit": true
+        }
+      },
+      "diff": "--- clean.sv\n+++ buggy.sv\n@@ -28,6 +28,6 @@\n \t\t\tend\n \t\telse \n \t\t\tbegin\n-\t\t\t\ta_tem <= {a_tem[6:0],a};\n+\t\t\t\ta_tem <= {a_tem[5:0],a,1'b0};\n \t\t\tend\n endmodule",
+      "claims": {
+        "violated_requirement": "The shift register should retain the 8 most recent bits of a, but the mutant inserts an extra 0 bit and drops the MSB, corrupting the history. This will cause incorrect pattern matching.",
+        "spec_basis": "The shift register `a_tem` should retain the 8 most recent bits of `a`."
+      },
+      "mutation_edits": [
+        {
+          "find": "a_tem <= {a_tem[6:0],a};",
+          "replace": "a_tem <= {a_tem[5:0],a,1'b0};"
+        }
+      ],
+      "syntax_corrections": [],
+      "original_mutation_edits": [
+        {
+          "find": "a_tem <= {a_tem[6:0],a};",
+          "replace": "a_tem <= {a_tem[5:0],a,1'b0};"
+        }
+      ],
+      "reason": "mutation_grammar_violation",
+      "grammar_error": "Syntax-token insertion/deletion is forbidden. Replace at most two existing operands/operators, or swap one existing two-operand concatenation. Do not append an if guard."
+    }
+  ]
+}

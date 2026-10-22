@@ -1,0 +1,132 @@
+{
+  "source": {
+    "run_id": "collection",
+    "round": 1,
+    "slot_id": "r1_s0",
+    "task_hash": "sha256:f7a18163dd103e454f6135a510fa119f5e9654537d030dce0396a0a3855f86af",
+    "carrier_id": "selected_Prob015",
+    "mutant_hash": "sha256:ea12cd07980d4898202271aefe6a89566a2338b2fbad6fe9d192538b2e7813a3",
+    "candidate_hash": "sha256:8869de4968c8174cd734676a999e706fa6f9c80b7fbd4c6b046b7e16aad2c3e6",
+    "encounter_hash": "sha256:0947c1b9c9bdc7e05532e1e6fae9f1bbdfdfb7733df6a35c0e44a80fbc08776a",
+    "archive_hash": "sha256:8c98eebdd70bb0cde9b62122615e81516358068442a9075491d7d2ea7fabb1d5",
+    "public_replay_hash": "sha256:490e36c2f0dc8bcba15b5e452f53c2cd78015ee8a4befc7f2bb8425b7a0e3031"
+  },
+  "encounter": {
+    "encounter": 0,
+    "seed": 1299457421909690,
+    "result": {
+      "task_id": "selected_Prob015__ea12cd07980d4898",
+      "route": "direct",
+      "rtl_tokens": 564,
+      "closure": [
+        "rtl/sequence.sv",
+        "harness:W_bug_tb.sv",
+        "harness:W_preserve_tb.sv"
+      ],
+      "outcome": "fixed",
+      "attempts": [
+        {
+          "attempt": 0,
+          "route": "direct",
+          "submissions": [
+            {
+              "kind": "repair",
+              "tokens": {
+                "input": 100,
+                "output": 40,
+                "counted_request": 6445,
+                "model_seconds": 0.02
+              },
+              "format_valid": false,
+              "format_error": "Use exactly files and edit; do not submit edits, find/replace or other keys."
+            },
+            {
+              "kind": "format_correction",
+              "tokens": {
+                "input": 100,
+                "output": 40,
+                "counted_request": 6519,
+                "model_seconds": 0.02
+              },
+              "format_valid": true,
+              "format_error": null
+            }
+          ],
+          "repair_tokens": {
+            "input": 200,
+            "output": 80,
+            "counted_request": 12964,
+            "model_seconds": 0.04
+          },
+          "edit": "offline fixture only",
+          "candidate_hash": "sha256:8869de4968c8174cd734676a999e706fa6f9c80b7fbd4c6b046b7e16aad2c3e6",
+          "tier": "visible_pass",
+          "stage": "simulation",
+          "build_seconds": 0.02,
+          "sim_seconds": 0.01,
+          "changed_files": [
+            "rtl/sequence.sv"
+          ]
+        }
+      ],
+      "calls": 2,
+      "final_candidate_hash": "sha256:8869de4968c8174cd734676a999e706fa6f9c80b7fbd4c6b046b7e16aad2c3e6",
+      "inputs_read": [
+        "public/task.json",
+        "public/visible/build.json",
+        "public/visible/W_bug_tb.sv",
+        "public/visible/W_preserve_tb.sv",
+        "public/spec.txt"
+      ],
+      "experience": {
+        "snapshot_id": "B_0",
+        "snapshot_hash": "sha256:70b88d62cbb37c0c54d3299280628755a33634de73c1dedd146d7ec9c2f4bbf7",
+        "state_hash": "sha256:3fb1ebd3e83f7581cc9b0245fa7fb87921a479b8741d2c002cc74ec61172010a",
+        "payload_hash": "sha256:3092f0d7fc08feac058171dbed616bb7c60daa43691d7b6d28875d3225d9b061",
+        "delivery_hash": "sha256:18a960dc631c6d432abd94f9e698b5429820f515e1404fd1efb1df09472269c6",
+        "delivered": false
+      }
+    }
+  },
+  "archive_path": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/smoke-selected-v2-final/Prob015/collection/rounds/1/r1_s0/online/blue/archive/selected_Prob015__ea12cd07980d4898__8869de4968c8174c.json",
+  "task_dir": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/smoke-selected-v2-final/Prob015/collection/rounds/1/r1_s0/admission/blue_task",
+  "replay": {
+    "tier": "visible_pass",
+    "stage": "simulation",
+    "evidence": {
+      "suites": {
+        "W_bug": {
+          "result": "visible_pass",
+          "returncode": 0,
+          "pass_marker_found": true,
+          "fail_marker_found": false,
+          "log": "Hint: Output 'out1' has no mismatches.\nHint: Output 'out2' has no mismatches.\nHint: Output 'out3' has no mismatches.\nHint: Total mismatched samples is 0 out of 181 samples\n\nSimulation finished at 906 ps\nMismatches: 0 in 181 samples\nTESTBENCH PASS original samples"
+        },
+        "W_preserve": {
+          "result": "visible_pass",
+          "returncode": 0,
+          "pass_marker_found": true,
+          "fail_marker_found": false,
+          "log": "TESTBENCH PASS preserve"
+        }
+      }
+    },
+    "build_seconds": 0.0214392626658082,
+    "sim_seconds": 0.012767381966114044,
+    "closure": [
+      "rtl/sequence.sv",
+      "harness:W_bug_tb.sv",
+      "harness:W_preserve_tb.sv"
+    ]
+  },
+  "public_rows": {
+    "W_bug": "visible_pass",
+    "W_preserve": "visible_pass"
+  },
+  "mutation_edits": [
+    {
+      "find": "d2? S1:",
+      "replace": "d2? S0_5:"
+    }
+  ]
+}

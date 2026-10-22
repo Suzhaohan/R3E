@@ -1,0 +1,217 @@
+{
+  "source": {
+    "run_id": "collection",
+    "round": 2,
+    "slot_id": "r2_s0",
+    "task_hash": "sha256:d83e09ad27ac1d2afc8e43b5c1375c6f688bedf20dc7d6c03e87248d1079678c",
+    "carrier_id": "chipbench_Prob023_gray_counter",
+    "mutant_hash": "sha256:4c2fe70a0f1e4fdfcdaa6a60004bc065188eb85f8a211c5b803ad85e791f0199",
+    "candidate_hash": "sha256:2ee78b96b9771b0191f1e20cdc0127191831c6069d029581dc8d6116568c7868",
+    "encounter_hash": "sha256:fc0ba4abcb421c90cbbda09325b49d8e391dec5417555e40b8bd497053452c70",
+    "archive_hash": "sha256:5d3bd36b49e7e485a93f5bef0f2017bad873def3f0ac5c38ec85d6b73bcced5d",
+    "public_replay_hash": "sha256:a16bc0ac739535d0b1d3d9aad509eebf52001f05a6ebf1c3f258daff540bcc4f"
+  },
+  "encounter": {
+    "encounter": 0,
+    "seed": 1343095866064490,
+    "result": {
+      "task_id": "chipbench_Prob023_gray_counter__4c2fe70a0f1e4fdf",
+      "route": "direct",
+      "rtl_tokens": 342,
+      "closure": [
+        "rtl/sequence.sv",
+        "harness:W_bug_tb.sv",
+        "harness:W_preserve_tb.sv"
+      ],
+      "outcome": "not_fixed",
+      "attempts": [
+        {
+          "attempt": 0,
+          "route": "direct",
+          "submissions": [
+            {
+              "kind": "repair",
+              "tokens": {
+                "input": 1613,
+                "output": 477,
+                "counted_request": 1661,
+                "model_seconds": 12.76
+              },
+              "format_valid": true,
+              "format_error": null
+            }
+          ],
+          "repair_tokens": {
+            "input": 1613,
+            "output": 477,
+            "counted_request": 1661,
+            "model_seconds": 12.76
+          },
+          "edit": "Fixed Gray code conversion by using XOR for all bits and added 2-cycle delay using a toggle bit",
+          "candidate_hash": "sha256:4e02ff0d81b9ebab94fee9e8fc19ae4c4528c666bce7a2766fe65746a5467829",
+          "tier": "visible_fail",
+          "stage": "simulation",
+          "build_seconds": 0.02,
+          "sim_seconds": 0.01,
+          "changed_files": [
+            "rtl/sequence.sv"
+          ]
+        },
+        {
+          "attempt": 1,
+          "route": "direct",
+          "submissions": [
+            {
+              "kind": "public_feedback_correction",
+              "tokens": {
+                "input": 2897,
+                "output": 476,
+                "counted_request": 2945,
+                "model_seconds": 13.04
+              },
+              "format_valid": true,
+              "format_error": null
+            }
+          ],
+          "repair_tokens": {
+            "input": 2897,
+            "output": 476,
+            "counted_request": 2945,
+            "model_seconds": 13.04
+          },
+          "edit": "Fixed Gray code conversion by using XOR for all bits and added 2-cycle delay using a toggle bit",
+          "candidate_hash": "sha256:420efdc1e582508437ccb5da39732a8e96cbad48fa08fd0256c973c2091ccfa1",
+          "tier": "visible_fail",
+          "stage": "simulation",
+          "build_seconds": 0.02,
+          "sim_seconds": 0.01,
+          "changed_files": [
+            "rtl/sequence.sv"
+          ]
+        },
+        {
+          "attempt": 2,
+          "route": "direct",
+          "submissions": [
+            {
+              "kind": "public_feedback_correction",
+              "tokens": {
+                "input": 3081,
+                "output": 480,
+                "counted_request": 3130,
+                "model_seconds": 26.35
+              },
+              "format_valid": true,
+              "format_error": null
+            }
+          ],
+          "repair_tokens": {
+            "input": 3081,
+            "output": 480,
+            "counted_request": 3130,
+            "model_seconds": 26.35
+          },
+          "edit": "Fixed timing by updating binary increment to occur when delay is 0 instead of 1, ensuring proper 2-cycle counting behavior",
+          "candidate_hash": "sha256:2ee78b96b9771b0191f1e20cdc0127191831c6069d029581dc8d6116568c7868",
+          "tier": "visible_fail",
+          "stage": "simulation",
+          "build_seconds": 0.02,
+          "sim_seconds": 0.01,
+          "changed_files": [
+            "rtl/sequence.sv"
+          ]
+        },
+        {
+          "attempt": 3,
+          "route": "direct",
+          "submissions": [
+            {
+              "kind": "public_feedback_correction",
+              "tokens": {
+                "input": 3241,
+                "output": 479,
+                "counted_request": 3289,
+                "model_seconds": 25.68
+              },
+              "format_valid": true,
+              "format_error": null
+            }
+          ],
+          "repair_tokens": {
+            "input": 3241,
+            "output": 479,
+            "counted_request": 3289,
+            "model_seconds": 25.68
+          },
+          "edit": "Fixed Gray code conversion by using XOR for all bits in binary conversion and maintaining proper 2-cycle timing with delay toggle",
+          "candidate_hash": "sha256:2ee78b96b9771b0191f1e20cdc0127191831c6069d029581dc8d6116568c7868",
+          "tier": "visible_fail",
+          "stage": "simulation",
+          "build_seconds": 0.02,
+          "sim_seconds": 0.01,
+          "changed_files": [
+            "rtl/sequence.sv"
+          ]
+        }
+      ],
+      "calls": 4,
+      "final_candidate_hash": "sha256:2ee78b96b9771b0191f1e20cdc0127191831c6069d029581dc8d6116568c7868",
+      "inputs_read": [
+        "public/task.json",
+        "public/visible/build.json",
+        "public/visible/W_bug_tb.sv",
+        "public/visible/W_preserve_tb.sv",
+        "public/spec.txt"
+      ],
+      "experience": {
+        "snapshot_id": "B_1",
+        "snapshot_hash": "sha256:a5244e728e7d4db638d52e07ae8e12678b67d14f6ae7cbab2cee9c1544adeed5",
+        "state_hash": "sha256:e856f97fe0f076154115325dbd1bbb272b878268ef35259950db9fd56eebfd91",
+        "payload_hash": "sha256:3092f0d7fc08feac058171dbed616bb7c60daa43691d7b6d28875d3225d9b061",
+        "delivery_hash": "sha256:dab256c0764f61e953b2c547841b739e7094f79bab3e3eb82d895f8c54806726",
+        "delivered": false
+      }
+    }
+  },
+  "archive_path": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/real-all-20261020-073429/Prob023/collection/rounds/2/r2_s0/online/blue/archive/chipbench_Prob023_gray_counter__4c2fe70a0f1e4fdf__2ee78b96b9771b01.json",
+  "task_dir": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/real-all-20261020-073429/Prob023/collection/rounds/2/r2_s0/admission/blue_task",
+  "replay": {
+    "tier": "visible_fail",
+    "stage": "simulation",
+    "evidence": {
+      "suites": {
+        "W_bug": {
+          "result": "visible_fail",
+          "returncode": 0,
+          "pass_marker_found": false,
+          "fail_marker_found": true,
+          "log": "CHECK_FAIL gray cycle=5 got=0110 expected=0010"
+        },
+        "W_preserve": {
+          "result": "visible_pass",
+          "returncode": 0,
+          "pass_marker_found": true,
+          "fail_marker_found": false,
+          "log": "TESTBENCH PASS gray preserve"
+        }
+      }
+    },
+    "build_seconds": 0.020987248979508877,
+    "sim_seconds": 0.010004280135035515,
+    "closure": [
+      "rtl/sequence.sv",
+      "harness:W_bug_tb.sv",
+      "harness:W_preserve_tb.sv"
+    ]
+  },
+  "public_rows": {
+    "W_bug": "visible_fail",
+    "W_preserve": "visible_pass"
+  },
+  "mutation_edits": [
+    {
+      "find": "bin_out[1] = gray_wire[1]^bin_out[2];",
+      "replace": "bin_out[1] = gray_wire[1]|bin_out[2];"
+    }
+  ]
+}

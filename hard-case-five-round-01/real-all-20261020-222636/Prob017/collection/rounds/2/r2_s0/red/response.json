@@ -1,0 +1,50 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "clk_cnt <= clk_cnt==(div_e-1)? 0: clk_cnt+1;",
+            "replace": "clk_cnt <= clk_cnt==(div_e-1)? 0: clk_cnt+2;"
+          }
+        ],
+        "violated_requirement": "Increments clk_cnt by 2 instead of 1 when not wrapping, causing faster count progression and incorrect output timing",
+        "spec_basis": "Count becomes 0 when count == (mode ? div_o : div_e)-1; otherwise (count+1) modulo 16"
+      },
+      {
+        "edits": [
+          {
+            "find": "clk_cnt<=((div_e>>2)+1)",
+            "replace": "clk_cnt<=((div_e>>1)+1)"
+          }
+        ],
+        "violated_requirement": "Changes the output threshold comparison from div_e/4 to div_e/2, causing incorrect output pulse width",
+        "spec_basis": "Output becomes 1 iff count <= floor((mode ? div_o : div_e)/4) + 1"
+      },
+      {
+        "edits": [
+          {
+            "find": "div_flag <= cyc_cnt==(M_N-1)||cyc_cnt==(c89-1)? ~div_flag: div_flag;",
+            "replace": "div_flag <= cyc_cnt==(M_N-1)? ~div_flag: div_flag;"
+          }
+        ],
+        "violated_requirement": "Removes the c89-1 condition for toggling div_flag, changing the mode switching behavior",
+        "spec_basis": "Mode toggles iff cycle_count equals M_N-1 or c89-1"
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:5157dff7d1b8b543844dba927d5e47b8d3e35207ca1576760dcd13716c0e8b86",
+  "input_tokens": 4728,
+  "output_tokens": 332,
+  "request_hash": "sha256:9b42a8a77b588d7ab2229ce16fcb8a439cf83f12d21a69d865ca5a506329774b",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 4728,
+    "output_tokens": 332
+  },
+  "model_seconds": 15.2437197053805
+}

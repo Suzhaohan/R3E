@@ -1,0 +1,30 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "else if (a_tem == 8'b0111_0001)",
+            "replace": "else if (a_tem == 8'b0111_0001) && (a_tem[7] == 1'b0)"
+          }
+        ],
+        "violated_requirement": "The output match should be asserted only when the shift register value is exactly 8'b0111_0001. This mutation incorrectly requires the MSB to be 0 in addition to the exact pattern, causing false negatives when the pattern occurs with MSB=1.",
+        "spec_basis": "The specification requires match to be asserted whenever a_tem matches the specific 8-bit pattern 8'b0111_0001, without additional conditions."
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:64c21ebf73aefb057c4a98b7de5c7175c04ca0c2ba7a5362c99b865bc694c791",
+  "input_tokens": 9218,
+  "output_tokens": 161,
+  "request_hash": "sha256:af5a0f03ca77f5ece7184d38ab69617062ab2a1535a4901508ea992071fae646",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 9218,
+    "output_tokens": 161
+  },
+  "model_seconds": 8.025428115390241
+}

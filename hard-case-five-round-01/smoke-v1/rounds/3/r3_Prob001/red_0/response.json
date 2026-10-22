@@ -1,0 +1,24 @@
+{
+  "input_tokens": 100,
+  "output_tokens": 40,
+  "raw_response_hash": "sha256:2a5ce017a324d3dda66c3325a644d0425850392e46f12d0b4bfd225560dd763b",
+  "request_hash": "sha256:559841e18f1aecf73707e19fef77695139f9c85055cb7bc1945185a5767db30a",
+  "response_diagnostics": {
+    "content_state": "nonempty_content",
+    "finish_reason": "missing",
+    "input_tokens": 100,
+    "output_tokens": 40,
+    "provider_request_id_present": true,
+    "refusal_present": false,
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1"
+  },
+  "result": {
+    "edits": [
+      {
+        "find": "module TopModule(\n\tinput clk,\n\tinput rst_n,\n\tinput a,\n\toutput reg match\n\t);\n\n\treg [7:0] a_tem;\n\t\n\talways @(posedge clk or negedge rst_n)\n\t\tif (!rst_n)\n\t\t\tbegin \n\t\t\t\tmatch <= 1'b0;\n\t\t\tend\n\t\telse if (a_tem == 8'b0111_0001)\n\t\t\tbegin\n\t\t\t\tmatch <= 1'b1;\n\t\t\tend\n\t\telse \n\t\t\tbegin\t\n\t\t\t\tmatch <= 1'b0;\n\t\t\tend\n\t\t\n\talways @(posedge clk or negedge rst_n)\n\t\tif (!rst_n)\n\t\t\tbegin \n\t\t\t\ta_tem <= 8'b0;\n\t\t\tend\n\t\telse \n\t\t\tbegin\n\t\t\t\ta_tem <= {a_tem[6:0],a};\n\t\t\tend\nendmodule",
+        "replace": "module TopModule(\n\tinput clk,\n\tinput rst_n,\n\tinput a,\n\toutput reg match\n\t);\n\n\treg [7:0] a_tem;\n\t\n\talways @(posedge clk or negedge rst_n)\n\t\tif (!rst_n)\n\t\t\tbegin \n\t\t\t\tmatch <= 1'b1;\n\t\t\tend\n\t\telse if (a_tem == 8'b0111_0001)\n\t\t\tbegin\n\t\t\t\tmatch <= 1'b1;\n\t\t\tend\n\t\telse \n\t\t\tbegin\t\n\t\t\t\tmatch <= 1'b0;\n\t\t\tend\n\t\t\n\talways @(posedge clk or negedge rst_n)\n\t\tif (!rst_n)\n\t\t\tbegin \n\t\t\t\ta_tem <= 8'b0;\n\t\t\tend\n\t\telse \n\t\t\tbegin\n\t\t\t\ta_tem <= {a_tem[6:0],a};\n\t\t\tend\nendmodule"
+      }
+    ],
+    "learning_objective": "offline fixture only"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "round": 4,
+  "attempt": 0,
+  "reason": "outside_public_admission_matrix",
+  "edits": [
+    {
+      "find": "        sf6:\n\t\t\tnstate=data?sf1:s1;",
+      "replace": "        sf6:\n\t\t\tnstate=data?s1:s1;"
+    }
+  ],
+  "expected_public_results": {
+    "W_bug": "fail",
+    "W_preserve": "pass"
+  },
+  "actual_public_results": {
+    "W_bug": "pass",
+    "W_preserve": "pass"
+  },
+  "public_test_evidence": {
+    "W_bug": "TESTBENCH PASS W_bug groups=256 cycles=1536",
+    "W_preserve": "TESTBENCH PASS W_preserve reset exclusivity stability"
+  },
+  "correction": "W_bug still passes: the public test did not detect the intended bug. A text edit is insufficient. Change a reachable executed operation and trace a concrete checked output difference; do not insert dead or redundant branches. Public passing does not prove equivalence for all inputs. Select different available structured_transition_actions IDs and return candidate_actions, never edits or a new expression. The inventory removes already attempted implementations. Failure of one action does not exhaust other replacements at the same site. Keep the hard lesson and original compile/public/structural/exam-isolation checks. No automatic replacement is permitted.",
+  "retry_control": {
+    "version": "online_diagnose_sites_no_replacement_v2",
+    "round": 4,
+    "failure_kind": "no_observed_functional_fault",
+    "failed_mechanisms": [
+      "state_transition"
+    ],
+    "blocked_mechanisms": [],
+    "failed_site_ids": [
+      "sf6:nstate:0"
+    ],
+    "blocked_site_ids": [],
+    "specific_diagnosis": [
+      "W_bug still passes: the public test did not detect the intended bug. A text edit is insufficient. Change a reachable executed operation and trace a concrete checked output difference; do not insert dead or redundant branches. Public passing does not prove equivalence for all inputs."
+    ],
+    "instruction": "Select different available structured_transition_actions IDs and return candidate_actions, never edits or a new expression. The inventory removes already attempted implementations. Failure of one action does not exhaust other replacements at the same site. Keep the hard lesson and original compile/public/structural/exam-isolation checks. No automatic replacement is permitted."
+  }
+}

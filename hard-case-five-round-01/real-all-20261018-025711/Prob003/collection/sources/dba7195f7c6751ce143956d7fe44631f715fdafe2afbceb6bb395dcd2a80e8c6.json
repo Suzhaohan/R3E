@@ -1,0 +1,132 @@
+{
+  "source": {
+    "run_id": "collection",
+    "round": 4,
+    "slot_id": "r4_s0",
+    "task_hash": "sha256:d2bbcb9b7894f501f64c7a199519b591d65bd0362ffdaeb37b0956ac79c326da",
+    "carrier_id": "chipbench_prob003_group_boundary_v1",
+    "mutant_hash": "sha256:43287748096d21b9331a0b04afa8ac66b681dd89194326a5f9a2226fce4a78e1",
+    "candidate_hash": "sha256:ff617b6578f9bc70da6718b4d2eee70a1529afedc2630173bf30493ee7eb0d0d",
+    "encounter_hash": "sha256:dba7195f7c6751ce143956d7fe44631f715fdafe2afbceb6bb395dcd2a80e8c6",
+    "archive_hash": "sha256:29f6b769bb7d744d8767c4dc799716e567771d5d8f15c198f6bd9f6a36c0c3f8",
+    "public_replay_hash": "sha256:09c5c1d7361783a1902c72661a5ad3a7b263bf46167237814030b2a0369d688a"
+  },
+  "encounter": {
+    "encounter": 0,
+    "seed": 2066499499556900,
+    "result": {
+      "task_id": "chipbench_prob003_group_boundary_v1__43287748096d21b9",
+      "route": "direct",
+      "rtl_tokens": 544,
+      "closure": [
+        "rtl/sequence.sv",
+        "harness:W_bug_tb.sv",
+        "harness:W_preserve_tb.sv"
+      ],
+      "outcome": "not_fixed",
+      "attempts": [
+        {
+          "attempt": 0,
+          "route": "direct",
+          "submissions": [
+            {
+              "kind": "repair",
+              "tokens": {
+                "input": 2982,
+                "output": 704,
+                "counted_request": 3030,
+                "model_seconds": 20.62
+              },
+              "format_valid": false,
+              "format_error": "files must be a non-empty list of complete replacement files."
+            },
+            {
+              "kind": "format_correction",
+              "tokens": {
+                "input": 3723,
+                "output": 705,
+                "counted_request": 3771,
+                "model_seconds": 22.38
+              },
+              "format_valid": true,
+              "format_error": null
+            }
+          ],
+          "repair_tokens": {
+            "input": 6705,
+            "output": 1409,
+            "counted_request": 6801,
+            "model_seconds": 43.0
+          },
+          "edit": "Fixed terminal states s6 and sf6 to transition to idle instead of continuing to next group, ensuring proper non-overlapping group behavior per specification",
+          "candidate_hash": "sha256:ff617b6578f9bc70da6718b4d2eee70a1529afedc2630173bf30493ee7eb0d0d",
+          "tier": "visible_fail",
+          "stage": "simulation",
+          "build_seconds": 0.02,
+          "sim_seconds": 0.01,
+          "changed_files": [
+            "rtl/sequence.sv"
+          ]
+        }
+      ],
+      "calls": 2,
+      "final_candidate_hash": "sha256:ff617b6578f9bc70da6718b4d2eee70a1529afedc2630173bf30493ee7eb0d0d",
+      "inputs_read": [
+        "public/task.json",
+        "public/visible/build.json",
+        "public/visible/W_bug_tb.sv",
+        "public/visible/W_preserve_tb.sv",
+        "public/spec.txt"
+      ],
+      "experience": {
+        "snapshot_id": "B_3",
+        "snapshot_hash": "sha256:7fe95c30ec20a197eb6a1022e0465eb7ee4a878fc56bdeb7b7f21eafe552aeba",
+        "state_hash": "sha256:f0fd275ad4aa72f5dc0bcb1360774c2e439b66362306c74881f7336931916b2b",
+        "payload_hash": "sha256:3092f0d7fc08feac058171dbed616bb7c60daa43691d7b6d28875d3225d9b061",
+        "delivery_hash": "sha256:1272770e8b93ccc47a9aa3321901f878319f14fa4941435a3984a6f071e748de",
+        "delivered": false
+      }
+    }
+  },
+  "archive_path": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/real-all-20261018-025711/Prob003/collection/rounds/4/r4_s0/online/blue/archive/chipbench_prob003_group_boundary_v1__43287748096d21b9__ff617b6578f9bc70.json",
+  "task_dir": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/real-all-20261018-025711/Prob003/collection/rounds/4/r4_s0/admission/blue_task",
+  "replay": {
+    "tier": "visible_fail",
+    "stage": "simulation",
+    "evidence": {
+      "suites": {
+        "W_bug": {
+          "result": "visible_fail",
+          "returncode": 0,
+          "pass_marker_found": false,
+          "fail_marker_found": true,
+          "log": "CHECK_FAIL W_bug cycle=12 group=000000 bit=0 match=0 not_match=0"
+        },
+        "W_preserve": {
+          "result": "visible_pass",
+          "returncode": 0,
+          "pass_marker_found": true,
+          "fail_marker_found": false,
+          "log": "TESTBENCH PASS W_preserve reset exclusivity stability"
+        }
+      }
+    },
+    "build_seconds": 0.022795996628701687,
+    "sim_seconds": 0.01497561950236559,
+    "closure": [
+      "rtl/sequence.sv",
+      "harness:W_bug_tb.sv",
+      "harness:W_preserve_tb.sv"
+    ]
+  },
+  "public_rows": {
+    "W_bug": "visible_fail",
+    "W_preserve": "visible_pass"
+  },
+  "mutation_edits": [
+    {
+      "find": "        s6:\n            nstate=data?sf1:s1;",
+      "replace": "        s6:\n            nstate=data?s1:sf1;"
+    }
+  ]
+}

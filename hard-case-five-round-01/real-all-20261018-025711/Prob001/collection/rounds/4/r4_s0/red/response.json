@@ -1,0 +1,60 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "else if (a_tem == 8'b0111_0001)",
+            "replace": "else if (a_tem == 8'b0111_0001 && a_tem[7] == 1'b0)"
+          }
+        ],
+        "violated_requirement": "The match output should be asserted when the shift register contains 8'b0111_0001, but this mutant requires an additional condition that the MSB is 0, which is not part of the specification.",
+        "spec_basis": "The output `match` should be asserted (logic 1) whenever the value of the shift register `a_tem` matches the specific 8-bit pattern `8'b0111_0001`."
+      },
+      {
+        "edits": [
+          {
+            "find": "a_tem <= {a_tem[6:0],a}",
+            "replace": "a_tem <= {a_tem[0],a_tem[7:1]}"
+          }
+        ],
+        "violated_requirement": "The shift register should shift left, but this mutant shifts right, causing the pattern matching to fail when the input sequence is shifted in.",
+        "spec_basis": "On every positive edge of the clock, if `rst_n` is asserted (logic 1), the input `a` should be shifted into the least significant bit (LSB) of the shift register `a_tem`, and the previous bits should shift left by one position."
+      },
+      {
+        "edits": [
+          {
+            "find": "else if (a_tem == 8'b0111_0001)",
+            "replace": "else if (a_tem == 8'b0111_0001 || a_tem == 8'b0111_0000)"
+          }
+        ],
+        "violated_requirement": "The match output should only be asserted for the exact pattern 8'b0111_0001, but this mutant also asserts it for 8'b0111_0000, which is incorrect.",
+        "spec_basis": "The output `match` should be asserted (logic 1) whenever the value of the shift register `a_tem` matches the specific 8-bit pattern `8'b0111_0001`."
+      },
+      {
+        "edits": [
+          {
+            "find": "else if (a_tem == 8'b0111_0001)",
+            "replace": "else if (a_tem[6:0] == 7'b111_0001)"
+          }
+        ],
+        "violated_requirement": "The match output should check all 8 bits of the shift register, but this mutant only checks the lower 7 bits, causing false matches.",
+        "spec_basis": "The output `match` should be asserted (logic 1) whenever the value of the shift register `a_tem` matches the specific 8-bit pattern `8'b0111_0001`."
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:f22ef154ddac2f3cc16bba755552f7709de807c12a9f13dd163b366b84f191a0",
+  "input_tokens": 5457,
+  "output_tokens": 659,
+  "request_hash": "sha256:894b89f4e7231e9d57bddb69eb0feecbcaff6eecf6a65e05add2cfb4944fc5ed",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 5457,
+    "output_tokens": 659
+  },
+  "model_seconds": 26.826243319548666
+}

@@ -1,0 +1,20 @@
+--- golden.sv
++++ buggy.sv
+@@ -50,7 +50,7 @@
+         s5:
+             nstate=data?sf6:s6;
+         s6:
+-            nstate=data?sf1:s1;
++            nstate=idle;
+         sf1:
+             nstate=sf2;
+         sf2:
+@@ -62,7 +62,7 @@
+         sf5:
+             nstate=sf6;
+         sf6:
+-			nstate=data?sf1:s1;
++			nstate=idle;
+         default:
+             nstate=idle;
+         endcase

@@ -1,0 +1,121 @@
+{
+  "source": {
+    "run_id": "collection",
+    "round": 1,
+    "slot_id": "r1_s0",
+    "task_hash": "sha256:ddeeea112272a43b6134d851c7fb081211f4f2e56be99b75dade6d2d3aacb226",
+    "carrier_id": "chipbench_prob003_group_boundary_v1",
+    "mutant_hash": "sha256:4e8f44b5a11ebf8910d9afc92db41f2fa01df5370309799b731489a267926fcf",
+    "candidate_hash": "sha256:663a5422ef3f5bb0994ba71b00103d8e023fd24fb9a6c1573c0622465685cc16",
+    "encounter_hash": "sha256:77f2bf2130f4e8f739a20e5cac0163aaa2489d612008e4debd4614287be06827",
+    "archive_hash": "sha256:285b5990217c71f26673d2ced8e5bf45c965de5e00b603cf1ede6ecbfc7927ad",
+    "public_replay_hash": "sha256:09e8a7514bb5c1bef665e9f77f12c0501e13ba9d526574c52223479bd6a5b156"
+  },
+  "encounter": {
+    "encounter": 0,
+    "seed": 716559581760620,
+    "result": {
+      "task_id": "chipbench_prob003_group_boundary_v1__4e8f44b5a11ebf89",
+      "route": "direct",
+      "rtl_tokens": 544,
+      "closure": [
+        "rtl/sequence.sv",
+        "harness:W_bug_tb.sv",
+        "harness:W_preserve_tb.sv"
+      ],
+      "outcome": "not_fixed",
+      "attempts": [
+        {
+          "attempt": 0,
+          "route": "direct",
+          "submissions": [
+            {
+              "kind": "repair",
+              "tokens": {
+                "input": 2837,
+                "output": 712,
+                "counted_request": 2885,
+                "model_seconds": 18.86
+              },
+              "format_valid": true,
+              "format_error": null
+            }
+          ],
+          "repair_tokens": {
+            "input": 2837,
+            "output": 712,
+            "counted_request": 2885,
+            "model_seconds": 18.86
+          },
+          "edit": "Fixed state transitions to return to idle after completing a group (s6 or sf6) rather than starting a new group immediately, ensuring proper group separation as specified.",
+          "candidate_hash": "sha256:663a5422ef3f5bb0994ba71b00103d8e023fd24fb9a6c1573c0622465685cc16",
+          "tier": "visible_fail",
+          "stage": "simulation",
+          "build_seconds": 0.02,
+          "sim_seconds": 0.01,
+          "changed_files": [
+            "rtl/sequence.sv"
+          ]
+        }
+      ],
+      "calls": 1,
+      "final_candidate_hash": "sha256:663a5422ef3f5bb0994ba71b00103d8e023fd24fb9a6c1573c0622465685cc16",
+      "inputs_read": [
+        "public/task.json",
+        "public/visible/build.json",
+        "public/visible/W_bug_tb.sv",
+        "public/visible/W_preserve_tb.sv",
+        "public/spec.txt"
+      ],
+      "experience": {
+        "snapshot_id": "B_0",
+        "snapshot_hash": "sha256:ece8d99d59c0b6405fb6cd9f5711ea53aec330881965dc51b233aef0f9150dea",
+        "state_hash": "sha256:85e8fbb707b6fca997463be8d6ef1bbf03526260aab6b2abb4db57f9d81f665d",
+        "payload_hash": "sha256:3092f0d7fc08feac058171dbed616bb7c60daa43691d7b6d28875d3225d9b061",
+        "delivery_hash": "sha256:e8c1e5bc26d65a911362240601ef113600cb4b2977784069d2fa9fdb3a815cbe",
+        "delivered": false
+      }
+    }
+  },
+  "archive_path": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/real-all-20261017-031024/Prob003/collection/rounds/1/r1_s0/online/blue/archive/chipbench_prob003_group_boundary_v1__4e8f44b5a11ebf89__663a5422ef3f5bb0.json",
+  "task_dir": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/real-all-20261017-031024/Prob003/collection/rounds/1/r1_s0/admission_retry_1/blue_task",
+  "replay": {
+    "tier": "visible_fail",
+    "stage": "simulation",
+    "evidence": {
+      "suites": {
+        "W_bug": {
+          "result": "visible_fail",
+          "returncode": 0,
+          "pass_marker_found": false,
+          "fail_marker_found": true,
+          "log": "CHECK_FAIL W_bug cycle=6 group=011100 bit=0 match=0 not_match=1"
+        },
+        "W_preserve": {
+          "result": "visible_pass",
+          "returncode": 0,
+          "pass_marker_found": true,
+          "fail_marker_found": false,
+          "log": "TESTBENCH PASS W_preserve reset exclusivity stability"
+        }
+      }
+    },
+    "build_seconds": 0.01786198280751705,
+    "sim_seconds": 0.012751765549182892,
+    "closure": [
+      "rtl/sequence.sv",
+      "harness:W_bug_tb.sv",
+      "harness:W_preserve_tb.sv"
+    ]
+  },
+  "public_rows": {
+    "W_bug": "visible_fail",
+    "W_preserve": "visible_pass"
+  },
+  "mutation_edits": [
+    {
+      "find": "        s4:\n            nstate=data?sf5:s5;",
+      "replace": "        s4:\n            nstate=data?s5:sf5;"
+    }
+  ]
+}

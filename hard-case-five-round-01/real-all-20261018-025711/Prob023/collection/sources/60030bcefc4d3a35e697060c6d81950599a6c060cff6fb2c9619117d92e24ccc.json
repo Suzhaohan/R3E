@@ -1,0 +1,121 @@
+{
+  "source": {
+    "run_id": "collection",
+    "round": 5,
+    "slot_id": "r5_s0",
+    "task_hash": "sha256:2d40266612e4556d179a342fdb90ea076042bd3ddab331b6d139600858516c61",
+    "carrier_id": "chipbench_Prob023_gray_counter",
+    "mutant_hash": "sha256:43ef4cfa14ef0a636308ffbde6f2ca766449e3c2be219c646a035115b4223aba",
+    "candidate_hash": "sha256:6aa9ec274d5d9f4a8e421d99a21541b6403add3dacd90b0f85139739448a8dd9",
+    "encounter_hash": "sha256:60030bcefc4d3a35e697060c6d81950599a6c060cff6fb2c9619117d92e24ccc",
+    "archive_hash": "sha256:b62e530d4836462477312f7e75e4f48c067538e020419455ebe11b3c21003da9",
+    "public_replay_hash": "sha256:7b355cd7f26a66ee970cac6dcea0e8b3ca2fbb60bb262b6ae4ccb3bacf5433fe"
+  },
+  "encounter": {
+    "encounter": 0,
+    "seed": 2066499499556930,
+    "result": {
+      "task_id": "chipbench_Prob023_gray_counter__43ef4cfa14ef0a63",
+      "route": "direct",
+      "rtl_tokens": 342,
+      "closure": [
+        "rtl/sequence.sv",
+        "harness:W_bug_tb.sv",
+        "harness:W_preserve_tb.sv"
+      ],
+      "outcome": "not_fixed",
+      "attempts": [
+        {
+          "attempt": 0,
+          "route": "direct",
+          "submissions": [
+            {
+              "kind": "repair",
+              "tokens": {
+                "input": 1613,
+                "output": 436,
+                "counted_request": 1661,
+                "model_seconds": 11.55
+              },
+              "format_valid": true,
+              "format_error": null
+            }
+          ],
+          "repair_tokens": {
+            "input": 1613,
+            "output": 436,
+            "counted_request": 1661,
+            "model_seconds": 11.55
+          },
+          "edit": "Fixed Gray code counter by adding cycle_count to increment every two clock cycles and corrected binary to Gray conversion (using XOR instead of AND)",
+          "candidate_hash": "sha256:6aa9ec274d5d9f4a8e421d99a21541b6403add3dacd90b0f85139739448a8dd9",
+          "tier": "visible_fail",
+          "stage": "simulation",
+          "build_seconds": 0.02,
+          "sim_seconds": 0.01,
+          "changed_files": [
+            "rtl/sequence.sv"
+          ]
+        }
+      ],
+      "calls": 1,
+      "final_candidate_hash": "sha256:6aa9ec274d5d9f4a8e421d99a21541b6403add3dacd90b0f85139739448a8dd9",
+      "inputs_read": [
+        "public/task.json",
+        "public/visible/build.json",
+        "public/visible/W_bug_tb.sv",
+        "public/visible/W_preserve_tb.sv",
+        "public/spec.txt"
+      ],
+      "experience": {
+        "snapshot_id": "B_4",
+        "snapshot_hash": "sha256:0b001d4fddbf1a141713a0ed8f48536f6362138f3b17f638f310cbf08aeacc3d",
+        "state_hash": "sha256:f0fd275ad4aa72f5dc0bcb1360774c2e439b66362306c74881f7336931916b2b",
+        "payload_hash": "sha256:3092f0d7fc08feac058171dbed616bb7c60daa43691d7b6d28875d3225d9b061",
+        "delivery_hash": "sha256:520ef4a3796711187bc7d864eeac4d5910db77d74b9fab0b84ed6fac7fc91fa2",
+        "delivered": false
+      }
+    }
+  },
+  "archive_path": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/real-all-20261018-025711/Prob023/collection/rounds/5/r5_s0/online/blue/archive/chipbench_Prob023_gray_counter__43ef4cfa14ef0a63__6aa9ec274d5d9f4a.json",
+  "task_dir": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/real-all-20261018-025711/Prob023/collection/rounds/5/r5_s0/admission_a0_c2/blue_task",
+  "replay": {
+    "tier": "visible_fail",
+    "stage": "simulation",
+    "evidence": {
+      "suites": {
+        "W_bug": {
+          "result": "visible_fail",
+          "returncode": 0,
+          "pass_marker_found": false,
+          "fail_marker_found": true,
+          "log": "CHECK_FAIL gray cycle=1 got=0000 expected=0001"
+        },
+        "W_preserve": {
+          "result": "visible_pass",
+          "returncode": 0,
+          "pass_marker_found": true,
+          "fail_marker_found": false,
+          "log": "TESTBENCH PASS gray preserve"
+        }
+      }
+    },
+    "build_seconds": 0.023078146390616894,
+    "sim_seconds": 0.01005132682621479,
+    "closure": [
+      "rtl/sequence.sv",
+      "harness:W_bug_tb.sv",
+      "harness:W_preserve_tb.sv"
+    ]
+  },
+  "public_rows": {
+    "W_bug": "visible_fail",
+    "W_preserve": "visible_pass"
+  },
+  "mutation_edits": [
+    {
+      "find": "assign gray_wire = (bin_add_wire >> 1) ^ bin_add_wire;",
+      "replace": "assign gray_wire = (bin_add_wire >> 1) & bin_add_wire;"
+    }
+  ]
+}

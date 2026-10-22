@@ -1,0 +1,40 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "else if (a_tem == 8'b0111_0001)",
+            "replace": "else if (a_tem[7:1] == 7'b0111000)"
+          }
+        ],
+        "violated_requirement": "The match output should only be asserted when the full 8-bit pattern matches, but this mutation checks only the first 7 bits, causing false positives when the last bit is 1",
+        "spec_basis": "The specification requires matching the full 8-bit pattern 8'b0111_0001"
+      },
+      {
+        "edits": [
+          {
+            "find": "a_tem <= {a_tem[6:0],a};",
+            "replace": "a_tem <= {a_tem[5:0],a,1'b0};"
+          }
+        ],
+        "violated_requirement": "The shift register should maintain exactly 8 bits of history, but this mutation introduces an extra bit shift and adds a zero bit, corrupting the history",
+        "spec_basis": "The specification requires maintaining an 8-bit shift register of the most recent inputs"
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:641c87e5dbb882cffbac0ed3aac14703ad4cd53ba78e16347df2c420753740d0",
+  "input_tokens": 4778,
+  "output_tokens": 224,
+  "request_hash": "sha256:9d4102e58ebd26d8b3fa7465f90defa06557cf926f43e30ba29befff6f6bff2f",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 4778,
+    "output_tokens": 224
+  },
+  "model_seconds": 9.432610143907368
+}

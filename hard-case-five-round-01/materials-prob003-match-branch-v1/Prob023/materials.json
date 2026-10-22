@@ -1,0 +1,44 @@
+{
+  "carriers": [
+    {
+      "package": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/materials-listed-v2/Prob023/package",
+      "suite_freeze": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/materials-listed-v2/Prob023/suite_freeze.json",
+      "evaluator_freeze": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/materials-listed-v2/Prob023/evaluator_freeze.json",
+      "evaluator_root": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/materials-listed-v2/Prob023"
+    }
+  ],
+  "anchors": [
+    {
+      "task_dir": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/materials-listed-v2/Prob023/reserved/exam_defect",
+      "carrier_index": 0
+    }
+  ],
+  "mechanism_focus": {
+    "version": "continuous_mechanism_seed_v1",
+    "carrier_id": "chipbench_Prob023_gray_counter",
+    "mechanism": "Across five rounds build transferable repair experience. Four-bit Gray counter: Gray-to-binary decode, binary increment, adjacent-bit XOR conversion, every-two-clock update cadence and asynchronous reset. Generate distinct reachable functional defects while preserving reset and registered output stability.",
+    "selection": "human_selected_development_seed",
+    "seed_edits": [
+      {
+        "find": "bin_out + 1'b1",
+        "replace": "bin_out + 1'b0"
+      }
+    ],
+    "history": {
+      "challenge_id": "chipbench:arithmetic:Prob023_gray_code_counter",
+      "runs": 2,
+      "unrepaired": 1,
+      "label": "historical_budgeted_failure_not_current_confirmation"
+    },
+    "provenance": {
+      "clean_hash": "sha256:e06f917419d933e56ad83fa3b104ddf6474bea9b2e4d5b65d9ce94936dd4d992",
+      "seed_hash": "sha256:5974a15bc7c0707b1bb4adb8b1d9cb2fed4dbbf1a62eec8946954be403f7bcdf",
+      "record_hashes": {
+        "selection_audit": "sha256:f958762117d05d0bf8a5757254b968b3751989a803caed143f51f8e3f0f4888e"
+      }
+    }
+  },
+  "questions": [
+    "chipbench:arithmetic:Prob023_gray_code_counter"
+  ]
+}

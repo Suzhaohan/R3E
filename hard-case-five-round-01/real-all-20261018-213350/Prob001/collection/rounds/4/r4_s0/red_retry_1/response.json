@@ -1,0 +1,30 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "a_tem <= {a_tem[6:0],a};",
+            "replace": "a_tem <= {a_tem[7:1],a};"
+          }
+        ],
+        "violated_requirement": "The shift register should retain the 8 most recent bits of input 'a', but this mutation causes it to lose the oldest bit and duplicate the newest bit. This will cause the match output to be incorrect when the sequence '01110001' appears in the input stream.",
+        "spec_basis": "The module should implement an 8-bit shift register that shifts in the input 'a' on every positive edge of the clock. The shift register is named 'a_tem' and retains the 8 most recent bits of 'a'."
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:ef7706145863a0347fbcfa12e13b3491247ffb04ef2230a62d4495b831fcb4a6",
+  "input_tokens": 7794,
+  "output_tokens": 164,
+  "request_hash": "sha256:891685abc18633eaebde1c5f83a722852c7515eb6d607e84141fdf02265f324e",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 7794,
+    "output_tokens": 164
+  },
+  "model_seconds": 9.362276820465922
+}

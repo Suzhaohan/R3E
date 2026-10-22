@@ -1,0 +1,48 @@
+{
+  "blue": {
+    "blue_config_hash": "sha256:baa89bc126833457a528f5980bf792e47cd1a6ef00cf27a45f0ea3c0bd7b0f60",
+    "committed_round": 1,
+    "entries": [],
+    "learning_policy_hash": "sha256:4a09424dd1c7efe73565caf882441e236d76f12d2175725024c3057884eb1afe",
+    "parent_snapshot_hash": "sha256:31a373b3a7a9f973df86eabc53c383de4cddbdea4a77344c621cf2c890ebf047",
+    "retrieval_policy_hash": "sha256:8b114d1dc640c0d8851c3796a1d6ed4e3bc9b65406c7341475b69b3d8568e26f",
+    "snapshot_id": "B_1",
+    "state_hash": "sha256:776ee553ad48c6b413c45ddc8c3a8b93214326fefe6e5af249a66fa2c8e1880f",
+    "version": "continuous_blue_snapshot_v1"
+  },
+  "parent_commit_hash": "sha256:786ef9d2539358aab320fba87daa81b00cf6916c236c5a3f529d3a50fc2247a1",
+  "promotion_hash": "sha256:1ad95522e13207226ded7d09e76e0677d408d65187da799d021adfc8b244aaff",
+  "red": {
+    "observations": [
+      {
+        "blue_patch": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -50,7 +50,7 @@\n         s5:\n             nstate=data?sf6:s6;\n         s6:\n-            nstate=data?sf1:s1;\n+            nstate=idle;\n         sf1:\n             nstate=sf2;\n         sf2:\n@@ -62,7 +62,7 @@\n         sf5:\n             nstate=sf6;\n         sf6:\n-\t\t\tnstate=data?sf1:s1;\n+\t\t\tnstate=idle;\n         default:\n             nstate=idle;\n         endcase\n",
+        "carrier_id": "chipbench_prob003_group_boundary_v1",
+        "label": "public_functional_failure_single_sample_unconfirmed",
+        "mutant_hash": "sha256:4e8f44b5a11ebf8910d9afc92db41f2fa01df5370309799b731489a267926fcf",
+        "mutation_edits": [
+          {
+            "find": "        s4:\n            nstate=data?sf5:s5;",
+            "replace": "        s4:\n            nstate=data?s5:sf5;"
+          }
+        ],
+        "public_evidence": "{\"suites\": {\"W_bug\": {\"result\": \"visible_fail\", \"returncode\": 0, \"pass_marker_found\": false, \"fail_marker_found\": true, \"log\": \"CHECK_FAIL W_bug cycle=6 group=011100 bit=0 match=0 not_match=1\"}, \"W_preserve\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"TESTBENCH PASS W_preserve reset exclusivity stability\"}}}",
+        "public_rows": {
+          "W_bug": "visible_fail",
+          "W_preserve": "visible_pass"
+        },
+        "round": 1,
+        "slot_id": "r1_s0",
+        "source_hash": "sha256:f31135479767ede0c453bc1fc21800df40b3e142919a64ceefc93a1842b260a1",
+        "target_snapshot_hash": "sha256:31a373b3a7a9f973df86eabc53c383de4cddbdea4a77344c621cf2c890ebf047"
+      }
+    ],
+    "round": 1
+  },
+  "round": 1,
+  "update_decisions": [
+    {
+      "accepted": false,
+      "promotion": "no_new_experience"
+    }
+  ]
+}

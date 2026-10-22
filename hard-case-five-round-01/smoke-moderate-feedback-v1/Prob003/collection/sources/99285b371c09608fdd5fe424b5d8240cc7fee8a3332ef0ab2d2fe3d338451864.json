@@ -1,0 +1,121 @@
+{
+  "source": {
+    "run_id": "collection",
+    "round": 5,
+    "slot_id": "r5_s0",
+    "task_hash": "sha256:ba279a2286585337ba900d8d2746805d80a68ec76f98b2eb210cf92a9576a919",
+    "carrier_id": "chipbench_prob003_group_boundary_v1",
+    "mutant_hash": "sha256:e1359be4b673d394840ca817b0bf60f31cc19ced8ed64c6b4b1567b490f39ad4",
+    "candidate_hash": "sha256:5db25cf23be68f8598a6c08838954a6a7392acac467c3238c9c6a73c2115613c",
+    "encounter_hash": "sha256:99285b371c09608fdd5fe424b5d8240cc7fee8a3332ef0ab2d2fe3d338451864",
+    "archive_hash": "sha256:f27c35587b8e6d3c51bf33b59a53f8fc9ae940665f43c770e5759a07d6ffa5ed",
+    "public_replay_hash": "sha256:eb38ab2734690996fdeb3d98c8345dcb1029b21066b30f4ef682693293e6ecda"
+  },
+  "encounter": {
+    "encounter": 0,
+    "seed": 1885639700588050,
+    "result": {
+      "task_id": "chipbench_prob003_group_boundary_v1__e1359be4b673d394",
+      "route": "direct",
+      "rtl_tokens": 544,
+      "closure": [
+        "rtl/sequence.sv",
+        "harness:W_bug_tb.sv",
+        "harness:W_preserve_tb.sv"
+      ],
+      "outcome": "fixed",
+      "attempts": [
+        {
+          "attempt": 0,
+          "route": "direct",
+          "submissions": [
+            {
+              "kind": "repair",
+              "tokens": {
+                "input": 100,
+                "output": 40,
+                "counted_request": 3359,
+                "model_seconds": 0.03
+              },
+              "format_valid": true,
+              "format_error": null
+            }
+          ],
+          "repair_tokens": {
+            "input": 100,
+            "output": 40,
+            "counted_request": 3359,
+            "model_seconds": 0.03
+          },
+          "edit": "offline fixture only",
+          "candidate_hash": "sha256:5db25cf23be68f8598a6c08838954a6a7392acac467c3238c9c6a73c2115613c",
+          "tier": "visible_pass",
+          "stage": "simulation",
+          "build_seconds": 0.03,
+          "sim_seconds": 0.02,
+          "changed_files": [
+            "rtl/sequence.sv"
+          ]
+        }
+      ],
+      "calls": 1,
+      "final_candidate_hash": "sha256:5db25cf23be68f8598a6c08838954a6a7392acac467c3238c9c6a73c2115613c",
+      "inputs_read": [
+        "public/task.json",
+        "public/visible/build.json",
+        "public/visible/W_bug_tb.sv",
+        "public/visible/W_preserve_tb.sv",
+        "public/spec.txt"
+      ],
+      "experience": {
+        "snapshot_id": "B_4",
+        "snapshot_hash": "sha256:7d01a8057fbb75ac6816df7b9e44f04975c6d0d0c1d4d05901789ddb0b3ec6b6",
+        "state_hash": "sha256:a2aeeb90c68e5afa0fceef05c11de09ee814aca462dadf2182d3de2eb3c63b78",
+        "payload_hash": "sha256:3d08f6f53b3f9e24734b00a4b0672c164ab4af5cdca5b0e3d901528c6b4ff103",
+        "delivery_hash": "sha256:6daf2e1384cb5658aa688bd84be93f664b016824dac75e4af3da7c2f478033da",
+        "delivered": true
+      }
+    }
+  },
+  "archive_path": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/smoke-moderate-feedback-v1/Prob003/collection/rounds/5/r5_s0/online/blue/archive/chipbench_prob003_group_boundary_v1__e1359be4b673d394__5db25cf23be68f85.json",
+  "task_dir": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/smoke-moderate-feedback-v1/Prob003/collection/rounds/5/r5_s0/admission/blue_task",
+  "replay": {
+    "tier": "visible_pass",
+    "stage": "simulation",
+    "evidence": {
+      "suites": {
+        "W_bug": {
+          "result": "visible_pass",
+          "returncode": 0,
+          "pass_marker_found": true,
+          "fail_marker_found": false,
+          "log": "TESTBENCH PASS W_bug groups=256 cycles=1536"
+        },
+        "W_preserve": {
+          "result": "visible_pass",
+          "returncode": 0,
+          "pass_marker_found": true,
+          "fail_marker_found": false,
+          "log": "TESTBENCH PASS W_preserve reset exclusivity stability"
+        }
+      }
+    },
+    "build_seconds": 0.02177676185965538,
+    "sim_seconds": 0.020984437316656113,
+    "closure": [
+      "rtl/sequence.sv",
+      "harness:W_bug_tb.sv",
+      "harness:W_preserve_tb.sv"
+    ]
+  },
+  "public_rows": {
+    "W_bug": "visible_pass",
+    "W_preserve": "visible_pass"
+  },
+  "mutation_edits": [
+    {
+      "find": "nstate=data?sf6:s6;",
+      "replace": "nstate=data?s6:sf6;"
+    }
+  ]
+}

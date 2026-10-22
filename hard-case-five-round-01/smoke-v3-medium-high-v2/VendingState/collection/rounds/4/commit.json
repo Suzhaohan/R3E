@@ -1,0 +1,115 @@
+{
+  "blue": {
+    "blue_config_hash": "sha256:ae282cf6effc76efdc1247bcc956f0143332fb99c714b79ead0d865686f50966",
+    "committed_round": 4,
+    "entries": [],
+    "learning_policy_hash": "sha256:4a09424dd1c7efe73565caf882441e236d76f12d2175725024c3057884eb1afe",
+    "parent_snapshot_hash": "sha256:4155c33e06951a84de8b5fda2d32950d800357b73555250d68d4b3f4103aaccb",
+    "retrieval_policy_hash": "sha256:8b114d1dc640c0d8851c3796a1d6ed4e3bc9b65406c7341475b69b3d8568e26f",
+    "snapshot_id": "B_4",
+    "state_hash": "sha256:831017327dc4caf546fcce1c2a44feb9ac291ad3a98564d855b6bcc075af7c5b",
+    "version": "continuous_blue_snapshot_v1"
+  },
+  "parent_commit_hash": "sha256:12b0d40afbf400016fd9ea7fee1246c75037812ec5dbc2163d170fa693f9ef62",
+  "promotion_hash": "sha256:49b469f590088e722f17ae82f2e7f8ea0768d992a53b3d34e65b5d92929254fe",
+  "red": {
+    "observations": [
+      {
+        "blue_patch": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -25,7 +25,7 @@\n     always@(*) begin\n         case(state)\n             S0     : nstate = d1? S0_5:\n-                              d2? S0_5:\n+                              d2? S1:\n                               nstate;\n             S0_5   : nstate = d1? S1:\n                               d2? S1_5:\n",
+        "carrier_id": "medium_high_VendingState",
+        "label": "public_pass_single_sample_hidden_unknown",
+        "mutant_hash": "sha256:ea12cd07980d4898202271aefe6a89566a2338b2fbad6fe9d192538b2e7813a3",
+        "mutation_edits": [
+          {
+            "find": "d2? S1:",
+            "replace": "d2? S0_5:"
+          }
+        ],
+        "public_evidence": "{\"suites\": {\"W_bug\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"Hint: Output 'out1' has no mismatches.\\nHint: Output 'out2' has no mismatches.\\nHint: Output 'out3' has no mismatches.\\nHint: Total mismatched samples is 0 out of 181 samples\\n\\nSimulation finished at 906 ps\\nMismatches: 0 in 181 samples\\nTESTBENCH PASS original samples\"}, \"W_preserve\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"TESTBENCH PASS preserve\"}}}",
+        "public_rows": {
+          "W_bug": "visible_pass",
+          "W_preserve": "visible_pass"
+        },
+        "round": 1,
+        "slot_id": "r1_s0",
+        "source_hash": "sha256:28fb54c95277004c95f32645c01d7696d4e75ec841a48ec6e40478863d058596",
+        "target_snapshot_hash": "sha256:a3f8dbb730c7d9d32d38fd2cf666aee561b0cec0a8ea6b1109101a93e2937cd8"
+      },
+      {
+        "blue_patch": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -38,7 +38,7 @@\n                               d2? S2_5:\n                               nstate;\n             S2     : nstate = ~sel? S0:\n-                              d1? S3:\n+                              d1? S2_5:\n                               d2? S3:\n                               nstate;\n             default: nstate = S0;\n",
+        "carrier_id": "medium_high_VendingState",
+        "label": "public_pass_single_sample_hidden_unknown",
+        "mutant_hash": "sha256:c4b3b76ad3a102f4cbcf89839ce7adc5ad2afa101bc0728a48e114c10c441f22",
+        "mutation_edits": [
+          {
+            "find": "d1? S2_5:",
+            "replace": "d1? S3:"
+          }
+        ],
+        "public_evidence": "{\"suites\": {\"W_bug\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"Hint: Output 'out1' has no mismatches.\\nHint: Output 'out2' has no mismatches.\\nHint: Output 'out3' has no mismatches.\\nHint: Total mismatched samples is 0 out of 181 samples\\n\\nSimulation finished at 906 ps\\nMismatches: 0 in 181 samples\\nTESTBENCH PASS original samples\"}, \"W_preserve\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"TESTBENCH PASS preserve\"}}}",
+        "public_rows": {
+          "W_bug": "visible_pass",
+          "W_preserve": "visible_pass"
+        },
+        "round": 2,
+        "slot_id": "r2_s0",
+        "source_hash": "sha256:39823e91de42761fcabe288d489b97335da8d3934062523c448417376629bbd6",
+        "target_snapshot_hash": "sha256:a226b9bae0ed76ec04f77cf245ab5ff2396e7b4d4f75e564ae41044961068e83"
+      },
+      {
+        "blue_patch": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -34,7 +34,7 @@\n                               d2? S2:\n                               nstate;\n             S1_5   : nstate = ~sel? S0:\n-                              d1? S1:\n+                              d1? S2:\n                               d2? S2_5:\n                               nstate;\n             S2     : nstate = ~sel? S0:\n",
+        "carrier_id": "medium_high_VendingState",
+        "label": "public_pass_single_sample_hidden_unknown",
+        "mutant_hash": "sha256:8cbbff8bcd777b9b274493d6de901abfbd308ecb7b25e6ba6e13c0c41268c1e4",
+        "mutation_edits": [
+          {
+            "find": "d1? S2:",
+            "replace": "d1? S1:"
+          }
+        ],
+        "public_evidence": "{\"suites\": {\"W_bug\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"Hint: Output 'out1' has no mismatches.\\nHint: Output 'out2' has no mismatches.\\nHint: Output 'out3' has no mismatches.\\nHint: Total mismatched samples is 0 out of 181 samples\\n\\nSimulation finished at 906 ps\\nMismatches: 0 in 181 samples\\nTESTBENCH PASS original samples\"}, \"W_preserve\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"TESTBENCH PASS preserve\"}}}",
+        "public_rows": {
+          "W_bug": "visible_pass",
+          "W_preserve": "visible_pass"
+        },
+        "round": 3,
+        "slot_id": "r3_s0",
+        "source_hash": "sha256:0a6939f5c0ad83b02f77eddec1046cea674876d9d8cc8d3d458b3ed60fcf2f01",
+        "target_snapshot_hash": "sha256:bd077223b730a468237d8aa1cf6e0f64376d511b80d739419cdacfbefdb5f8d9"
+      },
+      {
+        "blue_patch": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -31,7 +31,7 @@\n                               d2? S1_5:\n                               nstate;\n             S1     : nstate = d1? S1_5:\n-                              d2? S0_5:\n+                              d2? S2:\n                               nstate;\n             S1_5   : nstate = ~sel? S0:\n                               d1? S2:\n",
+        "carrier_id": "medium_high_VendingState",
+        "label": "public_pass_single_sample_hidden_unknown",
+        "mutant_hash": "sha256:0c43e50a47d335b72c989db198890bdcd634d2e4be0bb0c1c1ce5983633ba281",
+        "mutation_edits": [
+          {
+            "find": "d2? S2:",
+            "replace": "d2? S0_5:"
+          }
+        ],
+        "public_evidence": "{\"suites\": {\"W_bug\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"Hint: Output 'out1' has no mismatches.\\nHint: Output 'out2' has no mismatches.\\nHint: Output 'out3' has no mismatches.\\nHint: Total mismatched samples is 0 out of 181 samples\\n\\nSimulation finished at 906 ps\\nMismatches: 0 in 181 samples\\nTESTBENCH PASS original samples\"}, \"W_preserve\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"TESTBENCH PASS preserve\"}}}",
+        "public_rows": {
+          "W_bug": "visible_pass",
+          "W_preserve": "visible_pass"
+        },
+        "round": 4,
+        "slot_id": "r4_s0",
+        "source_hash": "sha256:bf7309f699aa6c0b6f34001a00cc8534e05db9f361cfd1da2a5d27b2c5ae0938",
+        "target_snapshot_hash": "sha256:4155c33e06951a84de8b5fda2d32950d800357b73555250d68d4b3f4103aaccb"
+      }
+    ],
+    "round": 4
+  },
+  "round": 4,
+  "update_decisions": [
+    {
+      "entry_hash": "sha256:82d826fa4efbee47d77c02716db5927f337136ad25caec4611540a94b8620116",
+      "reason": "accepted"
+    },
+    {
+      "accepted": false,
+      "promotion": "no_strict_gain"
+    }
+  ]
+}

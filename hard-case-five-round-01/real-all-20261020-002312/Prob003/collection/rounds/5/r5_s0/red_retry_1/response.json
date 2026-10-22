@@ -1,0 +1,40 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "        sf4:\n            nstate=sf5;",
+            "replace": "        sf4:\n            nstate=data?s1:sf5;"
+          }
+        ],
+        "violated_requirement": "When in state sf4, the next state should unconditionally transition to sf5, but the mutated version incorrectly considers the input data to potentially transition to s1. This violates the specification that once a failure path is entered (sf states), it should continue through the failure path regardless of input.",
+        "spec_basis": "The module must detect the sequence `011100` from the input signal `data`. If the sequence is not detected in a group, the `not_match` output should assert (go high)."
+      },
+      {
+        "edits": [
+          {
+            "find": "        sf5:\n            nstate=sf6;",
+            "replace": "        sf5:\n            nstate=data?s1:sf6;"
+          }
+        ],
+        "violated_requirement": "When in state sf5, the next state should unconditionally transition to sf6, but the mutated version incorrectly considers the input data to potentially transition to s1. This violates the specification that once a failure path is entered (sf states), it should continue through the failure path regardless of input.",
+        "spec_basis": "The module must detect the sequence `011100` from the input signal `data`. If the sequence is not detected in a group, the `not_match` output should assert (go high)."
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:161eb221ed15ffac42c351e88c95579905d6e5c1bbafb42ea9f548e31a5bfd4f",
+  "input_tokens": 14643,
+  "output_tokens": 305,
+  "request_hash": "sha256:f401cfaa1c0b2fe97cba4302a9a76a68d6d1ff5dfc861bf96295c6ffa41b7a10",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 14643,
+    "output_tokens": 305
+  },
+  "model_seconds": 15.368056209757924
+}

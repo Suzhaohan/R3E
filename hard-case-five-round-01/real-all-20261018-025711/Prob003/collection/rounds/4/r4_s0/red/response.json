@@ -1,0 +1,50 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "        s6:\n            nstate=data?sf1:s1;",
+            "replace": "        s6:\n            nstate=data?s1:sf1;"
+          }
+        ],
+        "violated_requirement": "After detecting a complete matching sequence (011100), the next state transition incorrectly depends on the current data bit instead of starting a new group",
+        "spec_basis": "The sequence check begins with every sixth bit of input data, meaning the module processes the input in groups of six bits and does not overlap or reuse bits between groups"
+      },
+      {
+        "edits": [
+          {
+            "find": "        s3:\n            nstate=data?s4:sf4;",
+            "replace": "        s3:\n            nstate=data?sf4:s4;"
+          }
+        ],
+        "violated_requirement": "Incorrect state transition when third bit of sequence is mismatched, causing premature failure detection",
+        "spec_basis": "If the first bit of a group does not match the sequence, the module skips the entire group and starts checking from the next group"
+      },
+      {
+        "edits": [
+          {
+            "find": "        sf6:\n\t\t\tnstate=data?sf1:s1;",
+            "replace": "        sf6:\n\t\t\tnstate=sf1;"
+          }
+        ],
+        "violated_requirement": "After detecting a complete non-matching sequence, the next state transition incorrectly ignores the current data bit",
+        "spec_basis": "The sequence check begins with every sixth bit of input data, meaning the module processes the input in groups of six bits"
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:2d6df6c32d488b965fe0282c446e71163136904147a6dbc21bd6c608ee0be3e2",
+  "input_tokens": 6266,
+  "output_tokens": 314,
+  "request_hash": "sha256:a254b6f04766f4d5aae8bdc47fb4c02bfdb84e639fb930996c0d58ef500b7a6d",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 6266,
+    "output_tokens": 314
+  },
+  "model_seconds": 22.93213928118348
+}

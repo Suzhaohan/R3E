@@ -1,0 +1,44 @@
+{
+  "carriers": [
+    {
+      "package": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/materials-selected-v2/Mux/package",
+      "suite_freeze": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/materials-selected-v2/Mux/suite_freeze.json",
+      "evaluator_freeze": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/materials-selected-v2/Mux/evaluator_freeze.json",
+      "evaluator_root": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/materials-selected-v2/Mux"
+    }
+  ],
+  "anchors": [
+    {
+      "task_dir": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/materials-selected-v2/Mux/reserved/exam_defect",
+      "carrier_index": 0
+    }
+  ],
+  "mechanism_focus": {
+    "version": "continuous_mechanism_seed_v1",
+    "carrier_id": "selected_Mux",
+    "mechanism": "Across five rounds build transferable repair experience for sized literal radix, truncation, duplicate case labels, selector coverage and combinational sensitivity. Generate distinct nearby defects using actual prior repair observations; preserve sel=00 behavior. Aim for reusable diagnostic experience, not copies of the held-out defect. Do not emit a solution or assume historical failures still apply.",
+    "selection": "human_selected_development_seed",
+    "seed_edits": [
+      {
+        "find": "module mux_4to1_case ( input [3:0] a,                 // 4-bit input called a\n                       input [3:0] b,                 // 4-bit input called b\n                       input [3:0] c,                 // 4-bit input called c\n                       input [3:0] d,                 // 4-bit input called d\n                       input [1:0] sel,               // input sel used to select between a,b,c,d\n                       output reg [3:0] out);         // 4-bit output based on input sel\n\n   // This always block gets executed whenever a/b/c/d/sel changes value\n   // When that happens, based on value in sel, output is assigned to either a/b/c/d\n   always @ (a or b or c or d or sel) begin\n      case (sel)\n         2'b00 : out <= a;\n         2'b01 : out <= b;\n         2'b10 : out <= c;\n         2'b11 : out <= d;\n      endcase\n   end\nendmodule",
+        "replace": "module mux_4to1_case ( input [3:0] a,                 // 4-bit input called a\n                       input [3:0] b,                 // 4-bit input called b\n                       input [3:0] c,                 // 4-bit input called c\n                       input [3:0] d,                 // 4-bit input called d\n                       input [1:0] sel,               // input sel used to select between a,b,c,d\n                       output reg [3:0] out);         // 4-bit output based on input sel\n\n   // This always block gets executed whenever a/b/c/d/sel changes value\n   // When that happens, based on value in sel, output is assigned to either a/b/c/d\n   always @ (a or b or c or d or sel) begin\n      case (sel)\n         2'b00 : out <= a;\n         2'b01 : out <= b;\n         2'b10 : out <= d;\n         2'b11 : out <= d;\n      endcase\n   end\nendmodule"
+      }
+    ],
+    "history": {
+      "challenge_id": "strider:mux_4_1_2",
+      "runs": 3,
+      "unrepaired": 3,
+      "label": "historical_budgeted_failure_not_current_confirmation"
+    },
+    "provenance": {
+      "clean_hash": "sha256:ddc221ac8e9226a332a7f9cc889f1be0beea6e86fc4aac8456ec56bb6c83dd72",
+      "seed_hash": "sha256:0f74a955a66a0536ac783347193913e1385dd006de8773042bda1032c6598178",
+      "record_hashes": {
+        "selection_audit": "sha256:cf841f0237bc167a12af0d5344fc6f015184ef1e2ccbbabf70d14ceb88fa9ca5"
+      }
+    }
+  },
+  "questions": [
+    "strider:mux_4_1_2"
+  ]
+}

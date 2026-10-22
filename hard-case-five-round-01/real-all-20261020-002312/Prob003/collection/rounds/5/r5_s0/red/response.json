@@ -1,0 +1,30 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "        sf6:\n\t\t\tnstate=data?sf1:s1;",
+            "replace": "        sf6:\n\t\t\tnstate=data?s1:sf1;"
+          }
+        ],
+        "violated_requirement": "The state transition at sf6 should go to sf1 when data is 1 and s1 when data is 0, but the mutation swaps these targets. This causes incorrect state transitions when processing the sixth bit of a group, leading to wrong match/not_match outputs.",
+        "spec_basis": "Module must detect sequence 011100 from input data in non-overlapping groups of six bits, with correct state transitions for both match and non-match cases."
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:5f982d702dbbf449fcef8a08dae1b7669ab2e95aba264d60262f49d50fc37137",
+  "input_tokens": 13898,
+  "output_tokens": 150,
+  "request_hash": "sha256:9dd13a1bfabfbf6b34898107021e4834e2e5b6287717f5326745d2ca576c3263",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 13898,
+    "output_tokens": 150
+  },
+  "model_seconds": 10.33687152620405
+}

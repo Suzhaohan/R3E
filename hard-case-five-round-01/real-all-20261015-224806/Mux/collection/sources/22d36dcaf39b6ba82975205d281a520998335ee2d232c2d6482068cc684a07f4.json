@@ -1,0 +1,121 @@
+{
+  "source": {
+    "run_id": "collection",
+    "round": 3,
+    "slot_id": "r3_s0",
+    "task_hash": "sha256:0257a5d5cd0e03bee2c79e6095260c8ab91573d1b103fd828a3a68a5f446593e",
+    "carrier_id": "selected_Mux",
+    "mutant_hash": "sha256:8833b656da67af5753ea6112add3d64b1507c46a0ce1a8ed442ca88c6602463d",
+    "candidate_hash": "sha256:ffb6ff92d53ef1dc120177ea53bd6d19561e5dbf5e35a094ad1c2b7844a244c8",
+    "encounter_hash": "sha256:22d36dcaf39b6ba82975205d281a520998335ee2d232c2d6482068cc684a07f4",
+    "archive_hash": "sha256:82dc0ba1d9c098015ed81654a17fbeb163686499fba67e554ee82b501b970040",
+    "public_replay_hash": "sha256:6d8d594ad4ce89a2a89fc7a49c95e5e12d9143b870aeb77047e514ab298c931b"
+  },
+  "encounter": {
+    "encounter": 0,
+    "seed": 1538524566091900,
+    "result": {
+      "task_id": "selected_Mux__8833b656da67af57",
+      "route": "direct",
+      "rtl_tokens": 226,
+      "closure": [
+        "rtl/sequence.sv",
+        "harness:W_bug_tb.sv",
+        "harness:W_preserve_tb.sv"
+      ],
+      "outcome": "fixed",
+      "attempts": [
+        {
+          "attempt": 0,
+          "route": "direct",
+          "submissions": [
+            {
+              "kind": "repair",
+              "tokens": {
+                "input": 3823,
+                "output": 314,
+                "counted_request": 3823,
+                "model_seconds": 3.16
+              },
+              "format_valid": true,
+              "format_error": null
+            }
+          ],
+          "repair_tokens": {
+            "input": 3823,
+            "output": 314,
+            "counted_request": 3823,
+            "model_seconds": 3.16
+          },
+          "edit": "Add sel to the always block sensitivity list so the multiplexer output updates when the selector changes.",
+          "candidate_hash": "sha256:ffb6ff92d53ef1dc120177ea53bd6d19561e5dbf5e35a094ad1c2b7844a244c8",
+          "tier": "visible_pass",
+          "stage": "simulation",
+          "build_seconds": 0.02,
+          "sim_seconds": 0.01,
+          "changed_files": [
+            "rtl/sequence.sv"
+          ]
+        }
+      ],
+      "calls": 1,
+      "final_candidate_hash": "sha256:ffb6ff92d53ef1dc120177ea53bd6d19561e5dbf5e35a094ad1c2b7844a244c8",
+      "inputs_read": [
+        "public/task.json",
+        "public/visible/build.json",
+        "public/visible/W_bug_tb.sv",
+        "public/visible/W_preserve_tb.sv",
+        "public/spec.txt"
+      ],
+      "experience": {
+        "snapshot_id": "B_2",
+        "snapshot_hash": "sha256:fd43fdb28a825fec6bef0f05226b7e3f3af6146d59b607b503bf6a01172f805b",
+        "state_hash": "sha256:9fb9d5de806bcc3bb819a51a208b3d1d5b6cc95e74b6360d9ab6e3a374e07131",
+        "payload_hash": "sha256:3092f0d7fc08feac058171dbed616bb7c60daa43691d7b6d28875d3225d9b061",
+        "delivery_hash": "sha256:0b5ddfd6e458c937d391231beb8abbec47725d322cca6a54aee325d6a8faba24",
+        "delivered": false
+      }
+    }
+  },
+  "archive_path": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/real-all-20261015-224806/Mux/collection/rounds/3/r3_s0/online/blue/archive/selected_Mux__8833b656da67af57__ffb6ff92d53ef1dc.json",
+  "task_dir": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/real-all-20261015-224806/Mux/collection/rounds/3/r3_s0/admission/blue_task",
+  "replay": {
+    "tier": "visible_pass",
+    "stage": "simulation",
+    "evidence": {
+      "suites": {
+        "W_bug": {
+          "result": "visible_pass",
+          "returncode": 0,
+          "pass_marker_found": true,
+          "fail_marker_found": false,
+          "log": "VCD info: dumpfile output_mux_4_1_tb.vcd opened for output.\nVCD warning: $dumpvars: Unsupported argument type (vpiPackage)\n[0] sel=0x0 a=0x1 b=0x2 c=0x4 d=0x8 out=0x1\n[100] sel=0x1 a=0x1 b=0x2 c=0x4 d=0x8 out=0x2\n[200] sel=0x2 a=0x1 b=0x2 c=0x4 d=0x8 out=0x4\n[300] sel=0x3 a=0x1 b=0x2 c=0x4 d=0x8 out=0x8\n[400] sel=0x0 a=0x8 b=0x4 c=0x2 d=0x1 out=0x8\n[500] sel=0x1 a=0x8 b=0x4 c=0x2 d=0x1 out=0x4\n[600] sel=0x2 a=0x8 b=0x4 c=0x2 d=0x1 out=0x2\n[700] sel=0x3 a=0x8 b=0x4 c=0x2 d=0x1 out=0x1\nTESTBENCH PASS original oracle"
+        },
+        "W_preserve": {
+          "result": "visible_pass",
+          "returncode": 0,
+          "pass_marker_found": true,
+          "fail_marker_found": false,
+          "log": "TESTBENCH PASS preserve"
+        }
+      }
+    },
+    "build_seconds": 0.024879666976630688,
+    "sim_seconds": 0.014140442945063114,
+    "closure": [
+      "rtl/sequence.sv",
+      "harness:W_bug_tb.sv",
+      "harness:W_preserve_tb.sv"
+    ]
+  },
+  "public_rows": {
+    "W_bug": "visible_pass",
+    "W_preserve": "visible_pass"
+  },
+  "mutation_edits": [
+    {
+      "find": "   always @ (a or b or c or d or sel) begin",
+      "replace": "   always @ (a or b or c or d) begin"
+    }
+  ]
+}

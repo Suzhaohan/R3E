@@ -1,0 +1,30 @@
+{
+  "result": {
+    "candidate_actions": [
+      {
+        "action_id": "sha256:96773cd0b4d83ceb909c0b85bba90c1588763eb33e65f36c4bef631ada2d3762",
+        "violated_requirement": "When in state s6, if data is 1, the next state should transition to sf1 to properly handle non-matching sequences. Changing to s1 would incorrectly treat it as a potential start of a new matching sequence.",
+        "spec_basis": "The specification requires proper handling of non-matching sequences by transitioning to failure states (sf1-sf6) when the sequence doesn't match."
+      },
+      {
+        "action_id": "sha256:51b1c4b3712a094203323e0ea59acde1893a866a0a938327f06b10d56fa48745",
+        "violated_requirement": "When in state s6, if data is 1, transitioning to sf6 instead of sf1 would incorrectly maintain the final failure state rather than resetting the failure sequence detection.",
+        "spec_basis": "The specification requires resetting the failure sequence detection after a complete 6-bit group is processed."
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:ba19dc63b931a8085aeba82884f555710d55d683b143bc8b2c8a6fe9d9333228",
+  "input_tokens": 11890,
+  "output_tokens": 249,
+  "request_hash": "sha256:2057451d5a10caab94825f19662ca9aa3bb0a629aeffe88d1efebb32a2fce6b5",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 11890,
+    "output_tokens": 249
+  },
+  "model_seconds": 10.211750090122223
+}

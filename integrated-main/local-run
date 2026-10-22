@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+set -euo pipefail
+project_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+run_python="${R3E_RUN_PYTHON:-$project_dir/.venv/bin/python}"
+if [[ ! -x "$run_python" && -z "${R3E_RUN_PYTHON:-}" ]]; then
+  run_python="$project_dir/../.venv/bin/python"
+fi
+if [[ ! -x "$run_python" ]]; then
+  echo '找不到 Python 环境，请用 R3E_RUN_PYTHON 指定已有 Python 3.11+ 解释器。' >&2
+  exit 1
+fi
+export PYTHONPATH="$project_dir"
+export PYTHONDONTWRITEBYTECODE=1
+cd -- "$project_dir"
+exec "$run_python" -u "$project_dir/scripts/local_run.py" "$@"

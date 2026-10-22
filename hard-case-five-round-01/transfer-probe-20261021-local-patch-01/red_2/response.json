@@ -1,0 +1,30 @@
+{
+  "result": {
+    "candidate_actions": [
+      {
+        "action_id": "sha256:250e98df4fdae10cf876d87573b6c87542936c9575db60e607291fb6dc11e69e",
+        "violated_requirement": "After detecting a mismatch in sf4 state, the state machine should progress to s1 to start checking the next group immediately rather than continuing through sf5",
+        "spec_basis": "The specification requires processing groups of six bits without overlapping. When a mismatch is detected, the next group should start immediately at the next bit."
+      },
+      {
+        "action_id": "sha256:63969fb9c80e9f5d6f5df8ce4b62ffaa714135fd3d047211beaee1229bcadc34",
+        "violated_requirement": "In sf5 state, transitioning to s1 would allow immediate checking of the next group after a mismatch is confirmed, rather than waiting through sf6",
+        "spec_basis": "The sequence check must begin with every sixth bit of input data, so after confirming a mismatch in sf5, the state machine should reset to check the next group."
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:115e9b3cd4949be40d4c019b5e34e92eb65d96d87bc355834af9b772144e2455",
+  "input_tokens": 6574,
+  "output_tokens": 244,
+  "request_hash": "sha256:002af3803d57d9a6110a888f79758c33f6c07bbc30931983727dede35f2c6ec2",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 6574,
+    "output_tokens": 244
+  },
+  "model_seconds": 13.631070774048567
+}

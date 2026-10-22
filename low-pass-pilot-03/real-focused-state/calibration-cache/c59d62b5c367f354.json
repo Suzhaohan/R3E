@@ -1,0 +1,790 @@
+{
+  "attempts": 3,
+  "first": {
+    "answer_form": "full",
+    "candidate_hash": "sha256:2394df71709f84a475c062fefcf8655bfd36eb1769fd74f29e0dc078a6639343",
+    "candidate_id": "C_4650e2fe7e5f_0",
+    "command_hash": "sha256:120886d0203c54eb774bcc86605adabc3558112a93df2b5267db787411faffdc",
+    "edit": "Fixed the shift register to shift the input into the LSB via {a_tem[6:0], a}, and moved match update into the same synchronous always block so it evaluates the next shift-register value and aligns match with the updated a_tem. Reset now clears both a_tem and match.",
+    "edit_class": "missing_or_extra_logic",
+    "feedback": {
+      "cycles_compared": 455,
+      "first_divergences": [
+        {
+          "expected": "0",
+          "first_cycle": 36,
+          "observed": "1",
+          "pattern": "variable_offset",
+          "signal": "match"
+        }
+      ],
+      "passing_outputs": [],
+      "stage": "functional"
+    },
+    "hidden": "not_available",
+    "index": 0,
+    "memory_offered": false,
+    "phase": "confirmation",
+    "seconds": 38.28,
+    "tokens": {
+      "input": 1528,
+      "output": 5999
+    },
+    "verdict_tier": "visible_fail",
+    "window": {
+      "cycles_compared": 228,
+      "inputs_logged": true,
+      "rows": [
+        {
+          "cycle": 17,
+          "edge": "rising",
+          "inputs": {
+            "a": "1",
+            "rst_n": "1"
+          },
+          "outputs": {
+            "match": {
+              "expected": "0",
+              "observed": "0",
+              "ok": true
+            }
+          }
+        },
+        {
+          "cycle": 17,
+          "edge": "falling",
+          "inputs": {
+            "a": "1",
+            "rst_n": "1"
+          },
+          "outputs": {
+            "match": {
+              "expected": "0",
+              "observed": "0",
+              "ok": true
+            }
+          }
+        },
+        {
+          "cycle": 18,
+          "edge": "rising",
+          "inputs": {
+            "a": "0",
+            "rst_n": "1"
+          },
+          "outputs": {
+            "match": {
+              "expected": "0",
+              "observed": "1",
+              "ok": false
+            }
+          }
+        },
+        {
+          "cycle": 18,
+          "edge": "falling",
+          "inputs": {
+            "a": "0",
+            "rst_n": "1"
+          },
+          "outputs": {
+            "match": {
+              "expected": "0",
+              "observed": "1",
+              "ok": false
+            }
+          }
+        },
+        {
+          "cycle": 19,
+          "edge": "rising",
+          "inputs": {
+            "a": "1",
+            "rst_n": "1"
+          },
+          "outputs": {
+            "match": {
+              "expected": "1",
+              "observed": "0",
+              "ok": false
+            }
+          }
+        },
+        {
+          "cycle": 19,
+          "edge": "falling",
+          "inputs": {
+            "a": "1",
+            "rst_n": "1"
+          },
+          "outputs": {
+            "match": {
+              "expected": "1",
+              "observed": "0",
+              "ok": false
+            }
+          }
+        },
+        {
+          "cycle": 20,
+          "edge": "rising",
+          "inputs": {
+            "a": "1",
+            "rst_n": "1"
+          },
+          "outputs": {
+            "match": {
+              "expected": "0",
+              "observed": "0",
+              "ok": true
+            }
+          }
+        },
+        {
+          "cycle": 20,
+          "edge": "falling",
+          "inputs": {
+            "a": "1",
+            "rst_n": "1"
+          },
+          "outputs": {
+            "match": {
+              "expected": "0",
+              "observed": "0",
+              "ok": true
+            }
+          }
+        },
+        {
+          "cycle": 21,
+          "edge": "rising",
+          "inputs": {
+            "a": "1",
+            "rst_n": "1"
+          },
+          "outputs": {
+            "match": {
+              "expected": "0",
+              "observed": "0",
+              "ok": true
+            }
+          }
+        },
+        {
+          "cycle": 21,
+          "edge": "falling",
+          "inputs": {
+            "a": "1",
+            "rst_n": "1"
+          },
+          "outputs": {
+            "match": {
+              "expected": "0",
+              "observed": "0",
+              "ok": true
+            }
+          }
+        },
+        {
+          "cycle": 22,
+          "edge": "rising",
+          "inputs": {
+            "a": "1",
+            "rst_n": "1"
+          },
+          "outputs": {
+            "match": {
+              "expected": "0",
+              "observed": "0",
+              "ok": true
+            }
+          }
+        },
+        {
+          "cycle": 22,
+          "edge": "falling",
+          "inputs": {
+            "a": "1",
+            "rst_n": "1"
+          },
+          "outputs": {
+            "match": {
+              "expected": "0",
+              "observed": "0",
+              "ok": true
+            }
+          }
+        }
+      ],
+      "sampling": "two samples per clock cycle (after the rising and after the falling edge of clk); 455 samples",
+      "stimulus_notes": [
+        "Inputs sampled after NBA on both tb.clk edges, row-aligned with trace_visible.txt; clocks and resets included"
+      ],
+      "wrong_cycles": {
+        "match": {
+          "count": 2,
+          "first_cycles": [
+            18,
+            19
+          ]
+        }
+      }
+    }
+  },
+  "inconclusive": false,
+  "record": {
+    "accounting": {
+      "fixed": true,
+      "fixed_at_attempt": 3,
+      "fixed_by_escalation": false,
+      "input_tokens": 6075,
+      "llm_calls": 3,
+      "memory_delivered": false,
+      "memory_items": [],
+      "memory_offered_from_attempt": null,
+      "model_seconds": 87.31,
+      "output_tokens": 13539,
+      "provider_failures": 0,
+      "repair_attempts": 3
+    },
+    "attempts": [
+      {
+        "answer_form": "full",
+        "candidate_hash": "sha256:2394df71709f84a475c062fefcf8655bfd36eb1769fd74f29e0dc078a6639343",
+        "candidate_id": "C_4650e2fe7e5f_0",
+        "command_hash": "sha256:120886d0203c54eb774bcc86605adabc3558112a93df2b5267db787411faffdc",
+        "edit": "Fixed the shift register to shift the input into the LSB via {a_tem[6:0], a}, and moved match update into the same synchronous always block so it evaluates the next shift-register value and aligns match with the updated a_tem. Reset now clears both a_tem and match.",
+        "edit_class": "missing_or_extra_logic",
+        "feedback": {
+          "cycles_compared": 455,
+          "first_divergences": [
+            {
+              "expected": "0",
+              "first_cycle": 36,
+              "observed": "1",
+              "pattern": "variable_offset",
+              "signal": "match"
+            }
+          ],
+          "passing_outputs": [],
+          "stage": "functional"
+        },
+        "hidden": "not_available",
+        "index": 0,
+        "memory_offered": false,
+        "phase": "confirmation",
+        "seconds": 38.28,
+        "tokens": {
+          "input": 1528,
+          "output": 5999
+        },
+        "verdict_tier": "visible_fail",
+        "window": {
+          "cycles_compared": 228,
+          "inputs_logged": true,
+          "rows": [
+            {
+              "cycle": 17,
+              "edge": "rising",
+              "inputs": {
+                "a": "1",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                }
+              }
+            },
+            {
+              "cycle": 17,
+              "edge": "falling",
+              "inputs": {
+                "a": "1",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                }
+              }
+            },
+            {
+              "cycle": 18,
+              "edge": "rising",
+              "inputs": {
+                "a": "0",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "0",
+                  "observed": "1",
+                  "ok": false
+                }
+              }
+            },
+            {
+              "cycle": 18,
+              "edge": "falling",
+              "inputs": {
+                "a": "0",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "0",
+                  "observed": "1",
+                  "ok": false
+                }
+              }
+            },
+            {
+              "cycle": 19,
+              "edge": "rising",
+              "inputs": {
+                "a": "1",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "1",
+                  "observed": "0",
+                  "ok": false
+                }
+              }
+            },
+            {
+              "cycle": 19,
+              "edge": "falling",
+              "inputs": {
+                "a": "1",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "1",
+                  "observed": "0",
+                  "ok": false
+                }
+              }
+            },
+            {
+              "cycle": 20,
+              "edge": "rising",
+              "inputs": {
+                "a": "1",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                }
+              }
+            },
+            {
+              "cycle": 20,
+              "edge": "falling",
+              "inputs": {
+                "a": "1",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                }
+              }
+            },
+            {
+              "cycle": 21,
+              "edge": "rising",
+              "inputs": {
+                "a": "1",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                }
+              }
+            },
+            {
+              "cycle": 21,
+              "edge": "falling",
+              "inputs": {
+                "a": "1",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                }
+              }
+            },
+            {
+              "cycle": 22,
+              "edge": "rising",
+              "inputs": {
+                "a": "1",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                }
+              }
+            },
+            {
+              "cycle": 22,
+              "edge": "falling",
+              "inputs": {
+                "a": "1",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                }
+              }
+            }
+          ],
+          "sampling": "two samples per clock cycle (after the rising and after the falling edge of clk); 455 samples",
+          "stimulus_notes": [
+            "Inputs sampled after NBA on both tb.clk edges, row-aligned with trace_visible.txt; clocks and resets included"
+          ],
+          "wrong_cycles": {
+            "match": {
+              "count": 2,
+              "first_cycles": [
+                18,
+                19
+              ]
+            }
+          }
+        }
+      },
+      {
+        "answer_form": "full",
+        "candidate_hash": "sha256:805b764d40923d6ad474a8fec51cc8389d68233e274b16ce8e6c118c493f1681",
+        "candidate_id": "C_8bc5dd043476_1",
+        "command_hash": "sha256:8909311610075fe52a03713876bfc03530963d30a34d6ab45e120a5022444455",
+        "edit": "Shift a into the LSB via {a_tem[6:0], a}, evaluate match from the next shift-register value in the same clocked block so it aligns with the updated a_tem, and reset both a_tem and match together.",
+        "edit_class": "missing_or_extra_logic",
+        "feedback": {
+          "cycles_compared": 455,
+          "first_divergences": [
+            {
+              "expected": "0",
+              "first_cycle": 36,
+              "observed": "1",
+              "pattern": "variable_offset",
+              "signal": "match"
+            }
+          ],
+          "passing_outputs": [],
+          "stage": "functional"
+        },
+        "hidden": "not_available",
+        "index": 1,
+        "memory_offered": false,
+        "phase": "confirmation",
+        "seconds": 35.22,
+        "tokens": {
+          "input": 2213,
+          "output": 5429
+        },
+        "verdict_tier": "visible_fail",
+        "window": {
+          "cycles_compared": 228,
+          "inputs_logged": true,
+          "rows": [
+            {
+              "cycle": 17,
+              "edge": "rising",
+              "inputs": {
+                "a": "1",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                }
+              }
+            },
+            {
+              "cycle": 17,
+              "edge": "falling",
+              "inputs": {
+                "a": "1",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                }
+              }
+            },
+            {
+              "cycle": 18,
+              "edge": "rising",
+              "inputs": {
+                "a": "0",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "0",
+                  "observed": "1",
+                  "ok": false
+                }
+              }
+            },
+            {
+              "cycle": 18,
+              "edge": "falling",
+              "inputs": {
+                "a": "0",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "0",
+                  "observed": "1",
+                  "ok": false
+                }
+              }
+            },
+            {
+              "cycle": 19,
+              "edge": "rising",
+              "inputs": {
+                "a": "1",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "1",
+                  "observed": "0",
+                  "ok": false
+                }
+              }
+            },
+            {
+              "cycle": 19,
+              "edge": "falling",
+              "inputs": {
+                "a": "1",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "1",
+                  "observed": "0",
+                  "ok": false
+                }
+              }
+            },
+            {
+              "cycle": 20,
+              "edge": "rising",
+              "inputs": {
+                "a": "1",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                }
+              }
+            },
+            {
+              "cycle": 20,
+              "edge": "falling",
+              "inputs": {
+                "a": "1",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                }
+              }
+            },
+            {
+              "cycle": 21,
+              "edge": "rising",
+              "inputs": {
+                "a": "1",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                }
+              }
+            },
+            {
+              "cycle": 21,
+              "edge": "falling",
+              "inputs": {
+                "a": "1",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                }
+              }
+            },
+            {
+              "cycle": 22,
+              "edge": "rising",
+              "inputs": {
+                "a": "1",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                }
+              }
+            },
+            {
+              "cycle": 22,
+              "edge": "falling",
+              "inputs": {
+                "a": "1",
+                "rst_n": "1"
+              },
+              "outputs": {
+                "match": {
+                  "expected": "0",
+                  "observed": "0",
+                  "ok": true
+                }
+              }
+            }
+          ],
+          "sampling": "two samples per clock cycle (after the rising and after the falling edge of clk); 455 samples",
+          "stimulus_notes": [
+            "Inputs sampled after NBA on both tb.clk edges, row-aligned with trace_visible.txt; clocks and resets included"
+          ],
+          "wrong_cycles": {
+            "match": {
+              "count": 2,
+              "first_cycles": [
+                18,
+                19
+              ]
+            }
+          }
+        }
+      },
+      {
+        "answer_form": "full",
+        "candidate_hash": "sha256:c3407dcf26429712270d71ca0b1ef86dc542f0e07e6546af3ec17b71aa00a707",
+        "candidate_id": "C_c5f7246af75f_2",
+        "command_hash": "sha256:f643df62c02d000cb3c50e30290410a523f15c898a558b70e2cc5d551850a52c",
+        "edit": "Changed the shift-register update to shift the new input a into the LSB via {a_tem[6:0], a}, while leaving match registered from the current a_tem as before.",
+        "feedback": {
+          "cycles_compared": 455,
+          "first_divergences": [],
+          "passing_outputs": [
+            "match"
+          ],
+          "stage": "functional"
+        },
+        "hidden": "not_available",
+        "index": 2,
+        "memory_offered": false,
+        "phase": "confirmation",
+        "seconds": 13.81,
+        "tokens": {
+          "input": 2334,
+          "output": 2111
+        },
+        "verdict_tier": "visible_pass",
+        "window": {}
+      }
+    ],
+    "bundle_hash": "sha256:b72cdd2c31bd54784e7b858812da90dc4f6c964773bcc22a0d2a86b2a82e4669",
+    "challenge_id": "chipbench:arithmetic:Prob001_continuous_input_sequence_detect",
+    "deliveries": [
+      {
+        "bundle_hash": "sha256:b72cdd2c31bd54784e7b858812da90dc4f6c964773bcc22a0d2a86b2a82e4669",
+        "injected": false,
+        "mode": "none",
+        "request_hash": "sha256:7f84b568c52a4520b3b54bae6b2b640c44e2b6f01c09ef788d9f94afc69cda78"
+      },
+      {
+        "bundle_hash": "sha256:b72cdd2c31bd54784e7b858812da90dc4f6c964773bcc22a0d2a86b2a82e4669",
+        "injected": false,
+        "mode": "none",
+        "request_hash": "sha256:d6752690391f5efcfea67559db62c02ed1aeddeefc58e0eaa050135220c78fd8"
+      }
+    ],
+    "episode_hash": "sha256:dcdfa51c99f8c917732a1fe593fbdcafd64f5e2438c14ec2775163215c77f051",
+    "inconclusive": false,
+    "infra_failures": 0,
+    "matches": [],
+    "mode": "none",
+    "profile": {
+      "causal": {
+        "cone_has_control_dependency": true,
+        "cone_has_counter": true,
+        "cone_has_reset_logic": true,
+        "cone_has_state_machine": false,
+        "cone_size_bucket": "small",
+        "output_driver_kind": "sequential",
+        "register_distance": "0",
+        "temporal_relation": "no_progress"
+      },
+      "schema_version": "r3e-observable-profile-v1",
+      "status": {
+        "delta_bucket": "-1",
+        "failing_output_bucket": "1",
+        "onset_bucket": "late",
+        "oracle_stage": "functional",
+        "output_width_bucket": "1bit",
+        "partial_failure": false,
+        "symptom": "stuck_value",
+        "x_involved": false
+      }
+    },
+    "retrieved_items": [],
+    "shown_items": [],
+    "solved_by_escalation": false,
+    "solved_within_budget": true
+  },
+  "solved": true
+}

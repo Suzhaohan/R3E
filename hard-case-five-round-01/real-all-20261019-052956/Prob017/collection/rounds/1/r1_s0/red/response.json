@@ -1,0 +1,40 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "clk_cnt<=((div_e>>2)+1)",
+            "replace": "clk_cnt<=((div_e>>1)+1)"
+          }
+        ],
+        "violated_requirement": "Output becomes 1 when count <= floor(div_e/2) + 1 instead of floor(div_e/4) + 1 in even mode",
+        "spec_basis": "Output becomes 1 iff count <= floor((mode ? div_o : div_e)/4) + 1"
+      },
+      {
+        "edits": [
+          {
+            "find": "clk_cnt<=((div_o>>2)+1)",
+            "replace": "clk_cnt<=((div_o>>1)+1)"
+          }
+        ],
+        "violated_requirement": "Output becomes 1 when count <= floor(div_o/2) + 1 instead of floor(div_o/4) + 1 in odd mode",
+        "spec_basis": "Output becomes 1 iff count <= floor((mode ? div_o : div_e)/4) + 1"
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:fb206109cc048306956164467b30d6c46974acbd8ec114d267561f08ac633df4",
+  "input_tokens": 4580,
+  "output_tokens": 211,
+  "request_hash": "sha256:1cb77fb12ffb80ad0223362a729d89c7c5b440be9d3f30dea9c610a60e017528",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 4580,
+    "output_tokens": 211
+  },
+  "model_seconds": 7.859973579645157
+}

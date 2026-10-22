@@ -1,0 +1,52 @@
+{
+  "blue": {
+    "blue_config_hash": "sha256:9335408c15ec8461d688530617738077012fba13ae120ddae0de57b23055a90e",
+    "committed_round": 1,
+    "entries": [],
+    "learning_policy_hash": "sha256:e125eaba0c567205327a9b834761e336b610bc2e29ccbbe86fd91bcb64a5fd6c",
+    "parent_snapshot_hash": "sha256:8b062b213ed61ecf341ce385ee515e026fa2dd67e077c54f5c39b3731d9d0be8",
+    "retrieval_policy_hash": "sha256:8b114d1dc640c0d8851c3796a1d6ed4e3bc9b65406c7341475b69b3d8568e26f",
+    "snapshot_id": "B_1",
+    "state_hash": "sha256:5f149e9919f40300de64d71bd6a7ae6b72785d8ba75d28b2bbb55fbba97aa458",
+    "version": "continuous_blue_snapshot_v1"
+  },
+  "parent_commit_hash": "sha256:2037a0e12e03be165b8a5e0fc8739ab3313bb9aff0644277327963dd6677e5aa",
+  "promotion_hash": "sha256:764753f54da25d0e6ec517f8ab77b5e73a35023d9ed88db961822af372545e83",
+  "red": {
+    "observations": [
+      {
+        "blue_patch": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -18,7 +18,7 @@\n         if(~rst)\n             clk_cnt <= 0;\n         else if(~div_flag)\n-            clk_cnt <= clk_cnt==(div_e-1)? 0: clk_cnt+2;\n+            clk_cnt <= clk_cnt==(div_e-1)? 0: clk_cnt+1;\n         else\n             clk_cnt <= clk_cnt==(div_o-1)? 0: clk_cnt+1;\n     end\n",
+        "carrier_id": "chipbench_Prob017_fractional_divider",
+        "label": "public_pass_single_sample_hidden_unknown",
+        "mutant_hash": "sha256:de0d4f88d2ed5488424e2cd8cde8624fd42ecc180e790558103708655fdad8ac",
+        "mutation_edits": [
+          {
+            "find": "clk_cnt <= clk_cnt==(div_e-1)? 0: clk_cnt+1;",
+            "replace": "clk_cnt <= clk_cnt==(div_e-1)? 0: clk_cnt+2;"
+          }
+        ],
+        "public_evidence": "{\"suites\": {\"W_bug\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"TESTBENCH PASS divider public waveform\"}, \"W_preserve\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"TESTBENCH PASS divider preserve\"}}}",
+        "public_rows": {
+          "W_bug": "visible_pass",
+          "W_preserve": "visible_pass"
+        },
+        "round": 1,
+        "slot_id": "r1_s0",
+        "source_hash": "sha256:d406c397dc0d8efdd9217fc9451c6e9aa7ca109a2c839d4bde49e93d44331f82",
+        "target_snapshot_hash": "sha256:8b062b213ed61ecf341ce385ee515e026fa2dd67e077c54f5c39b3731d9d0be8"
+      }
+    ],
+    "round": 1
+  },
+  "round": 1,
+  "update_decisions": [
+    {
+      "entry_hash": "sha256:a92ffa286d48c3139ce5c68ecea74062612646068c8fb7ff4086997bea3e58e2",
+      "reason": "accepted"
+    },
+    {
+      "accepted": false,
+      "promotion": "regression"
+    }
+  ]
+}

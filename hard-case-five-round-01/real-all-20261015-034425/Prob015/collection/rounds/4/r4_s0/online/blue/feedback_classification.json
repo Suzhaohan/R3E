@@ -1,0 +1,50 @@
+{
+ "summary": {
+  "task_id": "chipbench_Prob015_fixed_hard_questions__b81fea8696b8c049",
+  "encounters": 1,
+  "categories": {
+   "public_pass_hidden_fail": 1
+  },
+  "functional_failure_candidates": 1,
+  "pending_review": 1,
+  "reviewed_functional_failures": 0,
+  "original_defect_persists": 0,
+  "new_regression": 0,
+  "mechanism_907_exploratory": 0
+ },
+ "encounters": [
+  {
+   "encounter": 0,
+   "endpoint_candidate": "sha256:cb674669fa09e73e806a2153f5102e8579f9da4e865b9dc45b2facebdaa3962f",
+   "endpoint_public": {
+    "tier": "visible_pass",
+    "suites": {
+     "W_bug": {
+      "result": "visible_pass",
+      "checker_violation": false,
+      "failures": []
+     },
+     "W_preserve": {
+      "result": "visible_pass",
+      "checker_violation": false,
+      "failures": []
+     }
+    }
+   },
+   "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -41,6 +41,8 @@\n                               d1? S2_5:\n                               d2? S3:\n                               nstate;\n+            S2_5   : nstate = S0;\n+            S3     : nstate = S0;\n             default: nstate = state;\n         endcase\n     end\n",
+   "endpoint_evaluator": {
+    "result": "fail",
+    "returncode": 0,
+    "failures": [
+     "CHECK_FAIL evaluator mismatches"
+    ],
+    "log_hash": "sha256:3fc811869d3f531cae8e77430b13a03e5e649530a81ea6e4893a67965fa032aa"
+   },
+   "category": "public_pass_hidden_fail",
+   "functional_failure_candidate": true,
+   "review": {
+    "decision": "PENDING"
+   }
+  }
+ ]
+}

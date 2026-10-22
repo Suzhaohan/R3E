@@ -1,0 +1,112 @@
+{
+  "attempts": 1,
+  "first": {
+    "answer_form": "full",
+    "candidate_hash": "sha256:03369723ff864f357bfed411a711d3692a3143065d78add62fb6cdfe8360ae85",
+    "candidate_id": "C_c8adcb861588_0",
+    "command_hash": "sha256:d08474e07813a29b4a8698aa3c83cb4c1f5bf260d18753ff0ab1cfbb83f4fdd1",
+    "edit": "Fixed inverted transition in sf6 state: changed `nstate=data?s1:sf1;` to `nstate=data?sf1:s1;` so that after a non-matching group, the next group's first bit 0 goes to s1 (match progress) and first bit 1 goes to sf1 (fail progress). Also simplified reset condition in output logic to `if(!rst_n)`.",
+    "feedback": {
+      "cycles_compared": 2324,
+      "first_divergences": [],
+      "passing_outputs": [
+        "match",
+        "not_match"
+      ],
+      "stage": "functional"
+    },
+    "hidden": "not_available",
+    "index": 0,
+    "memory_offered": false,
+    "phase": "evaluation",
+    "seconds": 49.64,
+    "tokens": {
+      "input": 2352,
+      "output": 11906
+    },
+    "verdict_tier": "visible_pass",
+    "window": {}
+  },
+  "inconclusive": false,
+  "record": {
+    "accounting": {
+      "fixed": true,
+      "fixed_at_attempt": 1,
+      "fixed_by_escalation": false,
+      "input_tokens": 2352,
+      "llm_calls": 1,
+      "memory_delivered": false,
+      "memory_items": [],
+      "memory_offered_from_attempt": null,
+      "model_seconds": 49.64,
+      "output_tokens": 11906,
+      "provider_failures": 0,
+      "repair_attempts": 1
+    },
+    "attempts": [
+      {
+        "answer_form": "full",
+        "candidate_hash": "sha256:03369723ff864f357bfed411a711d3692a3143065d78add62fb6cdfe8360ae85",
+        "candidate_id": "C_c8adcb861588_0",
+        "command_hash": "sha256:d08474e07813a29b4a8698aa3c83cb4c1f5bf260d18753ff0ab1cfbb83f4fdd1",
+        "edit": "Fixed inverted transition in sf6 state: changed `nstate=data?s1:sf1;` to `nstate=data?sf1:s1;` so that after a non-matching group, the next group's first bit 0 goes to s1 (match progress) and first bit 1 goes to sf1 (fail progress). Also simplified reset condition in output logic to `if(!rst_n)`.",
+        "feedback": {
+          "cycles_compared": 2324,
+          "first_divergences": [],
+          "passing_outputs": [
+            "match",
+            "not_match"
+          ],
+          "stage": "functional"
+        },
+        "hidden": "not_available",
+        "index": 0,
+        "memory_offered": false,
+        "phase": "evaluation",
+        "seconds": 49.64,
+        "tokens": {
+          "input": 2352,
+          "output": 11906
+        },
+        "verdict_tier": "visible_pass",
+        "window": {}
+      }
+    ],
+    "bundle_hash": "sha256:02a32930651810ecbf29c87db1580853c0757c49ca925af7b23a0b727a470e1c",
+    "challenge_id": "handoff:Prob003:eval_miss_branch",
+    "deliveries": [],
+    "episode_hash": "sha256:591fc7191526d675cfca5797495d66cad8db52798c9667b823d6dd058cb3f8bf",
+    "inconclusive": false,
+    "infra_failures": 0,
+    "matches": [],
+    "mode": "none",
+    "profile": {
+      "causal": {
+        "cone_has_control_dependency": true,
+        "cone_has_counter": false,
+        "cone_has_reset_logic": true,
+        "cone_has_state_machine": true,
+        "cone_size_bucket": "small",
+        "output_driver_kind": "combinational",
+        "register_distance": "1",
+        "temporal_relation": "no_progress"
+      },
+      "schema_version": "r3e-observable-profile-v1",
+      "status": {
+        "delta_bucket": "-1",
+        "failing_output_bucket": "2-3",
+        "onset_bucket": "late",
+        "oracle_stage": "functional",
+        "output_width_bucket": "1bit",
+        "partial_failure": false,
+        "symptom": "stuck_value",
+        "x_involved": false
+      }
+    },
+    "retrieved_items": [],
+    "shown_items": [],
+    "solved_by_escalation": false,
+    "solved_within_budget": true
+  },
+  "solved": true
+}

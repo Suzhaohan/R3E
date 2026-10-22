@@ -1,0 +1,60 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "        s1:\n            nstate=data?s2:sf2;",
+            "replace": "        s1:\n            nstate=data?sf2:s2;"
+          }
+        ],
+        "violated_requirement": "When in state s1 with data=0, the module incorrectly transitions to sf2 instead of s2, breaking the sequence detection for input starting with 011100",
+        "spec_basis": "State transitions must correctly track the matching sequence pattern"
+      },
+      {
+        "edits": [
+          {
+            "find": "        s2:\n            nstate=data?s3:sf3;",
+            "replace": "        s2:\n            nstate=data?sf3:s3;"
+          }
+        ],
+        "violated_requirement": "When in state s2 with data=1, the module incorrectly transitions to sf3 instead of s3, breaking the sequence detection for input matching the second bit of the pattern",
+        "spec_basis": "State transitions must correctly track the matching sequence pattern"
+      },
+      {
+        "edits": [
+          {
+            "find": "        s3:\n            nstate=data?s4:sf4;",
+            "replace": "        s3:\n            nstate=data?sf4:s4;"
+          }
+        ],
+        "violated_requirement": "When in state s3 with data=1, the module incorrectly transitions to sf4 instead of s4, breaking the sequence detection for input matching the third bit of the pattern",
+        "spec_basis": "State transitions must correctly track the matching sequence pattern"
+      },
+      {
+        "edits": [
+          {
+            "find": "        s4:\n            nstate=data?sf5:s5;",
+            "replace": "        s4:\n            nstate=data?s5:sf5;"
+          }
+        ],
+        "violated_requirement": "When in state s4 with data=0, the module incorrectly transitions to s5 instead of sf5, potentially causing false positives for non-matching sequences",
+        "spec_basis": "State transitions must correctly track the matching sequence pattern"
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:889bd0f0d47a6d0887570d904b8b7aca93104600b047c67552bdd0160a94b736",
+  "input_tokens": 5510,
+  "output_tokens": 485,
+  "request_hash": "sha256:eb7e85e2403b11959132d34591d9ef6c5ed853cc56b817e133742f742ae5d589",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 5510,
+    "output_tokens": 485
+  },
+  "model_seconds": 42.67445111833513
+}

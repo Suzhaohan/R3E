@@ -1,0 +1,26 @@
+{
+  "result": {
+    "edits": [
+      {
+        "find": "        s6:\n            nstate=data?sf1:s1;",
+        "replace": "        s6:\n            nstate=sf1;"
+      }
+    ],
+    "violated_requirement": "After a matching group, the next six-bit group must begin at its first bit and be classified normally; the mutant forces the post-match boundary into a failure path, misclassifying a following 011100 group as not_match.",
+    "spec_basis": "The sequence check begins with every sixth bit of input data, meaning the module processes the input in groups of six bits and does not overlap or reuse bits between groups; match asserts for 011100 and not_match otherwise."
+  },
+  "raw_response_hash": "sha256:e094d981c20ec5421ae6395346aab2e897f32842ff164e3d3be3ef0dd75bbd40",
+  "input_tokens": 5724,
+  "output_tokens": 8282,
+  "request_hash": "sha256:e7aab3a761ae0c38ea0f3c5015e9a29693b0d9f027e1cd4e39c4ed129d294ecd",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 5724,
+    "output_tokens": 8282
+  },
+  "model_seconds": 54.205664010718465
+}

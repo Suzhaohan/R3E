@@ -1,0 +1,132 @@
+{
+  "source": {
+    "run_id": "collection",
+    "round": 1,
+    "slot_id": "r1_s0",
+    "task_hash": "sha256:eb2a4f4e85eb647368f93be63bd5723b742397aeed45cde67d7ea255c38b88e2",
+    "carrier_id": "selected_Prob015",
+    "mutant_hash": "sha256:9334eb0dca436ee4b9418c210062e316836adf6a5576770d2d716faf31c616e9",
+    "candidate_hash": "sha256:8869de4968c8174cd734676a999e706fa6f9c80b7fbd4c6b046b7e16aad2c3e6",
+    "encounter_hash": "sha256:f90ccbf4672e42c12f0e32c94ad75fa0cba11643bcfd850bb0def6056a989659",
+    "archive_hash": "sha256:4f7ef543db68ebc0e78d5d88becfd9a9ef357ad4bb79cc6534226f2847c9ae9b",
+    "public_replay_hash": "sha256:268f1fe628f32b7b3de42c6ae053b2b84bc73dd5eea4a3dec75b9418513d8dc3"
+  },
+  "encounter": {
+    "encounter": 0,
+    "seed": 1538524566091840,
+    "result": {
+      "task_id": "selected_Prob015__9334eb0dca436ee4",
+      "route": "direct",
+      "rtl_tokens": 562,
+      "closure": [
+        "rtl/sequence.sv",
+        "harness:W_bug_tb.sv",
+        "harness:W_preserve_tb.sv"
+      ],
+      "outcome": "fixed",
+      "attempts": [
+        {
+          "attempt": 0,
+          "route": "direct",
+          "submissions": [
+            {
+              "kind": "repair",
+              "tokens": {
+                "input": 6425,
+                "output": 29768,
+                "counted_request": 6425,
+                "model_seconds": 158.7
+              },
+              "format_valid": false,
+              "format_error": "Each file must contain exactly file and content, without find/replace."
+            },
+            {
+              "kind": "format_correction",
+              "tokens": {
+                "input": 7221,
+                "output": 1098,
+                "counted_request": 7221,
+                "model_seconds": 7.13
+              },
+              "format_valid": true,
+              "format_error": null
+            }
+          ],
+          "repair_tokens": {
+            "input": 13646,
+            "output": 30866,
+            "counted_request": 13646,
+            "model_seconds": 165.82999999999998
+          },
+          "edit": "Fix out3 change-dispense decode: in state S2 with sel==0 (inserted 2.0, beverage 1 at 1.5), the machine dispenses beverage 1 plus 0.5 change, so the output must be 3'b101 instead of 3'b100, aligning out3 with the reference change behavior while leaving correct out1/out2 decode unchanged.",
+          "candidate_hash": "sha256:8869de4968c8174cd734676a999e706fa6f9c80b7fbd4c6b046b7e16aad2c3e6",
+          "tier": "visible_pass",
+          "stage": "simulation",
+          "build_seconds": 0.03,
+          "sim_seconds": 0.02,
+          "changed_files": [
+            "rtl/sequence.sv"
+          ]
+        }
+      ],
+      "calls": 2,
+      "final_candidate_hash": "sha256:8869de4968c8174cd734676a999e706fa6f9c80b7fbd4c6b046b7e16aad2c3e6",
+      "inputs_read": [
+        "public/task.json",
+        "public/visible/build.json",
+        "public/visible/W_bug_tb.sv",
+        "public/visible/W_preserve_tb.sv",
+        "public/spec.txt"
+      ],
+      "experience": {
+        "snapshot_id": "B_0",
+        "snapshot_hash": "sha256:ab15d21034b102efb7034cb8640bc64e12d395185fc1887e63b8dc96e8a4b068",
+        "state_hash": "sha256:9fb9d5de806bcc3bb819a51a208b3d1d5b6cc95e74b6360d9ab6e3a374e07131",
+        "payload_hash": "sha256:3092f0d7fc08feac058171dbed616bb7c60daa43691d7b6d28875d3225d9b061",
+        "delivery_hash": "sha256:651a7c24d640defa4b1222483152e220522584323dc008eb3df8dc0164a5de2b",
+        "delivered": false
+      }
+    }
+  },
+  "archive_path": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/real-all-20261015-224806/Prob015/collection/rounds/1/r1_s0/online/blue/archive/selected_Prob015__9334eb0dca436ee4__8869de4968c8174c.json",
+  "task_dir": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/real-all-20261015-224806/Prob015/collection/rounds/1/r1_s0/admission/blue_task",
+  "replay": {
+    "tier": "visible_pass",
+    "stage": "simulation",
+    "evidence": {
+      "suites": {
+        "W_bug": {
+          "result": "visible_pass",
+          "returncode": 0,
+          "pass_marker_found": true,
+          "fail_marker_found": false,
+          "log": "Hint: Output 'out1' has no mismatches.\nHint: Output 'out2' has no mismatches.\nHint: Output 'out3' has no mismatches.\nHint: Total mismatched samples is 0 out of 181 samples\n\nSimulation finished at 906 ps\nMismatches: 0 in 181 samples\nTESTBENCH PASS original samples"
+        },
+        "W_preserve": {
+          "result": "visible_pass",
+          "returncode": 0,
+          "pass_marker_found": true,
+          "fail_marker_found": false,
+          "log": "TESTBENCH PASS preserve"
+        }
+      }
+    },
+    "build_seconds": 0.020573416724801064,
+    "sim_seconds": 0.014800922945141792,
+    "closure": [
+      "rtl/sequence.sv",
+      "harness:W_bug_tb.sv",
+      "harness:W_preserve_tb.sv"
+    ]
+  },
+  "public_rows": {
+    "W_bug": "visible_pass",
+    "W_preserve": "visible_pass"
+  },
+  "mutation_edits": [
+    {
+      "find": "                S2          : {out1, out2, out3} = ~sel? 3'b101: 3'b000;",
+      "replace": "                S2          : {out1, out2, out3} = ~sel? 3'b100: 3'b000;"
+    }
+  ]
+}

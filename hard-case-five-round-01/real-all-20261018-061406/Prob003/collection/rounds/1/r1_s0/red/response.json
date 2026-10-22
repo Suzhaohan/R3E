@@ -1,0 +1,60 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "        s1:\n            nstate=data?s2:sf2;",
+            "replace": "        s1:\n            nstate=data?sf2:s2;"
+          }
+        ],
+        "violated_requirement": "Incorrect state transition when first bit matches but second bit doesn't match sequence 011100. Should go to sf2 on data=1 but instead goes to s2.",
+        "spec_basis": "State transitions must correctly follow the sequence detection rules for non-matching bits"
+      },
+      {
+        "edits": [
+          {
+            "find": "        s2:\n            nstate=data?s3:sf3;",
+            "replace": "        s2:\n            nstate=data?sf3:s3;"
+          }
+        ],
+        "violated_requirement": "Incorrect state transition when first two bits match but third bit doesn't match sequence 011100. Should go to sf3 on data=1 but instead goes to s3.",
+        "spec_basis": "State transitions must correctly follow the sequence detection rules for non-matching bits"
+      },
+      {
+        "edits": [
+          {
+            "find": "        s3:\n            nstate=data?s4:sf4;",
+            "replace": "        s3:\n            nstate=data?sf4:s4;"
+          }
+        ],
+        "violated_requirement": "Incorrect state transition when first three bits match but fourth bit doesn't match sequence 011100. Should go to sf4 on data=1 but instead goes to s4.",
+        "spec_basis": "State transitions must correctly follow the sequence detection rules for non-matching bits"
+      },
+      {
+        "edits": [
+          {
+            "find": "        s4:\n            nstate=data?sf5:s5;",
+            "replace": "        s4:\n            nstate=data?s5:sf5;"
+          }
+        ],
+        "violated_requirement": "Incorrect state transition when first four bits match but fifth bit doesn't match sequence 011100. Should go to s5 on data=0 but instead goes to sf5.",
+        "spec_basis": "State transitions must correctly follow the sequence detection rules for non-matching bits"
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:f36285676259feb32c3d8b6065bad81459452e2122e8a059bdbd3be54ff854cc",
+  "input_tokens": 4707,
+  "output_tokens": 507,
+  "request_hash": "sha256:f4b345e2a2df6545dadbdfc6eed793219ddcd1a3edb5dea66a9644187985ccc4",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 4707,
+    "output_tokens": 507
+  },
+  "model_seconds": 16.248930166475475
+}

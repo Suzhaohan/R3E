@@ -1,0 +1,30 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "else if (a_tem == 8'b0111_0001)",
+            "replace": "else if (a_tem[7:1] == 7'b0111000)"
+          }
+        ],
+        "violated_requirement": "The match output should only be asserted when the full 8-bit pattern is present, but this change makes it trigger when the first 7 bits match (missing the final 1). This will cause false positives when the sequence is 0111000X.",
+        "spec_basis": "The spec requires matching the specific 8-bit pattern 8'b0111_0001, not a partial match."
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:8ea409baa68197da689b8fa0bed2fc10fd1a392264a3f5b22ddbacd2d19472ef",
+  "input_tokens": 4696,
+  "output_tokens": 141,
+  "request_hash": "sha256:2de9ca5c161ec55badc15cc4dc97a220e8636a8a8078c0d41550930249c23473",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 4696,
+    "output_tokens": 141
+  },
+  "model_seconds": 8.039195854216814
+}

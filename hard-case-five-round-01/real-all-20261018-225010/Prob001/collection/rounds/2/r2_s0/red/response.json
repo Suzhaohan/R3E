@@ -1,0 +1,60 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "else if (a_tem == 8'b0111_0001)",
+            "replace": "else if (a_tem == 8'b01110001)"
+          }
+        ],
+        "violated_requirement": "The match output should be asserted when the shift register contains exactly 8'b0111_0001, but the mutant will fail to match due to the missing underscore in the comparison constant",
+        "spec_basis": "The spec requires matching the specific 8-bit pattern '8'b0111_0001'"
+      },
+      {
+        "edits": [
+          {
+            "find": "else if (a_tem == 8'b0111_0001)",
+            "replace": "else if (a_tem == 8'b0111_0000)"
+          }
+        ],
+        "violated_requirement": "The match output should be asserted when the shift register contains exactly 8'b0111_0001, but the mutant will incorrectly match when the last bit is 0",
+        "spec_basis": "The spec requires matching the specific 8-bit pattern '8'b0111_0001'"
+      },
+      {
+        "edits": [
+          {
+            "find": "else if (a_tem == 8'b0111_0001)",
+            "replace": "else if (a_tem != 8'b0111_0001)"
+          }
+        ],
+        "violated_requirement": "The match output should be asserted when the shift register contains exactly 8'b0111_0001, but the mutant will invert the match condition",
+        "spec_basis": "The spec requires matching the specific 8-bit pattern '8'b0111_0001'"
+      },
+      {
+        "edits": [
+          {
+            "find": "else if (a_tem == 8'b0111_0001)",
+            "replace": "else if (a_tem == 8'b11110001)"
+          }
+        ],
+        "violated_requirement": "The match output should be asserted when the shift register contains exactly 8'b0111_0001, but the mutant will match a different pattern with the first bit as 1",
+        "spec_basis": "The spec requires matching the specific 8-bit pattern '8'b0111_0001'"
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:a3e877636259f6daa2a55cc3b4561c5aba5c2fe40b4b47eb3731e792834d32cd",
+  "input_tokens": 4366,
+  "output_tokens": 435,
+  "request_hash": "sha256:252604994d37b70bfa9dd71fce108aa83dc6a98f83bd1f4b45191e73e924093e",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 4366,
+    "output_tokens": 435
+  },
+  "model_seconds": 17.6968644708395
+}

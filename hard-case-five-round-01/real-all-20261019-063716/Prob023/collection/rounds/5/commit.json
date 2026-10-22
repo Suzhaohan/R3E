@@ -1,0 +1,48 @@
+{
+  "blue": {
+    "blue_config_hash": "sha256:add9ada1811998c1da950e383ebaaea546e8cf0841d59f29e23e35c11af0bcbb",
+    "committed_round": 5,
+    "entries": [],
+    "learning_policy_hash": "sha256:8d48afa3992d706e5dc009ac794678a59f3c520206ae9b292d99a5a74d049c9f",
+    "parent_snapshot_hash": "sha256:99836260d3989e3f9d999d70bfb340442cbb22322448ba5e5f21b44ca13e3cc2",
+    "retrieval_policy_hash": "sha256:8b114d1dc640c0d8851c3796a1d6ed4e3bc9b65406c7341475b69b3d8568e26f",
+    "snapshot_id": "B_5",
+    "state_hash": "sha256:442d94b205c17d4aca36d03eb212da18bfff1beb6460ee65b8e2eb0540486de1",
+    "version": "continuous_blue_snapshot_v1"
+  },
+  "parent_commit_hash": "sha256:249f2b4e4d3df95cf455d62cb1eee48bed18946a5c4f68d12f4ab2868d0d76a9",
+  "promotion_hash": "sha256:327320e547ba1ebfab3e1d2519ad106e7e78930ab7810698e12fb155cd4f5c0f",
+  "red": {
+    "observations": [
+      {
+        "blue_patch": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -1,4 +1,3 @@\n-\n module TopModule(\n    input   clk,\n    input   rst_n,\n@@ -14,10 +13,10 @@\n       bin_out <= 4'b0;\n    end\n    else begin\n-      bin_out[3] = gray_wire[3];\n-      bin_out[2] = gray_wire[2]^bin_out[1];\n-      bin_out[1] = gray_wire[1]^bin_out[2];\n-      bin_out[0] = gray_wire[0]^bin_out[1];\n+      bin_out[3] <= gray_wire[3];\n+      bin_out[2] <= gray_wire[2] ^ bin_out[3];\n+      bin_out[1] <= gray_wire[1] ^ bin_out[2];\n+      bin_out[0] <= gray_wire[0] ^ bin_out[1];\n    end \n end\n //Binary increment\n@@ -27,7 +26,9 @@\n       bin_add_wire <= 4'b0;\n    end\n    else begin\n-      bin_add_wire <= bin_out + 1'b1;\n+      if (bin_out[0] == 1'b1) begin\n+         bin_add_wire <= bin_out + 1'b1;\n+      end\n    end\n end\n //Binary to gray code conversion\n",
+        "carrier_id": "chipbench_Prob023_gray_counter",
+        "label": "public_functional_failure_single_sample_unconfirmed",
+        "mutant_hash": "sha256:d195fc1d9bb43e110150fbf139f2123bdc0e45dd104ddb01cfc57e4789a6b72e",
+        "mutation_edits": [
+          {
+            "find": "bin_out[2] = gray_wire[2]^bin_out[3];",
+            "replace": "bin_out[2] = gray_wire[2]^bin_out[1];"
+          }
+        ],
+        "public_evidence": "{\"suites\": {\"W_bug\": {\"result\": \"visible_fail\", \"returncode\": 0, \"pass_marker_found\": false, \"fail_marker_found\": true, \"log\": \"CHECK_FAIL gray cycle=1 got=0000 expected=0001\"}, \"W_preserve\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"TESTBENCH PASS gray preserve\"}}}",
+        "public_rows": {
+          "W_bug": "visible_fail",
+          "W_preserve": "visible_pass"
+        },
+        "round": 1,
+        "slot_id": "r1_s0",
+        "source_hash": "sha256:3b0af30c13acc97095c08d3f5b369f3dd6ca47535b74c812dff02b376bc884f0",
+        "target_snapshot_hash": "sha256:3414c4c6d1648f84c79843b938f636309881073ad2d60d604db9d1e27efb5f81"
+      }
+    ],
+    "round": 5
+  },
+  "round": 5,
+  "update_decisions": [
+    {
+      "accepted": false,
+      "promotion": "no_new_experience"
+    }
+  ]
+}

@@ -1,0 +1,121 @@
+{
+  "source": {
+    "run_id": "collection",
+    "round": 5,
+    "slot_id": "r5_s0",
+    "task_hash": "sha256:dce97788172d94c7dce04d0a04f9ac432b48807431cb9153a1b59eac73fdae9a",
+    "carrier_id": "chipbench_Prob017_fractional_divider",
+    "mutant_hash": "sha256:920e592ab06df7d993dc2f853396523e5188b975af9cf84cf063dde9de7a552d",
+    "candidate_hash": "sha256:0c294e5f0928f1bf5cb2deae2837ec02e89aa6e0abb1b541ea1f367e82e5c428",
+    "encounter_hash": "sha256:4e17a6f295a883348a0c7e0fea9a4549d7d349a31bfa987300ede6992148a33b",
+    "archive_hash": "sha256:e4e40b764692641b69bcdd6ed753ed2332e8b1af272df066bf6d9b51d3dfb454",
+    "public_replay_hash": "sha256:09fdfdc140196dd095daf055ed3b42977724f954158e5904087b206332f8c908"
+  },
+  "encounter": {
+    "encounter": 0,
+    "seed": 1343095866064580,
+    "result": {
+      "task_id": "chipbench_Prob017_fractional_divider__920e592ab06df7d9",
+      "route": "direct",
+      "rtl_tokens": 443,
+      "closure": [
+        "rtl/sequence.sv",
+        "harness:W_bug_tb.sv",
+        "harness:W_preserve_tb.sv"
+      ],
+      "outcome": "fixed",
+      "attempts": [
+        {
+          "attempt": 0,
+          "route": "direct",
+          "submissions": [
+            {
+              "kind": "repair",
+              "tokens": {
+                "input": 3533,
+                "output": 561,
+                "counted_request": 3581,
+                "model_seconds": 17.85
+              },
+              "format_valid": true,
+              "format_error": null
+            }
+          ],
+          "repair_tokens": {
+            "input": 3533,
+            "output": 561,
+            "counted_request": 3581,
+            "model_seconds": 17.85
+          },
+          "edit": "Fixed clk_cnt reset condition to reset to 0 instead of 1 when div_flag is false and clk_cnt reaches div_e-1, matching the waveform contract",
+          "candidate_hash": "sha256:0c294e5f0928f1bf5cb2deae2837ec02e89aa6e0abb1b541ea1f367e82e5c428",
+          "tier": "visible_pass",
+          "stage": "simulation",
+          "build_seconds": 0.02,
+          "sim_seconds": 0.03,
+          "changed_files": [
+            "rtl/sequence.sv"
+          ]
+        }
+      ],
+      "calls": 1,
+      "final_candidate_hash": "sha256:0c294e5f0928f1bf5cb2deae2837ec02e89aa6e0abb1b541ea1f367e82e5c428",
+      "inputs_read": [
+        "public/task.json",
+        "public/visible/build.json",
+        "public/visible/W_bug_tb.sv",
+        "public/visible/W_preserve_tb.sv",
+        "public/spec.txt"
+      ],
+      "experience": {
+        "snapshot_id": "B_4",
+        "snapshot_hash": "sha256:f0bbe7718fb5c5d2cdf8900bf8eb003ad7e16f074495076e5bfc4e2a8647ab46",
+        "state_hash": "sha256:779aab1d8b568fa8a6921089d928e2a2486414683f90ecc09764c973e0c89203",
+        "payload_hash": "sha256:d9afb2e00332b0b58c4155ed2a76d11e4985413264c5468dbbc1eb366cf567d7",
+        "delivery_hash": "sha256:b5b752307e499f0e44508b42337ad988b9af36a1075ab2f21aa4015950dd13cf",
+        "delivered": true
+      }
+    }
+  },
+  "archive_path": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/real-all-20261020-011058/Prob017/collection/rounds/5/r5_s0/online/blue/archive/chipbench_Prob017_fractional_divider__920e592ab06df7d9__0c294e5f0928f1bf.json",
+  "task_dir": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/real-all-20261020-011058/Prob017/collection/rounds/5/r5_s0/admission/blue_task",
+  "replay": {
+    "tier": "visible_pass",
+    "stage": "simulation",
+    "evidence": {
+      "suites": {
+        "W_bug": {
+          "result": "visible_pass",
+          "returncode": 0,
+          "pass_marker_found": true,
+          "fail_marker_found": false,
+          "log": "TESTBENCH PASS divider public waveform"
+        },
+        "W_preserve": {
+          "result": "visible_pass",
+          "returncode": 0,
+          "pass_marker_found": true,
+          "fail_marker_found": false,
+          "log": "TESTBENCH PASS divider preserve"
+        }
+      }
+    },
+    "build_seconds": 0.022020773962140083,
+    "sim_seconds": 0.02801471669226885,
+    "closure": [
+      "rtl/sequence.sv",
+      "harness:W_bug_tb.sv",
+      "harness:W_preserve_tb.sv"
+    ]
+  },
+  "public_rows": {
+    "W_bug": "visible_pass",
+    "W_preserve": "visible_pass"
+  },
+  "mutation_edits": [
+    {
+      "find": "clk_cnt <= clk_cnt==(div_e-1)? 0: clk_cnt+1;",
+      "replace": "clk_cnt <= clk_cnt==(div_e-1)? 1: clk_cnt+1;"
+    }
+  ]
+}

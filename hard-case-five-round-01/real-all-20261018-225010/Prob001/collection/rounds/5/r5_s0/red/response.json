@@ -1,0 +1,60 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "else if (a_tem == 8'b0111_0001)",
+            "replace": "else if (a_tem == 8'b0111_0001) && (a_tem[0] == 1'b1)"
+          }
+        ],
+        "violated_requirement": "The output match should be asserted only when the shift register matches 8'b0111_0001 exactly, but the mutant requires an additional condition on the LSB",
+        "spec_basis": "The spec states 'The output match should be asserted (logic 1) whenever the value of the shift register a_tem matches the specific 8-bit pattern 8'b0111_0001'"
+      },
+      {
+        "edits": [
+          {
+            "find": "a_tem <= {a_tem[6:0],a}",
+            "replace": "a_tem <= {a_tem[5:0],a, a_tem[7]}"
+          }
+        ],
+        "violated_requirement": "The shift register should retain the 8 most recent bits of a, but the mutant incorrectly rotates the bits",
+        "spec_basis": "The spec states 'the input a should be shifted into the least significant bit (LSB) of the shift register a_tem, and the previous bits should shift left by one position'"
+      },
+      {
+        "edits": [
+          {
+            "find": "else if (a_tem == 8'b0111_0001)",
+            "replace": "else if (a_tem[7:1] == 7'b0111000)"
+          }
+        ],
+        "violated_requirement": "The output match should be asserted only when the shift register matches 8'b0111_0001 exactly, but the mutant ignores the LSB",
+        "spec_basis": "The spec states 'The output match should be asserted (logic 1) whenever the value of the shift register a_tem matches the specific 8-bit pattern 8'b0111_0001'"
+      },
+      {
+        "edits": [
+          {
+            "find": "else if (a_tem == 8'b0111_0001)",
+            "replace": "else if (a_tem == 8'b0111_0001) || (a_tem == 8'b0111_0000)"
+          }
+        ],
+        "violated_requirement": "The output match should be asserted only when the shift register matches 8'b0111_0001 exactly, but the mutant also matches 8'b0111_0000",
+        "spec_basis": "The spec states 'The output match should be asserted (logic 1) whenever the value of the shift register a_tem matches the specific 8-bit pattern 8'b0111_0001'"
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:95863f888153ef6aa1ef62af7333a5f6de4d1a33afebc98dc5de1b85141abe37",
+  "input_tokens": 7361,
+  "output_tokens": 543,
+  "request_hash": "sha256:a89e77e4948a121fa29f958bbd5737ff6635d1e4c05ce1bf9d455de2d19d1483",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 7361,
+    "output_tokens": 543
+  },
+  "model_seconds": 18.39127755537629
+}

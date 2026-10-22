@@ -1,0 +1,60 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "        s1:\n            nstate=data?s2:sf2;",
+            "replace": "        s1:\n            nstate=data?s2:s1;"
+          }
+        ],
+        "violated_requirement": "When the first bit of a group is 0 (correct for sequence start) but the second bit is 0 (incorrect for sequence), the state machine incorrectly stays in s1 rather than transitioning to sf2, causing incorrect not_match output for sequences starting with 00",
+        "spec_basis": "The module must detect the sequence 011100 from the input signal data. If the first bit of a group does not match the sequence, the module skips the entire group and starts checking from the next group."
+      },
+      {
+        "edits": [
+          {
+            "find": "        s2:\n            nstate=data?s3:sf3;",
+            "replace": "        s2:\n            nstate=data?s3:s2;"
+          }
+        ],
+        "violated_requirement": "When the first two bits are 01 (correct start) but the third bit is 0 (incorrect for sequence), the state machine incorrectly stays in s2 rather than transitioning to sf3, causing incorrect not_match output for sequences starting with 010",
+        "spec_basis": "The module must detect the sequence 011100 from the input signal data. If any bit in the sequence doesn't match, the module should transition to the failure path."
+      },
+      {
+        "edits": [
+          {
+            "find": "        s3:\n            nstate=data?s4:sf4;",
+            "replace": "        s3:\n            nstate=data?s4:s3;"
+          }
+        ],
+        "violated_requirement": "When the first three bits are 011 (correct) but the fourth bit is 0 (incorrect for sequence), the state machine incorrectly stays in s3 rather than transitioning to sf4, causing incorrect not_match output for sequences starting with 0110",
+        "spec_basis": "The module must detect the sequence 011100 from the input signal data. Any deviation from the sequence should trigger transition to the failure path."
+      },
+      {
+        "edits": [
+          {
+            "find": "        s5:\n            nstate=data?sf6:s6;",
+            "replace": "        s5:\n            nstate=data?s6:sf6;"
+          }
+        ],
+        "violated_requirement": "When the first five bits are 01110 (correct) and the sixth bit is 1 (incorrect for sequence), the state machine incorrectly transitions to s6 (success path) rather than sf6 (failure path), causing incorrect match output for sequences ending with 1",
+        "spec_basis": "The module must detect the sequence 011100 from the input signal data. The final bit must be 0 for a successful match."
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:9bc03689c055dd1a122b024ccb90e92b1fd902b2408f28a40e0c841083e0a7b0",
+  "input_tokens": 7414,
+  "output_tokens": 560,
+  "request_hash": "sha256:04c51cb7fcd4db15d67c373848df214129cce328f990f4f2c636a19cf9487197",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 7414,
+    "output_tokens": 560
+  },
+  "model_seconds": 26.145780758932233
+}

@@ -1,0 +1,181 @@
+{
+  "status": "candidate_batch",
+  "candidates": [
+    {
+      "status": "proposal",
+      "buggy_rtl": "module TopModule(\n\tinput clk,\n\tinput rst_n,\n\tinput data,\n\toutput reg match,\n\toutput reg not_match\n\t);\n\n\nreg [3:0] pstate,nstate;\n\nparameter idle=4'd0,\n\t\t  s1=4'd1,\n          s2=4'd2,\n          s3=4'd3,\n          s4=4'd4,\n          s5=4'd5,\n          s6=4'd6,\n\t\t  sf1=4'd7,\n          sf2=4'd8,\n          sf3=4'd9,\n          sf4=4'd10,\n          sf5=4'd11,\n          sf6=4'd12;\n\nalways @(posedge clk or negedge rst_n)\nbegin\n    if(!rst_n)\n        pstate<=idle;\n    else\n        pstate<=nstate;\nend\n\nalways @(pstate or data)\nbegin\n    case(pstate)\n        idle:\n            if(data==0)\n                nstate=s1;\t\t\t//First bit matched\n            else\n                nstate=sf1;\n        s1:\n            nstate=data?s2:s1;\n        s2:\n            nstate=data?s3:sf3;\n        s3:\n            nstate=data?s4:sf4;\n        s4:\n            nstate=data?sf5:s5;\n        s5:\n            nstate=data?sf6:s6;\n        s6:\n            nstate=data?sf1:s1;\n        sf1:\n            nstate=sf2;\n        sf2:\n            nstate=sf3;\n        sf3:\n            nstate=sf4;\n        sf4:\n            nstate=sf5;\n        sf5:\n            nstate=sf6;\n        sf6:\n\t\t\tnstate=data?sf1:s1;\n        default:\n            nstate=idle;\n        endcase\nend\n\nalways @(pstate or data or rst_n)\nbegin\n    if(!rst_n==1) \n\t\tbegin\n\t\t\tmatch=1'b0;\n\t\t\tnot_match = 1'b0;\n\t\tend\n    else if(pstate==s6)\n\t\tbegin\n\t\t\tmatch=1'b1;\n\t\t\tnot_match = 1'b0;\n\t\tend\n\telse if(pstate==sf6)\n\t\tbegin\n\t\t\tmatch=1'b0;\n\t\t\tnot_match = 1'b1;\n\t\tend\n    else\n\t\tbegin\n\t\t\tmatch=1'b0;\n\t\t\tnot_match = 1'b0;\n\t\tend\nend\n\nendmodule",
+      "buggy_rtl_hash": "sha256:d48b55a7cb41a27660e497a4bc95a3531b24e80d0f4d16cb38edeaede9d2f70f",
+      "edit_budget": {
+        "metric": "sequence_matcher_token_edits_v1",
+        "tokenizer": "verilog_source_tokens_v2_macros",
+        "max_changed_fraction": 0.4,
+        "all_code": {
+          "original_tokens": 320,
+          "candidate_tokens": 320,
+          "changed_tokens": 1,
+          "allowed_tokens": 128,
+          "changed_fraction": 0.003125,
+          "within_limit": true
+        },
+        "body": {
+          "original_tokens": 298,
+          "candidate_tokens": 298,
+          "changed_tokens": 1,
+          "allowed_tokens": 119,
+          "changed_fraction": 0.003355704697986577,
+          "within_limit": true
+        }
+      },
+      "diff": "--- clean.sv\n+++ buggy.sv\n@@ -40,7 +40,7 @@\n             else\n                 nstate=sf1;\n         s1:\n-            nstate=data?s2:sf2;\n+            nstate=data?s2:s1;\n         s2:\n             nstate=data?s3:sf3;\n         s3:\n",
+      "claims": {
+        "violated_requirement": "When the first bit of a group is 0 (correct for sequence start) but the second bit is 0 (incorrect for sequence), the state machine incorrectly stays in s1 rather than transitioning to sf2, causing incorrect not_match output for sequences starting with 00",
+        "spec_basis": "The module must detect the sequence 011100 from the input signal data. If the first bit of a group does not match the sequence, the module skips the entire group and starts checking from the next group."
+      },
+      "mutation_edits": [
+        {
+          "find": "        s1:\n            nstate=data?s2:sf2;",
+          "replace": "        s1:\n            nstate=data?s2:s1;"
+        }
+      ],
+      "syntax_corrections": [],
+      "original_mutation_edits": [
+        {
+          "find": "        s1:\n            nstate=data?s2:sf2;",
+          "replace": "        s1:\n            nstate=data?s2:s1;"
+        }
+      ]
+    },
+    {
+      "status": "proposal",
+      "buggy_rtl": "module TopModule(\n\tinput clk,\n\tinput rst_n,\n\tinput data,\n\toutput reg match,\n\toutput reg not_match\n\t);\n\n\nreg [3:0] pstate,nstate;\n\nparameter idle=4'd0,\n\t\t  s1=4'd1,\n          s2=4'd2,\n          s3=4'd3,\n          s4=4'd4,\n          s5=4'd5,\n          s6=4'd6,\n\t\t  sf1=4'd7,\n          sf2=4'd8,\n          sf3=4'd9,\n          sf4=4'd10,\n          sf5=4'd11,\n          sf6=4'd12;\n\nalways @(posedge clk or negedge rst_n)\nbegin\n    if(!rst_n)\n        pstate<=idle;\n    else\n        pstate<=nstate;\nend\n\nalways @(pstate or data)\nbegin\n    case(pstate)\n        idle:\n            if(data==0)\n                nstate=s1;\t\t\t//First bit matched\n            else\n                nstate=sf1;\n        s1:\n            nstate=data?s2:sf2;\n        s2:\n            nstate=data?s3:s2;\n        s3:\n            nstate=data?s4:sf4;\n        s4:\n            nstate=data?sf5:s5;\n        s5:\n            nstate=data?sf6:s6;\n        s6:\n            nstate=data?sf1:s1;\n        sf1:\n            nstate=sf2;\n        sf2:\n            nstate=sf3;\n        sf3:\n            nstate=sf4;\n        sf4:\n            nstate=sf5;\n        sf5:\n            nstate=sf6;\n        sf6:\n\t\t\tnstate=data?sf1:s1;\n        default:\n            nstate=idle;\n        endcase\nend\n\nalways @(pstate or data or rst_n)\nbegin\n    if(!rst_n==1) \n\t\tbegin\n\t\t\tmatch=1'b0;\n\t\t\tnot_match = 1'b0;\n\t\tend\n    else if(pstate==s6)\n\t\tbegin\n\t\t\tmatch=1'b1;\n\t\t\tnot_match = 1'b0;\n\t\tend\n\telse if(pstate==sf6)\n\t\tbegin\n\t\t\tmatch=1'b0;\n\t\t\tnot_match = 1'b1;\n\t\tend\n    else\n\t\tbegin\n\t\t\tmatch=1'b0;\n\t\t\tnot_match = 1'b0;\n\t\tend\nend\n\nendmodule",
+      "buggy_rtl_hash": "sha256:e5cb1347b1fbff69aa936294a4eb1f0eb678ff6160aeb2347e06516c5dc705fc",
+      "edit_budget": {
+        "metric": "sequence_matcher_token_edits_v1",
+        "tokenizer": "verilog_source_tokens_v2_macros",
+        "max_changed_fraction": 0.4,
+        "all_code": {
+          "original_tokens": 320,
+          "candidate_tokens": 320,
+          "changed_tokens": 1,
+          "allowed_tokens": 128,
+          "changed_fraction": 0.003125,
+          "within_limit": true
+        },
+        "body": {
+          "original_tokens": 298,
+          "candidate_tokens": 298,
+          "changed_tokens": 1,
+          "allowed_tokens": 119,
+          "changed_fraction": 0.003355704697986577,
+          "within_limit": true
+        }
+      },
+      "diff": "--- clean.sv\n+++ buggy.sv\n@@ -42,7 +42,7 @@\n         s1:\n             nstate=data?s2:sf2;\n         s2:\n-            nstate=data?s3:sf3;\n+            nstate=data?s3:s2;\n         s3:\n             nstate=data?s4:sf4;\n         s4:\n",
+      "claims": {
+        "violated_requirement": "When the first two bits are 01 (correct start) but the third bit is 0 (incorrect for sequence), the state machine incorrectly stays in s2 rather than transitioning to sf3, causing incorrect not_match output for sequences starting with 010",
+        "spec_basis": "The module must detect the sequence 011100 from the input signal data. If any bit in the sequence doesn't match, the module should transition to the failure path."
+      },
+      "mutation_edits": [
+        {
+          "find": "        s2:\n            nstate=data?s3:sf3;",
+          "replace": "        s2:\n            nstate=data?s3:s2;"
+        }
+      ],
+      "syntax_corrections": [],
+      "original_mutation_edits": [
+        {
+          "find": "        s2:\n            nstate=data?s3:sf3;",
+          "replace": "        s2:\n            nstate=data?s3:s2;"
+        }
+      ]
+    },
+    {
+      "status": "proposal",
+      "buggy_rtl": "module TopModule(\n\tinput clk,\n\tinput rst_n,\n\tinput data,\n\toutput reg match,\n\toutput reg not_match\n\t);\n\n\nreg [3:0] pstate,nstate;\n\nparameter idle=4'd0,\n\t\t  s1=4'd1,\n          s2=4'd2,\n          s3=4'd3,\n          s4=4'd4,\n          s5=4'd5,\n          s6=4'd6,\n\t\t  sf1=4'd7,\n          sf2=4'd8,\n          sf3=4'd9,\n          sf4=4'd10,\n          sf5=4'd11,\n          sf6=4'd12;\n\nalways @(posedge clk or negedge rst_n)\nbegin\n    if(!rst_n)\n        pstate<=idle;\n    else\n        pstate<=nstate;\nend\n\nalways @(pstate or data)\nbegin\n    case(pstate)\n        idle:\n            if(data==0)\n                nstate=s1;\t\t\t//First bit matched\n            else\n                nstate=sf1;\n        s1:\n            nstate=data?s2:sf2;\n        s2:\n            nstate=data?s3:sf3;\n        s3:\n            nstate=data?s4:s3;\n        s4:\n            nstate=data?sf5:s5;\n        s5:\n            nstate=data?sf6:s6;\n        s6:\n            nstate=data?sf1:s1;\n        sf1:\n            nstate=sf2;\n        sf2:\n            nstate=sf3;\n        sf3:\n            nstate=sf4;\n        sf4:\n            nstate=sf5;\n        sf5:\n            nstate=sf6;\n        sf6:\n\t\t\tnstate=data?sf1:s1;\n        default:\n            nstate=idle;\n        endcase\nend\n\nalways @(pstate or data or rst_n)\nbegin\n    if(!rst_n==1) \n\t\tbegin\n\t\t\tmatch=1'b0;\n\t\t\tnot_match = 1'b0;\n\t\tend\n    else if(pstate==s6)\n\t\tbegin\n\t\t\tmatch=1'b1;\n\t\t\tnot_match = 1'b0;\n\t\tend\n\telse if(pstate==sf6)\n\t\tbegin\n\t\t\tmatch=1'b0;\n\t\t\tnot_match = 1'b1;\n\t\tend\n    else\n\t\tbegin\n\t\t\tmatch=1'b0;\n\t\t\tnot_match = 1'b0;\n\t\tend\nend\n\nendmodule",
+      "buggy_rtl_hash": "sha256:b9e83448c096341b0d09c21a992727878fb42906dcb93f655f14fdd96865292d",
+      "edit_budget": {
+        "metric": "sequence_matcher_token_edits_v1",
+        "tokenizer": "verilog_source_tokens_v2_macros",
+        "max_changed_fraction": 0.4,
+        "all_code": {
+          "original_tokens": 320,
+          "candidate_tokens": 320,
+          "changed_tokens": 1,
+          "allowed_tokens": 128,
+          "changed_fraction": 0.003125,
+          "within_limit": true
+        },
+        "body": {
+          "original_tokens": 298,
+          "candidate_tokens": 298,
+          "changed_tokens": 1,
+          "allowed_tokens": 119,
+          "changed_fraction": 0.003355704697986577,
+          "within_limit": true
+        }
+      },
+      "diff": "--- clean.sv\n+++ buggy.sv\n@@ -44,7 +44,7 @@\n         s2:\n             nstate=data?s3:sf3;\n         s3:\n-            nstate=data?s4:sf4;\n+            nstate=data?s4:s3;\n         s4:\n             nstate=data?sf5:s5;\n         s5:\n",
+      "claims": {
+        "violated_requirement": "When the first three bits are 011 (correct) but the fourth bit is 0 (incorrect for sequence), the state machine incorrectly stays in s3 rather than transitioning to sf4, causing incorrect not_match output for sequences starting with 0110",
+        "spec_basis": "The module must detect the sequence 011100 from the input signal data. Any deviation from the sequence should trigger transition to the failure path."
+      },
+      "mutation_edits": [
+        {
+          "find": "        s3:\n            nstate=data?s4:sf4;",
+          "replace": "        s3:\n            nstate=data?s4:s3;"
+        }
+      ],
+      "syntax_corrections": [],
+      "original_mutation_edits": [
+        {
+          "find": "        s3:\n            nstate=data?s4:sf4;",
+          "replace": "        s3:\n            nstate=data?s4:s3;"
+        }
+      ]
+    },
+    {
+      "status": "proposal",
+      "buggy_rtl": "module TopModule(\n\tinput clk,\n\tinput rst_n,\n\tinput data,\n\toutput reg match,\n\toutput reg not_match\n\t);\n\n\nreg [3:0] pstate,nstate;\n\nparameter idle=4'd0,\n\t\t  s1=4'd1,\n          s2=4'd2,\n          s3=4'd3,\n          s4=4'd4,\n          s5=4'd5,\n          s6=4'd6,\n\t\t  sf1=4'd7,\n          sf2=4'd8,\n          sf3=4'd9,\n          sf4=4'd10,\n          sf5=4'd11,\n          sf6=4'd12;\n\nalways @(posedge clk or negedge rst_n)\nbegin\n    if(!rst_n)\n        pstate<=idle;\n    else\n        pstate<=nstate;\nend\n\nalways @(pstate or data)\nbegin\n    case(pstate)\n        idle:\n            if(data==0)\n                nstate=s1;\t\t\t//First bit matched\n            else\n                nstate=sf1;\n        s1:\n            nstate=data?s2:sf2;\n        s2:\n            nstate=data?s3:sf3;\n        s3:\n            nstate=data?s4:sf4;\n        s4:\n            nstate=data?sf5:s5;\n        s5:\n            nstate=data?s6:sf6;\n        s6:\n            nstate=data?sf1:s1;\n        sf1:\n            nstate=sf2;\n        sf2:\n            nstate=sf3;\n        sf3:\n            nstate=sf4;\n        sf4:\n            nstate=sf5;\n        sf5:\n            nstate=sf6;\n        sf6:\n\t\t\tnstate=data?sf1:s1;\n        default:\n            nstate=idle;\n        endcase\nend\n\nalways @(pstate or data or rst_n)\nbegin\n    if(!rst_n==1) \n\t\tbegin\n\t\t\tmatch=1'b0;\n\t\t\tnot_match = 1'b0;\n\t\tend\n    else if(pstate==s6)\n\t\tbegin\n\t\t\tmatch=1'b1;\n\t\t\tnot_match = 1'b0;\n\t\tend\n\telse if(pstate==sf6)\n\t\tbegin\n\t\t\tmatch=1'b0;\n\t\t\tnot_match = 1'b1;\n\t\tend\n    else\n\t\tbegin\n\t\t\tmatch=1'b0;\n\t\t\tnot_match = 1'b0;\n\t\tend\nend\n\nendmodule",
+      "buggy_rtl_hash": "sha256:e1359be4b673d394840ca817b0bf60f31cc19ced8ed64c6b4b1567b490f39ad4",
+      "edit_budget": {
+        "metric": "sequence_matcher_token_edits_v1",
+        "tokenizer": "verilog_source_tokens_v2_macros",
+        "max_changed_fraction": 0.4,
+        "all_code": {
+          "original_tokens": 320,
+          "candidate_tokens": 320,
+          "changed_tokens": 4,
+          "allowed_tokens": 128,
+          "changed_fraction": 0.0125,
+          "within_limit": true
+        },
+        "body": {
+          "original_tokens": 298,
+          "candidate_tokens": 298,
+          "changed_tokens": 4,
+          "allowed_tokens": 119,
+          "changed_fraction": 0.013422818791946308,
+          "within_limit": true
+        }
+      },
+      "diff": "--- clean.sv\n+++ buggy.sv\n@@ -48,7 +48,7 @@\n         s4:\n             nstate=data?sf5:s5;\n         s5:\n-            nstate=data?sf6:s6;\n+            nstate=data?s6:sf6;\n         s6:\n             nstate=data?sf1:s1;\n         sf1:\n",
+      "claims": {
+        "violated_requirement": "When the first five bits are 01110 (correct) and the sixth bit is 1 (incorrect for sequence), the state machine incorrectly transitions to s6 (success path) rather than sf6 (failure path), causing incorrect match output for sequences ending with 1",
+        "spec_basis": "The module must detect the sequence 011100 from the input signal data. The final bit must be 0 for a successful match."
+      },
+      "mutation_edits": [
+        {
+          "find": "        s5:\n            nstate=data?sf6:s6;",
+          "replace": "        s5:\n            nstate=data?s6:sf6;"
+        }
+      ],
+      "syntax_corrections": [],
+      "original_mutation_edits": [
+        {
+          "find": "        s5:\n            nstate=data?sf6:s6;",
+          "replace": "        s5:\n            nstate=data?s6:sf6;"
+        }
+      ]
+    }
+  ]
+}

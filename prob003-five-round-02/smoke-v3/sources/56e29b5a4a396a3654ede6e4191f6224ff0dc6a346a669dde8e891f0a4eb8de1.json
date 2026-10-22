@@ -1,0 +1,108 @@
+{
+  "source": {
+    "run_id": "smoke-v3",
+    "round": 2,
+    "slot_id": "r2_s0",
+    "task_hash": "sha256:ce318e4bbdbef66beff1703b2657d4e98b656e893a054c482ec3297033d3009d",
+    "carrier_id": "chipbench_prob003_group_boundary_v1",
+    "mutant_hash": "sha256:3ae8e3f05a033de562c67cfbded2cdf72c0f94fc71e0ea21912354b3e7ccb72f",
+    "candidate_hash": "sha256:5db25cf23be68f8598a6c08838954a6a7392acac467c3238c9c6a73c2115613c",
+    "encounter_hash": "sha256:56e29b5a4a396a3654ede6e4191f6224ff0dc6a346a669dde8e891f0a4eb8de1",
+    "archive_hash": "sha256:8893a27e1b7cb0e40bbcc0a9c801431d0daeecbaef938317566a15e3b1c5ed1b",
+    "public_replay_hash": "sha256:1d31562dc28d5a0549e1cddb6e0fbb04671d27ac7cdf4cdb88cdbd0a6805aa6f"
+  },
+  "encounter": {
+    "encounter": 0,
+    "seed": 1299457421909720,
+    "result": {
+      "task_id": "chipbench_prob003_group_boundary_v1__3ae8e3f05a033de5",
+      "route": "direct",
+      "rtl_tokens": 543,
+      "closure": [
+        "rtl/sequence.sv",
+        "harness:W_bug_tb.sv",
+        "harness:W_preserve_tb.sv"
+      ],
+      "outcome": "fixed",
+      "attempts": [
+        {
+          "attempt": 0,
+          "route": "direct",
+          "repair_tokens": {
+            "input": 100,
+            "output": 40,
+            "counted_request": 3306,
+            "model_seconds": 1.03
+          },
+          "edit": "scripted fixture only; not model performance",
+          "candidate_hash": "sha256:5db25cf23be68f8598a6c08838954a6a7392acac467c3238c9c6a73c2115613c",
+          "tier": "visible_pass",
+          "stage": "simulation",
+          "build_seconds": 0.02,
+          "sim_seconds": 0.02,
+          "changed_files": [
+            "rtl/sequence.sv"
+          ]
+        }
+      ],
+      "calls": 1,
+      "final_candidate_hash": "sha256:5db25cf23be68f8598a6c08838954a6a7392acac467c3238c9c6a73c2115613c",
+      "inputs_read": [
+        "public/task.json",
+        "public/visible/build.json",
+        "public/visible/W_bug_tb.sv",
+        "public/visible/W_preserve_tb.sv",
+        "public/spec.txt"
+      ],
+      "experience": {
+        "snapshot_id": "B_1",
+        "snapshot_hash": "sha256:9210ee48024f89020b5a4a67b9b17b1ce4ca755115a872500330fd9afe29ddd4",
+        "state_hash": "sha256:fee3aec6be690c73a8a5c5950053700ac7ad0b8948cd47cb2cc8c5dbe56586cb",
+        "payload_hash": "sha256:f9d1021c0f2dc3b9344508a13a0052e8f0bedf958e8a140c08b949052de183a6",
+        "delivery_hash": "sha256:b808dabb2abbe37db0c01b843e14df93ae1809433337eb5921503193cc3b784d",
+        "delivered": true
+      }
+    }
+  },
+  "archive_path": "/data2/huangyc/R3E-aic-ic-2026-latest/prob003-five-round-02/smoke-v3/rounds/2/r2_s0/online/blue/archive/chipbench_prob003_group_boundary_v1__3ae8e3f05a033de5__5db25cf23be68f85.json",
+  "task_dir": "/data2/huangyc/R3E-aic-ic-2026-latest/prob003-five-round-02/smoke-v3/rounds/2/r2_s0/admission/blue_task",
+  "replay": {
+    "tier": "visible_pass",
+    "stage": "simulation",
+    "evidence": {
+      "suites": {
+        "W_bug": {
+          "result": "visible_pass",
+          "returncode": 0,
+          "pass_marker_found": true,
+          "fail_marker_found": false,
+          "log": "TESTBENCH PASS W_bug groups=256 cycles=1536"
+        },
+        "W_preserve": {
+          "result": "visible_pass",
+          "returncode": 0,
+          "pass_marker_found": true,
+          "fail_marker_found": false,
+          "log": "TESTBENCH PASS W_preserve reset exclusivity stability"
+        }
+      }
+    },
+    "build_seconds": 0.031040579080581665,
+    "sim_seconds": 0.02271439228206873,
+    "closure": [
+      "rtl/sequence.sv",
+      "harness:W_bug_tb.sv",
+      "harness:W_preserve_tb.sv"
+    ]
+  },
+  "public_rows": {
+    "W_bug": "visible_pass",
+    "W_preserve": "visible_pass"
+  },
+  "mutation_edits": [
+    {
+      "find": "        s6:\n            nstate=data?sf1:s1;",
+      "replace": "        s6:\n            nstate=data?idle:s1;"
+    }
+  ]
+}

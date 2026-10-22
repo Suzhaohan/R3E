@@ -1,0 +1,60 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "        s4:\n            nstate=data?sf5:s5;",
+            "replace": "        s4:\n            nstate=data?s5:sf5;"
+          }
+        ],
+        "violated_requirement": "When in state s4 with data=0, the module should transition to s5 to continue matching the sequence '011100'. The mutation causes it to incorrectly transition to sf5, breaking the sequence detection.",
+        "spec_basis": "The module must detect the sequence '011100' from the input signal 'data' using state transitions."
+      },
+      {
+        "edits": [
+          {
+            "find": "        s5:\n            nstate=data?sf6:s6;",
+            "replace": "        s5:\n            nstate=data?s6:sf6;"
+          }
+        ],
+        "violated_requirement": "When in state s5 with data=0, the module should transition to s6 to continue matching the sequence '011100'. The mutation causes it to incorrectly transition to sf6, breaking the sequence detection.",
+        "spec_basis": "The module must detect the sequence '011100' from the input signal 'data' using state transitions."
+      },
+      {
+        "edits": [
+          {
+            "find": "        sf1:\n            nstate=sf2;",
+            "replace": "        sf1:\n            nstate=sf1;"
+          }
+        ],
+        "violated_requirement": "When in failure state sf1, the module should progress to sf2 to continue the failure path. The mutation causes it to stay in sf1, potentially breaking the failure detection logic.",
+        "spec_basis": "The module must properly handle non-matching sequences by progressing through failure states."
+      },
+      {
+        "edits": [
+          {
+            "find": "        sf2:\n            nstate=sf3;",
+            "replace": "        sf2:\n            nstate=sf2;"
+          }
+        ],
+        "violated_requirement": "When in failure state sf2, the module should progress to sf3 to continue the failure path. The mutation causes it to stay in sf2, potentially breaking the failure detection logic.",
+        "spec_basis": "The module must properly handle non-matching sequences by progressing through failure states."
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:8e08d1c4fb64ed21c3b9e2bca40bf3b56e8034da4066bfb5eddfd8b874bcfba0",
+  "input_tokens": 11286,
+  "output_tokens": 526,
+  "request_hash": "sha256:63dc132a481a166d99681e4bbca1f9560bf389603f6e4f236bb348855a77f66f",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 11286,
+    "output_tokens": 526
+  },
+  "model_seconds": 21.971265158616006
+}

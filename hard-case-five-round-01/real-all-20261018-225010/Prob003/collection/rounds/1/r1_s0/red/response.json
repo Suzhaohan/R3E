@@ -1,0 +1,60 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "        s1:\n            nstate=data?s2:sf2;",
+            "replace": "        s1:\n            nstate=data?sf2:s2;"
+          }
+        ],
+        "violated_requirement": "When the first bit of a group is 0 (matching the sequence start), a subsequent 1 in the second position should transition to s2 but instead transitions to sf2 due to swapped ternary targets",
+        "spec_basis": "The module must detect the sequence `011100` from the input signal `data` using state transitions"
+      },
+      {
+        "edits": [
+          {
+            "find": "        s2:\n            nstate=data?s3:sf3;",
+            "replace": "        s2:\n            nstate=data?sf3:s3;"
+          }
+        ],
+        "violated_requirement": "After matching the first two bits (01), a third bit of 1 should transition to s3 but instead transitions to sf3 due to swapped ternary targets",
+        "spec_basis": "The module must detect the sequence `011100` from the input signal `data` using state transitions"
+      },
+      {
+        "edits": [
+          {
+            "find": "        s3:\n            nstate=data?s4:sf4;",
+            "replace": "        s3:\n            nstate=data?sf4:s4;"
+          }
+        ],
+        "violated_requirement": "After matching the first three bits (011), a fourth bit of 1 should transition to s4 but instead transitions to sf4 due to swapped ternary targets",
+        "spec_basis": "The module must detect the sequence `011100` from the input signal `data` using state transitions"
+      },
+      {
+        "edits": [
+          {
+            "find": "        s4:\n            nstate=data?sf5:s5;",
+            "replace": "        s4:\n            nstate=data?s5:sf5;"
+          }
+        ],
+        "violated_requirement": "After matching the first four bits (0111), a fifth bit of 0 should transition to s5 but instead transitions to sf5 due to swapped ternary targets",
+        "spec_basis": "The module must detect the sequence `011100` from the input signal `data` using state transitions"
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:782d3326cb7b2227aa8f53c04914655afdb5e64a1ee14ad70c76e6c5ebb175ce",
+  "input_tokens": 5447,
+  "output_tokens": 438,
+  "request_hash": "sha256:055ee41ddbcafd2960977122ec7840e7059acc9316a21d77995387f441bc1714",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 5447,
+    "output_tokens": 438
+  },
+  "model_seconds": 18.64845380280167
+}

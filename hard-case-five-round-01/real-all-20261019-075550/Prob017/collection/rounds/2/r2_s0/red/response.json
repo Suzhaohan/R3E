@@ -1,0 +1,40 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "clk_cnt<=((div_e>>2)+1)",
+            "replace": "clk_cnt<=((div_e>>1)+1)"
+          }
+        ],
+        "violated_requirement": "Output clock duty cycle is incorrect in even period mode due to incorrect threshold calculation",
+        "spec_basis": "Output becomes 1 iff count <= floor((mode ? div_o : div_e)/4) + 1"
+      },
+      {
+        "edits": [
+          {
+            "find": "clk_cnt<=((div_o>>2)+1)",
+            "replace": "clk_cnt<=((div_o>>1)+1)"
+          }
+        ],
+        "violated_requirement": "Output clock duty cycle is incorrect in odd period mode due to incorrect threshold calculation",
+        "spec_basis": "Output becomes 1 iff count <= floor((mode ? div_o : div_e)/4) + 1"
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:d5cd8466418865d6e8e6d38db0f290c7b04d2e50e9a61475bb41a74f637ec9b3",
+  "input_tokens": 6141,
+  "output_tokens": 192,
+  "request_hash": "sha256:cdb3811820402a8098b5f743d8a856249af900289f8cfb078d0f50026c81338a",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 6141,
+    "output_tokens": 192
+  },
+  "model_seconds": 6.748446989804506
+}

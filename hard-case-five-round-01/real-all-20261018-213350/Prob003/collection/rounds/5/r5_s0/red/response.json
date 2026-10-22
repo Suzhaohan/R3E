@@ -1,0 +1,30 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "        sf1:\n            nstate=sf2;",
+            "replace": "        sf1:\n            nstate=sf1;"
+          }
+        ],
+        "violated_requirement": "When in state sf1, the next state should transition to sf2, but the mutation causes it to stay in sf1, preventing proper sequence detection for non-matching sequences.",
+        "spec_basis": "The module must detect the sequence `011100` and properly handle non-matching sequences by transitioning through failure states sf1 to sf6."
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:5d51ddadfb7a1532e34ff2444a429f0060bec36e4ffe110c09e42d7dfc63aa74",
+  "input_tokens": 9382,
+  "output_tokens": 118,
+  "request_hash": "sha256:2b5a773d561d7570e0b3dab7a323021e9780aef567e2f27305fb32307afd7497",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 9382,
+    "output_tokens": 118
+  },
+  "model_seconds": 7.148259139619768
+}

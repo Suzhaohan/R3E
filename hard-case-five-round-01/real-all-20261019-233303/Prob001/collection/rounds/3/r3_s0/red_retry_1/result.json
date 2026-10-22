@@ -1,0 +1,51 @@
+{
+  "status": "candidate_batch",
+  "candidates": [
+    {
+      "status": "rejected",
+      "buggy_rtl": "module TopModule(\n\tinput clk,\n\tinput rst_n,\n\tinput a,\n\toutput reg match\n\t);\n\n\treg [7:0] a_tem;\n\t\n\talways @(posedge clk or negedge rst_n)\n\t\tif (!rst_n)\n\t\t\tbegin \n\t\t\t\tmatch <= 1'b0;\n\t\t\tend\n\t\telse if (a_tem == 8'b0111_0001)\n\t\t\tbegin\n\t\t\t\tmatch <= 1'b1;\n\t\t\tend\n\t\telse \n\t\t\tbegin\t\n\t\t\t\tmatch <= 1'b0;\n\t\t\tend\n\t\t\n\talways @(posedge clk or negedge rst_n)\n\t\tif (!rst_n)\n\t\t\tbegin \n\t\t\t\ta_tem <= 8'b0;\n\t\t\tend\n\t\telse \n\t\t\tbegin\n\t\t\t\ta_tem <= {a_tem[5:0],a,a_tem[7]};\n\t\t\tend\nendmodule",
+      "buggy_rtl_hash": "sha256:7f20f68b4eb764a98e7230d4da878578c984e71feb45ecc951f9eee77412f67d",
+      "edit_budget": {
+        "metric": "sequence_matcher_token_edits_v1",
+        "tokenizer": "verilog_source_tokens_v2_macros",
+        "max_changed_fraction": 0.4,
+        "all_code": {
+          "original_tokens": 102,
+          "candidate_tokens": 107,
+          "changed_tokens": 6,
+          "allowed_tokens": 40,
+          "changed_fraction": 0.058823529411764705,
+          "within_limit": true
+        },
+        "body": {
+          "original_tokens": 84,
+          "candidate_tokens": 89,
+          "changed_tokens": 6,
+          "allowed_tokens": 33,
+          "changed_fraction": 0.07142857142857142,
+          "within_limit": true
+        }
+      },
+      "diff": "--- clean.sv\n+++ buggy.sv\n@@ -28,6 +28,6 @@\n \t\t\tend\n \t\telse \n \t\t\tbegin\n-\t\t\t\ta_tem <= {a_tem[6:0],a};\n+\t\t\t\ta_tem <= {a_tem[5:0],a,a_tem[7]};\n \t\t\tend\n endmodule",
+      "claims": {
+        "violated_requirement": "The shift register should retain the 8 most recent bits of 'a', but instead it incorrectly rotates the bits by inserting the MSB back into the LSB position. This causes the pattern match to fail when the correct sequence appears but is shifted incorrectly.",
+        "spec_basis": "The specification requires the shift register to retain the 8 most recent bits of 'a' by shifting in the new bit and discarding the oldest bit."
+      },
+      "mutation_edits": [
+        {
+          "find": "a_tem <= {a_tem[6:0],a};",
+          "replace": "a_tem <= {a_tem[5:0],a,a_tem[7]};"
+        }
+      ],
+      "syntax_corrections": [],
+      "original_mutation_edits": [
+        {
+          "find": "a_tem <= {a_tem[6:0],a};",
+          "replace": "a_tem <= {a_tem[5:0],a,a_tem[7]};"
+        }
+      ],
+      "reason": "mutation_grammar_violation",
+      "grammar_error": "Syntax-token insertion/deletion is forbidden. Replace at most two existing operands/operators, or swap one existing two-operand concatenation. Do not append an if guard."
+    }
+  ]
+}

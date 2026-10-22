@@ -1,0 +1,26 @@
+{
+  "result": {
+    "edits": [
+      {
+        "find": "        s6:\n            nstate=data?sf1:s1;\n",
+        "replace": "        s6:\n            nstate=data?s1:sf1;\n"
+      }
+    ],
+    "violated_requirement": "After a matched six-bit group, the first bit of the next group must start the next group correctly; the mutation swaps the next-state choice from s6, so a following 011100 group is classified as not_match.",
+    "spec_basis": "Spec: sequence check begins with every sixth bit; match for 011100, otherwise not_match."
+  },
+  "raw_response_hash": "sha256:bd7015b5e0c11354e6e043cc5ad81f309482a736832dd1b673b508478926935f",
+  "input_tokens": 3753,
+  "output_tokens": 8913,
+  "request_hash": "sha256:5d97ebfb07dd936b5f1684356647577ab908fd93383312fce2602a4d5400719c",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 3753,
+    "output_tokens": 8913
+  },
+  "model_seconds": 51.81488475948572
+}

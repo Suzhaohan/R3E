@@ -1,0 +1,172 @@
+{
+  "source": {
+    "run_id": "collection",
+    "round": 4,
+    "slot_id": "r4_s0",
+    "task_hash": "sha256:ddeeea112272a43b6134d851c7fb081211f4f2e56be99b75dade6d2d3aacb226",
+    "carrier_id": "chipbench_prob003_group_boundary_v1",
+    "mutant_hash": "sha256:4e8f44b5a11ebf8910d9afc92db41f2fa01df5370309799b731489a267926fcf",
+    "candidate_hash": "sha256:4c997aaf4d5b34082ff016248b4ac8f62f7174824ba290ce77055fd0339c6f12",
+    "encounter_hash": "sha256:6c10f1fcb040e16654ea9d07b5811d0c4427290908c341fc08ab21692d4df615",
+    "archive_hash": "sha256:73bffc33821592240ba11ddc039c47a9316b5fc611d178c3e357eaa48852cbff",
+    "public_replay_hash": "sha256:7bb0f7b73125cc585d42c4a2d6e3660a597390b62a5f1de0d381df28203d1a4c"
+  },
+  "encounter": {
+    "encounter": 0,
+    "seed": 736202182107710,
+    "result": {
+      "task_id": "chipbench_prob003_group_boundary_v1__4e8f44b5a11ebf89",
+      "route": "direct",
+      "rtl_tokens": 544,
+      "closure": [
+        "rtl/sequence.sv",
+        "harness:W_bug_tb.sv",
+        "harness:W_preserve_tb.sv"
+      ],
+      "outcome": "not_fixed",
+      "attempts": [
+        {
+          "attempt": 0,
+          "route": "direct",
+          "submissions": [
+            {
+              "kind": "repair",
+              "tokens": {
+                "input": 3752,
+                "output": 727,
+                "counted_request": 3800,
+                "model_seconds": 30.36
+              },
+              "format_valid": true,
+              "format_error": null
+            }
+          ],
+          "repair_tokens": {
+            "input": 3752,
+            "output": 727,
+            "counted_request": 3800,
+            "model_seconds": 30.36
+          },
+          "edit": "Fixed the transition from sf6 state to properly handle the next group's first bit. Changed 'nstate=data?sf1:s1' to 'nstate=data?s1:sf1' to correctly start new group based on input data after completing a mismatched group.",
+          "candidate_hash": "sha256:c53906f92a218535abbbf19d23bf1df99dbae39378a506c8ca3a69e108f93739",
+          "tier": "visible_fail",
+          "stage": "simulation",
+          "build_seconds": 0.02,
+          "sim_seconds": 0.01,
+          "changed_files": [
+            "rtl/sequence.sv"
+          ]
+        },
+        {
+          "attempt": 1,
+          "route": "direct",
+          "submissions": [
+            {
+              "kind": "public_feedback_correction",
+              "tokens": {
+                "input": 4371,
+                "output": 729,
+                "counted_request": 4419,
+                "model_seconds": 28.48
+              },
+              "format_valid": true,
+              "format_error": null
+            }
+          ],
+          "repair_tokens": {
+            "input": 4371,
+            "output": 729,
+            "counted_request": 4419,
+            "model_seconds": 28.48
+          },
+          "edit": "Removed 'data' from the sensitivity list of the output logic always block since outputs only depend on current state and reset, not directly on input data. This matches the specification that outputs should remain stable between clock edges and only change based on state transitions.",
+          "candidate_hash": "sha256:4c997aaf4d5b34082ff016248b4ac8f62f7174824ba290ce77055fd0339c6f12",
+          "tier": "visible_fail",
+          "stage": "simulation",
+          "build_seconds": 0.02,
+          "sim_seconds": 0.01,
+          "changed_files": [
+            "rtl/sequence.sv"
+          ]
+        }
+      ],
+      "calls": 2,
+      "final_candidate_hash": "sha256:4c997aaf4d5b34082ff016248b4ac8f62f7174824ba290ce77055fd0339c6f12",
+      "inputs_read": [
+        "public/task.json",
+        "public/visible/build.json",
+        "public/visible/W_bug_tb.sv",
+        "public/visible/W_preserve_tb.sv",
+        "public/spec.txt"
+      ],
+      "experience": {
+        "snapshot_id": "B_3",
+        "snapshot_hash": "sha256:ed7aa29a3636cd510c3992b6de072a1dbb2f32c0ac2c774f6942e6355b3fd76b",
+        "state_hash": "sha256:46e5e843b606dc1f448d3c839de79ad341fa07a2772906fec44cb2492aa1dffc",
+        "payload_hash": "sha256:3092f0d7fc08feac058171dbed616bb7c60daa43691d7b6d28875d3225d9b061",
+        "delivery_hash": "sha256:e1f8de8457f6ce218f0b3d3f64f38571513c571c139ea7df11786156d33c58ec",
+        "delivered": false
+      }
+    }
+  },
+  "archive_path": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/real-all-20261018-213350/Prob003/collection/rounds/4/r4_s0/online/blue/archive/chipbench_prob003_group_boundary_v1__4e8f44b5a11ebf89__4c997aaf4d5b3408.json",
+  "task_dir": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/real-all-20261018-213350/Prob003/collection/rounds/4/r4_s0/admission/blue_task",
+  "replay": {
+    "tier": "visible_fail",
+    "stage": "simulation",
+    "evidence": {
+      "suites": {
+        "W_bug": {
+          "result": "visible_fail",
+          "returncode": 0,
+          "pass_marker_found": false,
+          "fail_marker_found": true,
+          "log": "CHECK_FAIL W_bug cycle=6 group=011100 bit=0 match=0 not_match=1",
+          "public_state_trace": {
+            "version": "public_group_trace_v1",
+            "status": "observed",
+            "source": "same public test and submitted RTL only",
+            "scoring_unchanged": true,
+            "failure_reproduced": true,
+            "records": [
+              "PUBLIC_FSM_TRACE cycle=1 position=1 sampled_prefix=000000 pre_state=0 pre_next=1 post_state=1 actual=00 expected=00",
+              "PUBLIC_FSM_TRACE cycle=2 position=2 sampled_prefix=000001 pre_state=1 pre_next=2 post_state=2 actual=00 expected=00",
+              "PUBLIC_FSM_TRACE cycle=3 position=3 sampled_prefix=000011 pre_state=2 pre_next=3 post_state=3 actual=00 expected=00",
+              "PUBLIC_FSM_TRACE cycle=4 position=4 sampled_prefix=000111 pre_state=3 pre_next=4 post_state=4 actual=00 expected=00",
+              "PUBLIC_FSM_TRACE cycle=5 position=5 sampled_prefix=001110 pre_state=4 pre_next=11 post_state=11 actual=00 expected=00",
+              "PUBLIC_FSM_TRACE cycle=6 position=6 sampled_prefix=011100 pre_state=11 pre_next=12 post_state=12 actual=01 expected=10"
+            ],
+            "failure": [
+              "CHECK_FAIL W_bug cycle=6 group=011100 bit=0 match=0 not_match=1"
+            ],
+            "limitation": "Numeric states describe this submitted candidate; expected outputs derive only from the public group contract."
+          }
+        },
+        "W_preserve": {
+          "result": "visible_pass",
+          "returncode": 0,
+          "pass_marker_found": true,
+          "fail_marker_found": false,
+          "log": "TESTBENCH PASS W_preserve reset exclusivity stability"
+        }
+      }
+    },
+    "build_seconds": 0.022075025364756584,
+    "sim_seconds": 0.013386782258749008,
+    "closure": [
+      "rtl/sequence.sv",
+      "harness:W_bug_tb.sv",
+      "harness:W_preserve_tb.sv"
+    ]
+  },
+  "public_rows": {
+    "W_bug": "visible_fail",
+    "W_preserve": "visible_pass"
+  },
+  "mutation_edits": [
+    {
+      "find": "        s4:\n            nstate=data?sf5:s5;",
+      "replace": "        s4:\n            nstate=data?s5:sf5;"
+    }
+  ]
+}

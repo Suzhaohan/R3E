@@ -1,0 +1,100 @@
+{
+  "version": "red_progress_preservation_v4",
+  "status": "admitted",
+  "candidate_hash": "sha256:70aa352f6b49f8780a0204ae9314a0b6d5c21251b473acb765be35e52ee1365c",
+  "fingerprint": "sha256:0b446a5fd16c78477a9b172cc83195acc8432bc88808b49bc6d68825f4ccefa2",
+  "edit_budget": {
+    "metric": "sequence_matcher_token_edits_v1",
+    "tokenizer": "verilog_source_tokens_v2_macros",
+    "max_changed_fraction": 0.4,
+    "all_code": {
+      "original_tokens": 102,
+      "candidate_tokens": 102,
+      "changed_tokens": 2,
+      "allowed_tokens": 40,
+      "changed_fraction": 0.0196078431372549,
+      "within_limit": true
+    },
+    "body": {
+      "original_tokens": 84,
+      "candidate_tokens": 84,
+      "changed_tokens": 2,
+      "allowed_tokens": 33,
+      "changed_fraction": 0.023809523809523808,
+      "within_limit": true
+    }
+  },
+  "freeze_hash": "sha256:63f81634b85acd47ab8e17e7ec06bbe75e01c9114093cc87c12416a2a0bf5a21",
+  "language_review": {
+    "comments_unchanged": true,
+    "clean_comments_hash": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "candidate_comments_hash": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "new_identifiers": [],
+    "identifier_review": "informational; not an admission veto"
+  },
+  "baseline": {
+    "suites": {
+      "W_bug": {
+        "build_seconds": 0.01,
+        "tier": "pass",
+        "runs": [
+          "pass",
+          "pass"
+        ],
+        "log_hash": "sha256:11cf1ec40dc20598fa60d676326f28ccd8e0fb7601db191d3e21764e6540a7ff",
+        "deterministic": true,
+        "log": "TESTBENCH PASS sequence\n"
+      },
+      "W_preserve": {
+        "build_seconds": 0.01,
+        "tier": "pass",
+        "runs": [
+          "pass",
+          "pass"
+        ],
+        "log_hash": "sha256:8f7b0d3e220050a01430389374487f2c739abe116929797e50e6f766ebba895a",
+        "deterministic": true,
+        "log": "TESTBENCH PASS preserve\n"
+      }
+    },
+    "structural": {
+      "status": "ok",
+      "returncode": 0,
+      "log": "\n-- Running command `read_verilog -sv \"rtl/sequence.sv\"; hierarchy -check -top TopModule ; proc; flatten; check -assert' --\n\n1. Executing Verilog-2005 frontend: rtl/sequence.sv\nParsing SystemVerilog input from `rtl/sequence.sv' to AST representation.\nGenerating RTLIL representation for module `\\TopModule'.\nSuccessfully finished Verilog frontend.\n\n2. Executing HIERARCHY pass (managing design hierarchy).\n\n2.1. Analyzing design hierarchy..\nTop module:  \\TopModule\n\n2.2. Analyzing design hierarchy..\nTop module:  \\TopModule\nRemoved 0 unused modules.\n\n3. Executing PROC pass (convert processes to netlists).\n\n3.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).\nCleaned up 0 empty switches.\n\n3.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).\nMarked 1 switch rules as full_case in process $proc$rtl/sequence.sv:24$4 in module TopModule.\nMarked 2 switch rules as full_case in process $proc$rtl/sequence.sv:10$1 in module TopModule.\nRemoved a total of 0 dead cases.\n\n3.3. Executing PROC_INIT pass (extract init attributes).\n\n3.4. Executing PROC_ARST pass (detect async resets in processes).\nFound async reset \\rst_n in `\\TopModule.$proc$rtl/sequence.sv:24$4'.\nFound async reset \\rst_n in `\\TopModule.$proc$rtl/sequence.sv:10$1'.\n\n3.5. Executing PROC_MUX pass (convert decision trees to multiplexers).\nCreating decoders for process `\\TopModule.$proc$rtl/sequence.sv:24$4'.\n     1/1: $0\\a_tem[7:0]\nCreating decoders for process `\\TopModule.$proc$rtl/sequence.sv:10$1'.\n     1/1: $0\\match[0:0]\n\n3.6. Executing PROC_DLATCH pass (convert process syncs to latches).\n\n3.7. Executing PROC_DFF pass (convert process syncs to FFs).\nCreating register for signal `\\TopModule.\\a_tem' using process `\\TopModule.$proc$rtl/sequence.sv:24$4'.\n  created $adff cell `$procdff$9' with positive edge clock and negative level reset.\nCreating register for signal `\\TopModule.\\match' using process `\\TopModule.$proc$rtl/sequence.sv:10$1'.\n  created $adff cell `$procdff$10' with positive edge clock and negative level reset.\n\n3.8. Executing PROC_CLEAN pass (remove empty switches from decision trees).\nRemoving empty process `TopModule.$proc$rtl/sequence.sv:24$4'.\nFound and cleaned up 1 empty switch in `\\TopModule.$proc$rtl/sequence.sv:10$1'.\nRemoving empty process `TopModule.$proc$rtl/sequence.sv:10$1'.\nCleaned up 1 empty switch.\n\n4. Executing FLATTEN pass (flatten design).\nNo more expansions possible.\n\n5. Executing CHECK pass (checking for obvious problems).\nchecking module TopModule..\nfound and reported 0 problems.\n",
+      "command": "read_verilog -sv \"rtl/sequence.sv\"; hierarchy -check -top TopModule ; proc; flatten; check -assert"
+    }
+  },
+  "suites": {
+    "W_bug": {
+      "build_seconds": 0.01,
+      "tier": "fail",
+      "runs": [
+        "fail",
+        "fail"
+      ],
+      "log_hash": "sha256:30226e929ce1d89b5dbfa818d94b32669461f5b5724e567f714fa16e870a338f",
+      "deterministic": true,
+      "log": "CHECK_FAIL sequence sample=8\n"
+    },
+    "W_preserve": {
+      "build_seconds": 0.01,
+      "tier": "pass",
+      "runs": [
+        "pass",
+        "pass"
+      ],
+      "log_hash": "sha256:8f7b0d3e220050a01430389374487f2c739abe116929797e50e6f766ebba895a",
+      "deterministic": true,
+      "log": "TESTBENCH PASS preserve\n"
+    }
+  },
+  "structural": {
+    "status": "ok",
+    "returncode": 0,
+    "log": "\n-- Running command `read_verilog -sv \"rtl/sequence.sv\"; hierarchy -check -top TopModule ; proc; flatten; check -assert' --\n\n1. Executing Verilog-2005 frontend: rtl/sequence.sv\nParsing SystemVerilog input from `rtl/sequence.sv' to AST representation.\nGenerating RTLIL representation for module `\\TopModule'.\nSuccessfully finished Verilog frontend.\n\n2. Executing HIERARCHY pass (managing design hierarchy).\n\n2.1. Analyzing design hierarchy..\nTop module:  \\TopModule\n\n2.2. Analyzing design hierarchy..\nTop module:  \\TopModule\nRemoved 0 unused modules.\n\n3. Executing PROC pass (convert processes to netlists).\n\n3.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).\nCleaned up 0 empty switches.\n\n3.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).\nMarked 1 switch rules as full_case in process $proc$rtl/sequence.sv:24$4 in module TopModule.\nMarked 2 switch rules as full_case in process $proc$rtl/sequence.sv:10$1 in module TopModule.\nRemoved a total of 0 dead cases.\n\n3.3. Executing PROC_INIT pass (extract init attributes).\n\n3.4. Executing PROC_ARST pass (detect async resets in processes).\nFound async reset \\rst_n in `\\TopModule.$proc$rtl/sequence.sv:24$4'.\nFound async reset \\rst_n in `\\TopModule.$proc$rtl/sequence.sv:10$1'.\n\n3.5. Executing PROC_MUX pass (convert decision trees to multiplexers).\nCreating decoders for process `\\TopModule.$proc$rtl/sequence.sv:24$4'.\n     1/1: $0\\a_tem[7:0]\nCreating decoders for process `\\TopModule.$proc$rtl/sequence.sv:10$1'.\n     1/1: $0\\match[0:0]\n\n3.6. Executing PROC_DLATCH pass (convert process syncs to latches).\n\n3.7. Executing PROC_DFF pass (convert process syncs to FFs).\nCreating register for signal `\\TopModule.\\a_tem' using process `\\TopModule.$proc$rtl/sequence.sv:24$4'.\n  created $adff cell `$procdff$9' with positive edge clock and negative level reset.\nCreating register for signal `\\TopModule.\\match' using process `\\TopModule.$proc$rtl/sequence.sv:10$1'.\n  created $adff cell `$procdff$10' with positive edge clock and negative level reset.\n\n3.8. Executing PROC_CLEAN pass (remove empty switches from decision trees).\nRemoving empty process `TopModule.$proc$rtl/sequence.sv:24$4'.\nFound and cleaned up 1 empty switch in `\\TopModule.$proc$rtl/sequence.sv:10$1'.\nRemoving empty process `TopModule.$proc$rtl/sequence.sv:10$1'.\nCleaned up 1 empty switch.\n\n4. Executing FLATTEN pass (flatten design).\nNo more expansions possible.\n\n5. Executing CHECK pass (checking for obvious problems).\nchecking module TopModule..\nfound and reported 0 problems.\n",
+    "command": "read_verilog -sv \"rtl/sequence.sv\"; hierarchy -check -top TopModule ; proc; flatten; check -assert"
+  },
+  "reason": "public_matrix_and_structure_pass",
+  "blue_task": "blue_task",
+  "tools_seconds": 0.1666621481999755
+}

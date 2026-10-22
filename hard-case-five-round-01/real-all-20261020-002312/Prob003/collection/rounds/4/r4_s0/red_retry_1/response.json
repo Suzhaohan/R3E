@@ -1,0 +1,30 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "        sf5:\n            nstate=sf6;",
+            "replace": "        sf5:\n            nstate=data?s1:sf6;"
+          }
+        ],
+        "violated_requirement": "When in state sf5, the next state should unconditionally transition to sf6, but the mutated version incorrectly checks the data input to determine the transition. This will cause incorrect behavior when processing groups that reach sf5 state.",
+        "spec_basis": "The specification requires that the module processes input in groups of six bits without overlapping or reusing bits between groups. The state transitions should follow a fixed pattern for correct sequence detection."
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:1bdf925c33d195512a4d54d1655fef3f2660fa74b8d426ed23d533003c0af418",
+  "input_tokens": 13530,
+  "output_tokens": 137,
+  "request_hash": "sha256:9cd314a1a219b9ff68cb9c636b70e834470fd5ace0f3c9aa2ace9fd9e9c858ac",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 13530,
+    "output_tokens": 137
+  },
+  "model_seconds": 11.421574527397752
+}

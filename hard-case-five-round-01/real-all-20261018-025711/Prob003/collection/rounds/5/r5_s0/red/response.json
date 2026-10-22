@@ -1,0 +1,60 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "        s4:\n            nstate=data?sf5:s5;",
+            "replace": "        s4:\n            nstate=data?s5:sf5;"
+          }
+        ],
+        "violated_requirement": "Incorrect state transition when processing the fifth bit of the sequence. The mutation swaps the success and failure paths for state s4, causing incorrect classification of the sequence 011100.",
+        "spec_basis": "The module must detect the sequence 011100 from the input signal data. The detection rules specify correct state transitions for each bit position."
+      },
+      {
+        "edits": [
+          {
+            "find": "        s5:\n            nstate=data?sf6:s6;",
+            "replace": "        s5:\n            nstate=data?s6:sf6;"
+          }
+        ],
+        "violated_requirement": "Incorrect state transition when processing the sixth bit of the sequence. The mutation swaps the success and failure paths for state s5, causing incorrect classification of the sequence 011100.",
+        "spec_basis": "The module must detect the sequence 011100 from the input signal data. The detection rules specify correct state transitions for each bit position."
+      },
+      {
+        "edits": [
+          {
+            "find": "        s6:\n            nstate=data?sf1:s1;",
+            "replace": "        s6:\n            nstate=data?s1:sf1;"
+          }
+        ],
+        "violated_requirement": "Incorrect state transition after completing a sequence group. The mutation swaps the next state for state s6, causing incorrect handling of the next group's first bit.",
+        "spec_basis": "The sequence check begins with every sixth bit of input data, meaning the module processes the input in groups of six bits and does not overlap or reuse bits between groups."
+      },
+      {
+        "edits": [
+          {
+            "find": "        sf6:\n\t\t\tnstate=data?sf1:s1;",
+            "replace": "        sf6:\n\t\t\tnstate=data?s1:sf1;"
+          }
+        ],
+        "violated_requirement": "Incorrect state transition after a failed sequence group. The mutation swaps the next state for state sf6, causing incorrect handling of the next group's first bit after a failure.",
+        "spec_basis": "The sequence check begins with every sixth bit of input data, meaning the module processes the input in groups of six bits and does not overlap or reuse bits between groups."
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:66e1bc7c02d72ebeb56cb2f3015c9fc6383e8d49514ab84c55cb101e9f2fe209",
+  "input_tokens": 6854,
+  "output_tokens": 571,
+  "request_hash": "sha256:45dec03fd9243aa6ea590f9d35c73697681f1d005c6a8d366a4a5bc50b5cd75d",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 6854,
+    "output_tokens": 571
+  },
+  "model_seconds": 24.810592968016863
+}

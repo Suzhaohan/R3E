@@ -1,0 +1,32 @@
+[
+ {
+  "item": "e53ed46e89237375",
+  "task": "selected_Mux__exam_defect",
+  "encounter": 0,
+  "category": "public_functional_failure",
+  "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -9,10 +9,11 @@\n    // When that happens, based on value in sel, output is assigned to either a/b/c/d\n    always @ (a or b or c or d or sel) begin\n       case (sel)\n-         2'h00 : out <= a;\n-         2'h01 : out <= b;\n-         2'h10 : out <= c;\n-         2'h11 : out <= d;\n+         2'h00 : out = a;\n+         2'h01 : out = b;\n+         2'h10 : out = c;\n+         2'h11 : out = d;\n+         default : out = a;\n       endcase\n    end\n-endmodule+endmodule\n",
+  "public": {
+   "tier": "visible_fail",
+   "suites": {
+    "W_bug": {
+     "result": "visible_fail",
+     "checker_violation": true,
+     "failures": [
+      "CHECK_FAIL oracle sample=113 got=1000 expected=0001",
+      "CHECK_FAIL oracle sample=114 got=1000 expected=0001",
+      "CHECK_FAIL oracle sample=115 got=1000 expected=0001",
+      "CHECK_FAIL oracle sample=116 got=1000 expected=0001",
+      "CHECK_FAIL oracle sample=117 got=1000 expected=0001",
+      "CHECK_FAIL oracle sample=118 got=1000 expected=0001"
+     ]
+    },
+    "W_preserve": {
+     "result": "visible_pass",
+     "checker_violation": false,
+     "failures": []
+    }
+   }
+  },
+  "evaluator": null
+ }
+]

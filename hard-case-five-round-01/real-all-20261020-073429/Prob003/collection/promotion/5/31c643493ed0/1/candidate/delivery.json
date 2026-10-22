@@ -1,0 +1,42 @@
+{
+  "version": "continuous_blue_delivery_v1",
+  "snapshot_id": "B_5",
+  "snapshot_hash": "sha256:2cd04e0e3229964872cbd20760eb0de6e6dd589d7f4d145dd90e733f37b6ce9e",
+  "state_hash": "sha256:9340caf8f507badc7dfdea4ad43ef9b5a64e0773fe19b1915d78b0b35c443c13",
+  "task_hash": "sha256:31c643493ed0292957ffe9f6ae338005fb62fd1e8244464c47c9ffde1f23c1dd",
+  "retrieval_policy_hash": "sha256:8b114d1dc640c0d8851c3796a1d6ed4e3bc9b65406c7341475b69b3d8568e26f",
+  "payload": {
+    "version": "continuous_blue_experience_v1",
+    "notice": "Prior repair examples passed public tests only; validate their applicability to this task.",
+    "entries": [
+      {
+        "entry_hash": "sha256:0916cf9cf9b181f107f787953706d666610d4ae8fa535ebe7a0c7af0b25cfc57",
+        "content": {
+          "validation": "public_pass_single_sample_hidden_unknown",
+          "specification_excerpt": "I would like you to implement a module named `TopModule` with the following interface. All input and output ports are one bit unless otherwise specified.\n\n### Inputs:\n- `clk`: System clock signal.\n- `rst_n`: Asynchronous reset signal, active low.\n- `data`: Single-bit input signal, representing the data to be checked.\n\n### Outputs:\n- `match`: A signal that outputs `1` when the input signal `data` matches the target sequence `011100`. It remains `0` at all other times.\n- `not_match`: A signal that outputs `1` when the input signal `data` does not match the target sequence `011100`. It remains `0` at all other times.\n\n### Module Description:\nThe module must detect the sequence `011100` from the input signal `data`. Please use the state machine to solve this problem. The detection rules are as follows:\n1. The sequence check begins with every sixth bit of input data, meaning the module processes the input in groups of six bits and does not overlap or reuse bits between groups.\n2. If the first bit of a group does n",
+          "applied_patch": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -60,7 +60,7 @@\n         sf4:\n             nstate=sf5;\n         sf5:\n-            nstate=s6;\n+            nstate=sf6;\n         sf6:\n \t\t\tnstate=data?sf1:s1;\n         default:\n",
+          "public_rows": {
+            "W_bug": "visible_pass",
+            "W_preserve": "visible_pass"
+          },
+          "transfer_summary": {
+            "changed_lines": [
+              "-            nstate=s6;",
+              "+            nstate=sf6;"
+            ],
+            "checks_on_transfer": [],
+            "scope": "Observed public success only; recheck applicability on a new task."
+          }
+        }
+      }
+    ]
+  },
+  "selected_entry_hashes": [
+    "sha256:0916cf9cf9b181f107f787953706d666610d4ae8fa535ebe7a0c7af0b25cfc57"
+  ],
+  "source_record_hashes": [
+    "sha256:218f3c2dce89668f543f9e648fa909a6346ed01bfff4a4e40f1e559280ee58b3"
+  ],
+  "omissions": [],
+  "payload_hash": "sha256:9021a45612c91e8e89b6960dad7f2a58ba0f4246f10d247e583c62d9380a7dde"
+}

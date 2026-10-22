@@ -1,0 +1,153 @@
+{
+  "source": {
+    "run_id": "collection",
+    "round": 1,
+    "slot_id": "r1_s0",
+    "task_hash": "sha256:6777eb89b854c618e7f6104cc209b086c7d7430345d601ffa072d8788eb27957",
+    "carrier_id": "chipbench_Prob023_gray_counter",
+    "mutant_hash": "sha256:2bdf21aaf4e04006752308609c97614a76fe47cec245da684dfc06d26ab67a7d",
+    "candidate_hash": "sha256:32e03c9a50b352b5b506f885126b18199df92a22808e6bf33f113e8c2eabe856",
+    "encounter_hash": "sha256:1e52ab6f7fed9cb7532cc136db82e85aa54cbb1a740629aeb323ba977196953e",
+    "archive_hash": "sha256:fe2119b18d6954391812c5811da1caae43ca1ea157957ff0ba490d7371c3d3db",
+    "public_replay_hash": "sha256:2991ba18ff11ae8a7a327b9202004b6b782daff1b93052e960ac9a7d6cf30c12"
+  },
+  "encounter": {
+    "encounter": 0,
+    "seed": 1609544882236220,
+    "result": {
+      "task_id": "chipbench_Prob023_gray_counter__2bdf21aaf4e04006",
+      "route": "direct",
+      "rtl_tokens": 342,
+      "closure": [
+        "rtl/sequence.sv",
+        "harness:W_bug_tb.sv",
+        "harness:W_preserve_tb.sv"
+      ],
+      "outcome": "fixed",
+      "attempts": [
+        {
+          "attempt": 0,
+          "route": "direct",
+          "submissions": [
+            {
+              "kind": "repair",
+              "tokens": {
+                "input": 1801,
+                "output": 430,
+                "counted_request": 1849,
+                "model_seconds": 17.28
+              },
+              "format_valid": true,
+              "format_error": null
+            }
+          ],
+          "repair_tokens": {
+            "input": 1801,
+            "output": 430,
+            "counted_request": 1849,
+            "model_seconds": 17.28
+          },
+          "edit": "Fixed Gray-to-binary conversion by using correct XOR operations and nonblocking assignments to ensure proper bit dependencies are maintained.",
+          "candidate_hash": "sha256:bf509115cc04d37b65d59f179792d9b28804015ea483cf9161c9a1fe707d4772",
+          "tier": "visible_fail",
+          "stage": "simulation",
+          "build_seconds": 0.02,
+          "sim_seconds": 0.01,
+          "changed_files": [
+            "rtl/sequence.sv"
+          ]
+        },
+        {
+          "attempt": 1,
+          "route": "direct",
+          "submissions": [
+            {
+              "kind": "public_feedback_correction",
+              "tokens": {
+                "input": 2039,
+                "output": 463,
+                "counted_request": 2087,
+                "model_seconds": 14.23
+              },
+              "format_valid": true,
+              "format_error": null
+            }
+          ],
+          "repair_tokens": {
+            "input": 2039,
+            "output": 463,
+            "counted_request": 2087,
+            "model_seconds": 14.23
+          },
+          "edit": "Fixed Gray-to-binary conversion by using correct XOR operations that depend on current gray_wire values instead of previous bin_out values, maintaining proper Gray code decoding dependencies.",
+          "candidate_hash": "sha256:32e03c9a50b352b5b506f885126b18199df92a22808e6bf33f113e8c2eabe856",
+          "tier": "visible_pass",
+          "stage": "simulation",
+          "build_seconds": 0.02,
+          "sim_seconds": 0.01,
+          "changed_files": [
+            "rtl/sequence.sv"
+          ]
+        }
+      ],
+      "calls": 2,
+      "final_candidate_hash": "sha256:32e03c9a50b352b5b506f885126b18199df92a22808e6bf33f113e8c2eabe856",
+      "inputs_read": [
+        "public/task.json",
+        "public/visible/build.json",
+        "public/visible/W_bug_tb.sv",
+        "public/visible/W_preserve_tb.sv",
+        "public/spec.txt"
+      ],
+      "experience": {
+        "snapshot_id": "B_0",
+        "snapshot_hash": "sha256:01a89bfb13fb8f719007f9f194599059ba79c39b9fd26d2c549fc7e20b67125b",
+        "state_hash": "sha256:177923833145ce40bbf523dd0ec204b7985f41a5aa04267433357a4b1838f6a8",
+        "payload_hash": "sha256:3092f0d7fc08feac058171dbed616bb7c60daa43691d7b6d28875d3225d9b061",
+        "delivery_hash": "sha256:711bca3579b7cd37a30c2e2251804310c71752eafbc4b71f1b1b8d31a323d752",
+        "delivered": false
+      }
+    }
+  },
+  "archive_path": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/real-all-20261018-061406/Prob023/collection/rounds/1/r1_s0/online/blue/archive/chipbench_Prob023_gray_counter__2bdf21aaf4e04006__32e03c9a50b352b5.json",
+  "task_dir": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/real-all-20261018-061406/Prob023/collection/rounds/1/r1_s0/admission/blue_task",
+  "replay": {
+    "tier": "visible_pass",
+    "stage": "simulation",
+    "evidence": {
+      "suites": {
+        "W_bug": {
+          "result": "visible_pass",
+          "returncode": 0,
+          "pass_marker_found": true,
+          "fail_marker_found": false,
+          "log": "TESTBENCH PASS gray cycles=256"
+        },
+        "W_preserve": {
+          "result": "visible_pass",
+          "returncode": 0,
+          "pass_marker_found": true,
+          "fail_marker_found": false,
+          "log": "TESTBENCH PASS gray preserve"
+        }
+      }
+    },
+    "build_seconds": 0.020604084245860577,
+    "sim_seconds": 0.009390059858560562,
+    "closure": [
+      "rtl/sequence.sv",
+      "harness:W_bug_tb.sv",
+      "harness:W_preserve_tb.sv"
+    ]
+  },
+  "public_rows": {
+    "W_bug": "visible_pass",
+    "W_preserve": "visible_pass"
+  },
+  "mutation_edits": [
+    {
+      "find": "bin_out[2] = gray_wire[2]^bin_out[3];",
+      "replace": "bin_out[2] = gray_wire[2]&bin_out[3];"
+    }
+  ]
+}

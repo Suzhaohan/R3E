@@ -1,0 +1,378 @@
+{
+  "source": {
+    "run_id": "collection",
+    "round": 3,
+    "slot_id": "r3_s0",
+    "task_hash": "sha256:d5c96bc032fe8b50ce4bf7ed533c5b92c95615392778390e9ffb9b7b4beccd0a",
+    "carrier_id": "chipbench_prob003_group_boundary_v1",
+    "mutant_hash": "sha256:881fdcccd9f78ad2a1dd0081e5b624468c73cd1c765bcb416a1bcad7da983b60",
+    "candidate_hash": null,
+    "encounter_hash": "sha256:8744cbb8c92aead15025cf38b2acf7d73dca72b6fa24b85d170b82b1ec2a3e89",
+    "archive_hash": "sha256:624a5173c9c318d7ad4c9e130db8f950a20a6012e90eb041791b56154679482b",
+    "public_replay_hash": "sha256:0e0fe83765d50477724efdf2deb65a83c76921c1ad0aa9607f92f1e9e9bcbb43"
+  },
+  "encounter": {
+    "encounter": 0,
+    "seed": 1343095866064520,
+    "result": {
+      "task_id": "chipbench_prob003_group_boundary_v1__881fdcccd9f78ad2",
+      "route": "direct",
+      "rtl_tokens": 544,
+      "closure": [
+        "rtl/sequence.sv",
+        "harness:W_bug_tb.sv",
+        "harness:W_preserve_tb.sv"
+      ],
+      "outcome": "not_fixed",
+      "attempts": [
+        {
+          "attempt": 0,
+          "route": "direct",
+          "submissions": [
+            {
+              "kind": "repair",
+              "tokens": {
+                "input": 3962,
+                "output": 713,
+                "counted_request": 4010,
+                "model_seconds": 19.01
+              },
+              "format_valid": true,
+              "format_error": null
+            }
+          ],
+          "repair_tokens": {
+            "input": 3962,
+            "output": 713,
+            "counted_request": 4010,
+            "model_seconds": 19.01
+          },
+          "edit": "Fixed output logic for sf6 state by correcting the match/not_match values to match specification (01 should be 10 for the sequence 011100)",
+          "candidate_hash": null,
+          "tier": "visible_fail",
+          "stage": "simulation",
+          "build_seconds": 0.02,
+          "sim_seconds": 0.01,
+          "changed_files": []
+        },
+        {
+          "attempt": 1,
+          "route": "direct",
+          "submissions": [
+            {
+              "kind": "public_feedback_correction",
+              "tokens": {
+                "input": 5801,
+                "output": 701,
+                "counted_request": 5849,
+                "model_seconds": 19.34
+              },
+              "format_valid": true,
+              "format_error": null
+            }
+          ],
+          "repair_tokens": {
+            "input": 5801,
+            "output": 701,
+            "counted_request": 5849,
+            "model_seconds": 19.34
+          },
+          "edit": "Corrected output logic for sf6 state to set match=1 and not_match=0 when sequence 011100 is detected (should be 10 instead of 01)",
+          "candidate_hash": null,
+          "tier": "visible_fail",
+          "stage": "simulation",
+          "build_seconds": 0.02,
+          "sim_seconds": 0.01,
+          "changed_files": []
+        },
+        {
+          "attempt": 2,
+          "route": "direct",
+          "submissions": [
+            {
+              "kind": "public_feedback_correction",
+              "tokens": {
+                "input": 7366,
+                "output": 700,
+                "counted_request": 7414,
+                "model_seconds": 29.46
+              },
+              "format_valid": true,
+              "format_error": null
+            }
+          ],
+          "repair_tokens": {
+            "input": 7366,
+            "output": 700,
+            "counted_request": 7414,
+            "model_seconds": 29.46
+          },
+          "edit": "Corrected output logic for sf6 state to set match=0 and not_match=1 when sequence fails (01 should be 10 for the sequence 011100)",
+          "candidate_hash": null,
+          "tier": "visible_fail",
+          "stage": "simulation",
+          "build_seconds": 0.02,
+          "sim_seconds": 0.02,
+          "changed_files": []
+        },
+        {
+          "attempt": 3,
+          "route": "direct",
+          "submissions": [
+            {
+              "kind": "public_feedback_correction",
+              "tokens": {
+                "input": 8930,
+                "output": 700,
+                "counted_request": 8978,
+                "model_seconds": 27.81
+              },
+              "format_valid": true,
+              "format_error": null
+            }
+          ],
+          "repair_tokens": {
+            "input": 8930,
+            "output": 700,
+            "counted_request": 8978,
+            "model_seconds": 27.81
+          },
+          "edit": "Corrected output logic for sf6 state to properly set match=0 and not_match=1 when sequence fails (01 should be 10 for sequence 011100)",
+          "candidate_hash": null,
+          "tier": "visible_fail",
+          "stage": "simulation",
+          "build_seconds": 0.02,
+          "sim_seconds": 0.01,
+          "changed_files": []
+        }
+      ],
+      "calls": 4,
+      "final_candidate_hash": null,
+      "inputs_read": [
+        "public/task.json",
+        "public/visible/build.json",
+        "public/visible/W_bug_tb.sv",
+        "public/visible/W_preserve_tb.sv",
+        "public/spec.txt"
+      ],
+      "experience": {
+        "snapshot_id": "B_2",
+        "snapshot_hash": "sha256:2c92cc6e5cc399f257410086ce04ab71c335c7ce31cbee6fa6726ee26a3236bb",
+        "state_hash": "sha256:e856f97fe0f076154115325dbd1bbb272b878268ef35259950db9fd56eebfd91",
+        "payload_hash": "sha256:3092f0d7fc08feac058171dbed616bb7c60daa43691d7b6d28875d3225d9b061",
+        "delivery_hash": "sha256:8e0525d72581260b48d883beabbe90ac8af881a8684ddee80bbb0b2c357d8d61",
+        "delivered": false
+      }
+    }
+  },
+  "archive_path": null,
+  "task_dir": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/real-all-20261020-061320/Prob003/collection/rounds/3/r3_s0/admission/blue_task",
+  "replay": {
+    "tier": "visible_fail",
+    "stage": "simulation",
+    "evidence": {
+      "suites": {
+        "W_bug": {
+          "result": "visible_fail",
+          "returncode": 0,
+          "pass_marker_found": false,
+          "fail_marker_found": true,
+          "log": "CHECK_FAIL W_bug cycle=6 group=011100 bit=0 match=0 not_match=1",
+          "public_state_trace": {
+            "version": "public_group_trace_v1",
+            "status": "observed",
+            "source": "same public test and submitted RTL only",
+            "scoring_unchanged": true,
+            "failure_reproduced": true,
+            "records": [
+              "PUBLIC_FSM_TRACE cycle=1 position=1 sampled_prefix=000000 pre_state=0 pre_next=1 post_state=1 actual=00 expected=00",
+              "PUBLIC_FSM_TRACE cycle=2 position=2 sampled_prefix=000001 pre_state=1 pre_next=2 post_state=2 actual=00 expected=00",
+              "PUBLIC_FSM_TRACE cycle=3 position=3 sampled_prefix=000011 pre_state=2 pre_next=9 post_state=9 actual=00 expected=00",
+              "PUBLIC_FSM_TRACE cycle=4 position=4 sampled_prefix=000111 pre_state=9 pre_next=10 post_state=10 actual=00 expected=00",
+              "PUBLIC_FSM_TRACE cycle=5 position=5 sampled_prefix=001110 pre_state=10 pre_next=11 post_state=11 actual=00 expected=00",
+              "PUBLIC_FSM_TRACE cycle=6 position=6 sampled_prefix=011100 pre_state=11 pre_next=12 post_state=12 actual=01 expected=10"
+            ],
+            "localization": {
+              "version": "prob003_public_fault_focus_v1",
+              "status": "observed",
+              "source": "current submitted RTL, public specification and same public test only",
+              "first_output_mismatch": {
+                "cycle": 6,
+                "position": 6,
+                "input_bit": 0,
+                "consumed_prefix": "011100",
+                "prefix_matches_target": true,
+                "pre_state": 11,
+                "pre_state_name": "sf5",
+                "observed_next": 12,
+                "post_state": 12,
+                "post_state_name": "sf6",
+                "actual": "01",
+                "expected": "10",
+                "current_branch": {
+                  "input_0": "sf6",
+                  "input_1": "sf6",
+                  "selected": "sf6",
+                  "agrees_with_simulator": true
+                }
+              },
+              "earliest_observed_state_context_conflict": null,
+              "focus_window": [
+                {
+                  "cycle": 1,
+                  "position": 1,
+                  "input_bit": 0,
+                  "consumed_prefix": "0",
+                  "prefix_matches_target": true,
+                  "pre_state": 0,
+                  "pre_state_name": "idle",
+                  "observed_next": 1,
+                  "post_state": 1,
+                  "post_state_name": "s1",
+                  "actual": "00",
+                  "expected": "00",
+                  "current_branch": {
+                    "input_0": "s1",
+                    "input_1": "sf1",
+                    "selected": "s1",
+                    "agrees_with_simulator": true
+                  }
+                },
+                {
+                  "cycle": 2,
+                  "position": 2,
+                  "input_bit": 1,
+                  "consumed_prefix": "01",
+                  "prefix_matches_target": true,
+                  "pre_state": 1,
+                  "pre_state_name": "s1",
+                  "observed_next": 2,
+                  "post_state": 2,
+                  "post_state_name": "s2",
+                  "actual": "00",
+                  "expected": "00",
+                  "current_branch": {
+                    "input_0": "sf2",
+                    "input_1": "s2",
+                    "selected": "s2",
+                    "agrees_with_simulator": true
+                  }
+                },
+                {
+                  "cycle": 3,
+                  "position": 3,
+                  "input_bit": 1,
+                  "consumed_prefix": "011",
+                  "prefix_matches_target": true,
+                  "pre_state": 2,
+                  "pre_state_name": "s2",
+                  "observed_next": 9,
+                  "post_state": 9,
+                  "post_state_name": "sf3",
+                  "actual": "00",
+                  "expected": "00",
+                  "current_branch": {
+                    "input_0": "s3",
+                    "input_1": "sf3",
+                    "selected": "sf3",
+                    "agrees_with_simulator": true
+                  }
+                },
+                {
+                  "cycle": 4,
+                  "position": 4,
+                  "input_bit": 1,
+                  "consumed_prefix": "0111",
+                  "prefix_matches_target": true,
+                  "pre_state": 9,
+                  "pre_state_name": "sf3",
+                  "observed_next": 10,
+                  "post_state": 10,
+                  "post_state_name": "sf4",
+                  "actual": "00",
+                  "expected": "00",
+                  "current_branch": {
+                    "input_0": "sf4",
+                    "input_1": "sf4",
+                    "selected": "sf4",
+                    "agrees_with_simulator": true
+                  }
+                },
+                {
+                  "cycle": 5,
+                  "position": 5,
+                  "input_bit": 0,
+                  "consumed_prefix": "01110",
+                  "prefix_matches_target": true,
+                  "pre_state": 10,
+                  "pre_state_name": "sf4",
+                  "observed_next": 11,
+                  "post_state": 11,
+                  "post_state_name": "sf5",
+                  "actual": "00",
+                  "expected": "00",
+                  "current_branch": {
+                    "input_0": "sf5",
+                    "input_1": "sf5",
+                    "selected": "sf5",
+                    "agrees_with_simulator": true
+                  }
+                },
+                {
+                  "cycle": 6,
+                  "position": 6,
+                  "input_bit": 0,
+                  "consumed_prefix": "011100",
+                  "prefix_matches_target": true,
+                  "pre_state": 11,
+                  "pre_state_name": "sf5",
+                  "observed_next": 12,
+                  "post_state": 12,
+                  "post_state_name": "sf6",
+                  "actual": "01",
+                  "expected": "10",
+                  "current_branch": {
+                    "input_0": "sf6",
+                    "input_1": "sf6",
+                    "selected": "sf6",
+                    "agrees_with_simulator": true
+                  }
+                }
+              ],
+              "repair_focus": "The first group already fails. Inspect its consumed-prefix path before editing a transition used only after a completed group.",
+              "limitation": "An output mismatch is observed. A context conflict is a hint for a pstate-only architecture; finite public traces cannot always uniquely locate the original faulty expression. No expected state target or reference patch is provided."
+            },
+            "failure": [
+              "CHECK_FAIL W_bug cycle=6 group=011100 bit=0 match=0 not_match=1"
+            ],
+            "limitation": "Numeric states describe this submitted candidate; expected outputs derive only from the public group contract."
+          }
+        },
+        "W_preserve": {
+          "result": "visible_pass",
+          "returncode": 0,
+          "pass_marker_found": true,
+          "fail_marker_found": false,
+          "log": "TESTBENCH PASS W_preserve reset exclusivity stability"
+        }
+      }
+    },
+    "build_seconds": 0.02101248875260353,
+    "sim_seconds": 0.012255867011845112,
+    "closure": [
+      "rtl/sequence.sv",
+      "harness:W_bug_tb.sv",
+      "harness:W_preserve_tb.sv"
+    ]
+  },
+  "public_rows": {
+    "W_bug": "visible_fail",
+    "W_preserve": "visible_pass"
+  },
+  "mutation_edits": [
+    {
+      "find": "        s2:\n            nstate=data?s3:sf3;",
+      "replace": "        s2:\n            nstate=data?sf3:s3;"
+    }
+  ]
+}

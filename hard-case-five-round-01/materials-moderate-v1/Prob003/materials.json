@@ -1,0 +1,44 @@
+{
+  "carriers": [
+    {
+      "package": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/materials-moderate-v1/Prob003/package",
+      "suite_freeze": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/materials-moderate-v1/Prob003/suite_freeze.json",
+      "evaluator_freeze": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/materials-moderate-v1/Prob003/evaluator_freeze.json",
+      "evaluator_root": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/materials-moderate-v1/Prob003"
+    }
+  ],
+  "anchors": [
+    {
+      "task_dir": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/materials-moderate-v1/Prob003/reserved/exam_defect",
+      "carrier_index": 0
+    }
+  ],
+  "mechanism_focus": {
+    "version": "continuous_mechanism_seed_v1",
+    "carrier_id": "chipbench_prob003_group_boundary_v1",
+    "mechanism": "Across five rounds build transferable repair experience. Nonoverlapping six-bit group detector: state transitions, success/failure paths, consumption of the next group first bit at terminal boundaries, mutually exclusive outputs and original output phase. Use surrounding branch context to uniquely locate every edit.",
+    "selection": "human_selected_development_seed",
+    "seed_edits": [
+      {
+        "find": "        s6:\n            nstate=data?sf1:s1;",
+        "replace": "        s6:\n            nstate=idle;"
+      }
+    ],
+    "history": {
+      "challenge_id": "chipbench_prob003_group_boundary_v1__eval_miss_branch",
+      "runs": 2,
+      "unrepaired": 1,
+      "label": "historical_budgeted_failure_not_current_confirmation"
+    },
+    "provenance": {
+      "clean_hash": "sha256:bd26aa07228b000f4ac95b0439cbe6da7305da19bf3d4475d3afae7953dd4645",
+      "seed_hash": "sha256:c11bee940dc11243d9849b2b51ca4942238cf68a7ab651b727be0284808a9b69",
+      "record_hashes": {
+        "selection_audit": "sha256:f958762117d05d0bf8a5757254b968b3751989a803caed143f51f8e3f0f4888e"
+      }
+    }
+  },
+  "questions": [
+    "chipbench_prob003_group_boundary_v1__eval_miss_branch"
+  ]
+}

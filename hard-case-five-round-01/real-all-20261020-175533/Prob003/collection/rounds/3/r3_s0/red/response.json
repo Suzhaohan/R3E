@@ -1,0 +1,30 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "sf4:\n            nstate=sf5;",
+            "replace": "sf4:\n            nstate=data?sf5:s5;"
+          }
+        ],
+        "violated_requirement": "When in state sf4, the next state should always transition to sf5 regardless of the input data value. This mutation incorrectly makes the transition dependent on the data input, which can cause the state machine to incorrectly transition to s5 when data is 0, leading to incorrect sequence detection.",
+        "spec_basis": "The specification requires that if the first bit of a group does not match the sequence, the module skips the entire group. This mutation violates that by potentially allowing partial matching after an initial mismatch."
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:03e79faee08eb1cc4c7d66a6c95cf1ead1db075f5207857cc0bfe2b506af670b",
+  "input_tokens": 8109,
+  "output_tokens": 152,
+  "request_hash": "sha256:1d4b648e23459b4705598fc96467f5feab750ee38e24d46ce5822c5f48eb3260",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 8109,
+    "output_tokens": 152
+  },
+  "model_seconds": 8.088101490400732
+}

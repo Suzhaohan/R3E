@@ -1,0 +1,60 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "a_tem == 8'b0111_0001",
+            "replace": "a_tem == 8'b01110011"
+          }
+        ],
+        "violated_requirement": "Output match should be 1 when shift register equals 8'b0111_0001, but mutant matches 8'b01110011 instead",
+        "spec_basis": "Matching Logic: The output match should be asserted (logic 1) whenever the value of the shift register a_tem matches the specific 8-bit pattern 8'b0111_0001"
+      },
+      {
+        "edits": [
+          {
+            "find": "a_tem <= {a_tem[6:0],a}",
+            "replace": "a_tem <= {a,a_tem[7:1]}"
+          }
+        ],
+        "violated_requirement": "Shift register should shift left with new bit in LSB, but mutant shifts right with new bit in MSB",
+        "spec_basis": "Shift Register Behavior: On every positive edge of the clock, the input a should be shifted into the least significant bit (LSB) of the shift register a_tem"
+      },
+      {
+        "edits": [
+          {
+            "find": "a_tem == 8'b0111_0001",
+            "replace": "a_tem[7:4] == 4'b0111"
+          }
+        ],
+        "violated_requirement": "Output match should check all 8 bits but mutant only checks upper 4 bits",
+        "spec_basis": "Matching Logic: The output match should be asserted when the shift register matches the full 8-bit pattern"
+      },
+      {
+        "edits": [
+          {
+            "find": "a_tem == 8'b0111_0001",
+            "replace": "a_tem != 8'b0111_0001"
+          }
+        ],
+        "violated_requirement": "Output match polarity is inverted - asserts when pattern doesn't match",
+        "spec_basis": "Matching Logic: match should be 1 when pattern matches, 0 otherwise"
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:6f9e93be726d2a2f140121eed8418115e2ae4907e646b7c709bc866ff390c75e",
+  "input_tokens": 3635,
+  "output_tokens": 419,
+  "request_hash": "sha256:aef40b39919633d7a578ee0135cfbbc1ed7421cab67250eba0fbd96ce5bc878b",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 3635,
+    "output_tokens": 419
+  },
+  "model_seconds": 15.438652770593762
+}

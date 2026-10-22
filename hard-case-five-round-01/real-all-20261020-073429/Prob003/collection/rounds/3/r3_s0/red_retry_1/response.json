@@ -1,0 +1,30 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "sf4:\n            nstate=sf5;",
+            "replace": "sf4:\n            nstate=s5;"
+          }
+        ],
+        "violated_requirement": "When in state sf4, the next state should transition to sf5 regardless of input data, but the mutation causes it to transition to s5 instead. This will cause incorrect sequence detection for groups where the fourth bit of a non-matching sequence is 0.",
+        "spec_basis": "The specification requires correct state transitions for sequence detection, with outputs based on the final state after six bits."
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:9fe97bd701f1e037aa27a97ec07a5f99b96f1b29976fc494f2c964bfcc9e2c23",
+  "input_tokens": 11546,
+  "output_tokens": 125,
+  "request_hash": "sha256:d4fd073e3d597d86483c45642d98e0495ea3892b946ce44bd2707d5c6fcd52e3",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 11546,
+    "output_tokens": 125
+  },
+  "model_seconds": 5.475037015974522
+}

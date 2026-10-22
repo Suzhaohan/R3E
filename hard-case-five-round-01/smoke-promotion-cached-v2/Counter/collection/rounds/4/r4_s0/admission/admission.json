@@ -1,0 +1,100 @@
+{
+  "version": "red_progress_preservation_v4",
+  "status": "admitted",
+  "candidate_hash": "sha256:ff3aabd1cd46c8135f759d7f5b178ed1463904406544a69246eb76772d948b8a",
+  "fingerprint": "sha256:719f3a582687322fbcbe7efeef92cc0f0742c778409041a8cfad3901935621c5",
+  "edit_budget": {
+    "metric": "sequence_matcher_token_edits_v1",
+    "tokenizer": "verilog_source_tokens_v2_macros",
+    "max_changed_fraction": 0.4,
+    "all_code": {
+      "original_tokens": 114,
+      "candidate_tokens": 114,
+      "changed_tokens": 1,
+      "allowed_tokens": 45,
+      "changed_fraction": 0.008771929824561403,
+      "within_limit": true
+    },
+    "body": {
+      "original_tokens": 79,
+      "candidate_tokens": 79,
+      "changed_tokens": 1,
+      "allowed_tokens": 31,
+      "changed_fraction": 0.012658227848101266,
+      "within_limit": true
+    }
+  },
+  "freeze_hash": "sha256:bf26023a063b36e26f4eeac86e958dbca6ef42598461851d8e4692bfadc0edd6",
+  "language_review": {
+    "comments_unchanged": true,
+    "clean_comments_hash": "sha256:f1cbadd917d266eb3c77da88d0df849bebe92cb2a0ecf236943abe14508d3cc8",
+    "candidate_comments_hash": "sha256:f1cbadd917d266eb3c77da88d0df849bebe92cb2a0ecf236943abe14508d3cc8",
+    "new_identifiers": [],
+    "identifier_review": "informational; not an admission veto"
+  },
+  "baseline": {
+    "suites": {
+      "W_bug": {
+        "build_seconds": 0.01,
+        "tier": "pass",
+        "runs": [
+          "pass",
+          "pass"
+        ],
+        "log_hash": "sha256:5ff2547fad087bd52d7d12a89cc5e577f6d0d658392713d763c5bfa7c6de5cb5",
+        "deterministic": true,
+        "log": "0, \t\t0\n                 146, \t1, \t0, \t1, \t11, \t\t0\n                 150, \t0, \t0, \t1, \t11, \t\t0\n                 155, \t1, \t0, \t1, \t11, \t\t0\n                 156, \t1, \t0, \t1, \t12, \t\t0\n                 160, \t0, \t0, \t1, \t12, \t\t0\n                 165, \t1, \t0, \t1, \t12, \t\t0\n                 166, \t1, \t0, \t1, \t13, \t\t0\n                 170, \t0, \t0, \t1, \t13, \t\t0\n                 175, \t1, \t0, \t1, \t13, \t\t0\n                 176, \t1, \t0, \t1, \t14, \t\t0\n                 180, \t0, \t0, \t1, \t14, \t\t0\n                 185, \t1, \t0, \t1, \t14, \t\t0\n                 186, \t1, \t0, \t1, \t15, \t\t0\n                 190, \t0, \t0, \t1, \t15, \t\t0\n                 195, \t1, \t0, \t1, \t15, \t\t1\n                 196, \t1, \t0, \t1, \t 0, \t\t1\n                 200, \t0, \t0, \t1, \t 0, \t\t1\n                 205, \t1, \t0, \t1, \t 0, \t\t1\n                 206, \t1, \t0, \t1, \t 1, \t\t1\n                 210, \t0, \t0, \t1, \t 1, \t\t1\n                 215, \t1, \t0, \t1, \t 1, \t\t1\n                 216, \t1, \t0, \t1, \t 2, \t\t1\n                 220, \t0, \t0, \t1, \t 2, \t\t1\n                 225, \t1, \t0, \t1, \t 2, \t\t1\n                 226, \t1, \t0, \t1, \t 3, \t\t1\n                 230, \t0, \t0, \t1, \t 3, \t\t1\n                 235, \t1, \t0, \t1, \t 3, \t\t1\n                 236, \t1, \t0, \t1, \t 4, \t\t1\n                 240, \t0, \t0, \t1, \t 4, \t\t1\n                 245, \t1, \t0, \t1, \t 4, \t\t1\n                 246, \t1, \t0, \t1, \t 5, \t\t1\n                 250, \t0, \t0, \t1, \t 5, \t\t1\n                 255, \t1, \t0, \t1, \t 5, \t\t1\n                 256, \t1, \t0, \t1, \t 6, \t\t1\nTESTBENCH PASS original oracle\n"
+      },
+      "W_preserve": {
+        "build_seconds": 0.01,
+        "tier": "pass",
+        "runs": [
+          "pass",
+          "pass"
+        ],
+        "log_hash": "sha256:8f7b0d3e220050a01430389374487f2c739abe116929797e50e6f766ebba895a",
+        "deterministic": true,
+        "log": "TESTBENCH PASS preserve\n"
+      }
+    },
+    "structural": {
+      "status": "ok",
+      "returncode": 0,
+      "log": "\n-- Running command `read_verilog -sv \"rtl/sequence.sv\"; hierarchy -check -top first_counter ; proc; flatten; check -assert' --\n\n1. Executing Verilog-2005 frontend: rtl/sequence.sv\nParsing SystemVerilog input from `rtl/sequence.sv' to AST representation.\nGenerating RTLIL representation for module `\\first_counter'.\nSuccessfully finished Verilog frontend.\n\n2. Executing HIERARCHY pass (managing design hierarchy).\n\n2.1. Analyzing design hierarchy..\nTop module:  \\first_counter\n\n2.2. Analyzing design hierarchy..\nTop module:  \\first_counter\nRemoved 0 unused modules.\n\n3. Executing PROC pass (convert processes to netlists).\n\n3.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).\nCleaned up 0 empty switches.\n\n3.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).\nMarked 1 switch rules as full_case in process $proc$rtl/sequence.sv:34$1 in module first_counter.\nRemoved a total of 0 dead cases.\n\n3.3. Executing PROC_INIT pass (extract init attributes).\n\n3.4. Executing PROC_ARST pass (detect async resets in processes).\n\n3.5. Executing PROC_MUX pass (convert decision trees to multiplexers).\nCreating decoders for process `\\first_counter.$proc$rtl/sequence.sv:34$1'.\n     1/2: $0\\counter_out[3:0]\n     2/2: $0\\overflow_out[0:0]\n\n3.6. Executing PROC_DLATCH pass (convert process syncs to latches).\n\n3.7. Executing PROC_DFF pass (convert process syncs to FFs).\nCreating register for signal `\\first_counter.\\overflow_out' using process `\\first_counter.$proc$rtl/sequence.sv:34$1'.\n  created $dff cell `$procdff$16' with positive edge clock.\nCreating register for signal `\\first_counter.\\counter_out' using process `\\first_counter.$proc$rtl/sequence.sv:34$1'.\n  created $dff cell `$procdff$17' with positive edge clock.\n\n3.8. Executing PROC_CLEAN pass (remove empty switches from decision trees).\nFound and cleaned up 3 empty switches in `\\first_counter.$proc$rtl/sequence.sv:34$1'.\nRemoving empty process `first_counter.$proc$rtl/sequence.sv:34$1'.\nCleaned up 3 empty switches.\n\n4. Executing FLATTEN pass (flatten design).\nNo more expansions possible.\n\n5. Executing CHECK pass (checking for obvious problems).\nchecking module first_counter..\nfound and reported 0 problems.\n",
+      "command": "read_verilog -sv \"rtl/sequence.sv\"; hierarchy -check -top first_counter ; proc; flatten; check -assert"
+    }
+  },
+  "suites": {
+    "W_bug": {
+      "build_seconds": 0.01,
+      "tier": "fail",
+      "runs": [
+        "fail",
+        "fail"
+      ],
+      "log_hash": "sha256:e44e66e2339fcb490a63e25b708077b6b7e1b8bf45e2808c3d27572fedff8438",
+      "deterministic": true,
+      "log": "\t1, \t12, \t\t0\n                 160, \t0, \t0, \t1, \t12, \t\t0\n                 165, \t1, \t0, \t1, \t12, \t\t1\n                 166, \t1, \t0, \t1, \t13, \t\t1\n                 170, \t0, \t0, \t1, \t13, \t\t1\nCHECK_FAIL oracle sample=17 got=11011 expected=11010\n                 175, \t1, \t0, \t1, \t13, \t\t1\n                 176, \t1, \t0, \t1, \t14, \t\t1\n                 180, \t0, \t0, \t1, \t14, \t\t1\nCHECK_FAIL oracle sample=18 got=11101 expected=11100\n                 185, \t1, \t0, \t1, \t14, \t\t1\n                 186, \t1, \t0, \t1, \t15, \t\t1\n                 190, \t0, \t0, \t1, \t15, \t\t1\nCHECK_FAIL oracle sample=19 got=11111 expected=11110\n                 195, \t1, \t0, \t1, \t15, \t\t1\n                 196, \t1, \t0, \t1, \t 0, \t\t1\n                 200, \t0, \t0, \t1, \t 0, \t\t1\n                 205, \t1, \t0, \t1, \t 0, \t\t1\n                 206, \t1, \t0, \t1, \t 1, \t\t1\n                 210, \t0, \t0, \t1, \t 1, \t\t1\n                 215, \t1, \t0, \t1, \t 1, \t\t1\n                 216, \t1, \t0, \t1, \t 2, \t\t1\n                 220, \t0, \t0, \t1, \t 2, \t\t1\n                 225, \t1, \t0, \t1, \t 2, \t\t1\n                 226, \t1, \t0, \t1, \t 3, \t\t1\n                 230, \t0, \t0, \t1, \t 3, \t\t1\n                 235, \t1, \t0, \t1, \t 3, \t\t1\n                 236, \t1, \t0, \t1, \t 4, \t\t1\n                 240, \t0, \t0, \t1, \t 4, \t\t1\n                 245, \t1, \t0, \t1, \t 4, \t\t1\n                 246, \t1, \t0, \t1, \t 5, \t\t1\n                 250, \t0, \t0, \t1, \t 5, \t\t1\n                 255, \t1, \t0, \t1, \t 5, \t\t1\n                 256, \t1, \t0, \t1, \t 6, \t\t1\nCHECK_FAIL oracle errors=3 samples=26\n"
+    },
+    "W_preserve": {
+      "build_seconds": 0.01,
+      "tier": "pass",
+      "runs": [
+        "pass",
+        "pass"
+      ],
+      "log_hash": "sha256:8f7b0d3e220050a01430389374487f2c739abe116929797e50e6f766ebba895a",
+      "deterministic": true,
+      "log": "TESTBENCH PASS preserve\n"
+    }
+  },
+  "structural": {
+    "status": "ok",
+    "returncode": 0,
+    "log": "\n-- Running command `read_verilog -sv \"rtl/sequence.sv\"; hierarchy -check -top first_counter ; proc; flatten; check -assert' --\n\n1. Executing Verilog-2005 frontend: rtl/sequence.sv\nParsing SystemVerilog input from `rtl/sequence.sv' to AST representation.\nGenerating RTLIL representation for module `\\first_counter'.\nSuccessfully finished Verilog frontend.\n\n2. Executing HIERARCHY pass (managing design hierarchy).\n\n2.1. Analyzing design hierarchy..\nTop module:  \\first_counter\n\n2.2. Analyzing design hierarchy..\nTop module:  \\first_counter\nRemoved 0 unused modules.\n\n3. Executing PROC pass (convert processes to netlists).\n\n3.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).\nCleaned up 0 empty switches.\n\n3.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).\nMarked 1 switch rules as full_case in process $proc$rtl/sequence.sv:34$1 in module first_counter.\nRemoved a total of 0 dead cases.\n\n3.3. Executing PROC_INIT pass (extract init attributes).\n\n3.4. Executing PROC_ARST pass (detect async resets in processes).\n\n3.5. Executing PROC_MUX pass (convert decision trees to multiplexers).\nCreating decoders for process `\\first_counter.$proc$rtl/sequence.sv:34$1'.\n     1/2: $0\\counter_out[3:0]\n     2/2: $0\\overflow_out[0:0]\n\n3.6. Executing PROC_DLATCH pass (convert process syncs to latches).\n\n3.7. Executing PROC_DFF pass (convert process syncs to FFs).\nCreating register for signal `\\first_counter.\\overflow_out' using process `\\first_counter.$proc$rtl/sequence.sv:34$1'.\n  created $dff cell `$procdff$16' with positive edge clock.\nCreating register for signal `\\first_counter.\\counter_out' using process `\\first_counter.$proc$rtl/sequence.sv:34$1'.\n  created $dff cell `$procdff$17' with positive edge clock.\n\n3.8. Executing PROC_CLEAN pass (remove empty switches from decision trees).\nFound and cleaned up 3 empty switches in `\\first_counter.$proc$rtl/sequence.sv:34$1'.\nRemoving empty process `first_counter.$proc$rtl/sequence.sv:34$1'.\nCleaned up 3 empty switches.\n\n4. Executing FLATTEN pass (flatten design).\nNo more expansions possible.\n\n5. Executing CHECK pass (checking for obvious problems).\nchecking module first_counter..\nfound and reported 0 problems.\n",
+    "command": "read_verilog -sv \"rtl/sequence.sv\"; hierarchy -check -top first_counter ; proc; flatten; check -assert"
+  },
+  "reason": "public_matrix_and_structure_pass",
+  "blue_task": "blue_task",
+  "tools_seconds": 0.1101334048435092
+}

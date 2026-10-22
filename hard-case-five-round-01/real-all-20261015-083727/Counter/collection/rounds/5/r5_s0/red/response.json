@@ -1,0 +1,26 @@
+{
+  "result": {
+    "edits": [
+      {
+        "find": "    if(counter_out == 4'b1111)\n    begin\n        overflow_out <= 1'b1;\n    end",
+        "replace": "    else if(counter_out == 4'b1111)\n    begin\n        overflow_out <= 1'b1;\n    end"
+      }
+    ],
+    "violated_requirement": "The overflow test must be evaluated independently of the enable branch: when the pre-edge count is 15 it must set sticky overflow even if enable is high. Chaining the overflow test as an 'else if' after the enable branch suppresses it whenever enable is asserted.",
+    "spec_basis": "The independent overflow test observes the pre-edge count: if it is 15, set sticky overflow even when enable is high. Overflow holds until reset."
+  },
+  "raw_response_hash": "sha256:73b04a8de57e55b27b322f4f747ff711db52b9271d7e9c70c462172dfb87a37e",
+  "input_tokens": 10543,
+  "output_tokens": 18193,
+  "request_hash": "sha256:6339fde84daf441240f15b2a2b87a7a64535b9e7c49c384a70fb4ee3e6b50bab",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 10543,
+    "output_tokens": 18193
+  },
+  "model_seconds": 105.14352055639029
+}

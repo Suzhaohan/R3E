@@ -1,0 +1,30 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "else if (a_tem == 8'b0111_0001)",
+            "replace": "else if (a_tem == 8'b0111_0001) && (a == 1'b1)"
+          }
+        ],
+        "violated_requirement": "The match output should only assert when the shift register contains 8'b0111_0001, regardless of the current input value. This mutation incorrectly makes the match dependent on the current input being 1'b1 when the pattern is detected.",
+        "spec_basis": "The spec requires match to be asserted whenever a_tem matches 8'b0111_0001, with no dependency on the current input value."
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:2ffe59c8c22706d09c09ecf239a78026fa953d8cae5db47739dce3d8358d5f0a",
+  "input_tokens": 5606,
+  "output_tokens": 157,
+  "request_hash": "sha256:0f1aa412cdb8714029aa5fa2ef2f8de859e785d58a8c22128af4fb5f1584d26b",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 5606,
+    "output_tokens": 157
+  },
+  "model_seconds": 8.101748852990568
+}

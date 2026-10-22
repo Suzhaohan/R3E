@@ -1,0 +1,44 @@
+{
+ "summary": {
+  "task_id": "chipbench_Prob002_wildcard_medium__exam_defect",
+  "encounters": 1,
+  "categories": {
+   "public_pass_hidden_pass": 1
+  },
+  "functional_failure_candidates": 0,
+  "pending_review": 0,
+  "reviewed_functional_failures": 0,
+  "original_defect_persists": 0,
+  "new_regression": 0,
+  "mechanism_907_exploratory": 0
+ },
+ "encounters": [
+  {
+   "encounter": 0,
+   "endpoint_candidate": "sha256:f6064b63905c5f9ef33291a2db1e6045cf848ac568261fdfd1ed678f013f18e4",
+   "endpoint_public": {
+    "tier": "visible_pass",
+    "suites": {
+     "W_bug": {
+      "result": "visible_pass",
+      "checker_violation": false,
+      "failures": []
+     },
+     "W_preserve": {
+      "result": "visible_pass",
+      "checker_violation": false,
+      "failures": []
+     }
+    }
+   },
+   "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -14,13 +14,9 @@\n \t\t\tbegin \n \t\t\t\tmatch_f <= 1'b0;\n \t\t\tend\n-\t\telse if (a_tem[8:6] == 3'b011)\n+\t\telse \n \t\t\tbegin\n-\t\t\t\tmatch_f <= 1'b1;\n-\t\t\tend\n-\t\telse \n-\t\t\tbegin\t\n-\t\t\t\tmatch_f <= 1'b0;\n+\t\t\t\tmatch_f <= (a_tem[8:6] == 3'b011);\n \t\t\tend\n \n \talways @(posedge clk or negedge rst_n)\n@@ -28,13 +24,9 @@\n \t\t\tbegin \n \t\t\t\tmatch_b <= 1'b0;\n \t\t\tend\n-\t\telse if (a_tem[2:0] == 3'b110)\n+\t\telse \n \t\t\tbegin\n-\t\t\t\tmatch_b <= 1'b1;\n-\t\t\tend\n-\t\telse \n-\t\t\tbegin\t\n-\t\t\t\tmatch_b <= 1'b0;\n+\t\t\t\tmatch_b <= (a_tem[2:0] == 3'b110);\n \t\t\tend\n \t\t\t\n \talways @(posedge clk or negedge rst_n)\n@@ -44,7 +36,7 @@\n \t\t\tend\n \t\telse \n \t\t\tbegin\n-\t\t\t\ta_tem <= {a, a_tem[7:0]};\n+\t\t\t\ta_tem <= {a, a_tem[8:1]};\n \t\t\tend\n \t\t\t\n \tassign match = match_b && match_f;\n",
+   "endpoint_evaluator": {
+    "result": "pass",
+    "returncode": 0,
+    "failures": [],
+    "log_hash": "sha256:b678ea1af8b1875bd6a00abde7ec1c84fafc930e37b98d322bb59e2b44df6529"
+   },
+   "category": "public_pass_hidden_pass"
+  }
+ ]
+}

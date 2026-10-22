@@ -1,0 +1,114 @@
+{
+  "attempts": 1,
+  "first": {
+    "answer_form": "full",
+    "candidate_hash": "sha256:d33d59da3174b6b491b65332d94221c13e6970b02157efc7deab01a54152ca94",
+    "candidate_id": "C_83319a3e1e6b_0",
+    "command_hash": "sha256:b4865e2399bfe84e4ef0042dde3de939934b7a346c3efe4db3be864678af5869",
+    "edit": "Made the output decoding block combinational (always @(*) instead of a clocked always @(posedge clk or negedge rst) with nonblocking assignments) so out1/out2/out3 are a direct function of the current state, removing the one-cycle output delay that caused the observed timing misalignment with the ex",
+    "feedback": {
+      "cycles_compared": 181,
+      "first_divergences": [],
+      "passing_outputs": [
+        "out1",
+        "out2",
+        "out3"
+      ],
+      "stage": "functional"
+    },
+    "hidden": "not_available",
+    "index": 0,
+    "memory_offered": false,
+    "phase": "confirmation",
+    "seconds": 57.23,
+    "tokens": {
+      "input": 2492,
+      "output": 9924
+    },
+    "verdict_tier": "visible_pass",
+    "window": {}
+  },
+  "inconclusive": false,
+  "record": {
+    "accounting": {
+      "fixed": true,
+      "fixed_at_attempt": 1,
+      "fixed_by_escalation": false,
+      "input_tokens": 2492,
+      "llm_calls": 1,
+      "memory_delivered": false,
+      "memory_items": [],
+      "memory_offered_from_attempt": null,
+      "model_seconds": 57.23,
+      "output_tokens": 9924,
+      "provider_failures": 0,
+      "repair_attempts": 1
+    },
+    "attempts": [
+      {
+        "answer_form": "full",
+        "candidate_hash": "sha256:d33d59da3174b6b491b65332d94221c13e6970b02157efc7deab01a54152ca94",
+        "candidate_id": "C_83319a3e1e6b_0",
+        "command_hash": "sha256:b4865e2399bfe84e4ef0042dde3de939934b7a346c3efe4db3be864678af5869",
+        "edit": "Made the output decoding block combinational (always @(*) instead of a clocked always @(posedge clk or negedge rst) with nonblocking assignments) so out1/out2/out3 are a direct function of the current state, removing the one-cycle output delay that caused the observed timing misalignment with the ex",
+        "feedback": {
+          "cycles_compared": 181,
+          "first_divergences": [],
+          "passing_outputs": [
+            "out1",
+            "out2",
+            "out3"
+          ],
+          "stage": "functional"
+        },
+        "hidden": "not_available",
+        "index": 0,
+        "memory_offered": false,
+        "phase": "confirmation",
+        "seconds": 57.23,
+        "tokens": {
+          "input": 2492,
+          "output": 9924
+        },
+        "verdict_tier": "visible_pass",
+        "window": {}
+      }
+    ],
+    "bundle_hash": "sha256:e1c06dccdbb5954ef08f14baf0533d0a3df165f6b2ea9b685d8256b58af8a7be",
+    "challenge_id": "chipbench:timing:Prob015_vending_machine2",
+    "deliveries": [],
+    "episode_hash": "sha256:bab49afe4c77f038ab3c871c0b7f7c754477e50d5b3ba4e38cb84bbcf1810a99",
+    "inconclusive": false,
+    "infra_failures": 0,
+    "matches": [],
+    "mode": "none",
+    "profile": {
+      "causal": {
+        "cone_has_control_dependency": true,
+        "cone_has_counter": true,
+        "cone_has_reset_logic": true,
+        "cone_has_state_machine": true,
+        "cone_size_bucket": "medium",
+        "output_driver_kind": "sequential",
+        "register_distance": "0",
+        "temporal_relation": "same_cycle"
+      },
+      "schema_version": "r3e-observable-profile-v1",
+      "status": {
+        "delta_bucket": "-1",
+        "failing_output_bucket": "2-3",
+        "onset_bucket": "late",
+        "oracle_stage": "functional",
+        "output_width_bucket": "1bit",
+        "partial_failure": false,
+        "symptom": "variable_offset",
+        "x_involved": false
+      }
+    },
+    "retrieved_items": [],
+    "shown_items": [],
+    "solved_by_escalation": false,
+    "solved_within_budget": true
+  },
+  "solved": true
+}

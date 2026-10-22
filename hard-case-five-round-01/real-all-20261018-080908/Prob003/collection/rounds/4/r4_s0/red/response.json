@@ -1,0 +1,40 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "        sf1:\n            nstate=sf2;",
+            "replace": "        sf1:\n            nstate=data?sf2:s1;"
+          }
+        ],
+        "violated_requirement": "When in state sf1, the next state should unconditionally transition to sf2, but the mutated version incorrectly makes it dependent on the input data, potentially causing incorrect sequence detection for groups starting with a mismatch.",
+        "spec_basis": "The specification states that if the first bit of a group does not match the sequence, the module skips the entire group and starts checking from the next group."
+      },
+      {
+        "edits": [
+          {
+            "find": "        sf4:\n            nstate=sf5;",
+            "replace": "        sf4:\n            nstate=data?sf5:s5;"
+          }
+        ],
+        "violated_requirement": "When in state sf4, the next state should unconditionally transition to sf5, but the mutated version incorrectly makes it dependent on the input data, potentially causing incorrect sequence detection for groups with mismatches in the middle of the sequence.",
+        "spec_basis": "The specification requires that once a mismatch is detected, the module should skip the remaining bits of the current group."
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:8643ab6cbdb7c2d7fb9beda2f4925e35a9aff8a6755b821cacd58348bbc910a5",
+  "input_tokens": 8083,
+  "output_tokens": 250,
+  "request_hash": "sha256:639634b5474be23afb77e5924e6de18a97f44b49536c335f59d3dde72a823f22",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 8083,
+    "output_tokens": 250
+  },
+  "model_seconds": 17.64786673244089
+}

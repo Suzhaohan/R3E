@@ -1,0 +1,37 @@
+{
+  "status": "proposal",
+  "buggy_rtl": "module mux_4to1_case ( input [3:0] a,                 // 4-bit input called a\n                       input [3:0] b,                 // 4-bit input called b\n                       input [3:0] c,                 // 4-bit input called c\n                       input [3:0] d,                 // 4-bit input called d\n                       input [1:0] sel,               // input sel used to select between a,b,c,d\n                       output reg [3:0] out);         // 4-bit output based on input sel\n\n   // This always block gets executed whenever a/b/c/d/sel changes value\n   // When that happens, based on value in sel, output is assigned to either a/b/c/d\n   always @ (a or b or c or d or sel) begin\n      case (sel)\n         2'b00 : out <= a;\n         2'b01 : out <= b;\n         2'b11 : out <= d;\n      endcase\n   end\nendmodule",
+  "buggy_rtl_hash": "sha256:1d22ad29914f9ed038b6c899c4aee60b9415dde54e7ccc067d3b916ea950d804",
+  "edit_budget": {
+    "metric": "sequence_matcher_token_edits_v1",
+    "tokenizer": "verilog_source_tokens_v2_macros",
+    "max_changed_fraction": 0.4,
+    "all_code": {
+      "original_tokens": 98,
+      "candidate_tokens": 92,
+      "changed_tokens": 6,
+      "allowed_tokens": 39,
+      "changed_fraction": 0.061224489795918366,
+      "within_limit": true
+    },
+    "body": {
+      "original_tokens": 44,
+      "candidate_tokens": 38,
+      "changed_tokens": 6,
+      "allowed_tokens": 17,
+      "changed_fraction": 0.13636363636363635,
+      "within_limit": true
+    }
+  },
+  "diff": "--- clean.sv\n+++ buggy.sv\n@@ -11,7 +11,6 @@\n       case (sel)\n          2'b00 : out <= a;\n          2'b01 : out <= b;\n-         2'b10 : out <= c;\n          2'b11 : out <= d;\n       endcase\n    end\n",
+  "claims": {
+    "violated_requirement": "When sel=10, output must follow input c; missing case item causes output to retain prior value.",
+    "spec_basis": "Spec: '00 selects a, 01 b, 10 c, 11 d' and 'Output follows the selected input when it or sel changes.'"
+  },
+  "mutation_edits": [
+    {
+      "find": "         2'b10 : out <= c;\n",
+      "replace": ""
+    }
+  ]
+}

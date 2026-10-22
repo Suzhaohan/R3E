@@ -1,0 +1,26 @@
+{
+  "result": {
+    "edits": [
+      {
+        "find": "    if(counter_out == 4'b1111)\n    begin\n        overflow_out <= 1'b1;\n    end",
+        "replace": "    if(counter_out == 4'b1111 && enable == 1'b0)\n    begin\n        overflow_out <= 1'b1;\n    end"
+      }
+    ],
+    "violated_requirement": "Overflow must be set when the pre-edge count is 15 regardless of enable; the mutant only sets it when enable is low, so with enable high the sticky overflow never asserts on the 15-to-0 wrap.",
+    "spec_basis": "\"The independent overflow test observes the pre-edge count: if it is 15, set sticky overflow even when enable is high.\""
+  },
+  "raw_response_hash": "sha256:37f3babccaebb43514780783d2058c751e9fa81aad9e09f5c7f4e4d5703fa995",
+  "input_tokens": 7934,
+  "output_tokens": 7192,
+  "request_hash": "sha256:6d65224b1c3b5d6558b8177525ec261e6c6bd0ec62b73ba8fc87fa8c542ea61b",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 7934,
+    "output_tokens": 7192
+  },
+  "model_seconds": 44.27021744009107
+}

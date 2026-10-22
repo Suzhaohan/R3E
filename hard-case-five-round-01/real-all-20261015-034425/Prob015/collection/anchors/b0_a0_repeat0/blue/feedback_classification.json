@@ -1,0 +1,50 @@
+{
+ "summary": {
+  "task_id": "chipbench_Prob015_fixed_hard_questions__exam_timing",
+  "encounters": 1,
+  "categories": {
+   "public_pass_hidden_fail": 1
+  },
+  "functional_failure_candidates": 1,
+  "pending_review": 1,
+  "reviewed_functional_failures": 0,
+  "original_defect_persists": 0,
+  "new_regression": 0,
+  "mechanism_907_exploratory": 0
+ },
+ "encounters": [
+  {
+   "encounter": 0,
+   "endpoint_candidate": "sha256:8fe106ecf1877c5166592c731af659f312e3307adec8341520cd6e7d596d1b12",
+   "endpoint_public": {
+    "tier": "visible_pass",
+    "suites": {
+     "W_bug": {
+      "result": "visible_pass",
+      "checker_violation": false,
+      "failures": []
+     },
+     "W_preserve": {
+      "result": "visible_pass",
+      "checker_violation": false,
+      "failures": []
+     }
+    }
+   },
+   "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -49,7 +49,7 @@\n         {out1, out2, out3} <= 3'b000;\n       end\n       else begin\n-        case (state)\n+        case (nstate)\n           S0, S0_5, S1:  {out1, out2, out3} <= 3'b000;\n           S1_5:          {out1, out2, out3} <= (~sel) ? 3'b100 : 3'b000;\n           S2:            {out1, out2, out3} <= (~sel) ? 3'b101 : 3'b000;\n",
+   "endpoint_evaluator": {
+    "result": "fail",
+    "returncode": 0,
+    "failures": [
+     "CHECK_FAIL evaluator mismatches"
+    ],
+    "log_hash": "sha256:d9cf2422a57a5fafb69593320d0d6633de64ed063567417d7d56bf04d0648afe"
+   },
+   "category": "public_pass_hidden_fail",
+   "functional_failure_candidate": true,
+   "review": {
+    "decision": "PENDING"
+   }
+  }
+ ]
+}

@@ -1,0 +1,40 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "else if (a_tem == 8'b0111_0001)",
+            "replace": "else if (a_tem == 8'b0111_1001)"
+          }
+        ],
+        "violated_requirement": "The output match should be asserted when the shift register matches 8'b0111_0001, but the mutant asserts it for 8'b0111_1001 instead. This will cause a mismatch when the input sequence contains the pattern 8'b0111_1001.",
+        "spec_basis": "The module should assert match when a_tem equals 8'b0111_0001."
+      },
+      {
+        "edits": [
+          {
+            "find": "a_tem <= {a_tem[6:0],a}",
+            "replace": "a_tem <= {a_tem[5:0],a, a_tem[7]}"
+          }
+        ],
+        "violated_requirement": "The shift register should retain the 8 most recent bits of input a, but the mutant incorrectly shifts in the new bit and rotates the MSB to the LSB position. This will corrupt the history and cause incorrect match assertions.",
+        "spec_basis": "The shift register should retain the 8 most recent bits of input a."
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:e69bc7702d91e178065ba5ae77f06c6e8425e7d3aedce1bafd972a2ce2fce1a8",
+  "input_tokens": 7305,
+  "output_tokens": 259,
+  "request_hash": "sha256:469f4d33bb06c473f6fb469e6957f5e7757ecf8c3c222b8393d26c5ca375049e",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 7305,
+    "output_tokens": 259
+  },
+  "model_seconds": 14.680078772827983
+}

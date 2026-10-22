@@ -1,0 +1,196 @@
+{
+  "entries": [
+    {
+      "buggy_hash": "sha256:929ebffbcbcff18f9bd1f87301827b6d7285f2bcfee15670dd677dc079a4c218",
+      "candidate_hash": "sha256:39470cf9c1371ebd5f662f16345cc852631df712d1c2ebbf68e3564d232bc297",
+      "created_round": 1,
+      "entry_hash": "sha256:2362d7331d9c42d21fd46268b219a5aba6a5cd9bc7ebf0bd251ae5d048890862",
+      "family": "Prob001",
+      "patch": "--- a/rtl/design.sv\n+++ b/rtl/design.sv\n@@ -5,7 +5,7 @@\n \toutput reg match\n \t);\n \n-\treg [1'b1:0] a_tem;\n+\treg [7:0] a_tem;\n \t\n \talways @(posedge clk or negedge rst_n)\n \t\tif (!rst_n)\n",
+      "source_slot": "r1_Prob001",
+      "validation": "reference_test_pass_only"
+    },
+    {
+      "buggy_hash": "sha256:1a8ed0f610c29cdf466bf27add6e3d7c2ef69d871eb6ac5c903c371d8dd79c0e",
+      "candidate_hash": "sha256:b468112e4bbceec9b378f8d336926d2eec9940d16f8f80a2eb75fbf44d183a45",
+      "created_round": 1,
+      "entry_hash": "sha256:c126a8f6109f511690b33c80b0e41e049517604f2c7d61504f5968c4c5431c90",
+      "family": "Prob002",
+      "patch": "--- a/rtl/design.sv\n+++ b/rtl/design.sv\n@@ -5,7 +5,7 @@\n \toutput match\n \t);\n \n-\treg [1'b1:0] a_tem;\n+\treg [8:0] a_tem;\n \treg match_f;\n \treg match_b;\n \t\n",
+      "source_slot": "r1_Prob002",
+      "validation": "reference_test_pass_only"
+    },
+    {
+      "buggy_hash": "sha256:42a852b647bb52b605f8ccb3ff7e10c5ff68bbe136a295be541316f99656621b",
+      "candidate_hash": "sha256:bd26aa07228b000f4ac95b0439cbe6da7305da19bf3d4475d3afae7953dd4645",
+      "created_round": 1,
+      "entry_hash": "sha256:538f3f4e89ae4167ed1258c56748d07af9244ec28ed98f75352259be541db5cf",
+      "family": "Prob003",
+      "patch": "--- a/rtl/design.sv\n+++ b/rtl/design.sv\n@@ -7,7 +7,7 @@\n \t);\n \n \n-reg [1'b1:0] pstate,nstate;\n+reg [3:0] pstate,nstate;\n \n parameter idle=4'd0,\n \t\t  s1=4'd1,\n",
+      "source_slot": "r1_Prob003",
+      "validation": "reference_test_pass_only"
+    },
+    {
+      "buggy_hash": "sha256:dc4399f98cc12dbbf02be5654e3391c4375951a083318af1cb1c6f6939423b87",
+      "candidate_hash": "sha256:1d8f97b6d2f7278ace95b1d48b238ac0e0fb035fae11f105d8ee1fddecb1c977",
+      "created_round": 1,
+      "entry_hash": "sha256:60409b4e3da24a2ec7b599d807906bdb5717dfe762d49fad20f6be065c4decf1",
+      "family": "Prob015",
+      "patch": "--- a/rtl/design.sv\n+++ b/rtl/design.sv\n@@ -12,7 +12,7 @@\n );\n //*************code***********//\n \n-    parameter S0=1'b1, S0_5=1, S1=2, S1_5=3, S2=4, S2_5=5, S3=6;\n+    parameter S0=0, S0_5=1, S1=2, S1_5=3, S2=4, S2_5=5, S3=6;\n     reg[2:0] state, nstate;\n     \n     always@(posedge clk or negedge rst) begin\n",
+      "source_slot": "r1_Prob015",
+      "validation": "reference_test_pass_only"
+    },
+    {
+      "buggy_hash": "sha256:5a30e952d156729357f96545579db0b7b5339b65d9a2446d4ba42713c427129d",
+      "candidate_hash": "sha256:09613b6e134f0fbcbe434c33f10914a5ae86bcf2f33887dda6fbef280b699b0b",
+      "created_round": 1,
+      "entry_hash": "sha256:ae99f4ee0dfd9e19df039f3e24f3f6c7ef3bc3e53c76bdedd07668b3d56fa8f6",
+      "family": "Prob017",
+      "patch": "--- a/rtl/design.sv\n+++ b/rtl/design.sv\n@@ -4,7 +4,7 @@\n      input  wire rst,\n      output wire clk_out\n );\n-    parameter M_N = 1'b1; \n+    parameter M_N = 8'd87; \n     parameter c89 = 8'd24;  // 8/9 clock switching point\n     parameter div_e = 5'd8; //Even period\n     parameter div_o = 5'd9; //Odd period\n",
+      "source_slot": "r1_Prob017",
+      "validation": "reference_test_pass_only"
+    },
+    {
+      "buggy_hash": "sha256:f2720b392c27787cbe3dcdf3a21b46e6eecb9d9532add5470d2143a9c86d2f22",
+      "candidate_hash": "sha256:e06f917419d933e56ad83fa3b104ddf6474bea9b2e4d5b65d9ce94936dd4d992",
+      "created_round": 1,
+      "entry_hash": "sha256:8479568e1010aa725f79cc104dee7e1df167a31d39fbc31431176473089cbbdc",
+      "family": "Prob023",
+      "patch": "--- a/rtl/design.sv\n+++ b/rtl/design.sv\n@@ -6,7 +6,7 @@\n    output  reg [3:0] gray_out\n );\n //Gray code to binary conversion\n-reg  [1'b1:0] bin_out;\n+reg  [3:0] bin_out;\n wire [3:0] gray_wire;\n \n always @(posedge clk or negedge rst_n)begin\n",
+      "source_slot": "r1_Prob023",
+      "validation": "reference_test_pass_only"
+    },
+    {
+      "buggy_hash": "sha256:b2ee5c18d0b0cca9dfc68513919694fb305e46e12974fc1f51e73c74f62c777e",
+      "candidate_hash": "sha256:39470cf9c1371ebd5f662f16345cc852631df712d1c2ebbf68e3564d232bc297",
+      "created_round": 2,
+      "entry_hash": "sha256:9ea98912ac8a236d5f5e14b826094bb52b6ab3e4e0d7845eafab172abf8b3843",
+      "family": "Prob001",
+      "patch": "--- a/rtl/design.sv\n+++ b/rtl/design.sv\n@@ -5,7 +5,7 @@\n \toutput reg match\n \t);\n \n-\treg [7:1'b1] a_tem;\n+\treg [7:0] a_tem;\n \t\n \talways @(posedge clk or negedge rst_n)\n \t\tif (!rst_n)\n",
+      "source_slot": "r2_Prob001",
+      "validation": "reference_test_pass_only"
+    },
+    {
+      "buggy_hash": "sha256:7b0ab54a2c8cd9d4bdded06509f03531aada1badac40ce9b30d954d4dd60fb77",
+      "candidate_hash": "sha256:b468112e4bbceec9b378f8d336926d2eec9940d16f8f80a2eb75fbf44d183a45",
+      "created_round": 2,
+      "entry_hash": "sha256:89dd55fa690f6070e75f20d6c7b9ab03a59264a73db784da20b6a656b8cb7b22",
+      "family": "Prob002",
+      "patch": "--- a/rtl/design.sv\n+++ b/rtl/design.sv\n@@ -5,7 +5,7 @@\n \toutput match\n \t);\n \n-\treg [8:1'b1] a_tem;\n+\treg [8:0] a_tem;\n \treg match_f;\n \treg match_b;\n \t\n",
+      "source_slot": "r2_Prob002",
+      "validation": "reference_test_pass_only"
+    },
+    {
+      "buggy_hash": "sha256:c51747fd9f0859b69384e17438ee13b76e8a6ec7775ad95325ae63d8d6854753",
+      "candidate_hash": "sha256:bd26aa07228b000f4ac95b0439cbe6da7305da19bf3d4475d3afae7953dd4645",
+      "created_round": 2,
+      "entry_hash": "sha256:f141a755613ae0577e2cd227fffa81562510f04a129d6bf31be9978e7fc04a52",
+      "family": "Prob003",
+      "patch": "--- a/rtl/design.sv\n+++ b/rtl/design.sv\n@@ -7,7 +7,7 @@\n \t);\n \n \n-reg [3:1'b1] pstate,nstate;\n+reg [3:0] pstate,nstate;\n \n parameter idle=4'd0,\n \t\t  s1=4'd1,\n",
+      "source_slot": "r2_Prob003",
+      "validation": "reference_test_pass_only"
+    },
+    {
+      "buggy_hash": "sha256:21899dc6e18f0450fc5cd1113ec6a7dc93758bf76996553573c88c3e7f7a86f7",
+      "candidate_hash": "sha256:09613b6e134f0fbcbe434c33f10914a5ae86bcf2f33887dda6fbef280b699b0b",
+      "created_round": 2,
+      "entry_hash": "sha256:739ce01ddd175f3b1e63e6162f1161df5e84c22a24100bff531ebdcb30b8cfe3",
+      "family": "Prob017",
+      "patch": "--- a/rtl/design.sv\n+++ b/rtl/design.sv\n@@ -5,7 +5,7 @@\n      output wire clk_out\n );\n     parameter M_N = 8'd87; \n-    parameter c89 = 1'b1;  // 8/9 clock switching point\n+    parameter c89 = 8'd24;  // 8/9 clock switching point\n     parameter div_e = 5'd8; //Even period\n     parameter div_o = 5'd9; //Odd period\n //*************code***********//\n",
+      "source_slot": "r2_Prob017",
+      "validation": "reference_test_pass_only"
+    },
+    {
+      "buggy_hash": "sha256:ba31ae1fc27a98d14edf49919fc5688331d18a79a7da85c71c357c0115580309",
+      "candidate_hash": "sha256:e06f917419d933e56ad83fa3b104ddf6474bea9b2e4d5b65d9ce94936dd4d992",
+      "created_round": 2,
+      "entry_hash": "sha256:a3915b1363d4cf4da4b71cec3057d89c85d7d165375118d7204df837024e6cad",
+      "family": "Prob023",
+      "patch": "--- a/rtl/design.sv\n+++ b/rtl/design.sv\n@@ -6,7 +6,7 @@\n    output  reg [3:0] gray_out\n );\n //Gray code to binary conversion\n-reg  [3:1'b1] bin_out;\n+reg  [3:0] bin_out;\n wire [3:0] gray_wire;\n \n always @(posedge clk or negedge rst_n)begin\n",
+      "source_slot": "r2_Prob023",
+      "validation": "reference_test_pass_only"
+    },
+    {
+      "buggy_hash": "sha256:608a3ff773eeb0fbb46ac0bb63b5fb92d9b5d318b30e6d0f7180d61ce60c106d",
+      "candidate_hash": "sha256:39470cf9c1371ebd5f662f16345cc852631df712d1c2ebbf68e3564d232bc297",
+      "created_round": 3,
+      "entry_hash": "sha256:f33813dad0b973515cca1959724cbb400aadd0966cd0d16e9bf001e280e70835",
+      "family": "Prob001",
+      "patch": "--- a/rtl/design.sv\n+++ b/rtl/design.sv\n@@ -10,7 +10,7 @@\n \talways @(posedge clk or negedge rst_n)\n \t\tif (!rst_n)\n \t\t\tbegin \n-\t\t\t\tmatch <= 1'b1;\n+\t\t\t\tmatch <= 1'b0;\n \t\t\tend\n \t\telse if (a_tem == 8'b0111_0001)\n \t\t\tbegin\n",
+      "source_slot": "r3_Prob001",
+      "validation": "reference_test_pass_only"
+    },
+    {
+      "buggy_hash": "sha256:2e4a10ef2791292f05bf1b0a8f758f7f3db923a57ce5c57a5d06be75b1a9ef29",
+      "candidate_hash": "sha256:bd26aa07228b000f4ac95b0439cbe6da7305da19bf3d4475d3afae7953dd4645",
+      "created_round": 3,
+      "entry_hash": "sha256:89300fb7cafc18f882ce6ed3e21e5b3746a7ff5c15b6292ac46f2c6e64485d69",
+      "family": "Prob003",
+      "patch": "--- a/rtl/design.sv\n+++ b/rtl/design.sv\n@@ -9,7 +9,7 @@\n \n reg [3:0] pstate,nstate;\n \n-parameter idle=1'b1,\n+parameter idle=4'd0,\n \t\t  s1=4'd1,\n           s2=4'd2,\n           s3=4'd3,\n",
+      "source_slot": "r3_Prob003",
+      "validation": "reference_test_pass_only"
+    },
+    {
+      "buggy_hash": "sha256:a4a1c7db4f920a1b7321731f6f79a3e21ea077a50a067663248c88af3c99e58a",
+      "candidate_hash": "sha256:1d8f97b6d2f7278ace95b1d48b238ac0e0fb035fae11f105d8ee1fddecb1c977",
+      "created_round": 3,
+      "entry_hash": "sha256:db398c9c41db40b84a6cfdb823725ed062ac153e20387308b4a99669fb7f6a62",
+      "family": "Prob015",
+      "patch": "--- a/rtl/design.sv\n+++ b/rtl/design.sv\n@@ -12,7 +12,7 @@\n );\n //*************code***********//\n \n-    parameter S0=0, S0_5=1, S1=1'b1, S1_5=3, S2=4, S2_5=5, S3=6;\n+    parameter S0=0, S0_5=1, S1=2, S1_5=3, S2=4, S2_5=5, S3=6;\n     reg[2:0] state, nstate;\n     \n     always@(posedge clk or negedge rst) begin\n",
+      "source_slot": "r3_Prob015",
+      "validation": "reference_test_pass_only"
+    },
+    {
+      "buggy_hash": "sha256:71b8d18caebba086c0e81e72f729c24afc7a8aecf3438c3a3262c8c29a295451",
+      "candidate_hash": "sha256:09613b6e134f0fbcbe434c33f10914a5ae86bcf2f33887dda6fbef280b699b0b",
+      "created_round": 3,
+      "entry_hash": "sha256:91393cfe747d61f719662896bd7ccc69628641bc5fa8e919591800829639970a",
+      "family": "Prob017",
+      "patch": "--- a/rtl/design.sv\n+++ b/rtl/design.sv\n@@ -6,7 +6,7 @@\n );\n     parameter M_N = 8'd87; \n     parameter c89 = 8'd24;  // 8/9 clock switching point\n-    parameter div_e = 1'b1; //Even period\n+    parameter div_e = 5'd8; //Even period\n     parameter div_o = 5'd9; //Odd period\n //*************code***********//\n     reg [3:0] clk_cnt;\n",
+      "source_slot": "r3_Prob017",
+      "validation": "reference_test_pass_only"
+    },
+    {
+      "buggy_hash": "sha256:9dce2cf9808747a44c460edcdce9173ae6c3cd76d3568293bc924d630411c987",
+      "candidate_hash": "sha256:e06f917419d933e56ad83fa3b104ddf6474bea9b2e4d5b65d9ce94936dd4d992",
+      "created_round": 3,
+      "entry_hash": "sha256:cd50f1b3d3f8503dc6563d14ed9bc87c446aeb159a2249b197b3fd76d65e6f62",
+      "family": "Prob023",
+      "patch": "--- a/rtl/design.sv\n+++ b/rtl/design.sv\n@@ -7,7 +7,7 @@\n );\n //Gray code to binary conversion\n reg  [3:0] bin_out;\n-wire [1'b1:0] gray_wire;\n+wire [3:0] gray_wire;\n \n always @(posedge clk or negedge rst_n)begin\n    if(rst_n == 1'b0) begin\n",
+      "source_slot": "r3_Prob023",
+      "validation": "reference_test_pass_only"
+    },
+    {
+      "buggy_hash": "sha256:d3dfeaf198ce63726ffa913103fc68e52b830c91abd10eb28de8fd7ce113271f",
+      "candidate_hash": "sha256:1d8f97b6d2f7278ace95b1d48b238ac0e0fb035fae11f105d8ee1fddecb1c977",
+      "created_round": 4,
+      "entry_hash": "sha256:4c82e49761332c079dcbfac546f2bfe51c29f420bc9da04409f4ed281df4a4a9",
+      "family": "Prob015",
+      "patch": "--- a/rtl/design.sv\n+++ b/rtl/design.sv\n@@ -12,7 +12,7 @@\n );\n //*************code***********//\n \n-    parameter S0=0, S0_5=1, S1=2, S1_5=1'b1, S2=4, S2_5=5, S3=6;\n+    parameter S0=0, S0_5=1, S1=2, S1_5=3, S2=4, S2_5=5, S3=6;\n     reg[2:0] state, nstate;\n     \n     always@(posedge clk or negedge rst) begin\n",
+      "source_slot": "r4_Prob015",
+      "validation": "reference_test_pass_only"
+    },
+    {
+      "buggy_hash": "sha256:13ff4a34a481dfa2c06f81744628ec7117e5272ef70f88d94f4f83907a8b2d7e",
+      "candidate_hash": "sha256:09613b6e134f0fbcbe434c33f10914a5ae86bcf2f33887dda6fbef280b699b0b",
+      "created_round": 4,
+      "entry_hash": "sha256:49866204d671196a4a30937052c3e0e72b36fb6eb448aa2db88baeb142294fca",
+      "family": "Prob017",
+      "patch": "--- a/rtl/design.sv\n+++ b/rtl/design.sv\n@@ -7,7 +7,7 @@\n     parameter M_N = 8'd87; \n     parameter c89 = 8'd24;  // 8/9 clock switching point\n     parameter div_e = 5'd8; //Even period\n-    parameter div_o = 1'b1; //Odd period\n+    parameter div_o = 5'd9; //Odd period\n //*************code***********//\n     reg [3:0] clk_cnt;\n     reg [6:0] cyc_cnt;\n",
+      "source_slot": "r4_Prob017",
+      "validation": "reference_test_pass_only"
+    },
+    {
+      "buggy_hash": "sha256:a2f57a8c4c541be5b0ac788b7b87083e7734f70417dfddaa503f00cb43162c11",
+      "candidate_hash": "sha256:e06f917419d933e56ad83fa3b104ddf6474bea9b2e4d5b65d9ce94936dd4d992",
+      "created_round": 4,
+      "entry_hash": "sha256:357d3b3a04d27142888e925026f217eefd8c6ec294d88107a7e3f1c3657f5917",
+      "family": "Prob023",
+      "patch": "--- a/rtl/design.sv\n+++ b/rtl/design.sv\n@@ -7,7 +7,7 @@\n );\n //Gray code to binary conversion\n reg  [3:0] bin_out;\n-wire [3:1'b1] gray_wire;\n+wire [3:0] gray_wire;\n \n always @(posedge clk or negedge rst_n)begin\n    if(rst_n == 1'b0) begin\n",
+      "source_slot": "r4_Prob023",
+      "validation": "reference_test_pass_only"
+    }
+  ],
+  "entry_count": 19,
+  "round": 4
+}

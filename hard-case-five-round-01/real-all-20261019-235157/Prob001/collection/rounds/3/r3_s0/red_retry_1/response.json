@@ -1,0 +1,30 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "a_tem <= {a_tem[6:0],a}",
+            "replace": "a_tem <= {a_tem[7:1],a}"
+          }
+        ],
+        "violated_requirement": "When shifting in a new bit, the previous bits should shift left by one position. This mutation causes the shift register to incorrectly retain the MSB and shift right, leading to incorrect pattern matching. For example, after shifting in the sequence 01110001, the register would contain 01110001 in the clean RTL but 11100011 in the mutated version, causing incorrect match detection.",
+        "spec_basis": "Shift Register Behavior: On every positive edge of the clock, if `rst_n` is asserted (logic 1), the input `a` should be shifted into the least significant bit (LSB) of the shift register `a_tem`, and the previous bits should shift left by one position."
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:9bc3f3906c169ef1aecd9a53cd974c1cee093cc645e6eed05e208bf0fd908c2f",
+  "input_tokens": 8117,
+  "output_tokens": 201,
+  "request_hash": "sha256:81b7f8634fa2450385e0d243c2ec630a97ac44805313bd0837ed412cdf365319",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 8117,
+    "output_tokens": 201
+  },
+  "model_seconds": 9.272662162780762
+}

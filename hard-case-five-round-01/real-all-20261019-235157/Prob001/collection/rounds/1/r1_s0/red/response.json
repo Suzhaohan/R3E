@@ -1,0 +1,50 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "a_tem == 8'b0111_0001",
+            "replace": "a_tem == 8'b01110011"
+          }
+        ],
+        "violated_requirement": "The output match should be asserted when the shift register matches 8'b0111_0001, but the mutant asserts it for 8'b01110011 instead.",
+        "spec_basis": "Matching Logic: The output match should be asserted (logic 1) whenever the value of the shift register a_tem matches the specific 8-bit pattern 8'b0111_0001."
+      },
+      {
+        "edits": [
+          {
+            "find": "a_tem <= {a_tem[6:0],a}",
+            "replace": "a_tem <= {a,a_tem[7:1]}"
+          }
+        ],
+        "violated_requirement": "The shift register should shift left with new input in LSB, but the mutant shifts right with new input in MSB, changing the history ordering.",
+        "spec_basis": "Shift Register Behavior: On every positive edge of the clock, if rst_n is asserted (logic 1), the input a should be shifted into the least significant bit (LSB) of the shift register a_tem, and the previous bits should shift left by one position."
+      },
+      {
+        "edits": [
+          {
+            "find": "a_tem == 8'b0111_0001",
+            "replace": "a_tem[7:4] == 4'b0111"
+          }
+        ],
+        "violated_requirement": "The output match should check all 8 bits, but the mutant only checks the upper 4 bits, causing false matches.",
+        "spec_basis": "Matching Logic: The output match should be asserted (logic 1) whenever the value of the shift register a_tem matches the specific 8-bit pattern 8'b0111_0001."
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:12f93b458ad51346be9861b325ae7e8caeafd75b50375775e15a9f6ff0b153b3",
+  "input_tokens": 3648,
+  "output_tokens": 443,
+  "request_hash": "sha256:3216734e07815d6fe9a09ea17e6546ea6aa66b8d7895c9f5ee4f409b0e869df6",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 3648,
+    "output_tokens": 443
+  },
+  "model_seconds": 12.139230758883059
+}

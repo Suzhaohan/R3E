@@ -1,0 +1,196 @@
+{
+  "source": {
+    "run_id": "collection",
+    "round": 4,
+    "slot_id": "r4_s0",
+    "task_hash": "sha256:453280e9ed72e4ede6a9f8eab97626c1ef8113900a0fccbbb3bd3205f7283aa5",
+    "carrier_id": "chipbench_Prob017_fractional_divider",
+    "mutant_hash": "sha256:759eb2314d60bb7241f2923646c3cc8c53e5886f3de812a635f04db6168026d8",
+    "candidate_hash": "sha256:d225776856b66d3cee4f5cdfe5f3b0ff5b0cb14a56be3fe66c1ddd3d7cfabcb4",
+    "encounter_hash": "sha256:942f8a83ae3489846ef1d9e1e9fb21c3b26ef631af0424e30aae3abc04eb90a9",
+    "archive_hash": "sha256:bbd8cba2744145601bea10c42da5ebe7880c3ac6b3955e6c77dc0455c5596857",
+    "public_replay_hash": "sha256:5a16faff732100d09f72a7f0da1a8052deeefe10ffc706198a4026feb79bfbc5"
+  },
+  "encounter": {
+    "encounter": 0,
+    "seed": 1343095866064550,
+    "result": {
+      "task_id": "chipbench_Prob017_fractional_divider__759eb2314d60bb72",
+      "route": "direct",
+      "rtl_tokens": 443,
+      "closure": [
+        "rtl/sequence.sv",
+        "harness:W_bug_tb.sv",
+        "harness:W_preserve_tb.sv"
+      ],
+      "outcome": "fixed",
+      "attempts": [
+        {
+          "attempt": 0,
+          "route": "direct",
+          "submissions": [
+            {
+              "kind": "repair",
+              "tokens": {
+                "input": 3533,
+                "output": 563,
+                "counted_request": 3581,
+                "model_seconds": 18.12
+              },
+              "format_valid": true,
+              "format_error": null
+            }
+          ],
+          "repair_tokens": {
+            "input": 3533,
+            "output": 563,
+            "counted_request": 3581,
+            "model_seconds": 18.12
+          },
+          "edit": "Fixed cyc_cnt reset value to 1 when reaching M_N-1 to match specification requirement of wrapping to zero",
+          "candidate_hash": "sha256:a8b7b6ff59435455db20aa9aca38977ded25e472598a142841d5ed7f90c875b1",
+          "tier": "visible_fail",
+          "stage": "simulation",
+          "build_seconds": 0.02,
+          "sim_seconds": 0.01,
+          "changed_files": [
+            "rtl/sequence.sv"
+          ]
+        },
+        {
+          "attempt": 1,
+          "route": "direct",
+          "submissions": [
+            {
+              "kind": "public_feedback_correction",
+              "tokens": {
+                "input": 5063,
+                "output": 561,
+                "counted_request": 5111,
+                "model_seconds": 16.63
+              },
+              "format_valid": false,
+              "format_error": "files must be a non-empty list of complete replacement files."
+            },
+            {
+              "kind": "format_correction",
+              "tokens": {
+                "input": 5662,
+                "output": 571,
+                "counted_request": 5710,
+                "model_seconds": 19.96
+              },
+              "format_valid": true,
+              "format_error": null
+            }
+          ],
+          "repair_tokens": {
+            "input": 10725,
+            "output": 1132,
+            "counted_request": 10821,
+            "model_seconds": 36.59
+          },
+          "edit": "Changed output condition from (div_e>>2)+1 to (div_e>>1)+1 to match specification's floor(div/4)+1 requirement",
+          "candidate_hash": "sha256:176091d1a9ed1a2021857519b6ead79d4d1359e68e1d4e956582386917394681",
+          "tier": "visible_fail",
+          "stage": "simulation",
+          "build_seconds": 0.02,
+          "sim_seconds": 0.01,
+          "changed_files": [
+            "rtl/sequence.sv"
+          ]
+        },
+        {
+          "attempt": 2,
+          "route": "direct",
+          "submissions": [
+            {
+              "kind": "public_feedback_correction",
+              "tokens": {
+                "input": 5280,
+                "output": 571,
+                "counted_request": 5328,
+                "model_seconds": 17.57
+              },
+              "format_valid": true,
+              "format_error": null
+            }
+          ],
+          "repair_tokens": {
+            "input": 5280,
+            "output": 571,
+            "counted_request": 5328,
+            "model_seconds": 17.57
+          },
+          "edit": "Changed output condition from (div_e>>1)+1 to (div_e>>2)+1 to match specification's floor(div/4)+1 requirement",
+          "candidate_hash": "sha256:d225776856b66d3cee4f5cdfe5f3b0ff5b0cb14a56be3fe66c1ddd3d7cfabcb4",
+          "tier": "visible_pass",
+          "stage": "simulation",
+          "build_seconds": 0.03,
+          "sim_seconds": 0.03,
+          "changed_files": [
+            "rtl/sequence.sv"
+          ]
+        }
+      ],
+      "calls": 4,
+      "final_candidate_hash": "sha256:d225776856b66d3cee4f5cdfe5f3b0ff5b0cb14a56be3fe66c1ddd3d7cfabcb4",
+      "inputs_read": [
+        "public/task.json",
+        "public/visible/build.json",
+        "public/visible/W_bug_tb.sv",
+        "public/visible/W_preserve_tb.sv",
+        "public/spec.txt"
+      ],
+      "experience": {
+        "snapshot_id": "B_3",
+        "snapshot_hash": "sha256:dd470b15402e4d60de1eb221e4e4872bd1b74f7c19224433cfb0fe1177853c98",
+        "state_hash": "sha256:779aab1d8b568fa8a6921089d928e2a2486414683f90ecc09764c973e0c89203",
+        "payload_hash": "sha256:d9afb2e00332b0b58c4155ed2a76d11e4985413264c5468dbbc1eb366cf567d7",
+        "delivery_hash": "sha256:c9afdf69baf3c1644cf7eee2e7d626f15509922cb81b308822b663bd8de42005",
+        "delivered": true
+      }
+    }
+  },
+  "archive_path": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/real-all-20261020-011058/Prob017/collection/rounds/4/r4_s0/online/blue/archive/chipbench_Prob017_fractional_divider__759eb2314d60bb72__d225776856b66d3c.json",
+  "task_dir": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/real-all-20261020-011058/Prob017/collection/rounds/4/r4_s0/admission_a0_c1/blue_task",
+  "replay": {
+    "tier": "visible_pass",
+    "stage": "simulation",
+    "evidence": {
+      "suites": {
+        "W_bug": {
+          "result": "visible_pass",
+          "returncode": 0,
+          "pass_marker_found": true,
+          "fail_marker_found": false,
+          "log": "TESTBENCH PASS divider public waveform"
+        },
+        "W_preserve": {
+          "result": "visible_pass",
+          "returncode": 0,
+          "pass_marker_found": true,
+          "fail_marker_found": false,
+          "log": "TESTBENCH PASS divider preserve"
+        }
+      }
+    },
+    "build_seconds": 0.02501739375293255,
+    "sim_seconds": 0.029221199452877045,
+    "closure": [
+      "rtl/sequence.sv",
+      "harness:W_bug_tb.sv",
+      "harness:W_preserve_tb.sv"
+    ]
+  },
+  "public_rows": {
+    "W_bug": "visible_pass",
+    "W_preserve": "visible_pass"
+  },
+  "mutation_edits": [
+    {
+      "find": "cyc_cnt <= cyc_cnt==(M_N-1)? 0: cyc_cnt+1",
+      "replace": "cyc_cnt <= cyc_cnt==(M_N-1)? 1: cyc_cnt+1"
+    }
+  ]
+}

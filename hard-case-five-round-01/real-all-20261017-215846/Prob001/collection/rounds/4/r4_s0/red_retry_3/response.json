@@ -1,0 +1,26 @@
+{
+  "result": {
+    "edits": [
+      {
+        "find": "else if (a_tem == 8'b0111_0001)",
+        "replace": "else if (a_tem == 8'b0111_0001) && (a_tem[7:1] == 7'b0111_000)"
+      }
+    ],
+    "violated_requirement": "The output match should be asserted only when the shift register exactly matches 8'b0111_0001, but the mutant only checks the first 7 bits and ignores the LSB",
+    "spec_basis": "The output `match` should be asserted (logic 1) whenever the value of the shift register `a_tem` matches the specific 8-bit pattern `8'b0111_0001`"
+  },
+  "raw_response_hash": "sha256:f2eeca9565511952295649020917a642367dbe9883a41c390041977548189b8c",
+  "input_tokens": 6209,
+  "output_tokens": 154,
+  "request_hash": "sha256:92ad1e0a27811a1ea8cc17914adb98799eba2b8254eb6c5cb7246f0e4a0c4889",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 6209,
+    "output_tokens": 154
+  },
+  "model_seconds": 6.497160675004125
+}

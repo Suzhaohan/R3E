@@ -1,0 +1,26 @@
+{
+  "result": {
+    "edits": [
+      {
+        "find": "        idle:\n            if(data==0)",
+        "replace": "        idle:\n            if(data==1)"
+      }
+    ],
+    "violated_requirement": "Each non-overlapping six-bit group equal to the target 011100 must assert `match` (and any other group must assert `not_match`). The initial group boundary is mis-handled: in state `idle` the first bit value 0 is routed to the failure branch `sf1` instead of `s1`, so the very first 011100 group reports `not_match` instead of `match`.",
+    "spec_basis": "Spec: 'The sequence check begins with every sixth bit of input data, meaning the module processes the input in groups of six bits' and 'When the sequence 011100 is detected, the match output should assert (go high)'; timing contract: 'Immediately after bit six, outputs classify that group: match for 011100'."
+  },
+  "raw_response_hash": "sha256:7ca583aad0f852ef413fee2e5377e4a60b551783f2ea3f5429f8e5e81b6e0e96",
+  "input_tokens": 5763,
+  "output_tokens": 23510,
+  "request_hash": "sha256:3b4804a2ed4eb0db2e6dad0bd5d5d42c98f5b0b7dd4ecb6d66eff26f77ade1ba",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 5763,
+    "output_tokens": 23510
+  },
+  "model_seconds": 140.28964034747332
+}

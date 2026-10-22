@@ -1,0 +1,26 @@
+{
+  "result": {
+    "edits": [
+      {
+        "find": "    // if it overflows, set overflow_out to be 1\n    if(counter_out == 4'b1111)\n    begin\n        overflow_out <= 1'b1;\n    end",
+        "replace": "    // if it overflows, set overflow_out to be 1\n    if(counter_out == 4'b1111)\n    begin\n        overflow_out <= 1'b1;\n    end\n    else\n    begin\n        overflow_out <= 1'b0;\n    end"
+      }
+    ],
+    "violated_requirement": "overflow_out must be sticky: once set when the pre-edge count is 15 it holds until reset, even after the counter wraps or holds at other values.",
+    "spec_basis": "\"if it is 15, set sticky overflow even when enable is high. Overflow holds until reset\""
+  },
+  "raw_response_hash": "sha256:e64ef5db3600aa6d7a408307684920b336351e22ff63bff59661f0c8c576b5b8",
+  "input_tokens": 6305,
+  "output_tokens": 6864,
+  "request_hash": "sha256:230ad4e605d91b37d17ec5f11d09d6b5f855f1910fed076ac66b127462c36d22",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 6305,
+    "output_tokens": 6864
+  },
+  "model_seconds": 37.59234377462417
+}

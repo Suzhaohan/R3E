@@ -1,0 +1,46 @@
+{
+ "summary": {
+  "task_id": "chipbench_Prob001_fixed_hard_questions__exam_defect",
+  "encounters": 1,
+  "categories": {
+   "public_functional_failure": 1
+  },
+  "functional_failure_candidates": 1,
+  "pending_review": 1,
+  "reviewed_functional_failures": 0,
+  "original_defect_persists": 1,
+  "new_regression": 0,
+  "mechanism_907_exploratory": 0
+ },
+ "encounters": [
+  {
+   "encounter": 0,
+   "endpoint_candidate": "sha256:614a7020b7b7354f9678c52675e5db77a937855b4c304cfd8ea07d77cdc9881f",
+   "endpoint_public": {
+    "tier": "visible_fail",
+    "suites": {
+     "W_bug": {
+      "result": "visible_fail",
+      "checker_violation": true,
+      "failures": [
+       "CHECK_FAIL sequence sample=8"
+      ]
+     },
+     "W_preserve": {
+      "result": "visible_pass",
+      "checker_violation": false,
+      "failures": []
+     }
+    }
+   },
+   "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -11,23 +11,11 @@\n \t\tif (!rst_n)\n \t\t\tbegin \n \t\t\t\tmatch <= 1'b0;\n-\t\t\tend\n-\t\telse if (a_tem == 8'b0111_0001)\n-\t\t\tbegin\n-\t\t\t\tmatch <= 1'b1;\n-\t\t\tend\n-\t\telse \n-\t\t\tbegin\t\n-\t\t\t\tmatch <= 1'b0;\n-\t\t\tend\n-\t\t\n-\talways @(posedge clk or negedge rst_n)\n-\t\tif (!rst_n)\n-\t\t\tbegin \n \t\t\t\ta_tem <= 8'b0;\n \t\t\tend\n \t\telse \n \t\t\tbegin\n \t\t\t\ta_tem <= {a, a_tem[6:0]};\n+\t\t\t\tmatch <= (a_tem == 8'b0111_0001);\n \t\t\tend\n endmodule\n",
+   "category": "public_functional_failure",
+   "original_defect_persists": true,
+   "new_regression": false,
+   "functional_failure_candidate": true,
+   "review": {
+    "decision": "PENDING"
+   }
+  }
+ ]
+}

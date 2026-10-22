@@ -1,0 +1,223 @@
+{
+  "asset_hash": "sha256:be182310c0c0d6c5557ae854287af1d0c0198be7f2fed7a11e9bab1e2efba910",
+  "cases": [
+    {
+      "buggy": "visible_fail",
+      "case_id": "chipbench:timing:Prob015_vending_machine2",
+      "golden": "visible_pass",
+      "passed": true,
+      "role": "learning"
+    },
+    {
+      "buggy": "visible_fail",
+      "case_id": "chipbench:state_machine:Prob015_vending_machine2",
+      "golden": "visible_pass",
+      "passed": true,
+      "role": "learning"
+    },
+    {
+      "buggy": "visible_fail",
+      "case_id": "handoff:Prob003:historical_seed",
+      "golden": "visible_pass",
+      "passed": true,
+      "role": "learning"
+    },
+    {
+      "buggy": "visible_fail",
+      "case_id": "reconstructed:Prob015:documented_red",
+      "golden": "visible_pass",
+      "passed": true,
+      "role": "learning"
+    },
+    {
+      "buggy": "visible_fail",
+      "case_id": "chipbench:arithmetic:Prob001_continuous_input_sequence_detect",
+      "golden": "visible_pass",
+      "passed": true,
+      "role": "learning"
+    },
+    {
+      "buggy": "visible_fail",
+      "case_id": "chipbench:timing:Prob015_vending_machine2",
+      "golden": "visible_pass",
+      "passed": true,
+      "role": "qualification"
+    },
+    {
+      "buggy": "visible_fail",
+      "case_id": "chipbench:state_machine:Prob015_vending_machine2",
+      "golden": "visible_pass",
+      "passed": true,
+      "role": "qualification"
+    },
+    {
+      "buggy": "visible_fail",
+      "case_id": "handoff:Prob003:historical_seed",
+      "golden": "visible_pass",
+      "passed": true,
+      "role": "qualification"
+    },
+    {
+      "buggy": "visible_fail",
+      "case_id": "reconstructed:Prob015:documented_red",
+      "golden": "visible_pass",
+      "passed": true,
+      "role": "qualification"
+    },
+    {
+      "buggy": "visible_fail",
+      "case_id": "chipbench:arithmetic:Prob001_continuous_input_sequence_detect",
+      "golden": "visible_pass",
+      "passed": true,
+      "role": "qualification"
+    },
+    {
+      "buggy": "visible_fail",
+      "case_id": "chipbench:arithmetic:Prob023_gray_code_counter",
+      "golden": "visible_pass",
+      "passed": true,
+      "role": "holdout"
+    },
+    {
+      "buggy": "visible_fail",
+      "case_id": "chipbench:timing:Prob017_arbitrary_fractional_frequency_division",
+      "golden": "visible_pass",
+      "has_logic_loop": false,
+      "passed": true,
+      "role": "holdout",
+      "usage": "existing diagnostic defect; never a Red-generated hit"
+    },
+    {
+      "buggy": "visible_fail",
+      "case_id": "chipbench:arithmetic:Prob002_extraneous_items_sequence_detect",
+      "golden": "visible_pass",
+      "passed": true,
+      "role": "holdout"
+    },
+    {
+      "buggy": "visible_fail",
+      "case_id": "assignment4v:latch24_1",
+      "golden": "visible_pass",
+      "passed": true,
+      "role": "guard"
+    },
+    {
+      "buggy": "visible_fail",
+      "case_id": "df1baec9f5e267e3",
+      "golden": "visible_pass",
+      "passed": true,
+      "role": "guard"
+    },
+    {
+      "buggy": "visible_fail",
+      "case_id": "strider:first_counter_overflow_1",
+      "golden": "visible_pass",
+      "passed": true,
+      "role": "guard"
+    },
+    {
+      "buggy": "visible_fail",
+      "case_id": "handoff:Prob003:eval_match_branch",
+      "golden": "visible_pass",
+      "passed": true,
+      "role": "prob003_eval"
+    },
+    {
+      "buggy": "visible_fail",
+      "case_id": "handoff:Prob003:eval_miss_branch",
+      "golden": "visible_pass",
+      "passed": true,
+      "role": "prob003_eval"
+    }
+  ],
+  "model_calls": 0,
+  "prob003_qualification": {
+    "matrix": {
+      "clean": {
+        "W_bug": {
+          "log": "TESTBENCH PASS W_bug groups=256 cycles=1536\n",
+          "result": "pass"
+        },
+        "W_preserve": {
+          "log": "TESTBENCH PASS W_preserve reset exclusivity stability\n",
+          "result": "pass"
+        },
+        "evaluator": {
+          "log": "TESTBENCH PASS evaluator checks=4096\n",
+          "result": "pass"
+        }
+      },
+      "defect": {
+        "W_bug": {
+          "log": "CHECK_FAIL W_bug cycle=12 group=000000 bit=0 match=0 not_match=0\n",
+          "result": "fail"
+        },
+        "W_preserve": {
+          "log": "TESTBENCH PASS W_preserve reset exclusivity stability\n",
+          "result": "pass"
+        },
+        "evaluator": {
+          "log": "CHECK_FAIL evaluator sample=11 phase=6 history=101111 expected=01 observed=00\n",
+          "result": "fail"
+        }
+      },
+      "eval_match_branch": {
+        "W_bug": {
+          "log": "CHECK_FAIL W_bug cycle=30 group=011100 bit=0 match=0 not_match=1\n",
+          "result": "fail"
+        },
+        "W_preserve": {
+          "log": "TESTBENCH PASS W_preserve reset exclusivity stability\n",
+          "result": "pass"
+        },
+        "evaluator": {
+          "log": "CHECK_FAIL evaluator sample=1260 phase=6 history=011100 expected=10 observed=01\n",
+          "result": "fail"
+        }
+      },
+      "eval_miss_branch": {
+        "W_bug": {
+          "log": "CHECK_FAIL W_bug cycle=24 group=011100 bit=0 match=0 not_match=1\n",
+          "result": "fail"
+        },
+        "W_preserve": {
+          "log": "TESTBENCH PASS W_preserve reset exclusivity stability\n",
+          "result": "pass"
+        },
+        "evaluator": {
+          "log": "CHECK_FAIL evaluator sample=65 phase=6 history=011100 expected=10 observed=01\n",
+          "result": "fail"
+        }
+      },
+      "reset_control": {
+        "W_bug": {
+          "log": "TESTBENCH PASS W_bug groups=256 cycles=1536\n",
+          "result": "pass"
+        },
+        "W_preserve": {
+          "log": "CHECK_FAIL W_preserve asynchronous reset did not clear state\n",
+          "result": "fail"
+        },
+        "evaluator": {
+          "log": "CHECK_FAIL evaluator sample=257 phase=2 history=000010 expected=00 observed=01\n",
+          "result": "fail"
+        }
+      }
+    },
+    "model_calls": 0,
+    "ready": true
+  },
+  "ready": true,
+  "tools": {
+    "iverilog": "Icarus Verilog version 11.0 (stable) ()",
+    "vvp": "Icarus Verilog runtime version 11.0 (stable) ()",
+    "yosys": "Yosys 0.9 (git sha1 1979e0b)"
+  },
+  "validation_reuse": {
+    "basis": "prior offline checks reused for retained unchanged RTL/spec/testbench/source assets; only case selection and reporting changed",
+    "previous_protocol_sha256": "64dc3f4bea2528e53deb4c609f658de33f13db9018d8441a8648ddfc508ffc36",
+    "new_simulation_runs": 0,
+    "new_model_calls": 0,
+    "new_pytest_runs": 0
+  }
+}

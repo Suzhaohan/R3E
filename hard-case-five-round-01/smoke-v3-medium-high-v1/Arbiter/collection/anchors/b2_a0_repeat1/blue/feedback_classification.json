@@ -1,0 +1,44 @@
+{
+ "summary": {
+  "task_id": "medium_high_Arbiter__exam_defect",
+  "encounters": 1,
+  "categories": {
+   "public_pass_hidden_pass": 1
+  },
+  "functional_failure_candidates": 0,
+  "pending_review": 0,
+  "reviewed_functional_failures": 0,
+  "original_defect_persists": 0,
+  "new_regression": 0,
+  "mechanism_907_exploratory": 0
+ },
+ "encounters": [
+  {
+   "encounter": 0,
+   "endpoint_candidate": "sha256:934ca3a217ef72031323982f52beaeef9c96c130af7e64fd0b90d7dcd87be5e3",
+   "endpoint_public": {
+    "tier": "visible_pass",
+    "suites": {
+     "W_bug": {
+      "result": "visible_pass",
+      "checker_violation": false,
+      "failures": []
+     },
+     "W_preserve": {
+      "result": "visible_pass",
+      "checker_violation": false,
+      "failures": []
+     }
+    }
+   },
+   "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -36,8 +36,9 @@\n \n reg [2:0] state, next_state;\n \n-always @ (req_0 or req_1 or req_2 or req_3)\n+always @ (state or req_0 or req_1 or req_2 or req_3)\n begin  \n+  next_state = 0;\n   case(state)\n     IDLE : if (req_0 == 1'b1) begin\n   \t     next_state = GNT0;\n@@ -70,6 +71,7 @@\n            end else begin\n \t     next_state = GNT3;\n \t  end\n+   default : next_state = IDLE;\n   endcase\n end\n \n",
+   "endpoint_evaluator": {
+    "result": "pass",
+    "returncode": 0,
+    "failures": [],
+    "log_hash": "sha256:b0609c03471ea28aa881dd19e7565166d1459cfa2ab369a7f38906912ae31394"
+   },
+   "category": "public_pass_hidden_pass"
+  }
+ ]
+}

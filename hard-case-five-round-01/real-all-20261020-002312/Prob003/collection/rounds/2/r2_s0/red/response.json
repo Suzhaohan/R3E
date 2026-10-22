@@ -1,0 +1,60 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "        s1:\n            nstate=data?s2:sf2;",
+            "replace": "        s1:\n            nstate=data?sf2:s2;"
+          }
+        ],
+        "violated_requirement": "When the first bit of a group is 1, the module should transition to sf1 (failure path), but this mutation causes it to incorrectly transition to sf2 instead, skipping the first failure state. This will cause incorrect not_match output when the sequence starts with 1.",
+        "spec_basis": "The sequence check begins with every sixth bit of input data, meaning the module processes the input in groups of six bits and does not overlap or reuse bits between groups."
+      },
+      {
+        "edits": [
+          {
+            "find": "        s2:\n            nstate=data?s3:sf3;",
+            "replace": "        s2:\n            nstate=data?sf3:s3;"
+          }
+        ],
+        "violated_requirement": "When the second bit of a matching sequence (after a correct first bit) is 0, the module should transition to failure path (sf3), but this mutation causes it to incorrectly continue on success path (s3). This will cause incorrect match output for sequences like 010100.",
+        "spec_basis": "If the sequence is not detected in a group, the not_match output should assert (go high)."
+      },
+      {
+        "edits": [
+          {
+            "find": "        s3:\n            nstate=data?s4:sf4;",
+            "replace": "        s3:\n            nstate=data?sf4:s4;"
+          }
+        ],
+        "violated_requirement": "When the third bit of a matching sequence (after correct first two bits) is 0, the module should transition to failure path (sf4), but this mutation causes it to incorrectly continue on success path (s4). This will cause incorrect match output for sequences like 011000.",
+        "spec_basis": "The module must detect the sequence 011100 from the input signal data."
+      },
+      {
+        "edits": [
+          {
+            "find": "        s5:\n            nstate=data?sf6:s6;",
+            "replace": "        s5:\n            nstate=data?s6:sf6;"
+          }
+        ],
+        "violated_requirement": "When the fifth bit of a matching sequence (after correct first four bits) is 1, the module should transition to failure path (sf6), but this mutation causes it to incorrectly continue on success path (s6). This will cause incorrect match output for sequences like 011101.",
+        "spec_basis": "When the sequence 011100 is detected, the match output should assert (go high)."
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:6eb09fda4ec01d5337a6b848f5c8becfc0812421067c86df887a69ffff7217f3",
+  "input_tokens": 7299,
+  "output_tokens": 537,
+  "request_hash": "sha256:cae16c963ef97be3638969e9c60868b7533fd4cb6fff5460818b9a8d1018a968",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 7299,
+    "output_tokens": 537
+  },
+  "model_seconds": 19.28135231602937
+}

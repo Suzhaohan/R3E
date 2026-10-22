@@ -1,0 +1,151 @@
+{
+  "source": {
+    "baseline_public_hash": "sha256:d57be8d81fc4835db0fb165447c59dfff8ddc02229c34845705c5964525bad8a",
+    "run_id": "collection",
+    "round": 5,
+    "slot_id": "r5_s0",
+    "task_hash": "sha256:7f05900f5b9fe07c42a85fc86fd4a4811cab096b65d0340eda6147c6c97b072f",
+    "carrier_id": "chipbench_Prob023_gray_counter",
+    "mutant_hash": "sha256:712ee4ef81c890c95dfe916a72f8e91c7fb0b6d29efba990106e92fca3539a4a",
+    "candidate_hash": "sha256:a9d2c4be44fd5eb0b50869cdb45e6e47bc832e4dcb226ba06f514c94a5c5c233",
+    "encounter_hash": "sha256:259438a3fa49a2900f28c35b01ba1ba216839c4918d0adcca8dc483facf30fde",
+    "archive_hash": "sha256:41dafd6555775530714efad8b657e65aae7b81493aa7ed4273e479e8b6ab3737",
+    "public_replay_hash": "sha256:45212c4e40c6aef4a45980aa3127e4f47e3c481b8151312adb58544269c4424f"
+  },
+  "encounter": {
+    "encounter": 0,
+    "seed": 1343095866064580,
+    "result": {
+      "task_id": "chipbench_Prob023_gray_counter__712ee4ef81c890c9",
+      "route": "direct",
+      "rtl_tokens": 342,
+      "closure": [
+        "rtl/sequence.sv",
+        "harness:W_bug_tb.sv",
+        "harness:W_preserve_tb.sv"
+      ],
+      "outcome": "fixed",
+      "attempts": [
+        {
+          "attempt": 0,
+          "route": "direct",
+          "submissions": [
+            {
+              "kind": "repair",
+              "tokens": {
+                "input": 3661,
+                "output": 146,
+                "counted_request": 3709,
+                "model_seconds": 6.75
+              },
+              "format_valid": true,
+              "format_error": null
+            }
+          ],
+          "repair_tokens": {
+            "input": 3661,
+            "output": 146,
+            "counted_request": 3709,
+            "model_seconds": 6.75
+          },
+          "edit": "The test fails at cycle 17 with gray code 0000 when 1101 was expected. The Gray-to-binary conversion incorrectly uses OR (|) instead of XOR (^) for bit 2, causing incorrect binary values during conversion. Changing to XOR maintains proper Gray code properties where only one bit changes between states.",
+          "candidate_hash": "sha256:a9d2c4be44fd5eb0b50869cdb45e6e47bc832e4dcb226ba06f514c94a5c5c233",
+          "tier": "visible_pass",
+          "stage": "simulation",
+          "build_seconds": 0.02,
+          "sim_seconds": 0.01,
+          "changed_files": [
+            "rtl/sequence.sv"
+          ]
+        }
+      ],
+      "calls": 1,
+      "final_candidate_hash": "sha256:a9d2c4be44fd5eb0b50869cdb45e6e47bc832e4dcb226ba06f514c94a5c5c233",
+      "inputs_read": [
+        "public/task.json",
+        "public/visible/build.json",
+        "public/visible/W_bug_tb.sv",
+        "public/visible/W_preserve_tb.sv",
+        "public/spec.txt"
+      ],
+      "experience": {
+        "snapshot_id": "B_4",
+        "snapshot_hash": "sha256:a438f343da341b2a7e4d5b4f4e48802d68fffab3c55019da0fb809d2430eed6e",
+        "state_hash": "sha256:11fc0ef7063f34bff1e82ea6894c49ce1deda466acd5b5e2736de75f85c4a3c6",
+        "payload_hash": "sha256:2e552e292d2a47f939abb7df200e1c53b369fbb79b0b3ed0d9c4adf2d8913be6",
+        "delivery_hash": "sha256:ce06f9a227337689ecc233c9b7f095b664238ae22c36b77ee7e5047d490c6c1b",
+        "delivered": true
+      }
+    }
+  },
+  "archive_path": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/real-all-20261020-222636/Prob023/collection/rounds/5/r5_s0/online/blue/archive/chipbench_Prob023_gray_counter__712ee4ef81c890c9__a9d2c4be44fd5eb0.json",
+  "task_dir": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/real-all-20261020-222636/Prob023/collection/rounds/5/r5_s0/admission/blue_task",
+  "baseline_public": {
+    "tier": "visible_fail",
+    "stage": "simulation",
+    "evidence": {
+      "suites": {
+        "W_bug": {
+          "result": "visible_fail",
+          "returncode": 0,
+          "pass_marker_found": false,
+          "fail_marker_found": true,
+          "log": "CHECK_FAIL gray cycle=17 got=0000 expected=1101"
+        },
+        "W_preserve": {
+          "result": "visible_pass",
+          "returncode": 0,
+          "pass_marker_found": true,
+          "fail_marker_found": false,
+          "log": "TESTBENCH PASS gray preserve"
+        }
+      }
+    },
+    "build_seconds": 0.02075754664838314,
+    "sim_seconds": 0.010455365292727947,
+    "closure": [
+      "rtl/sequence.sv",
+      "harness:W_bug_tb.sv",
+      "harness:W_preserve_tb.sv"
+    ]
+  },
+  "replay": {
+    "tier": "visible_pass",
+    "stage": "simulation",
+    "evidence": {
+      "suites": {
+        "W_bug": {
+          "result": "visible_pass",
+          "returncode": 0,
+          "pass_marker_found": true,
+          "fail_marker_found": false,
+          "log": "TESTBENCH PASS gray cycles=256"
+        },
+        "W_preserve": {
+          "result": "visible_pass",
+          "returncode": 0,
+          "pass_marker_found": true,
+          "fail_marker_found": false,
+          "log": "TESTBENCH PASS gray preserve"
+        }
+      }
+    },
+    "build_seconds": 0.019911451265215874,
+    "sim_seconds": 0.011116266250610352,
+    "closure": [
+      "rtl/sequence.sv",
+      "harness:W_bug_tb.sv",
+      "harness:W_preserve_tb.sv"
+    ]
+  },
+  "public_rows": {
+    "W_bug": "visible_pass",
+    "W_preserve": "visible_pass"
+  },
+  "mutation_edits": [
+    {
+      "find": "bin_out[2] = gray_wire[2]^bin_out[3];",
+      "replace": "bin_out[2] = gray_wire[2]|bin_out[3];"
+    }
+  ]
+}

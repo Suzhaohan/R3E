@@ -1,0 +1,32 @@
+module TopModule(
+   input   clk,
+   input   rst_n,
+
+   output  reg [3:0] gray_out
+);
+
+reg [3:0] bin;
+reg phase;
+
+wire [3:0] bin_next = bin + 1'b1;
+wire [3:0] gray_next = bin_next ^ (bin_next >> 1);
+
+always @(posedge clk or negedge rst_n) begin
+   if (rst_n == 1'b0) begin
+      phase    <= 1'b0;
+      bin      <= 4'b0;
+      gray_out <= 4'b0;
+   end
+   else begin
+      if (phase == 1'b0) begin
+         phase <= 1'b1;
+      end
+      else begin
+         phase    <= 1'b0;
+         bin      <= bin_next;
+         gray_out <= gray_next;
+      end
+   end
+end
+
+endmodule

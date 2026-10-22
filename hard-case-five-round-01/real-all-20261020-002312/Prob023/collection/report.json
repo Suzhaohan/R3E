@@ -1,0 +1,378 @@
+{
+  "scope": "single design, human-selected mechanism, deferred unseen-variant probes",
+  "scheduled_generation": 5,
+  "admitted": 3,
+  "distinct_admitted": 3,
+  "online_and_frozen_reference": [
+    {
+      "round": 1,
+      "slot_id": "r1_s0",
+      "admission": "admitted",
+      "reason": "public_matrix_and_structure_pass",
+      "mutant_hash": "sha256:2bdf21aaf4e04006752308609c97614a76fe47cec245da684dfc06d26ab67a7d",
+      "normalized_identity": "sha256:6dced1300a38b913828a4f85c55ed41398de01f3a1f7618bd9a6f9b0af429a7c",
+      "changed_fraction": 0.005050505050505051,
+      "repeats_historical_seed": false,
+      "online": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:38ab6f667fd63c1ce99044227272ff52dfbae64dcd465841b5a601f4e7489eac",
+        "endpoint_public": {
+          "tier": "visible_fail",
+          "suites": {
+            "W_bug": {
+              "result": "visible_fail",
+              "checker_violation": true,
+              "failures": [
+                "CHECK_FAIL gray cycle=1 got=0000 expected=0001"
+              ]
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -1,44 +1,54 @@\n-\n module TopModule(\n    input   clk,\n    input   rst_n,\n-\n    output  reg [3:0] gray_out\n );\n-//Gray code to binary conversion\n-reg  [3:0] bin_out;\n+\n+reg [3:0] bin_out;\n wire [3:0] gray_wire;\n+reg [3:0] bin_add_wire;\n+reg count_en;\n \n-always @(posedge clk or negedge rst_n)begin\n-   if(rst_n == 1'b0) begin\n+// Toggle count enable every cycle\n+always @(posedge clk or negedge rst_n) begin\n+   if(!rst_n) begin\n+      count_en <= 1'b0;\n+   end else begin\n+      count_en <= ~count_en;\n+   end\n+end\n+\n+// Gray to binary conversion\n+always @(posedge clk or negedge rst_n) begin\n+   if(!rst_n) begin\n       bin_out <= 4'b0;\n+   end else if (count_en) begin\n+      bin_out <= {gray_wire[3], \n+                 gray_wire[2] ^ gray_wire[3], \n+                 gray_wire[1] ^ gray_wire[2] ^ gray_wire[3], \n+                 gray_wire[0] ^ gray_wire[1] ^ gray_wire[2] ^ gray_wire[3]};\n    end\n-   else begin\n-      bin_out[3] = gray_wire[3];\n-      bin_out[2] = gray_wire[2]&bin_out[3];\n-      bin_out[1] = gray_wire[1]^bin_out[2];\n-      bin_out[0] = gray_wire[0]^bin_out[1];\n-   end \n end\n-//Binary increment\n-reg [3:0] bin_add_wire;\n-always @(posedge clk or negedge rst_n)begin\n-   if(rst_n == 1'b0) begin\n+\n+// Binary increment\n+always @(posedge clk or negedge rst_n) begin\n+   if(!rst_n) begin\n       bin_add_wire <= 4'b0;\n-   end\n-   else begin\n+   end else if (count_en) begin\n       bin_add_wire <= bin_out + 1'b1;\n    end\n end\n-//Binary to gray code conversion\n+\n+// Binary to gray code conversion\n assign gray_wire = (bin_add_wire >> 1) ^ bin_add_wire;\n \n-always @(posedge clk or negedge rst_n)begin\n-   if(rst_n == 1'b0) begin\n+// Output register\n+always @(posedge clk or negedge rst_n) begin\n+   if(!rst_n) begin\n       gray_out <= 4'b0;\n-   end\n-   else begin\n+   end else if (count_en) begin\n       gray_out <= gray_wire;\n    end\n end\n+\n endmodule",
+        "category": "public_functional_failure",
+        "original_defect_persists": true,
+        "new_regression": false,
+        "functional_failure_candidate": true,
+        "review": {
+          "decision": "PENDING"
+        }
+      },
+      "reference": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:a078cecc56622a788a966f472a057d9d1f6f7b3d3d3423ad76c298c6bc030adf",
+        "endpoint_public": {
+          "tier": "visible_fail",
+          "suites": {
+            "W_bug": {
+              "result": "visible_fail",
+              "checker_violation": true,
+              "failures": [
+                "CHECK_FAIL gray cycle=1 got=0000 expected=0001"
+              ]
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -1,4 +1,3 @@\n-\n module TopModule(\n    input   clk,\n    input   rst_n,\n@@ -8,16 +7,22 @@\n //Gray code to binary conversion\n reg  [3:0] bin_out;\n wire [3:0] gray_wire;\n+reg [3:0] gray_reg;\n+reg count;\n \n always @(posedge clk or negedge rst_n)begin\n    if(rst_n == 1'b0) begin\n       bin_out <= 4'b0;\n+      count <= 1'b0;\n    end\n    else begin\n-      bin_out[3] = gray_wire[3];\n-      bin_out[2] = gray_wire[2]&bin_out[3];\n-      bin_out[1] = gray_wire[1]^bin_out[2];\n-      bin_out[0] = gray_wire[0]^bin_out[1];\n+      if(count) begin\n+         bin_out[3] <= gray_reg[3];\n+         bin_out[2] <= gray_reg[2]^bin_out[3];\n+         bin_out[1] <= gray_reg[1]^bin_out[2];\n+         bin_out[0] <= gray_reg[0]^bin_out[1];\n+      end\n+      count <= ~count;\n    end \n end\n //Binary increment\n@@ -25,9 +30,13 @@\n always @(posedge clk or negedge rst_n)begin\n    if(rst_n == 1'b0) begin\n       bin_add_wire <= 4'b0;\n+      gray_reg <= 4'b0;\n    end\n    else begin\n-      bin_add_wire <= bin_out + 1'b1;\n+      if(count) begin\n+         bin_add_wire <= bin_out + 1'b1;\n+      end\n+      gray_reg <= gray_wire;\n    end\n end\n //Binary to gray code conversion\n@@ -38,7 +47,7 @@\n       gray_out <= 4'b0;\n    end\n    else begin\n-      gray_out <= gray_wire;\n+      gray_out <= gray_reg;\n    end\n end\n endmodule",
+        "category": "public_functional_failure",
+        "original_defect_persists": true,
+        "new_regression": false,
+        "functional_failure_candidate": true,
+        "review": {
+          "decision": "PENDING"
+        }
+      }
+    },
+    {
+      "round": 2,
+      "slot_id": "r2_s0",
+      "admission": "admitted",
+      "reason": "public_matrix_and_structure_pass",
+      "mutant_hash": "sha256:4c2fe70a0f1e4fdfcdaa6a60004bc065188eb85f8a211c5b803ad85e791f0199",
+      "normalized_identity": "sha256:2dd610a8b55c3f4227322d389370074c5bc20bcccec59f324c298e6447b183aa",
+      "changed_fraction": 0.005050505050505051,
+      "repeats_historical_seed": false,
+      "online": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:876f122d9ca9e4c5db8ad4fcced2d0c0a204c29a04aa3e4366f02245b7381426",
+        "endpoint_public": {
+          "tier": "visible_fail",
+          "suites": {
+            "W_bug": {
+              "result": "visible_fail",
+              "checker_violation": true,
+              "failures": [
+                "CHECK_FAIL gray cycle=1 got=0000 expected=0001"
+              ]
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -1,4 +1,3 @@\n-\n module TopModule(\n    input   clk,\n    input   rst_n,\n@@ -8,16 +7,23 @@\n //Gray code to binary conversion\n reg  [3:0] bin_out;\n wire [3:0] gray_wire;\n+reg [1:0] counter;\n \n always @(posedge clk or negedge rst_n)begin\n    if(rst_n == 1'b0) begin\n       bin_out <= 4'b0;\n+      counter <= 2'b0;\n    end\n    else begin\n-      bin_out[3] = gray_wire[3];\n-      bin_out[2] = gray_wire[2]^bin_out[3];\n-      bin_out[1] = gray_wire[1]|bin_out[2];\n-      bin_out[0] = gray_wire[0]^bin_out[1];\n+      if (counter == 2'b1) begin\n+         bin_out[3] <= gray_wire[3];\n+         bin_out[2] <= gray_wire[2]^bin_out[3];\n+         bin_out[1] <= gray_wire[1]^bin_out[2];\n+         bin_out[0] <= gray_wire[0]^bin_out[1];\n+         counter <= 2'b0;\n+      end else begin\n+         counter <= counter + 1'b1;\n+      end\n    end \n end\n //Binary increment\n@@ -26,7 +32,7 @@\n    if(rst_n == 1'b0) begin\n       bin_add_wire <= 4'b0;\n    end\n-   else begin\n+   else if (counter == 2'b1) begin\n       bin_add_wire <= bin_out + 1'b1;\n    end\n end\n@@ -37,7 +43,7 @@\n    if(rst_n == 1'b0) begin\n       gray_out <= 4'b0;\n    end\n-   else begin\n+   else if (counter == 2'b1) begin\n       gray_out <= gray_wire;\n    end\n end\n",
+        "category": "public_functional_failure",
+        "original_defect_persists": true,
+        "new_regression": false,
+        "functional_failure_candidate": true,
+        "review": {
+          "decision": "PENDING"
+        }
+      },
+      "reference": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:1907f4fa91894b4d974a82bf92ab98693e4d47177792434dce2d8559135466d8",
+        "endpoint_public": {
+          "tier": "visible_fail",
+          "suites": {
+            "W_bug": {
+              "result": "visible_fail",
+              "checker_violation": true,
+              "failures": [
+                "CHECK_FAIL gray cycle=1 got=0000 expected=0001"
+              ]
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -1,23 +1,26 @@\n-\n module TopModule(\n    input   clk,\n    input   rst_n,\n-\n    output  reg [3:0] gray_out\n );\n //Gray code to binary conversion\n reg  [3:0] bin_out;\n wire [3:0] gray_wire;\n+reg [3:0] counter;\n \n always @(posedge clk or negedge rst_n)begin\n    if(rst_n == 1'b0) begin\n       bin_out <= 4'b0;\n+      counter <= 4'b0;\n    end\n    else begin\n-      bin_out[3] = gray_wire[3];\n-      bin_out[2] = gray_wire[2]^bin_out[3];\n-      bin_out[1] = gray_wire[1]|bin_out[2];\n-      bin_out[0] = gray_wire[0]^bin_out[1];\n+      if (counter[0]) begin\n+         bin_out[3] <= gray_wire[3];\n+         bin_out[2] <= gray_wire[2]^bin_out[3];\n+         bin_out[1] <= gray_wire[1]^bin_out[2];\n+         bin_out[0] <= gray_wire[0]^bin_out[1];\n+      end\n+      counter <= counter + 1'b1;\n    end \n end\n //Binary increment\n@@ -26,7 +29,7 @@\n    if(rst_n == 1'b0) begin\n       bin_add_wire <= 4'b0;\n    end\n-   else begin\n+   else if (counter[0]) begin\n       bin_add_wire <= bin_out + 1'b1;\n    end\n end\n",
+        "category": "public_functional_failure",
+        "original_defect_persists": true,
+        "new_regression": false,
+        "functional_failure_candidate": true,
+        "review": {
+          "decision": "PENDING"
+        }
+      }
+    },
+    {
+      "round": 3,
+      "slot_id": "r3_s0",
+      "admission": "admitted",
+      "reason": "public_matrix_and_structure_pass",
+      "mutant_hash": "sha256:a6a3e8f34a420535a6d04db498e27deac9f0d06e4aacd56611f1f1da6a6b378c",
+      "normalized_identity": "sha256:70dcce81427d81eaef1d934e56476615f55727a1be19ac3dee705df0ae202418",
+      "changed_fraction": 0.005050505050505051,
+      "repeats_historical_seed": false,
+      "online": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:82e6ba2e242b2366304e355fc485b473a2ab80766b7c27193684bc3824fd8f69",
+        "endpoint_public": {
+          "tier": "visible_fail",
+          "suites": {
+            "W_bug": {
+              "result": "visible_fail",
+              "checker_violation": true,
+              "failures": [
+                "CHECK_FAIL gray cycle=1 got=0000 expected=0001"
+              ]
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -1,4 +1,3 @@\n-\n module TopModule(\n    input   clk,\n    input   rst_n,\n@@ -8,32 +7,32 @@\n //Gray code to binary conversion\n reg  [3:0] bin_out;\n wire [3:0] gray_wire;\n+reg [3:0] bin_add_wire;\n+reg count;\n \n-always @(posedge clk or negedge rst_n)begin\n+always @(posedge clk or negedge rst_n) begin\n    if(rst_n == 1'b0) begin\n       bin_out <= 4'b0;\n+      bin_add_wire <= 4'b0;\n+      count <= 1'b0;\n    end\n    else begin\n-      bin_out[3] = gray_wire[3];\n-      bin_out[2] = gray_wire[2]^bin_out[3];\n-      bin_out[1] = gray_wire[1]^bin_out[2];\n-      bin_out[0] = gray_wire[0]|bin_out[1];\n+      bin_out[3] <= gray_wire[3];\n+      bin_out[2] <= gray_wire[2]^bin_out[3];\n+      bin_out[1] <= gray_wire[1]^bin_out[2];\n+      bin_out[0] <= gray_wire[0]^bin_out[1];\n+      \n+      if(count) begin\n+         bin_add_wire <= bin_out + 1'b1;\n+      end\n+      count <= ~count;\n    end \n end\n-//Binary increment\n-reg [3:0] bin_add_wire;\n-always @(posedge clk or negedge rst_n)begin\n-   if(rst_n == 1'b0) begin\n-      bin_add_wire <= 4'b0;\n-   end\n-   else begin\n-      bin_add_wire <= bin_out + 1'b1;\n-   end\n-end\n+\n //Binary to gray code conversion\n assign gray_wire = (bin_add_wire >> 1) ^ bin_add_wire;\n \n-always @(posedge clk or negedge rst_n)begin\n+always @(posedge clk or negedge rst_n) begin\n    if(rst_n == 1'b0) begin\n       gray_out <= 4'b0;\n    end\n",
+        "category": "public_functional_failure",
+        "original_defect_persists": true,
+        "new_regression": false,
+        "functional_failure_candidate": true,
+        "review": {
+          "decision": "PENDING"
+        }
+      },
+      "reference": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:ab2b22503a0c0bd9b1164aca2aca7c6a57ee7dfc71f2681a2243477ef4511e9e",
+        "endpoint_public": {
+          "tier": "visible_pass",
+          "suites": {
+            "W_bug": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -1,4 +1,3 @@\n-\n module TopModule(\n    input   clk,\n    input   rst_n,\n@@ -17,7 +16,7 @@\n       bin_out[3] = gray_wire[3];\n       bin_out[2] = gray_wire[2]^bin_out[3];\n       bin_out[1] = gray_wire[1]^bin_out[2];\n-      bin_out[0] = gray_wire[0]|bin_out[1];\n+      bin_out[0] = gray_wire[0]^bin_out[1];\n    end \n end\n //Binary increment\n",
+        "endpoint_evaluator": {
+          "result": "pass",
+          "returncode": 0,
+          "failures": [],
+          "log_hash": "sha256:11076b020c9e50e8d811ee1c6449abfe949ab98bd58b51e22aba13b393f16d83"
+        },
+        "category": "public_pass_hidden_pass"
+      }
+    },
+    {
+      "round": 4,
+      "slot_id": "r4_s0",
+      "admission": "rejected",
+      "reason": "historical_seed_repeat"
+    },
+    {
+      "round": 5,
+      "slot_id": "r5_s0",
+      "admission": "abstained",
+      "reason": "All eligible Gray-to-binary conversion expression sites have been exhausted in previous rounds, and no new distinct defects can be proposed without violating mutation constraints or repeating excluded proposals."
+    }
+  ],
+  "reserved_variants_by_snapshot": [
+    {
+      "snapshot": "B_0",
+      "scheduled": 2,
+      "categories": {
+        "public_functional_failure": 2
+      }
+    },
+    {
+      "snapshot": "B_5",
+      "scheduled": 2,
+      "categories": {
+        "public_functional_failure": 2
+      }
+    }
+  ],
+  "probes": [
+    {
+      "snapshot": 0,
+      "anchor_index": 0,
+      "repeat": 0,
+      "endpoint": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:c8a35b84de245d834f96dd24cf57912bc8670f9d5298a33098c808fd4d07ec93",
+        "endpoint_public": {
+          "tier": "visible_fail",
+          "suites": {
+            "W_bug": {
+              "result": "visible_fail",
+              "checker_violation": true,
+              "failures": [
+                "CHECK_FAIL gray cycle=1 got=0000 expected=0001"
+              ]
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -7,16 +7,22 @@\n //Gray code to binary conversion\n reg  [3:0] bin_out;\n wire [3:0] gray_wire;\n+reg [3:0] gray_reg;\n+reg count;\n \n always @(posedge clk or negedge rst_n)begin\n    if(rst_n == 1'b0) begin\n       bin_out <= 4'b0;\n+      count <= 1'b0;\n    end\n    else begin\n-      bin_out[3] = gray_wire[3];\n-      bin_out[2] = gray_wire[2]^bin_out[3];\n-      bin_out[1] = gray_wire[1]^bin_out[2];\n-      bin_out[0] = gray_wire[0]^bin_out[1];\n+      if(count) begin\n+         bin_out[3] <= gray_reg[3];\n+         bin_out[2] <= gray_reg[2]^bin_out[3];\n+         bin_out[1] <= gray_reg[1]^bin_out[2];\n+         bin_out[0] <= gray_reg[0]^bin_out[1];\n+      end\n+      count <= ~count;\n    end \n end\n //Binary increment\n@@ -25,19 +31,23 @@\n    if(rst_n == 1'b0) begin\n       bin_add_wire <= 4'b0;\n    end\n-   else begin\n+   else if(count) begin\n       bin_add_wire <= bin_out + 1'b1;\n    end\n end\n //Binary to gray code conversion\n-assign gray_wire = (bin_add_wire >> 2) ^ bin_add_wire;\n+assign gray_wire = (bin_add_wire >> 1) ^ bin_add_wire;\n \n always @(posedge clk or negedge rst_n)begin\n    if(rst_n == 1'b0) begin\n       gray_out <= 4'b0;\n+      gray_reg <= 4'b0;\n    end\n    else begin\n-      gray_out <= gray_wire;\n+      gray_reg <= gray_wire;\n+      if(count) begin\n+         gray_out <= gray_wire;\n+      end\n    end\n end\n-endmodule\n+endmodule",
+        "category": "public_functional_failure",
+        "original_defect_persists": true,
+        "new_regression": false,
+        "functional_failure_candidate": true,
+        "review": {
+          "decision": "PENDING"
+        }
+      }
+    },
+    {
+      "snapshot": 0,
+      "anchor_index": 0,
+      "repeat": 1,
+      "endpoint": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:9afdf600f77b83cfff516f8497dc5376b5d3d96906ba6b455614095fcd862590",
+        "endpoint_public": {
+          "tier": "visible_fail",
+          "suites": {
+            "W_bug": {
+              "result": "visible_fail",
+              "checker_violation": true,
+              "failures": [
+                "CHECK_FAIL gray cycle=1 got=0000 expected=0001"
+              ]
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -7,16 +7,19 @@\n //Gray code to binary conversion\n reg  [3:0] bin_out;\n wire [3:0] gray_wire;\n+reg [0:0] toggle;\n \n always @(posedge clk or negedge rst_n)begin\n    if(rst_n == 1'b0) begin\n       bin_out <= 4'b0;\n+      toggle <= 1'b0;\n    end\n    else begin\n       bin_out[3] = gray_wire[3];\n       bin_out[2] = gray_wire[2]^bin_out[3];\n       bin_out[1] = gray_wire[1]^bin_out[2];\n       bin_out[0] = gray_wire[0]^bin_out[1];\n+      toggle <= ~toggle;\n    end \n end\n //Binary increment\n@@ -25,12 +28,12 @@\n    if(rst_n == 1'b0) begin\n       bin_add_wire <= 4'b0;\n    end\n-   else begin\n+   else if (toggle) begin\n       bin_add_wire <= bin_out + 1'b1;\n    end\n end\n //Binary to gray code conversion\n-assign gray_wire = (bin_add_wire >> 2) ^ bin_add_wire;\n+assign gray_wire = (bin_add_wire >> 1) ^ bin_add_wire;\n \n always @(posedge clk or negedge rst_n)begin\n    if(rst_n == 1'b0) begin\n@@ -40,4 +43,4 @@\n       gray_out <= gray_wire;\n    end\n end\n-endmodule\n+endmodule",
+        "category": "public_functional_failure",
+        "original_defect_persists": true,
+        "new_regression": false,
+        "functional_failure_candidate": true,
+        "review": {
+          "decision": "PENDING"
+        }
+      }
+    },
+    {
+      "snapshot": 5,
+      "anchor_index": 0,
+      "repeat": 0,
+      "endpoint": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:bc1386f7f000af517fae1907cc32df2f1bd8f6c269daf7acd9bcf8111989029c",
+        "endpoint_public": {
+          "tier": "visible_fail",
+          "suites": {
+            "W_bug": {
+              "result": "visible_fail",
+              "checker_violation": true,
+              "failures": [
+                "CHECK_FAIL gray cycle=1 got=0000 expected=0001"
+              ]
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -7,30 +7,29 @@\n //Gray code to binary conversion\n reg  [3:0] bin_out;\n wire [3:0] gray_wire;\n+reg [3:0] bin_add_wire;\n+reg count;\n \n always @(posedge clk or negedge rst_n)begin\n    if(rst_n == 1'b0) begin\n       bin_out <= 4'b0;\n+      bin_add_wire <= 4'b0;\n+      count <= 1'b0;\n    end\n    else begin\n-      bin_out[3] = gray_wire[3];\n-      bin_out[2] = gray_wire[2]^bin_out[3];\n-      bin_out[1] = gray_wire[1]^bin_out[2];\n-      bin_out[0] = gray_wire[0]^bin_out[1];\n+      if(count) begin\n+         bin_out[3] <= gray_wire[3];\n+         bin_out[2] <= gray_wire[2]^bin_out[3];\n+         bin_out[1] <= gray_wire[1]^bin_out[2];\n+         bin_out[0] <= gray_wire[0]^bin_out[1];\n+         bin_add_wire <= bin_out + 1'b1;\n+      end\n+      count <= ~count;\n    end \n end\n-//Binary increment\n-reg [3:0] bin_add_wire;\n-always @(posedge clk or negedge rst_n)begin\n-   if(rst_n == 1'b0) begin\n-      bin_add_wire <= 4'b0;\n-   end\n-   else begin\n-      bin_add_wire <= bin_out + 1'b1;\n-   end\n-end\n+\n //Binary to gray code conversion\n-assign gray_wire = (bin_add_wire >> 2) ^ bin_add_wire;\n+assign gray_wire = (bin_add_wire >> 1) ^ bin_add_wire;\n \n always @(posedge clk or negedge rst_n)begin\n    if(rst_n == 1'b0) begin\n@@ -40,4 +39,10 @@\n       gray_out <= gray_wire;\n    end\n end\n+\n+initial begin\n+   bin_out = 4'b0;\n+   bin_add_wire = 4'b0;\n+   count = 1'b0;\n+end\n endmodule\n",
+        "category": "public_functional_failure",
+        "original_defect_persists": true,
+        "new_regression": false,
+        "functional_failure_candidate": true,
+        "review": {
+          "decision": "PENDING"
+        }
+      }
+    },
+    {
+      "snapshot": 5,
+      "anchor_index": 0,
+      "repeat": 1,
+      "endpoint": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:876f9f6fc6f7fd48a5982b49ee78bb56344de9ceb66206d92a96bdc3e8c2bdf6",
+        "endpoint_public": {
+          "tier": "visible_fail",
+          "suites": {
+            "W_bug": {
+              "result": "visible_fail",
+              "checker_violation": true,
+              "failures": [
+                "CHECK_FAIL gray cycle=1 got=0000 expected=0001"
+              ]
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -7,16 +7,19 @@\n //Gray code to binary conversion\n reg  [3:0] bin_out;\n wire [3:0] gray_wire;\n+reg count;\n \n always @(posedge clk or negedge rst_n)begin\n    if(rst_n == 1'b0) begin\n       bin_out <= 4'b0;\n+      count <= 1'b0;\n    end\n    else begin\n-      bin_out[3] = gray_wire[3];\n-      bin_out[2] = gray_wire[2]^bin_out[3];\n-      bin_out[1] = gray_wire[1]^bin_out[2];\n-      bin_out[0] = gray_wire[0]^bin_out[1];\n+      bin_out[3] <= gray_wire[3];\n+      bin_out[2] <= gray_wire[2]^bin_out[3];\n+      bin_out[1] <= gray_wire[1]^bin_out[2];\n+      bin_out[0] <= gray_wire[0]^bin_out[1];\n+      count <= ~count;\n    end \n end\n //Binary increment\n@@ -25,12 +28,12 @@\n    if(rst_n == 1'b0) begin\n       bin_add_wire <= 4'b0;\n    end\n-   else begin\n+   else if (count) begin\n       bin_add_wire <= bin_out + 1'b1;\n    end\n end\n //Binary to gray code conversion\n-assign gray_wire = (bin_add_wire >> 2) ^ bin_add_wire;\n+assign gray_wire = (bin_add_wire >> 1) ^ bin_add_wire;\n \n always @(posedge clk or negedge rst_n)begin\n    if(rst_n == 1'b0) begin\n@@ -40,4 +43,4 @@\n       gray_out <= gray_wire;\n    end\n end\n-endmodule\n+endmodule",
+        "category": "public_functional_failure",
+        "original_defect_persists": true,
+        "new_regression": false,
+        "functional_failure_candidate": true,
+        "review": {
+          "decision": "PENDING"
+        }
+      }
+    }
+  ],
+  "confirmation": "not scheduled; single-sample failures require separate reviewed confirmation",
+  "limits": "Held-out exams compare frozen B0/B5 after all training; repeated samples are not distinct questions or proof of mastery."
+}

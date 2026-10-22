@@ -1,0 +1,40 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "clk_cnt <= clk_cnt==(div_e-1)? 0: clk_cnt+1",
+            "replace": "clk_cnt <= clk_cnt==(div_e-1)? 0: clk_cnt+2"
+          }
+        ],
+        "violated_requirement": "Incrementing clk_cnt by 2 instead of 1 in even mode causes incorrect output timing when div_flag is 0",
+        "spec_basis": "Output becomes 1 iff count <= floor((mode ? div_o : div_e)/4) + 1"
+      },
+      {
+        "edits": [
+          {
+            "find": "clk_cnt<=((div_e>>2)+1)",
+            "replace": "clk_cnt<=((div_e>>2))"
+          }
+        ],
+        "violated_requirement": "Removing the +1 offset in even mode threshold causes output to be 1 for one fewer clock cycle than specified",
+        "spec_basis": "Output becomes 1 iff count <= floor((mode ? div_o : div_e)/4) + 1"
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:1fd63ac769a5f9758a84a092e3d3ad4c47d8aad90413949ae5b4e6681be7aa04",
+  "input_tokens": 6227,
+  "output_tokens": 214,
+  "request_hash": "sha256:2d57ecacc0c2aed04986a47a1c2c670909140e9f60f725479134279832345e34",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 6227,
+    "output_tokens": 214
+  },
+  "model_seconds": 7.970628865994513
+}

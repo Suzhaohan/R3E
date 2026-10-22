@@ -1,0 +1,60 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "        s1:\n            nstate=data?s2:sf2;",
+            "replace": "        s1:\n            nstate=data?s2:s1;"
+          }
+        ],
+        "violated_requirement": "When in state s1 with data=0, the FSM incorrectly stays in s1 instead of transitioning to sf2, causing incorrect sequence detection for groups starting with 01",
+        "spec_basis": "The module must detect the sequence 011100 from the input signal data"
+      },
+      {
+        "edits": [
+          {
+            "find": "        s2:\n            nstate=data?s3:sf3;",
+            "replace": "        s2:\n            nstate=data?s3:s2;"
+          }
+        ],
+        "violated_requirement": "When in state s2 with data=0, the FSM incorrectly stays in s2 instead of transitioning to sf3, causing incorrect sequence detection for groups starting with 011",
+        "spec_basis": "The module must detect the sequence 011100 from the input signal data"
+      },
+      {
+        "edits": [
+          {
+            "find": "        s3:\n            nstate=data?s4:sf4;",
+            "replace": "        s3:\n            nstate=data?s4:s3;"
+          }
+        ],
+        "violated_requirement": "When in state s3 with data=0, the FSM incorrectly stays in s3 instead of transitioning to sf4, causing incorrect sequence detection for groups starting with 0111",
+        "spec_basis": "The module must detect the sequence 011100 from the input signal data"
+      },
+      {
+        "edits": [
+          {
+            "find": "        s4:\n            nstate=data?sf5:s5;",
+            "replace": "        s4:\n            nstate=data?s5:sf5;"
+          }
+        ],
+        "violated_requirement": "Swapped the success and failure paths in state s4, causing incorrect sequence detection when the fifth bit is 0 (should be part of valid sequence 011100)",
+        "spec_basis": "The module must detect the sequence 011100 from the input signal data"
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:cd09ff0b555d80f17ff012662ac2d9279991ce3009779928825d2cb12798088f",
+  "input_tokens": 5468,
+  "output_tokens": 504,
+  "request_hash": "sha256:0590fbf596d9d17047696d4281c92e32a129eb8647046ac05701d89bcfc63de5",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 5468,
+    "output_tokens": 504
+  },
+  "model_seconds": 20.17548389546573
+}

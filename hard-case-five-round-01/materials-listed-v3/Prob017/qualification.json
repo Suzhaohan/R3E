@@ -1,0 +1,88 @@
+{
+  "version": "witness_matrix_v1",
+  "carrier_id": "chipbench_Prob017_fractional_divider",
+  "qualified": true,
+  "problems": [],
+  "freeze_checked": true,
+  "single_file": true,
+  "tool": "Icarus Verilog version 11.0 (stable) ()",
+  "package_files": {
+    "carrier.json": "sha256:e4320638338937b2bf4f9ba50be6fca47475b4c4fec0c89e2eadb223da62bf14",
+    "spec.md": "sha256:671ad0c5ede3ffdb223abab48200fca009c5d1fd656c6dfd0e744f557f5ff772",
+    "src/rtl/sequence.sv": "sha256:09613b6e134f0fbcbe434c33f10914a5ae86bcf2f33887dda6fbef280b699b0b",
+    "suites/W_bug/tb.sv": "sha256:8fb211c6e2209077e1e6f938d2dc496299fab4e03f95f6666e7dd1b74ab275ec",
+    "suites/W_preserve/tb.sv": "sha256:1bea52d59626d556c0dfeca0ccc1f5afad78b03786e51b27b6b3601eb6206b70",
+    "variants/exam_defect/rtl/sequence.sv": "sha256:8be7a7ca98a692fedb97a2697bff372f0a1459b8c853f6ebda0faf2510828feb",
+    "variants/preserve_control/rtl/sequence.sv": "sha256:8a8c34062e8f0718461ff393535b1320a40409de6afb53714925181f53f379d0"
+  },
+  "matrix": {
+    "clean/W_bug": {
+      "build_seconds": 0.01,
+      "tier": "pass",
+      "runs": [
+        "pass",
+        "pass"
+      ],
+      "log_hash": "sha256:787f12ac286dbf2e57002024ad803eeed900e11cef912f7b06524b7cac74b86a",
+      "deterministic": true
+    },
+    "clean/W_preserve": {
+      "build_seconds": 0.01,
+      "tier": "pass",
+      "runs": [
+        "pass",
+        "pass"
+      ],
+      "log_hash": "sha256:6fff3301c7ae239961e7de1477fb980c0bb35b6b4f5cd074451c8dce8b836f34",
+      "deterministic": true
+    },
+    "exam_defect/W_bug": {
+      "build_seconds": 0.01,
+      "tier": "fail",
+      "runs": [
+        "fail",
+        "fail"
+      ],
+      "log_hash": "sha256:35a0dc8fbd0ed3cb30fd5598c0e5bdb7053a624d639a20f7f195c75eafcbbc5b",
+      "deterministic": true
+    },
+    "exam_defect/W_preserve": {
+      "build_seconds": 0.01,
+      "tier": "pass",
+      "runs": [
+        "pass",
+        "pass"
+      ],
+      "log_hash": "sha256:6fff3301c7ae239961e7de1477fb980c0bb35b6b4f5cd074451c8dce8b836f34",
+      "deterministic": true
+    },
+    "preserve_control/W_bug": {
+      "build_seconds": 0.01,
+      "tier": "pass",
+      "runs": [
+        "pass",
+        "pass"
+      ],
+      "log_hash": "sha256:787f12ac286dbf2e57002024ad803eeed900e11cef912f7b06524b7cac74b86a",
+      "deterministic": true
+    },
+    "preserve_control/W_preserve": {
+      "build_seconds": 0.01,
+      "tier": "fail",
+      "runs": [
+        "fail",
+        "fail"
+      ],
+      "log_hash": "sha256:c7153a40cd9e66a5d94c6c2fbca8d0a7e3845551a99925ae346e5ea6a73c3f51",
+      "deterministic": true
+    }
+  },
+  "logs": {
+    "clean/W_bug": "TESTBENCH PASS divider public waveform\n",
+    "clean/W_preserve": "TESTBENCH PASS divider preserve\n",
+    "exam_defect/W_bug": "CHECK_FAIL divider config=1 got=0 expected=1 count=3 cycle=3 mode=0\nCHECK_FAIL divider config=3 got=0 expected=1 count=3 cycle=3 mode=0\n",
+    "exam_defect/W_preserve": "TESTBENCH PASS divider preserve\n",
+    "preserve_control/W_bug": "TESTBENCH PASS divider public waveform\n",
+    "preserve_control/W_preserve": "CHECK_FAIL asynchronous reset\n"
+  }
+}

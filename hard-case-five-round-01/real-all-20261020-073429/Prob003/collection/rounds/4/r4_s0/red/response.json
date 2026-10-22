@@ -1,0 +1,40 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "sf6:\n\t\t\tnstate=data?sf1:s1;",
+            "replace": "sf6:\n\t\t\tnstate=data?s1:sf1;"
+          }
+        ],
+        "violated_requirement": "After a non-matching group (sf6 state), the next state transition for the first bit of the next group is incorrectly swapped. When data=1, it should go to sf1 (continue mismatch path), but instead goes to s1 (start match path). This will cause incorrect sequence detection for groups following a non-match.",
+        "spec_basis": "The specification requires that sequence detection begins fresh with each new group of six bits, without overlapping or reusing bits between groups. A non-matching group should not affect the detection of subsequent groups."
+      },
+      {
+        "edits": [
+          {
+            "find": "s6:\n            nstate=data?sf1:s1;",
+            "replace": "s6:\n            nstate=data?s1:sf1;"
+          }
+        ],
+        "violated_requirement": "After a matching group (s6 state), the next state transition for the first bit of the next group is incorrectly swapped. When data=1, it should go to sf1 (start mismatch path), but instead goes to s1 (continue match path). This will cause incorrect sequence detection for groups following a match.",
+        "spec_basis": "The specification requires that sequence detection begins fresh with each new group of six bits. A matching group should not affect the detection of subsequent groups."
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:1556170950ffd1a0c62fe43b7f3bb61a88859f922ceace9bccbe7232d2a7589b",
+  "input_tokens": 12036,
+  "output_tokens": 358,
+  "request_hash": "sha256:7ec5516773c895482474acbc8ed8fc25ee277284be3f64afbcb9f4140e902637",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 12036,
+    "output_tokens": 358
+  },
+  "model_seconds": 12.635956482030451
+}

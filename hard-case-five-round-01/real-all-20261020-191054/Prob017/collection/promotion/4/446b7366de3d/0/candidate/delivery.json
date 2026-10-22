@@ -1,0 +1,91 @@
+{
+  "version": "continuous_blue_delivery_v1",
+  "snapshot_id": "B_4",
+  "snapshot_hash": "sha256:7dd103e1ca1981b9f833400c89e5b079ea3ede1e4cb2f9eed28bdcff08e2145c",
+  "state_hash": "sha256:78acada21efe329aa699839bcd7a9cb90f2163fe76482615547307ef4987a954",
+  "task_hash": "sha256:446b7366de3dc32003c8205b807d293e5487d3886891d7d5e462e7a57689a8cf",
+  "retrieval_policy_hash": "sha256:8b114d1dc640c0d8851c3796a1d6ed4e3bc9b65406c7341475b69b3d8568e26f",
+  "payload": {
+    "version": "continuous_blue_experience_context_v2",
+    "notice": "Prior repair examples passed public tests only; validate their applicability to this task.",
+    "entries": [
+      {
+        "entry_hash": "sha256:89df8d68d3a9483d967bb46d9d02a447380f14a1a35126eed46b51bb90e3d658",
+        "content": {
+          "validation": "public_pass_single_sample_hidden_unknown",
+          "specification_excerpt": "I would like you to implement a module named TopModule with the following\ninterface. All input and output ports are one bit unless otherwise\nspecified.\n\n - input  clk_in\n - input  rst\n - output clk_out\n\nThe module should implement an arbitrary fractional frequency divider that\ncan achieve non-integer division ratios, such as 8.7x frequency division.\n\nThe fractional frequency divider should work as follows:\n- Input clock: clk_in (reference clock signal)\n- Output clock: clk_out (divided clock signal)\n- Division ratio: 8.7x (output frequency is 1/8.7 of input frequency)\n- Reset: rst is active low\n\nFractional division principle:\nSince hardware cannot perform fractional operations (e.g., 2.1 clock cycles\nor 3.3 registers), fractional division cannot achieve exact fractional\nperiods for each output clock cycle. Instead, the implementation uses\nthe least common multiple approach to achieve the desired average frequency.\n\nFor 8.7x division:\n- Over 10 input clock cycles, the output should produce 53 output clock\n  cyc",
+          "applied_patch": "--- original_buggy/rtl/sequence.sv\n+++ repaired/rtl/sequence.sv\n@@ original lines 20-22; repaired lines 20-22 @@\n-        else if(~div_flag)\n-            clk_cnt <= clk_cnt==(div_e-1)? 0: clk_cnt+3;\n-        else\n+        else if(~div_flag)\n+            clk_cnt <= clk_cnt==(div_e-1)? 0: clk_cnt+1;\n+        else",
+          "repair_evidence": {
+            "version": "public_repair_context_v1",
+            "full_patch_hash": "sha256:a3d6c5a281005bc537f2d2f1f4c865a22ce2d9d71bab2097dcdab15e0db45993",
+            "changed_ranges": [
+              {
+                "file": "rtl/sequence.sv",
+                "before_lines": [
+                  20,
+                  22
+                ],
+                "after_lines": [
+                  20,
+                  22
+                ],
+                "truncated": false
+              }
+            ],
+            "omitted_change_regions": 0,
+            "public_before": {
+              "W_bug": {
+                "result": "visible_fail",
+                "markers": [
+                  "CHECK_FAIL divider config=3 got=0 expected=1 count=2 cycle=2 mode=0",
+                  "CHECK_FAIL divider config=1 got=0 expected=1 count=2 cycle=2 mode=0"
+                ]
+              },
+              "W_preserve": {
+                "result": "visible_pass",
+                "markers": [
+                  "TESTBENCH PASS divider preserve"
+                ]
+              }
+            },
+            "public_after": {
+              "W_bug": {
+                "result": "visible_pass",
+                "markers": [
+                  "TESTBENCH PASS divider public waveform"
+                ]
+              },
+              "W_preserve": {
+                "result": "visible_pass",
+                "markers": [
+                  "TESTBENCH PASS divider preserve"
+                ]
+              }
+            },
+            "scope": "Current-run public task and submitted repair only; excerpts are not a standalone patch."
+          },
+          "public_rows": {
+            "W_bug": "visible_pass",
+            "W_preserve": "visible_pass"
+          },
+          "transfer_summary": {
+            "changed_lines": [
+              "-         else if(~div_flag)             clk_cnt <= clk_cnt==(div_e-1)? 0: clk_cnt+3;         else",
+              "+         else if(~div_flag)             clk_cnt <= clk_cnt==(div_e-1)? 0: clk_cnt+1;         else"
+            ],
+            "checks_on_transfer": [],
+            "scope": "Observed public success only; recheck applicability on a new task."
+          }
+        }
+      }
+    ]
+  },
+  "selected_entry_hashes": [
+    "sha256:89df8d68d3a9483d967bb46d9d02a447380f14a1a35126eed46b51bb90e3d658"
+  ],
+  "source_record_hashes": [
+    "sha256:59bad8c69deaeb78ed164aa636976707b0f87a5e6a9047c13851c274104bafeb"
+  ],
+  "omissions": [],
+  "payload_hash": "sha256:abd971c26737e47e4084d55ab511911a0f03b1c8d537038bcd5acc217f401023"
+}

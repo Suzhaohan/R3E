@@ -1,0 +1,33 @@
+{
+  "round": 3,
+  "attempt": 0,
+  "reason": "mutation_grammar_violation",
+  "edits": [
+    {
+      "find": "clk_out_r <= clk_cnt<=((div_e>>2)+1);",
+      "replace": "clk_out_r <= clk_cnt<=((div_e>>2));"
+    }
+  ],
+  "expected_public_results": {
+    "W_bug": "fail",
+    "W_preserve": "pass"
+  },
+  "actual_public_results": {},
+  "public_test_evidence": {},
+  "correction": "Syntax-token insertion/deletion is forbidden. Replace at most two existing operands/operators, or swap one existing two-operand concatenation. Do not append an if guard. MANDATORY DIVIDER RETRY: stay within the current local RHS stage. Use a different eligible unblocked public register-expression site. Do not add branches/guards or change parameters, reset, widths or clock edges. Do not repeat an excluded implementation. Generate up to four distinct online candidates under the unchanged two-request limit; real public tests decide qualification.",
+  "retry_control": {
+    "version": "online_diagnose_sites_no_replacement_v2",
+    "round": 3,
+    "failure_kind": "invalid_or_unavailable_proposal",
+    "failed_mechanisms": [
+      "other"
+    ],
+    "blocked_mechanisms": [],
+    "failed_site_ids": [],
+    "blocked_site_ids": [],
+    "specific_diagnosis": [
+      "Syntax-token insertion/deletion is forbidden. Replace at most two existing operands/operators, or swap one existing two-operand concatenation. Do not append an if guard."
+    ],
+    "instruction": "MANDATORY DIVIDER RETRY: stay within the current local RHS stage. Use a different eligible unblocked public register-expression site. Do not add branches/guards or change parameters, reset, widths or clock edges. Do not repeat an excluded implementation. Generate up to four distinct online candidates under the unchanged two-request limit; real public tests decide qualification."
+  }
+}

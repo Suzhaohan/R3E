@@ -1,0 +1,50 @@
+{
+ "summary": {
+  "task_id": "chipbench_Prob015_fixed_hard_questions__exam_timing",
+  "encounters": 1,
+  "categories": {
+   "public_pass_hidden_fail": 1
+  },
+  "functional_failure_candidates": 1,
+  "pending_review": 1,
+  "reviewed_functional_failures": 0,
+  "original_defect_persists": 0,
+  "new_regression": 0,
+  "mechanism_907_exploratory": 0
+ },
+ "encounters": [
+  {
+   "encounter": 0,
+   "endpoint_candidate": "sha256:1605ff385e3895e24158adf4dd8db159f733ab982b6944645c4246d154e529e8",
+   "endpoint_public": {
+    "tier": "visible_pass",
+    "suites": {
+     "W_bug": {
+      "result": "visible_pass",
+      "checker_violation": false,
+      "failures": []
+     },
+     "W_preserve": {
+      "result": "visible_pass",
+      "checker_violation": false,
+      "failures": []
+     }
+    }
+   },
+   "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -13,43 +13,45 @@\n \n     parameter S0=0, S0_5=1, S1=2, S1_5=3, S2=4, S2_5=5, S3=6;\n     reg[2:0] state, nstate;\n-    \n+\n     always@(posedge clk or negedge rst) begin\n         if(~rst)\n-            state <= 0;\n+            state <= S0;\n         else\n             state <= nstate;\n     end\n-    \n+\n     always@(*) begin\n         case(state)\n-            S0     : nstate = d1? S0_5:\n-                              d2? S1:\n-                              nstate;\n-            S0_5   : nstate = d1? S1:\n-                              d2? S1_5:\n-                              nstate;\n-            S1     : nstate = d1? S1_5:\n-                              d2? S2:\n-                              nstate;\n-            S1_5   : nstate = ~sel? S0:\n-                              d1? S2:\n-                              d2? S2_5:\n-                              nstate;\n-            S2     : nstate = ~sel? S0:\n-                              d1? S2_5:\n-                              d2? S3:\n-                              nstate;\n+            S0     : nstate = d1 ? S0_5 :\n+                              d2 ? S1 :\n+                              S0;\n+            S0_5   : nstate = d1 ? S1 :\n+                              d2 ? S1_5 :\n+                              S0_5;\n+            S1     : nstate = d1 ? S1_5 :\n+                              d2 ? S2 :\n+                              S1;\n+            S1_5   : nstate = ~sel ? S0 :\n+                              d1 ? S2 :\n+                              d2 ? S2_5 :\n+                              S1_5;\n+            S2     : nstate = ~sel ? S0 :\n+                              d1 ? S2_5 :\n+                              d2 ? S3 :\n+                              S2;\n+            S2_5   : nstate = S0;\n+            S3     : nstate = S0;\n             default: nstate = S0;\n         endcase\n     end\n-    \n+\n     always @(posedge clk or negedge rst) begin\n       if (~rst) begin\n         {out1, out2, out3} <= 3'b000;\n       end\n       else begin\n-        case (state)\n+        case (nstate)\n           S0, S0_5, S1:  {out1, out2, out3} <= 3'b000;\n           S1_5:          {out1, out2, out3} <= (~sel) ? 3'b100 : 3'b000;\n           S2:            {out1, out2, out3} <= (~sel) ? 3'b101 : 3'b000;\n",
+   "endpoint_evaluator": {
+    "result": "fail",
+    "returncode": 0,
+    "failures": [
+     "CHECK_FAIL evaluator mismatches"
+    ],
+    "log_hash": "sha256:36625835c5c9f8f13976a340a8a1af8e9b602e0987e0fa5c0ee81e36208e79e2"
+   },
+   "category": "public_pass_hidden_fail",
+   "functional_failure_candidate": true,
+   "review": {
+    "decision": "PENDING"
+   }
+  }
+ ]
+}

@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>R³E：自进化RTL智能纠错系统 · Prob003</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <header>
+      <div>
+        <p class="eyebrow">R³E-AIC Competition M3 · CHIP INTELLIGENT DESIGN</p>
+        <h1>RTL Repair Studio</h1>
+        <p class="subtitle">Model proposes. EDA decides.</p>
+      </div>
+      <div id="health" class="health">读取本次实验记录…</div>
+    </header>
+    <main>
+      <nav class="tabs" aria-label="结果页面">
+        <button data-page="repair">Repair Studio</button>
+        <button data-page="verification">Verification Trace</button>
+        <button data-page="arena" class="active">Adversarial Arena</button>
+        <button data-page="evolution">Evolution Archive</button>
+        <button data-page="memory">Experience Memory</button>
+        <button data-page="benchmarks">Benchmark Dashboard</button>
+      </nav>
+      <section id="arena" class="page active"><article class="panel">
+        <h2>A/B 红蓝对抗实验 · Prob003 五轮</h2>
+        <p>模型权重不变 · 每组一次修复预算 · B₀ 无经验且固定 · 由 EDA 判定公开修复结果</p>
+        <p class="muted">沿用 deepseek-run-01 的界面布局，但只读取本次实验数据，不混入旧实验成绩。原交接方案的经验更新不冒称旧版候选晋升门控。</p>
+        <div id="arena-status" role="status" aria-live="polite">加载证据…</div>
+        <p id="run-warning" class="notice"></p>
+        <p id="arena-provenance" class="muted"></p>
+        <div id="arena-machines" class="grid two"></div>
+        <div id="run-metrics" class="cards"></div>
+        <h3>策略演化轮次</h3>
+        <div class="arena-controls">
+          <button id="arena-replay" disabled>播放已记录轮次</button>
+          <button id="arena-step" disabled>下一轮</button>
+          <button id="arena-reset">回到起点</button>
+          <button id="arena-live" class="primary">跟随最新记录</button>
+          <span id="arena-position" aria-live="polite"></span>
+        </div>
+        <div id="arena-rounds" class="cards"></div>
+        <div id="arena-result"><h3>最终冻结考核 · 两个保留变体</h3><div id="arena-metrics"></div></div>
+      </article></section>
+      <section id="repair" class="page"><div class="grid two">
+        <article class="panel"><h2>Prob003 · 六位非重叠序列检测器</h2><p>Red 从正常 RTL 生成新缺陷；历史种子只给 Red 提供机制方向。准入后，当前经验组与无经验 B₀ 各尝试修复一次。</p><p class="notice">此处仅展示本次实验，不加载旧版教学案例，也没有会额外调用模型的按钮。</p></article>
+        <article class="panel"><h2>Diagnosis</h2><pre id="diagnosis">等待记录…</pre></article>
+      </div></section>
+      <section id="verification" class="page"><article class="panel"><h2>Verification Trace</h2><p class="muted">接口失败不是功能修复失败，也不代表模型已经产出代码。未返回用量的请求不能按零费用处理。</p><div id="trace"></div></article></section>
+      <section id="evolution" class="page"><article class="panel"><h2>Evolution Archive</h2><p class="muted">槽位提交与有效新挑战分别统计。供应商失败也可能留有提交记录，不代表完成了一轮有效修复。</p><div id="evolution-data" class="authority-view"></div></article></section>
+      <section id="memory" class="page"><article class="panel"><h2>Experience Memory</h2><p class="muted">仅展示已提交的在线公开经验；公开通过记录为 provisional，不保证最终考核收益。</p><div id="memory-data" class="authority-view"></div></article></section>
+      <section id="benchmarks" class="page"><article class="panel"><h2>Benchmark Dashboard</h2><div id="benchmark-data" class="authority-view"></div></article></section>
+      <p class="muted">每 3 秒刷新已保存记录。网页存活不代表实验进程存活；请结合运行终端确认。只读展示，不读取密钥、不调用模型。调用最多 88 次（含撞题重出及格式纠正），金额硬上限已取消。</p>
+      <small id="updated"></small>
+    </main>
+    <script src="/static/prob003.js"></script>
+  </body>
+</html>

@@ -1,0 +1,40 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "sf4:\n            nstate=sf5;",
+            "replace": "sf4:\n            nstate=s5;"
+          }
+        ],
+        "violated_requirement": "After a mismatch in state sf4, the module incorrectly transitions to s5 instead of sf5, causing incorrect sequence detection for subsequent groups",
+        "spec_basis": "The specification requires that after a mismatch, the module should transition through all failure states (sf1 to sf6) before starting a new group"
+      },
+      {
+        "edits": [
+          {
+            "find": "sf5:\n            nstate=sf6;",
+            "replace": "sf5:\n            nstate=s6;"
+          }
+        ],
+        "violated_requirement": "After a mismatch in state sf5, the module incorrectly transitions to s6 instead of sf6, causing incorrect sequence detection for subsequent groups",
+        "spec_basis": "The specification requires that after a mismatch, the module should transition through all failure states (sf1 to sf6) before starting a new group"
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:7c8687bc1cac3c42789e5a8b8d8a3b18f22ca0a0067bbc8d02e8e17cfd5f8983",
+  "input_tokens": 8506,
+  "output_tokens": 255,
+  "request_hash": "sha256:70aeb6730bed2419b2ccd4607d93e88f9b13b07c2e6738b2efa963d30242e046",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 8506,
+    "output_tokens": 255
+  },
+  "model_seconds": 8.430875242687762
+}

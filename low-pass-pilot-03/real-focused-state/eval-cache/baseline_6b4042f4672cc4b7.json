@@ -1,0 +1,112 @@
+{
+  "attempts": 1,
+  "first": {
+    "answer_form": "full",
+    "candidate_hash": "sha256:5ae281f5e89375ec174bc42ff905788f7eaefcc023e632b89a2fc00b8f932add",
+    "candidate_id": "C_c4365d473e18_0",
+    "command_hash": "sha256:c9d04c99df261b6e39d391b3bac78ab570ee18e02b6559a4e175442a0faf961f",
+    "edit": "Corrected the next-state logic for the two group-completion states: in the non-overlapping group FSM, after finishing a group (in s6 or sf6) the first bit of the next group must start the search with data==0 -> s1 and data==1 -> sf1 (nstate = data?sf1:s1). The buggy code had these transitions invert",
+    "feedback": {
+      "cycles_compared": 2324,
+      "first_divergences": [],
+      "passing_outputs": [
+        "match",
+        "not_match"
+      ],
+      "stage": "functional"
+    },
+    "hidden": "not_available",
+    "index": 0,
+    "memory_offered": false,
+    "phase": "evaluation",
+    "seconds": 42.22,
+    "tokens": {
+      "input": 2353,
+      "output": 9409
+    },
+    "verdict_tier": "visible_pass",
+    "window": {}
+  },
+  "inconclusive": false,
+  "record": {
+    "accounting": {
+      "fixed": true,
+      "fixed_at_attempt": 1,
+      "fixed_by_escalation": false,
+      "input_tokens": 2353,
+      "llm_calls": 1,
+      "memory_delivered": false,
+      "memory_items": [],
+      "memory_offered_from_attempt": null,
+      "model_seconds": 42.22,
+      "output_tokens": 9409,
+      "provider_failures": 0,
+      "repair_attempts": 1
+    },
+    "attempts": [
+      {
+        "answer_form": "full",
+        "candidate_hash": "sha256:5ae281f5e89375ec174bc42ff905788f7eaefcc023e632b89a2fc00b8f932add",
+        "candidate_id": "C_c4365d473e18_0",
+        "command_hash": "sha256:c9d04c99df261b6e39d391b3bac78ab570ee18e02b6559a4e175442a0faf961f",
+        "edit": "Corrected the next-state logic for the two group-completion states: in the non-overlapping group FSM, after finishing a group (in s6 or sf6) the first bit of the next group must start the search with data==0 -> s1 and data==1 -> sf1 (nstate = data?sf1:s1). The buggy code had these transitions invert",
+        "feedback": {
+          "cycles_compared": 2324,
+          "first_divergences": [],
+          "passing_outputs": [
+            "match",
+            "not_match"
+          ],
+          "stage": "functional"
+        },
+        "hidden": "not_available",
+        "index": 0,
+        "memory_offered": false,
+        "phase": "evaluation",
+        "seconds": 42.22,
+        "tokens": {
+          "input": 2353,
+          "output": 9409
+        },
+        "verdict_tier": "visible_pass",
+        "window": {}
+      }
+    ],
+    "bundle_hash": "sha256:02a32930651810ecbf29c87db1580853c0757c49ca925af7b23a0b727a470e1c",
+    "challenge_id": "handoff:Prob003:eval_miss_branch",
+    "deliveries": [],
+    "episode_hash": "sha256:7b77b0f4ff5f71f2ec38ca66cd0b3a5b4b17bc2020273e4414eea99284ae311f",
+    "inconclusive": false,
+    "infra_failures": 0,
+    "matches": [],
+    "mode": "none",
+    "profile": {
+      "causal": {
+        "cone_has_control_dependency": true,
+        "cone_has_counter": false,
+        "cone_has_reset_logic": true,
+        "cone_has_state_machine": true,
+        "cone_size_bucket": "small",
+        "output_driver_kind": "combinational",
+        "register_distance": "1",
+        "temporal_relation": "no_progress"
+      },
+      "schema_version": "r3e-observable-profile-v1",
+      "status": {
+        "delta_bucket": "-1",
+        "failing_output_bucket": "2-3",
+        "onset_bucket": "late",
+        "oracle_stage": "functional",
+        "output_width_bucket": "1bit",
+        "partial_failure": false,
+        "symptom": "stuck_value",
+        "x_involved": false
+      }
+    },
+    "retrieved_items": [],
+    "shown_items": [],
+    "solved_by_escalation": false,
+    "solved_within_budget": true
+  },
+  "solved": true
+}

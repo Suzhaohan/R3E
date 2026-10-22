@@ -1,0 +1,132 @@
+{
+  "source": {
+    "run_id": "collection",
+    "round": 3,
+    "slot_id": "r3_s0",
+    "task_hash": "sha256:a0455dc11004954bd5f7feffbfa488b31c8ea6da2185dc3cc83bee006e7f0b17",
+    "carrier_id": "selected_Prob015",
+    "mutant_hash": "sha256:b81fea8696b8c04981825faf0d57493286cf6599af3855a9627585bb25f7258c",
+    "candidate_hash": "sha256:d0c16a7bee39998e497df156bedb9f71e54dea587ba04b8210cf73bb213c6cf7",
+    "encounter_hash": "sha256:d3cd398038a38b4f1f63016c86aa4e0d7f8ecbb6bdf4bcf4fbe4460784d90d12",
+    "archive_hash": "sha256:267bba481cec4237656cc811bc4d34a57159432fbb9f7fb34a44e08cc3c7841b",
+    "public_replay_hash": "sha256:2a765efb2577230c26019bc901b004cf5eda3d2a2f0dbc31d8d25ac9778389ff"
+  },
+  "encounter": {
+    "encounter": 0,
+    "seed": 1299457421909750,
+    "result": {
+      "task_id": "selected_Prob015__b81fea8696b8c049",
+      "route": "direct",
+      "rtl_tokens": 561,
+      "closure": [
+        "rtl/sequence.sv",
+        "harness:W_bug_tb.sv",
+        "harness:W_preserve_tb.sv"
+      ],
+      "outcome": "not_fixed",
+      "attempts": [
+        {
+          "attempt": 0,
+          "route": "direct",
+          "submissions": [
+            {
+              "kind": "repair",
+              "tokens": {
+                "input": 6442,
+                "output": 63370,
+                "counted_request": 6442,
+                "model_seconds": 294.21
+              },
+              "format_valid": false,
+              "format_error": "Each file must contain exactly file and content, without find/replace."
+            },
+            {
+              "kind": "format_correction",
+              "tokens": {
+                "input": 7319,
+                "output": 18803,
+                "counted_request": 7319,
+                "model_seconds": 79.96
+              },
+              "format_valid": true,
+              "format_error": null
+            }
+          ],
+          "repair_tokens": {
+            "input": 13761,
+            "output": 82173,
+            "counted_request": 13761,
+            "model_seconds": 374.16999999999996
+          },
+          "edit": "Fix vending machine FSM: replace illegal combinational self-reference in next-state logic with hold-state values and add S2_5/S3 transitions that reset to S0 after dispensing.",
+          "candidate_hash": "sha256:d0c16a7bee39998e497df156bedb9f71e54dea587ba04b8210cf73bb213c6cf7",
+          "tier": "visible_fail",
+          "stage": "simulation",
+          "build_seconds": 0.02,
+          "sim_seconds": 0.01,
+          "changed_files": [
+            "rtl/sequence.sv"
+          ]
+        }
+      ],
+      "calls": 2,
+      "final_candidate_hash": "sha256:d0c16a7bee39998e497df156bedb9f71e54dea587ba04b8210cf73bb213c6cf7",
+      "inputs_read": [
+        "public/task.json",
+        "public/visible/build.json",
+        "public/visible/W_bug_tb.sv",
+        "public/visible/W_preserve_tb.sv",
+        "public/spec.txt"
+      ],
+      "experience": {
+        "snapshot_id": "B_2",
+        "snapshot_hash": "sha256:8b1ed6c7efa51974aaa0100449324837972d9f010d1efe06f163148447e7125d",
+        "state_hash": "sha256:b07b09361e2981152f1e25a0a2cadc18dfac4222572d63c3d5349ce5238a24f8",
+        "payload_hash": "sha256:3092f0d7fc08feac058171dbed616bb7c60daa43691d7b6d28875d3225d9b061",
+        "delivery_hash": "sha256:ec42bcc5030dc804a26cf674ac91126268ab47cd25e385cbf4836f669fd866cf",
+        "delivered": false
+      }
+    }
+  },
+  "archive_path": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/real-all-20261015-083727/Prob015/collection/rounds/3/r3_s0/online/blue/archive/selected_Prob015__b81fea8696b8c049__d0c16a7bee39998e.json",
+  "task_dir": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/real-all-20261015-083727/Prob015/collection/rounds/3/r3_s0/admission/blue_task",
+  "replay": {
+    "tier": "visible_fail",
+    "stage": "simulation",
+    "evidence": {
+      "suites": {
+        "W_bug": {
+          "result": "visible_fail",
+          "returncode": 0,
+          "pass_marker_found": false,
+          "fail_marker_found": true,
+          "log": "Hint: Output 'out1' has 26 mismatches. First mismatch occurred at time 490.\nHint: Output 'out2' has 3 mismatches. First mismatch occurred at time 830.\nHint: Output 'out3' has 11 mismatches. First mismatch occurred at time 510.\nHint: Total mismatched samples is 29 out of 181 samples\n\nSimulation finished at 906 ps\nMismatches: 29 in 181 samples\nCHECK_FAIL original samples"
+        },
+        "W_preserve": {
+          "result": "visible_pass",
+          "returncode": 0,
+          "pass_marker_found": true,
+          "fail_marker_found": false,
+          "log": "TESTBENCH PASS preserve"
+        }
+      }
+    },
+    "build_seconds": 0.01891457848250866,
+    "sim_seconds": 0.012388034723699093,
+    "closure": [
+      "rtl/sequence.sv",
+      "harness:W_bug_tb.sv",
+      "harness:W_preserve_tb.sv"
+    ]
+  },
+  "public_rows": {
+    "W_bug": "visible_fail",
+    "W_preserve": "visible_pass"
+  },
+  "mutation_edits": [
+    {
+      "find": "            default: nstate = S0;",
+      "replace": "            default: nstate = state;"
+    }
+  ]
+}

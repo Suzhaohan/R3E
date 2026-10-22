@@ -1,0 +1,40 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "sf2:\n            nstate=sf3;",
+            "replace": "sf2:\n            nstate=data?sf3:s3;"
+          }
+        ],
+        "violated_requirement": "When in state sf2, the next state should always transition to sf3 regardless of data input. The mutation incorrectly makes the transition data-dependent, which can cause incorrect state progression when data is 0.",
+        "spec_basis": "The specification requires that once a group fails to match the sequence, the state machine should skip the entire group and start checking from the next group. This is implemented by transitioning through the sf* states unconditionally."
+      },
+      {
+        "edits": [
+          {
+            "find": "sf1:\n            nstate=sf2;",
+            "replace": "sf1:\n            nstate=data?sf2:s2;"
+          }
+        ],
+        "violated_requirement": "When in state sf1, the next state should always transition to sf2 regardless of data input. The mutation incorrectly makes the transition data-dependent, which can cause incorrect state progression when data is 0.",
+        "spec_basis": "The specification requires that once a group fails to match the sequence, the state machine should skip the entire group and start checking from the next group. This is implemented by transitioning through the sf* states unconditionally."
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:44e941186bff8eabbb79699364e17f425eaba92c3729f6572a49fcaf6b65bc5b",
+  "input_tokens": 10144,
+  "output_tokens": 315,
+  "request_hash": "sha256:ee1c9c307534a10f2b61087db88f5a49744b522008b9be039ceab67a46e4e508",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 10144,
+    "output_tokens": 315
+  },
+  "model_seconds": 11.490177976898849
+}

@@ -1,0 +1,183 @@
+{
+  "status": "candidate_batch",
+  "candidates": [
+    {
+      "status": "proposal",
+      "buggy_rtl": "\nmodule TopModule(\n     input  wire clk_in,\n     input  wire rst,\n     output wire clk_out\n);\n    parameter M_N = 8'd87; \n    parameter c89 = 8'd24;  // 8/9 clock switching point\n    parameter div_e = 5'd8; //Even period\n    parameter div_o = 5'd9; //Odd period\n//*************code***********//\n    reg [3:0] clk_cnt;\n    reg [6:0] cyc_cnt;\n    reg div_flag;\n    reg clk_out_r;\n    \n    always@(posedge clk_in or negedge rst) begin\n        if(~rst)\n            clk_cnt <= 0;\n        else if(~div_flag)\n            clk_cnt <= clk_cnt==(div_e-1)? 0: clk_cnt+2;\n        else\n            clk_cnt <= clk_cnt==(div_o-1)? 0: clk_cnt+1;\n    end\n    \n    always@(posedge clk_in or negedge rst) begin\n        if(~rst)\n            cyc_cnt <= 0;\n        else\n            cyc_cnt <= cyc_cnt==(M_N-1)? 0: cyc_cnt+1;\n    end\n    \n    always@(posedge clk_in or negedge rst) begin\n        if(~rst)\n            div_flag <= 0;\n        else\n            div_flag <= cyc_cnt==(M_N-1)||cyc_cnt==(c89-1)? ~div_flag: div_flag;\n    end\n    \n    always@(posedge clk_in or negedge rst) begin\n        if(~rst)\n            clk_out_r <= 0;\n        else if(~div_flag)\n            clk_out_r <= clk_cnt<=((div_e>>2)+1);\n        else\n            clk_out_r <= clk_cnt<=((div_o>>2)+1);\n    end\n    \n    assign clk_out = clk_out_r;\n//*************code***********//\nendmodule\n",
+      "buggy_rtl_hash": "sha256:de0d4f88d2ed5488424e2cd8cde8624fd42ecc180e790558103708655fdad8ac",
+      "edit_budget": {
+        "metric": "sequence_matcher_token_edits_v1",
+        "tokenizer": "verilog_source_tokens_v2_macros",
+        "max_changed_fraction": 0.4,
+        "all_code": {
+          "original_tokens": 259,
+          "candidate_tokens": 259,
+          "changed_tokens": 1,
+          "allowed_tokens": 103,
+          "changed_fraction": 0.003861003861003861,
+          "within_limit": true
+        },
+        "body": {
+          "original_tokens": 242,
+          "candidate_tokens": 242,
+          "changed_tokens": 1,
+          "allowed_tokens": 96,
+          "changed_fraction": 0.004132231404958678,
+          "within_limit": true
+        }
+      },
+      "diff": "--- clean.sv\n+++ buggy.sv\n@@ -18,7 +18,7 @@\n         if(~rst)\n             clk_cnt <= 0;\n         else if(~div_flag)\n-            clk_cnt <= clk_cnt==(div_e-1)? 0: clk_cnt+1;\n+            clk_cnt <= clk_cnt==(div_e-1)? 0: clk_cnt+2;\n         else\n             clk_cnt <= clk_cnt==(div_o-1)? 0: clk_cnt+1;\n     end\n",
+      "claims": {
+        "violated_requirement": "Clock counter increments by 2 instead of 1 in even period mode, causing incorrect timing of output transitions",
+        "spec_basis": "Count becomes 0 when count == (mode ? div_o : div_e)-1; otherwise (count+1) modulo 16"
+      },
+      "mutation_edits": [
+        {
+          "find": "clk_cnt <= clk_cnt==(div_e-1)? 0: clk_cnt+1;",
+          "replace": "clk_cnt <= clk_cnt==(div_e-1)? 0: clk_cnt+2;"
+        }
+      ],
+      "syntax_corrections": [],
+      "original_mutation_edits": [
+        {
+          "find": "clk_cnt <= clk_cnt==(div_e-1)? 0: clk_cnt+1;",
+          "replace": "clk_cnt <= clk_cnt==(div_e-1)? 0: clk_cnt+2;"
+        }
+      ]
+    },
+    {
+      "status": "rejected",
+      "buggy_rtl": "\nmodule TopModule(\n     input  wire clk_in,\n     input  wire rst,\n     output wire clk_out\n);\n    parameter M_N = 8'd87; \n    parameter c89 = 8'd24;  // 8/9 clock switching point\n    parameter div_e = 5'd8; //Even period\n    parameter div_o = 5'd9; //Odd period\n//*************code***********//\n    reg [3:0] clk_cnt;\n    reg [6:0] cyc_cnt;\n    reg div_flag;\n    reg clk_out_r;\n    \n    always@(posedge clk_in or negedge rst) begin\n        if(~rst)\n            clk_cnt <= 0;\n        else if(~div_flag)\n            clk_cnt <= clk_cnt==(div_e-1)? 0: clk_cnt+1;\n        else\n            clk_cnt <= clk_cnt==(div_o-1)? 0: clk_cnt+1;\n    end\n    \n    always@(posedge clk_in or negedge rst) begin\n        if(~rst)\n            cyc_cnt <= 0;\n        else\n            cyc_cnt <= cyc_cnt==(M_N-1)? 0: cyc_cnt+1;\n    end\n    \n    always@(posedge clk_in or negedge rst) begin\n        if(~rst)\n            div_flag <= 0;\n        else\n            div_flag <= cyc_cnt==(M_N-1)? ~div_flag: div_flag;\n    end\n    \n    always@(posedge clk_in or negedge rst) begin\n        if(~rst)\n            clk_out_r <= 0;\n        else if(~div_flag)\n            clk_out_r <= clk_cnt<=((div_e>>2)+1);\n        else\n            clk_out_r <= clk_cnt<=((div_o>>2)+1);\n    end\n    \n    assign clk_out = clk_out_r;\n//*************code***********//\nendmodule\n",
+      "buggy_rtl_hash": "sha256:355e45287c0f1378416e572d55c9b2b657250b39af10e6357b331fab442f0afc",
+      "edit_budget": {
+        "metric": "sequence_matcher_token_edits_v1",
+        "tokenizer": "verilog_source_tokens_v2_macros",
+        "max_changed_fraction": 0.4,
+        "all_code": {
+          "original_tokens": 259,
+          "candidate_tokens": 251,
+          "changed_tokens": 8,
+          "allowed_tokens": 103,
+          "changed_fraction": 0.03088803088803089,
+          "within_limit": true
+        },
+        "body": {
+          "original_tokens": 242,
+          "candidate_tokens": 234,
+          "changed_tokens": 8,
+          "allowed_tokens": 96,
+          "changed_fraction": 0.03305785123966942,
+          "within_limit": true
+        }
+      },
+      "diff": "--- clean.sv\n+++ buggy.sv\n@@ -34,7 +34,7 @@\n         if(~rst)\n             div_flag <= 0;\n         else\n-            div_flag <= cyc_cnt==(M_N-1)||cyc_cnt==(c89-1)? ~div_flag: div_flag;\n+            div_flag <= cyc_cnt==(M_N-1)? ~div_flag: div_flag;\n     end\n     \n     always@(posedge clk_in or negedge rst) begin\n",
+      "claims": {
+        "violated_requirement": "Removes toggle at c89-1 cycle count, causing incorrect mode switching",
+        "spec_basis": "Mode toggles iff cycle_count equals M_N-1 or c89-1; otherwise it holds"
+      },
+      "mutation_edits": [
+        {
+          "find": "div_flag <= cyc_cnt==(M_N-1)||cyc_cnt==(c89-1)? ~div_flag: div_flag;",
+          "replace": "div_flag <= cyc_cnt==(M_N-1)? ~div_flag: div_flag;"
+        }
+      ],
+      "syntax_corrections": [],
+      "original_mutation_edits": [
+        {
+          "find": "div_flag <= cyc_cnt==(M_N-1)||cyc_cnt==(c89-1)? ~div_flag: div_flag;",
+          "replace": "div_flag <= cyc_cnt==(M_N-1)? ~div_flag: div_flag;"
+        }
+      ],
+      "reason": "mutation_grammar_violation",
+      "grammar_error": "Syntax-token insertion/deletion is forbidden. Replace at most two existing operands/operators, or swap one existing two-operand concatenation. Do not append an if guard."
+    },
+    {
+      "status": "proposal",
+      "buggy_rtl": "\nmodule TopModule(\n     input  wire clk_in,\n     input  wire rst,\n     output wire clk_out\n);\n    parameter M_N = 8'd87; \n    parameter c89 = 8'd24;  // 8/9 clock switching point\n    parameter div_e = 5'd8; //Even period\n    parameter div_o = 5'd9; //Odd period\n//*************code***********//\n    reg [3:0] clk_cnt;\n    reg [6:0] cyc_cnt;\n    reg div_flag;\n    reg clk_out_r;\n    \n    always@(posedge clk_in or negedge rst) begin\n        if(~rst)\n            clk_cnt <= 0;\n        else if(~div_flag)\n            clk_cnt <= clk_cnt==(div_e-1)? 0: clk_cnt+1;\n        else\n            clk_cnt <= clk_cnt==(div_o-1)? 0: clk_cnt+1;\n    end\n    \n    always@(posedge clk_in or negedge rst) begin\n        if(~rst)\n            cyc_cnt <= 0;\n        else\n            cyc_cnt <= cyc_cnt==(M_N-1)? 0: cyc_cnt+1;\n    end\n    \n    always@(posedge clk_in or negedge rst) begin\n        if(~rst)\n            div_flag <= 0;\n        else\n            div_flag <= cyc_cnt==(M_N-1)||cyc_cnt==(c89-1)? ~div_flag: div_flag;\n    end\n    \n    always@(posedge clk_in or negedge rst) begin\n        if(~rst)\n            clk_out_r <= 0;\n        else if(~div_flag)\n            clk_out_r <= clk_cnt<=((div_e>>1)+1);\n        else\n            clk_out_r <= clk_cnt<=((div_o>>2)+1);\n    end\n    \n    assign clk_out = clk_out_r;\n//*************code***********//\nendmodule\n",
+      "buggy_rtl_hash": "sha256:2e74a900e0bdf32b48c5b5e45bda8f681619ccd4ef925305356c80ac001a7c9b",
+      "edit_budget": {
+        "metric": "sequence_matcher_token_edits_v1",
+        "tokenizer": "verilog_source_tokens_v2_macros",
+        "max_changed_fraction": 0.4,
+        "all_code": {
+          "original_tokens": 259,
+          "candidate_tokens": 259,
+          "changed_tokens": 1,
+          "allowed_tokens": 103,
+          "changed_fraction": 0.003861003861003861,
+          "within_limit": true
+        },
+        "body": {
+          "original_tokens": 242,
+          "candidate_tokens": 242,
+          "changed_tokens": 1,
+          "allowed_tokens": 96,
+          "changed_fraction": 0.004132231404958678,
+          "within_limit": true
+        }
+      },
+      "diff": "--- clean.sv\n+++ buggy.sv\n@@ -41,7 +41,7 @@\n         if(~rst)\n             clk_out_r <= 0;\n         else if(~div_flag)\n-            clk_out_r <= clk_cnt<=((div_e>>2)+1);\n+            clk_out_r <= clk_cnt<=((div_e>>1)+1);\n         else\n             clk_out_r <= clk_cnt<=((div_o>>2)+1);\n     end\n",
+      "claims": {
+        "violated_requirement": "Changes output threshold calculation in even period mode, causing incorrect duty cycle",
+        "spec_basis": "Output becomes 1 iff count <= floor((mode ? div_o : div_e)/4) + 1"
+      },
+      "mutation_edits": [
+        {
+          "find": "clk_out_r <= clk_cnt<=((div_e>>2)+1);",
+          "replace": "clk_out_r <= clk_cnt<=((div_e>>1)+1);"
+        }
+      ],
+      "syntax_corrections": [],
+      "original_mutation_edits": [
+        {
+          "find": "clk_out_r <= clk_cnt<=((div_e>>2)+1);",
+          "replace": "clk_out_r <= clk_cnt<=((div_e>>1)+1);"
+        }
+      ]
+    },
+    {
+      "status": "proposal",
+      "buggy_rtl": "\nmodule TopModule(\n     input  wire clk_in,\n     input  wire rst,\n     output wire clk_out\n);\n    parameter M_N = 8'd87; \n    parameter c89 = 8'd24;  // 8/9 clock switching point\n    parameter div_e = 5'd8; //Even period\n    parameter div_o = 5'd9; //Odd period\n//*************code***********//\n    reg [3:0] clk_cnt;\n    reg [6:0] cyc_cnt;\n    reg div_flag;\n    reg clk_out_r;\n    \n    always@(posedge clk_in or negedge rst) begin\n        if(~rst)\n            clk_cnt <= 0;\n        else if(~div_flag)\n            clk_cnt <= clk_cnt==(div_e-1)? 0: clk_cnt+1;\n        else\n            clk_cnt <= clk_cnt==(div_o-1)? 0: clk_cnt+1;\n    end\n    \n    always@(posedge clk_in or negedge rst) begin\n        if(~rst)\n            cyc_cnt <= 0;\n        else\n            cyc_cnt <= cyc_cnt==(M_N-1)? 0: cyc_cnt+2;\n    end\n    \n    always@(posedge clk_in or negedge rst) begin\n        if(~rst)\n            div_flag <= 0;\n        else\n            div_flag <= cyc_cnt==(M_N-1)||cyc_cnt==(c89-1)? ~div_flag: div_flag;\n    end\n    \n    always@(posedge clk_in or negedge rst) begin\n        if(~rst)\n            clk_out_r <= 0;\n        else if(~div_flag)\n            clk_out_r <= clk_cnt<=((div_e>>2)+1);\n        else\n            clk_out_r <= clk_cnt<=((div_o>>2)+1);\n    end\n    \n    assign clk_out = clk_out_r;\n//*************code***********//\nendmodule\n",
+      "buggy_rtl_hash": "sha256:01393c5b12d90b2bacbd50afb4b389e04358d99c1e23b19a86c09e0f82e1dcc1",
+      "edit_budget": {
+        "metric": "sequence_matcher_token_edits_v1",
+        "tokenizer": "verilog_source_tokens_v2_macros",
+        "max_changed_fraction": 0.4,
+        "all_code": {
+          "original_tokens": 259,
+          "candidate_tokens": 259,
+          "changed_tokens": 1,
+          "allowed_tokens": 103,
+          "changed_fraction": 0.003861003861003861,
+          "within_limit": true
+        },
+        "body": {
+          "original_tokens": 242,
+          "candidate_tokens": 242,
+          "changed_tokens": 1,
+          "allowed_tokens": 96,
+          "changed_fraction": 0.004132231404958678,
+          "within_limit": true
+        }
+      },
+      "diff": "--- clean.sv\n+++ buggy.sv\n@@ -27,7 +27,7 @@\n         if(~rst)\n             cyc_cnt <= 0;\n         else\n-            cyc_cnt <= cyc_cnt==(M_N-1)? 0: cyc_cnt+1;\n+            cyc_cnt <= cyc_cnt==(M_N-1)? 0: cyc_cnt+2;\n     end\n     \n     always@(posedge clk_in or negedge rst) begin\n",
+      "claims": {
+        "violated_requirement": "Cycle counter increments by 2 instead of 1, causing incorrect mode switching timing",
+        "spec_basis": "Cycle_count wraps to zero at M_N-1; otherwise it increments by one modulo 128"
+      },
+      "mutation_edits": [
+        {
+          "find": "cyc_cnt <= cyc_cnt==(M_N-1)? 0: cyc_cnt+1;",
+          "replace": "cyc_cnt <= cyc_cnt==(M_N-1)? 0: cyc_cnt+2;"
+        }
+      ],
+      "syntax_corrections": [],
+      "original_mutation_edits": [
+        {
+          "find": "cyc_cnt <= cyc_cnt==(M_N-1)? 0: cyc_cnt+1;",
+          "replace": "cyc_cnt <= cyc_cnt==(M_N-1)? 0: cyc_cnt+2;"
+        }
+      ]
+    }
+  ]
+}

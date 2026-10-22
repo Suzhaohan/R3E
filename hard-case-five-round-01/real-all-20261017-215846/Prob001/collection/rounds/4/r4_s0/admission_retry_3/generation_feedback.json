@@ -1,0 +1,24 @@
+{
+  "round": 4,
+  "attempt": 3,
+  "reason": "outside_public_admission_matrix",
+  "edits": [
+    {
+      "find": "else if (a_tem == 8'b0111_0001)",
+      "replace": "else if ((a_tem == 8'b0111_0001) && (a_tem[7:1] == 7'b0111_000))"
+    }
+  ],
+  "expected_public_results": {
+    "W_bug": "fail",
+    "W_preserve": "pass"
+  },
+  "actual_public_results": {
+    "W_bug": "pass",
+    "W_preserve": "pass"
+  },
+  "public_test_evidence": {
+    "W_bug": "TESTBENCH PASS sequence",
+    "W_preserve": "TESTBENCH PASS preserve"
+  },
+  "correction": "W_bug still passes: the public test did not detect the intended bug. A text edit is insufficient. Change a reachable executed operation and trace a concrete checked output difference; do not insert dead or redundant branches. Public passing does not prove equivalence for all inputs."
+}

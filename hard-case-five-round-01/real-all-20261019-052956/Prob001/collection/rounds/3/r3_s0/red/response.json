@@ -1,0 +1,60 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "else if (a_tem == 8'b0111_0001)",
+            "replace": "else if (a_tem == 8'b0111_0000)"
+          }
+        ],
+        "violated_requirement": "Output match fails to assert when the shift register contains 8'b0111_0001 due to incorrect comparison constant",
+        "spec_basis": "The module should assert match when a_tem equals 8'b0111_0001"
+      },
+      {
+        "edits": [
+          {
+            "find": "else if (a_tem == 8'b0111_0001)",
+            "replace": "else if (a_tem == 8'b0110_0001)"
+          }
+        ],
+        "violated_requirement": "Output match asserts incorrectly for 8'b0110_0001 instead of the specified 8'b0111_0001 pattern",
+        "spec_basis": "The module should only assert match for the exact pattern 8'b0111_0001"
+      },
+      {
+        "edits": [
+          {
+            "find": "a_tem <= {a_tem[6:0],a}",
+            "replace": "a_tem <= {a_tem[5:0],a,a}"
+          }
+        ],
+        "violated_requirement": "Shift register incorrectly shifts in two copies of the input bit, corrupting the history pattern",
+        "spec_basis": "The shift register should retain exactly 8 most recent bits of input a"
+      },
+      {
+        "edits": [
+          {
+            "find": "else if (a_tem == 8'b0111_0001)",
+            "replace": "else if (a_tem[7:1] == 7'b0111000)"
+          }
+        ],
+        "violated_requirement": "Output match asserts for any pattern where the first 7 bits match 7'b0111000, ignoring the LSB",
+        "spec_basis": "The module should check all 8 bits of the shift register for exact match"
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:46efa5b96f48cfd95ad37cc013f1cb6dc1990ac546e7cd3a13a981f8cf506f53",
+  "input_tokens": 4717,
+  "output_tokens": 388,
+  "request_hash": "sha256:447ce6333097b437cbd088686b0ad5df4298d644471a80e1784f35d76933921e",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 4717,
+    "output_tokens": 388
+  },
+  "model_seconds": 11.255323571152985
+}

@@ -1,0 +1,40 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "clk_cnt <= clk_cnt==(div_e-1)? 0: clk_cnt+1",
+            "replace": "clk_cnt <= clk_cnt==(div_e-1)? 0: clk_cnt+1'd1"
+          }
+        ],
+        "violated_requirement": "The count increment should be by 1, but changing the increment to 1'd1 (which is still 1) should not affect behavior. This tests if Blue handles redundant but equivalent syntax.",
+        "spec_basis": "Count becomes 0 when count == (mode ? div_o : div_e)-1; otherwise (count+1) modulo 16"
+      },
+      {
+        "edits": [
+          {
+            "find": "clk_cnt <= clk_cnt==(div_e-1)? 0: clk_cnt+1",
+            "replace": "clk_cnt <= clk_cnt==(div_e-1)? 0: clk_cnt+1'b1"
+          }
+        ],
+        "violated_requirement": "The count increment should be by 1, but changing the increment to 1'b1 (which is still 1) should not affect behavior. This tests if Blue handles different but equivalent literal representations.",
+        "spec_basis": "Count becomes 0 when count == (mode ? div_o : div_e)-1; otherwise (count+1) modulo 16"
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:e8fabe9c5199ccf9ddf7955ad041b5ca98f61029286a6c7a403f3458af020478",
+  "input_tokens": 7432,
+  "output_tokens": 282,
+  "request_hash": "sha256:dbbdd2184a4cc212be8ce183a1ab21565361d8879c2e28d402f7d3a004716439",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 7432,
+    "output_tokens": 282
+  },
+  "model_seconds": 8.991895139217377
+}

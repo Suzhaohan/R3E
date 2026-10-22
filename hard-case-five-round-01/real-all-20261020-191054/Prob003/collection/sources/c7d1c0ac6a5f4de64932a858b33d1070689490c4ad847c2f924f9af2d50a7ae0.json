@@ -1,0 +1,266 @@
+{
+  "source": {
+    "baseline_public_hash": "sha256:b250a36198a79da964c526bb9788447ecd62ca6ee8d1c6309c757d3c6848da05",
+    "run_id": "collection",
+    "round": 3,
+    "slot_id": "r3_s0",
+    "task_hash": "sha256:edc659cac798640e8a25bb56875d4fd100b39da220b9676e7541a51f5abae095",
+    "carrier_id": "chipbench_prob003_group_boundary_v1",
+    "mutant_hash": "sha256:c2a21af549cd07bc49feb5b6dce06ab03b88c82e58d03c37ec7a720b29c03182",
+    "candidate_hash": "sha256:5db25cf23be68f8598a6c08838954a6a7392acac467c3238c9c6a73c2115613c",
+    "encounter_hash": "sha256:c7d1c0ac6a5f4de64932a858b33d1070689490c4ad847c2f924f9af2d50a7ae0",
+    "archive_hash": "sha256:54bb2e9e6f64244933ba885b339f32e72896e200fb3abcf7f096750a16bf749d",
+    "public_replay_hash": "sha256:8346af232600fefb86b7d2923a85aa8cd9d55666bc446a55c5f4546c3f00acec"
+  },
+  "encounter": {
+    "encounter": 0,
+    "seed": 1343095866064520,
+    "result": {
+      "task_id": "chipbench_prob003_group_boundary_v1__c2a21af549cd07bc",
+      "route": "direct",
+      "rtl_tokens": 544,
+      "closure": [
+        "rtl/sequence.sv",
+        "harness:W_bug_tb.sv",
+        "harness:W_preserve_tb.sv"
+      ],
+      "outcome": "fixed",
+      "attempts": [
+        {
+          "attempt": 0,
+          "route": "direct",
+          "submissions": [
+            {
+              "kind": "repair",
+              "tokens": {
+                "input": 3893,
+                "output": 709,
+                "counted_request": 3941,
+                "model_seconds": 19.44
+              },
+              "format_valid": true,
+              "format_error": null
+            }
+          ],
+          "repair_tokens": {
+            "input": 3893,
+            "output": 709,
+            "counted_request": 3941,
+            "model_seconds": 19.44
+          },
+          "edit": "Changed sf5 state transition from sf1 to sf6 to properly handle the group boundary when a mismatch occurs in the fifth bit position",
+          "candidate_hash": "sha256:5db25cf23be68f8598a6c08838954a6a7392acac467c3238c9c6a73c2115613c",
+          "tier": "visible_pass",
+          "stage": "simulation",
+          "build_seconds": 0.02,
+          "sim_seconds": 0.02,
+          "changed_files": [
+            "rtl/sequence.sv"
+          ]
+        }
+      ],
+      "calls": 1,
+      "final_candidate_hash": "sha256:5db25cf23be68f8598a6c08838954a6a7392acac467c3238c9c6a73c2115613c",
+      "inputs_read": [
+        "public/task.json",
+        "public/visible/build.json",
+        "public/visible/W_bug_tb.sv",
+        "public/visible/W_preserve_tb.sv",
+        "public/spec.txt"
+      ],
+      "experience": {
+        "snapshot_id": "B_2",
+        "snapshot_hash": "sha256:f498c713dca66c67fa0a8cdb07bb2f1db1579acd761869ea6720b923baf7bc3f",
+        "state_hash": "sha256:5f149e9919f40300de64d71bd6a7ae6b72785d8ba75d28b2bbb55fbba97aa458",
+        "payload_hash": "sha256:eaf5d35ef260df28ff53a90a1f8158bffcf47360007ef0dedc2b67c4a7ed91b1",
+        "delivery_hash": "sha256:d76854b441c18f31699606d5ecb885e2a4293b094ec275d4f11beea32f4a6d75",
+        "delivered": false
+      }
+    }
+  },
+  "archive_path": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/real-all-20261020-191054/Prob003/collection/rounds/3/r3_s0/online/blue/archive/chipbench_prob003_group_boundary_v1__c2a21af549cd07bc__5db25cf23be68f85.json",
+  "task_dir": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/real-all-20261020-191054/Prob003/collection/rounds/3/r3_s0/admission/blue_task",
+  "baseline_public": {
+    "tier": "visible_fail",
+    "stage": "simulation",
+    "evidence": {
+      "suites": {
+        "W_bug": {
+          "result": "visible_fail",
+          "returncode": 0,
+          "pass_marker_found": false,
+          "fail_marker_found": true,
+          "log": "CHECK_FAIL W_bug cycle=12 group=000000 bit=0 match=0 not_match=0",
+          "public_state_trace": {
+            "version": "public_group_trace_v1",
+            "status": "observed",
+            "source": "same public test and submitted RTL only",
+            "scoring_unchanged": true,
+            "failure_reproduced": true,
+            "records": [
+              "PUBLIC_FSM_TRACE cycle=1 position=1 sampled_prefix=000000 pre_state=0 pre_next=1 post_state=1 actual=00 expected=00",
+              "PUBLIC_FSM_TRACE cycle=2 position=2 sampled_prefix=000001 pre_state=1 pre_next=2 post_state=2 actual=00 expected=00",
+              "PUBLIC_FSM_TRACE cycle=3 position=3 sampled_prefix=000011 pre_state=2 pre_next=3 post_state=3 actual=00 expected=00",
+              "PUBLIC_FSM_TRACE cycle=4 position=4 sampled_prefix=000111 pre_state=3 pre_next=4 post_state=4 actual=00 expected=00",
+              "PUBLIC_FSM_TRACE cycle=5 position=5 sampled_prefix=001110 pre_state=4 pre_next=5 post_state=5 actual=00 expected=00",
+              "PUBLIC_FSM_TRACE cycle=6 position=6 sampled_prefix=011100 pre_state=5 pre_next=6 post_state=6 actual=10 expected=10",
+              "PUBLIC_FSM_TRACE cycle=7 position=1 sampled_prefix=000000 pre_state=6 pre_next=1 post_state=1 actual=00 expected=00",
+              "PUBLIC_FSM_TRACE cycle=8 position=2 sampled_prefix=000000 pre_state=1 pre_next=8 post_state=8 actual=00 expected=00",
+              "PUBLIC_FSM_TRACE cycle=9 position=3 sampled_prefix=000000 pre_state=8 pre_next=9 post_state=9 actual=00 expected=00",
+              "PUBLIC_FSM_TRACE cycle=10 position=4 sampled_prefix=000000 pre_state=9 pre_next=10 post_state=10 actual=00 expected=00",
+              "PUBLIC_FSM_TRACE cycle=11 position=5 sampled_prefix=000000 pre_state=10 pre_next=11 post_state=11 actual=00 expected=00",
+              "PUBLIC_FSM_TRACE cycle=12 position=6 sampled_prefix=000000 pre_state=11 pre_next=7 post_state=7 actual=00 expected=01"
+            ],
+            "localization": {
+              "version": "prob003_public_fault_focus_v1",
+              "status": "observed",
+              "source": "current submitted RTL, public specification and same public test only",
+              "first_output_mismatch": {
+                "cycle": 12,
+                "position": 6,
+                "input_bit": 0,
+                "consumed_prefix": "000000",
+                "prefix_matches_target": false,
+                "pre_state": 11,
+                "pre_state_name": "sf5",
+                "observed_next": 7,
+                "post_state": 7,
+                "post_state_name": "sf1",
+                "actual": "00",
+                "expected": "01",
+                "current_branch": {
+                  "input_0": "sf1",
+                  "input_1": "sf1",
+                  "selected": "sf1",
+                  "agrees_with_simulator": true
+                }
+              },
+              "earliest_observed_state_context_conflict": null,
+              "focus_window": [
+                {
+                  "cycle": 10,
+                  "position": 4,
+                  "input_bit": 0,
+                  "consumed_prefix": "0000",
+                  "prefix_matches_target": false,
+                  "pre_state": 9,
+                  "pre_state_name": "sf3",
+                  "observed_next": 10,
+                  "post_state": 10,
+                  "post_state_name": "sf4",
+                  "actual": "00",
+                  "expected": "00",
+                  "current_branch": {
+                    "input_0": "sf4",
+                    "input_1": "sf4",
+                    "selected": "sf4",
+                    "agrees_with_simulator": true
+                  }
+                },
+                {
+                  "cycle": 11,
+                  "position": 5,
+                  "input_bit": 0,
+                  "consumed_prefix": "00000",
+                  "prefix_matches_target": false,
+                  "pre_state": 10,
+                  "pre_state_name": "sf4",
+                  "observed_next": 11,
+                  "post_state": 11,
+                  "post_state_name": "sf5",
+                  "actual": "00",
+                  "expected": "00",
+                  "current_branch": {
+                    "input_0": "sf5",
+                    "input_1": "sf5",
+                    "selected": "sf5",
+                    "agrees_with_simulator": true
+                  }
+                },
+                {
+                  "cycle": 12,
+                  "position": 6,
+                  "input_bit": 0,
+                  "consumed_prefix": "000000",
+                  "prefix_matches_target": false,
+                  "pre_state": 11,
+                  "pre_state_name": "sf5",
+                  "observed_next": 7,
+                  "post_state": 7,
+                  "post_state_name": "sf1",
+                  "actual": "00",
+                  "expected": "01",
+                  "current_branch": {
+                    "input_0": "sf1",
+                    "input_1": "sf1",
+                    "selected": "sf1",
+                    "agrees_with_simulator": true
+                  }
+                }
+              ],
+              "repair_focus": "Follow the observed group boundary and position progression; check how the next group first bit is consumed. Preserve branches not implicated by public evidence.",
+              "limitation": "An output mismatch is observed. A context conflict is a hint for a pstate-only architecture; finite public traces cannot always uniquely locate the original faulty expression. No expected state target or reference patch is provided."
+            },
+            "failure": [
+              "CHECK_FAIL W_bug cycle=12 group=000000 bit=0 match=0 not_match=0"
+            ],
+            "limitation": "Numeric states describe this submitted candidate; expected outputs derive only from the public group contract."
+          }
+        },
+        "W_preserve": {
+          "result": "visible_pass",
+          "returncode": 0,
+          "pass_marker_found": true,
+          "fail_marker_found": false,
+          "log": "TESTBENCH PASS W_preserve reset exclusivity stability"
+        }
+      }
+    },
+    "build_seconds": 0.020350479520857334,
+    "sim_seconds": 0.014116168022155762,
+    "closure": [
+      "rtl/sequence.sv",
+      "harness:W_bug_tb.sv",
+      "harness:W_preserve_tb.sv"
+    ]
+  },
+  "replay": {
+    "tier": "visible_pass",
+    "stage": "simulation",
+    "evidence": {
+      "suites": {
+        "W_bug": {
+          "result": "visible_pass",
+          "returncode": 0,
+          "pass_marker_found": true,
+          "fail_marker_found": false,
+          "log": "TESTBENCH PASS W_bug groups=256 cycles=1536"
+        },
+        "W_preserve": {
+          "result": "visible_pass",
+          "returncode": 0,
+          "pass_marker_found": true,
+          "fail_marker_found": false,
+          "log": "TESTBENCH PASS W_preserve reset exclusivity stability"
+        }
+      }
+    },
+    "build_seconds": 0.021953193470835686,
+    "sim_seconds": 0.021369130350649357,
+    "closure": [
+      "rtl/sequence.sv",
+      "harness:W_bug_tb.sv",
+      "harness:W_preserve_tb.sv"
+    ]
+  },
+  "public_rows": {
+    "W_bug": "visible_pass",
+    "W_preserve": "visible_pass"
+  },
+  "mutation_edits": [
+    {
+      "find": "        sf5:\n            nstate=sf6;",
+      "replace": "        sf5:\n            nstate=sf1;"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+[
+ {
+  "item": "084b389cd1b487b7",
+  "task": "chipbench_Prob015_fixed_hard_questions__exam_timing",
+  "encounter": 0,
+  "category": "public_pass_hidden_fail",
+  "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -25,21 +25,21 @@\n         case(state)\n             S0     : nstate = d1? S0_5:\n                               d2? S1:\n-                              nstate;\n+                              state;\n             S0_5   : nstate = d1? S1:\n                               d2? S1_5:\n-                              nstate;\n+                              state;\n             S1     : nstate = d1? S1_5:\n                               d2? S2:\n-                              nstate;\n+                              state;\n             S1_5   : nstate = ~sel? S0:\n                               d1? S2:\n                               d2? S2_5:\n-                              nstate;\n+                              state;\n             S2     : nstate = ~sel? S0:\n                               d1? S2_5:\n                               d2? S3:\n-                              nstate;\n+                              state;\n             default: nstate = S0;\n         endcase\n     end\n@@ -49,7 +49,7 @@\n         {out1, out2, out3} <= 3'b000;\n       end\n       else begin\n-        case (state)\n+        case (nstate)\n           S0, S0_5, S1:  {out1, out2, out3} <= 3'b000;\n           S1_5:          {out1, out2, out3} <= (~sel) ? 3'b100 : 3'b000;\n           S2:            {out1, out2, out3} <= (~sel) ? 3'b101 : 3'b000;\n",
+  "public": {
+   "tier": "visible_pass",
+   "suites": {
+    "W_bug": {
+     "result": "visible_pass",
+     "checker_violation": false,
+     "failures": []
+    },
+    "W_preserve": {
+     "result": "visible_pass",
+     "checker_violation": false,
+     "failures": []
+    }
+   }
+  },
+  "evaluator": {
+   "result": "fail",
+   "returncode": 0,
+   "failures": [
+    "CHECK_FAIL evaluator mismatches"
+   ],
+   "log_hash": "sha256:36625835c5c9f8f13976a340a8a1af8e9b602e0987e0fa5c0ee81e36208e79e2"
+  }
+ }
+]

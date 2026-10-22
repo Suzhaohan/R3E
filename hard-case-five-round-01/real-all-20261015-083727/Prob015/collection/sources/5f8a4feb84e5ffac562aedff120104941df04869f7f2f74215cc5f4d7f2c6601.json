@@ -1,0 +1,145 @@
+{
+  "source": {
+    "run_id": "collection",
+    "round": 1,
+    "slot_id": "r1_s0",
+    "task_hash": "sha256:e2a017aef5f1e0eb92520c1819602497af01958bba08b832d48c5436b47a77a0",
+    "carrier_id": "selected_Prob015",
+    "mutant_hash": "sha256:89427b4c94b25e59a4e1f45b92290101cae281ddff5075f744239c11a3d3c561",
+    "candidate_hash": "sha256:8e6ec99b92ed7710660d8f12580236c73068e9f9047cb07730160b79cefc9c40",
+    "encounter_hash": "sha256:5f8a4feb84e5ffac562aedff120104941df04869f7f2f74215cc5f4d7f2c6601",
+    "archive_hash": "sha256:fe03ebeeb5af7d9f186b2ac6c6dc2d3d853a37b9498680241907ea86dd4baedc",
+    "public_replay_hash": "sha256:f0bd556f2aab3dbf302dd4b6a9a239fafb40d7e79e1bcbc9f1d67e60972b4a3d"
+  },
+  "encounter": {
+    "encounter": 0,
+    "seed": 1299457421909690,
+    "result": {
+      "task_id": "selected_Prob015__89427b4c94b25e59",
+      "route": "direct",
+      "rtl_tokens": 571,
+      "closure": [
+        "rtl/sequence.sv",
+        "harness:W_bug_tb.sv",
+        "harness:W_preserve_tb.sv"
+      ],
+      "outcome": "not_fixed",
+      "attempts": [
+        {
+          "attempt": 0,
+          "route": "direct",
+          "submissions": [
+            {
+              "kind": "repair",
+              "tokens": {
+                "input": 6452,
+                "output": 24742,
+                "counted_request": 6452,
+                "model_seconds": 113.73
+              },
+              "format_valid": true,
+              "format_error": null
+            }
+          ],
+          "repair_tokens": {
+            "input": 6452,
+            "output": 24742,
+            "counted_request": 6452,
+            "model_seconds": 113.73
+          },
+          "edit": "Replace the FSM with a straightforward amount accumulator using edge detection for d1/d2, computing the price from sel, and generating one-cycle dispense pulses with change.",
+          "candidate_hash": "sha256:8e6ec99b92ed7710660d8f12580236c73068e9f9047cb07730160b79cefc9c40",
+          "tier": "visible_fail",
+          "stage": "simulation",
+          "build_seconds": 0.02,
+          "sim_seconds": 0.01,
+          "changed_files": [
+            "rtl/sequence.sv"
+          ]
+        }
+      ],
+      "calls": 1,
+      "final_candidate_hash": "sha256:8e6ec99b92ed7710660d8f12580236c73068e9f9047cb07730160b79cefc9c40",
+      "inputs_read": [
+        "public/task.json",
+        "public/visible/build.json",
+        "public/visible/W_bug_tb.sv",
+        "public/visible/W_preserve_tb.sv",
+        "public/spec.txt"
+      ],
+      "experience": {
+        "snapshot_id": "B_0",
+        "snapshot_hash": "sha256:5600496c90f83f0e7b291f83030adaa6c63b03770716706768266b847116c119",
+        "state_hash": "sha256:b07b09361e2981152f1e25a0a2cadc18dfac4222572d63c3d5349ce5238a24f8",
+        "payload_hash": "sha256:3092f0d7fc08feac058171dbed616bb7c60daa43691d7b6d28875d3225d9b061",
+        "delivery_hash": "sha256:483f0de7fb7e64609686c7603703f09630091a863e1c849b1a230937907d9adb",
+        "delivered": false
+      }
+    }
+  },
+  "archive_path": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/real-all-20261015-083727/Prob015/collection/rounds/1/r1_s0/online/blue/archive/selected_Prob015__89427b4c94b25e59__8e6ec99b92ed7710.json",
+  "task_dir": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/real-all-20261015-083727/Prob015/collection/rounds/1/r1_s0/admission/blue_task",
+  "replay": {
+    "tier": "visible_fail",
+    "stage": "simulation",
+    "evidence": {
+      "suites": {
+        "W_bug": {
+          "result": "visible_fail",
+          "returncode": 0,
+          "pass_marker_found": false,
+          "fail_marker_found": true,
+          "log": "Hint: Output 'out1' has 34 mismatches. First mismatch occurred at time 5.\nHint: Output 'out2' has 4 mismatches. First mismatch occurred at time 5.\nHint: Output 'out3' has 13 mismatches. First mismatch occurred at time 5.\nHint: Total mismatched samples is 35 out of 181 samples\n\nSimulation finished at 906 ps\nMismatches: 35 in 181 samples\nCHECK_FAIL original samples"
+        },
+        "W_preserve": {
+          "result": "visible_pass",
+          "returncode": 0,
+          "pass_marker_found": true,
+          "fail_marker_found": false,
+          "log": "TESTBENCH PASS preserve"
+        }
+      }
+    },
+    "build_seconds": 0.01725384220480919,
+    "sim_seconds": 0.013823490589857101,
+    "closure": [
+      "rtl/sequence.sv",
+      "harness:W_bug_tb.sv",
+      "harness:W_preserve_tb.sv"
+    ]
+  },
+  "public_rows": {
+    "W_bug": "visible_fail",
+    "W_preserve": "visible_pass"
+  },
+  "mutation_edits": [
+    {
+      "find": "    always@(*) begin\n        if(~rst) begin\n            {out1, out2, out3} = 3'b000;",
+      "replace": "    always@(posedge clk or negedge rst) begin\n        if(~rst) begin\n            {out1, out2, out3} <= 3'b000;"
+    },
+    {
+      "find": "                S0, S0_5, S1: {out1, out2, out3} = 0;",
+      "replace": "                S0, S0_5, S1: {out1, out2, out3} <= 0;"
+    },
+    {
+      "find": "                S1_5        : {out1, out2, out3} = ~sel? 3'b100: 3'b000;",
+      "replace": "                S1_5        : {out1, out2, out3} <= ~sel? 3'b100: 3'b000;"
+    },
+    {
+      "find": "                S2          : {out1, out2, out3} = ~sel? 3'b101: 3'b000;",
+      "replace": "                S2          : {out1, out2, out3} <= ~sel? 3'b101: 3'b000;"
+    },
+    {
+      "find": "                S2_5        : {out1, out2, out3} = ~sel? 3'b101: 3'b010;",
+      "replace": "                S2_5        : {out1, out2, out3} <= ~sel? 3'b101: 3'b010;"
+    },
+    {
+      "find": "                S3          : {out1, out2, out3} = ~sel? 3'b101: 3'b011;",
+      "replace": "                S3          : {out1, out2, out3} <= ~sel? 3'b101: 3'b011;"
+    },
+    {
+      "find": "                default     : {out1, out2, out3} = 3'b000;",
+      "replace": "                default     : {out1, out2, out3} <= 3'b000;"
+    }
+  ]
+}

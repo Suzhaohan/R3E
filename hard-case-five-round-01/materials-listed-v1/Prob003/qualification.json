@@ -1,0 +1,94 @@
+{
+  "version": "witness_matrix_v1",
+  "carrier_id": "chipbench_prob003_group_boundary_v1",
+  "qualified": true,
+  "problems": [],
+  "freeze_checked": true,
+  "single_file": true,
+  "tool": "Icarus Verilog version 11.0 (stable) ()",
+  "package_files": {
+    "carrier.json": "sha256:2462fde75c74d621489a510053b3e4ac89ce6fdc2a0341045b1238c5e0ec48c7",
+    "licenses/ChipBench-MIT.txt": "sha256:4c7eedd5a1e68df5bcceca3e6d324adcb1771119c3f8f97c4757f4e4cadf6614",
+    "spec.md": "sha256:225bb69a232cb3cf5b84375f4fcdbb30855cf57bef993a2fcd6eeb27dba43583",
+    "src/rtl/sequence.sv": "sha256:bd26aa07228b000f4ac95b0439cbe6da7305da19bf3d4475d3afae7953dd4645",
+    "suites/CONTRACT.md": "sha256:29623452f01d3d40ae00904938cb68c5653dfa91422d630da89c92ff34a9eded",
+    "suites/W_bug/tb.sv": "sha256:27e710e755f1405a0caf5ea1645d46c4596c0c45439662f761b893774252fcec",
+    "suites/W_preserve/tb.sv": "sha256:3b32ff0374bdf30381a7b99dc0dfedf2d4d47d0f91d475cf59769013bc0aca66",
+    "variants/defect/rtl/sequence.sv": "sha256:73fba588cee988783a17f0d78a53259dfffae3f9214f806e30c466021387d5cc",
+    "variants/eval_match_branch/rtl/sequence.sv": "sha256:43287748096d21b9331a0b04afa8ac66b681dd89194326a5f9a2226fce4a78e1",
+    "variants/eval_miss_branch/rtl/sequence.sv": "sha256:b0ef4f68204fa59e57869c81a019a5433120f89cdb0f9112f540af812dc95bfc",
+    "variants/exam_defect/rtl/sequence.sv": "sha256:73fba588cee988783a17f0d78a53259dfffae3f9214f806e30c466021387d5cc",
+    "variants/preserve_control/rtl/sequence.sv": "sha256:61e98e9a1ab8a8adf7a88ae5375798c999d16620a022551eac5fc5b801afe244",
+    "variants/reset_control/rtl/sequence.sv": "sha256:61e98e9a1ab8a8adf7a88ae5375798c999d16620a022551eac5fc5b801afe244"
+  },
+  "matrix": {
+    "clean/W_bug": {
+      "build_seconds": 0.01,
+      "tier": "pass",
+      "runs": [
+        "pass",
+        "pass"
+      ],
+      "log_hash": "sha256:2cf7a9dfe8c00988dd4c20ec4106ac77a8bb56257867cbc5c30eb29da3f249d4",
+      "deterministic": true
+    },
+    "clean/W_preserve": {
+      "build_seconds": 0.01,
+      "tier": "pass",
+      "runs": [
+        "pass",
+        "pass"
+      ],
+      "log_hash": "sha256:cdf8f3ebf23853b1b1cd887c6b3064d83c0579d156abc41826fc8ccaafa591c0",
+      "deterministic": true
+    },
+    "exam_defect/W_bug": {
+      "build_seconds": 0.01,
+      "tier": "fail",
+      "runs": [
+        "fail",
+        "fail"
+      ],
+      "log_hash": "sha256:3360612ff46712397b613e4dec1442dc635cc15189c767b275a3a53f76511527",
+      "deterministic": true
+    },
+    "exam_defect/W_preserve": {
+      "build_seconds": 0.01,
+      "tier": "pass",
+      "runs": [
+        "pass",
+        "pass"
+      ],
+      "log_hash": "sha256:cdf8f3ebf23853b1b1cd887c6b3064d83c0579d156abc41826fc8ccaafa591c0",
+      "deterministic": true
+    },
+    "preserve_control/W_bug": {
+      "build_seconds": 0.01,
+      "tier": "pass",
+      "runs": [
+        "pass",
+        "pass"
+      ],
+      "log_hash": "sha256:2cf7a9dfe8c00988dd4c20ec4106ac77a8bb56257867cbc5c30eb29da3f249d4",
+      "deterministic": true
+    },
+    "preserve_control/W_preserve": {
+      "build_seconds": 0.01,
+      "tier": "fail",
+      "runs": [
+        "fail",
+        "fail"
+      ],
+      "log_hash": "sha256:757f530f2b99d1c1a259f66b8c9f6c2b7da2ca0b70d7f7aa1b2d2ab0f3bc3891",
+      "deterministic": true
+    }
+  },
+  "logs": {
+    "clean/W_bug": "TESTBENCH PASS W_bug groups=256 cycles=1536\n",
+    "clean/W_preserve": "TESTBENCH PASS W_preserve reset exclusivity stability\n",
+    "exam_defect/W_bug": "CHECK_FAIL W_bug cycle=12 group=000000 bit=0 match=0 not_match=0\n",
+    "exam_defect/W_preserve": "TESTBENCH PASS W_preserve reset exclusivity stability\n",
+    "preserve_control/W_bug": "TESTBENCH PASS W_bug groups=256 cycles=1536\n",
+    "preserve_control/W_preserve": "CHECK_FAIL W_preserve asynchronous reset did not clear state\n"
+  }
+}

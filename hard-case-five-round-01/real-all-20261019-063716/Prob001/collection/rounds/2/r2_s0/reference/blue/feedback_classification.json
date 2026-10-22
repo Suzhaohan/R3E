@@ -1,0 +1,44 @@
+{
+ "summary": {
+  "task_id": "chipbench_Prob001_fixed_hard_questions__ddf31680cbeb17fa",
+  "encounters": 1,
+  "categories": {
+   "public_pass_hidden_pass": 1
+  },
+  "functional_failure_candidates": 0,
+  "pending_review": 0,
+  "reviewed_functional_failures": 0,
+  "original_defect_persists": 0,
+  "new_regression": 0,
+  "mechanism_907_exploratory": 0
+ },
+ "encounters": [
+  {
+   "encounter": 0,
+   "endpoint_candidate": "sha256:5eede75a906b7cc53d54fa0d25bc3436c2409cc0acfada2c671949f208cc25e7",
+   "endpoint_public": {
+    "tier": "visible_pass",
+    "suites": {
+     "W_bug": {
+      "result": "visible_pass",
+      "checker_violation": false,
+      "failures": []
+     },
+     "W_preserve": {
+      "result": "visible_pass",
+      "checker_violation": false,
+      "failures": []
+     }
+    }
+   },
+   "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -11,8 +11,8 @@\n \t\tif (!rst_n)\n \t\t\tbegin \n \t\t\t\tmatch <= 1'b0;\n-\t\t\tend\n-\t\telse if (a_tem == 8'b0111_0000)\n+\t\t\t\tend\n+\t\telse if (a_tem == 8'b0111_0001)\n \t\t\tbegin\n \t\t\t\tmatch <= 1'b1;\n \t\t\tend\n",
+   "endpoint_evaluator": {
+    "result": "pass",
+    "returncode": 0,
+    "failures": [],
+    "log_hash": "sha256:ca8c99fe0cdf6ca706143ad9900890db2df287ee510118b9b91cf7f95ed225d9"
+   },
+   "category": "public_pass_hidden_pass"
+  }
+ ]
+}

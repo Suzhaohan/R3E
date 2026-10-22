@@ -1,0 +1,53 @@
+{
+  "carriers": [
+    {
+      "package": "/data1/zhangdy/R3E-local-artifacts/sequence_curriculum_dev_v1_20261013/package",
+      "suite_freeze": "/data1/zhangdy/R3E-local-artifacts/sequence_curriculum_dev_v1_20261013/suite_freeze.json",
+      "evaluator_freeze": "/data1/zhangdy/R3E-local-artifacts/sequence_curriculum_dev_v1_20261013/evaluator_freeze.json",
+      "evaluator_root": "/data1/zhangdy/R3E-local-artifacts/sequence_curriculum_dev_v1_20261013"
+    }
+  ],
+  "anchors": [
+    {
+      "task_dir": "/data1/zhangdy/R3E-local-artifacts/sequence_curriculum_dev_v1_20261013/reserved/eval_match_branch",
+      "carrier_index": 0
+    },
+    {
+      "task_dir": "/data1/zhangdy/R3E-local-artifacts/sequence_curriculum_dev_v1_20261013/reserved/eval_miss_branch",
+      "carrier_index": 0
+    }
+  ],
+  "mechanism_focus": {
+    "version": "continuous_mechanism_seed_v1",
+    "carrier_id": "chipbench_prob003_group_boundary_v1",
+    "mechanism": "Consume each bit exactly once across six-bit group boundaries; preserve output phase and reset.",
+    "selection": "human_selected_development_seed",
+    "seed_edits": [
+      {
+        "find": "        s6:\n            nstate=data?sf1:s1;\n",
+        "replace": "        s6:\n            nstate=idle;\n"
+      },
+      {
+        "find": "        sf6:\n\t\t\tnstate=data?sf1:s1;\n",
+        "replace": "        sf6:\n\t\t\tnstate=idle;\n"
+      }
+    ],
+    "history": {
+      "challenge_id": "RC_406d811b4d61a2",
+      "runs": 3,
+      "unrepaired": 2,
+      "label": "historical_budgeted_failure_not_current_confirmation"
+    },
+    "provenance": {
+      "clean_hash": "sha256:bd26aa07228b000f4ac95b0439cbe6da7305da19bf3d4475d3afae7953dd4645",
+      "seed_hash": "sha256:73fba588cee988783a17f0d78a53259dfffae3f9214f806e30c466021387d5cc",
+      "record_hashes": {
+        "red.jsonl": "sha256:0646ee28e36930ba6b1e7131be0d52e0a8715527321b75ab7ff29edb3b1bd31c",
+        "screens.jsonl": "sha256:c9d2c47c7388a306b3e3c78981b2454a8413df994142f1a7a58ee4c4dc77b923",
+        "hit_decisions.json": "sha256:a03fa8e7d15806b9c1ab6e9e0e55ff83d998115713bc306b90ca8859f94ca129"
+      }
+    }
+  },
+  "qualification_order": "public_and_evaluator_frozen_before_variants",
+  "scope": "new variants on one historically inspected development design; not cross-design transfer"
+}

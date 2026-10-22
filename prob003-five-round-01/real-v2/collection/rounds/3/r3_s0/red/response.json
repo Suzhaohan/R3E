@@ -1,0 +1,26 @@
+{
+  "result": {
+    "edits": [
+      {
+        "find": "        s6:\n            nstate=data?sf1:s1;",
+        "replace": "        s6:\n            nstate=sf1;"
+      }
+    ],
+    "violated_requirement": "After a detected 011100 group, the next six-bit group must be checked from its first bit; forcing the next group into the fail path misclassifies a subsequent 011100 as not_match.",
+    "spec_basis": "The sequence check begins with every sixth bit of input data and does not overlap or reuse bits between groups; when the sequence 011100 is detected, match should assert."
+  },
+  "raw_response_hash": "sha256:438a21194c8b8458dd8fb8fa494fc69f835aeb43fc3fe9436c971a3b56af4501",
+  "input_tokens": 4639,
+  "output_tokens": 9166,
+  "request_hash": "sha256:d04125f7880c9cc3d583a61b27f3cf0b03dbc438c1171fbd03397d457c2f0385",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 4639,
+    "output_tokens": 9166
+  },
+  "model_seconds": 52.98929923027754
+}

@@ -1,0 +1,44 @@
+{
+ "summary": {
+  "task_id": "chipbench_Prob015_fixed_hard_questions__ea12cd07980d4898",
+  "encounters": 1,
+  "categories": {
+   "public_pass_hidden_pass": 1
+  },
+  "functional_failure_candidates": 0,
+  "pending_review": 0,
+  "reviewed_functional_failures": 0,
+  "original_defect_persists": 0,
+  "new_regression": 0,
+  "mechanism_907_exploratory": 0
+ },
+ "encounters": [
+  {
+   "encounter": 0,
+   "endpoint_candidate": "sha256:ac69045d860542a81c36e535b066f862e8158145947d5df2ca19e05aebfdf39a",
+   "endpoint_public": {
+    "tier": "visible_pass",
+    "suites": {
+     "W_bug": {
+      "result": "visible_pass",
+      "checker_violation": false,
+      "failures": []
+     },
+     "W_preserve": {
+      "result": "visible_pass",
+      "checker_violation": false,
+      "failures": []
+     }
+    }
+   },
+   "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -1,14 +1,13 @@\n-\n module TopModule(\n-\tinput wire clk  ,\n-\tinput wire rst  ,\n-\tinput wire d1 ,\n-\tinput wire d2 ,\n-\tinput wire sel ,\n-\t\n-\toutput reg out1,\n-\toutput reg out2,\n-\toutput reg out3\n+    input wire clk  ,\n+    input wire rst  ,\n+    input wire d1 ,\n+    input wire d2 ,\n+    input wire sel ,\n+    \n+    output reg out1,\n+    output reg out2,\n+    output reg out3\n );\n //*************code***********//\n \n@@ -25,7 +24,7 @@\n     always@(*) begin\n         case(state)\n             S0     : nstate = d1? S0_5:\n-                              d2? S0_5:\n+                              d2? S1:\n                               nstate;\n             S0_5   : nstate = d1? S1:\n                               d2? S1_5:\n",
+   "endpoint_evaluator": {
+    "result": "pass",
+    "returncode": 0,
+    "failures": [],
+    "log_hash": "sha256:2830216deb3a4a39847aad62e0bbf4027558d8d92a12addafd978c42b59d5ea9"
+   },
+   "category": "public_pass_hidden_pass"
+  }
+ ]
+}

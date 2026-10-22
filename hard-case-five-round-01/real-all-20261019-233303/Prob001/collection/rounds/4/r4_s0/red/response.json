@@ -1,0 +1,30 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "a_tem <= {a_tem[6:0],a};",
+            "replace": "a_tem <= {a_tem[7:1],a};"
+          }
+        ],
+        "violated_requirement": "The shift register should shift in the input `a` to the LSB, but instead it shifts into the MSB. This causes the pattern matching to fail when the correct sequence is shifted in, as the bits are in the wrong order.",
+        "spec_basis": "The module should implement an 8-bit shift register that shifts in the input `a` on every positive edge of the clock. The shift register is named `a_tem` and retains the 8 most recent bits of `a`."
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:d156a80bcf6d1034d4c1d14431836f1d166834b58eec47aaa7ea6ad8910c4437",
+  "input_tokens": 8228,
+  "output_tokens": 158,
+  "request_hash": "sha256:7669f4f9783a005220f677d727389f67619537112e3f1c83b91c091ba816b29d",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 8228,
+    "output_tokens": 158
+  },
+  "model_seconds": 6.990738552995026
+}

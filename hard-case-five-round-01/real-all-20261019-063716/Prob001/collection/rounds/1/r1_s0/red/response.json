@@ -1,0 +1,60 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "else if (a_tem == 8'b0111_0001)",
+            "replace": "else if (a_tem == 8'b01110011)"
+          }
+        ],
+        "violated_requirement": "Output match should be 1 when shift register contains 8'b0111_0001, but mutant matches 8'b01110011 instead",
+        "spec_basis": "Matching Logic: The output match should be asserted (logic 1) whenever the value of the shift register a_tem matches the specific 8-bit pattern 8'b0111_0001."
+      },
+      {
+        "edits": [
+          {
+            "find": "else if (a_tem == 8'b0111_0001)",
+            "replace": "else if (a_tem == 8'b01110001 && a_tem[0] == 1'b1)"
+          }
+        ],
+        "violated_requirement": "Output match should depend only on the full 8-bit pattern match, but mutant adds an extra redundant condition on LSB",
+        "spec_basis": "Matching Logic: The output match should be asserted (logic 1) whenever the value of the shift register a_tem matches the specific 8-bit pattern 8'b0111_0001."
+      },
+      {
+        "edits": [
+          {
+            "find": "a_tem <= {a_tem[6:0],a};",
+            "replace": "a_tem <= {a_tem[5:0],a,a_tem[7]};"
+          }
+        ],
+        "violated_requirement": "Shift register should maintain 8 most recent bits in order, but mutant rotates bits incorrectly",
+        "spec_basis": "Shift Register Behavior: On every positive edge of the clock, if rst_n is asserted (logic 1), the input a should be shifted into the least significant bit (LSB) of the shift register a_tem, and the previous bits should shift left by one position."
+      },
+      {
+        "edits": [
+          {
+            "find": "else if (a_tem == 8'b0111_0001)",
+            "replace": "else if (a_tem[7:1] == 7'b0111000)"
+          }
+        ],
+        "violated_requirement": "Output match should check all 8 bits, but mutant only checks 7 bits",
+        "spec_basis": "Matching Logic: The output match should be asserted (logic 1) whenever the value of the shift register a_tem matches the specific 8-bit pattern 8'b0111_0001."
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:7e598f4ef05a4c79063d5783a400ca33ce4467633ab267fa1bc93b984f594fc5",
+  "input_tokens": 3646,
+  "output_tokens": 506,
+  "request_hash": "sha256:fe1711a4736100c4789038e902e449ddf39bb53fdc24de2f61578807fa5c8324",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 3646,
+    "output_tokens": 506
+  },
+  "model_seconds": 30.71505305636674
+}

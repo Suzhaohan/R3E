@@ -1,0 +1,108 @@
+{
+  "source": {
+    "run_id": "collection",
+    "round": 2,
+    "slot_id": "r2_s0",
+    "task_hash": "sha256:1b549535bb7bc651e2172a45105526d6bcab280350c3907584a6e3bc570a03c9",
+    "carrier_id": "chipbench_prob003_group_boundary_v1",
+    "mutant_hash": "sha256:64f175cde678dc0ff5b48db88a4fe4e3f7caf14f2c06b1898ed12cf7a75c474f",
+    "candidate_hash": "sha256:5db25cf23be68f8598a6c08838954a6a7392acac467c3238c9c6a73c2115613c",
+    "encounter_hash": "sha256:2fe80670d434e70eb7b2c071f9d654f7016c0fd04e8cde728b1a3ec85d714f1f",
+    "archive_hash": "sha256:389a7f3821725306beee5344a293883bdf7394f95d6d48a505df1d189c58e137",
+    "public_replay_hash": "sha256:7da122d25f2f8d55abe9b2c61d79d5cc0a9dc812eb17869d542ce53fc00adf03"
+  },
+  "encounter": {
+    "encounter": 0,
+    "seed": 1299457421909720,
+    "result": {
+      "task_id": "chipbench_prob003_group_boundary_v1__64f175cde678dc0f",
+      "route": "direct",
+      "rtl_tokens": 544,
+      "closure": [
+        "rtl/sequence.sv",
+        "harness:W_bug_tb.sv",
+        "harness:W_preserve_tb.sv"
+      ],
+      "outcome": "fixed",
+      "attempts": [
+        {
+          "attempt": 0,
+          "route": "direct",
+          "repair_tokens": {
+            "input": 3301,
+            "output": 4503,
+            "counted_request": 3301,
+            "model_seconds": 24.75
+          },
+          "edit": "Fix the s6 (all-six-bits-matched) state so that, after completing a group, the next group's first bit is treated like a fresh group start. Change s6's next-state from `data?sf2:s2` to `data?sf1:s1`, mirroring the terminal restart logic of sf6 (and idle). This prevents an early premature entry into the sf-chain (e.g. word=000000 entering at s6 reaching sf6 one bit too early, causing not_match at cy",
+          "candidate_hash": "sha256:5db25cf23be68f8598a6c08838954a6a7392acac467c3238c9c6a73c2115613c",
+          "tier": "visible_pass",
+          "stage": "simulation",
+          "build_seconds": 0.02,
+          "sim_seconds": 0.02,
+          "changed_files": [
+            "rtl/sequence.sv"
+          ]
+        }
+      ],
+      "calls": 1,
+      "final_candidate_hash": "sha256:5db25cf23be68f8598a6c08838954a6a7392acac467c3238c9c6a73c2115613c",
+      "inputs_read": [
+        "public/task.json",
+        "public/visible/build.json",
+        "public/visible/W_bug_tb.sv",
+        "public/visible/W_preserve_tb.sv",
+        "public/spec.txt"
+      ],
+      "experience": {
+        "snapshot_id": "B_1",
+        "snapshot_hash": "sha256:593a097023d4dcaeaf9306435884e70afc7c727f6f1e9f12d97a122496b6171f",
+        "state_hash": "sha256:7e740fbbc4c0e5bfe1a3eae13e8b32c1552f31e4290715b91328d7c8a173cc33",
+        "payload_hash": "sha256:9b3da2e9def73fa8e2780bf703c51dfc6e0954d84a5cd56e805ce92c875195d6",
+        "delivery_hash": "sha256:bcc3d3ba567af523e971b5f654423af633d31240ef2efde0bbbe7e890e27f0c7",
+        "delivered": true
+      }
+    }
+  },
+  "archive_path": "/data2/huangyc/R3E-aic-ic-2026-latest/prob003-five-round-02/real-v1/collection/rounds/2/r2_s0/online/blue/archive/chipbench_prob003_group_boundary_v1__64f175cde678dc0f__5db25cf23be68f85.json",
+  "task_dir": "/data2/huangyc/R3E-aic-ic-2026-latest/prob003-five-round-02/real-v1/collection/rounds/2/r2_s0/admission/blue_task",
+  "replay": {
+    "tier": "visible_pass",
+    "stage": "simulation",
+    "evidence": {
+      "suites": {
+        "W_bug": {
+          "result": "visible_pass",
+          "returncode": 0,
+          "pass_marker_found": true,
+          "fail_marker_found": false,
+          "log": "TESTBENCH PASS W_bug groups=256 cycles=1536"
+        },
+        "W_preserve": {
+          "result": "visible_pass",
+          "returncode": 0,
+          "pass_marker_found": true,
+          "fail_marker_found": false,
+          "log": "TESTBENCH PASS W_preserve reset exclusivity stability"
+        }
+      }
+    },
+    "build_seconds": 0.025393033400177956,
+    "sim_seconds": 0.0222944812849164,
+    "closure": [
+      "rtl/sequence.sv",
+      "harness:W_bug_tb.sv",
+      "harness:W_preserve_tb.sv"
+    ]
+  },
+  "public_rows": {
+    "W_bug": "visible_pass",
+    "W_preserve": "visible_pass"
+  },
+  "mutation_edits": [
+    {
+      "find": "        s6:\n            nstate=data?sf1:s1;\n",
+      "replace": "        s6:\n            nstate=data?sf2:s2;\n"
+    }
+  ]
+}

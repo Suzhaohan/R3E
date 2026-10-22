@@ -1,0 +1,121 @@
+{
+  "source": {
+    "run_id": "collection",
+    "round": 1,
+    "slot_id": "r1_s0",
+    "task_hash": "sha256:2a9354e40dcfbcc231da44ef2cccd7e7072f4e88a466569ad5b9d986dd16e54e",
+    "carrier_id": "chipbench_prob003_group_boundary_v1",
+    "mutant_hash": "sha256:de4fa74a556b155ae31f56891bddbf933cc3d6b9cee52b953d303e31a825e32c",
+    "candidate_hash": "sha256:fc137774ff2ca8825ad57bb3aa808c0190d785596333427c9dcb86d5c8ece6bf",
+    "encounter_hash": "sha256:bad8aca36ea0bd6167edd5a4021be44eaed9188fe6de1286f562335203ce69ea",
+    "archive_hash": "sha256:e2f201ceb573a18414381816e7150303097aff5a1d8011691d59f44de576e512",
+    "public_replay_hash": "sha256:74870587608aa2b8c7811aa095ed08de8fd7e382e91567924c6e3e95b7fc8a75"
+  },
+  "encounter": {
+    "encounter": 0,
+    "seed": 1299457421909690,
+    "result": {
+      "task_id": "chipbench_prob003_group_boundary_v1__de4fa74a556b155a",
+      "route": "direct",
+      "rtl_tokens": 540,
+      "closure": [
+        "rtl/sequence.sv",
+        "harness:W_bug_tb.sv",
+        "harness:W_preserve_tb.sv"
+      ],
+      "outcome": "fixed",
+      "attempts": [
+        {
+          "attempt": 0,
+          "route": "direct",
+          "submissions": [
+            {
+              "kind": "repair",
+              "tokens": {
+                "input": 2834,
+                "output": 6016,
+                "counted_request": 2834,
+                "model_seconds": 33.49
+              },
+              "format_valid": true,
+              "format_error": null
+            }
+          ],
+          "repair_tokens": {
+            "input": 2834,
+            "output": 6016,
+            "counted_request": 2834,
+            "model_seconds": 33.49
+          },
+          "edit": "Fixed s6 terminal state to start a new group based on data (data?sf1:s1), and changed output block to use wildcard sensitivity and proper active-low reset check.",
+          "candidate_hash": "sha256:fc137774ff2ca8825ad57bb3aa808c0190d785596333427c9dcb86d5c8ece6bf",
+          "tier": "visible_pass",
+          "stage": "simulation",
+          "build_seconds": 0.02,
+          "sim_seconds": 0.02,
+          "changed_files": [
+            "rtl/sequence.sv"
+          ]
+        }
+      ],
+      "calls": 1,
+      "final_candidate_hash": "sha256:fc137774ff2ca8825ad57bb3aa808c0190d785596333427c9dcb86d5c8ece6bf",
+      "inputs_read": [
+        "public/task.json",
+        "public/visible/build.json",
+        "public/visible/W_bug_tb.sv",
+        "public/visible/W_preserve_tb.sv",
+        "public/spec.txt"
+      ],
+      "experience": {
+        "snapshot_id": "B_0",
+        "snapshot_hash": "sha256:5600496c90f83f0e7b291f83030adaa6c63b03770716706768266b847116c119",
+        "state_hash": "sha256:b07b09361e2981152f1e25a0a2cadc18dfac4222572d63c3d5349ce5238a24f8",
+        "payload_hash": "sha256:3092f0d7fc08feac058171dbed616bb7c60daa43691d7b6d28875d3225d9b061",
+        "delivery_hash": "sha256:24b2ad7b9913d8bc35cbd583b7e64593203f9246cb020e49f0230c55241fc5bf",
+        "delivered": false
+      }
+    }
+  },
+  "archive_path": "/data2/huangyc/R3E-aic-ic-2026-latest/prob003-five-round-03/real-v1/collection/rounds/1/r1_s0/online/blue/archive/chipbench_prob003_group_boundary_v1__de4fa74a556b155a__fc137774ff2ca882.json",
+  "task_dir": "/data2/huangyc/R3E-aic-ic-2026-latest/prob003-five-round-03/real-v1/collection/rounds/1/r1_s0/admission/blue_task",
+  "replay": {
+    "tier": "visible_pass",
+    "stage": "simulation",
+    "evidence": {
+      "suites": {
+        "W_bug": {
+          "result": "visible_pass",
+          "returncode": 0,
+          "pass_marker_found": true,
+          "fail_marker_found": false,
+          "log": "TESTBENCH PASS W_bug groups=256 cycles=1536"
+        },
+        "W_preserve": {
+          "result": "visible_pass",
+          "returncode": 0,
+          "pass_marker_found": true,
+          "fail_marker_found": false,
+          "log": "TESTBENCH PASS W_preserve reset exclusivity stability"
+        }
+      }
+    },
+    "build_seconds": 0.01880718395113945,
+    "sim_seconds": 0.01696968823671341,
+    "closure": [
+      "rtl/sequence.sv",
+      "harness:W_bug_tb.sv",
+      "harness:W_preserve_tb.sv"
+    ]
+  },
+  "public_rows": {
+    "W_bug": "visible_pass",
+    "W_preserve": "visible_pass"
+  },
+  "mutation_edits": [
+    {
+      "find": "        s6:\n            nstate=data?sf1:s1;",
+      "replace": "        s6:\n            nstate=s1;"
+    }
+  ]
+}

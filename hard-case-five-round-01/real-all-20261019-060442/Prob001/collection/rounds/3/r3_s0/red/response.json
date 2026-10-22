@@ -1,0 +1,60 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "a_tem <= {a_tem[6:0],a};",
+            "replace": "a_tem <= {a_tem[6:0],~a};"
+          }
+        ],
+        "violated_requirement": "The shift register incorrectly inverts the input bit before storing it, causing mismatch when checking for 8'b0111_0001 pattern. After shifting in the sequence 01110001, the stored value will be 8'b10001110 due to bit inversion.",
+        "spec_basis": "Shift register should retain exact 8 most recent bits of input 'a'"
+      },
+      {
+        "edits": [
+          {
+            "find": "else if (a_tem == 8'b0111_0001)",
+            "replace": "else if (a_tem == 8'b0111_0001) && (a_tem[7] == 1'b0)"
+          }
+        ],
+        "violated_requirement": "The match condition incorrectly requires the MSB to be 0 even when the pattern matches, causing false negatives for matching sequences where the MSB happens to be 1.",
+        "spec_basis": "Output 'match' should be asserted whenever a_tem equals 8'b0111_0001"
+      },
+      {
+        "edits": [
+          {
+            "find": "match <= 1'b1;",
+            "replace": "match <= 1'b0;"
+          }
+        ],
+        "violated_requirement": "The match output is never set to 1 even when the pattern is detected, causing all matches to be missed.",
+        "spec_basis": "Output 'match' should be asserted when pattern matches"
+      },
+      {
+        "edits": [
+          {
+            "find": "a_tem <= 8'b0;",
+            "replace": "a_tem <= 8'b0111_0001;"
+          }
+        ],
+        "violated_requirement": "Reset incorrectly initializes the shift register to the match pattern, causing false positives immediately after reset.",
+        "spec_basis": "Shift register should be cleared to 0 on reset"
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:4d808708bd53883a900547a9542ff05639ac487c638df33954c52b087bfe1702",
+  "input_tokens": 7392,
+  "output_tokens": 484,
+  "request_hash": "sha256:353f30e1892ac085f32c59e39209bfd949db8fb7627042efa32bdd05b168a35e",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 7392,
+    "output_tokens": 484
+  },
+  "model_seconds": 16.59768934547901
+}

@@ -1,0 +1,760 @@
+{
+  "scope": "single design, human-selected mechanism, deferred unseen-variant probes",
+  "scheduled_generation": 5,
+  "admitted": 5,
+  "distinct_admitted": 5,
+  "online_and_frozen_reference": [
+    {
+      "round": 1,
+      "slot_id": "r1_s0",
+      "admission": "admitted",
+      "reason": "public_matrix_and_structure_pass",
+      "mutant_hash": "sha256:5ed1d9a97648a03875212c974c955996aa37ee73940fed288f33537d22d05f9f",
+      "normalized_identity": "sha256:17939fe97c2af4e098439753cede0c400b39990b1e4df11ca330dd53783b096d",
+      "changed_fraction": 0.00980392156862745,
+      "repeats_historical_seed": false,
+      "online": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:1951e57b77b736427d17192f5446f3a1d5bc6d42a3b997eec5ab906a8583215c",
+        "endpoint_public": {
+          "tier": "visible_pass",
+          "suites": {
+            "W_bug": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -12,7 +12,7 @@\n \t\t\tbegin \n \t\t\t\tmatch <= 1'b0;\n \t\t\tend\n-\t\telse if (a_tem == 8'b0111_0011)\n+\t\telse if (a_tem == 8'b0111_0001)\n \t\t\tbegin\n \t\t\t\tmatch <= 1'b1;\n \t\t\tend\n",
+        "endpoint_evaluator": {
+          "result": "pass",
+          "returncode": 0,
+          "failures": [],
+          "log_hash": "sha256:ca8c99fe0cdf6ca706143ad9900890db2df287ee510118b9b91cf7f95ed225d9"
+        },
+        "category": "public_pass_hidden_pass"
+      },
+      "reference": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:1951e57b77b736427d17192f5446f3a1d5bc6d42a3b997eec5ab906a8583215c",
+        "endpoint_public": {
+          "tier": "visible_pass",
+          "suites": {
+            "W_bug": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -12,7 +12,7 @@\n \t\t\tbegin \n \t\t\t\tmatch <= 1'b0;\n \t\t\tend\n-\t\telse if (a_tem == 8'b0111_0011)\n+\t\telse if (a_tem == 8'b0111_0001)\n \t\t\tbegin\n \t\t\t\tmatch <= 1'b1;\n \t\t\tend\n",
+        "endpoint_evaluator": {
+          "result": "pass",
+          "returncode": 0,
+          "failures": [],
+          "log_hash": "sha256:ca8c99fe0cdf6ca706143ad9900890db2df287ee510118b9b91cf7f95ed225d9"
+        },
+        "category": "public_pass_hidden_pass"
+      }
+    },
+    {
+      "round": 2,
+      "slot_id": "r2_s0",
+      "admission": "admitted",
+      "reason": "public_matrix_and_structure_pass",
+      "mutant_hash": "sha256:ddf31680cbeb17fad040d099f72bb09acc821e2704f32993a305586e19f96fe5",
+      "normalized_identity": "sha256:277e8ec86f885ef2d3856fcff5f6c827c6a520f2c9d3bf73dd458939f9b2dd7f",
+      "changed_fraction": 0.00980392156862745,
+      "repeats_historical_seed": false,
+      "online": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:c1ff1cc51de5b463c8e5cfc7a15c30552871e3880be95004559db3f1cc03def1",
+        "endpoint_public": {
+          "tier": "visible_pass",
+          "suites": {
+            "W_bug": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -11,23 +11,11 @@\n \t\tif (!rst_n)\n \t\t\tbegin \n \t\t\t\tmatch <= 1'b0;\n-\t\t\tend\n-\t\telse if (a_tem == 8'b0111_0000)\n-\t\t\tbegin\n-\t\t\t\tmatch <= 1'b1;\n-\t\t\tend\n-\t\telse \n-\t\t\tbegin\t\n-\t\t\t\tmatch <= 1'b0;\n-\t\t\tend\n-\t\t\n-\talways @(posedge clk or negedge rst_n)\n-\t\tif (!rst_n)\n-\t\t\tbegin \n \t\t\t\ta_tem <= 8'b0;\n \t\t\tend\n \t\telse \n \t\t\tbegin\n \t\t\t\ta_tem <= {a_tem[6:0],a};\n+\t\t\t\tmatch <= (a_tem == 8'b0111_0001);\n \t\t\tend\n endmodule",
+        "endpoint_evaluator": {
+          "result": "pass",
+          "returncode": 0,
+          "failures": [],
+          "log_hash": "sha256:ca8c99fe0cdf6ca706143ad9900890db2df287ee510118b9b91cf7f95ed225d9"
+        },
+        "category": "public_pass_hidden_pass"
+      },
+      "reference": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:1951e57b77b736427d17192f5446f3a1d5bc6d42a3b997eec5ab906a8583215c",
+        "endpoint_public": {
+          "tier": "visible_pass",
+          "suites": {
+            "W_bug": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -12,7 +12,7 @@\n \t\t\tbegin \n \t\t\t\tmatch <= 1'b0;\n \t\t\tend\n-\t\telse if (a_tem == 8'b0111_0000)\n+\t\telse if (a_tem == 8'b0111_0001)\n \t\t\tbegin\n \t\t\t\tmatch <= 1'b1;\n \t\t\tend\n",
+        "endpoint_evaluator": {
+          "result": "pass",
+          "returncode": 0,
+          "failures": [],
+          "log_hash": "sha256:ca8c99fe0cdf6ca706143ad9900890db2df287ee510118b9b91cf7f95ed225d9"
+        },
+        "category": "public_pass_hidden_pass"
+      }
+    },
+    {
+      "round": 3,
+      "slot_id": "r3_s0",
+      "admission": "admitted",
+      "reason": "public_matrix_and_structure_pass",
+      "mutant_hash": "sha256:d23812e470661b9a068cc4dd0984d5962f0e7fdfdc8604eb170d9aa883095a87",
+      "normalized_identity": "sha256:59dffd6f32ca31132e2c72a29507fabc2f10b847f00367e6c11106438d40b791",
+      "changed_fraction": 0.06862745098039216,
+      "repeats_historical_seed": false,
+      "online": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:c1ff1cc51de5b463c8e5cfc7a15c30552871e3880be95004559db3f1cc03def1",
+        "endpoint_public": {
+          "tier": "visible_pass",
+          "suites": {
+            "W_bug": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -11,23 +11,11 @@\n \t\tif (!rst_n)\n \t\t\tbegin \n \t\t\t\tmatch <= 1'b0;\n-\t\t\tend\n-\t\telse if (a_tem == 8'b0111_0001 && a_tem[7] == 1'b1)\n-\t\t\tbegin\n-\t\t\t\tmatch <= 1'b1;\n-\t\t\tend\n-\t\telse \n-\t\t\tbegin\t\n-\t\t\t\tmatch <= 1'b0;\n-\t\t\tend\n-\t\t\n-\talways @(posedge clk or negedge rst_n)\n-\t\tif (!rst_n)\n-\t\t\tbegin \n \t\t\t\ta_tem <= 8'b0;\n \t\t\tend\n \t\telse \n \t\t\tbegin\n \t\t\t\ta_tem <= {a_tem[6:0],a};\n+\t\t\t\tmatch <= (a_tem == 8'b0111_0001);\n \t\t\tend\n endmodule",
+        "endpoint_evaluator": {
+          "result": "pass",
+          "returncode": 0,
+          "failures": [],
+          "log_hash": "sha256:ca8c99fe0cdf6ca706143ad9900890db2df287ee510118b9b91cf7f95ed225d9"
+        },
+        "category": "public_pass_hidden_pass"
+      },
+      "reference": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:1951e57b77b736427d17192f5446f3a1d5bc6d42a3b997eec5ab906a8583215c",
+        "endpoint_public": {
+          "tier": "visible_pass",
+          "suites": {
+            "W_bug": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -12,7 +12,7 @@\n \t\t\tbegin \n \t\t\t\tmatch <= 1'b0;\n \t\t\tend\n-\t\telse if (a_tem == 8'b0111_0001 && a_tem[7] == 1'b1)\n+\t\telse if (a_tem == 8'b0111_0001)\n \t\t\tbegin\n \t\t\t\tmatch <= 1'b1;\n \t\t\tend\n",
+        "endpoint_evaluator": {
+          "result": "pass",
+          "returncode": 0,
+          "failures": [],
+          "log_hash": "sha256:ca8c99fe0cdf6ca706143ad9900890db2df287ee510118b9b91cf7f95ed225d9"
+        },
+        "category": "public_pass_hidden_pass"
+      }
+    },
+    {
+      "round": 4,
+      "slot_id": "r4_s0",
+      "admission": "admitted",
+      "reason": "public_matrix_and_structure_pass",
+      "mutant_hash": "sha256:7f20f68b4eb764a98e7230d4da878578c984e71feb45ecc951f9eee77412f67d",
+      "normalized_identity": "sha256:3008a44ca50bab2af64fbbc20d57840784d46aa1ccd92fd9846bb2a6ac32ea61",
+      "changed_fraction": 0.058823529411764705,
+      "repeats_historical_seed": false,
+      "online": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:c1ff1cc51de5b463c8e5cfc7a15c30552871e3880be95004559db3f1cc03def1",
+        "endpoint_public": {
+          "tier": "visible_pass",
+          "suites": {
+            "W_bug": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -11,23 +11,11 @@\n \t\tif (!rst_n)\n \t\t\tbegin \n \t\t\t\tmatch <= 1'b0;\n-\t\t\tend\n-\t\telse if (a_tem == 8'b0111_0001)\n-\t\t\tbegin\n-\t\t\t\tmatch <= 1'b1;\n-\t\t\tend\n-\t\telse \n-\t\t\tbegin\t\n-\t\t\t\tmatch <= 1'b0;\n-\t\t\tend\n-\t\t\n-\talways @(posedge clk or negedge rst_n)\n-\t\tif (!rst_n)\n-\t\t\tbegin \n \t\t\t\ta_tem <= 8'b0;\n \t\t\tend\n \t\telse \n \t\t\tbegin\n-\t\t\t\ta_tem <= {a_tem[5:0],a,a_tem[7]};\n+\t\t\t\ta_tem <= {a_tem[6:0],a};\n+\t\t\t\tmatch <= (a_tem == 8'b0111_0001);\n \t\t\tend\n endmodule",
+        "endpoint_evaluator": {
+          "result": "pass",
+          "returncode": 0,
+          "failures": [],
+          "log_hash": "sha256:ca8c99fe0cdf6ca706143ad9900890db2df287ee510118b9b91cf7f95ed225d9"
+        },
+        "category": "public_pass_hidden_pass"
+      },
+      "reference": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:237ec143b55e81ce6b0f69c1f96768cdd2589d67da68a6e868103a1100f839ca",
+        "endpoint_public": {
+          "tier": "visible_pass",
+          "suites": {
+            "W_bug": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -11,23 +11,11 @@\n \t\tif (!rst_n)\n \t\t\tbegin \n \t\t\t\tmatch <= 1'b0;\n-\t\t\tend\n-\t\telse if (a_tem == 8'b0111_0001)\n-\t\t\tbegin\n-\t\t\t\tmatch <= 1'b1;\n-\t\t\tend\n-\t\telse \n-\t\t\tbegin\t\n-\t\t\t\tmatch <= 1'b0;\n-\t\t\tend\n-\t\t\n-\talways @(posedge clk or negedge rst_n)\n-\t\tif (!rst_n)\n-\t\t\tbegin \n \t\t\t\ta_tem <= 8'b0;\n \t\t\tend\n \t\telse \n \t\t\tbegin\n-\t\t\t\ta_tem <= {a_tem[5:0],a,a_tem[7]};\n+\t\t\t\ta_tem <= {a_tem[6:0], a};\n+\t\t\t\tmatch <= (a_tem == 8'b0111_0001);\n \t\t\tend\n endmodule",
+        "endpoint_evaluator": {
+          "result": "pass",
+          "returncode": 0,
+          "failures": [],
+          "log_hash": "sha256:ca8c99fe0cdf6ca706143ad9900890db2df287ee510118b9b91cf7f95ed225d9"
+        },
+        "category": "public_pass_hidden_pass"
+      }
+    },
+    {
+      "round": 5,
+      "slot_id": "r5_s0",
+      "admission": "admitted",
+      "reason": "public_matrix_and_structure_pass",
+      "mutant_hash": "sha256:51dede5673092799be60776b7e27b8cda146b8c7f563eae28c2cd32940e77117",
+      "normalized_identity": "sha256:615fb45e3a654ed80262f69481f56c470b6ba8ebd2f622cdaf05223bb82722cd",
+      "changed_fraction": 0.06862745098039216,
+      "repeats_historical_seed": false,
+      "online": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:c1ff1cc51de5b463c8e5cfc7a15c30552871e3880be95004559db3f1cc03def1",
+        "endpoint_public": {
+          "tier": "visible_pass",
+          "suites": {
+            "W_bug": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -11,23 +11,11 @@\n \t\tif (!rst_n)\n \t\t\tbegin \n \t\t\t\tmatch <= 1'b0;\n-\t\t\tend\n-\t\telse if (a_tem == 8'b0111_0001 && a_tem[3] == 1'b1)\n-\t\t\tbegin\n-\t\t\t\tmatch <= 1'b1;\n-\t\t\tend\n-\t\telse \n-\t\t\tbegin\t\n-\t\t\t\tmatch <= 1'b0;\n-\t\t\tend\n-\t\t\n-\talways @(posedge clk or negedge rst_n)\n-\t\tif (!rst_n)\n-\t\t\tbegin \n \t\t\t\ta_tem <= 8'b0;\n \t\t\tend\n \t\telse \n \t\t\tbegin\n \t\t\t\ta_tem <= {a_tem[6:0],a};\n+\t\t\t\tmatch <= (a_tem == 8'b0111_0001);\n \t\t\tend\n endmodule",
+        "endpoint_evaluator": {
+          "result": "pass",
+          "returncode": 0,
+          "failures": [],
+          "log_hash": "sha256:ca8c99fe0cdf6ca706143ad9900890db2df287ee510118b9b91cf7f95ed225d9"
+        },
+        "category": "public_pass_hidden_pass"
+      },
+      "reference": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:1951e57b77b736427d17192f5446f3a1d5bc6d42a3b997eec5ab906a8583215c",
+        "endpoint_public": {
+          "tier": "visible_pass",
+          "suites": {
+            "W_bug": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -12,7 +12,7 @@\n \t\t\tbegin \n \t\t\t\tmatch <= 1'b0;\n \t\t\tend\n-\t\telse if (a_tem == 8'b0111_0001 && a_tem[3] == 1'b1)\n+\t\telse if (a_tem == 8'b0111_0001)\n \t\t\tbegin\n \t\t\t\tmatch <= 1'b1;\n \t\t\tend\n",
+        "endpoint_evaluator": {
+          "result": "pass",
+          "returncode": 0,
+          "failures": [],
+          "log_hash": "sha256:ca8c99fe0cdf6ca706143ad9900890db2df287ee510118b9b91cf7f95ed225d9"
+        },
+        "category": "public_pass_hidden_pass"
+      }
+    }
+  ],
+  "reserved_variants_by_snapshot": [
+    {
+      "snapshot": "B_0",
+      "scheduled": 2,
+      "categories": {
+        "public_pass_hidden_pass": 2
+      }
+    },
+    {
+      "snapshot": "B_1",
+      "scheduled": 2,
+      "categories": {
+        "public_pass_hidden_pass": 2
+      }
+    },
+    {
+      "snapshot": "B_2",
+      "scheduled": 2,
+      "categories": {
+        "public_pass_hidden_pass": 2
+      }
+    },
+    {
+      "snapshot": "B_3",
+      "scheduled": 2,
+      "categories": {
+        "public_pass_hidden_pass": 2
+      }
+    },
+    {
+      "snapshot": "B_4",
+      "scheduled": 2,
+      "categories": {
+        "public_pass_hidden_pass": 2
+      }
+    },
+    {
+      "snapshot": "B_5",
+      "scheduled": 2,
+      "categories": {
+        "public_pass_hidden_pass": 2
+      }
+    }
+  ],
+  "probes": [
+    {
+      "snapshot": 0,
+      "anchor_index": 0,
+      "repeat": 0,
+      "endpoint": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:4b4abb36a30728b4de70557946701da97c3f13e138ce715f99b48f00f4e123e5",
+        "endpoint_public": {
+          "tier": "visible_pass",
+          "suites": {
+            "W_bug": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -11,23 +11,11 @@\n \t\tif (!rst_n)\n \t\t\tbegin \n \t\t\t\tmatch <= 1'b0;\n-\t\t\tend\n-\t\telse if (a_tem == 8'b0111_0001)\n-\t\t\tbegin\n-\t\t\t\tmatch <= 1'b1;\n-\t\t\tend\n-\t\telse \n-\t\t\tbegin\t\n-\t\t\t\tmatch <= 1'b0;\n-\t\t\tend\n-\t\t\n-\talways @(posedge clk or negedge rst_n)\n-\t\tif (!rst_n)\n-\t\t\tbegin \n \t\t\t\ta_tem <= 8'b0;\n \t\t\tend\n \t\telse \n \t\t\tbegin\n-\t\t\t\ta_tem <= {a, a_tem[6:0]};\n+\t\t\t\ta_tem <= {a_tem[6:0], a};\n+\t\t\t\tmatch <= (a_tem == 8'b0111_0001);\n \t\t\tend\n endmodule\n",
+        "endpoint_evaluator": {
+          "result": "pass",
+          "returncode": 0,
+          "failures": [],
+          "log_hash": "sha256:ca8c99fe0cdf6ca706143ad9900890db2df287ee510118b9b91cf7f95ed225d9"
+        },
+        "category": "public_pass_hidden_pass"
+      }
+    },
+    {
+      "snapshot": 0,
+      "anchor_index": 0,
+      "repeat": 1,
+      "endpoint": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:4b4abb36a30728b4de70557946701da97c3f13e138ce715f99b48f00f4e123e5",
+        "endpoint_public": {
+          "tier": "visible_pass",
+          "suites": {
+            "W_bug": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -11,23 +11,11 @@\n \t\tif (!rst_n)\n \t\t\tbegin \n \t\t\t\tmatch <= 1'b0;\n-\t\t\tend\n-\t\telse if (a_tem == 8'b0111_0001)\n-\t\t\tbegin\n-\t\t\t\tmatch <= 1'b1;\n-\t\t\tend\n-\t\telse \n-\t\t\tbegin\t\n-\t\t\t\tmatch <= 1'b0;\n-\t\t\tend\n-\t\t\n-\talways @(posedge clk or negedge rst_n)\n-\t\tif (!rst_n)\n-\t\t\tbegin \n \t\t\t\ta_tem <= 8'b0;\n \t\t\tend\n \t\telse \n \t\t\tbegin\n-\t\t\t\ta_tem <= {a, a_tem[6:0]};\n+\t\t\t\ta_tem <= {a_tem[6:0], a};\n+\t\t\t\tmatch <= (a_tem == 8'b0111_0001);\n \t\t\tend\n endmodule\n",
+        "endpoint_evaluator": {
+          "result": "pass",
+          "returncode": 0,
+          "failures": [],
+          "log_hash": "sha256:ca8c99fe0cdf6ca706143ad9900890db2df287ee510118b9b91cf7f95ed225d9"
+        },
+        "category": "public_pass_hidden_pass"
+      }
+    },
+    {
+      "snapshot": 1,
+      "anchor_index": 0,
+      "repeat": 0,
+      "endpoint": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:4b4abb36a30728b4de70557946701da97c3f13e138ce715f99b48f00f4e123e5",
+        "endpoint_public": {
+          "tier": "visible_pass",
+          "suites": {
+            "W_bug": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -11,23 +11,11 @@\n \t\tif (!rst_n)\n \t\t\tbegin \n \t\t\t\tmatch <= 1'b0;\n-\t\t\tend\n-\t\telse if (a_tem == 8'b0111_0001)\n-\t\t\tbegin\n-\t\t\t\tmatch <= 1'b1;\n-\t\t\tend\n-\t\telse \n-\t\t\tbegin\t\n-\t\t\t\tmatch <= 1'b0;\n-\t\t\tend\n-\t\t\n-\talways @(posedge clk or negedge rst_n)\n-\t\tif (!rst_n)\n-\t\t\tbegin \n \t\t\t\ta_tem <= 8'b0;\n \t\t\tend\n \t\telse \n \t\t\tbegin\n-\t\t\t\ta_tem <= {a, a_tem[6:0]};\n+\t\t\t\ta_tem <= {a_tem[6:0], a};\n+\t\t\t\tmatch <= (a_tem == 8'b0111_0001);\n \t\t\tend\n endmodule\n",
+        "endpoint_evaluator": {
+          "result": "pass",
+          "returncode": 0,
+          "failures": [],
+          "log_hash": "sha256:ca8c99fe0cdf6ca706143ad9900890db2df287ee510118b9b91cf7f95ed225d9"
+        },
+        "category": "public_pass_hidden_pass"
+      }
+    },
+    {
+      "snapshot": 1,
+      "anchor_index": 0,
+      "repeat": 1,
+      "endpoint": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:4b4abb36a30728b4de70557946701da97c3f13e138ce715f99b48f00f4e123e5",
+        "endpoint_public": {
+          "tier": "visible_pass",
+          "suites": {
+            "W_bug": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -11,23 +11,11 @@\n \t\tif (!rst_n)\n \t\t\tbegin \n \t\t\t\tmatch <= 1'b0;\n-\t\t\tend\n-\t\telse if (a_tem == 8'b0111_0001)\n-\t\t\tbegin\n-\t\t\t\tmatch <= 1'b1;\n-\t\t\tend\n-\t\telse \n-\t\t\tbegin\t\n-\t\t\t\tmatch <= 1'b0;\n-\t\t\tend\n-\t\t\n-\talways @(posedge clk or negedge rst_n)\n-\t\tif (!rst_n)\n-\t\t\tbegin \n \t\t\t\ta_tem <= 8'b0;\n \t\t\tend\n \t\telse \n \t\t\tbegin\n-\t\t\t\ta_tem <= {a, a_tem[6:0]};\n+\t\t\t\ta_tem <= {a_tem[6:0], a};\n+\t\t\t\tmatch <= (a_tem == 8'b0111_0001);\n \t\t\tend\n endmodule\n",
+        "endpoint_evaluator": {
+          "result": "pass",
+          "returncode": 0,
+          "failures": [],
+          "log_hash": "sha256:ca8c99fe0cdf6ca706143ad9900890db2df287ee510118b9b91cf7f95ed225d9"
+        },
+        "category": "public_pass_hidden_pass"
+      }
+    },
+    {
+      "snapshot": 2,
+      "anchor_index": 0,
+      "repeat": 0,
+      "endpoint": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:237ec143b55e81ce6b0f69c1f96768cdd2589d67da68a6e868103a1100f839ca",
+        "endpoint_public": {
+          "tier": "visible_pass",
+          "suites": {
+            "W_bug": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -11,23 +11,11 @@\n \t\tif (!rst_n)\n \t\t\tbegin \n \t\t\t\tmatch <= 1'b0;\n-\t\t\tend\n-\t\telse if (a_tem == 8'b0111_0001)\n-\t\t\tbegin\n-\t\t\t\tmatch <= 1'b1;\n-\t\t\tend\n-\t\telse \n-\t\t\tbegin\t\n-\t\t\t\tmatch <= 1'b0;\n-\t\t\tend\n-\t\t\n-\talways @(posedge clk or negedge rst_n)\n-\t\tif (!rst_n)\n-\t\t\tbegin \n \t\t\t\ta_tem <= 8'b0;\n \t\t\tend\n \t\telse \n \t\t\tbegin\n-\t\t\t\ta_tem <= {a, a_tem[6:0]};\n+\t\t\t\ta_tem <= {a_tem[6:0], a};\n+\t\t\t\tmatch <= (a_tem == 8'b0111_0001);\n \t\t\tend\n-endmodule\n+endmodule",
+        "endpoint_evaluator": {
+          "result": "pass",
+          "returncode": 0,
+          "failures": [],
+          "log_hash": "sha256:ca8c99fe0cdf6ca706143ad9900890db2df287ee510118b9b91cf7f95ed225d9"
+        },
+        "category": "public_pass_hidden_pass"
+      }
+    },
+    {
+      "snapshot": 2,
+      "anchor_index": 0,
+      "repeat": 1,
+      "endpoint": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:237ec143b55e81ce6b0f69c1f96768cdd2589d67da68a6e868103a1100f839ca",
+        "endpoint_public": {
+          "tier": "visible_pass",
+          "suites": {
+            "W_bug": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -11,23 +11,11 @@\n \t\tif (!rst_n)\n \t\t\tbegin \n \t\t\t\tmatch <= 1'b0;\n-\t\t\tend\n-\t\telse if (a_tem == 8'b0111_0001)\n-\t\t\tbegin\n-\t\t\t\tmatch <= 1'b1;\n-\t\t\tend\n-\t\telse \n-\t\t\tbegin\t\n-\t\t\t\tmatch <= 1'b0;\n-\t\t\tend\n-\t\t\n-\talways @(posedge clk or negedge rst_n)\n-\t\tif (!rst_n)\n-\t\t\tbegin \n \t\t\t\ta_tem <= 8'b0;\n \t\t\tend\n \t\telse \n \t\t\tbegin\n-\t\t\t\ta_tem <= {a, a_tem[6:0]};\n+\t\t\t\ta_tem <= {a_tem[6:0], a};\n+\t\t\t\tmatch <= (a_tem == 8'b0111_0001);\n \t\t\tend\n-endmodule\n+endmodule",
+        "endpoint_evaluator": {
+          "result": "pass",
+          "returncode": 0,
+          "failures": [],
+          "log_hash": "sha256:ca8c99fe0cdf6ca706143ad9900890db2df287ee510118b9b91cf7f95ed225d9"
+        },
+        "category": "public_pass_hidden_pass"
+      }
+    },
+    {
+      "snapshot": 3,
+      "anchor_index": 0,
+      "repeat": 0,
+      "endpoint": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:237ec143b55e81ce6b0f69c1f96768cdd2589d67da68a6e868103a1100f839ca",
+        "endpoint_public": {
+          "tier": "visible_pass",
+          "suites": {
+            "W_bug": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -11,23 +11,11 @@\n \t\tif (!rst_n)\n \t\t\tbegin \n \t\t\t\tmatch <= 1'b0;\n-\t\t\tend\n-\t\telse if (a_tem == 8'b0111_0001)\n-\t\t\tbegin\n-\t\t\t\tmatch <= 1'b1;\n-\t\t\tend\n-\t\telse \n-\t\t\tbegin\t\n-\t\t\t\tmatch <= 1'b0;\n-\t\t\tend\n-\t\t\n-\talways @(posedge clk or negedge rst_n)\n-\t\tif (!rst_n)\n-\t\t\tbegin \n \t\t\t\ta_tem <= 8'b0;\n \t\t\tend\n \t\telse \n \t\t\tbegin\n-\t\t\t\ta_tem <= {a, a_tem[6:0]};\n+\t\t\t\ta_tem <= {a_tem[6:0], a};\n+\t\t\t\tmatch <= (a_tem == 8'b0111_0001);\n \t\t\tend\n-endmodule\n+endmodule",
+        "endpoint_evaluator": {
+          "result": "pass",
+          "returncode": 0,
+          "failures": [],
+          "log_hash": "sha256:ca8c99fe0cdf6ca706143ad9900890db2df287ee510118b9b91cf7f95ed225d9"
+        },
+        "category": "public_pass_hidden_pass"
+      }
+    },
+    {
+      "snapshot": 3,
+      "anchor_index": 0,
+      "repeat": 1,
+      "endpoint": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:237ec143b55e81ce6b0f69c1f96768cdd2589d67da68a6e868103a1100f839ca",
+        "endpoint_public": {
+          "tier": "visible_pass",
+          "suites": {
+            "W_bug": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -11,23 +11,11 @@\n \t\tif (!rst_n)\n \t\t\tbegin \n \t\t\t\tmatch <= 1'b0;\n-\t\t\tend\n-\t\telse if (a_tem == 8'b0111_0001)\n-\t\t\tbegin\n-\t\t\t\tmatch <= 1'b1;\n-\t\t\tend\n-\t\telse \n-\t\t\tbegin\t\n-\t\t\t\tmatch <= 1'b0;\n-\t\t\tend\n-\t\t\n-\talways @(posedge clk or negedge rst_n)\n-\t\tif (!rst_n)\n-\t\t\tbegin \n \t\t\t\ta_tem <= 8'b0;\n \t\t\tend\n \t\telse \n \t\t\tbegin\n-\t\t\t\ta_tem <= {a, a_tem[6:0]};\n+\t\t\t\ta_tem <= {a_tem[6:0], a};\n+\t\t\t\tmatch <= (a_tem == 8'b0111_0001);\n \t\t\tend\n-endmodule\n+endmodule",
+        "endpoint_evaluator": {
+          "result": "pass",
+          "returncode": 0,
+          "failures": [],
+          "log_hash": "sha256:ca8c99fe0cdf6ca706143ad9900890db2df287ee510118b9b91cf7f95ed225d9"
+        },
+        "category": "public_pass_hidden_pass"
+      }
+    },
+    {
+      "snapshot": 4,
+      "anchor_index": 0,
+      "repeat": 0,
+      "endpoint": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:237ec143b55e81ce6b0f69c1f96768cdd2589d67da68a6e868103a1100f839ca",
+        "endpoint_public": {
+          "tier": "visible_pass",
+          "suites": {
+            "W_bug": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -11,23 +11,11 @@\n \t\tif (!rst_n)\n \t\t\tbegin \n \t\t\t\tmatch <= 1'b0;\n-\t\t\tend\n-\t\telse if (a_tem == 8'b0111_0001)\n-\t\t\tbegin\n-\t\t\t\tmatch <= 1'b1;\n-\t\t\tend\n-\t\telse \n-\t\t\tbegin\t\n-\t\t\t\tmatch <= 1'b0;\n-\t\t\tend\n-\t\t\n-\talways @(posedge clk or negedge rst_n)\n-\t\tif (!rst_n)\n-\t\t\tbegin \n \t\t\t\ta_tem <= 8'b0;\n \t\t\tend\n \t\telse \n \t\t\tbegin\n-\t\t\t\ta_tem <= {a, a_tem[6:0]};\n+\t\t\t\ta_tem <= {a_tem[6:0], a};\n+\t\t\t\tmatch <= (a_tem == 8'b0111_0001);\n \t\t\tend\n-endmodule\n+endmodule",
+        "endpoint_evaluator": {
+          "result": "pass",
+          "returncode": 0,
+          "failures": [],
+          "log_hash": "sha256:ca8c99fe0cdf6ca706143ad9900890db2df287ee510118b9b91cf7f95ed225d9"
+        },
+        "category": "public_pass_hidden_pass"
+      }
+    },
+    {
+      "snapshot": 4,
+      "anchor_index": 0,
+      "repeat": 1,
+      "endpoint": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:237ec143b55e81ce6b0f69c1f96768cdd2589d67da68a6e868103a1100f839ca",
+        "endpoint_public": {
+          "tier": "visible_pass",
+          "suites": {
+            "W_bug": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -11,23 +11,11 @@\n \t\tif (!rst_n)\n \t\t\tbegin \n \t\t\t\tmatch <= 1'b0;\n-\t\t\tend\n-\t\telse if (a_tem == 8'b0111_0001)\n-\t\t\tbegin\n-\t\t\t\tmatch <= 1'b1;\n-\t\t\tend\n-\t\telse \n-\t\t\tbegin\t\n-\t\t\t\tmatch <= 1'b0;\n-\t\t\tend\n-\t\t\n-\talways @(posedge clk or negedge rst_n)\n-\t\tif (!rst_n)\n-\t\t\tbegin \n \t\t\t\ta_tem <= 8'b0;\n \t\t\tend\n \t\telse \n \t\t\tbegin\n-\t\t\t\ta_tem <= {a, a_tem[6:0]};\n+\t\t\t\ta_tem <= {a_tem[6:0], a};\n+\t\t\t\tmatch <= (a_tem == 8'b0111_0001);\n \t\t\tend\n-endmodule\n+endmodule",
+        "endpoint_evaluator": {
+          "result": "pass",
+          "returncode": 0,
+          "failures": [],
+          "log_hash": "sha256:ca8c99fe0cdf6ca706143ad9900890db2df287ee510118b9b91cf7f95ed225d9"
+        },
+        "category": "public_pass_hidden_pass"
+      }
+    },
+    {
+      "snapshot": 5,
+      "anchor_index": 0,
+      "repeat": 0,
+      "endpoint": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:237ec143b55e81ce6b0f69c1f96768cdd2589d67da68a6e868103a1100f839ca",
+        "endpoint_public": {
+          "tier": "visible_pass",
+          "suites": {
+            "W_bug": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -11,23 +11,11 @@\n \t\tif (!rst_n)\n \t\t\tbegin \n \t\t\t\tmatch <= 1'b0;\n-\t\t\tend\n-\t\telse if (a_tem == 8'b0111_0001)\n-\t\t\tbegin\n-\t\t\t\tmatch <= 1'b1;\n-\t\t\tend\n-\t\telse \n-\t\t\tbegin\t\n-\t\t\t\tmatch <= 1'b0;\n-\t\t\tend\n-\t\t\n-\talways @(posedge clk or negedge rst_n)\n-\t\tif (!rst_n)\n-\t\t\tbegin \n \t\t\t\ta_tem <= 8'b0;\n \t\t\tend\n \t\telse \n \t\t\tbegin\n-\t\t\t\ta_tem <= {a, a_tem[6:0]};\n+\t\t\t\ta_tem <= {a_tem[6:0], a};\n+\t\t\t\tmatch <= (a_tem == 8'b0111_0001);\n \t\t\tend\n-endmodule\n+endmodule",
+        "endpoint_evaluator": {
+          "result": "pass",
+          "returncode": 0,
+          "failures": [],
+          "log_hash": "sha256:ca8c99fe0cdf6ca706143ad9900890db2df287ee510118b9b91cf7f95ed225d9"
+        },
+        "category": "public_pass_hidden_pass"
+      }
+    },
+    {
+      "snapshot": 5,
+      "anchor_index": 0,
+      "repeat": 1,
+      "endpoint": {
+        "encounter": 0,
+        "endpoint_candidate": "sha256:237ec143b55e81ce6b0f69c1f96768cdd2589d67da68a6e868103a1100f839ca",
+        "endpoint_public": {
+          "tier": "visible_pass",
+          "suites": {
+            "W_bug": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            },
+            "W_preserve": {
+              "result": "visible_pass",
+              "checker_violation": false,
+              "failures": []
+            }
+          }
+        },
+        "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -11,23 +11,11 @@\n \t\tif (!rst_n)\n \t\t\tbegin \n \t\t\t\tmatch <= 1'b0;\n-\t\t\tend\n-\t\telse if (a_tem == 8'b0111_0001)\n-\t\t\tbegin\n-\t\t\t\tmatch <= 1'b1;\n-\t\t\tend\n-\t\telse \n-\t\t\tbegin\t\n-\t\t\t\tmatch <= 1'b0;\n-\t\t\tend\n-\t\t\n-\talways @(posedge clk or negedge rst_n)\n-\t\tif (!rst_n)\n-\t\t\tbegin \n \t\t\t\ta_tem <= 8'b0;\n \t\t\tend\n \t\telse \n \t\t\tbegin\n-\t\t\t\ta_tem <= {a, a_tem[6:0]};\n+\t\t\t\ta_tem <= {a_tem[6:0], a};\n+\t\t\t\tmatch <= (a_tem == 8'b0111_0001);\n \t\t\tend\n-endmodule\n+endmodule",
+        "endpoint_evaluator": {
+          "result": "pass",
+          "returncode": 0,
+          "failures": [],
+          "log_hash": "sha256:ca8c99fe0cdf6ca706143ad9900890db2df287ee510118b9b91cf7f95ed225d9"
+        },
+        "category": "public_pass_hidden_pass"
+      }
+    }
+  ],
+  "confirmation": "not scheduled; single-sample failures require separate reviewed confirmation",
+  "limits": "Two reserved variants and two samples each per snapshot are diagnostic, not evidence of mastery or transfer."
+}

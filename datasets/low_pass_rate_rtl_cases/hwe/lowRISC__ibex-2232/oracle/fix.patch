@@ -1,0 +1,273 @@
+diff --git a/doc/02_user/integration.rst b/doc/02_user/integration.rst
+index 17e3652e59..cc3c59c84d 100644
+--- a/doc/02_user/integration.rst
++++ b/doc/02_user/integration.rst
+@@ -108,6 +108,8 @@ Instantiation Template
+       .RndCnstLfsrSeed  ( ibex_pkg::RndCnstLfsrSeedDefault ),
+       .RndCnstLfsrPerm  ( ibex_pkg::RndCnstLfsrPermDefault ),
+       .DbgTriggerEn     ( 0                                ),
++      .DmBaseAddr       ( 32'h1A110000                     ),
++      .DmAddrMask       ( 32'h00000FFF                     ),
+       .DmHaltAddr       ( 32'h1A110800                     ),
+       .DmExceptionAddr  ( 32'h1A110808                     )
+   ) u_top (
+@@ -224,6 +226,10 @@ Parameters
+ +------------------------------+---------------------+------------+-----------------------------------------------------------------------+
+ | ``DbgTriggerEn``             | bit                 | 0          | Enable debug trigger support (one trigger only)                       |
+ +------------------------------+---------------------+------------+-----------------------------------------------------------------------+
++| ``DmBaseAddr``               | int                 | 0x1A110000 | Base address of the Debug Module                                      |
+++------------------------------+---------------------+------------+-----------------------------------------------------------------------+
++| ``DmAddrMask``               | int                 | 0x1A110000 | Address mask of the Debug Module                                      |
+++------------------------------+---------------------+------------+-----------------------------------------------------------------------+
+ | ``DmHaltAddr``               | int                 | 0x1A110800 | Address to jump to when entering Debug Mode                           |
+ +------------------------------+---------------------+------------+-----------------------------------------------------------------------+
+ | ``DmExceptionAddr``          | int                 | 0x1A110808 | Address to jump to when an exception occurs while in Debug Mode       |
+diff --git a/doc/03_reference/debug.rst b/doc/03_reference/debug.rst
+index 5574f4f5d4..6b67db42e6 100644
+--- a/doc/03_reference/debug.rst
++++ b/doc/03_reference/debug.rst
+@@ -32,6 +32,10 @@ Parameters
+ +---------------------+-----------------------------------------------------------------+
+ | Parameter           | Description                                                     |
+ +=====================+=================================================================+
++| ``DmBaseAddr``      | Base address of the Debug Module                                |
+++---------------------+-----------------------------------------------------------------+
++| ``DmAddrMask``      | Address mask of the Debug Module                                |
+++---------------------+-----------------------------------------------------------------+
+ | ``DmHaltAddr``      | Address to jump to when entering Debug Mode                     |
+ +---------------------+-----------------------------------------------------------------+
+ | ``DmExceptionAddr`` | Address to jump to when an exception occurs while in Debug Mode |
+diff --git a/doc/03_reference/pmp.rst b/doc/03_reference/pmp.rst
+index 6494a0d45d..d4993020dd 100644
+--- a/doc/03_reference/pmp.rst
++++ b/doc/03_reference/pmp.rst
+@@ -52,3 +52,9 @@ By default all PMP CSRs (include ``mseccfg``) are reset to 0.
+ Some applications may want other reset values.
+ Default reset values are defined in :file:`ibex_pkg.sv`.
+ An implementation can either modify this file or pass custom reset values as a module parameter.
++
++Debug Mode
++----------
++
++In debug mode, the PMP allows all accesses to addresses of the Debug Module, as defined by the `DmBaseAddr` and `DmAddrMask` module parameters.
++This is mandated by the RISC-V Debug Specification (v1.0.0).
+diff --git a/dv/riscv_compliance/rtl/ibex_riscv_compliance.sv b/dv/riscv_compliance/rtl/ibex_riscv_compliance.sv
+index 8d3669ef33..10d0bb053d 100644
+--- a/dv/riscv_compliance/rtl/ibex_riscv_compliance.sv
++++ b/dv/riscv_compliance/rtl/ibex_riscv_compliance.sv
+@@ -155,6 +155,8 @@ module ibex_riscv_compliance (
+       .DbgTriggerEn     (DbgTriggerEn      ),
+       .SecureIbex       (SecureIbex        ),
+       .ICacheScramble   (ICacheScramble    ),
++      .DmBaseAddr       (32'h00000000      ),
++      .DmAddrMask       (32'h00000003      ),
+       .DmHaltAddr       (32'h00000000      ),
+       .DmExceptionAddr  (32'h00000000      )
+     ) u_top (
+diff --git a/examples/simple_system/rtl/ibex_simple_system.sv b/examples/simple_system/rtl/ibex_simple_system.sv
+index ac74691d68..e466ac286d 100644
+--- a/examples/simple_system/rtl/ibex_simple_system.sv
++++ b/examples/simple_system/rtl/ibex_simple_system.sv
+@@ -204,6 +204,8 @@ module ibex_simple_system (
+       .WritebackStage  ( WritebackStage   ),
+       .BranchPredictor ( BranchPredictor  ),
+       .DbgTriggerEn    ( DbgTriggerEn     ),
++      .DmBaseAddr      ( 32'h00100000     ),
++      .DmAddrMask      ( 32'h00000003     ),
+       .DmHaltAddr      ( 32'h00100000     ),
+       .DmExceptionAddr ( 32'h00100000     )
+     ) u_top (
+diff --git a/rtl/ibex_controller.sv b/rtl/ibex_controller.sv
+index e764af0ebd..72fff08e2b 100644
+--- a/rtl/ibex_controller.sv
++++ b/rtl/ibex_controller.sv
+@@ -997,6 +997,15 @@ module ibex_controller #(
+     // If there's a pending exception req that doesn't need a PC set we must not see one
+     `ASSERT(IbexNoPCSetOnSpecialReqIfNotExpected,
+       exception_req_pending && !expect_exception_pc_set |-> ~pc_set_o)
++
++    // If entering or exiting debug mode, the pipeline must be flushed. This is because Ibex
++    // currently does not support some of the pipeline stages being in debug mode; either all or
++    // none of the pipeline stages must be in debug mode. As `flush_id_o` only affects the ID/EX
++    // stage but does not prevent a fetched instruction from proceeding to ID/EX the next cycle, the
++    // assertion additionally requires `pc_set_o`, which sets the PC in the IF stage to a new value,
++    // hence preventing a fetched instruction from proceeding to the ID/EX stage in the next cycle.
++    `ASSERT(IbexPipelineFlushOnChangingDebugMode,
++      debug_mode_d != debug_mode_q |-> flush_id_o & pc_set_o)
+   `endif
+ 
+   `ifdef RVFI
+diff --git a/rtl/ibex_core.sv b/rtl/ibex_core.sv
+index 807e315133..67ab922466 100644
+--- a/rtl/ibex_core.sv
++++ b/rtl/ibex_core.sv
+@@ -44,6 +44,8 @@ module ibex_core import ibex_pkg::*; #(
+   parameter int unsigned            RegFileDataWidth = 32,
+   parameter bit                     MemECC           = 1'b0,
+   parameter int unsigned            MemDataWidth     = MemECC ? 32 + 7 : 32,
++  parameter int unsigned            DmBaseAddr       = 32'h1A110000,
++  parameter int unsigned            DmAddrMask       = 32'h00000FFF,
+   parameter int unsigned            DmHaltAddr       = 32'h1A110800,
+   parameter int unsigned            DmExceptionAddr  = 32'h1A110808
+ ) (
+@@ -1177,6 +1179,8 @@ module ibex_core import ibex_pkg::*; #(
+     assign pmp_priv_lvl[PMP_D]  = priv_mode_lsu;
+ 
+     ibex_pmp #(
++      .DmBaseAddr    (DmBaseAddr),
++      .DmAddrMask    (DmAddrMask),
+       .PMPGranularity(PMPGranularity),
+       .PMPNumChan    (PMPNumChan),
+       .PMPNumRegions (PMPNumRegions)
+@@ -1185,6 +1189,7 @@ module ibex_core import ibex_pkg::*; #(
+       .csr_pmp_cfg_i    (csr_pmp_cfg),
+       .csr_pmp_addr_i   (csr_pmp_addr),
+       .csr_pmp_mseccfg_i(csr_pmp_mseccfg),
++      .debug_mode_i     (debug_mode),
+       .priv_mode_i      (pmp_priv_lvl),
+       // Access checking channels
+       .pmp_req_addr_i   (pmp_req_addr),
+diff --git a/rtl/ibex_lockstep.sv b/rtl/ibex_lockstep.sv
+index 6d2f176c54..7466e9eb34 100644
+--- a/rtl/ibex_lockstep.sv
++++ b/rtl/ibex_lockstep.sv
+@@ -40,6 +40,8 @@ module ibex_lockstep import ibex_pkg::*; #(
+   parameter int unsigned            RegFileDataWidth  = 32,
+   parameter bit                     MemECC            = 1'b0,
+   parameter int unsigned            MemDataWidth      = MemECC ? 32 + 7 : 32,
++  parameter int unsigned            DmBaseAddr        = 32'h1A110000,
++  parameter int unsigned            DmAddrMask        = 32'h00000FFF,
+   parameter int unsigned            DmHaltAddr        = 32'h1A110800,
+   parameter int unsigned            DmExceptionAddr   = 32'h1A110808
+ ) (
+@@ -377,6 +379,8 @@ module ibex_lockstep import ibex_pkg::*; #(
+     .RegFileDataWidth  ( RegFileDataWidth  ),
+     .MemECC            ( MemECC            ),
+     .MemDataWidth      ( MemDataWidth      ),
++    .DmBaseAddr        ( DmBaseAddr        ),
++    .DmAddrMask        ( DmAddrMask        ),
+     .DmHaltAddr        ( DmHaltAddr        ),
+     .DmExceptionAddr   ( DmExceptionAddr   )
+   ) u_shadow_core (
+diff --git a/rtl/ibex_pmp.sv b/rtl/ibex_pmp.sv
+index 48c3a7ed67..d3561200f5 100644
+--- a/rtl/ibex_pmp.sv
++++ b/rtl/ibex_pmp.sv
+@@ -5,6 +5,8 @@
+ `include "dv_fcov_macros.svh"
+ 
+ module ibex_pmp #(
++  parameter int unsigned DmBaseAddr     = 32'h1A110000,
++  parameter int unsigned DmAddrMask     = 32'h00000FFF,
+   // Granularity of NAPOT access,
+   // 0 = No restriction, 1 = 8 byte, 2 = 16 byte, 3 = 32 byte, etc.
+   parameter int unsigned PMPGranularity = 0,
+@@ -18,6 +20,8 @@ module ibex_pmp #(
+   input  logic [33:0]             csr_pmp_addr_i    [PMPNumRegions],
+   input  ibex_pkg::pmp_mseccfg_t  csr_pmp_mseccfg_i,
+ 
++  input  logic                    debug_mode_i,
++
+   input  ibex_pkg::priv_lvl_e     priv_mode_i    [PMPNumChan],
+   // Access checking channels
+   input  logic [33:0]             pmp_req_addr_i [PMPNumChan],
+@@ -37,6 +41,7 @@ module ibex_pmp #(
+   logic [PMPNumChan-1:0][PMPNumRegions-1:0]   region_match_all;
+   logic [PMPNumChan-1:0][PMPNumRegions-1:0]   region_basic_perm_check;
+   logic [PMPNumChan-1:0][PMPNumRegions-1:0]   region_perm_check;
++  logic [PMPNumChan-1:0]                      debug_mode_allowed_access;
+ 
+   ///////////////////////
+   // Functions for PMP //
+@@ -48,6 +53,7 @@ module ibex_pmp #(
+   //                                                                                 |
+   // region_match_all --------------------------------> access_fault_check <----------
+   //                                                            |
++  // !debug_mode_allowed_access ------------------------------> &
+   //                                                            \--> pmp_req_err_o
+ 
+   // Compute permissions checks that apply when MSECCFG.MML is set. Added for Smepmp support.
+@@ -226,9 +232,18 @@ module ibex_pmp #(
+                              pmp_req_addr_i[c][PMPGranularity+2-1:0]};
+     end
+ 
++    // Determine whether the core is in debug mode and the access is to an address in the range of
++    // the Debug Module. According to Section A.2 of the RISC-V Debug Specification, the PMP must
++    // not disallow fetches, loads, or stores in the address range associated with the Debug Module
++    // when the hart is in debug mode.
++    assign debug_mode_allowed_access[c] = debug_mode_i &
++                                          ((pmp_req_addr_i[c][31:0] & ~DmAddrMask) == DmBaseAddr);
++
+     // Once the permission checks of the regions are done, decide if the access is
+     // denied by figuring out the matching region and its permission check.
+-    assign pmp_req_err_o[c] = access_fault_check(csr_pmp_mseccfg_i.mmwp,
++    // No error is raised if the access is allowed as Debug Module access (first term).
++    assign pmp_req_err_o[c] = ~debug_mode_allowed_access[c] &
++                              access_fault_check(csr_pmp_mseccfg_i.mmwp,
+                                                  csr_pmp_mseccfg_i.mml,
+                                                  pmp_req_type_i[c],
+                                                  region_match_all[c],
+diff --git a/rtl/ibex_top.sv b/rtl/ibex_top.sv
+index 8991c17251..a90fee0e66 100644
+--- a/rtl/ibex_top.sv
++++ b/rtl/ibex_top.sv
+@@ -37,6 +37,8 @@ module ibex_top import ibex_pkg::*; #(
+   parameter int unsigned            ICacheScrNumPrinceRoundsHalf = 2,
+   parameter lfsr_seed_t             RndCnstLfsrSeed              = RndCnstLfsrSeedDefault,
+   parameter lfsr_perm_t             RndCnstLfsrPerm              = RndCnstLfsrPermDefault,
++  parameter int unsigned            DmBaseAddr                   = 32'h1A110000,
++  parameter int unsigned            DmAddrMask                   = 32'h00000FFF,
+   parameter int unsigned            DmHaltAddr                   = 32'h1A110800,
+   parameter int unsigned            DmExceptionAddr              = 32'h1A110808,
+   // Default seed and nonce for scrambling
+@@ -313,6 +315,8 @@ module ibex_top import ibex_pkg::*; #(
+     .RegFileDataWidth (RegFileDataWidth),
+     .MemECC           (MemECC),
+     .MemDataWidth     (MemDataWidth),
++    .DmBaseAddr       (DmBaseAddr),
++    .DmAddrMask       (DmAddrMask),
+     .DmHaltAddr       (DmHaltAddr),
+     .DmExceptionAddr  (DmExceptionAddr)
+   ) u_ibex_core (
+@@ -1016,6 +1020,8 @@ module ibex_top import ibex_pkg::*; #(
+       .RegFileECC       (RegFileECC),
+       .RegFileDataWidth (RegFileDataWidth),
+       .MemECC           (MemECC),
++      .DmBaseAddr       (DmBaseAddr),
++      .DmAddrMask       (DmAddrMask),
+       .DmHaltAddr       (DmHaltAddr),
+       .DmExceptionAddr  (DmExceptionAddr)
+     ) u_ibex_lockstep (
+@@ -1120,6 +1126,10 @@ module ibex_top import ibex_pkg::*; #(
+   assign alert_major_bus_o      = core_alert_major_bus | lockstep_alert_major_bus;
+   assign alert_minor_o          = core_alert_minor | lockstep_alert_minor;
+ 
++  // Parameter assertions
++  `ASSERT_INIT(DmHaltAddrInRange_A, (DmHaltAddr & ~DmAddrMask) == DmBaseAddr)
++  `ASSERT_INIT(DmExceptionAddrInRange_A, (DmExceptionAddr & ~DmAddrMask) == DmBaseAddr)
++
+   // X checks for top-level outputs
+   `ASSERT_KNOWN(IbexInstrReqX, instr_req_o)
+   `ASSERT_KNOWN_IF(IbexInstrReqPayloadX, instr_addr_o, instr_req_o)
+diff --git a/rtl/ibex_top_tracing.sv b/rtl/ibex_top_tracing.sv
+index 14fcfb2994..b9f8045c06 100644
+--- a/rtl/ibex_top_tracing.sv
++++ b/rtl/ibex_top_tracing.sv
+@@ -27,6 +27,8 @@ module ibex_top_tracing import ibex_pkg::*; #(
+   parameter bit          ICacheScramble   = 1'b0,
+   parameter lfsr_seed_t  RndCnstLfsrSeed  = RndCnstLfsrSeedDefault,
+   parameter lfsr_perm_t  RndCnstLfsrPerm  = RndCnstLfsrPermDefault,
++  parameter int unsigned DmBaseAddr       = 32'h1A110000,
++  parameter int unsigned DmAddrMask       = 32'h00000FFF,
+   parameter int unsigned DmHaltAddr       = 32'h1A110800,
+   parameter int unsigned DmExceptionAddr  = 32'h1A110808
+ ) (
+@@ -184,6 +186,8 @@ module ibex_top_tracing import ibex_pkg::*; #(
+     .ICacheScramble   ( ICacheScramble   ),
+     .RndCnstLfsrSeed  ( RndCnstLfsrSeed  ),
+     .RndCnstLfsrPerm  ( RndCnstLfsrPerm  ),
++    .DmBaseAddr       ( DmBaseAddr       ),
++    .DmAddrMask       ( DmAddrMask       ),
+     .DmHaltAddr       ( DmHaltAddr       ),
+     .DmExceptionAddr  ( DmExceptionAddr  )
+   ) u_ibex_top (

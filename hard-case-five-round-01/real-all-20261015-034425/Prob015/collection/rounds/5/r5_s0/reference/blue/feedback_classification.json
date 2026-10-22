@@ -1,0 +1,44 @@
+{
+ "summary": {
+  "task_id": "chipbench_Prob015_fixed_hard_questions__497f00ad25a588a9",
+  "encounters": 1,
+  "categories": {
+   "public_pass_hidden_pass": 1
+  },
+  "functional_failure_candidates": 0,
+  "pending_review": 0,
+  "reviewed_functional_failures": 0,
+  "original_defect_persists": 0,
+  "new_regression": 0,
+  "mechanism_907_exploratory": 0
+ },
+ "encounters": [
+  {
+   "encounter": 0,
+   "endpoint_candidate": "sha256:4d8ee955b016868bca5c2a8b9df9ab7484506bed60f880d3f5ef3be413c75c0f",
+   "endpoint_public": {
+    "tier": "visible_pass",
+    "suites": {
+     "W_bug": {
+      "result": "visible_pass",
+      "checker_violation": false,
+      "failures": []
+     },
+     "W_preserve": {
+      "result": "visible_pass",
+      "checker_violation": false,
+      "failures": []
+     }
+    }
+   },
+   "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -1,4 +1,3 @@\n-\n module TopModule(\n \tinput wire clk  ,\n \tinput wire rst  ,\n@@ -55,7 +54,7 @@\n                 S1_5        : {out1, out2, out3} = ~sel? 3'b100: 3'b000;\n                 S2          : {out1, out2, out3} = ~sel? 3'b101: 3'b000;\n                 S2_5        : {out1, out2, out3} = ~sel? 3'b101: 3'b010;\n-                S3          : {out1, out2, out3} = ~sel? 3'b101: 3'b010;\n+                S3          : {out1, out2, out3} = ~sel? 3'b101: 3'b011;\n                 default     : {out1, out2, out3} = 3'b000;\n             endcase\n         end\n",
+   "endpoint_evaluator": {
+    "result": "pass",
+    "returncode": 0,
+    "failures": [],
+    "log_hash": "sha256:2830216deb3a4a39847aad62e0bbf4027558d8d92a12addafd978c42b59d5ea9"
+   },
+   "category": "public_pass_hidden_pass"
+  }
+ ]
+}

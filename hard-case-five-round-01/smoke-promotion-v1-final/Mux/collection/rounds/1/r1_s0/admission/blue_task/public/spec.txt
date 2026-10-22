@@ -1,0 +1,1 @@
+Four-bit combinational 4:1 multiplexer. sel is a two-bit binary selector: 00 selects a, 01 b, 10 c, 11 d. Output follows the selected input when it or sel changes. Preserve the interface and all comments.

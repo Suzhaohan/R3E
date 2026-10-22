@@ -1,0 +1,30 @@
+{
+  "result": {
+    "candidate_actions": [
+      {
+        "action_id": "sha256:27a6a4fd8cf302a36ab9daf2a972999b8b6f1ebdca05872ea72dc82f341e61d9",
+        "violated_requirement": "After a mismatch in sf4, the state should progress to sf6 to complete the group evaluation rather than sf5. Current implementation incorrectly transitions to sf5, causing premature group termination.",
+        "spec_basis": "Spec requires processing full 6-bit groups before declaring match/not_match outputs"
+      },
+      {
+        "action_id": "sha256:0eaa11d840f7b0bd56990bc4b5f530e806d7e9fa60cac6b76ae06ac5cc2acd5b",
+        "violated_requirement": "When in sf5 state, transitioning to sf5 instead of sf6 prevents proper progression to the terminal mismatch state. This stalls the state machine after 5 bits of a mismatch.",
+        "spec_basis": "Spec requires completing all 6 bits of a group before output evaluation"
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:850350534b71960022899b7117a31cc954d5509488e8625ef72f79d16c37e93a",
+  "input_tokens": 6651,
+  "output_tokens": 234,
+  "request_hash": "sha256:e1d8abd7d89489cbf12db608cfc3c927b802fe7b22804565b8f9f861809e9c56",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 6651,
+    "output_tokens": 234
+  },
+  "model_seconds": 11.908397918567061
+}

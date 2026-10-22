@@ -1,0 +1,46 @@
+{
+ "summary": {
+  "task_id": "chipbench_prob003_group_boundary_v1__eval_miss_branch",
+  "encounters": 1,
+  "categories": {
+   "public_functional_failure": 1
+  },
+  "functional_failure_candidates": 1,
+  "pending_review": 1,
+  "reviewed_functional_failures": 0,
+  "original_defect_persists": 1,
+  "new_regression": 0,
+  "mechanism_907_exploratory": 0
+ },
+ "encounters": [
+  {
+   "encounter": 0,
+   "endpoint_candidate": "sha256:a2b67840cec46d003d7f3112a9790a0911a72a33e2c766df4c0ae2c7488fbb59",
+   "endpoint_public": {
+    "tier": "visible_fail",
+    "suites": {
+     "W_bug": {
+      "result": "visible_fail",
+      "checker_violation": true,
+      "failures": [
+       "CHECK_FAIL W_bug cycle=12 group=000000 bit=0 match=1 not_match=0"
+      ]
+     },
+     "W_preserve": {
+      "result": "visible_pass",
+      "checker_violation": false,
+      "failures": []
+     }
+    }
+   },
+   "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -62,7 +62,7 @@\n         sf5:\n             nstate=sf6;\n         sf6:\n-\t\t\tnstate=data?s1:sf1;\n+\t\t\tnstate=sf1;\n         default:\n             nstate=idle;\n         endcase\n@@ -82,8 +82,8 @@\n \t\tend\n \telse if(pstate==sf6)\n \t\tbegin\n-\t\t\tmatch=1'b0;\n-\t\t\tnot_match = 1'b1;\n+\t\t\tmatch=1'b1;\n+\t\t\tnot_match = 1'b0;\n \t\tend\n     else\n \t\tbegin\n",
+   "category": "public_functional_failure",
+   "original_defect_persists": true,
+   "new_regression": false,
+   "functional_failure_candidate": true,
+   "review": {
+    "decision": "PENDING"
+   }
+  }
+ ]
+}

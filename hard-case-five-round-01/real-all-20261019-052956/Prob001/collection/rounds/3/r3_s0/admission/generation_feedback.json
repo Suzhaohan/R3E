@@ -1,0 +1,41 @@
+{
+  "round": 3,
+  "attempt": 0,
+  "reason": "duplicate_within_arm",
+  "edits": [
+    {
+      "find": "else if (a_tem == 8'b0111_0001)",
+      "replace": "else if (a_tem == 8'b0111_0000)"
+    }
+  ],
+  "expected_public_results": {
+    "W_bug": "fail",
+    "W_preserve": "pass"
+  },
+  "actual_public_results": {
+    "W_bug": "fail",
+    "W_preserve": "pass"
+  },
+  "public_test_evidence": {
+    "W_bug": "CHECK_FAIL sequence sample=8",
+    "W_preserve": "TESTBENCH PASS preserve"
+  },
+  "correction": "This implementation was already attempted. Generate a different functional mutation, not different formatting or a new explanation of the same edit. MANDATORY RETRY CONTROL, overriding the round curriculum and historical mechanism seed. The last proposal failed for the concrete reasons listed here. Change to an unblocked mechanism; changing a bit index, constant or operand within a blocked route is forbidden. If added_condition_guard is blocked, do not append ANY extra guard to an if condition. Instead mutate a reachable history update, comparison/slice, output assignment or state transition as appropriate. State a concrete triggering input/history and changed output in violated_requirement; it remains an unverified claim. For compilation_error, correct the reported syntax first without repeating the broken grammar. Return the required candidates JSON batch (each candidate has edits/violated_requirement/spec_basis), or abstain if no valid alternative exists. Only one corrective request is allowed; if both online candidate batches lack a qualified challenge, record an empty practice slot with no replacement.",
+  "original_reason": "public_matrix_and_structure_pass",
+  "reused_from": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/real-all-20261019-052956/Prob001/collection/rounds/1/r1_s0/admission",
+  "retry_control": {
+    "version": "online_diagnose_sites_no_replacement_v2",
+    "round": 3,
+    "failure_kind": "invalid_or_unavailable_proposal",
+    "failed_mechanisms": [
+      "comparison_change"
+    ],
+    "blocked_mechanisms": [],
+    "failed_site_ids": [],
+    "blocked_site_ids": [],
+    "specific_diagnosis": [
+      "This implementation was already attempted. Generate a different functional mutation, not different formatting or a new explanation of the same edit."
+    ],
+    "instruction": "MANDATORY RETRY CONTROL, overriding the round curriculum and historical mechanism seed. The last proposal failed for the concrete reasons listed here. Change to an unblocked mechanism; changing a bit index, constant or operand within a blocked route is forbidden. If added_condition_guard is blocked, do not append ANY extra guard to an if condition. Instead mutate a reachable history update, comparison/slice, output assignment or state transition as appropriate. State a concrete triggering input/history and changed output in violated_requirement; it remains an unverified claim. For compilation_error, correct the reported syntax first without repeating the broken grammar. Return the required candidates JSON batch (each candidate has edits/violated_requirement/spec_basis), or abstain if no valid alternative exists. Only one corrective request is allowed; if both online candidate batches lack a qualified challenge, record an empty practice slot with no replacement."
+  }
+}

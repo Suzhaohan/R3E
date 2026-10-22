@@ -1,0 +1,60 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "else if (a_tem == 8'b0111_0001)",
+            "replace": "else if (a_tem == 8'b01110001)"
+          }
+        ],
+        "violated_requirement": "The match output should be asserted when the shift register matches 8'b0111_0001, but the mutation changes the comparison to 8'b01110001 (same value without underscores). This tests whether Blue handles numeric literal formatting variations correctly.",
+        "spec_basis": "Matching Logic: The output `match` should be asserted (logic 1) whenever the value of the shift register `a_tem` matches the specific 8-bit pattern `8'b0111_0001`."
+      },
+      {
+        "edits": [
+          {
+            "find": "a_tem <= {a_tem[6:0],a}",
+            "replace": "a_tem <= {a_tem[5:0],a,a_tem[7]}"
+          }
+        ],
+        "violated_requirement": "The shift register should retain the 8 most recent bits of `a`, but the mutation introduces a rotation by keeping the MSB and inserting the new bit before it. This will cause incorrect pattern matching as the history becomes corrupted.",
+        "spec_basis": "Shift Register Behavior: On every positive edge of the clock, if `rst_n` is asserted (logic 1), the input `a` should be shifted into the least significant bit (LSB) of the shift register `a_tem`, and the previous bits should shift left by one position."
+      },
+      {
+        "edits": [
+          {
+            "find": "else if (a_tem == 8'b0111_0001)",
+            "replace": "else if (a_tem != 8'b0111_0001)"
+          }
+        ],
+        "violated_requirement": "The match output should be asserted when the pattern matches, but the mutation inverts the comparison to assert when the pattern doesn't match. This completely reverses the intended behavior.",
+        "spec_basis": "Matching Logic: The output `match` should be asserted (logic 1) whenever the value of the shift register `a_tem` matches the specific 8-bit pattern `8'b0111_0001`."
+      },
+      {
+        "edits": [
+          {
+            "find": "match <= 1'b0;",
+            "replace": "match <= 1'b1;"
+          }
+        ],
+        "violated_requirement": "The output should be de-asserted when reset is active or when no pattern match occurs, but the mutation forces it to stay asserted during reset. This violates both reset and normal operation requirements.",
+        "spec_basis": "Reset Behavior: When `rst_n` is de-asserted (logic 0), the shift register `a_tem` should be cleared to `8'b0`, and the output `match` should be set to `0`."
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:fdbd148776d1586e4f90d96ae4585717be74542d587c41af7bd7f88b87e8c06b",
+  "input_tokens": 4850,
+  "output_tokens": 662,
+  "request_hash": "sha256:588af49fa06131e90a5c86e70a80aaa1b0194fb96b021750dc8f76b2356ce31d",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 4850,
+    "output_tokens": 662
+  },
+  "model_seconds": 21.281698547303677
+}

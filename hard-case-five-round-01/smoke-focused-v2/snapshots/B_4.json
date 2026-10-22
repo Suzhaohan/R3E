@@ -1,0 +1,66 @@
+{
+  "entries": [
+    {
+      "buggy_hash": "sha256:929ebffbcbcff18f9bd1f87301827b6d7285f2bcfee15670dd677dc079a4c218",
+      "candidate_hash": "sha256:39470cf9c1371ebd5f662f16345cc852631df712d1c2ebbf68e3564d232bc297",
+      "created_round": 1,
+      "entry_hash": "sha256:2362d7331d9c42d21fd46268b219a5aba6a5cd9bc7ebf0bd251ae5d048890862",
+      "family": "Prob001",
+      "patch": "--- a/rtl/design.sv\n+++ b/rtl/design.sv\n@@ -5,7 +5,7 @@\n \toutput reg match\n \t);\n \n-\treg [1'b1:0] a_tem;\n+\treg [7:0] a_tem;\n \t\n \talways @(posedge clk or negedge rst_n)\n \t\tif (!rst_n)\n",
+      "source_slot": "r1_Prob001",
+      "validation": "reference_test_pass_only"
+    },
+    {
+      "buggy_hash": "sha256:dc4399f98cc12dbbf02be5654e3391c4375951a083318af1cb1c6f6939423b87",
+      "candidate_hash": "sha256:1d8f97b6d2f7278ace95b1d48b238ac0e0fb035fae11f105d8ee1fddecb1c977",
+      "created_round": 1,
+      "entry_hash": "sha256:60409b4e3da24a2ec7b599d807906bdb5717dfe762d49fad20f6be065c4decf1",
+      "family": "Prob015",
+      "patch": "--- a/rtl/design.sv\n+++ b/rtl/design.sv\n@@ -12,7 +12,7 @@\n );\n //*************code***********//\n \n-    parameter S0=1'b1, S0_5=1, S1=2, S1_5=3, S2=4, S2_5=5, S3=6;\n+    parameter S0=0, S0_5=1, S1=2, S1_5=3, S2=4, S2_5=5, S3=6;\n     reg[2:0] state, nstate;\n     \n     always@(posedge clk or negedge rst) begin\n",
+      "source_slot": "r1_Prob015",
+      "validation": "reference_test_pass_only"
+    },
+    {
+      "buggy_hash": "sha256:b2ee5c18d0b0cca9dfc68513919694fb305e46e12974fc1f51e73c74f62c777e",
+      "candidate_hash": "sha256:39470cf9c1371ebd5f662f16345cc852631df712d1c2ebbf68e3564d232bc297",
+      "created_round": 2,
+      "entry_hash": "sha256:9ea98912ac8a236d5f5e14b826094bb52b6ab3e4e0d7845eafab172abf8b3843",
+      "family": "Prob001",
+      "patch": "--- a/rtl/design.sv\n+++ b/rtl/design.sv\n@@ -5,7 +5,7 @@\n \toutput reg match\n \t);\n \n-\treg [7:1'b1] a_tem;\n+\treg [7:0] a_tem;\n \t\n \talways @(posedge clk or negedge rst_n)\n \t\tif (!rst_n)\n",
+      "source_slot": "r2_Prob001",
+      "validation": "reference_test_pass_only"
+    },
+    {
+      "buggy_hash": "sha256:608a3ff773eeb0fbb46ac0bb63b5fb92d9b5d318b30e6d0f7180d61ce60c106d",
+      "candidate_hash": "sha256:39470cf9c1371ebd5f662f16345cc852631df712d1c2ebbf68e3564d232bc297",
+      "created_round": 3,
+      "entry_hash": "sha256:f33813dad0b973515cca1959724cbb400aadd0966cd0d16e9bf001e280e70835",
+      "family": "Prob001",
+      "patch": "--- a/rtl/design.sv\n+++ b/rtl/design.sv\n@@ -10,7 +10,7 @@\n \talways @(posedge clk or negedge rst_n)\n \t\tif (!rst_n)\n \t\t\tbegin \n-\t\t\t\tmatch <= 1'b1;\n+\t\t\t\tmatch <= 1'b0;\n \t\t\tend\n \t\telse if (a_tem == 8'b0111_0001)\n \t\t\tbegin\n",
+      "source_slot": "r3_Prob001",
+      "validation": "reference_test_pass_only"
+    },
+    {
+      "buggy_hash": "sha256:a4a1c7db4f920a1b7321731f6f79a3e21ea077a50a067663248c88af3c99e58a",
+      "candidate_hash": "sha256:1d8f97b6d2f7278ace95b1d48b238ac0e0fb035fae11f105d8ee1fddecb1c977",
+      "created_round": 3,
+      "entry_hash": "sha256:db398c9c41db40b84a6cfdb823725ed062ac153e20387308b4a99669fb7f6a62",
+      "family": "Prob015",
+      "patch": "--- a/rtl/design.sv\n+++ b/rtl/design.sv\n@@ -12,7 +12,7 @@\n );\n //*************code***********//\n \n-    parameter S0=0, S0_5=1, S1=1'b1, S1_5=3, S2=4, S2_5=5, S3=6;\n+    parameter S0=0, S0_5=1, S1=2, S1_5=3, S2=4, S2_5=5, S3=6;\n     reg[2:0] state, nstate;\n     \n     always@(posedge clk or negedge rst) begin\n",
+      "source_slot": "r3_Prob015",
+      "validation": "reference_test_pass_only"
+    },
+    {
+      "buggy_hash": "sha256:d3dfeaf198ce63726ffa913103fc68e52b830c91abd10eb28de8fd7ce113271f",
+      "candidate_hash": "sha256:1d8f97b6d2f7278ace95b1d48b238ac0e0fb035fae11f105d8ee1fddecb1c977",
+      "created_round": 4,
+      "entry_hash": "sha256:4c82e49761332c079dcbfac546f2bfe51c29f420bc9da04409f4ed281df4a4a9",
+      "family": "Prob015",
+      "patch": "--- a/rtl/design.sv\n+++ b/rtl/design.sv\n@@ -12,7 +12,7 @@\n );\n //*************code***********//\n \n-    parameter S0=0, S0_5=1, S1=2, S1_5=1'b1, S2=4, S2_5=5, S3=6;\n+    parameter S0=0, S0_5=1, S1=2, S1_5=3, S2=4, S2_5=5, S3=6;\n     reg[2:0] state, nstate;\n     \n     always@(posedge clk or negedge rst) begin\n",
+      "source_slot": "r4_Prob015",
+      "validation": "reference_test_pass_only"
+    }
+  ],
+  "entry_count": 6,
+  "round": 4
+}

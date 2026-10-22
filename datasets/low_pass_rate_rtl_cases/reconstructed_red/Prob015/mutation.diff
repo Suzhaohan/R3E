@@ -1,0 +1,19 @@
+--- golden.sv
++++ buggy.sv
+@@ -28,14 +28,14 @@
+                               d2? S1:
+                               nstate;
+             S0_5   : nstate = d1? S1:
+-                              d2? S1_5:
++                              d2? S1:
+                               nstate;
+             S1     : nstate = d1? S1_5:
+                               d2? S2:
+                               nstate;
+             S1_5   : nstate = ~sel? S0:
+                               d1? S2:
+-                              d2? S2_5:
++                              d2? S2:
+                               nstate;
+             S2     : nstate = ~sel? S0:
+                               d1? S2_5:

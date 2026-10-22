@@ -1,0 +1,49 @@
+{
+  "status": "candidate_batch",
+  "candidates": [
+    {
+      "status": "proposal",
+      "buggy_rtl": "\nmodule TopModule(\n     input  wire clk_in,\n     input  wire rst,\n     output wire clk_out\n);\n    parameter M_N = 8'd87; \n    parameter c89 = 8'd24;  // 8/9 clock switching point\n    parameter div_e = 5'd8; //Even period\n    parameter div_o = 5'd9; //Odd period\n//*************code***********//\n    reg [3:0] clk_cnt;\n    reg [6:0] cyc_cnt;\n    reg div_flag;\n    reg clk_out_r;\n    \n    always@(posedge clk_in or negedge rst) begin\n        if(~rst)\n            clk_cnt <= 0;\n        else if(~div_flag)\n            clk_cnt <= clk_cnt==(div_e-1)? 0: clk_cnt+1;\n        else\n            clk_cnt <= clk_cnt==(div_o-1)? 0: clk_cnt+1;\n    end\n    \n    always@(posedge clk_in or negedge rst) begin\n        if(~rst)\n            cyc_cnt <= 0;\n        else\n            cyc_cnt <= cyc_cnt==(M_N-1)? 0: cyc_cnt+2;\n    end\n    \n    always@(posedge clk_in or negedge rst) begin\n        if(~rst)\n            div_flag <= 0;\n        else\n            div_flag <= cyc_cnt==(M_N-1)||cyc_cnt==(c89-1)? ~div_flag: div_flag;\n    end\n    \n    always@(posedge clk_in or negedge rst) begin\n        if(~rst)\n            clk_out_r <= 0;\n        else if(~div_flag)\n            clk_out_r <= clk_cnt<=((div_e>>2)+1);\n        else\n            clk_out_r <= clk_cnt<=((div_o>>2)+1);\n    end\n    \n    assign clk_out = clk_out_r;\n//*************code***********//\nendmodule\n",
+      "buggy_rtl_hash": "sha256:01393c5b12d90b2bacbd50afb4b389e04358d99c1e23b19a86c09e0f82e1dcc1",
+      "edit_budget": {
+        "metric": "sequence_matcher_token_edits_v1",
+        "tokenizer": "verilog_source_tokens_v2_macros",
+        "max_changed_fraction": 0.4,
+        "all_code": {
+          "original_tokens": 259,
+          "candidate_tokens": 259,
+          "changed_tokens": 1,
+          "allowed_tokens": 103,
+          "changed_fraction": 0.003861003861003861,
+          "within_limit": true
+        },
+        "body": {
+          "original_tokens": 242,
+          "candidate_tokens": 242,
+          "changed_tokens": 1,
+          "allowed_tokens": 96,
+          "changed_fraction": 0.004132231404958678,
+          "within_limit": true
+        }
+      },
+      "diff": "--- clean.sv\n+++ buggy.sv\n@@ -27,7 +27,7 @@\n         if(~rst)\n             cyc_cnt <= 0;\n         else\n-            cyc_cnt <= cyc_cnt==(M_N-1)? 0: cyc_cnt+1;\n+            cyc_cnt <= cyc_cnt==(M_N-1)? 0: cyc_cnt+2;\n     end\n     \n     always@(posedge clk_in or negedge rst) begin\n",
+      "claims": {
+        "violated_requirement": "The cycle counter should increment by 1 each clock cycle when not at M_N-1, but instead increments by 2, causing premature wrapping and incorrect mode toggling",
+        "spec_basis": "Cycle_count wraps to zero at M_N-1; otherwise it increments by one modulo 128"
+      },
+      "mutation_edits": [
+        {
+          "find": "cyc_cnt <= cyc_cnt==(M_N-1)? 0: cyc_cnt+1;",
+          "replace": "cyc_cnt <= cyc_cnt==(M_N-1)? 0: cyc_cnt+2;"
+        }
+      ],
+      "syntax_corrections": [],
+      "original_mutation_edits": [
+        {
+          "find": "cyc_cnt <= cyc_cnt==(M_N-1)? 0: cyc_cnt+1;",
+          "replace": "cyc_cnt <= cyc_cnt==(M_N-1)? 0: cyc_cnt+2;"
+        }
+      ]
+    }
+  ]
+}

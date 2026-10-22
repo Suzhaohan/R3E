@@ -1,0 +1,44 @@
+{
+ "summary": {
+  "task_id": "chipbench_prob003_group_boundary_v1__exam_defect",
+  "encounters": 1,
+  "categories": {
+   "public_pass_hidden_pass": 1
+  },
+  "functional_failure_candidates": 0,
+  "pending_review": 0,
+  "reviewed_functional_failures": 0,
+  "original_defect_persists": 0,
+  "new_regression": 0,
+  "mechanism_907_exploratory": 0
+ },
+ "encounters": [
+  {
+   "encounter": 0,
+   "endpoint_candidate": "sha256:81008831aa7df7ab9a79f192b5a00726fe0293758d14c36f8ab2e1c22b4fc786",
+   "endpoint_public": {
+    "tier": "visible_pass",
+    "suites": {
+     "W_bug": {
+      "result": "visible_pass",
+      "checker_violation": false,
+      "failures": []
+     },
+     "W_preserve": {
+      "result": "visible_pass",
+      "checker_violation": false,
+      "failures": []
+     }
+    }
+   },
+   "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -5,7 +5,6 @@\n \toutput reg match,\n \toutput reg not_match\n \t);\n-\n \n reg [3:0] pstate,nstate;\n \n@@ -50,7 +49,7 @@\n         s5:\n             nstate=data?sf6:s6;\n         s6:\n-            nstate=idle;\n+            nstate=data?sf1:s1;\n         sf1:\n             nstate=sf2;\n         sf2:\n@@ -62,7 +61,7 @@\n         sf5:\n             nstate=sf6;\n         sf6:\n-\t\t\tnstate=idle;\n+\t\t\tnstate=data?sf1:s1;\n         default:\n             nstate=idle;\n         endcase\n",
+   "endpoint_evaluator": {
+    "result": "pass",
+    "returncode": 0,
+    "failures": [],
+    "log_hash": "sha256:499a149f5555026d38404edca8a6bfb14cca569693048cf0519306651c322ead"
+   },
+   "category": "public_pass_hidden_pass"
+  }
+ ]
+}

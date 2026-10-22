@@ -1,0 +1,27 @@
+[
+ {
+  "item": "8a35d93cf14a9f56",
+  "task": "chipbench_prob003_group_boundary_v1__881fdcccd9f78ad2",
+  "encounter": 0,
+  "category": "public_functional_failure",
+  "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -62,7 +62,7 @@\n         sf5:\n             nstate=sf6;\n         sf6:\n-\t\t\tnstate=data?sf1:s1;\n+\t\t\tnstate=data?s1:sf1;\n         default:\n             nstate=idle;\n         endcase\n",
+  "public": {
+   "tier": "visible_fail",
+   "suites": {
+    "W_bug": {
+     "result": "visible_fail",
+     "checker_violation": true,
+     "failures": [
+      "CHECK_FAIL W_bug cycle=6 group=011100 bit=0 match=0 not_match=1"
+     ]
+    },
+    "W_preserve": {
+     "result": "visible_pass",
+     "checker_violation": false,
+     "failures": []
+    }
+   }
+  },
+  "evaluator": null
+ }
+]

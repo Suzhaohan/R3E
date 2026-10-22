@@ -1,0 +1,44 @@
+{
+  "version": "continuous_blue_delivery_v1",
+  "snapshot_id": "B_1",
+  "snapshot_hash": "sha256:54b4afe025bb78a25ca679cbddf54d7903f6e52197e928ed4019deaee32e0622",
+  "state_hash": "sha256:2050fffc5f1fb7259a097888c40ae7bdb021ae1e486016334308906206b53963",
+  "task_hash": "sha256:23471b4b16830f5be400672d2d3e9b3d6e036a47dd5e599c8b8fe13034691dc9",
+  "retrieval_policy_hash": "sha256:8b114d1dc640c0d8851c3796a1d6ed4e3bc9b65406c7341475b69b3d8568e26f",
+  "payload": {
+    "version": "continuous_blue_experience_v1",
+    "notice": "Prior repair examples passed public tests only; validate their applicability to this task.",
+    "entries": [
+      {
+        "entry_hash": "sha256:f5514b98ee4c166bd9a235e5c45fedd2ea2dc1d771e239cda5b78077d2ea5caa",
+        "content": {
+          "validation": "public_pass_single_sample_hidden_unknown",
+          "specification_excerpt": "I would like you to implement a module named `TopModule` with the following interface. All input and output ports are one bit unless otherwise specified.\n\n- **Input ports**:\n  - `clk`\n  - `rst_n`\n  - `a`\n\n- **Output ports**:\n  - `match`\n\nThe module should implement an 8-bit shift register that shifts in the input `a` on every positive edge of the clock. The shift register is named `a_tem` and retains the 8 most recent bits of `a`. The module should perform the following functionality:\n\n1. **Reset Behavior**:\n   - When `rst_n` is de-asserted (logic 0), the shift register `a_tem` should be cleared to `8'b0`, and the output `match` should be set to `0`.\n\n2. **Shift Register Behavior**:\n   - On every positive edge of the clock, if `rst_n` is asserted (logic 1), the input `a` should be shifted into the least significant bit (LSB) of the shift register `a_tem`, and the previous bits should shift left by one position.\n\n3. **Matching Logic**:\n   - The output `match` should be asserted (logic 1) whenever the value of ",
+          "applied_patch": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -12,7 +12,7 @@\n \t\t\tbegin \n \t\t\t\tmatch <= 1'b0;\n \t\t\tend\n-\t\telse if (a_tem == 8'b01110011)\n+\t\telse if (a_tem == 8'b01110001)\n \t\t\tbegin\n \t\t\t\tmatch <= 1'b1;\n \t\t\tend\n",
+          "public_rows": {
+            "W_bug": "visible_pass",
+            "W_preserve": "visible_pass"
+          },
+          "transfer_summary": {
+            "changed_lines": [
+              "-\t\telse if (a_tem == 8'b01110011)",
+              "+\t\telse if (a_tem == 8'b01110001)"
+            ],
+            "checks_on_transfer": [
+              "Check the current public specification and timing before reusing a previously successful patch."
+            ],
+            "scope": "Observed public success only; recheck applicability on a new task."
+          }
+        }
+      }
+    ]
+  },
+  "selected_entry_hashes": [
+    "sha256:f5514b98ee4c166bd9a235e5c45fedd2ea2dc1d771e239cda5b78077d2ea5caa"
+  ],
+  "source_record_hashes": [
+    "sha256:d0b000976ad0318c3c6b23828ce922563e96911aefb2b3f9ca3e262860a3b1b9"
+  ],
+  "omissions": [],
+  "payload_hash": "sha256:9d2dc5a3c0ad5f87b6e0f587f71a5790a39bf74e0b7981ec8ace7540014c56a9"
+}

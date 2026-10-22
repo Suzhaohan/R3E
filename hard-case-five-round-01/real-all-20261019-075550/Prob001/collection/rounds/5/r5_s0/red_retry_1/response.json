@@ -1,0 +1,30 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "a_tem <= {a_tem[6:0],a}",
+            "replace": "a_tem <= {a_tem[5:0],a,1'b0}"
+          }
+        ],
+        "violated_requirement": "The shift register incorrectly shifts in a 0 after the input bit, causing the pattern match to fail when the correct sequence is shifted in. This changes the timing of when the match output is asserted.",
+        "spec_basis": "The spec requires the shift register to retain the 8 most recent bits of input 'a' exactly."
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:4fc09a444815f2fe02f48fedc9858431f8c299286785334df573fe88f8260e8d",
+  "input_tokens": 7638,
+  "output_tokens": 125,
+  "request_hash": "sha256:4350145bb1b32a6d94befb659145076caaab69b96bb5ebb53831565b4a26cd03",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 7638,
+    "output_tokens": 125
+  },
+  "model_seconds": 6.20152900647372
+}

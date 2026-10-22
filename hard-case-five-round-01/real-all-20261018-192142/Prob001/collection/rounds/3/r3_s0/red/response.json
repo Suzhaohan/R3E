@@ -1,0 +1,50 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "else if (a_tem == 8'b0111_0001)",
+            "replace": "else if (a_tem == 8'b1111_0001)"
+          }
+        ],
+        "violated_requirement": "The output match should be asserted only when the shift register matches 8'b0111_0001, but the mutant asserts it for 8'b1111_0001",
+        "spec_basis": "Matching Logic: The output `match` should be asserted (logic 1) whenever the value of the shift register `a_tem` matches the specific 8-bit pattern `8'b0111_0001`."
+      },
+      {
+        "edits": [
+          {
+            "find": "else if (a_tem == 8'b0111_0001)",
+            "replace": "else if (a_tem == 8'b0111_0001 && a_tem[7] == 1'b0)"
+          }
+        ],
+        "violated_requirement": "The output match should be asserted for any occurrence of 8'b0111_0001, but the mutant only asserts it when the MSB is 0",
+        "spec_basis": "Matching Logic: The output `match` should be asserted (logic 1) whenever the value of the shift register `a_tem` matches the specific 8-bit pattern `8'b0111_0001`."
+      },
+      {
+        "edits": [
+          {
+            "find": "a_tem <= {a_tem[6:0],a};",
+            "replace": "a_tem <= {a_tem[5:0],a,a};"
+          }
+        ],
+        "violated_requirement": "The shift register should retain the 8 most recent bits of `a`, but the mutant drops the second most significant bit",
+        "spec_basis": "Shift Register Behavior: On every positive edge of the clock, if `rst_n` is asserted (logic 1), the input `a` should be shifted into the least significant bit (LSB) of the shift register `a_tem`, and the previous bits should shift left by one position."
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:3ab154944df4cdd2f6436d98570d8e68638b36fa7a4518eb8ec75413448ddf7a",
+  "input_tokens": 4693,
+  "output_tokens": 427,
+  "request_hash": "sha256:a544c40f9a29ec3dbbc2c812437cedca8a487f9236e6edde3e1a429fd29f0d1d",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 4693,
+    "output_tokens": 427
+  },
+  "model_seconds": 20.418370460160077
+}

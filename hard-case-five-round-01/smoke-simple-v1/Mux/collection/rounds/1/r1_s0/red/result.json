@@ -1,0 +1,37 @@
+{
+  "status": "proposal",
+  "buggy_rtl": "module mux_4to1_case ( input [3:0] a,                 // 4-bit input called a\n                       input [3:0] b,                 // 4-bit input called b\n                       input [3:0] c,                 // 4-bit input called c\n                       input [3:0] d,                 // 4-bit input called d\n                       input [1:0] sel,               // input sel used to select between a,b,c,d\n                       output reg [3:0] out);         // 4-bit output based on input sel\n\n   // This always block gets executed whenever a/b/c/d/sel changes value\n   // When that happens, based on value in sel, output is assigned to either a/b/c/d\n   always @ (a or b or c or d or sel) begin\n      case (sel)\n         2'b00 : out <= a;\n         2'b00 : out <= b;\n         2'b00 : out <= c;\n         2'b00 : out <= d;\n      endcase\n   end\nendmodule",
+  "buggy_rtl_hash": "sha256:36fbc160f16d6bc43a7ef24a067528543fd251020e875750ce570037bd1ad1ed",
+  "edit_budget": {
+    "metric": "sequence_matcher_token_edits_v1",
+    "tokenizer": "verilog_source_tokens_v2_macros",
+    "max_changed_fraction": 0.4,
+    "all_code": {
+      "original_tokens": 98,
+      "candidate_tokens": 98,
+      "changed_tokens": 3,
+      "allowed_tokens": 39,
+      "changed_fraction": 0.030612244897959183,
+      "within_limit": true
+    },
+    "body": {
+      "original_tokens": 44,
+      "candidate_tokens": 44,
+      "changed_tokens": 3,
+      "allowed_tokens": 17,
+      "changed_fraction": 0.06818181818181818,
+      "within_limit": true
+    }
+  },
+  "diff": "--- clean.sv\n+++ buggy.sv\n@@ -10,9 +10,9 @@\n    always @ (a or b or c or d or sel) begin\n       case (sel)\n          2'b00 : out <= a;\n-         2'b01 : out <= b;\n-         2'b10 : out <= c;\n-         2'b11 : out <= d;\n+         2'b00 : out <= b;\n+         2'b00 : out <= c;\n+         2'b00 : out <= d;\n       endcase\n    end\n endmodule",
+  "claims": {
+    "violated_requirement": "target mechanism",
+    "spec_basis": "unchanged specification"
+  },
+  "mutation_edits": [
+    {
+      "find": "module mux_4to1_case ( input [3:0] a,                 // 4-bit input called a\n                       input [3:0] b,                 // 4-bit input called b\n                       input [3:0] c,                 // 4-bit input called c\n                       input [3:0] d,                 // 4-bit input called d\n                       input [1:0] sel,               // input sel used to select between a,b,c,d\n                       output reg [3:0] out);         // 4-bit output based on input sel\n\n   // This always block gets executed whenever a/b/c/d/sel changes value\n   // When that happens, based on value in sel, output is assigned to either a/b/c/d\n   always @ (a or b or c or d or sel) begin\n      case (sel)\n         2'b00 : out <= a;\n         2'b01 : out <= b;\n         2'b10 : out <= c;\n         2'b11 : out <= d;\n      endcase\n   end\nendmodule",
+      "replace": "module mux_4to1_case ( input [3:0] a,                 // 4-bit input called a\n                       input [3:0] b,                 // 4-bit input called b\n                       input [3:0] c,                 // 4-bit input called c\n                       input [3:0] d,                 // 4-bit input called d\n                       input [1:0] sel,               // input sel used to select between a,b,c,d\n                       output reg [3:0] out);         // 4-bit output based on input sel\n\n   // This always block gets executed whenever a/b/c/d/sel changes value\n   // When that happens, based on value in sel, output is assigned to either a/b/c/d\n   always @ (a or b or c or d or sel) begin\n      case (sel)\n         2'b00 : out <= a;\n         2'b00 : out <= b;\n         2'b00 : out <= c;\n         2'b00 : out <= d;\n      endcase\n   end\nendmodule"
+    }
+  ]
+}

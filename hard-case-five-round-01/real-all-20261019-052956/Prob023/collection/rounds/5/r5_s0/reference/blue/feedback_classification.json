@@ -1,0 +1,46 @@
+{
+ "summary": {
+  "task_id": "chipbench_Prob023_gray_counter__60a6f33a24dbcd32",
+  "encounters": 1,
+  "categories": {
+   "public_functional_failure": 1
+  },
+  "functional_failure_candidates": 1,
+  "pending_review": 1,
+  "reviewed_functional_failures": 0,
+  "original_defect_persists": 1,
+  "new_regression": 0,
+  "mechanism_907_exploratory": 0
+ },
+ "encounters": [
+  {
+   "encounter": 0,
+   "endpoint_candidate": "sha256:0c46134d2dc5f1aa9bae54a33ad680772b00547fcb95d0c4749a0c0fca3e631f",
+   "endpoint_public": {
+    "tier": "visible_fail",
+    "suites": {
+     "W_bug": {
+      "result": "visible_fail",
+      "checker_violation": true,
+      "failures": [
+       "CHECK_FAIL gray cycle=5 got=0110 expected=0010"
+      ]
+     },
+     "W_preserve": {
+      "result": "visible_pass",
+      "checker_violation": false,
+      "failures": []
+     }
+    }
+   },
+   "patch_vs_task": "--- a/rtl/sequence.sv\n+++ b/rtl/sequence.sv\n@@ -1,4 +1,3 @@\n-\n module TopModule(\n    input   clk,\n    input   rst_n,\n@@ -14,10 +13,10 @@\n       bin_out <= 4'b0;\n    end\n    else begin\n-      bin_out[3] = gray_wire[3];\n-      bin_out[2] = gray_wire[2]^bin_out[3];\n-      bin_out[1] = gray_wire[1]&bin_out[2];\n-      bin_out[0] = gray_wire[0]^bin_out[1];\n+      bin_out[3] <= gray_wire[3];\n+      bin_out[2] <= gray_wire[2]^bin_out[3];\n+      bin_out[1] <= gray_wire[1]^bin_out[2];\n+      bin_out[0] <= gray_wire[0]^bin_out[1];\n    end \n end\n //Binary increment\n@@ -27,7 +26,11 @@\n       bin_add_wire <= 4'b0;\n    end\n    else begin\n-      bin_add_wire <= bin_out + 1'b1;\n+      if (bin_out == 4'b1111) begin\n+         bin_add_wire <= 4'b0;\n+      end else begin\n+         bin_add_wire <= bin_out + 1'b1;\n+      end\n    end\n end\n //Binary to gray code conversion\n",
+   "category": "public_functional_failure",
+   "original_defect_persists": true,
+   "new_regression": false,
+   "functional_failure_candidate": true,
+   "review": {
+    "decision": "PENDING"
+   }
+  }
+ ]
+}

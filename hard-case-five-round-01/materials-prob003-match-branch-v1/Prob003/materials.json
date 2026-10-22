@@ -1,0 +1,44 @@
+{
+  "carriers": [
+    {
+      "package": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/materials-prob003-match-branch-v1/Prob003/package",
+      "suite_freeze": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/materials-prob003-match-branch-v1/Prob003/suite_freeze.json",
+      "evaluator_freeze": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/materials-prob003-match-branch-v1/Prob003/evaluator_freeze.json",
+      "evaluator_root": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/materials-prob003-match-branch-v1/Prob003"
+    }
+  ],
+  "anchors": [
+    {
+      "task_dir": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/materials-prob003-match-branch-v1/Prob003/reserved/eval_match_branch",
+      "carrier_index": 0
+    }
+  ],
+  "mechanism_focus": {
+    "version": "continuous_mechanism_seed_v1",
+    "carrier_id": "chipbench_prob003_group_boundary_v1",
+    "mechanism": "Across five rounds build transferable repair experience. Nonoverlapping six-bit group detector: state transitions, success/failure paths, consumption of the next group first bit at terminal boundaries, mutually exclusive outputs and original output phase. Use surrounding branch context to uniquely locate every edit.",
+    "selection": "human_selected_development_seed",
+    "seed_edits": [
+      {
+        "find": "        sf6:\n\t\t\tnstate=data?sf1:s1;",
+        "replace": "        sf6:\n\t\t\tnstate=data?s1:sf1;"
+      }
+    ],
+    "history": {
+      "challenge_id": "historical:RC_406d811b4d61a2",
+      "runs": 3,
+      "unrepaired": 2,
+      "label": "historical_budgeted_failure_not_current_confirmation"
+    },
+    "provenance": {
+      "clean_hash": "sha256:bd26aa07228b000f4ac95b0439cbe6da7305da19bf3d4475d3afae7953dd4645",
+      "seed_hash": "sha256:b0ef4f68204fa59e57869c81a019a5433120f89cdb0f9112f540af812dc95bfc",
+      "record_hashes": {
+        "selection_audit": "sha256:f958762117d05d0bf8a5757254b968b3751989a803caed143f51f8e3f0f4888e"
+      }
+    }
+  },
+  "questions": [
+    "handoff:Prob003:eval_match_branch"
+  ]
+}

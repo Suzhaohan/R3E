@@ -1,0 +1,24 @@
+{
+  "round": 2,
+  "attempt": 3,
+  "reason": "outside_public_admission_matrix",
+  "edits": [
+    {
+      "find": "else if (a_tem == 8'b0111_0001)",
+      "replace": "else if (a_tem == 8'b0111_0001) && (a_tem[7:1] == 7'b0111_000)"
+    }
+  ],
+  "expected_public_results": {
+    "W_bug": "fail",
+    "W_preserve": "pass"
+  },
+  "actual_public_results": {
+    "W_bug": "compile_fail",
+    "W_preserve": "compile_fail"
+  },
+  "public_test_evidence": {
+    "W_bug": "rtl/sequence.sv:15: syntax error\nrtl/sequence.sv:17: Syntax in assignment statement l-value.\nrtl/sequence.sv:18: syntax error\nrtl/sequence.sv:21: error: invalid module item.\nrtl/sequence.sv:22: syntax error\nrtl/sequence.sv:27: error: invalid module item.\nrtl/sequence.sv:28: syntax error\nrtl/sequence.sv:31: error: invalid module item.\nrtl/sequence.sv:32: syntax error\ntb_tb.sv:1: error: invalid module item.\ntb_tb.sv:2: error: 'match' has already been declared in this scope.\nrtl/sequence.sv:5:      : It was declared here as a variable.",
+    "W_preserve": "rtl/sequence.sv:15: syntax error\nrtl/sequence.sv:17: Syntax in assignment statement l-value.\nrtl/sequence.sv:18: syntax error\nrtl/sequence.sv:21: error: invalid module item.\nrtl/sequence.sv:22: syntax error\nrtl/sequence.sv:27: error: invalid module item.\nrtl/sequence.sv:28: syntax error\nrtl/sequence.sv:31: error: invalid module item.\nrtl/sequence.sv:32: syntax error\ntb_tb.sv:1: error: invalid module item.\ntb_tb.sv:2: error: 'match' has already been declared in this scope.\nrtl/sequence.sv:5:      : It was declared here as a variable."
+  },
+  "correction": "Fix compilation or operational failures first: they do not qualify as functional defects."
+}

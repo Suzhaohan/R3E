@@ -1,0 +1,30 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "clk_out_r <= clk_cnt<=((div_o>>2)+1);",
+            "replace": "clk_out_r <= clk_cnt<=((div_o>>1)-1);"
+          }
+        ],
+        "violated_requirement": "The output clock should be high when clk_cnt is less than or equal to floor(div_o/4)+1 in even mode, but the mutation changes this to floor(div_o/2)-1, causing incorrect output timing",
+        "spec_basis": "Output becomes 1 iff count <= floor((mode ? div_o : div_e)/4) + 1, otherwise 0."
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:8191526c0314d37f1a35e7d3118a14bcd5db10faf0f870f07c5da3185cce72d5",
+  "input_tokens": 7568,
+  "output_tokens": 138,
+  "request_hash": "sha256:c84dae73b4d21c40151c4e8778115de0baaf1727b90a3f88fb4a7d679efccb32",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 7568,
+    "output_tokens": 138
+  },
+  "model_seconds": 6.316022259183228
+}

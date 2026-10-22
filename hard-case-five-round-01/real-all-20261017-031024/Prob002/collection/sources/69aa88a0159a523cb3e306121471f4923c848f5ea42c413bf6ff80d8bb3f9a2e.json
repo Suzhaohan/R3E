@@ -1,0 +1,121 @@
+{
+  "source": {
+    "run_id": "collection",
+    "round": 1,
+    "slot_id": "r1_s0",
+    "task_hash": "sha256:da127df384f0fb8dcf2869b9e155d33c29d5b726c83347eff2a6ff8aa31ed633",
+    "carrier_id": "chipbench_Prob002_wildcard_medium",
+    "mutant_hash": "sha256:dfc4b350eef11c076d8b99f9023c0019ed0c7c2fe9bcd59c527483e9d8dfd270",
+    "candidate_hash": "sha256:2a3b0afdf5dc5aed718bc94a420a0610c0e1bdc8c28593689e9f27f20b9af21d",
+    "encounter_hash": "sha256:69aa88a0159a523cb3e306121471f4923c848f5ea42c413bf6ff80d8bb3f9a2e",
+    "archive_hash": "sha256:f6d9d9ff9ef5834952418579d6a6531f93d72b4d1cd312cb4b3c1c92f9ad50f4",
+    "public_replay_hash": "sha256:d0ff1ab450bef1cfb1f94b773bbdb70aa05957d15c298b39b1eaaae99ab12607"
+  },
+  "encounter": {
+    "encounter": 0,
+    "seed": 716559581760620,
+    "result": {
+      "task_id": "chipbench_Prob002_wildcard_medium__dfc4b350eef11c07",
+      "route": "direct",
+      "rtl_tokens": 304,
+      "closure": [
+        "rtl/sequence.sv",
+        "harness:W_bug_tb.sv",
+        "harness:W_preserve_tb.sv"
+      ],
+      "outcome": "fixed",
+      "attempts": [
+        {
+          "attempt": 0,
+          "route": "direct",
+          "submissions": [
+            {
+              "kind": "repair",
+              "tokens": {
+                "input": 1787,
+                "output": 463,
+                "counted_request": 1835,
+                "model_seconds": 12.61
+              },
+              "format_valid": true,
+              "format_error": null
+            }
+          ],
+          "repair_tokens": {
+            "input": 1787,
+            "output": 463,
+            "counted_request": 1835,
+            "model_seconds": 12.61
+          },
+          "edit": "Changed match_b condition from 3'b111 to 3'b110 to match the required pattern '011XXX110'",
+          "candidate_hash": "sha256:2a3b0afdf5dc5aed718bc94a420a0610c0e1bdc8c28593689e9f27f20b9af21d",
+          "tier": "visible_pass",
+          "stage": "simulation",
+          "build_seconds": 0.03,
+          "sim_seconds": 0.04,
+          "changed_files": [
+            "rtl/sequence.sv"
+          ]
+        }
+      ],
+      "calls": 1,
+      "final_candidate_hash": "sha256:2a3b0afdf5dc5aed718bc94a420a0610c0e1bdc8c28593689e9f27f20b9af21d",
+      "inputs_read": [
+        "public/task.json",
+        "public/visible/build.json",
+        "public/visible/W_bug_tb.sv",
+        "public/visible/W_preserve_tb.sv",
+        "public/spec.txt"
+      ],
+      "experience": {
+        "snapshot_id": "B_0",
+        "snapshot_hash": "sha256:ece8d99d59c0b6405fb6cd9f5711ea53aec330881965dc51b233aef0f9150dea",
+        "state_hash": "sha256:85e8fbb707b6fca997463be8d6ef1bbf03526260aab6b2abb4db57f9d81f665d",
+        "payload_hash": "sha256:3092f0d7fc08feac058171dbed616bb7c60daa43691d7b6d28875d3225d9b061",
+        "delivery_hash": "sha256:dc0c64a779d3c3da5e66629175cd57e7f9ac9e0892bd9ee81a15a31d0299bbbe",
+        "delivered": false
+      }
+    }
+  },
+  "archive_path": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/real-all-20261017-031024/Prob002/collection/rounds/1/r1_s0/online/blue/archive/chipbench_Prob002_wildcard_medium__dfc4b350eef11c07__2a3b0afdf5dc5aed.json",
+  "task_dir": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/real-all-20261017-031024/Prob002/collection/rounds/1/r1_s0/admission_retry_1/blue_task",
+  "replay": {
+    "tier": "visible_pass",
+    "stage": "simulation",
+    "evidence": {
+      "suites": {
+        "W_bug": {
+          "result": "visible_pass",
+          "returncode": 0,
+          "pass_marker_found": true,
+          "fail_marker_found": false,
+          "log": "TESTBENCH PASS wildcard checks=9216"
+        },
+        "W_preserve": {
+          "result": "visible_pass",
+          "returncode": 0,
+          "pass_marker_found": true,
+          "fail_marker_found": false,
+          "log": "TESTBENCH PASS reset"
+        }
+      }
+    },
+    "build_seconds": 0.017811144702136517,
+    "sim_seconds": 0.03202737681567669,
+    "closure": [
+      "rtl/sequence.sv",
+      "harness:W_bug_tb.sv",
+      "harness:W_preserve_tb.sv"
+    ]
+  },
+  "public_rows": {
+    "W_bug": "visible_pass",
+    "W_preserve": "visible_pass"
+  },
+  "mutation_edits": [
+    {
+      "find": "else if (a_tem[2:0] == 3'b110)\n\t\t\tbegin\n\t\t\t\tmatch_b <= 1'b1;\n\t\t\tend",
+      "replace": "else if (a_tem[2:0] == 3'b111)\n\t\t\tbegin\n\t\t\t\tmatch_b <= 1'b1;\n\t\t\tend"
+    }
+  ]
+}

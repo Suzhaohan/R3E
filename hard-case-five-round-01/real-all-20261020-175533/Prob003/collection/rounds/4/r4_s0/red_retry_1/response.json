@@ -1,0 +1,30 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "sf4:\n            nstate=sf5;",
+            "replace": "sf4:\n            nstate=data?s5:sf5;"
+          }
+        ],
+        "violated_requirement": "After a mismatch in the fourth bit of a group, the state machine should unconditionally progress to sf5 (failure state for fifth bit). This mutation causes it to incorrectly transition to s5 (success state for fifth bit) when data is 0, allowing a partial match to incorrectly continue.",
+        "spec_basis": "The specification requires that if any bit in the group doesn't match the target sequence, the entire group should be marked as not matching."
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:9c37660de66c18778c266111a9b1a931e8e8f4d09362f18a916f2a5bc05ddd37",
+  "input_tokens": 10207,
+  "output_tokens": 141,
+  "request_hash": "sha256:419813a3fa4a2550188f457bfadb858002e1b487ee71681552427e02d8a2f01c",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 10207,
+    "output_tokens": 141
+  },
+  "model_seconds": 10.910377768799663
+}

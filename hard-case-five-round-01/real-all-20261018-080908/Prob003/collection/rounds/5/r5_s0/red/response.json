@@ -1,0 +1,30 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "        s4:\n            nstate=data?sf5:s5;",
+            "replace": "        s4:\n            nstate=data?s5:sf5;"
+          }
+        ],
+        "violated_requirement": "When in state s4 with data=0, the state machine should transition to s5 to continue matching the sequence 011100, but instead transitions to sf5 due to the swapped targets. This causes a false not_match output when the full sequence is actually present.",
+        "spec_basis": "The module must detect the sequence 011100 from the input signal data. If the sequence is detected, match should assert; otherwise not_match should assert."
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:8fa21cd9aee8c46575504b9a52500b95930e0e4bc6855741bf51b8c43d0fcaf6",
+  "input_tokens": 9769,
+  "output_tokens": 145,
+  "request_hash": "sha256:be69e5460952920d98e02d40bf739a869aa21de7d24d0965e31baf0baccfc23c",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 9769,
+    "output_tokens": 145
+  },
+  "model_seconds": 7.669218650087714
+}

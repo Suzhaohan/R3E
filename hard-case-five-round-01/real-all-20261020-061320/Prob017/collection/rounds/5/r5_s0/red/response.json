@@ -1,0 +1,40 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "cyc_cnt <= cyc_cnt==(M_N-1)? 0: cyc_cnt+1;",
+            "replace": "cyc_cnt <= cyc_cnt==(M_N-1)? 0: cyc_cnt+2;"
+          }
+        ],
+        "violated_requirement": "The cycle counter increments by 2 instead of 1 when not wrapping, causing incorrect mode switching timing",
+        "spec_basis": "Cycle_count wraps to zero at M_N-1; otherwise it increments by one modulo 128"
+      },
+      {
+        "edits": [
+          {
+            "find": "div_flag <= cyc_cnt==(M_N-1)||cyc_cnt==(c89-1)? ~div_flag: div_flag;",
+            "replace": "div_flag <= cyc_cnt==(M_N-1)||cyc_cnt==(c89-1)? div_flag: ~div_flag;"
+          }
+        ],
+        "violated_requirement": "The div_flag toggles at wrong times - toggles when it should hold and holds when it should toggle",
+        "spec_basis": "Mode toggles iff cycle_count equals M_N-1 or c89-1; otherwise it holds"
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:895ff52a662ce15160b0369535754f392239d36a0b4c09a2f49ba77488137c33",
+  "input_tokens": 10537,
+  "output_tokens": 295,
+  "request_hash": "sha256:8c3e335c8d7a468c34b4e9b4ef512cd56443b3c093e2c3f638f82ea9ffe0b9a1",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 10537,
+    "output_tokens": 295
+  },
+  "model_seconds": 8.703507476486266
+}

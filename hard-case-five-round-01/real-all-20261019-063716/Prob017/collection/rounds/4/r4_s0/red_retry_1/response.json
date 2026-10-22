@@ -1,0 +1,30 @@
+{
+  "result": {
+    "candidates": [
+      {
+        "edits": [
+          {
+            "find": "clk_cnt <= clk_cnt==(div_o-1)? 0: clk_cnt+1",
+            "replace": "clk_cnt <= clk_cnt==(div_o-2)? 0: clk_cnt+1"
+          }
+        ],
+        "violated_requirement": "The count should wrap to zero when reaching div_o-1, but the mutant wraps one cycle early",
+        "spec_basis": "Count becomes 0 when count == (mode ? div_o : div_e)-1; otherwise (count+1) modulo 16"
+      }
+    ]
+  },
+  "raw_response_hash": "sha256:32b5125c1c839c40ddcc88390f2790daae9a5826c3580956ff68f3ce72c90252",
+  "input_tokens": 8708,
+  "output_tokens": 122,
+  "request_hash": "sha256:90ed3169a17c4a4e2a58e9d7c4d1f4b458a777cf7026bcb2933511cf3cfd50e7",
+  "response_diagnostics": {
+    "schema_version": "r3e-openai-compatible-response-diagnostic-v1",
+    "content_state": "nonempty_content",
+    "finish_reason": "stop",
+    "refusal_present": false,
+    "provider_request_id_present": true,
+    "input_tokens": 8708,
+    "output_tokens": 122
+  },
+  "model_seconds": 6.440984177403152
+}

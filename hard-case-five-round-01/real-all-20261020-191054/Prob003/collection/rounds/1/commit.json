@@ -1,0 +1,48 @@
+{
+  "blue": {
+    "blue_config_hash": "sha256:9335408c15ec8461d688530617738077012fba13ae120ddae0de57b23055a90e",
+    "committed_round": 1,
+    "entries": [],
+    "learning_policy_hash": "sha256:e125eaba0c567205327a9b834761e336b610bc2e29ccbbe86fd91bcb64a5fd6c",
+    "parent_snapshot_hash": "sha256:8b062b213ed61ecf341ce385ee515e026fa2dd67e077c54f5c39b3731d9d0be8",
+    "retrieval_policy_hash": "sha256:8b114d1dc640c0d8851c3796a1d6ed4e3bc9b65406c7341475b69b3d8568e26f",
+    "snapshot_id": "B_1",
+    "state_hash": "sha256:5f149e9919f40300de64d71bd6a7ae6b72785d8ba75d28b2bbb55fbba97aa458",
+    "version": "continuous_blue_snapshot_v1"
+  },
+  "parent_commit_hash": "sha256:2037a0e12e03be165b8a5e0fc8739ab3313bb9aff0644277327963dd6677e5aa",
+  "promotion_hash": "sha256:d52c28531676bdfe99e4a11efa773d8b14ad9f45f565842660bc204c1b035d72",
+  "red": {
+    "observations": [
+      {
+        "blue_patch": "",
+        "carrier_id": "chipbench_prob003_group_boundary_v1",
+        "label": "valid_no_op_single_sample_unconfirmed",
+        "mutant_hash": "sha256:e1359be4b673d394840ca817b0bf60f31cc19ced8ed64c6b4b1567b490f39ad4",
+        "mutation_edits": [
+          {
+            "find": "        s5:\n            nstate=data?sf6:s6;",
+            "replace": "        s5:\n            nstate=data?s6:sf6;"
+          }
+        ],
+        "public_evidence": "{\"suites\": {\"W_bug\": {\"result\": \"visible_fail\", \"returncode\": 0, \"pass_marker_found\": false, \"fail_marker_found\": true, \"log\": \"CHECK_FAIL W_bug cycle=6 group=011100 bit=0 match=0 not_match=1\", \"public_state_trace\": {\"version\": \"public_group_trace_v1\", \"status\": \"observed\", \"source\": \"same public test and submitted RTL only\", \"scoring_unchanged\": true, \"failure_reproduced\": true, \"records\": [\"PUBLIC_FSM_TRACE cycle=1 position=1 sampled_prefix=000000 pre_state=0 pre_next=1 post_state=1 actual=00 expected=00\", \"PUBLIC_FSM_TRACE cycle=2 position=2 sampled_prefix=000001 pre_state=1 pre_next=2 post_state=2 actual=00 expected=00\", \"PUBLIC_FSM_TRACE cycle=3 position=3 sampled_prefix=000011 pre_state=2 pre_next=3 post_state=3 actual=00 expected=00\", \"PUBLIC_FSM_TRACE cycle=4 position=4 sampled_prefix=000111 pre_state=3 pre_next=4 post_state=4 actual=00 expected=00\", \"PUBLIC_FSM_TRACE cycle=5 position=5 sampled_prefix=001110 pre_state=4 pre_next=5 post_state=5 actual=00 expected=00\", \"PUBLIC_FSM_TRACE cycle=6 position=6 sampled_prefix=011100 pre_state=5 pre_next=12 post_state=12 actual=01 expected=10\"], \"localization\": {\"version\": \"prob003_public_fault_focus_v1\", \"status\": \"observed\", \"source\": \"current submitted RTL, public specification and same public test only\", \"first_output_mismatch\": {\"cycle\": 6, \"position\": 6, \"input_bit\": 0, \"consumed_prefix\": \"011100\", \"prefix_matches_target\": true, \"pre_state\": 5, \"pre_state_name\": \"s5\", \"observed_next\": 12, \"post_state\": 12, \"post_state_name\": \"sf6\", \"actual\": \"01\", \"expected\": \"10\", \"current_branch\": {\"input_0\": \"sf6\", \"input_1\": \"s6\", \"selected\": \"sf6\", \"agrees_with_simulator\": true}}, \"earliest_observed_state_context_conflict\": null, \"focus_window\": [{\"cycle\": 1, \"position\": 1, \"input_bit\": 0, \"consumed_prefix\": \"0\", \"prefix_matches_target\": true, \"pre_state\": 0, \"pre_state_name\": \"idle\", \"observed_next\": 1, \"post_state\": 1, \"post_state_name\": \"s1\", \"actual\": \"00\", \"expected\": \"00\", \"current_branch\": {\"input_0\": \"s1\", \"input_1\": \"sf1\", \"selected\": \"s1\", \"agrees_with_simulator\": true}}, {\"cycle\": 2, \"position\": 2, \"input_bit\": 1, \"consumed_prefix\": \"01\", \"prefix_matches_target\": true, \"pre_state\": 1, \"pre_state_name\": \"s1\", \"observed_next\": 2, \"post_state\": 2, \"post_state_name\": \"s2\", \"actual\": \"00\", \"expected\": \"00\", \"current_branch\": {\"input_0\": \"sf2\", \"input_1\": \"s2\", \"selected\": \"s2\", \"agrees_with_simulator\": true}}, {\"cycle\": 3, \"position\": 3, \"input_bit\": 1, \"consumed_prefix\": \"011\", \"prefix_matches_target\": true, \"pre_state\": 2, \"pre_state_name\": \"s2\", \"observed_next\": 3, \"post_state\": 3, \"post_state_name\": \"s3\", \"actual\": \"00\", \"expected\": \"00\", \"current_branch\": {\"input_0\": \"sf3\", \"input_1\": \"s3\", \"selected\": \"s3\", \"agrees_with_simulator\": true}}, {\"cycle\": 4, \"position\": 4, \"input_bit\": 1, \"consumed_prefix\": \"0111\", \"prefix_matches_target\": true, \"pre_state\": 3, \"pre_state_name\": \"s3\", \"observed_next\": 4, \"post_state\": 4, \"post_state_name\": \"s4\", \"actual\": \"00\", \"expected\": \"00\", \"current_branch\": {\"input_0\": \"sf4\", \"input_1\": \"s4\", \"selected\": \"s4\", \"agrees_with_simulator\": true}}, {\"cycle\": 5, \"position\": 5, \"input_bit\": 0, \"consumed_prefix\": \"01110\", \"prefix_matches_target\": true, \"pre_state\": 4, \"pre_state_name\": \"s4\", \"observed_next\": 5, \"post_state\": 5, \"post_state_name\": \"s5\", \"actual\": \"00\", \"expected\": \"00\", \"current_branch\": {\"input_0\": \"s5\", \"input_1\": \"sf5\", \"selected\": \"s5\", \"agrees_with_simulator\": true}}, {\"cycle\": 6, \"position\": 6, \"input_bit\": 0, \"consumed_prefix\": \"011100\", \"prefix_matches_target\": true, \"pre_state\": 5, \"pre_state_name\": \"s5\", \"observed_next\": 12, \"post_state\": 12, \"post_state_name\": \"sf6\", \"actual\": \"01\", \"expected\": \"10\", \"current_branch\": {\"input_0\": \"sf6\", \"input_1\": \"s6\", \"selected\": \"sf6\", \"agrees_with_simulator\": true}}], \"repair_focus\": \"The first group already fails. Inspect its consumed-prefix path before editing a transition used only after a completed group.\", \"limitation\": \"An output mismatch is observed. A context conflict is a hint for a pstate-only architecture; finite public traces cannot always uniquely locate the original faulty expression. No expected state target or reference patch is provided.\"}, \"failure\": [\"CHECK_FAIL W_bug cycle=6 group=011100 bit=0 match=0 not_match=1\"], \"limitation\": \"Numeric states describe this submitted candidate; expected outputs derive only from the public group contract.\"}}, \"W_preserve\": {\"result\": \"visible_pass\", \"returncode\": 0, \"pass_marker_found\": true, \"fail_marker_found\": false, \"log\": \"TESTBENCH PASS W_preserve reset exclusivity stability\"}}}",
+        "public_rows": {
+          "W_bug": "visible_fail",
+          "W_preserve": "visible_pass"
+        },
+        "round": 1,
+        "slot_id": "r1_s0",
+        "source_hash": "sha256:837ced0954f1ac76bf0f1553227fcf1f5577eb2daf0a222e39245bcc3fd057c0",
+        "target_snapshot_hash": "sha256:8b062b213ed61ecf341ce385ee515e026fa2dd67e077c54f5c39b3731d9d0be8"
+      }
+    ],
+    "round": 1
+  },
+  "round": 1,
+  "update_decisions": [
+    {
+      "accepted": false,
+      "promotion": "no_new_experience"
+    }
+  ]
+}

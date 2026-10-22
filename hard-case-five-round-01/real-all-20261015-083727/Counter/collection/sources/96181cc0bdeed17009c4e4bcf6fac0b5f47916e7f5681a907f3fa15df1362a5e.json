@@ -1,0 +1,121 @@
+{
+  "source": {
+    "run_id": "collection",
+    "round": 1,
+    "slot_id": "r1_s0",
+    "task_hash": "sha256:6267e75f298ea31c3906ff2efd6bb166b5da1665baf2b4fc14edf2e094e9d540",
+    "carrier_id": "selected_Counter",
+    "mutant_hash": "sha256:c2061f16d27c2ba4a9462f78b35592dbfec01a2f697b5505d80ddc7f570ec2ea",
+    "candidate_hash": "sha256:6f80d2c589950e131b47be4316be6845bb4163abb7c186431908ff78cad291ba",
+    "encounter_hash": "sha256:96181cc0bdeed17009c4e4bcf6fac0b5f47916e7f5681a907f3fa15df1362a5e",
+    "archive_hash": "sha256:988d0169d40f254f39ca34de44e148c332fc15bc61e1c0e59ed96d25f48370b1",
+    "public_replay_hash": "sha256:d0c65618f5fdbce518d0e5b56f3514cbf12d5bb590824321e4824f271e79c694"
+  },
+  "encounter": {
+    "encounter": 0,
+    "seed": 1299457421909690,
+    "result": {
+      "task_id": "selected_Counter__c2061f16d27c2ba4",
+      "route": "direct",
+      "rtl_tokens": 383,
+      "closure": [
+        "rtl/sequence.sv",
+        "harness:W_bug_tb.sv",
+        "harness:W_preserve_tb.sv"
+      ],
+      "outcome": "fixed",
+      "attempts": [
+        {
+          "attempt": 0,
+          "route": "direct",
+          "submissions": [
+            {
+              "kind": "repair",
+              "tokens": {
+                "input": 3759,
+                "output": 15348,
+                "counted_request": 3759,
+                "model_seconds": 71.52
+              },
+              "format_valid": true,
+              "format_error": null
+            }
+          ],
+          "repair_tokens": {
+            "input": 3759,
+            "output": 15348,
+            "counted_request": 3759,
+            "model_seconds": 71.52
+          },
+          "edit": "Fixed overflow detection so sticky overflow sets whenever the pre-edge counter is 15, regardless of the enable signal. Removed the erroneous enable==0 condition from the overflow test while preserving reset clearing and delayed counter assignments.",
+          "candidate_hash": "sha256:6f80d2c589950e131b47be4316be6845bb4163abb7c186431908ff78cad291ba",
+          "tier": "visible_pass",
+          "stage": "simulation",
+          "build_seconds": 0.02,
+          "sim_seconds": 0.01,
+          "changed_files": [
+            "rtl/sequence.sv"
+          ]
+        }
+      ],
+      "calls": 1,
+      "final_candidate_hash": "sha256:6f80d2c589950e131b47be4316be6845bb4163abb7c186431908ff78cad291ba",
+      "inputs_read": [
+        "public/task.json",
+        "public/visible/build.json",
+        "public/visible/W_bug_tb.sv",
+        "public/visible/W_preserve_tb.sv",
+        "public/spec.txt"
+      ],
+      "experience": {
+        "snapshot_id": "B_0",
+        "snapshot_hash": "sha256:5600496c90f83f0e7b291f83030adaa6c63b03770716706768266b847116c119",
+        "state_hash": "sha256:b07b09361e2981152f1e25a0a2cadc18dfac4222572d63c3d5349ce5238a24f8",
+        "payload_hash": "sha256:3092f0d7fc08feac058171dbed616bb7c60daa43691d7b6d28875d3225d9b061",
+        "delivery_hash": "sha256:547ece763c4746bc8109916900022171da4a0b1a23707549bd89c3adda5b52e9",
+        "delivered": false
+      }
+    }
+  },
+  "archive_path": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/real-all-20261015-083727/Counter/collection/rounds/1/r1_s0/online/blue/archive/selected_Counter__c2061f16d27c2ba4__6f80d2c589950e13.json",
+  "task_dir": "/data2/huangyc/R3E-aic-ic-2026-latest/hard-case-five-round-01/real-all-20261015-083727/Counter/collection/rounds/1/r1_s0/admission/blue_task",
+  "replay": {
+    "tier": "visible_pass",
+    "stage": "simulation",
+    "evidence": {
+      "suites": {
+        "W_bug": {
+          "result": "visible_pass",
+          "returncode": 0,
+          "pass_marker_found": true,
+          "fail_marker_found": false,
+          "log": "         106, \t1, \t0, \t1, \t 7, \t\t0\n                 110, \t0, \t0, \t1, \t 7, \t\t0\n                 115, \t1, \t0, \t1, \t 7, \t\t0\n                 116, \t1, \t0, \t1, \t 8, \t\t0\n                 120, \t0, \t0, \t1, \t 8, \t\t0\n                 125, \t1, \t0, \t1, \t 8, \t\t0\n                 126, \t1, \t0, \t1, \t 9, \t\t0\n                 130, \t0, \t0, \t1, \t 9, \t\t0\n                 135, \t1, \t0, \t1, \t 9, \t\t0\n                 136, \t1, \t0, \t1, \t10, \t\t0\n                 140, \t0, \t0, \t1, \t10, \t\t0\n                 145, \t1, \t0, \t1, \t10, \t\t0\n                 146, \t1, \t0, \t1, \t11, \t\t0\n                 150, \t0, \t0, \t1, \t11, \t\t0\n                 155, \t1, \t0, \t1, \t11, \t\t0\n                 156, \t1, \t0, \t1, \t12, \t\t0\n                 160, \t0, \t0, \t1, \t12, \t\t0\n                 165, \t1, \t0, \t1, \t12, \t\t0\n                 166, \t1, \t0, \t1, \t13, \t\t0\n                 170, \t0, \t0, \t1, \t13, \t\t0\n                 175, \t1, \t0, \t1, \t13, \t\t0\n                 176, \t1, \t0, \t1, \t14, \t\t0\n                 180, \t0, \t0, \t1, \t14, \t\t0\n                 185, \t1, \t0, \t1, \t14, \t\t0\n                 186, \t1, \t0, \t1, \t15, \t\t0\n                 190, \t0, \t0, \t1, \t15, \t\t0\n                 195, \t1, \t0, \t1, \t15, \t\t1\n                 196, \t1, \t0, \t1, \t 0, \t\t1\n                 200, \t0, \t0, \t1, \t 0, \t\t1\n                 205, \t1, \t0, \t1, \t 0, \t\t1\n                 206, \t1, \t0, \t1, \t 1, \t\t1\n                 210, \t0, \t0, \t1, \t 1, \t\t1\n                 215, \t1, \t0, \t1, \t 1, \t\t1\n                 216, \t1, \t0, \t1, \t 2, \t\t1\n                 220, \t0, \t0, \t1, \t 2, \t\t1\n                 225, \t1, \t0, \t1, \t 2, \t\t1\n                 226, \t1, \t0, \t1, \t 3, \t\t1\n                 230, \t0, \t0, \t1, \t 3, \t\t1\n                 235, \t1, \t0, \t1, \t 3, \t\t1\n                 236, \t1, \t0, \t1, \t 4, \t\t1\n                 240, \t0, \t0, \t1, \t 4, \t\t1\n                 245, \t1, \t0, \t1, \t 4, \t\t1\n                 246, \t1, \t0, \t1, \t 5, \t\t1\n                 250, \t0, \t0, \t1, \t 5, \t\t1\n                 255, \t1, \t0, \t1, \t 5, \t\t1\n                 256, \t1, \t0, \t1, \t 6, \t\t1\nTESTBENCH PASS original oracle"
+        },
+        "W_preserve": {
+          "result": "visible_pass",
+          "returncode": 0,
+          "pass_marker_found": true,
+          "fail_marker_found": false,
+          "log": "TESTBENCH PASS preserve"
+        }
+      }
+    },
+    "build_seconds": 0.01806037314236164,
+    "sim_seconds": 0.010254831984639168,
+    "closure": [
+      "rtl/sequence.sv",
+      "harness:W_bug_tb.sv",
+      "harness:W_preserve_tb.sv"
+    ]
+  },
+  "public_rows": {
+    "W_bug": "visible_pass",
+    "W_preserve": "visible_pass"
+  },
+  "mutation_edits": [
+    {
+      "find": "if(counter_out == 4'b1111)",
+      "replace": "if(enable == 1'b0 && counter_out == 4'b1111)"
+    }
+  ]
+}
